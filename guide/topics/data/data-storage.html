@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Storage Options | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Storage Options</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+  <h2>Storage quickview</h2>
+  <ul>
+    <li>Use Shared Preferences for primitive data</li>
+    <li>Use internal device storage for private data</li>
+    <li>Use external storage for large data sets that are not private</li>
+    <li>Use SQLite databases for structured storage</li>
+  </ul>
+
+  <h2>In this document</h2>
+  <ol>
+    <li><a href="#pref">Using Shared Preferences</a></li>
+    <li><a href="#filesInternal">Using the Internal Storage</a></li>
+    <li><a href="#filesExternal">Using the External Storage</a></li>
+    <li><a href="#db">Using Databases</a></li>
+    <li><a href="#netw">Using a Network Connection</a></li>
+  </ol>
+
+  <h2>See also</h2>
+  <ol>
+    <li><a href="#pref">Content Providers and Content Resolvers</a></li>
+  </ol>
+
+</div>
+</div>
+
+<p>Android provides several options for you to save persistent application data. The solution you
+choose depends on your specific needs, such as whether the data should be private to your
+application or accessible to other applications (and the user) and how much space your data
+requires.
+</p>
+
+<p>Your data storage options are the following:</p>
+
+<dl>
+  <dt><a href="#pref">Shared Preferences</a></dt>
+    <dd>Store private primitive data in key-value pairs.</dd>
+  <dt><a href="#filesInternal">Internal Storage</a></dt>
+    <dd>Store private data on the device memory.</dd>
+  <dt><a href="#filesExternal">External Storage</a></dt>
+    <dd>Store public data on the shared external storage.</dd>
+  <dt><a href="#db">SQLite Databases</a></dt>
+    <dd>Store structured data in a private database.</dd>
+  <dt><a href="#netw">Network Connection</a></dt>
+    <dd>Store data on the web with your own network server.</dd>
+</dl>
+
+<p>Android provides a way for you to expose even your private data to other applications
+&mdash; with a <a href="../../../guide/topics/providers/content-providers.html">content
+provider</a>. A content provider is an optional component that exposes read/write access to
+your application data, subject to whatever restrictions you want to impose. For more information
+about using content providers, see the
+<a href="../../../guide/topics/providers/content-providers.html">Content Providers</a>
+documentation.
+</p>
+
+
+
+
+<h2 id="pref">Using Shared Preferences</h2>
+
+<p>The <code><a href="../../../reference/android/content/SharedPreferences.html">SharedPreferences</a></code> class provides a general framework that allows you
+to save and retrieve persistent key-value pairs of primitive data types. You can use <code><a href="../../../reference/android/content/SharedPreferences.html">SharedPreferences</a></code> to save any primitive data: booleans, floats, ints, longs, and
+strings. This data will persist across user sessions (even if your application is killed).</p>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+<h3>User Preferences</h3>
+<p>Shared preferences are not strictly for saving "user preferences," such as what ringtone a
+user has chosen. If you're interested in creating user preferences for your application, see <code><a href="../../../reference/android/preference/PreferenceActivity.html">PreferenceActivity</a></code>, which provides an Activity framework for you to create
+user preferences, which will be automatically persisted (using shared preferences).</p>
+</div>
+</div>
+
+<p>To get a <code><a href="../../../reference/android/content/SharedPreferences.html">SharedPreferences</a></code> object for your application, use one of
+two methods:</p>
+<ul>
+  <li><code><a href="../../../reference/android/content/Context.html#getSharedPreferences(java.lang.String, int)">getSharedPreferences()</a></code> - Use this if you need multiple preferences files identified by name,
+which you specify with the first parameter.</li>
+  <li><code><a href="../../../reference/android/app/Activity.html#getPreferences(int)">getPreferences()</a></code> - Use this if you need
+only one preferences file for your Activity. Because this will be the only preferences file
+for your Activity, you don't supply a name.</li>
+</ul>
+
+<p>To write values:</p>
+<ol>
+  <li>Call <code><a href="../../../reference/android/content/SharedPreferences.html#edit()">edit()</a></code> to get a <code><a href="../../../reference/android/content/SharedPreferences.Editor.html">SharedPreferences.Editor</a></code>.</li>
+  <li>Add values with methods such as <code><a href="../../../reference/android/content/SharedPreferences.Editor.html#putBoolean(java.lang.String, boolean)">putBoolean()</a></code> and <code><a href="../../../reference/android/content/SharedPreferences.Editor.html#putString(java.lang.String, java.lang.String)">putString()</a></code>.</li>
+  <li>Commit the new values with <code><a href="../../../reference/android/content/SharedPreferences.Editor.html#commit()">commit()</a></code></li>
+</ol>
+
+<p>To read values, use <code><a href="../../../reference/android/content/SharedPreferences.html">SharedPreferences</a></code> methods such as <code><a href="../../../reference/android/content/SharedPreferences.html#getBoolean(java.lang.String, boolean)">getBoolean()</a></code> and <code><a href="../../../reference/android/content/SharedPreferences.html#getString(java.lang.String, java.lang.String)">getString()</a></code>.</p>
+
+<p>
+Here is an example that saves a preference for silent keypress mode in a
+calculator:
+</p>
+
+<pre>
+public class Calc extends Activity {
+    public static final String PREFS_NAME = "MyPrefsFile";
+
+    &#64;Override
+    protected void onCreate(Bundle state){
+       super.onCreate(state);
+       . . .
+
+       // Restore preferences
+       SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+       boolean silent = settings.getBoolean("silentMode", false);
+       setSilent(silent);
+    }
+
+    &#64;Override
+    protected void onStop(){
+       super.onStop();
+
+      // We need an Editor object to make preference changes.
+      // All objects are from android.context.Context
+      SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+      SharedPreferences.Editor editor = settings.edit();
+      editor.putBoolean("silentMode", mSilentMode);
+
+      // Commit the edits!
+      editor.commit();
+    }
+}
+</pre>
+
+
+
+
+<a name="files"></a>
+<h2 id="filesInternal">Using the Internal Storage</h2>
+
+<p>You can save files directly on the device's internal storage. By default, files saved
+to the internal storage are private to your application and other applications cannot access
+them (nor can the user). When the user uninstalls your application, these files are removed.</p>
+
+<p>To create and write a private file to the internal storage:</p>
+
+<ol>
+  <li>Call <code><a href="../../../reference/android/content/Context.html#openFileOutput(java.lang.String, int)">openFileOutput()</a></code> with the
+name of the file and the operating mode. This returns a <code><a href="../../../reference/java/io/FileOutputStream.html">FileOutputStream</a></code>.</li>
+  <li>Write to the file with <code><a href="../../../reference/java/io/OutputStream.html#write(byte[])">write()</a></code>.</li>
+  <li>Close the stream with <code><a href="../../../reference/java/io/FileOutputStream.html#close()">close()</a></code>.</li>
+</ol>
+
+<p>For example:</p>
+
+<pre>
+String FILENAME = "hello_file";
+String string = "hello world!";
+
+FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+fos.write(string.getBytes());
+fos.close();
+</pre>
+
+<p><code><a href="../../../reference/android/content/Context.html#MODE_PRIVATE">MODE_PRIVATE</a></code> will create the file (or replace a file of
+the same name) and make it private to your application. Other modes available are: <code><a href="../../../reference/android/content/Context.html#MODE_APPEND">MODE_APPEND</a></code>, <code><a href="../../../reference/android/content/Context.html#MODE_WORLD_READABLE">MODE_WORLD_READABLE</a></code>, and <code><a href="../../../reference/android/content/Context.html#MODE_WORLD_WRITEABLE">MODE_WORLD_WRITEABLE</a></code>.</p>
+
+<p>To read a file from internal storage:</p>
+
+<ol>
+  <li>Call <code><a href="../../../reference/android/content/Context.html#openFileInput(java.lang.String)">openFileInput()</a></code> and pass it the
+name of the file to read. This returns a <code><a href="../../../reference/java/io/FileInputStream.html">FileInputStream</a></code>.</li>
+  <li>Read bytes from the file with <code><a href="../../../reference/java/io/FileInputStream.html#read(byte[], int, int)">read()</a></code>.</li>
+  <li>Then close the stream with  <code><a href="../../../reference/java/io/FileInputStream.html#close()">close()</a></code>.</li>
+</ol>
+
+<p class="note"><strong>Tip:</strong> If you want to save a static file in your application at
+compile time, save the file in your project <code>res/raw/</code> directory. You can open it with
+<code><a href="../../../reference/android/content/res/Resources.html#openRawResource(int)">openRawResource()</a></code>, passing the <code>R.raw.<em>&lt;filename&gt;</em></code> resource ID. This method returns an <code><a href="../../../reference/java/io/InputStream.html">InputStream</a></code>
+that you can use to read the file (but you cannot write to the original file).
+</p>
+
+
+<h3 id="InternalCache">Saving cache files</h3>
+
+<p>If you'd like to cache some data, rather than store it persistently, you should use <code><a href="../../../reference/android/content/Context.html#getCacheDir()">getCacheDir()</a></code> to open a <code><a href="../../../reference/java/io/File.html">File</a></code> that represents the internal directory where your application should save
+temporary cache files.</p>
+
+<p>When the device is
+low on internal storage space, Android may delete these cache files to recover space. However, you
+should not rely on the system to clean up these files for you. You should always maintain the cache
+files yourself and stay within a reasonable limit of space consumed, such as 1MB. When the user
+uninstalls your application, these files are removed.</p>
+
+
+<h3 id="InternalMethods">Other useful methods</h3>
+
+<dl>
+  <dt><code><a href="../../../reference/android/content/Context.html#getFilesDir()">getFilesDir()</a></code></dt>
+    <dd>Gets the absolute path to the filesystem directory where your internal files are saved.</dd>
+  <dt><code><a href="../../../reference/android/content/Context.html#getDir(java.lang.String, int)">getDir()</a></code></dt>
+    <dd>Creates (or opens an existing) directory within your internal storage space.</dd>
+  <dt><code><a href="../../../reference/android/content/Context.html#deleteFile(java.lang.String)">deleteFile()</a></code></dt>
+    <dd>Deletes a file saved on the internal storage.</dd>
+  <dt><code><a href="../../../reference/android/content/Context.html#fileList()">fileList()</a></code></dt>
+    <dd>Returns an array of files currently saved by your application.</dd>
+</dl>
+
+
+
+
+<h2 id="filesExternal">Using the External Storage</h2>
+
+<p>Every Android-compatible device supports a shared "external storage" that you can use to
+save files. This can be a removable storage media (such as an SD card) or an internal
+(non-removable) storage. Files saved to the external storage are world-readable and can
+be modified by the user when they enable USB mass storage to transfer files on a computer.</p>
+
+<p>It's possible that a device using a partition of the
+internal storage for the external storage may also offer an SD card slot. In this case,
+the SD card is <em>not</em> part of the external storage and your app cannot access it (the extra
+storage is intended only for user-provided media that the system scans).</p>
+
+<p class="caution"><strong>Caution:</strong> External storage can become unavailable if the user mounts the
+external storage on a computer or removes the media, and there's no security enforced upon files you
+save to the external storage. All applications can read and write files placed on the external
+storage and the user can remove them.</p>
+
+
+<h3 id="MediaAvail">Checking media availability</h3>
+
+<p>Before you do any work with the external storage, you should always call <code><a href="../../../reference/android/os/Environment.html#getExternalStorageState()">getExternalStorageState()</a></code> to check whether the media is available. The
+media might be mounted to a computer, missing, read-only, or in some other state. For example,
+here's how you can check the availability:</p>
+
+<pre>
+boolean mExternalStorageAvailable = false;
+boolean mExternalStorageWriteable = false;
+String state = Environment.getExternalStorageState();
+
+if (Environment.MEDIA_MOUNTED.equals(state)) {
+    // We can read and write the media
+    mExternalStorageAvailable = mExternalStorageWriteable = true;
+} else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+    // We can only read the media
+    mExternalStorageAvailable = true;
+    mExternalStorageWriteable = false;
+} else {
+    // Something else is wrong. It may be one of many other states, but all we need
+    //  to know is we can neither read nor write
+    mExternalStorageAvailable = mExternalStorageWriteable = false;
+}
+</pre>
+
+<p>This example checks whether the external storage is available to read and write. The
+<code><a href="../../../reference/android/os/Environment.html#getExternalStorageState()">getExternalStorageState()</a></code> method returns other states that you
+might want to check, such as whether the media is being shared (connected to a computer), is missing
+entirely, has been removed badly, etc. You can use these to notify the user with more information
+when your application needs to access the media.</p>
+
+
+<h3 id="AccessingExtFiles">Accessing files on external storage</h3>
+
+<p>If you're using API Level 8 or greater, use <code><a href="../../../reference/android/content/Context.html#getExternalFilesDir(java.lang.String)">getExternalFilesDir()</a></code> to open a <code><a href="../../../reference/java/io/File.html">File</a></code> that represents the external storage directory where you should save your
+files. This method takes a <code>type</code> parameter that specifies the type of subdirectory you
+want, such as <code><a href="../../../reference/android/os/Environment.html#DIRECTORY_MUSIC">DIRECTORY_MUSIC</a></code> and
+<code><a href="../../../reference/android/os/Environment.html#DIRECTORY_RINGTONES">DIRECTORY_RINGTONES</a></code> (pass <code>null</code> to receive
+the root of your application's file directory). This method will create the
+appropriate directory if necessary. By specifying the type of directory, you
+ensure that the Android's media scanner will properly categorize your files in the system (for
+example, ringtones are identified as ringtones and not music). If the user uninstalls your
+application, this directory and all its contents will be deleted.</p>
+
+<p>If you're using API Level 7 or lower, use <code><a href="../../../reference/android/os/Environment.html#getExternalStorageDirectory()">getExternalStorageDirectory()</a></code>, to open a <code><a href="../../../reference/java/io/File.html">File</a></code> representing the root of the external storage. You should then write your data in the
+following directory:</p>
+<pre class="no-pretty-print classic">
+/Android/data/<em>&lt;package_name&gt;</em>/files/
+</pre>
+<p>The <code><em>&lt;package_name&gt;</em></code> is your Java-style package name, such as "<code>com.example.android.app</code>". If the user's device is running API Level 8 or greater and they
+uninstall your application, this directory and all its contents will be deleted.</p>
+
+
+<div class="sidebox-wrapper" style="margin-top:3em">
+<div class="sidebox">
+
+<h4>Hiding your files from the Media Scanner</h4>
+
+<p>Include an empty file named <code>.nomedia</code> in your external files directory (note the dot
+prefix in the filename). This will prevent Android's media scanner from reading your media
+files and including them in apps like Gallery or Music.</p>
+
+</div>
+</div>
+
+
+<h3 id="SavingSharedFiles">Saving files that should be shared</h3>
+
+<p>If you want to save files that are not specific to your application and that should <em>not</em>
+be deleted when your application is uninstalled, save them to one of the public directories on the
+external storage. These directories lay at the root of the external storage, such as <code>Music/</code>, <code>Pictures/</code>, <code>Ringtones/</code>, and others.</p>
+
+<p>In API Level 8 or greater, use <code><a href="../../../reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String)">getExternalStoragePublicDirectory()</a></code>, passing it the type of public directory you want, such as
+<code><a href="../../../reference/android/os/Environment.html#DIRECTORY_MUSIC">DIRECTORY_MUSIC</a></code>, <code><a href="../../../reference/android/os/Environment.html#DIRECTORY_PICTURES">DIRECTORY_PICTURES</a></code>,
+<code><a href="../../../reference/android/os/Environment.html#DIRECTORY_RINGTONES">DIRECTORY_RINGTONES</a></code>, or others. This method will create the
+appropriate directory if necessary.</p>
+
+<p>If you're using API Level 7 or lower, use <code><a href="../../../reference/android/os/Environment.html#getExternalStorageDirectory()">getExternalStorageDirectory()</a></code> to open a <code><a href="../../../reference/java/io/File.html">File</a></code> that represents
+the root of the external storage, then save your shared files in one of the following
+directories:</p>
+
+<ul class="nolist"></li>
+  <li><code>Music/</code> - Media scanner classifies all media found here as user music.</li>
+  <li><code>Podcasts/</code> - Media scanner classifies all media found here as a podcast.</li>
+  <li><code>Ringtones/ </code> - Media scanner classifies all media found here as a ringtone.</li>
+  <li><code>Alarms/</code> - Media scanner classifies all media found here as an alarm sound.</li>
+  <li><code>Notifications/</code> - Media scanner classifies all media found here as a notification
+sound.</li>
+  <li><code>Pictures/</code> - All photos (excluding those taken with the camera).</li>
+  <li><code>Movies/</code> - All movies (excluding those taken with the camcorder).</li>
+  <li><code>Download/</code> - Miscellaneous downloads.</li>
+</ul>
+
+
+<h3 id="ExternalCache">Saving cache files</h3>
+
+<p>If you're using API Level 8 or greater, use <code><a href="../../../reference/android/content/Context.html#getExternalCacheDir()">getExternalCacheDir()</a></code> to open a <code><a href="../../../reference/java/io/File.html">File</a></code> that represents the
+external storage directory where you should save cache files. If the user uninstalls your
+application, these files will be automatically deleted. However, during the life of your
+application, you should manage these cache files and remove those that aren't needed in order to
+preserve file space.</p>
+
+<p>If you're using API Level 7 or lower, use <code><a href="../../../reference/android/os/Environment.html#getExternalStorageDirectory()">getExternalStorageDirectory()</a></code> to open a <code><a href="../../../reference/java/io/File.html">File</a></code> that represents
+the root of the external storage, then write your cache data in the following directory:</p>
+<pre class="no-pretty-print classic">
+/Android/data/<em>&lt;package_name&gt;</em>/cache/
+</pre>
+<p>The <code><em>&lt;package_name&gt;</em></code> is your Java-style package name, such as "<code>com.example.android.app</code>".</p>
+
+
+
+<h2 id="db">Using Databases</h2>
+
+<p>Android provides full support for <a href="http://www.sqlite.org/">SQLite</a> databases.
+Any databases you create will be accessible by name to any
+class in the application, but not outside the application.</p>
+
+<p>The recommended method to create a new SQLite database is to create a subclass of <code><a href="../../../reference/android/database/sqlite/SQLiteOpenHelper.html">SQLiteOpenHelper</a></code> and override the <code><a href="../../../reference/android/database/sqlite/SQLiteOpenHelper.html#onCreate(android.database.sqlite.SQLiteDatabase)">onCreate()</a></code> method, in which you
+can execute a SQLite command to create tables in the database. For example:</p>
+
+<pre>
+public class DictionaryOpenHelper extends SQLiteOpenHelper {
+
+    private static final int DATABASE_VERSION = 2;
+    private static final String DICTIONARY_TABLE_NAME = "dictionary";
+    private static final String DICTIONARY_TABLE_CREATE =
+                "CREATE TABLE " + DICTIONARY_TABLE_NAME + " (" +
+                KEY_WORD + " TEXT, " +
+                KEY_DEFINITION + " TEXT);";
+
+    DictionaryOpenHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    &#64;Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(DICTIONARY_TABLE_CREATE);
+    }
+}
+</pre>
+
+<p>You can then get an instance of your <code><a href="../../../reference/android/database/sqlite/SQLiteOpenHelper.html">SQLiteOpenHelper</a></code>
+implementation using the constructor you've defined. To write to and read from the database, call
+<code><a href="../../../reference/android/database/sqlite/SQLiteOpenHelper.html#getWritableDatabase()">getWritableDatabase()</a></code> and <code><a href="../../../reference/android/database/sqlite/SQLiteOpenHelper.html#getReadableDatabase()">getReadableDatabase()</a></code>, respectively. These both return a
+<code><a href="../../../reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a></code> object that represents the database and
+provides methods for SQLite operations.</p>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+<p>Android does not impose any limitations beyond the standard SQLite concepts. We do recommend
+including an autoincrement value key field that can be used as a unique ID to
+quickly find a record.  This is not required for private data, but if you
+implement a <a href="../../../guide/topics/providers/content-providers.html">content provider</a>,
+you must include a unique ID using the <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">BaseColumns._ID</a></code>
+constant.
+</p>
+</div>
+</div>
+
+<p>You can execute SQLite queries using the <code><a href="../../../reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a></code>
+<code><a href="../../../reference/android/database/sqlite/SQLiteDatabase.html#query(boolean, java.lang.String, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String, java.lang.String, java.lang.String, java.lang.String)">query()</a></code> methods, which accept various query parameters, such as the table to query,
+the projection, selection, columns, grouping, and others. For complex queries, such as
+those that require column aliases, you should use
+<code><a href="../../../reference/android/database/sqlite/SQLiteQueryBuilder.html">SQLiteQueryBuilder</a></code>, which provides
+several convienent methods for building queries.</p>
+
+<p>Every SQLite query will return a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> that points to all the rows
+found by the query. The <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> is always the mechanism with which
+you can navigate results from a database query and read rows and columns.</p>
+
+<p>For sample apps that demonstrate how to use SQLite databases in Android, see the
+<a href="../../../resources/samples/NotePad/index.html">Note Pad</a> and
+<a href="../../../resources/samples/SearchableDictionary/index.html">Searchable Dictionary</a>
+applications.</p>
+
+
+<h3 id="dbDebugging">Database debugging</h3>
+
+<p>The Android SDK includes a <code>sqlite3</code> database tool that allows you to browse
+table contents, run SQL commands, and perform other useful functions on SQLite
+databases.  See <a href="../../../tools/help/adb.html#sqlite">Examining sqlite3
+databases from a remote shell</a> to learn how to run this tool.
+</p>
+
+
+
+
+
+<h2 id="netw">Using a Network Connection</h2>
+
+<!-- TODO MAKE THIS USEFUL!! -->
+
+<p>You can use the network (when it's available) to store and retrieve data on your own web-based
+services. To do network operations, use classes in the following packages:</p>
+
+<ul class="no-style">
+  <li><code><code><a href="../../../reference/java/net/package-summary.html">java.net.*</a></code></code></li>
+  <li><code><code><a href="../../../reference/android/net/package-summary.html">android.net.*</a></code></code></li>
+</ul>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

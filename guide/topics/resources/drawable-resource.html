@@ -1,0 +1,2790 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Drawable Resources | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Drawable Resources</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+    <h2>See also</h2>
+    <ol>
+      <li><a href="../../../guide/topics/graphics/2d-graphics.html">2D Graphics</a></li>
+    </ol>
+  </div>
+</div>
+
+<p>A drawable resource is a general concept for a graphic that can be drawn to the screen and which
+you can retrieve with APIs such as <code><a href="../../../reference/android/content/res/Resources.html#getDrawable(int)">getDrawable(int)</a></code> or apply
+to another XML resource with attributes such as <code>android:drawable</code> and <code>android:icon</code>.
+There are several different types of drawables:</p>
+<dl>
+  <dt><a href="#Bitmap">Bitmap File</a><dt>
+    <dd>A bitmap graphic file (<code>.png</code>, <code>.jpg</code>, or <code>.gif</code>).
+      Creates a <code><a href="../../../reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a></code>.</dd>
+  <dt><a href="#NinePatch">Nine-Patch File</a></dt>
+    <dd>A PNG file with stretchable regions to allow image resizing based on content (<code>.9.png</code>). Creates a <code><a href="../../../reference/android/graphics/drawable/NinePatchDrawable.html">NinePatchDrawable</a></code>.</dd>
+  <dt><a href="#LayerList">Layer List</a></dt>
+    <dd>A Drawable that manages an array of other Drawables. These are drawn in array order, so the
+element with the largest index is be drawn on top. Creates a <code><a href="../../../reference/android/graphics/drawable/LayerDrawable.html">LayerDrawable</a></code>.</dd>
+  <dt><a href="#StateList">State List</a></dt>
+    <dd>An XML file that references different bitmap graphics
+    for different states (for example, to use a different image when a button is pressed).
+    Creates a <code><a href="../../../reference/android/graphics/drawable/StateListDrawable.html">StateListDrawable</a></code>.</dd>
+  <dt><a href="#LevelList">Level List</a></dt>
+    <dd>An XML file that defines a drawable that manages a number of alternate Drawables, each
+assigned a maximum numerical value. Creates a <code><a href="../../../reference/android/graphics/drawable/LevelListDrawable.html">LevelListDrawable</a></code>.</dd>
+  <dt><a href="#Transition">Transition Drawable</a></dt>
+    <dd>An XML file that defines a drawable that can cross-fade between two drawable resources.
+Creates a <code><a href="../../../reference/android/graphics/drawable/TransitionDrawable.html">TransitionDrawable</a></code>.</dd>
+  <dt><a href="#Inset">Inset Drawable</a></dt>
+    <dd>An XML file that defines a drawable that insets another drawable by a specified distance.
+This is useful when a View needs a background drawble that is smaller than the View's actual
+bounds.</dd>
+  <dt><a href="#Clip">Clip Drawable</a></dt>
+    <dd>An XML file that defines a drawable that clips another Drawable based on this Drawable's
+current level value. Creates a <code><a href="../../../reference/android/graphics/drawable/ClipDrawable.html">ClipDrawable</a></code>.</dd>
+  <dt><a href="#Scale">Scale Drawable</a></dt>
+    <dd>An XML file that defines a drawable that changes the size of another Drawable based on its
+current level value.  Creates a <code><a href="../../../reference/android/graphics/drawable/ScaleDrawable.html">ScaleDrawable</a></code></dd>
+  <dt><a href="#Shape">Shape Drawable</a></dt>
+    <dd>An XML file that defines a geometric shape, including colors and gradients.
+    Creates a <code><a href="../../../reference/android/graphics/drawable/ShapeDrawable.html">ShapeDrawable</a></code>.</dd>
+</dl>
+
+<p>Also see the <a href="animation-resource.html">Animation Resource</a> document for how to
+create an <code><a href="../../../reference/android/graphics/drawable/AnimationDrawable.html">AnimationDrawable</a></code>.</p>
+
+<p class="note"><strong>Note:</strong> A <a
+href="../../../guide/topics/resources/more-resources.html#Color">color resource</a> can also be
+used as a drawable in XML. For example, when creating a <a href="#StateList">state list
+drawable</a>, you can reference a color resource for the <code>android:drawable</code> attribute (<code>android:drawable="@color/green"</code>).</p>
+
+
+
+
+<h2 id="Bitmap">Bitmap</h2>
+
+<p>A bitmap image. Android supports bitmap files in a three formats:
+<code>.png</code> (preferred), <code>.jpg</code> (acceptable), <code>.gif</code> (discouraged).</p>
+
+<p>You can reference a bitmap file directly, using the filename as the resource ID, or create an
+alias resource ID in XML.</p>
+
+<p class="note"><strong>Note:</strong> Bitmap files may be automatically optimized with lossless
+image compression by the <code>aapt</code> tool during the build process. For
+example, a true-color PNG that does not require more than 256 colors may be converted to an 8-bit
+PNG with a color palette. This will result in an image of equal quality but which requires less
+memory. So be aware that the image binaries placed in this directory can change during the build. If
+you plan on reading an image as a bit stream in order to convert it to a bitmap, put your images in
+the <code>res/raw/</code> folder instead, where they will not be optimized.</p>
+
+
+<h3 id="BitmapFile">Bitmap File</h3>
+
+<p>A bitmap file is a <code>.png</code>, <code>.jpg</code>, or <code>.gif</code> file. Android creates a <code><a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code>
+resource for any of these files when you save them in the <code>res/drawable/</code> directory.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.png</code> (<code>.png</code>, <code>.jpg</code>, or <code>.gif</code>)<br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code></li><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>example:</dt>
+
+<dd>With an image saved at <code>res/drawable/myimage.png</code>, this layout XML applies
+the image to a View:
+<pre>
+&lt;ImageView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:src="@drawable/myimage" />
+</pre>
+<p>The following application code retrieves the image as a <code><a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code>:</p>
+<pre>
+Resources res = <code><a href="../../../reference/android/content/Context.html#getResources()">getResources()</a></code>;
+Drawable drawable = res.<code><a href="../../../reference/android/content/res/Resources.html#getDrawable(int)">getDrawable</a></code>(R.drawable.myimage);
+</pre>
+</dd>
+
+<dt>see also:</dt>
+<dd>
+<ul>
+  <li><a href="../../../guide/topics/graphics/2d-graphics.html">2D Graphics</a></li>
+  <li><code><a href="../../../reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+<h3 id="XmlBitmap">XML Bitmap</h3>
+
+<p>An XML bitmap is a resource defined in XML that points to a bitmap file. The effect is an alias for a
+raw bitmap file. The XML can specify additional properties for the bitmap such as dithering and tiling.</p>
+
+<p class="note"><strong>Note:</strong> You can use a <code>&lt;bitmap&gt;</code> element as a child of
+an <code>&lt;item&gt;</code> element. For
+example, when creating a <a href="#StateList">state list</a> or <a href="#LayerList">layer list</a>,
+you can exclude the <code>android:drawable</code>
+attribute from an <code>&lt;item&gt;</code> element and nest a <code>&lt;bitmap&gt;</code> inside it
+that defines the drawable item.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code></li><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;<a href="#bitmap-element">bitmap</a>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@[package:]drawable/<em>drawable_resource</em>"
+    android:antialias=["true" | "false"]
+    android:dither=["true" | "false"]
+    android:filter=["true" | "false"]
+    android:gravity=["top" | "bottom" | "left" | "right" | "center_vertical" |
+                      "fill_vertical" | "center_horizontal" | "fill_horizontal" |
+                      "center" | "fill" | "clip_vertical" | "clip_horizontal"]
+    android:mipMap=["true" | "false"]
+    android:tileMode=["disabled" | "clamp" | "repeat" | "mirror"] /&gt;
+</pre>
+</dd>
+
+
+<dt>elements:</dt>
+<dd>
+<dl class="tag-list">
+
+  <dt id="bitmap-element"><code>&lt;bitmap&gt;</code></dt>
+    <dd>Defines the bitmap source and its properties.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>xmlns:android</code></dt>
+          <dd><em>String</em>. Defines the XML namespace, which must be
+          <code>"http://schemas.android.com/apk/res/android"</code>. This is required only if the
+<code>&lt;bitmap&gt;</code> is the root element&mdash;it is not needed when the
+<code>&lt;bitmap&gt;</code> is nested inside an <code>&lt;item&gt;</code>.</dd>
+        <dt><code>android:src</code></dt>
+          <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a drawable
+resource.</dd>
+        <dt><code>android:antialias</code></dt>
+          <dd><em>Boolean</em>. Enables or disables antialiasing.</dd>
+        <dt><code>android:dither</code></dt>
+          <dd><em>Boolean</em>. Enables or disables dithering of the bitmap if the bitmap does not
+have the same pixel configuration as the screen (for instance: a ARGB 8888 bitmap with an RGB 565
+screen).</dd>
+        <dt><code>android:filter</code></dt>
+          <dd><em>Boolean</em>. Enables or disables bitmap filtering. Filtering is used when the
+bitmap is shrunk or stretched to smooth its apperance.</dd>
+        <dt><code>android:gravity</code></dt>
+          <dd><em>Keyword</em>. Defines the gravity for the bitmap. The gravity indicates where to
+position the drawable in its container if the bitmap is smaller than the container.
+            <p>Must be one or more (separated by '|') of the following constant values:</p>
+<table>
+<tr><th>Value</th><th>Description</th></tr>
+<tr><td><code>top</code></td>
+<td>Put the object at the top of its container, not changing its size.</td></tr>
+<tr><td><code>bottom</code></td>
+<td>Put the object at the bottom of its container, not changing its size. </td></tr>
+<tr><td><code>left</code></td>
+<td>Put the object at the left edge of its container, not changing its size. </td></tr>
+<tr><td><code>right</code></td>
+<td>Put the object at the right edge of its container, not changing its size. </td></tr>
+<tr><td><code>center_vertical</code></td>
+<td>Place object in the vertical center of its container, not changing its size. </td></tr>
+<tr><td><code>fill_vertical</code></td>
+<td>Grow the vertical size of the object if needed so it completely fills its container. </td></tr>
+<tr><td><code>center_horizontal</code></td>
+<td>Place object in the horizontal center of its container, not changing its size. </td></tr>
+<tr><td><code>fill_horizontal</code></td>
+<td>Grow the horizontal size of the object if needed so it completely fills its container.
+</td></tr>
+<tr><td><code>center</code></td>
+<td>Place the object in the center of its container in both the vertical and horizontal axis, not
+changing its size. </td></tr>
+<tr><td><code>fill</code></td>
+<td>Grow the horizontal and vertical size of the object if needed so it completely fills its
+container. This is the default.</td></tr>
+<tr><td><code>clip_vertical</code></td>
+<td>Additional option that can be set to have the top and/or bottom edges of the child clipped to
+its container's bounds. The clip is based on the vertical gravity: a top gravity clips the
+bottom edge, a bottom gravity clips the top edge, and neither clips both edges.
+</td></tr>
+<tr><td><code>clip_horizontal</code></td>
+<td>Additional option that can be set to have the left and/or right edges of the child clipped to
+its container's bounds. The clip is based on the horizontal gravity: a left gravity clips
+the right edge, a right gravity clips the left edge, and neither clips both edges.
+</td></tr>
+</table>
+          </dd>
+
+        <dt><code>android:mipMap</code></dt>
+          <dd><em>Boolean</em>. Enables or disables the mipmap hint. See <code><a href="../../../reference/android/graphics/Bitmap.html#setHasMipMap(boolean)">setHasMipMap()</a></code> for more information.
+          Default value is false.</dd>
+
+        <dt><code>android:tileMode</code></dt>
+          <dd><em>Keyword</em>. Defines the tile mode. When the tile mode is enabled, the bitmap is
+repeated. Gravity is ignored when the tile mode is enabled.
+            <p>Must be one of the following constant values:</p>
+<table>
+<tr><th>Value</th><th>Description</th></tr>
+<tr><td><code>disabled</code></td>
+<td>Do not tile the bitmap. This is the default value.</td></tr>
+<tr><td><code>clamp</code></td>
+<td>Replicates the edge color if the shader draws outside of its original bounds</td></tr>
+<tr><td><code>repeat</code></td>
+<td>Repeats the shader's image horizontally and vertically.</td></tr>
+<tr><td><code>mirror</code></td>
+<td>Repeats the shader's image horizontally and vertically, alternating mirror images so that
+adjacent images always seam.</td></tr>
+</table>
+
+          </dd>
+      </dl>
+    </dd>
+
+</dl>
+</dd> <!-- end  elements and attributes -->
+
+<dt>example:</dt>
+<dd>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/icon"
+    android:tileMode="repeat" /&gt;
+</pre>
+
+</dd>
+
+<dt>see also:</dt>
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a></code></li>
+  <li><a href="../../../guide/topics/resources/providing-resources.html#AliasResources">Creating
+alias resources</a>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+
+<h2 id="NinePatch">Nine-Patch</h2>
+
+<p>A <code><a href="../../../reference/android/graphics/NinePatch.html">NinePatch</a></code> is a PNG image in which you can define stretchable regions
+that Android scales when content within the View exceeds the normal image bounds. You
+typically assign this type of image as the background of a View that has at least one dimension set
+to <code>"wrap_content"</code>, and when the View grows to accomodate the content, the Nine-Patch image
+is also scaled to match the size of the View. An example use of a Nine-Patch image is the
+background used by Android's standard <code><a href="../../../reference/android/widget/Button.html">Button</a></code> widget, which must stretch to
+accommodate the text (or image) inside the button.</p>
+
+<p>Same as with a normal <a href="#Bitmap">bitmap</a>, you can reference a Nine-Patch file directly
+or from a resource defined by XML.</p>
+
+<p>For a complete discussion about how to create a Nine-Patch file with stretchable regions,
+see the <a href="../../../guide/topics/graphics/2d-graphics.html#nine-patch">2D Graphics</a>
+document.</p>
+
+
+<h3 id="NinePatchFile">Nine-Patch File</h3>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.9.png</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/NinePatchDrawable.html">NinePatchDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>example:</dt>
+
+<dd>With an image saved at <code>res/drawable/myninepatch.9.png</code>, this layout XML
+applies the Nine-Patch to a View:
+<pre>
+&lt;Button
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:background="@drawable/myninepatch" />
+</pre>
+</dd>
+
+<dt>see also:</dt>
+
+<dd>
+<ul>
+  <li><a href="../../../guide/topics/graphics/2d-graphics.html#nine-patch">2D Graphics</a></li>
+  <li><code><a href="../../../reference/android/graphics/drawable/NinePatchDrawable.html">NinePatchDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+<h3 id="NinePatchXml">XML Nine-Patch</h3>
+
+<p>An XML Nine-Patch is a resource defined in XML that points to a Nine-Patch file. The XML can
+specify dithering for the image.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/NinePatchDrawable.html">NinePatchDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;<a href="#ninepatch-element">nine-patch</a>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@[package:]drawable/<em>drawable_resource</em>"
+    android:dither=["true" | "false"] /&gt;
+</pre>
+</dd>
+
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="ninepatch-element"><code>&lt;nine-patch&gt;</code></dt>
+    <dd>Defines the Nine-Patch source and its properties.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>xmlns:android</code></dt>
+          <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+          <code>"http://schemas.android.com/apk/res/android"</code>.
+        <dt><code>android:src</code></dt>
+          <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a Nine-Patch
+file.</dd>
+        <dt><code>android:dither</code></dt>
+          <dd><em>Boolean</em>. Enables or disables dithering of the bitmap if the bitmap does not
+have the same pixel configuration as the screen (for instance: a ARGB 8888 bitmap with an RGB 565
+screen).</dd>
+      </dl>
+    </dd>
+</dl>
+</dd>
+
+
+<dt>example:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;nine-patch xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/myninepatch"
+    android:dither="false" /&gt;
+</pre>
+</dd>
+</dl>
+
+
+
+
+
+
+<h2 id="LayerList">Layer List</h2>
+
+<p>A <code><a href="../../../reference/android/graphics/drawable/LayerDrawable.html">LayerDrawable</a></code> is a drawable object
+that manages an array of other drawables. Each drawable in the list is drawn in the order of the
+list&mdash;the last drawable in the list is drawn on top.</p>
+
+<p>Each drawable is represented by an <code>&lt;item&gt;</code> element inside a single <code>&lt;layer-list&gt;</code> element.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/LayerDrawable.html">LayerDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;<a href="#layerlist-element">layer-list</a>
+    xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+    &lt;<a href="#layerlist-item-element">item</a>
+        android:drawable="@[package:]drawable/<em>drawable_resource</em>"
+        android:id="@[+][<em>package</em>:]id/<i>resource_name</i>"
+        android:top="<em>dimension</em>"
+        android:right="<em>dimension</em>"
+        android:bottom="<em>dimension</em>"
+        android:left="<em>dimension</em>" /&gt;
+&lt;/layer-list>
+</pre>
+</dd>
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="layerlist-element"><code>&lt;layer-list&gt;</code></dt>
+    <dd><strong>Required.</strong> This must be the root element. Contains one or more <code>&lt;item></code> elements.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>xmlns:android</code></dt>
+          <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+          <code>"http://schemas.android.com/apk/res/android"</code>.
+      </dl>
+    </dd>
+  <dt id="layerlist-item-element"><code>&lt;item&gt;</code></dt>
+    <dd>Defines a drawable to place in the layer drawable, in a position defined by its attributes.
+Must be a child of a <code>&lt;selector&gt;</code> element. Accepts child <code>&lt;bitmap&gt;</code>
+elements.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:drawable</code></dt>
+          <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a drawable
+resource.</dd>
+        <dt><code>android:id</code></dt>
+          <dd><em>Resource ID</em>. A unique resource ID for this drawable. To create a new resource
+ID for this item, use the form:
+<code>"@+id/<em>name</em>"</code>. The plus symbol indicates that this should be created as a new
+ID. You can use this identifier to
+retrieve and modify the drawable with <code><a href="../../../reference/android/view/View.html#findViewById(int)">View.findViewById()</a></code> or <code><a href="../../../reference/android/app/Activity.html#findViewById(int)">Activity.findViewById()</a></code>.</dd>
+        <dt><code>android:top</code></dt>
+          <dd><em>Integer</em>. The top offset in pixels.</dd>
+        <dt><code>android:right</code></dt>
+          <dd><em>Integer</em>. The right offset in pixels.</dd>
+        <dt><code>android:bottom</code></dt>
+          <dd><em>Integer</em>. The bottom offset in pixels.</dd>
+        <dt><code>android:left</code></dt>
+          <dd><em>Integer</em>. The left offset in pixels.</dd>
+      </dl>
+      <p>All drawable items are scaled to fit the size of the containing View, by default. Thus,
+placing your images in a layer list at different positions might increase the size of the View and
+some images scale as appropriate. To avoid
+scaling items in the list, use a <code>&lt;bitmap&gt;</code> element inside the <code>&lt;item&gt;</code> element to specify the drawable and define the gravity to something that does not
+scale, such as <code>"center"</code>. For example, the following <code>&lt;item&gt;</code> defines an item
+that scales to fit its container View:</p>
+<pre>
+&lt;item android:drawable="@drawable/image" /&gt;
+</pre>
+
+<p>To avoid scaling, the following example uses a <code>&lt;bitmap&gt;</code> element with centered
+gravity:</p>
+<pre>
+&lt;item&gt;
+  &lt;bitmap android:src="<b>@drawable/image</b>"
+          android:gravity="center" /&gt;
+&lt;/item&gt;
+</pre>
+    </dd>
+
+</dl>
+</dd> <!-- end  elements and attributes -->
+
+<dt>example:</dt>
+
+<dd>XML file saved at <code>res/drawable/layers.xml</code>:
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;layer-list xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item&gt;
+      &lt;bitmap android:src="@drawable/android_red"
+        android:gravity="center" /&gt;
+    &lt;/item&gt;
+    &lt;item android:top="10dp" android:left="10dp"&gt;
+      &lt;bitmap android:src="@drawable/android_green"
+        android:gravity="center" /&gt;
+    &lt;/item&gt;
+    &lt;item android:top="20dp" android:left="20dp"&gt;
+      &lt;bitmap android:src="@drawable/android_blue"
+        android:gravity="center" /&gt;
+    &lt;/item&gt;
+&lt;/layer-list&gt;
+</pre>
+<p>Notice that this example uses a nested <code>&lt;bitmap&gt;</code> element to define the drawable
+resource for each item with a "center" gravity. This ensures that none of the images are scaled to
+fit the size of the container, due to resizing caused by the offset images.</p>
+
+<p>This layout XML applies the drawable to a View:</p>
+<pre>
+&lt;ImageView
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:src="@drawable/layers" /&gt;
+</pre>
+
+<p>The result is a stack of increasingly offset images:</p>
+<img src="../../../images/resources/layers.png" alt="" />
+</dd> <!-- end example -->
+
+<dt>see also:</dt>
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/LayerDrawable.html">LayerDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+
+
+
+<h2 id="StateList">State List</h2>
+
+<p>A <code><a href="../../../reference/android/graphics/drawable/StateListDrawable.html">StateListDrawable</a></code> is a drawable object defined in XML
+that uses a several different images to represent the same graphic, depending on the state of
+the object. For example, a <code><a href="../../../reference/android/widget/Button.html">Button</a></code> widget can exist in one of several different states (pressed, focused,
+or niether) and, using a state list drawable, you can provide a different background image for each
+state.</p>
+
+<p>You can describe the state list in an XML file. Each graphic is represented by an <code>&lt;item></code> element inside a single <code>&lt;selector></code> element. Each <code>&lt;item></code>
+uses various attributes to describe the state in which it should be used as the graphic for the
+drawable.</p>
+
+<p>During each state change, the state list is traversed top to bottom and the first item that
+matches the current state is used&mdash;the selection is <em>not</em> based on the "best
+match," but simply the first item that meets the minimum criteria of the state.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/StateListDrawable.html">StateListDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;<a href="#selector-element">selector</a> xmlns:android="http://schemas.android.com/apk/res/android"
+    android:constantSize=["true" | "false"]
+    android:dither=["true" | "false"]
+    android:variablePadding=["true" | "false"] >
+    &lt;<a href="#item-element">item</a>
+        android:drawable="@[package:]drawable/<em>drawable_resource</em>"
+        android:state_pressed=["true" | "false"]
+        android:state_focused=["true" | "false"]
+        android:state_hovered=["true" | "false"]
+        android:state_selected=["true" | "false"]
+        android:state_checkable=["true" | "false"]
+        android:state_checked=["true" | "false"]
+        android:state_enabled=["true" | "false"]
+        android:state_activated=["true" | "false"]
+        android:state_window_focused=["true" | "false"] />
+&lt;/selector>
+</pre>
+</dd>
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="selector-element"><code>&lt;selector&gt;</code></dt>
+    <dd><strong>Required.</strong> This must be the root element. Contains one or more <code>&lt;item></code> elements.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>xmlns:android</code></dt>
+          <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+          <code>"http://schemas.android.com/apk/res/android"</code>.
+        <dt><code>android:constantSize</code></dt>
+          <dd><em>Boolean</em>. "true" if the drawable's reported internal size remains constant as the state
+changes (the size is the maximum of all of the states); "false" if the size varies based on
+the current state. Default is false.</dd>
+        <dt><code>android:dither</code></dt>
+          <dd><em>Boolean</em>. "true" to enable dithering of the bitmap if the bitmap does not have the same pixel
+configuration as the screen (for instance, an ARGB 8888 bitmap with an RGB 565 screen); "false" to
+disable dithering. Default is true.</dd>
+        <dt><code>android:variablePadding</code></dt>
+          <dd><em>Boolean</em>. "true" if the drawable's padding should change based on the current
+state that is selected; "false" if the padding should stay the same (based on the maximum
+padding of all the states). Enabling this feature requires that you deal with
+performing layout when the state changes, which is often not supported. Default is false.</dd>
+      </dl>
+    </dd>
+  <dt id="item-element"><code>&lt;item&gt;</code></dt>
+    <dd>Defines a drawable to use during certain states, as described by its attributes. Must be a
+child of a <code>&lt;selector&gt;</code> element.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:drawable</code></dt>
+          <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a drawable resource.</dd>
+        <dt><code>android:state_pressed</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the object is pressed (such as when a button
+is touched/clicked); "false" if this item should be used in the default, non-pressed state.</dd>
+        <dt><code>android:state_focused</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the object has input focus
+(such as when the user selects a text input); "false" if this item should be used in the default,
+non-focused state.</dd>
+        <dt><code>android:state_hovered</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the object is being hovered
+by a cursor; "false" if this item should be used in the default, non-hovered state. Often, this
+drawable may be the same drawable used for the "focused" state.
+          <p>Introduced in API level 14.</p></dd>
+        <dt><code>android:state_selected</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the object is the current
+user selection when navigating with a directional control (such as when navigating through a list
+with a d-pad); "false" if this item should be used when the object is not selected.
+<p>The selected state is used when focus (<code>android:state_focused</code>) is not sufficient
+(such as when list view has focus and an item within it is selected with a d-pad).</p></dd>
+        <dt><code>android:state_checkable</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the object is checkable; "false" if this
+item should be used when the object is not checkable. (Only useful if the object can
+transition between a checkable and non-checkable widget.)</dd>
+        <dt><code>android:state_checked</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the object is checked; "false" if it
+should be used when the object is un-checked.</dd>
+        <dt><code>android:state_enabled</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the object is enabled
+(capable of receiving touch/click events); "false" if it should be used when the object is
+disabled.</dd>
+        <dt><code>android:state_activated</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the object is activated as
+the persistent selection (such as to "highlight" the previously selected list item in a persistent
+navigation view); "false" if it should be used when the object is not activated.
+<p>Introduced in API level 11.</p></dd>
+        <dt><code>android:state_window_focused</code></dt>
+          <dd><em>Boolean</em>. "true" if this item should be used when the application window has focus (the
+application is in the foreground), "false" if this item should be used when the application
+window does not have focus (for example, if the notification shade is pulled down or a dialog appears).</dd>
+      </dl>
+      <p class="note"><strong>Note:</strong> Remember that Android applies the first item in the state list that
+matches the current state of the object. So, if the first item in the list contains
+none of the state attributes above, then it is applied every time, which is why your
+default value should always be last (as demonstrated in the following example).</p>
+    </dd>
+
+</dl>
+</dd> <!-- end  elements and attributes -->
+
+<dt>example:</dt>
+
+<dd>XML file saved at <code>res/drawable/button.xml</code>:
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;selector xmlns:android="http://schemas.android.com/apk/res/android">
+    &lt;item android:state_pressed="true"
+          android:drawable="@drawable/button_pressed" /> &lt;!-- pressed --&gt;
+    &lt;item android:state_focused="true"
+          android:drawable="@drawable/button_focused" /> &lt;!-- focused --&gt;
+    &lt;item android:state_hovered="true"
+          android:drawable="@drawable/button_focused" /> &lt;!-- hovered --&gt;
+    &lt;item android:drawable="@drawable/button_normal" /> &lt;!-- default --&gt;
+&lt;/selector>
+</pre>
+
+<p>This layout XML applies the state list drawable to a Button:</p>
+<pre>
+&lt;Button
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:background="@drawable/button" />
+</pre>
+</dd> <!-- end example -->
+
+<dt>see also:</dt>
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/StateListDrawable.html">StateListDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+
+
+
+<h2 id="LevelList">Level List</h2>
+
+<p>A Drawable that manages a number of alternate Drawables, each assigned a maximum numerical
+value. Setting the level value of the drawable with <code><a href="../../../reference/android/graphics/drawable/Drawable.html#setLevel(int)">setLevel()</a></code> loads the drawable resource in the
+level list that has a <code>android:maxLevel</code> value greater than or equal to the value
+passed to the method.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/LevelListDrawable.html">LevelListDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;<a href="#levellist-element">level-list</a>
+    xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+    &lt;<a href="#levellist-item-element">item</a>
+        android:drawable="@drawable/<i>drawable_resource</i>"
+        android:maxLevel="<i>integer</i>"
+        android:minLevel="<i>integer</i>" /&gt;
+&lt;/level-list&gt;
+</pre>
+</dd>
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="levellist-element"><code>&lt;level-list&gt;</code></dt>
+  <dd>This must be the root element. Contains one or more <code>&lt;item&gt;</code> elements.
+    <p class="caps">attributes:</p>
+    <dl class="atn-list">
+      <dt><code>xmlns:android</code></dt>
+        <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+        <code>"http://schemas.android.com/apk/res/android"</code>.
+    </dl>
+  </dd>
+
+  <dt id="levellist-item-element"><code>&lt;item&gt;</code></dt>
+  <dd>Defines a drawable to use at a certain level.
+    <p class="caps">attributes:</p>
+    <dl class="atn-list">
+      <dt><code>android:drawable</code></dt>
+        <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a drawable
+resource to be inset.</dd>
+      <dt><code>android:maxLevel</code></dt>
+        <dd><em>Integer</em>. The maximum level allowed for this item.</dd>
+      <dt><code>android:minLevel</code></dt>
+        <dd><em>Integer</em>. The minimum level allowed for this item.</dd>
+    </dl>
+  </dd>
+</dl>
+
+</dd>
+
+<dt>example:</dt>
+
+<dd>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;level-list xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+    &lt;item
+        android:drawable="@drawable/status_off"
+        android:maxLevel="0" /&gt;
+    &lt;item
+        android:drawable="@drawable/status_on"
+        android:maxLevel="1" /&gt;
+&lt;/level-list&gt;
+</pre>
+<p>Once this is applied to a <code><a href="../../../reference/android/view/View.html">View</a></code>, the level can be changed with <code><a href="../../../reference/android/graphics/drawable/Drawable.html#setLevel(int)">setLevel()</a></code> or <code><a href="../../../reference/android/widget/ImageView.html#setImageLevel(int)">setImageLevel()</a></code>.</p>
+
+</dd>
+
+<dt>see also:</dt>
+
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/LevelListDrawable.html">LevelListDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+
+<h2 id="Transition">Transition Drawable</h2>
+
+<p>A <code><a href="../../../reference/android/graphics/drawable/TransitionDrawable.html">TransitionDrawable</a></code> is a drawable object
+that can cross-fade between the two drawable resources.</p>
+
+<p>Each drawable is represented by an <code>&lt;item&gt;</code> element inside a single <code>&lt;transition&gt;</code> element. No more than two items are supported. To transition forward, call
+<code><a href="../../../reference/android/graphics/drawable/TransitionDrawable.html#startTransition(int)">startTransition()</a></code>. To
+transition backward, call <code><a href="../../../reference/android/graphics/drawable/TransitionDrawable.html#reverseTransition(int)">reverseTransition()</a></code>.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/TransitionDrawable.html">TransitionDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;<a href="#transition-element">transition</a>
+xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+    &lt;<a href="#transition-item-element">item</a>
+        android:drawable="@[package:]drawable/<em>drawable_resource</em>"
+        android:id="@[+][<em>package</em>:]id/<i>resource_name</i>"
+        android:top="<em>dimension</em>"
+        android:right="<em>dimension</em>"
+        android:bottom="<em>dimension</em>"
+        android:left="<em>dimension</em>" /&gt;
+&lt;/transition>
+</pre>
+</dd>
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="transition-element"><code>&lt;transition&gt;</code></dt>
+    <dd><strong>Required.</strong> This must be the root element. Contains one or more <code>&lt;item></code> elements.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>xmlns:android</code></dt>
+          <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+          <code>"http://schemas.android.com/apk/res/android"</code>.
+      </dl>
+    </dd>
+  <dt id="transition-item-element"><code>&lt;item&gt;</code></dt>
+    <dd>Defines a drawable to use as part of the drawable transition.
+Must be a child of a <code>&lt;transition&gt;</code> element. Accepts child <code>&lt;bitmap&gt;</code>
+elements.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:drawable</code></dt>
+          <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a drawable
+resource.</dd>
+        <dt><code>android:id</code></dt>
+          <dd><em>Resource ID</em>. A unique resource ID for this drawable. To create a new resource
+ID for this item, use the form:
+<code>"@+id/<em>name</em>"</code>. The plus symbol indicates that this should be created as a new
+ID. You can use this identifier to
+retrieve and modify the drawable with <code><a href="../../../reference/android/view/View.html#findViewById(int)">View.findViewById()</a></code> or <code><a href="../../../reference/android/app/Activity.html#findViewById(int)">Activity.findViewById()</a></code>.</dd>
+        <dt><code>android:top</code></dt>
+          <dd><em>Integer</em>. The top offset in pixels.</dd>
+        <dt><code>android:right</code></dt>
+          <dd><em>Integer</em>. The right offset in pixels.</dd>
+        <dt><code>android:bottom</code></dt>
+          <dd><em>Integer</em>. The bottom offset in pixels.</dd>
+        <dt><code>android:left</code></dt>
+          <dd><em>Integer</em>. The left offset in pixels.</dd>
+      </dl>
+    </dd>
+
+</dl>
+</dd> <!-- end  elements and attributes -->
+
+<dt>example:</dt>
+
+<dd>XML file saved at <code>res/drawable/transition.xml</code>:
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;transition xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item android:drawable="@drawable/on" /&gt;
+    &lt;item android:drawable="@drawable/off" /&gt;
+&lt;/transition&gt;
+</pre>
+
+<p>This layout XML applies the drawable to a View:</p>
+<pre>
+&lt;ImageButton
+    android:id="@+id/button"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:src="@drawable/transition" /&gt;
+</pre>
+
+<p>And the following code performs a 500ms transition from the first item to the second:</p>
+<pre>
+ImageButton button = (ImageButton) findViewById(R.id.button);
+TransitionDrawable drawable = (TransitionDrawable) button.getDrawable();
+drawable.startTransition(500);
+</pre>
+
+</dd> <!-- end example -->
+
+<dt>see also:</dt>
+
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/TransitionDrawable.html">TransitionDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+<h2 id="Inset">Inset Drawable</h2>
+
+<p>A drawable defined in XML that insets another drawable by a specified distance. This is useful
+when a View needs a background that is smaller than the View's actual bounds.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/InsetDrawable.html">InsetDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;<a href="#inset-element">inset</a>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/<i>drawable_resource</i>"
+    android:insetTop="<i>dimension</i>"
+    android:insetRight="<i>dimension</i>"
+    android:insetBottom="<i>dimension</i>"
+    android:insetLeft="<i>dimension</i>" /&gt;
+</pre>
+</dd>
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="inset-element"><code>&lt;inset&gt;</code></dt>
+  <dd>Defines the inset drawable. This must be the root element.
+    <p class="caps">attributes:</p>
+    <dl class="atn-list">
+      <dt><code>xmlns:android</code></dt>
+        <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+        <code>"http://schemas.android.com/apk/res/android"</code>.
+      <dt><code>android:drawable</code></dt>
+        <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a drawable
+resource to be inset.</dd>
+      <dt><code>android:insetTop</code></dt>
+        <dd><em>Dimension</em>. The top inset, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a></dd>
+      <dt><code>android:insetRight</code></dt>
+        <dd><em>Dimension</em>. The right inset, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a></dd>
+      <dt><code>android:insetBottom</code></dt>
+        <dd><em>Dimension</em>. The bottom inset, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a></dd>
+      <dt><code>android:insetLeft</code></dt>
+        <dd><em>Dimension</em>. The left inset, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a></dd>
+    </dl>
+  </dd>
+</dl>
+
+</dd>
+
+<dt>example:</dt>
+
+<dd>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/background"
+    android:insetTop="10dp"
+    android:insetLeft="10dp" /&gt;
+</pre>
+</dd>
+
+<dt>see also:</dt>
+
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/InsetDrawable.html">InsetDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+
+
+
+<h2 id="Clip">Clip Drawable</h2>
+
+<p>A drawable defined in XML that clips another drawable based on this Drawable's current level. You
+can control how much the child drawable gets clipped in width and height based on the level, as well
+as a gravity to control where it is placed in its overall container. Most often used to implement
+things like progress bars.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/ClipDrawable.html">ClipDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;<a href="#clip-element">clip</a>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/<i>drawable_resource</i>"
+    android:clipOrientation=["horizontal" | "vertical"]
+    android:gravity=["top" | "bottom" | "left" | "right" | "center_vertical" |
+                     "fill_vertical" | "center_horizontal" | "fill_horizontal" |
+                     "center" | "fill" | "clip_vertical" | "clip_horizontal"] /&gt;
+</pre>
+</dd>
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="clip-element"><code>&lt;clip&gt;</code></dt>
+  <dd>Defines the clip drawable. This must be the root element.
+    <p class="caps">attributes:</p>
+    <dl class="atn-list">
+      <dt><code>xmlns:android</code></dt>
+        <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+        <code>"http://schemas.android.com/apk/res/android"</code>.
+      <dt><code>android:drawable</code></dt>
+        <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a drawable
+resource to be clipped.</dd>
+      <dt><code>android:clipOrientation</code></dt>
+        <dd><em>Keyword</em>. The orientation for the clip.
+          <p>Must be one of the following constant values:</p>
+<table>
+<tr><th>Value</th><th>Description</th></tr>
+<tr><td><code>horizontal</code></td>
+<td>Clip the drawable horizontally.</td></tr>
+<tr><td><code>vertical</code></td>
+<td>Clip the drawable vertically.</td></tr>
+</table>
+        </dd>
+      <dt><code>android:gravity</code></dt>
+        <dd><em>Keyword</em>. Specifies where to clip within the drawable.
+          <p>Must be one or more (separated by '|') of the following constant values:</p>
+<table>
+<tr><th>Value</th><th>Description</th></tr>
+<tr><td><code>top</code></td>
+<td>Put the object at the top of its container, not changing its size. When <code>clipOrientation</code> is <code>"vertical"</code>, clipping occurs at the bottom of the drawable.</td></tr>
+<tr><td><code>bottom</code></td>
+<td>Put the object at the bottom of its container, not changing its size. When <code>clipOrientation</code> is <code>"vertical"</code>, clipping occurs at the top of the drawable.</td></tr>
+<tr><td><code>left</code></td>
+<td>Put the object at the left edge of its container, not changing its size. This is the
+default. When <code>clipOrientation</code> is <code>"horizontal"</code>, clipping occurs at the right side of
+the drawable. This is the default.</td></tr>
+<tr><td><code>right</code></td>
+<td>Put the object at the right edge of its container, not changing its size. When <code>clipOrientation</code> is <code>"horizontal"</code>, clipping occurs at the left side of
+the drawable.</td></tr>
+<tr><td><code>center_vertical</code></td>
+<td>Place object in the vertical center of its container, not changing its size. Clipping behaves
+the same as when gravity is <code>"center"</code>.</td></tr>
+<tr><td><code>fill_vertical</code></td>
+<td>Grow the vertical size of the object if needed so it completely fills its container. When <code>clipOrientation</code> is <code>"vertical"</code>, no clipping occurs because the drawable fills the
+vertical space (unless the drawable level is 0, in which case it's not visible).</td></tr>
+<tr><td><code>center_horizontal</code></td>
+<td>Place object in the horizontal center of its container, not changing its size.
+Clipping behaves the same as when gravity is <code>"center"</code>.</td></tr>
+<tr><td><code>fill_horizontal</code></td>
+<td>Grow the horizontal size of the object if needed so it completely fills its container. When
+<code>clipOrientation</code> is <code>"horizontal"</code>, no clipping occurs because the drawable fills the
+horizontal space (unless the drawable level is 0, in which case it's not visible).
+</td></tr>
+<tr><td><code>center</code></td>
+<td>Place the object in the center of its container in both the vertical and horizontal axis, not
+changing its size. When <code>clipOrientation</code> is <code>"horizontal"</code>, clipping occurs on the left and right. When <code>clipOrientation</code> is <code>"vertical"</code>, clipping occurs on the top and bottom.</td></tr>
+<tr><td><code>fill</code></td>
+<td>Grow the horizontal and vertical size of the object if needed so it completely fills its
+container. No clipping occurs because the drawable fills the
+horizontal and vertical space (unless the drawable level is 0, in which case it's not
+visible).</td></tr>
+<tr><td><code>clip_vertical</code></td>
+<td>Additional option that can be set to have the top and/or bottom edges of the child clipped to
+its container's bounds. The clip is based on the vertical gravity: a top gravity clips the
+bottom edge, a bottom gravity clips the top edge, and neither clips both edges.
+</td></tr>
+<tr><td><code>clip_horizontal</code></td>
+<td>Additional option that can be set to have the left and/or right edges of the child clipped to
+its container's bounds. The clip is based on the horizontal gravity: a left gravity clips
+the right edge, a right gravity clips the left edge, and neither clips both edges.
+</td></tr>
+</table></dd>
+    </dl>
+  </dd>
+</dl>
+
+</dd> <!-- end  elements and attributes -->
+
+<dt>example:</dt>
+
+<dd>XML file saved at <code>res/drawable/clip.xml</code>:
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;clip xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/android"
+    android:clipOrientation="horizontal"
+    android:gravity="left" /&gt;
+</pre>
+    <p>The following layout XML applies the clip drawable to a View:</p>
+<pre>
+&lt;ImageView
+    android:id="@+id/image"
+    android:background="@drawable/clip"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content" />
+</pre>
+
+    <p>The following code gets the drawable and increases the amount of clipping in order to
+progressively reveal the image:</p>
+<pre>
+ImageView imageview = (ImageView) findViewById(R.id.image);
+ClipDrawable drawable = (ClipDrawable) imageview.getDrawable();
+drawable.setLevel(drawable.getLevel() + 1000);
+</pre>
+
+<p>Increasing the level reduces the amount of clipping and slowly reveals the image. Here it is
+at a level of 7000:</p>
+<img src="../../../images/resources/clip.png" alt="" />
+
+<p class="note"><strong>Note:</strong> The default level is 0, which is fully clipped so the image
+is not visible. When the level is 10,000, the image is not clipped and completely visible.</p>
+</dd> <!-- end example -->
+
+<dt>see also:</dt>
+
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/ClipDrawable.html">ClipDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+
+
+
+
+<h2 id="Scale">Scale Drawable</h2>
+
+<p>A drawable defined in XML that changes the size of another drawable based on its current
+level.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/ScaleDrawable.html">ScaleDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;<a href="#scale-element">scale</a>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/<i>drawable_resource</i>"
+    android:scaleGravity=["top" | "bottom" | "left" | "right" | "center_vertical" |
+                          "fill_vertical" | "center_horizontal" | "fill_horizontal" |
+                          "center" | "fill" | "clip_vertical" | "clip_horizontal"]
+    android:scaleHeight="<i>percentage</i>"
+    android:scaleWidth="<i>percentage</i>" /&gt;
+</pre>
+</dd>
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="scale-element"><code>&lt;scale&gt;</code></dt>
+  <dd>Defines the scale drawable. This must be the root element.
+    <p class="caps">attributes:</p>
+    <dl class="atn-list">
+      <dt><code>xmlns:android</code></dt>
+        <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+        <code>"http://schemas.android.com/apk/res/android"</code>.
+      <dt><code>android:drawable</code></dt>
+        <dd><em>Drawable resource</em>. <strong>Required</strong>. Reference to a drawable
+resource.</dd>
+      <dt><code>android:scaleGravity</code></dt>
+        <dd><em>Keyword</em>. Specifies the gravity position after scaling.
+          <p>Must be one or more (separated by '|') of the following constant values:</p>
+<table>
+<tr><th>Value</th><th>Description</th></tr>
+<tr><td><code>top</code></td>
+<td>Put the object at the top of its container, not changing its size.</td></tr>
+<tr><td><code>bottom</code></td>
+<td>Put the object at the bottom of its container, not changing its size. </td></tr>
+<tr><td><code>left</code></td>
+<td>Put the object at the left edge of its container, not changing its size. This is the
+default.</td></tr>
+<tr><td><code>right</code></td>
+<td>Put the object at the right edge of its container, not changing its size. </td></tr>
+<tr><td><code>center_vertical</code></td>
+<td>Place object in the vertical center of its container, not changing its size. </td></tr>
+<tr><td><code>fill_vertical</code></td>
+<td>Grow the vertical size of the object if needed so it completely fills its container. </td></tr>
+<tr><td><code>center_horizontal</code></td>
+<td>Place object in the horizontal center of its container, not changing its size. </td></tr>
+<tr><td><code>fill_horizontal</code></td>
+<td>Grow the horizontal size of the object if needed so it completely fills its container.
+</td></tr>
+<tr><td><code>center</code></td>
+<td>Place the object in the center of its container in both the vertical and horizontal axis, not
+changing its size. </td></tr>
+<tr><td><code>fill</code></td>
+<td>Grow the horizontal and vertical size of the object if needed so it completely fills its
+container. </td></tr>
+<tr><td><code>clip_vertical</code></td>
+<td>Additional option that can be set to have the top and/or bottom edges of the child clipped to
+its container's bounds. The clip is based on the vertical gravity: a top gravity clips the
+bottom edge, a bottom gravity clips the top edge, and neither clips both edges.
+</td></tr>
+<tr><td><code>clip_horizontal</code></td>
+<td>Additional option that can be set to have the left and/or right edges of the child clipped to
+its container's bounds. The clip is based on the horizontal gravity: a left gravity clips
+the right edge, a right gravity clips the left edge, and neither clips both edges.
+</td></tr>
+</table></dd>
+      <dt><code>android:scaleHeight</code></dt>
+        <dd><em>Percentage</em>. The scale height, expressed as a percentage of the drawable's
+bound. The value's format is XX%. For instance: 100%, 12.5%, etc.</dd>
+      <dt><code>android:scaleWidth</code></dt>
+        <dd><em>Percentage</em>. The scale width, expressed as a percentage of the drawable's
+bound. The value's format is XX%. For instance: 100%, 12.5%, etc.</dd>
+    </dl>
+  </dd>
+</dl>
+
+</dd>
+
+<dt>example:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/logo"
+    android:scaleGravity="center_vertical|center_horizontal"
+    android:scaleHeight="80%"
+    android:scaleWidth="80%" /&gt;
+</pre>
+</dd>
+
+<dt>see also:</dt>
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/ScaleDrawable.html">ScaleDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+
+
+<h2 id="Shape">Shape Drawable</h2>
+
+<p>This is a generic shape defined in XML.</p>
+
+<dl class="xml">
+
+<dt>file location:</dt>
+<dd><code>res/drawable/<em>filename</em>.xml</code><br/>
+The filename is used as the resource ID.</dd>
+
+<dt>compiled resource datatype:</dt>
+<dd>Resource pointer to a <code><a href="../../../reference/android/graphics/drawable/GradientDrawable.html">GradientDrawable</a></code>.</dd>
+
+<dt>resource reference:</dt>
+
+<dd>
+In Java: <code>R.drawable.<em>filename</em></code><br/>
+In XML: <code>@[<em>package</em>:]drawable/<em>filename</em></code>
+</dd>
+
+<dt>syntax:</dt>
+
+<dd>
+<pre class="stx">
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;<a href="#shape-element">shape</a>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape=["rectangle" | "oval" | "line" | "ring"] >
+    &lt;<a href="#corners-element">corners</a>
+        android:radius="<em>integer</em>"
+        android:topLeftRadius="<em>integer</em>"
+        android:topRightRadius="<em>integer</em>"
+        android:bottomLeftRadius="<em>integer</em>"
+        android:bottomRightRadius="<em>integer</em>" /&gt;
+    &lt;<a href="#gradient-element">gradient</a>
+        android:angle="<em>integer</em>"
+        android:centerX="<em>integer</em>"
+        android:centerY="<em>integer</em>"
+        android:centerColor="<em>integer</em>"
+        android:endColor="<em>color</em>"
+        android:gradientRadius="<em>integer</em>"
+        android:startColor="<em>color</em>"
+        android:type=["linear" | "radial" | "sweep"]
+        android:useLevel=["true" | "false"] /&gt;
+    &lt;<a href="#padding-element">padding</a>
+        android:left="<em>integer</em>"
+        android:top="<em>integer</em>"
+        android:right="<em>integer</em>"
+        android:bottom="<em>integer</em>" /&gt;
+    &lt;<a href="#size-element">size</a>
+        android:width="<em>integer</em>"
+        android:height="<em>integer</em>" /&gt;
+    &lt;<a href="#solid-element">solid</a>
+        android:color="<em>color</em>" /&gt;
+    &lt;<a href="#stroke-element">stroke</a>
+        android:width="<em>integer</em>"
+        android:color="<em>color</em>"
+        android:dashWidth="<em>integer</em>"
+        android:dashGap="<em>integer</em>" /&gt;
+&lt;/shape>
+</pre>
+</dd>
+
+<dt>elements:</dt>
+
+<dd>
+<dl class="tag-list">
+
+  <dt id="shape-element"><code>&lt;shape&gt;</code></dt>
+    <dd>The shape drawable. This must be the root element.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>xmlns:android</code></dt>
+          <dd><em>String</em>. <strong>Required.</strong> Defines the XML namespace, which must be
+          <code>"http://schemas.android.com/apk/res/android"</code>.
+        <dt><code>android:shape</code></dt>
+        <dd><em>Keyword</em>. Defines the type of shape. Valid values are:
+          <table>
+            <tr><th>Value</th><th>Desciption</th></tr>
+            <tr><td><code>"rectangle"</code></td>
+                <td>A rectangle that fills the containing View. This is the default shape.</td></tr>
+            <tr><td><code>"oval"</code></td>
+                <td>An oval shape that fits the dimensions of the containing View.</td></tr>
+            <tr><td><code>"line"</code></td>
+                <td>A horizontal line that spans the width of the containing View. This
+                shape requires the <code>&lt;stroke></code> element to define the width of the
+                line.</td></tr>
+            <tr><td><code>"ring"</code></td>
+                <td>A ring shape.</td></tr>
+          </table>
+        </dd>
+      </dl>
+      <p>The following attributes are used only when <code>android:shape="ring"</code>:</p>
+      <dl class="atn-list">
+        <dt><code>android:innerRadius</code></dt>
+        <dd><em>Dimension</em>. The radius for the
+inner part of the ring (the hole in the middle), as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:innerRadiusRatio</code></dt>
+        <dd><em>Float</em>. The radius for the inner
+part of the ring, expressed as a ratio of the ring's width. For instance, if <code>android:innerRadiusRatio="5"</code>, then the inner radius equals the ring's width divided by 5. This
+value is overridden by <code>android:innerRadius</code>. Default value is 9.</dd>
+        <dt><code>android:thickness</code></dt>
+        <dd><em>Dimension</em>. The thickness of the
+ring, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:thicknessRatio</code></dt>
+        <dd><em>Float</em>. The thickness of the ring,
+expressed as a ratio of the ring's width. For instance, if <code>android:thicknessRatio="2"</code>, then
+the thickness equals the ring's width divided by 2. This value is overridden by <code>android:innerRadius</code>. Default value is 3.</dd>
+        <dt><code>android:useLevel</code></dt>
+        <dd><em>Boolean</em>. "true" if this is used as
+a <code><a href="../../../reference/android/graphics/drawable/LevelListDrawable.html">LevelListDrawable</a></code>. This should normally be "false"
+          or your shape may not appear.</dd>
+      </dl>
+  <dt id="corners-element"><code>&lt;corners&gt;</code></dt>
+    <dd>Creates rounded corners for the shape. Applies only when the shape is a rectangle.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:radius</code></dt>
+        <dd><em>Dimension</em>. The radius for all corners, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>. This is overridden for each
+corner by the following attributes.</dd>
+        <dt><code>android:topLeftRadius</code></dt>
+        <dd><em>Dimension</em>. The radius for the top-left corner, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:topRightRadius</code></dt>
+        <dd><em>Dimension</em>. The radius for the top-right corner, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:bottomLeftRadius</code></dt>
+        <dd><em>Dimension</em>. The radius for the bottom-left corner, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:bottomRightRadius</code></dt>
+        <dd><em>Dimension</em>. The radius for the bottom-right corner, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+      </dl>
+      <p class="note"><strong>Note:</strong> Every corner must (initially) be provided a corner
+radius greater than 1, or else no corners are rounded. If you want specific corners
+to <em>not</em> be rounded, a work-around is to use <code>android:radius</code> to set a default corner
+radius greater than 1, but then override each and every corner with the values you really
+want, providing zero ("0dp") where you don't want rounded corners.</p>
+    </dd>
+  <dt id="gradient-element"><code>&lt;gradient&gt;</code></dt>
+    <dd>Specifies a gradient color for the shape.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:angle</code></dt>
+        <dd><em>Integer</em>. The angle for the gradient, in degrees. 0 is left to right, 90 is
+bottom to top. It must be a multiple of 45. Default is 0.</dd>
+        <dt><code>android:centerX</code></dt>
+        <dd><em>Float</em>. The relative X-position for the center of the gradient (0 - 1.0).</dd>
+        <dt><code>android:centerY</code></dt>
+        <dd><em>Float</em>. The relative Y-position for the center of the gradient (0 - 1.0).</dd>
+        <dt><code>android:centerColor</code></dt>
+        <dd><em>Color</em>. Optional color that comes between the start and end colors, as a
+hexadecimal value or <a href="more-resources.html#Color">color resource</a>.</dd>
+        <dt><code>android:endColor</code></dt>
+        <dd><em>Color</em>. The ending color, as a hexadecimal
+value or <a href="more-resources.html#Color">color resource</a>.</dd>
+        <dt><code>android:gradientRadius</code></dt>
+        <dd><em>Float</em>. The radius for the gradient. Only applied when <code>android:type="radial"</code>.</dd>
+        <dt><code>android:startColor</code></dt>
+        <dd><em>Color</em>. The starting color, as a hexadecimal
+value or <a href="more-resources.html#Color">color resource</a>.</dd>
+        <dt><code>android:type</code></dt>
+        <dd><em>Keyword</em>. The type of gradient pattern to apply. Valid values are:
+          <table>
+            <tr><th>Value</th><th>Description</th></tr>
+            <tr><td><code>"linear"</code></td>
+                <td>A linear gradient. This is the default.</td></tr>
+            <tr><td><code>"radial"</code></td>
+                <td>A radial gradient. The start color is the center color.</td></tr>
+            <tr><td><code>"sweep"</code></td>
+                <td>A sweeping line gradient. </td></tr>
+          </table>
+        </dd>
+        <dt><code>android:useLevel</code></dt>
+        <dd><em>Boolean</em>. "true" if this is used as a <code><a href="../../../reference/android/graphics/drawable/LevelListDrawable.html">LevelListDrawable</a></code>.</dd>
+      </dl>
+    </dd>
+  <dt id="padding-element"><code>&lt;padding&gt;</code></dt>
+    <dd>Padding to apply to the containing View element (this pads the position of the View
+content, not the shape).
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:left</code></dt>
+        <dd><em>Dimension</em>. Left padding, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:top</code></dt>
+        <dd><em>Dimension</em>. Top padding, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:right</code></dt>
+        <dd><em>Dimension</em>. Right padding, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:bottom</code></dt>
+        <dd><em>Dimension</em>. Bottom padding, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+      </dl>
+    </dd>
+  <dt id="size-element"><code>&lt;size&gt;</code></dt>
+    <dd>The size of the shape.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:height</code></dt>
+        <dd><em>Dimension</em>. The height of the shape, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:width</code></dt>
+        <dd><em>Dimension</em>. The width of the shape, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+      </dl>
+      <p class="note"><strong>Note:</strong> The shape scales to the size of the container
+View proportionate to the dimensions defined here, by default. When you use the shape in an <code><a href="../../../reference/android/widget/ImageView.html">ImageView</a></code>, you can restrict scaling by setting the <a
+href="../../../reference/android/widget/ImageView.html#attr_android:scaleType"><code>android:scaleType</code></a> to <code>"center"</code>.</p>
+    </dd>
+  <dt id="solid-element"><code>&lt;solid&gt;</code></dt>
+    <dd>A solid color to fill the shape.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:color</code></dt>
+        <dd><em>Color</em>. The color to apply to the shape, as a hexadecimal
+value or <a href="more-resources.html#Color">color resource</a>.</dd>
+      </dl>
+    </dd>
+  <dt id="stroke-element"><code>&lt;stroke&gt;</code></dt>
+    <dd>A stroke line for the shape.
+      <p class="caps">attributes:</p>
+      <dl class="atn-list">
+        <dt><code>android:width</code></dt>
+        <dd><em>Dimension</em>. The thickness of the line, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>.</dd>
+        <dt><code>android:color</code></dt>
+        <dd><em>Color</em>. The color of the line, as a
+hexadecimal value or <a href="more-resources.html#Color">color resource</a>.</dd>
+        <dt><code>android:dashGap</code></dt>
+        <dd><em>Dimension</em>. The distance between line dashes, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>. Only valid if <code>android:dashWidth</code> is set.</dd>
+        <dt><code>android:dashWidth</code></dt>
+        <dd><em>Dimension</em>. The size of each dash line, as a dimension value or <a
+href="more-resources.html#Dimension">dimension resource</a>. Only valid if <code>android:dashGap</code> is set.</dd>
+      </dl>
+    </dd>
+
+</dl>
+</dd> <!-- end  elements and attributes -->
+
+<dt>example:</dt>
+
+<dd>XML file saved at <code>res/drawable/gradient_box.xml</code>:
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    &lt;gradient
+        android:startColor="#FFFF0000"
+        android:endColor="#80FF00FF"
+        android:angle="45"/>
+    &lt;padding android:left="7dp"
+        android:top="7dp"
+        android:right="7dp"
+        android:bottom="7dp" />
+    &lt;corners android:radius="8dp" />
+&lt;/shape>
+</pre>
+
+    <p>This layout XML applies the shape drawable to a View:</p>
+<pre>
+&lt;TextView
+    android:background="@drawable/gradient_box"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content" />
+</pre>
+
+    <p>This application code gets the shape drawable and applies it to a View:</p>
+<pre>
+Resources res = <code><a href="../../../reference/android/content/Context.html#getResources()">getResources()</a></code>;
+Drawable shape = res. <code><a href="../../../reference/android/content/res/Resources.html#getDrawable(int)">getDrawable</a></code>(R.drawable.gradient_box);
+
+TextView tv = (TextView)findViewByID(R.id.textview);
+tv.setBackground(shape);
+</pre>
+</dd> <!-- end example -->
+
+<dt>see also:</dt>
+
+<dd>
+<ul>
+  <li><code><a href="../../../reference/android/graphics/drawable/ShapeDrawable.html">ShapeDrawable</a></code></li>
+</ul>
+</dd>
+
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

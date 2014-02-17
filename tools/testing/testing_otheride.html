@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Testing from Other IDEs | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Testing from Other IDEs</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+    <div id="qv">
+        <h2>In this document</h2>
+            <ol>
+                <li>
+                    <a href="#CreateTestProjectCommand">Working with Test Projects</a>
+                    <ol>
+                        <li>
+                            <a href="#CreateTestProject">Creating a test project</a>
+                        </li>
+                        <li>
+                            <a href="#UpdateTestProject">Updating a test project</a>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#CreateTestApp">Creating a Test Package</a>
+                </li>
+                <li>
+                    <a href="#RunTestsCommand">Running Tests</a>
+                    <ol>
+                        <li>
+                            <a href="#RunTestsAnt">Quick build and run with Ant</a>
+                        </li>
+                        <li>
+                            <a href="#RunTestsDevice">Running tests on a device or emulator</a>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#AMSyntax">Using the Instrument Command</a>
+                    <ol>
+                        <li>
+                            <a href="#AMOptionsSyntax">Instrument options</a>
+                        </li>
+                        <li>
+                            <a href="#RunTestExamples">Instrument examples</a>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        <h2>See Also</h2>
+            <ol>
+                <li>
+                    <a href="../../tools/testing/testing_android.html">
+                        Testing Fundamentals</a>
+                </li>
+                <li>
+                    <a href="../../tools/help/adb.html">Android Debug Bridge</a>
+                </li>
+            </ol>
+    </div>
+</div>
+<p>
+    This document describes how to create and run tests directly from the command line.
+    You can use the techniques described here if you are developing in an IDE other than Eclipse
+    or if you prefer to work from the command line. This document assumes that you already know how
+    to create a Android application in your programming environment. Before you start this
+    document, you should read the topic
+    <a href="../../tools/testing/testing_android.html">Testing Fundamentals</a>,
+    which provides an overview of Android testing.
+</p>
+<p>
+    If you are developing in Eclipse with ADT, you can set up and run your tests
+    directly in Eclipse. For more information, please read
+    <a href="../../tools/testing/testing_eclipse.html">
+    Testing from Eclipse with ADT</a>.
+</p>
+<h2 id="CreateTestProjectCommand">Working with Test Projects</h2>
+<p>
+    You use the <code>android</code> tool to create test projects.
+    You also use <code>android</code> to convert existing test code into an Android test project,
+    or to add the <code>test</code> Ant target to an existing Android test project.
+    These operations are described in more detail in the section <a href="#UpdateTestProject">
+    Updating a test project</a>. The <code>test</code> target is described in
+    <a href="#RunTestsAnt">Quick build and run with Ant</a>.
+</p>
+<h3 id="CreateTestProject">Creating a test project</h3>
+<p>
+    To create a test project with the <code>android</code> tool, enter:
+</p>
+<pre>
+android create test-project -m &lt;main_path&gt; -n &lt;project_name&gt; -p &lt;test_path&gt;
+</pre>
+<p>
+    You must supply all the flags. The following table explains them in detail:
+</p>
+<table>
+    <tr>
+        <th>Flag</th>
+        <th>Value</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>-m, --main</code></td>
+        <td>
+            Path to the project of the application under test, relative to the test package
+            directory.
+        </td>
+        <td>
+            For example, if the application under test is in <code>source/HelloAndroid</code>, and
+            you want to create the test project in <code>source/HelloAndroidTest</code>, then the
+            value of <code>--main</code> should be <code>../HelloAndroid</code>.
+        <p>
+            To learn more about choosing the location of test projects, please read
+            <a href="../../tools/testing/testing_android.html#TestProjects">
+            Testing Fundamentals</a>.
+        </p>
+        </td>
+    </tr>
+    <tr>
+        <td><code>-n, --name</code></td>
+        <td>Name that you want to give the test project.</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td><code>-p, --path</code></td>
+        <td>Directory in which you want to create the new test project.</td>
+        <td>
+            The <code>android</code> tool creates the test project files and directory structure
+            in this directory. If the directory does not exist, <code>android</code> creates it.
+        </td>
+    </tr>
+</table>
+<p>
+    If the operation is successful, <code>android</code> lists to STDOUT the names of the files
+    and directories it has created.
+</p>
+<p>
+    This creates a new test project with the appropriate directories and build files. The directory
+    structure and build file contents are identical to those in a regular Android application
+    project. They are described in detail in the topic
+    <a href="../../tools/projects/index.html">Managing Projects</a>.
+</p>
+<p>
+    The operation also creates an <code>AndroidManifest.xml</code> file with instrumentation
+    information. When you run the test, Android uses this information to load the application you
+    are testing and control it with instrumentation.
+</p>
+<p>
+    For example, suppose you create a project in the directory <code>~/source/HelloAndroid</code>,
+with the package name <code>com.example.helloandroid</code>,
+    and the activity name <code>HelloAndroid</code>. You can to create the test for this in
+    <code>~/source/HelloAndroidTest</code>. To do so, you enter:
+</p>
+<pre>
+$ cd ~/source
+$ android create test-project -m ../HelloAndroid -n HelloAndroidTest -p HelloAndroidTest
+</pre>
+<p>
+    This creates a directory called <code>~/src/HelloAndroidTest</code>. In the new directory you
+    see the file <code>AndroidManifest.xml</code>. This file contains the following
+    instrumentation-related elements and attributes:
+</p>
+<ul>
+    <li>
+        <code>&lt;application&gt;</code>: to contain the
+        <code>&lt;uses-library&gt;</code> element.
+    </li>
+    <li>
+        <code>&lt;uses-library android:name=&quot;android.test.runner&quot;</code>:
+        specifies this testing application uses the <code>android.test.runner</code> library.
+    </li>
+    <li>
+        <code>&lt;instrumentation&gt;</code>: contains attributes that control Android
+        instrumentation. The attributes are:
+        <ul>
+            <li>
+                <code>android:name=&quot;android.test.InstrumentationTestRunner&quot;</code>:
+                <code><a href="../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></code> runs test cases. It extends both
+                JUnit test case runner classes and Android instrumentation classes.
+            </li>
+            <li>
+                <code>android:targetPackage=&quot;com.example.helloandroid&quot;</code>: specifies
+                that the tests in HelloAndroidTest should be run against the application with the
+                <em>Android</em> package name <code>com.example.helloandroid</code>.
+            </li>
+            <li>
+                <code>android:label=&quot;Tests for .HelloAndroid&quot;</code>: specifies a
+                user-readable label for the instrumentation class. By default,
+                the <code>android</code> tool gives it the value &quot;Tests for &quot; plus
+                the name of the main Activity of the application under test.
+            </li>
+        </ul>
+    </li>
+</ul>
+<h3 id="UpdateTestProject">Updating a test project</h3>
+<p>
+    You use the <code>android</code> tool when you need to change the path to the
+    project of the application under test. If you are changing an existing test project created in
+    Eclipse with ADT so that you can also build and run it from the command line, you must use the
+    "create" operation. See the section <a href="#CreateTestProject">Creating a test project</a>.
+</p>
+<p class="note">
+    <strong>Note:</strong> If you change the Android package name of the application under test,
+    you must <em>manually</em> change the value of the <code>&lt;android:targetPackage&gt;</code>
+    attribute within the <code>AndroidManifest.xml</code> file of the test package.
+    Running <code>android update test-project</code> does not do this.
+</p>
+<p>
+  To update a test project with the <code>android</code> tool, enter:
+</p>
+<pre>android update test-project -m &lt;main_path&gt; -p &lt;test_path&gt;</pre>
+
+<table>
+    <tr>
+        <th>Flag</th>
+        <th>Value</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><code>-m, --main</code></td>
+        <td>The path to the project of the application under test, relative to the test project</td>
+        <td>
+            For example, if the application under test is in <code>source/HelloAndroid</code>, and
+            the test project is in <code>source/HelloAndroidTest</code>, then the value for
+            <code>--main</code> is <code>../HelloAndroid</code>.
+        </td>
+    </tr>
+    <tr>
+        <td><code>-p, --path</code></td>
+        <td>The of the test project.</td>
+        <td>
+            For example, if the test project is in <code>source/HelloAndroidTest</code>, then the
+            value for <code>--path</code> is <code>HelloAndroidTest</code>.
+        </td>
+    </tr>
+</table>
+<p>
+    If the operation is successful, <code>android</code> lists to STDOUT the names of the files
+    and directories it has created.
+</p>
+<h2 id="CreateTestApp">Creating a Test Package</h2>
+<p>
+    Once you have created a test project, you populate it with a test package.
+    The application does not require an <code><a href="../../reference/android/app/Activity.html">Activity</a></code>,
+    although you can define one if you wish. Although your test package can
+    combine Activities, Android test class extensions, JUnit extensions, or
+    ordinary classes, you should extend one of the Android test classes or JUnit classes,
+    because these provide the best testing features.
+</p>
+<p>
+    If you run your tests with <code><a href="../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></code>
+    (or a related test runner), then it will run all the methods in each class. You can modify
+    this behavior by using the <code><a href="../../reference/junit/framework/TestSuite.html">TestSuite</a></code> class.
+</p>
+
+<p>
+    To create a test package, start with one of Android's test classes in the Java package
+    <code><a href="../../reference/android/test/package-summary.html">android.test</a></code>. These extend the JUnit
+    <code><a href="../../reference/junit/framework/TestCase.html">TestCase</a></code> class. With a few exceptions, the Android test
+    classes also provide instrumentation for testing.
+</p>
+<p>
+    For test classes that extend <code><a href="../../reference/junit/framework/TestCase.html">TestCase</a></code>, you probably want to
+    override the <code>setUp()</code> and <code>tearDown()</code> methods:
+</p>
+<ul>
+    <li>
+        <code>setUp()</code>: This method is invoked before any of the test methods in the class.
+        Use it to set up the environment for the test. You can use <code>setUp()</code>
+        to instantiate a new <code>Intent</code> object with the action <code>ACTION_MAIN</code>.
+        You can then use this intent to start the Activity under test.
+        <p class="note">
+            <strong>Note:</strong> If you override this method, call
+            <code>super.setUp()</code> as the first statement in your code.
+        </p>
+    </li>
+    <li>
+        <code>tearDown()</code>: This method is invoked after all the test methods in the class. Use
+        it to do garbage collection and re-setting before moving on to the next set of tests.
+        <p class="note"><strong>Note:</strong> If you override this method, you must call
+        <code>super.tearDown()</code> as the <em>last</em> statement in your code.</p>
+    </li>
+</ul>
+<p>
+    Another useful convention is to add the method <code>testPreConditions()</code> to your test
+    class. Use this method to test that the application under test is initialized correctly. If this
+    test fails, you know that that the initial conditions were in error. When this happens, further
+    test results are suspect, regardless of whether or not the tests succeeded.
+</p>
+<p>
+    To learn more about creating test packages, see the topic <a
+    href="../../tools/testing/testing_android.html">Testing Fundamentals</a>,
+    which provides an overview of Android testing. If you prefer to follow a tutorial,
+    try the <a href="../../tools/testing/activity_test.html">Activity Testing</a>
+    tutorial, which leads you through the creation of tests for an actual Android application.
+</p>
+<h2 id="RunTestsCommand">Running Tests</h2>
+<p>
+    You run tests from the command line, either with Ant or with an
+    <a href="../../tools/help/adb.html">
+    Android Debug Bridge (adb)</a> shell.
+</p>
+<h3 id="RunTestsAnt">Quick build and run with Ant</h3>
+<p>
+    You can use Ant to run all the tests in your test project, using the target
+    <code>test</code>, which is created automatically when you create a test project with
+    the <code>android</code> tool.
+</p>
+<p>
+    This target re-builds your main project and test project if necessary, installs the test
+    application to the current AVD or device, and then runs all the test classes in the test
+    application. The results are directed to <code>STDOUT</code>.
+</p>
+<p>
+    You can update an existing test project to use this feature. To do this, use the
+    <code>android</code> tool with the <code>update test-project</code> option. This is described
+    in the section <a href="#UpdateTestProject">Updating a test project</a>.
+</p>
+<h3 id="RunTestsDevice">Running tests on a device or emulator</h3>
+<p>
+    When you run tests from the command line with
+    <a href="../../tools/help/adb.html">
+    Android Debug Bridge (adb)</a>, you get more options for choosing the tests
+    to run than with any other method. You can select individual test methods, filter tests
+    according to their annotation, or specify testing options. Since the test run is controlled
+    entirely from a command line, you can customize your testing with shell scripts in various ways.
+</p>
+<p>
+    To run a test from the command line, you run <code>adb shell</code> to start a command-line
+    shell on your device or emulator, and then in the shell run the <code>am instrument</code>
+    command. You control <code>am</code> and your tests with command-line flags.
+</p>
+<p>
+    As a shortcut, you can start an <code>adb</code> shell, call <code>am instrument</code>, and
+    specify command-line flags all on one input line. The shell opens on the device or emulator,
+    runs your tests, produces output, and then returns to the command line on your computer.
+</p>
+<p>
+    To run a test with <code>am instrument</code>:
+</p>
+<ol>
+    <li>
+        If necessary, rebuild your main application and test package.
+    </li>
+    <li>
+        Install your test package and main application Android package files
+        (<code>.apk</code> files) to your current Android device or emulator</li>
+    <li>
+        At the command line, enter:
+<pre>
+$ adb shell am instrument -w &lt;test_package_name&gt;/&lt;runner_class&gt;
+</pre>
+        <p>
+            where <code>&lt;test_package_name&gt;</code> is the Android package name of your test
+            application, and <code>&lt;runner_class&gt;</code> is the name of the Android test
+            runner class you are using. The Android package name is the value of the
+            <code>package</code> attribute of the <code>manifest</code> element in the manifest file
+            (<code>AndroidManifest.xml</code>) of your test package. The Android test runner
+            class is usually <code><a href="../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></code>.
+        </p>
+        <p>
+            Your test results appear in <code>STDOUT</code>.
+        </p>
+    </li>
+</ol>
+<p>
+    This operation starts an <code>adb</code> shell, then runs <code>am instrument</code>
+    with the specified parameters. This particular form of the command will run all of the tests
+    in your test package. You can control this behavior with flags that you pass to
+    <code>am instrument</code>. These flags are described in the next section.
+</p>
+<h2 id="AMSyntax">Using the am instrument Command</h2>
+<p>
+    The general syntax of the <code>am instrument</code> command is:
+</p>
+<pre>
+    am instrument [flags] &lt;test_package&gt;/&lt;runner_class&gt;
+</pre>
+<p>
+    The main input parameters to <code>am instrument</code> are described in the following table:
+</p>
+<table>
+    <tr>
+        <th>
+            Parameter
+        </th>
+        <th>
+            Value
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <code>&lt;test_package&gt;</code>
+        </td>
+        <td>
+            The Android package name of the test package.
+        </td>
+        <td>
+            The value of the <code>package</code> attribute of the <code>manifest</code>
+            element in the test package's manifest file.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>&lt;runner_class&gt;</code>
+        </td>
+        <td>
+            The class name of the instrumented test runner you are using.
+        </td>
+        <td>
+            This is usually <code><a href="../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></code>.
+        </td>
+    </tr>
+</table>
+<p>
+    The flags for <code>am instrument</code> are described in the following table:
+</p>
+<table>
+    <tr>
+        <th>
+            Flag
+        </th>
+        <th>
+            Value
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <code>-w</code>
+        </td>
+        <td>
+            (none)
+        </td>
+        <td>
+            Forces <code>am instrument</code> to wait until the instrumentation terminates
+            before terminating itself. The net effect is to keep the shell open until the tests
+            have finished. This flag is not required, but if you do not use it, you will not
+            see the results of your tests.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>-r</code>
+        </td>
+        <td>
+            (none)
+        </td>
+        <td>
+            Outputs results in raw format. Use this flag when you want to collect
+            performance measurements, so that they are not formatted as test results. This flag is
+            designed for use with the flag <code>-e perf true</code> (documented in the section
+            <a href="#AMOptionsSyntax">Instrument options</a>).
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>-e</code>
+        </td>
+        <td>
+             &lt;test_options&gt;
+        </td>
+        <td>
+            Provides testing options as key-value pairs. The
+            <code>am instrument</code> tool passes these to the specified instrumentation class
+            via its <code>onCreate()</code> method. You can specify multiple occurrences of
+            <code>-e &lt;test_options&gt;</code>. The keys and values are described in the
+            section <a href="#AMOptionsSyntax">am instrument options</a>.
+            <p>
+                The only instrumentation class that uses these key-value pairs is
+                <code><a href="../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></code> (or a subclass). Using them with
+                any other class has no effect.
+            </p>
+        </td>
+    </tr>
+</table>
+
+<h3 id="AMOptionsSyntax">am instrument options</h3>
+<p>
+    The <code>am instrument</code> tool passes testing options to
+    <code>InstrumentationTestRunner</code> or a subclass in the form of key-value pairs,
+    using the <code>-e</code> flag, with this syntax:
+</p>
+<pre>
+    -e &lt;key&gt; &lt;value&gt;
+</pre>
+<p>
+    Some keys accept multiple values. You specify multiple values in a comma-separated list.
+    For example, this invocation of <code>InstrumentationTestRunner</code> provides multiple
+    values for the <code>package</code> key:
+</p>
+<pre>
+$ adb shell am instrument -w -e package com.android.test.package1,com.android.test.package2 \
+&gt; com.android.test/android.test.InstrumentationTestRunner
+</pre>
+<p>
+    The following table describes the key-value pairs and their result. Please review the
+    <strong>Usage Notes</strong> following the table.
+</p>
+<table>
+    <tr>
+        <th>Key</th>
+        <th>Value</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>
+            <code>package</code>
+        </td>
+        <td>
+            &lt;Java_package_name&gt;
+        </td>
+        <td>
+            The fully-qualified <em>Java</em> package name for one of the packages in the test
+            application. Any test case class that uses this package name is executed. Notice that
+            this is not an <em>Android</em> package name; a test package has a single
+            Android package name but may have several Java packages within it.
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2"><code>class</code></td>
+        <td>&lt;class_name&gt;</td>
+        <td>
+            The fully-qualified Java class name for one of the test case classes. Only this test
+            case class is executed.
+        </td>
+    </tr>
+    <tr>
+        <td>&lt;class_name&gt;<strong>#</strong>method name</td>
+        <td>
+            A fully-qualified test case class name, and one of its methods. Only this method is
+            executed. Note the hash mark (#) between the class name and the method name.
+        </td>
+    </tr>
+    <tr>
+        <td><code>func</code></td>
+        <td><code>true</code></td>
+        <td>
+            Runs all test classes that extend <code><a href="../../reference/android/test/InstrumentationTestCase.html">InstrumentationTestCase</a></code>.
+        </td>
+    </tr>
+    <tr>
+        <td><code>unit</code></td>
+        <td><code>true</code></td>
+        <td>
+            Runs all test classes that do <em>not</em> extend either
+            <code><a href="../../reference/android/test/InstrumentationTestCase.html">InstrumentationTestCase</a></code> or
+            <code><a href="../../reference/android/test/PerformanceTestCase.html">PerformanceTestCase</a></code>.
+        </td>
+    </tr>
+    <tr>
+        <td><code>size</code></td>
+        <td>
+            [<code>small</code> | <code>medium</code> | <code>large</code>]
+        </td>
+        <td>
+            Runs a test method annotated by size. The  annotations are <code>@SmallTest</code>,
+            <code>@MediumTest</code>, and <code>@LargeTest</code>.
+        </td>
+    </tr>
+    <tr>
+        <td><code>perf</code></td>
+        <td><code>true</code></td>
+        <td>
+            Runs all test classes that implement <code><a href="../../reference/android/test/PerformanceTestCase.html">PerformanceTestCase</a></code>.
+            When you use this option, also specify the <code>-r</code> flag for
+            <code>am instrument</code>, so that the output is kept in raw format and not
+            re-formatted as test results.
+        </td>
+    </tr>
+    <tr>
+        <td><code>debug</code></td>
+        <td><code>true</code></td>
+        <td>
+            Runs tests in debug mode.
+        </td>
+    </tr>
+    <tr>
+        <td><code>log</code></td>
+        <td><code>true</code></td>
+        <td>
+            Loads and logs all specified tests, but does not run them. The test
+            information appears in <code>STDOUT</code>. Use this to verify combinations of other
+            filters and test specifications.
+        </td>
+    </tr>
+    <tr>
+        <td><code>emma</code></td>
+        <td><code>true</code></td>
+        <td>
+            Runs an EMMA code coverage analysis and writes the output to
+            <code>/data//coverage.ec</code> on the device. To override the file location, use the
+            <code>coverageFile</code> key that is described in the following entry.
+            <p class="note">
+                <strong>Note:</strong> This option requires an EMMA-instrumented build of the test
+                application, which you can generate with the <code>coverage</code> target.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td><code>coverageFile</code></td>
+        <td><code>&lt;filename&gt;</code></td>
+        <td>
+            Overrides the default location of the EMMA coverage file on the device. Specify this
+            value as a path and filename in UNIX format. The default filename is described in the
+            entry for the <code>emma</code> key.
+        </td>
+    </tr>
+</table>
+<strong><code>-e</code> Flag Usage Notes</strong>
+<ul>
+    <li>
+        <code>am instrument</code> invokes
+        <code><a href="../../reference/android/test/InstrumentationTestRunner.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></code>
+        with a <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> containing the key-value pairs.
+    </li>
+    <li>
+        The <code>package</code> key takes precedence over the <code>class</code> key. If you
+        specifiy a package, and then separately specify a class within that package, Android
+        will run all the tests in the package and ignore the <code>class</code> key.
+    </li>
+    <li>
+        The <code>func</code> key and <code>unit</code> key are mutually exclusive.
+    </li>
+</ul>
+<h3 id="RunTestExamples">Usage examples</h3>
+<p>
+The following sections provide examples of using <code>am instrument</code> to run tests.
+They are based on the following structure:</p>
+<ul>
+    <li>
+        The test package has the Android package name <code>com.android.demo.app.tests</code>
+    </li>
+    <li>
+        There are three test classes:
+        <ul>
+            <li>
+                <code>UnitTests</code>, which contains the methods
+                <code>testPermissions</code> and <code>testSaveState</code>.
+            </li>
+            <li>
+                <code>FunctionTests</code>, which contains the methods
+                <code>testCamera</code>, <code>testXVGA</code>, and <code>testHardKeyboard</code>.
+            </li>
+            <li>
+                <code>IntegrationTests</code>,
+                which contains the method <code>testActivityProvider</code>.
+            </li>
+        </ul>
+    </li>
+    <li>
+        The test runner is <code><a href="../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></code>.
+    </li>
+</ul>
+<h4>Running the entire test package</h4>
+<p>
+    To run all of the test classes in the test package, enter:
+</p>
+<pre>
+$ adb shell am instrument -w com.android.demo.app.tests/android.test.InstrumentationTestRunner
+</pre>
+<h4>Running all tests in a test case class</h4>
+<p>
+    To run all of the tests in the class <code>UnitTests</code>, enter:
+</p>
+<pre>
+$ adb shell am instrument -w  \
+&gt; -e class com.android.demo.app.tests.UnitTests \
+&gt; com.android.demo.app.tests/android.test.InstrumentationTestRunner
+</pre>
+<p>
+  <code>am instrument</code> gets the value of the <code>-e</code> flag, detects the
+  <code>class</code> keyword, and runs all the methods in the <code>UnitTests</code> class.
+</p>
+<h4>Selecting a subset of tests</h4>
+<p>
+    To run all of the tests in <code>UnitTests</code>, and the <code>testCamera</code> method in
+    <code>FunctionTests</code>, enter:
+</p>
+<pre>
+$ adb shell am instrument -w \
+&gt; -e class com.android.demo.app.tests.UnitTests,com.android.demo.app.tests.FunctionTests#testCamera \
+&gt; com.android.demo.app.tests/android.test.InstrumentationTestRunner
+</pre>
+<p>
+    You can find more examples of the command in the documentation for
+    <code><a href="../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></code>.
+</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

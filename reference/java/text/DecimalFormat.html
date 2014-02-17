@@ -1,0 +1,5627 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>DecimalFormat - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+  <div id="doc-api-level" class="1" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/package-summary.html">android</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="selected api apilevel-1">
+  <a href="../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/AttributedCharacterIterator.html">AttributedCharacterIterator</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/CharacterIterator.html">CharacterIterator</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/Annotation.html">Annotation</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/AttributedCharacterIterator.Attribute.html">AttributedCharacterIterator.Attribute</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/AttributedString.html">AttributedString</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/Bidi.html">Bidi</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/BreakIterator.html">BreakIterator</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/ChoiceFormat.html">ChoiceFormat</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/CollationElementIterator.html">CollationElementIterator</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/CollationKey.html">CollationKey</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/Collator.html">Collator</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/DateFormat.html">DateFormat</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/DateFormat.Field.html">DateFormat.Field</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/DateFormatSymbols.html">DateFormatSymbols</a></li>
+          <li class="selected api apilevel-1"><a href="../../../reference/java/text/DecimalFormat.html">DecimalFormat</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/Format.html">Format</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/Format.Field.html">Format.Field</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/MessageFormat.html">MessageFormat</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/MessageFormat.Field.html">MessageFormat.Field</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/java/text/Normalizer.html">Normalizer</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/NumberFormat.Field.html">NumberFormat.Field</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/ParsePosition.html">ParsePosition</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/RuleBasedCollator.html">RuleBasedCollator</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/SimpleDateFormat.html">SimpleDateFormat</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/StringCharacterIterator.html">StringCharacterIterator</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-9"><a href="../../../reference/java/text/Normalizer.Form.html">Normalizer.Form</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../reference/java/text/ParseException.html">ParseException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12"  id="doc-col">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+Summary:
+
+
+
+
+
+
+  <a href="#inhconstants">Inherited Constants</a>
+  
+
+
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1 itemprop="name">DecimalFormat</h1>
+
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+    extends <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a><br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-1">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../reference/java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../reference/java/text/Format.html">java.text.Format</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../reference/java/text/NumberFormat.html">java.text.NumberFormat</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">java.text.DecimalFormat</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p itemprop="articleBody">A concrete subclass of <code><a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></code> that formats decimal numbers. It
+ has a variety of features designed to make it possible to parse and format
+ numbers in any locale, including support for Western, Arabic, or Indic
+ digits. It also supports different flavors of numbers, including integers
+ ("123"), fixed-point numbers ("123.4"), scientific notation ("1.23E4"),
+ percentages ("12%"), and currency amounts ("$123"). All of these flavors can
+ be easily localized.
+ <p>
+ <strong>This is an enhanced version of <code>DecimalFormat</code> that is based on
+ the standard version in the RI. New or changed functionality is labeled
+ <strong><font color="red">NEW</font></strong>.</strong>
+ <p>
+ To obtain a <code><a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></code> for a specific locale (including the default
+ locale), call one of <code>NumberFormat</code>'s factory methods such as
+ <code>NumberFormat.getInstance</code>. Do not call the <code>DecimalFormat</code>
+ constructors directly, unless you know what you are doing, since the
+ <code><a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></code> factory methods may return subclasses other than
+ <code>DecimalFormat</code>. If you need to customize the format object, do
+ something like this: <blockquote>
+
+ <pre>
+ NumberFormat f = NumberFormat.getInstance(loc);
+ if (f instanceof DecimalFormat) {
+     ((DecimalFormat)f).setDecimalSeparatorAlwaysShown(true);
+ }
+ </pre>
+
+ </blockquote>
+
+ <h4>Patterns</h4>
+ <p>
+ A <code>DecimalFormat</code> consists of a <em>pattern</em> and a set of
+ <em>symbols</em>. The pattern may be set directly using
+ <code><a href="../../../reference/java/text/DecimalFormat.html#applyPattern(java.lang.String)">applyPattern(String)</a></code>, or indirectly using other API methods which
+ manipulate aspects of the pattern, such as the minimum number of integer
+ digits. The symbols are stored in a <code><a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a></code> object. When
+ using the <code><a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></code> factory methods, the pattern and symbols are
+ read from ICU's locale data.
+ <h4>Special Pattern Characters</h4>
+ <p>
+ Many characters in a pattern are taken literally; they are matched during
+ parsing and are written out unchanged during formatting. On the other hand,
+ special characters stand for other characters, strings, or classes of
+ characters. For example, the '#' character is replaced by a localized digit.
+ Often the replacement character is the same as the pattern character; in the
+ U.S. locale, the ',' grouping character is replaced by ','. However, the
+ replacement is still happening, and if the symbols are modified, the grouping
+ character changes. Some special characters affect the behavior of the
+ formatter by their presence; for example, if the percent character is seen,
+ then the value is multiplied by 100 before being displayed.
+ <p>
+ To insert a special character in a pattern as a literal, that is, without any
+ special meaning, the character must be quoted. There are some exceptions to
+ this which are noted below.
+ <p>
+ The characters listed here are used in non-localized patterns. Localized
+ patterns use the corresponding characters taken from this formatter's
+ <code><a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a></code> object instead, and these characters lose their
+ special status. Two exceptions are the currency sign and quote, which are not
+ localized.
+ <blockquote> <table border="0" cellspacing="3" cellpadding="0" summary="Chart
+ showing symbol, location, localized, and meaning.">
+ <tr bgcolor="#ccccff">
+ <th align="left">Symbol</th>
+ <th align="left">Location</th>
+ <th align="left">Localized?</th>
+ <th align="left">Meaning</th>
+ </tr>
+ <tr valign="top">
+ <td><code>0</code></td>
+ <td>Number</td>
+ <td>Yes</td>
+ <td>Digit.</td>
+ </tr>
+ <tr valign="top">
+ <td><code>@</code></td>
+ <td>Number</td>
+ <td>No</td>
+ <td><strong><font color="red">NEW</font>&nbsp;</strong> Significant
+ digit.</td>
+ </tr>
+ <tr valign="top" bgcolor="#eeeeff">
+ <td><code>#</code></td>
+ <td>Number</td>
+ <td>Yes</td>
+ <td>Digit, leading zeroes are not shown.</td>
+ </tr>
+ <tr valign="top">
+ <td><code>.</code></td>
+ <td>Number</td>
+ <td>Yes</td>
+ <td>Decimal separator or monetary decimal separator.</td>
+ </tr>
+ <tr valign="top" bgcolor="#eeeeff">
+ <td><code>-</code></td>
+ <td>Number</td>
+ <td>Yes</td>
+ <td>Minus sign.</td>
+ </tr>
+ <tr valign="top">
+ <td><code>,</code></td>
+ <td>Number</td>
+ <td>Yes</td>
+ <td>Grouping separator.</td>
+ </tr>
+ <tr valign="top" bgcolor="#eeeeff">
+ <td><code>E</code></td>
+ <td>Number</td>
+ <td>Yes</td>
+ <td>Separates mantissa and exponent in scientific notation.
+ <em>Does not need to be quoted in prefix or suffix.</em></td>
+ </tr>
+ <tr valign="top">
+ <td><code>+</code></td>
+ <td>Exponent</td>
+ <td>Yes</td>
+ <td><strong><font color="red">NEW</font>&nbsp;</strong> Prefix
+ positive exponents with localized plus sign.
+ <em>Does not need to be quoted in prefix or suffix.</em></td>
+ </tr>
+ <tr valign="top" bgcolor="#eeeeff">
+ <td><code>;</code></td>
+ <td>Subpattern boundary</td>
+ <td>Yes</td>
+ <td>Separates positive and negative subpatterns.</td>
+ </tr>
+ <tr valign="top">
+ <td><code>%</code></td>
+ <td>Prefix or suffix</td>
+ <td>Yes</td>
+ <td>Multiply by 100 and show as percentage.</td>
+ </tr>
+ <tr valign="top" bgcolor="#eeeeff">
+ <td><code>‰</code> (<code>\u2030</code>)</td>
+ <td>Prefix or suffix</td>
+ <td>Yes</td>
+ <td>Multiply by 1000 and show as per mille.</td>
+ </tr>
+ <tr valign="top">
+ <td><code>¤</code> (<code>\u00A4</code>)</td>
+ <td>Prefix or suffix</td>
+ <td>No</td>
+ <td>Currency sign, replaced by currency symbol. If doubled, replaced by
+ international currency symbol. If present in a pattern, the monetary decimal
+ separator is used instead of the decimal separator.</td>
+ </tr>
+ <tr valign="top" bgcolor="#eeeeff">
+ <td><code>'</code></td>
+ <td>Prefix or suffix</td>
+ <td>No</td>
+ <td>Used to quote special characters in a prefix or suffix, for example,
+ <code>"'#'#"</code> formats 123 to <code>"#123"</code>. To create a single quote
+ itself, use two in a row: <code>"# o''clock"</code>.</td>
+ </tr>
+ <tr valign="top">
+ <td><code>*</code></td>
+ <td>Prefix or suffix boundary</td>
+ <td>Yes</td>
+ <td><strong><font color="red">NEW</font>&nbsp;</strong> Pad escape,
+ precedes pad character. </td>
+ </tr>
+ </table> </blockquote>
+ <p>
+ A <code>DecimalFormat</code> pattern contains a positive and negative subpattern,
+ for example, "#,##0.00;(#,##0.00)". Each subpattern has a prefix, a numeric
+ part and a suffix. If there is no explicit negative subpattern, the negative
+ subpattern is the localized minus sign prefixed to the positive subpattern.
+ That is, "0.00" alone is equivalent to "0.00;-0.00". If there is an explicit
+ negative subpattern, it serves only to specify the negative prefix and
+ suffix; the number of digits, minimal digits, and other characteristics are
+ ignored in the negative subpattern. This means that "#,##0.0#;(#)" produces
+ precisely the same result as "#,##0.0#;(#,##0.0#)".
+ <p>
+ The prefixes, suffixes, and various symbols used for infinity, digits,
+ thousands separators, decimal separators, etc. may be set to arbitrary
+ values, and they will appear properly during formatting. However, care must
+ be taken that the symbols and strings do not conflict, or parsing will be
+ unreliable. For example, either the positive and negative prefixes or the
+ suffixes must be distinct for <code><a href="../../../reference/java/text/NumberFormat.html#parse(java.lang.String)">parse(String)</a></code> to be able to distinguish
+ positive from negative values. Another example is that the decimal separator
+ and thousands separator should be distinct characters, or parsing will be
+ impossible.
+ <p>
+ The <em>grouping separator</em> is a character that separates clusters of
+ integer digits to make large numbers more legible. It is commonly used for
+ thousands, but in some locales it separates ten-thousands. The <em>grouping
+ size</em>
+ is the number of digits between the grouping separators, such as 3 for
+ "100,000,000" or 4 for "1 0000 0000". There are actually two different
+ grouping sizes: One used for the least significant integer digits, the
+ <em>primary grouping size</em>, and one used for all others, the
+ <em>secondary grouping size</em>. In most locales these are the same, but
+ sometimes they are different. For example, if the primary grouping interval
+ is 3, and the secondary is 2, then this corresponds to the pattern
+ "#,##,##0", and the number 123456789 is formatted as "12,34,56,789". If a
+ pattern contains multiple grouping separators, the interval between the last
+ one and the end of the integer defines the primary grouping size, and the
+ interval between the last two defines the secondary grouping size. All others
+ are ignored, so "#,##,###,####", "###,###,####" and "##,#,###,####" produce
+ the same result.
+ <p>
+ Illegal patterns, such as "#.#.#" or "#.###,###", will cause
+ <code>DecimalFormat</code> to throw an <code><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></code> with a
+ message that describes the problem.
+ <h4>Pattern BNF</h4>
+
+ <pre>
+ pattern    := subpattern (';' subpattern)?
+ subpattern := prefix? number exponent? suffix?
+ number     := (integer ('.' fraction)?) | sigDigits
+ prefix     := '\\u0000'..'\\uFFFD' - specialCharacters
+ suffix     := '\\u0000'..'\\uFFFD' - specialCharacters
+ integer    := '#'* '0'* '0'
+ fraction   := '0'* '#'*
+ sigDigits  := '#'* '@' '@'* '#'*
+ exponent   := 'E' '+'? '0'* '0'
+ padSpec    := '*' padChar
+ padChar    := '\\u0000'..'\\uFFFD' - quote
+
+ Notation:
+   X*       0 or more instances of X
+   X?       0 or 1 instances of X
+   X|Y      either X or Y
+   C..D     any character from C up to D, inclusive
+   S-T      characters in S, except those in T
+ </pre>
+
+ The first subpattern is for positive numbers. The second (optional)
+ subpattern is for negative numbers.
+ <p>
+ Not indicated in the BNF syntax above:
+ <ul>
+ <li>The grouping separator ',' can occur inside the integer and sigDigits
+ elements, between any two pattern characters of that element, as long as the
+ integer or sigDigits element is not followed by the exponent element.
+ <li><font color="red"><strong>NEW</strong>&nbsp;</font> Two
+ grouping intervals are recognized: The one between the decimal point and the
+ first grouping symbol and the one between the first and second grouping
+ symbols. These intervals are identical in most locales, but in some locales
+ they differ. For example, the pattern &quot;#,##,###&quot; formats the number
+ 123456789 as &quot;12,34,56,789&quot;.</li>
+ <li> <strong><font color="red">NEW</font>&nbsp;</strong> The pad
+ specifier <code>padSpec</code> may appear before the prefix, after the prefix,
+ before the suffix, after the suffix or not at all.
+ </ul>
+ <h4>Parsing</h4>
+ <p>
+ <code>DecimalFormat</code> parses all Unicode characters that represent decimal
+ digits, as defined by <code><a href="../../../reference/java/lang/Character.html#digit(int, int)">digit(int, int)</a></code>. In addition,
+ <code>DecimalFormat</code> also recognizes as digits the ten consecutive
+ characters starting with the localized zero digit defined in the
+ <code><a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a></code> object. During formatting, the
+ <code><a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a></code>-based digits are written out.
+ <p>
+ During parsing, grouping separators are ignored.
+ <p>
+ If <code><a href="../../../reference/java/text/DecimalFormat.html#parse(java.lang.String, java.text.ParsePosition)">parse(String, ParsePosition)</a></code> fails to parse a string, it returns
+ <code>null</code> and leaves the parse position unchanged.
+ <h4>Formatting</h4>
+ <p>
+ Formatting is guided by several parameters, all of which can be specified
+ either using a pattern or using the API. The following description applies to
+ formats that do not use <a href="#sci">scientific notation</a> or <a
+ href="#sigdig">significant digits</a>.
+ <ul>
+ <li>If the number of actual integer digits exceeds the
+ <em>maximum integer digits</em>, then only the least significant digits
+ are shown. For example, 1997 is formatted as "97" if maximum integer digits
+ is set to 2.
+ <li>If the number of actual integer digits is less than the
+ <em>minimum integer digits</em>, then leading zeros are added. For
+ example, 1997 is formatted as "01997" if minimum integer digits is set to 5.
+ <li>If the number of actual fraction digits exceeds the <em>maximum
+ fraction digits</em>,
+ then half-even rounding is performed to the maximum fraction digits. For
+ example, 0.125 is formatted as "0.12" if the maximum fraction digits is 2.
+ <li>If the number of actual fraction digits is less than the
+ <em>minimum fraction digits</em>, then trailing zeros are added. For
+ example, 0.125 is formatted as "0.1250" if the minimum fraction digits is set
+ to 4.
+ <li>Trailing fractional zeros are not displayed if they occur <em>j</em>
+ positions after the decimal, where <em>j</em> is less than the maximum
+ fraction digits. For example, 0.10004 is formatted as "0.1" if the maximum
+ fraction digits is four or less.
+ </ul>
+ <p>
+ <strong>Special Values</strong>
+ <p>
+ <code>NaN</code> is represented as a single character, typically
+ <code>\uFFFD</code>. This character is determined by the
+ <code><a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a></code> object. This is the only value for which the
+ prefixes and suffixes are not used.
+ <p>
+ Infinity is represented as a single character, typically <code>\u221E</code>,
+ with the positive or negative prefixes and suffixes applied. The infinity
+ character is determined by the <code><a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a></code> object. <a
+ name="sci">
+ <h4>Scientific Notation</h4>
+ </a>
+ <p>
+ Numbers in scientific notation are expressed as the product of a mantissa and
+ a power of ten, for example, 1234 can be expressed as 1.234 x 10<sup>3</sup>.
+ The mantissa is typically in the half-open interval [1.0, 10.0) or sometimes
+ [0.0, 1.0), but it does not need to be. <code>DecimalFormat</code> supports
+ arbitrary mantissas. <code>DecimalFormat</code> can be instructed to use
+ scientific notation through the API or through the pattern. In a pattern, the
+ exponent character immediately followed by one or more digit characters
+ indicates scientific notation. Example: "0.###E0" formats the number 1234 as
+ "1.234E3".
+ <ul>
+ <li>The number of digit characters after the exponent character gives the
+ minimum exponent digit count. There is no maximum. Negative exponents are
+ formatted using the localized minus sign, <em>not</em> the prefix and
+ suffix from the pattern. This allows patterns such as "0.###E0 m/s". To
+ prefix positive exponents with a localized plus sign, specify '+' between the
+ exponent and the digits: "0.###E+0" will produce formats "1E+1", "1E+0",
+ "1E-1", etc. (In localized patterns, use the localized plus sign rather than
+ '+'.)
+ <li>The minimum number of integer digits is achieved by adjusting the
+ exponent. Example: 0.00123 formatted with "00.###E0" yields "12.3E-4". This
+ only happens if there is no maximum number of integer digits. If there is a
+ maximum, then the minimum number of integer digits is fixed at one.
+ <li>The maximum number of integer digits, if present, specifies the exponent
+ grouping. The most common use of this is to generate <em>engineering
+ notation</em>,
+ in which the exponent is a multiple of three, e.g., "##0.###E0". The number
+ 12345 is formatted using "##0.###E0" as "12.345E3".
+ <li>When using scientific notation, the formatter controls the digit counts
+ using significant digits logic. The maximum number of significant digits
+ limits the total number of integer and fraction digits that will be shown in
+ the mantissa; it does not affect parsing. For example, 12345 formatted with
+ "##0.##E0" is "12.3E3". See the section on significant digits for more
+ details.
+ <li>The number of significant digits shown is determined as follows: If no
+ significant digits are used in the pattern then the minimum number of
+ significant digits shown is one, the maximum number of significant digits
+ shown is the sum of the <em>minimum integer</em> and
+ <em>maximum fraction</em> digits, and it is unaffected by the maximum
+ integer digits. If this sum is zero, then all significant digits are shown.
+ If significant digits are used in the pattern then the number of integer
+ digits is fixed at one and there is no exponent grouping.
+ <li>Exponential patterns may not contain grouping separators.
+ </ul>
+ <a name="sigdig">
+ <h4> <strong><font color="red">NEW</font>&nbsp;</strong> Significant
+ Digits</h4>
+ <p>
+ </a> <code>DecimalFormat</code> has two ways of controlling how many digits are
+ shown: (a) significant digit counts or (b) integer and fraction digit counts.
+ Integer and fraction digit counts are described above. When a formatter uses
+ significant digits counts, the number of integer and fraction digits is not
+ specified directly, and the formatter settings for these counts are ignored.
+ Instead, the formatter uses as many integer and fraction digits as required
+ to display the specified number of significant digits.
+ <h5>Examples:</h5>
+ <blockquote> <table border=0 cellspacing=3 cellpadding=0>
+ <tr bgcolor="#ccccff">
+ <th align="left">Pattern</th>
+ <th align="left">Minimum significant digits</th>
+ <th align="left">Maximum significant digits</th>
+ <th align="left">Number</th>
+ <th align="left">Output of format()</th>
+ </tr>
+ <tr valign="top">
+ <td><code>@@@</code>
+ <td>3</td>
+ <td>3</td>
+ <td>12345</td>
+ <td><code>12300</code></td>
+ </tr>
+ <tr valign="top" bgcolor="#eeeeff">
+ <td><code>@@@</code></td>
+ <td>3</td>
+ <td>3</td>
+ <td>0.12345</td>
+ <td><code>0.123</code></td>
+ </tr>
+ <tr valign="top">
+ <td><code>@@##</code></td>
+ <td>2</td>
+ <td>4</td>
+ <td>3.14159</td>
+ <td><code>3.142</code></td>
+ </tr>
+ <tr valign="top" bgcolor="#eeeeff">
+ <td><code>@@##</code></td>
+ <td>2</td>
+ <td>4</td>
+ <td>1.23004</td>
+ <td><code>1.23</code></td>
+ </tr>
+ </table> </blockquote>
+ <ul>
+ <li>Significant digit counts may be expressed using patterns that specify a
+ minimum and maximum number of significant digits. These are indicated by the
+ <code>'@'</code> and <code>'#'</code> characters. The minimum number of significant
+ digits is the number of <code>'@'</code> characters. The maximum number of
+ significant digits is the number of <code>'@'</code> characters plus the number of
+ <code>'#'</code> characters following on the right. For example, the pattern
+ <code>"@@@"</code> indicates exactly 3 significant digits. The pattern
+ <code>"@##"</code> indicates from 1 to 3 significant digits. Trailing zero digits
+ to the right of the decimal separator are suppressed after the minimum number
+ of significant digits have been shown. For example, the pattern <code>"@##"</code>
+ formats the number 0.1203 as <code>"0.12"</code>.
+ <li>If a pattern uses significant digits, it may not contain a decimal
+ separator, nor the <code>'0'</code> pattern character. Patterns such as
+ <code>"@00"</code> or <code>"@.###"</code> are disallowed.
+ <li>Any number of <code>'#'</code> characters may be prepended to the left of the
+ leftmost <code>'@'</code> character. These have no effect on the minimum and
+ maximum significant digit counts, but may be used to position grouping
+ separators. For example, <code>"#,#@#"</code> indicates a minimum of one
+ significant digit, a maximum of two significant digits, and a grouping size
+ of three.
+ <li>In order to enable significant digits formatting, use a pattern
+ containing the <code>'@'</code> pattern character.
+ <li>In order to disable significant digits formatting, use a pattern that
+ does not contain the <code>'@'</code> pattern character.
+ <li>The number of significant digits has no effect on parsing.
+ <li>Significant digits may be used together with exponential notation. Such
+ patterns are equivalent to a normal exponential pattern with a minimum and
+ maximum integer digit count of one, a minimum fraction digit count of the
+ number of '@' characters in the pattern - 1, and a maximum fraction digit
+ count of the number of '@' and '#' characters in the pattern - 1. For
+ example, the pattern <code>"@@###E0"</code> is equivalent to <code>"0.0###E0"</code>.
+ <li>If significant digits are in use then the integer and fraction digit
+ counts, as set via the API, are ignored.
+ </ul>
+ <h4> <strong><font color="red">NEW</font>&nbsp;</strong> Padding</h4>
+ <p>
+ <code>DecimalFormat</code> supports padding the result of <code>format</code> to a
+ specific width. Padding may be specified either through the API or through
+ the pattern syntax. In a pattern, the pad escape character followed by a
+ single pad character causes padding to be parsed and formatted. The pad
+ escape character is '*' in unlocalized patterns. For example,
+ <code>"$*x#,##0.00"</code> formats 123 to <code>"$xx123.00"</code>, and 1234 to
+ <code>"$1,234.00"</code>.
+ <ul>
+ <li>When padding is in effect, the width of the positive subpattern,
+ including prefix and suffix, determines the format width. For example, in the
+ pattern <code>"* #0 o''clock"</code>, the format width is 10.</li>
+ <li>The width is counted in 16-bit code units (Java <code>char</code>s).</li>
+ <li>Some parameters which usually do not matter have meaning when padding is
+ used, because the pattern width is significant with padding. In the pattern "*
+ ##,##,#,##0.##", the format width is 14. The initial characters "##,##," do
+ not affect the grouping size or maximum integer digits, but they do affect
+ the format width.</li>
+ <li>Padding may be inserted at one of four locations: before the prefix,
+ after the prefix, before the suffix or after the suffix. If padding is
+ specified in any other location, <code><a href="../../../reference/java/text/DecimalFormat.html#applyPattern(java.lang.String)">applyPattern(String)</a></code> throws an <code><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></code>. If there is no prefix, before the prefix and after
+ the prefix are equivalent, likewise for the suffix.</li>
+ <li>When specified in a pattern, the 16-bit <code>char</code> immediately
+ following the pad escape is the pad character. This may be any character,
+ including a special pattern character. That is, the pad escape
+ <em>escapes</em> the following character. If there is no character after
+ the pad escape, then the pattern is illegal.</li>
+ </ul>
+ <h4>Synchronization</h4>
+ <p>
+ <code>DecimalFormat</code> objects are not synchronized. Multiple threads should
+ not access one formatter concurrently.</p>
+
+
+
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/java/text/Format.html">Format</a></code></li><li><code><a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></code></li>
+      </ul>
+  </div>
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="inhconstants" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-java.text.NumberFormat" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-java.text.NumberFormat-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../reference/java/text/NumberFormat.html">java.text.NumberFormat</a>
+<div id="inherited-constants-java.text.NumberFormat">
+  <div id="inherited-constants-java.text.NumberFormat-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-java.text.NumberFormat-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/java/text/NumberFormat.html#FRACTION_FIELD">FRACTION_FIELD</a></td>
+        <td class="jd-descrcol" width="100%">Field constant identifying the fractional part of a number.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/java/text/NumberFormat.html#INTEGER_FIELD">INTEGER_FIELD</a></td>
+        <td class="jd-descrcol" width="100%">Field constant identifying the integer part of a number.</td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#DecimalFormat()">DecimalFormat</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Constructs a new <code>DecimalFormat</code> for formatting and parsing numbers
+ for the user's default locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#DecimalFormat(java.lang.String)">DecimalFormat</a></span>(<a href="../../../reference/java/lang/String.html">String</a> pattern)</nobr>
+        
+        <div class="jd-descrdiv">Constructs a new <code>DecimalFormat</code> using the specified non-localized
+ pattern and the <code>DecimalFormatSymbols</code> for the user's default Locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#DecimalFormat(java.lang.String, java.text.DecimalFormatSymbols)">DecimalFormat</a></span>(<a href="../../../reference/java/lang/String.html">String</a> pattern, <a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Constructs a new <code>DecimalFormat</code> using the specified non-localized
+ pattern and <code>DecimalFormatSymbols</code>.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#applyLocalizedPattern(java.lang.String)">applyLocalizedPattern</a></span>(<a href="../../../reference/java/lang/String.html">String</a> pattern)</nobr>
+        
+        <div class="jd-descrdiv">Changes the pattern of this decimal format to the specified pattern which
+ uses localized pattern characters.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#applyPattern(java.lang.String)">applyPattern</a></span>(<a href="../../../reference/java/lang/String.html">String</a> pattern)</nobr>
+        
+        <div class="jd-descrdiv">Changes the pattern of this decimal format to the specified pattern which
+ uses non-localized pattern characters.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a new instance of <code>DecimalFormat</code> with the same pattern and
+ properties.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> object)</nobr>
+        
+        <div class="jd-descrdiv">Compares the specified object to this decimal format and indicates if
+ they are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#format(long, java.lang.StringBuffer, java.text.FieldPosition)">format</a></span>(long value, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> position)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified long value as a string using the pattern of this
+ number format and appends the string to the specified string buffer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#format(double, java.lang.StringBuffer, java.text.FieldPosition)">format</a></span>(double value, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> position)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified double value as a string using the pattern of this
+ number format and appends the string to the specified string buffer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#format(java.lang.Object, java.lang.StringBuffer, java.text.FieldPosition)">format</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> number, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> position)</nobr>
+        
+        <div class="jd-descrdiv">Formats a number into a supplied buffer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/text/AttributedCharacterIterator.html">AttributedCharacterIterator</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#formatToCharacterIterator(java.lang.Object)">formatToCharacterIterator</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> object)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified object using the rules of this decimal format and
+ returns an <code>AttributedCharacterIterator</code> with the formatted number
+ and attributes.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/util/Currency.html">Currency</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getCurrency()">getCurrency</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the currency used by this decimal format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getDecimalFormatSymbols()">getDecimalFormatSymbols</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the <code>DecimalFormatSymbols</code> used by this decimal format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getGroupingSize()">getGroupingSize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the number of digits grouped together by the grouping separator.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getMultiplier()">getMultiplier</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the multiplier which is applied to the number before formatting
+ or after parsing.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getNegativePrefix()">getNegativePrefix</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the prefix which is formatted or parsed before a negative number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getNegativeSuffix()">getNegativeSuffix</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the suffix which is formatted or parsed after a negative number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getPositivePrefix()">getPositivePrefix</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the prefix which is formatted or parsed before a positive number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getPositiveSuffix()">getPositiveSuffix</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the suffix which is formatted or parsed after a positive number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-9" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/math/RoundingMode.html">RoundingMode</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#getRoundingMode()">getRoundingMode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the <code>RoundingMode</code> used by this <code>NumberFormat</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#isDecimalSeparatorAlwaysShown()">isDecimalSeparatorAlwaysShown</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Indicates whether the decimal separator is shown when there are no
+ fractional digits.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#isGroupingUsed()">isGroupingUsed</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Indicates whether grouping will be used in this format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#isParseBigDecimal()">isParseBigDecimal</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">This value indicates whether the return object of the parse operation is
+ of type <code>BigDecimal</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#isParseIntegerOnly()">isParseIntegerOnly</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Indicates whether parsing with this decimal format will only
+ return numbers of type <code>java.lang.Integer</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Number.html">Number</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#parse(java.lang.String, java.text.ParsePosition)">parse</a></span>(<a href="../../../reference/java/lang/String.html">String</a> string, <a href="../../../reference/java/text/ParsePosition.html">ParsePosition</a> position)</nobr>
+        
+        <div class="jd-descrdiv">Parses a <code>Long</code> or <code>Double</code> from the specified string
+ starting at the index specified by <code>position</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setCurrency(java.util.Currency)">setCurrency</a></span>(<a href="../../../reference/java/util/Currency.html">Currency</a> currency)</nobr>
+        
+        <div class="jd-descrdiv">Sets the currency used by this decimal format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setDecimalFormatSymbols(java.text.DecimalFormatSymbols)">setDecimalFormatSymbols</a></span>(<a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the <code>DecimalFormatSymbols</code> used by this decimal format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setDecimalSeparatorAlwaysShown(boolean)">setDecimalSeparatorAlwaysShown</a></span>(boolean value)</nobr>
+        
+        <div class="jd-descrdiv">Sets whether the decimal separator is shown when there are no fractional
+ digits.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setGroupingSize(int)">setGroupingSize</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the number of digits grouped together by the grouping separator.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setGroupingUsed(boolean)">setGroupingUsed</a></span>(boolean value)</nobr>
+        
+        <div class="jd-descrdiv">Sets whether or not grouping will be used in this format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setMaximumFractionDigits(int)">setMaximumFractionDigits</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the maximum number of digits after the decimal point.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setMaximumIntegerDigits(int)">setMaximumIntegerDigits</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the maximum number of digits before the decimal point.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setMinimumFractionDigits(int)">setMinimumFractionDigits</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the minimum number of digits after the decimal point.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setMinimumIntegerDigits(int)">setMinimumIntegerDigits</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the minimum number of digits before the decimal point.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setMultiplier(int)">setMultiplier</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the multiplier which is applied to the number before formatting or
+ after parsing.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setNegativePrefix(java.lang.String)">setNegativePrefix</a></span>(<a href="../../../reference/java/lang/String.html">String</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the prefix which is formatted or parsed before a negative number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setNegativeSuffix(java.lang.String)">setNegativeSuffix</a></span>(<a href="../../../reference/java/lang/String.html">String</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the suffix which is formatted or parsed after a negative number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setParseBigDecimal(boolean)">setParseBigDecimal</a></span>(boolean newValue)</nobr>
+        
+        <div class="jd-descrdiv">Sets the behavior of the parse method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setParseIntegerOnly(boolean)">setParseIntegerOnly</a></span>(boolean value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the flag that indicates whether numbers will be parsed as integers.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setPositivePrefix(java.lang.String)">setPositivePrefix</a></span>(<a href="../../../reference/java/lang/String.html">String</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the prefix which is formatted or parsed before a positive number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setPositiveSuffix(java.lang.String)">setPositiveSuffix</a></span>(<a href="../../../reference/java/lang/String.html">String</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the suffix which is formatted or parsed after a positive number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-9" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#setRoundingMode(java.math.RoundingMode)">setRoundingMode</a></span>(<a href="../../../reference/java/math/RoundingMode.html">RoundingMode</a> roundingMode)</nobr>
+        
+        <div class="jd-descrdiv">Sets the <code>RoundingMode</code> used by this <code>NumberFormat</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#toLocalizedPattern()">toLocalizedPattern</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the pattern of this decimal format using localized pattern
+ characters.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/DecimalFormat.html#toPattern()">toPattern</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the pattern of this decimal format using non-localized pattern
+ characters.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.text.NumberFormat" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.text.NumberFormat-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../reference/java/text/NumberFormat.html">java.text.NumberFormat</a>
+
+<div id="inherited-methods-java.text.NumberFormat">
+  <div id="inherited-methods-java.text.NumberFormat-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.text.NumberFormat-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a new <code>NumberFormat</code> with the same properties.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> object)</nobr>
+        
+        <div class="jd-descrdiv">Compares the specified object to this number format and indicates if
+ they are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#format(long, java.lang.StringBuffer, java.text.FieldPosition)">format</a></span>(long value, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> field)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified long value as a string using the pattern of this
+ number format and appends the string to the specified string buffer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#format(long)">format</a></span>(long value)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified long using the rules of this number format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#format(double, java.lang.StringBuffer, java.text.FieldPosition)">format</a></span>(double value, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> field)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified double value as a string using the pattern of this
+ number format and appends the string to the specified string buffer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#format(java.lang.Object, java.lang.StringBuffer, java.text.FieldPosition)">format</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> object, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> field)</nobr>
+        
+        <div class="jd-descrdiv">Formats a number into a supplied buffer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#format(double)">format</a></span>(double value)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified double using the rules of this number format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/util/Locale.html">Locale[]</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getAvailableLocales()">getAvailableLocales</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an array of locales for which custom <code>NumberFormat</code> instances
+ are available.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/util/Currency.html">Currency</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getCurrency()">getCurrency</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the currency used by this number format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getCurrencyInstance()">getCurrencyInstance</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing currency values
+ for the user's default locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getCurrencyInstance(java.util.Locale)">getCurrencyInstance</a></span>(<a href="../../../reference/java/util/Locale.html">Locale</a> locale)</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing currency values
+ for the specified locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getInstance(java.util.Locale)">getInstance</a></span>(<a href="../../../reference/java/util/Locale.html">Locale</a> locale)</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing numbers for the
+ specified locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getInstance()">getInstance</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing numbers for the
+ default locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getIntegerInstance(java.util.Locale)">getIntegerInstance</a></span>(<a href="../../../reference/java/util/Locale.html">Locale</a> locale)</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing integers for
+ the specified locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getIntegerInstance()">getIntegerInstance</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing integers for the
+ user's default locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getMaximumFractionDigits()">getMaximumFractionDigits</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the maximum number of fraction digits that are printed when
+ formatting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getMaximumIntegerDigits()">getMaximumIntegerDigits</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the maximum number of integer digits that are printed when
+ formatting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getMinimumFractionDigits()">getMinimumFractionDigits</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the minimum number of fraction digits that are printed when
+ formatting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getMinimumIntegerDigits()">getMinimumIntegerDigits</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the minimum number of integer digits that are printed when
+ formatting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getNumberInstance()">getNumberInstance</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing numbers for the
+ user's default locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getNumberInstance(java.util.Locale)">getNumberInstance</a></span>(<a href="../../../reference/java/util/Locale.html">Locale</a> locale)</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing numbers for the
+ specified locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getPercentInstance()">getPercentInstance</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing percentage
+ values for the user's default locale.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/text/NumberFormat.html">NumberFormat</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getPercentInstance(java.util.Locale)">getPercentInstance</a></span>(<a href="../../../reference/java/util/Locale.html">Locale</a> locale)</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code>NumberFormat</code> for formatting and parsing percentage
+ values for the given <code>locale</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-9" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/math/RoundingMode.html">RoundingMode</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#getRoundingMode()">getRoundingMode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the <code>RoundingMode</code> used by this <code>NumberFormat</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#isGroupingUsed()">isGroupingUsed</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Indicates whether this number format formats and parses numbers using a
+ grouping separator.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#isParseIntegerOnly()">isParseIntegerOnly</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Indicates whether this number format only parses integer numbers.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Number.html">Number</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#parse(java.lang.String)">parse</a></span>(<a href="../../../reference/java/lang/String.html">String</a> string)</nobr>
+        
+        <div class="jd-descrdiv">Parses a <code>Number</code> from the specified string using the rules of this
+ number format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Number.html">Number</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#parse(java.lang.String, java.text.ParsePosition)">parse</a></span>(<a href="../../../reference/java/lang/String.html">String</a> string, <a href="../../../reference/java/text/ParsePosition.html">ParsePosition</a> position)</nobr>
+        
+        <div class="jd-descrdiv">Parses a <code>Number</code> from the specified string starting at the index
+ specified by <code>position</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#parseObject(java.lang.String, java.text.ParsePosition)">parseObject</a></span>(<a href="../../../reference/java/lang/String.html">String</a> string, <a href="../../../reference/java/text/ParsePosition.html">ParsePosition</a> position)</nobr>
+        
+        <div class="jd-descrdiv">Parses the specified string starting at the index specified by
+ <code>position</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#setCurrency(java.util.Currency)">setCurrency</a></span>(<a href="../../../reference/java/util/Currency.html">Currency</a> currency)</nobr>
+        
+        <div class="jd-descrdiv">Sets the currency used by this number format when formatting currency
+ values.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#setGroupingUsed(boolean)">setGroupingUsed</a></span>(boolean value)</nobr>
+        
+        <div class="jd-descrdiv">Sets whether this number format formats and parses numbers using a
+ grouping separator.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#setMaximumFractionDigits(int)">setMaximumFractionDigits</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the maximum number of fraction digits that are printed when
+ formatting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#setMaximumIntegerDigits(int)">setMaximumIntegerDigits</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the new maximum count of integer digits that are printed when
+ formatting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#setMinimumFractionDigits(int)">setMinimumFractionDigits</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the minimum number of fraction digits that are printed when
+ formatting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#setMinimumIntegerDigits(int)">setMinimumIntegerDigits</a></span>(int value)</nobr>
+        
+        <div class="jd-descrdiv">Sets the minimum number of integer digits that are printed when
+ formatting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#setParseIntegerOnly(boolean)">setParseIntegerOnly</a></span>(boolean value)</nobr>
+        
+        <div class="jd-descrdiv">Specifies if this number format should parse numbers only as integers or
+ else as any kind of number.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-9" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/NumberFormat.html#setRoundingMode(java.math.RoundingMode)">setRoundingMode</a></span>(<a href="../../../reference/java/math/RoundingMode.html">RoundingMode</a> roundingMode)</nobr>
+        
+        <div class="jd-descrdiv">Sets the <code>RoundingMode</code> used by this <code>NumberFormat</code>.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.text.Format" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.text.Format-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../reference/java/text/Format.html">java.text.Format</a>
+
+<div id="inherited-methods-java.text.Format">
+  <div id="inherited-methods-java.text.Format-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.text.Format-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/Format.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a copy of this <code>Format</code> instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/Format.html#format(java.lang.Object)">format</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> object)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified object using the rules of this format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/Format.html#format(java.lang.Object, java.lang.StringBuffer, java.text.FieldPosition)">format</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> object, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> field)</nobr>
+        
+        <div class="jd-descrdiv">Appends the specified object to the specified string buffer using the
+ rules of this format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/text/AttributedCharacterIterator.html">AttributedCharacterIterator</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/Format.html#formatToCharacterIterator(java.lang.Object)">formatToCharacterIterator</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> object)</nobr>
+        
+        <div class="jd-descrdiv">Formats the specified object using the rules of this format and returns
+ an <code>AttributedCharacterIterator</code> with the formatted string and no
+ attributes.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/Format.html#parseObject(java.lang.String)">parseObject</a></span>(<a href="../../../reference/java/lang/String.html">String</a> string)</nobr>
+        
+        <div class="jd-descrdiv">Parses the specified string using the rules of this format.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/text/Format.html#parseObject(java.lang.String, java.text.ParsePosition)">parseObject</a></span>(<a href="../../../reference/java/lang/String.html">String</a> string, <a href="../../../reference/java/text/ParsePosition.html">ParsePosition</a> position)</nobr>
+        
+        <div class="jd-descrdiv">Parses the specified string starting at the index specified by
+ <code>position</code>.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../reference/java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Creates and returns a copy of this <code>Object</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> o)</nobr>
+        
+        <div class="jd-descrdiv">Compares this instance with the specified object and indicates if they
+ are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#finalize()">finalize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Invoked when the garbage collector has detected that this instance is no longer reachable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#getClass()">getClass</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the unique instance of <code><a href="../../../reference/java/lang/Class.html">Class</a></code> that represents this
+ object's class.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#notify()">notify</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes a thread which is waiting on this object's monitor (by means of
+ calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#notifyAll()">notifyAll</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes all threads which are waiting on this object's monitor (by means
+ of calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a string containing a concise, human-readable description of this
+ object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait()">wait</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait(long, int)">wait</a></span>(long millis, int nanos)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait(long)">wait</a></span>(long millis)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="DecimalFormat()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">DecimalFormat</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Constructs a new <code>DecimalFormat</code> for formatting and parsing numbers
+ for the user's default locale.
+ See "<a href="../util/Locale.html#default_locale">Be wary of the default locale</a>".
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="DecimalFormat(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">DecimalFormat</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> pattern)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Constructs a new <code>DecimalFormat</code> using the specified non-localized
+ pattern and the <code>DecimalFormatSymbols</code> for the user's default Locale.
+ See "<a href="../util/Locale.html#default_locale">Be wary of the default locale</a>".</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>pattern</td>
+          <td>the non-localized pattern.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>if the pattern cannot be parsed.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="DecimalFormat(java.lang.String, java.text.DecimalFormatSymbols)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">DecimalFormat</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> pattern, <a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Constructs a new <code>DecimalFormat</code> using the specified non-localized
+ pattern and <code>DecimalFormatSymbols</code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>pattern</td>
+          <td>the non-localized pattern.</td>
+        </tr>
+        <tr>
+          <th>value</td>
+          <td>the DecimalFormatSymbols.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>if the pattern cannot be parsed.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="applyLocalizedPattern(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">applyLocalizedPattern</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> pattern)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Changes the pattern of this decimal format to the specified pattern which
+ uses localized pattern characters.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>pattern</td>
+          <td>the localized pattern.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>if the pattern cannot be parsed.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="applyPattern(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">applyPattern</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> pattern)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Changes the pattern of this decimal format to the specified pattern which
+ uses non-localized pattern characters.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>pattern</td>
+          <td>the non-localized pattern.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>if the pattern cannot be parsed.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="clone()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/Object.html">Object</a>
+      </span>
+      <span class="sympad">clone</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a new instance of <code>DecimalFormat</code> with the same pattern and
+ properties.
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a shallow copy of this format.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="equals(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">equals</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Object.html">Object</a> object)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Compares the specified object to this decimal format and indicates if
+ they are equal. In order to be equal, <code>object</code> must be an instance
+ of <code>DecimalFormat</code> with the same pattern and properties.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>object</td>
+          <td>the object to compare with this object.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code>true</code> if the specified object is equal to this decimal
+         format; <code>false</code> otherwise.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/java/text/DecimalFormat.html#hashCode()">hashCode()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="format(long, java.lang.StringBuffer, java.text.FieldPosition)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a>
+      </span>
+      <span class="sympad">format</span>
+      <span class="normal">(long value, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> position)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Formats the specified long value as a string using the pattern of this
+ number format and appends the string to the specified string buffer.
+ <p>
+ If the <code>field</code> member of <code>position</code> contains a value
+ specifying a format field, then its <code>beginIndex</code> and
+ <code>endIndex</code> members will be updated with the position of the first
+ occurrence of this field in the formatted text.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the long to format.</td>
+        </tr>
+        <tr>
+          <th>buffer</td>
+          <td>the target string buffer to append the formatted long value
+            to.</td>
+        </tr>
+        <tr>
+          <th>position</td>
+          <td>on input: an optional alignment field; on output: the offsets
+            of the alignment field in the formatted text.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the string buffer.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="format(double, java.lang.StringBuffer, java.text.FieldPosition)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a>
+      </span>
+      <span class="sympad">format</span>
+      <span class="normal">(double value, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> position)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Formats the specified double value as a string using the pattern of this
+ number format and appends the string to the specified string buffer.
+ <p>
+ If the <code>field</code> member of <code>position</code> contains a value
+ specifying a format field, then its <code>beginIndex</code> and
+ <code>endIndex</code> members will be updated with the position of the first
+ occurrence of this field in the formatted text.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the double to format.</td>
+        </tr>
+        <tr>
+          <th>buffer</td>
+          <td>the target string buffer to append the formatted double value
+            to.</td>
+        </tr>
+        <tr>
+          <th>position</td>
+          <td>on input: an optional alignment field; on output: the offsets
+            of the alignment field in the formatted text.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the string buffer.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="format(java.lang.Object, java.lang.StringBuffer, java.text.FieldPosition)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+        final 
+         
+         
+        <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a>
+      </span>
+      <span class="sympad">format</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Object.html">Object</a> number, <a href="../../../reference/java/lang/StringBuffer.html">StringBuffer</a> buffer, <a href="../../../reference/java/text/FieldPosition.html">FieldPosition</a> position)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Formats a number into a supplied buffer.
+ <p>
+ The number must be a subclass of <code>Number</code>. Instances of <code>Byte</code>, <code>Short</code>,
+ <code>Integer</code>, and <code>Long</code> have <code>Number.longValue</code> invoked, as do instances of
+ <code>BigInteger</code> where <code>BigInteger.bitLength</code> returns <i>less than</i> 64. All other
+ values have <code>Number.doubleValue</code> invoked instead.
+ <p>
+ If the <code>field</code> member of <code>field</code> contains a value specifying
+ a format field, then its <code>beginIndex</code> and <code>endIndex</code> members
+ will be updated with the position of the first occurrence of this field
+ in the formatted text.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>number</td>
+          <td>the object to format, must be a <code>Number</code>.</td>
+        </tr>
+        <tr>
+          <th>buffer</td>
+          <td>the target string buffer to append the formatted number to.</td>
+        </tr>
+        <tr>
+          <th>position</td>
+          <td>on input: an optional alignment field; on output: the offsets
+            of the alignment field in the formatted text.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the string buffer.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="formatToCharacterIterator(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/text/AttributedCharacterIterator.html">AttributedCharacterIterator</a>
+      </span>
+      <span class="sympad">formatToCharacterIterator</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Object.html">Object</a> object)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Formats the specified object using the rules of this decimal format and
+ returns an <code>AttributedCharacterIterator</code> with the formatted number
+ and attributes.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>object</td>
+          <td>the object to format.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>an AttributedCharacterIterator with the formatted number and
+         attributes.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>if <code>object</code> cannot be formatted by this format.</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/NullPointerException.html">NullPointerException</a></td>
+            <td>if <code>object</code> is <code>null</code>.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getCurrency()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/util/Currency.html">Currency</a>
+      </span>
+      <span class="sympad">getCurrency</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the currency used by this decimal format.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the currency used by this decimal format.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/java/text/DecimalFormatSymbols.html#getCurrency()">getCurrency()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getDecimalFormatSymbols()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a>
+      </span>
+      <span class="sympad">getDecimalFormatSymbols</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the <code>DecimalFormatSymbols</code> used by this decimal format.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a copy of the <code>DecimalFormatSymbols</code> used by this decimal
+         format.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getGroupingSize()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getGroupingSize</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the number of digits grouped together by the grouping separator.
+ This only allows to get the primary grouping size. There is no API to get
+ the secondary grouping size.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the number of digits grouped together.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getMultiplier()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getMultiplier</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the multiplier which is applied to the number before formatting
+ or after parsing.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the multiplier.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getNegativePrefix()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getNegativePrefix</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the prefix which is formatted or parsed before a negative number.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the negative prefix.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getNegativeSuffix()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getNegativeSuffix</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the suffix which is formatted or parsed after a negative number.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the negative suffix.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getPositivePrefix()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getPositivePrefix</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the prefix which is formatted or parsed before a positive number.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the positive prefix.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getPositiveSuffix()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getPositiveSuffix</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the suffix which is formatted or parsed after a positive number.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the positive suffix.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getRoundingMode()"></A>
+
+<div class="jd-details api apilevel-9"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/math/RoundingMode.html">RoundingMode</a>
+      </span>
+      <span class="sympad">getRoundingMode</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 9</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the <code>RoundingMode</code> used by this <code>NumberFormat</code>.</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="hashCode()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">hashCode</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns an integer hash code for this object. By contract, any two
+ objects for which <code><a href="../../../reference/java/lang/Object.html#equals(java.lang.Object)">equals(Object)</a></code> returns <code>true</code> must return
+ the same hash code value. This means that subclasses of <code>Object</code>
+ usually override both methods or neither method.
+
+ <p>Note that hash values must not change over time unless information used in equals
+ comparisons also changes.
+
+ <p>See <a href="../../../reference/java/lang/Object.html#writing_hashCode">Writing a correct
+ <code>hashCode</code> method</a>
+ if you intend implementing your own <code>hashCode</code> method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>this object's hash code.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isDecimalSeparatorAlwaysShown()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isDecimalSeparatorAlwaysShown</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates whether the decimal separator is shown when there are no
+ fractional digits.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code>true</code> if the decimal separator should always be formatted;
+         <code>false</code> otherwise.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isGroupingUsed()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isGroupingUsed</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates whether grouping will be used in this format.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code>true</code> if grouping is used; <code>false</code> otherwise.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isParseBigDecimal()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isParseBigDecimal</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This value indicates whether the return object of the parse operation is
+ of type <code>BigDecimal</code>. This value defaults to <code>false</code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code>true</code> if parse always returns <code>BigDecimals</code>,
+         <code>false</code> if the type of the result is <code>Long</code> or
+         <code>Double</code>.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isParseIntegerOnly()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isParseIntegerOnly</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates whether parsing with this decimal format will only
+ return numbers of type <code>java.lang.Integer</code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code>true</code> if this <code>DecimalFormat</code>'s parse method only
+         returns <code>java.lang.Integer</code>; <code>false</code> otherwise.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="parse(java.lang.String, java.text.ParsePosition)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/Number.html">Number</a>
+      </span>
+      <span class="sympad">parse</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> string, <a href="../../../reference/java/text/ParsePosition.html">ParsePosition</a> position)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Parses a <code>Long</code> or <code>Double</code> from the specified string
+ starting at the index specified by <code>position</code>. If the string is
+ successfully parsed then the index of the <code>ParsePosition</code> is
+ updated to the index following the parsed text. On error, the index is
+ unchanged and the error index of <code>ParsePosition</code> is set to the
+ index where the error occurred.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>string</td>
+          <td>the string to parse.</td>
+        </tr>
+        <tr>
+          <th>position</td>
+          <td>input/output parameter, specifies the start index in
+            <code>string</code> from where to start parsing. If parsing is
+            successful, it is updated with the index following the parsed
+            text; on error, the index is unchanged and the error index is
+            set to the index where the error occurred.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a <code>Long</code> or <code>Double</code> resulting from the parse or
+         <code>null</code> if there is an error. The result will be a
+         <code>Long</code> if the parsed number is an integer in the range of a
+         long, otherwise the result is a <code>Double</code>. If
+         <code>isParseBigDecimal</code> is <code>true</code> then it returns the
+         result as a <code>BigDecimal</code>.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setCurrency(java.util.Currency)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setCurrency</span>
+      <span class="normal">(<a href="../../../reference/java/util/Currency.html">Currency</a> currency)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the currency used by this decimal format. The min and max fraction
+ digits remain the same.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>currency</td>
+          <td>the currency this <code>DecimalFormat</code> should use.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/java/text/DecimalFormatSymbols.html#setCurrency(java.util.Currency)">setCurrency(Currency)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setDecimalFormatSymbols(java.text.DecimalFormatSymbols)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setDecimalFormatSymbols</span>
+      <span class="normal">(<a href="../../../reference/java/text/DecimalFormatSymbols.html">DecimalFormatSymbols</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the <code>DecimalFormatSymbols</code> used by this decimal format.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the <code>DecimalFormatSymbols</code> to set.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setDecimalSeparatorAlwaysShown(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setDecimalSeparatorAlwaysShown</span>
+      <span class="normal">(boolean value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets whether the decimal separator is shown when there are no fractional
+ digits.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td><code>true</code> if the decimal separator should always be
+            formatted; <code>false</code> otherwise.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setGroupingSize(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setGroupingSize</span>
+      <span class="normal">(int value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the number of digits grouped together by the grouping separator.
+ This only allows to set the primary grouping size; the secondary grouping
+ size can only be set with a pattern.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the number of digits grouped together.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setGroupingUsed(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setGroupingUsed</span>
+      <span class="normal">(boolean value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets whether or not grouping will be used in this format. Grouping
+ affects both parsing and formatting.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td><code>true</code> if grouping is used; <code>false</code> otherwise.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMaximumFractionDigits(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMaximumFractionDigits</span>
+      <span class="normal">(int value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the maximum number of digits after the decimal point.
+ If the value passed is negative then it is replaced by 0.
+ Regardless of this setting, no more than 340 digits will be used.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the maximum number of fraction digits.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMaximumIntegerDigits(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMaximumIntegerDigits</span>
+      <span class="normal">(int value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the maximum number of digits before the decimal point.
+ If the value passed is negative then it is replaced by 0.
+ Regardless of this setting, no more than 309 digits will be used.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the maximum number of integer digits.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMinimumFractionDigits(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMinimumFractionDigits</span>
+      <span class="normal">(int value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the minimum number of digits after the decimal point.
+ If the value passed is negative then it is replaced by 0.
+ Regardless of this setting, no more than 340 digits will be used.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the minimum number of fraction digits.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMinimumIntegerDigits(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMinimumIntegerDigits</span>
+      <span class="normal">(int value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the minimum number of digits before the decimal point.
+ If the value passed is negative then it is replaced by 0.
+ Regardless of this setting, no more than 309 digits will be used.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the minimum number of integer digits.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMultiplier(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMultiplier</span>
+      <span class="normal">(int value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the multiplier which is applied to the number before formatting or
+ after parsing.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the multiplier.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setNegativePrefix(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setNegativePrefix</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the prefix which is formatted or parsed before a negative number.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the negative prefix.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setNegativeSuffix(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setNegativeSuffix</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the suffix which is formatted or parsed after a negative number.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the negative suffix.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setParseBigDecimal(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setParseBigDecimal</span>
+      <span class="normal">(boolean newValue)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the behavior of the parse method. If set to <code>true</code> then all
+ the returned objects will be of type <code>BigDecimal</code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>newValue</td>
+          <td><code>true</code> if all the returned objects should be of type
+            <code>BigDecimal</code>; <code>false</code> otherwise.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setParseIntegerOnly(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setParseIntegerOnly</span>
+      <span class="normal">(boolean value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the flag that indicates whether numbers will be parsed as integers.
+ When this decimal format is used for parsing and this value is set to
+ <code>true</code>, then the resulting numbers will be of type
+ <code>java.lang.Integer</code>. Special cases are NaN, positive and negative
+ infinity, which are still returned as <code>java.lang.Double</code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td><code>true</code> that the resulting numbers of parse operations
+            will be of type <code>java.lang.Integer</code> except for the
+            special cases described above.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setPositivePrefix(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setPositivePrefix</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the prefix which is formatted or parsed before a positive number.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the positive prefix.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setPositiveSuffix(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setPositiveSuffix</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the suffix which is formatted or parsed after a positive number.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>the positive suffix.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setRoundingMode(java.math.RoundingMode)"></A>
+
+<div class="jd-details api apilevel-9"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setRoundingMode</span>
+      <span class="normal">(<a href="../../../reference/java/math/RoundingMode.html">RoundingMode</a> roundingMode)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 9</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the <code>RoundingMode</code> used by this <code>NumberFormat</code>.</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="toLocalizedPattern()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">toLocalizedPattern</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the pattern of this decimal format using localized pattern
+ characters.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the localized pattern.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="toPattern()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">toPattern</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the pattern of this decimal format using non-localized pattern
+ characters.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the non-localized pattern.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

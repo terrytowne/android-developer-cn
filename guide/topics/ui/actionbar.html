@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Action Bar | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Action Bar</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <a class="notice-designers top" href="../../../design/patterns/actionbar.html">
+  <div>
+    <h3>Design Guide</h3>
+    <p>Action Bar</p>
+  </div>
+</a>
+
+<div id="qv-wrapper">
+<div id="qv">
+
+  <h2>In this document</h2>
+<ol>
+  <li><a href="#Adding">Adding the Action Bar</a>
+    <ol>
+      <li><a href="#Removing">Removing the action bar</a></li>
+      <li><a href="#Logo">Using a logo instead of an icon</a></li>
+    </ol>
+  </li>
+  <li><a href="#ActionItems">Adding Action Items</a>
+    <ol>
+      <li><a href="#ActionEvents">Handling clicks on action items</a></li>
+      <li><a href="#SplitBar">Using split action bar</a></li>
+    </ol>
+  </li>
+  <li><a href="#Home">Navigating Up with the App Icon</a></li>
+  <li><a href="#ActionView">Adding an Action View</a>
+    <ol>
+      <li><a href="#ActionViewCollapsing">Handling collapsible action views</a></li>
+    </ol>
+  </li>
+  <li><a href="#ActionProvider">Adding an Action Provider</a>
+    <ol>
+      <li><a href="#ShareActionProvider">Using the ShareActionProvider</a></li>
+      <li><a href="#CreatingActionProvider">Creating a custom action provider</a></li>
+    </ol>
+  </li>
+  <li><a href="#Tabs">Adding Navigation Tabs</a></li>
+  <li><a href="#Dropdown">Adding Drop-down Navigation</a></li>
+  <li><a href="#Style">Styling the Action Bar</a>
+    <ol>
+      <li><a href="#GeneralStyles">General appearance</a></li>
+      <li><a href="#ActionItemStyles">Action items</a></li>
+      <li><a href="#NavigationStyles">Navigation tabs</a></li>
+      <li><a href="#DropDownStyles">Drop-down lists</a></li>
+      <li><a href="#StyleExample">Example theme</a></li>
+    </ol>
+  </li>
+</ol>
+
+  <h2>Key classes</h2>
+  <ol>
+    <li><code><a href="../../../reference/android/support/v7/app/ActionBar.html">ActionBar</a></code></li>
+    <li><code><a href="../../../reference/android/view/Menu.html">Menu</a></code></li>
+  </ol>
+
+</div>
+</div>
+
+<p>The action bar is a window feature that identifies the user location, and
+provides user actions and navigation modes. Using the action bar offers your users a
+familiar interface across applications that the system gracefully adapts
+for different screen configurations.</p>
+
+<img src="../../../images/ui/actionbar@2x.png" alt="" width="428" height="215" />
+<p class="img-caption"><strong>Figure 1.</strong> An action bar that includes the [1] app icon,
+[2] two action items, and [3] action overflow.</p>
+
+<p>The action bar provides several key functions:</p>
+
+<ul>
+  <li>Provides a dedicated space for giving your app an identity and indicating the user's
+  location in the app.</li>
+  <li>Makes important actions prominent and accessible in a predictable way
+  (such as <em>Search</em>).</li>
+  <li>Supports consistent navigation and view switching within apps (with tabs or drop-down
+  lists).</li>
+</ul>
+
+<p>For more information about the action bar's interaction patterns and design guidelines,
+see the <a href="../../../design/patterns/actionbar.html">Action Bar</a>
+design guide.</p>
+
+<p>The <code><a href="../../../reference/android/app/ActionBar.html">ActionBar</a></code> APIs were first added in Android 3.0 (API level 11) but they
+are also available in the <a href="../../../tools/support-library/index.html">Support Library</a>
+for compatibility with Android 2.1 (API level 7) and above.</p>
+
+<p><b>This guide focuses on how to use the
+support library's action bar</b>, but if your app supports <em>only</em> Android 3.0 or higher, you
+should use the <code><a href="../../../reference/android/app/ActionBar.html">ActionBar</a></code> APIs in the framework. Most of the APIs are
+the same&mdash;but reside in a different package namespace&mdash;with a few exceptions to method
+names or signatures that are noted in the sections below.</p>
+
+
+<div class="caution">
+<p><strong>Caution:</strong> Be certain you import
+the <code>ActionBar</code> class (and related APIs) from the appropriate package:</p>
+<ul>
+<li>If supporting API levels <em>lower than</em> 11: <br>
+<code>import android.support.v7.app.ActionBar</code></li>
+<li>If supporting <em>only</em> API level 11 and higher: <br>
+<code>import android.app.ActionBar</code></li>
+</ul>
+</div>
+
+
+<p class="note"><strong>Note:</strong> If you're looking for information about the <em>contextual
+action bar</em> for displaying contextual action items, see the <a
+href="../../../guide/topics/ui/menus.html#context-menu">Menu</a> guide.</p>
+
+
+
+<h2 id="Adding">Adding the Action Bar</h2>
+
+<p>As mentioned above, this guide focuses on how to use the <code><a href="../../../reference/android/support/v7/app/ActionBar.html">ActionBar</a></code> APIs in the support library. So before you can add the action
+bar, you must set up your project with the <strong>appcompat v7</strong> support library by
+following the instructions in the <a href="../../../tools/support-library/setup.html">Support
+Library Setup</a>.</p>
+
+<p>Once your project is set up with the support library, here's how to add the action bar:</p>
+<ol>
+  <li>Create your activity by extending <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html">ActionBarActivity</a></code>.</li>
+  <li>Use (or extend) one of the <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Theme_AppCompat">Theme.AppCompat</a></code> themes for your activity. For example:
+  <pre>&lt;activity android:theme="@style/Theme.AppCompat.Light" ... ></pre>
+  </li>
+</ol>
+
+<p>Now your activity includes the action bar when running on Android 2.1 (API level 7) or higher.
+</p>
+
+<div class="note">
+<p><b>On API level 11 or higher</b></p>
+<p>The action bar is included in all activities that use the
+<code><a href="../../../reference/android/R.style.html#Theme_Holo">Theme.Holo</a></code> theme (or one of its
+descendants), which is the default theme when either the <a
+href="../../../guide/topics/manifest/uses-sdk-element.html#target"><code>targetSdkVersion</code></a> or
+<a href="../../../guide/topics/manifest/uses-sdk-element.html#min"><code>minSdkVersion</code></a>
+attribute is set to <code>"11"</code> or higher. If you don't want the action bar for an
+activity, set the activity theme to <code><a href="../../../reference/android/R.style.html#Theme_Holo_NoActionBar">Theme.Holo.NoActionBar</a></code>.</p>
+</div>
+
+
+<h3 id="Removing">Removing the action bar</h3>
+
+<p>You can hide the action bar at runtime by calling <code><a href="../../../reference/android/support/v7/app/ActionBar.html#hide()">hide()</a></code>.
+For example:</p>
+
+<pre>
+ActionBar actionBar = <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#getSupportActionBar()">getSupportActionBar()</a></code>;
+actionBar.hide();
+</pre>
+
+<div class="note">
+<p><b>On API level 11 or higher</b></p>
+<p>Get the <code><a href="../../../reference/android/app/ActionBar.html">ActionBar</a></code> with the <code><a href="../../../reference/android/app/Activity.html#getActionBar()">getActionBar()</a></code>
+method.</p>
+</div>
+
+<p>When the action bar hides, the system adjusts your layout to fill the
+screen space now available. You can bring the action bar back by calling <code><a href="../../../reference/android/support/v7/app/ActionBar.html#show()">show()</a></code>.</p>
+
+<p>Beware that hiding and removing the action bar causes your activity to re-layout in order to
+account for the space consumed by the action bar. If your activity often hides and shows the
+action bar, you might want to enable <em>overlay mode</em>. Overlay mode
+draws the action bar in front of your activity layout, obscuring the top portion. This
+way, your layout remains fixed when the action bar hides and re-appears. To enable overlay mode,
+create a custom theme for your activity and set <code><a href="../../../reference/android/support/v7/appcompat/R.attr.html#windowActionBarOverlay">windowActionBarOverlay</a></code> to <code>true</code>. For more information, see the section below about <a
+href="#Style">Styling the Action Bar</a>.</p>
+
+
+<h3 id="Logo">Using a logo instead of an icon</h3>
+
+<p>By default, the system uses your application icon in the action bar, as specified by the <a
+href="../../../guide/topics/manifest/application-element.html#icon"><code>icon</code></a>
+attribute in the <a href="../../../guide/topics/manifest/application-element.html"><code>&lt;application&gt;</code></a> or <a
+href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a> element. However, if you also specify the <a
+href="../../../guide/topics/manifest/application-element.html#logo"><code>logo</code></a>
+attribute, then the action bar uses the logo image instead of the icon.</p>
+
+<p>A logo should usually be wider than the icon, but should not include unnecessary text. You
+should generally use a logo only when it represents your brand in a traditional format that users
+recognize. A good example is the YouTube app's logo&mdash;the logo represents the expected user
+brand, whereas the app's icon is a modified version that conforms to the square requirement
+for the launcher icon.</p>
+
+
+
+
+<h2 id="ActionItems">Adding Action Items</h2>
+
+<div class="figure" style="width:340px">
+  <img src="../../../images/ui/actionbar-item-withtext.png" width="340" alt="" />
+  <p class="img-caption"><strong>Figure 2.</strong> Action bar with three action buttons and
+the overflow button.</p>
+</div>
+
+<p>The action bar provides users access to the most important action
+items relating to the app's current
+context. Those that appear directly in the action bar with an icon and/or text are known
+as <em>action buttons</em>. Actions that can't fit in the action bar or aren't
+important enough are hidden in the action overflow.
+The user can reveal a list of the other actions by pressing the overflow button
+on the right side (or the device <em>Menu</em> button, if available).</p>
+
+<p>When your activity starts, the system populates the action items by calling your activity's
+<code><a href="../../../reference/android/app/Activity.html#onCreateOptionsMenu(android.view.Menu)">onCreateOptionsMenu()</a></code> method. Use this
+method to inflate a <a
+href="../../../guide/topics/resources/menu-resource.html">menu resource</a> that defines all the
+action items. For example, here's a menu resource defining a couple of menu items:</p>
+
+<p class="code-caption">res/menu/main_activity_actions.xml</p>
+<pre>
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    &lt;item android:id="@+id/action_search"
+          android:icon="@drawable/ic_action_search"
+          android:title="@string/action_search"/&gt;
+    &lt;item android:id="@+id/action_compose"
+          android:icon="@drawable/ic_action_compose"
+          android:title="@string/action_compose" /&gt;
+&lt;/menu&gt;
+</pre>
+
+<p>Then in your activity's <code><a href="../../../reference/android/app/Activity.html#onCreateOptionsMenu(android.view.Menu)">onCreateOptionsMenu()</a></code>
+method, inflate the menu resource into the given <code><a href="../../../reference/android/view/Menu.html">Menu</a></code>
+to add each item to the action bar:</p>
+
+<pre>
+&#64;Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the menu items for use in the action bar
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.main_activity_actions, menu);
+    return super.onCreateOptionsMenu(menu);
+}
+</pre>
+
+<p>To request that an item appear directly in the action bar
+as an action button, include <code>showAsAction="ifRoom"</code> in the <code>&lt;item&gt;</code> tag. For example:</p>
+
+<pre>
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+      <strong>xmlns:yourapp="http://schemas.android.com/apk/res-auto"</strong> >
+    &lt;item android:id="@+id/action_search"
+          android:icon="@drawable/ic_action_search"
+          android:title="@string/action_search"
+          <strong>yourapp:showAsAction="ifRoom"</strong>  /&gt;
+    ...
+&lt;/menu&gt;
+</pre>
+
+<p>If there's not enough room for the item in the action bar, it will appear in the action
+overflow.</p>
+
+
+<div class="note" id="XmlAttributes">
+<p><strong>Using XML attributes from the support library</strong></p>
+Notice that the <code>showAsAction</code> attribute above uses a custom namespace defined in the
+<code>&lt;menu></code> tag. This is necessary when using any XML attributes defined by the support
+library, because these attributes do not exist in the Android framework on older devices.
+So you must use your own namespace as a prefix for all attributes defined by the support library.
+</p>
+</div>
+
+<p>If your menu item supplies both a title and an icon&mdash;with the <code>title</code> and
+<code>icon</code> attributes&mdash;then the action item shows only the icon by default. If you
+want to display the text title, add <code>"withText"</code> to the <code>showAsAction</code>
+attribute. For example:</p>
+
+<pre>
+&lt;item yourapp:showAsAction="ifRoom|withText" ... /&gt;
+</pre>
+
+<p class="note"><strong>Note:</strong> The <code>"withText"</code> value is a <em>hint</em> to the
+action bar that the text title should appear. The action bar will show the title when possible, but
+might not if an icon is available and the action bar is constrained for space.</p>
+
+<p>You should always define the <code>title</code> for each item even if you don't declare that
+the title appear with the action item, for the following reasons:</p>
+<ul>
+  <li>If there's not enough room in the action bar for the action item, the menu item appears
+in the overflow where only the title appears.</li>
+  <li>Screen readers for sight-impaired users read the menu item's title.</li>
+  <li>If the action item appears with only the icon, a user can long-press the item to reveal a
+tool-tip that displays the action title.</li>
+</ul>
+
+<p>The <code>icon</code> is optional, but recommended. For icon design recommendations,
+see the <a href="../../../design/style/iconography.html#action-bar">Iconography</a> design
+guide. You can also download a set of standard action bar icons (such as for Search or Discard)
+from the <a href="../../../design/downloads/index.html">Downloads</a> page.</p>
+
+<p>You can also use <code>"always"</code> to declare that an item always appear as an action button.
+However, you <strong>should not</strong> force an item to appear in the action bar this
+way. Doing so can create layout problems on devices with a narrow screen. It's best to instead
+use <code>"ifRoom"</code> to request that an item appear in the action bar, but allow the system to move
+it into the overflow when there's not enough room. However, it might be necessary to use this value
+if the item includes an <a href="#ActionView">action view</a> that cannot be collapsed and
+must always be visible to provide access to a critical feature.</p>
+
+
+
+
+<h3 id="ActionEvents">Handling clicks on action items</h3>
+
+<p>When the user presses an action, the system calls your activity's <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> method. Using the
+<code><a href="../../../reference/android/view/MenuItem.html">MenuItem</a></code> passed to this method, you can identify the action by calling <code><a href="../../../reference/android/view/MenuItem.html#getItemId()">getItemId()</a></code>. This returns the unique ID provided by the <code>&lt;item&gt;</code>
+tag's <code>id</code> attribute so you can perform the appropriate action. For example:</p>
+
+<pre>
+&#64;Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle presses on the action bar items
+    switch (item.getItemId()) {
+        case R.id.action_search:
+            openSearch();
+            return true;
+        case R.id.action_compose:
+            composeMessage();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+    }
+}
+</pre>
+
+<p class="note"><strong>Note:</strong> If you inflate menu items from a fragment, via the <code><a href="../../../reference/android/app/Fragment.html">Fragment</a></code> class's <code><a href="../../../reference/android/app/Fragment.html#onCreateOptionsMenu(android.view.Menu, android.view.MenuInflater)">onCreateOptionsMenu()</a></code>
+callback, the system calls <code><a href="../../../reference/android/app/Fragment.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> for that
+fragment when the user selects one of those items. However, the activity gets a chance to
+handle the event first, so the system first calls <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> on the activity,
+before calling the same callback for the fragment. To ensure that any fragments in the
+activity also have a chance to handle the callback, always pass the call to the superclass
+as the default behavior instead of returning <code>false</code> when you do not handle the item.</p>
+
+
+
+<div class="figure" style="width:420px;margin-top:0">
+<img src="../../../images/ui/actionbar-splitaction@2x.png" alt="" width="420"/>
+<p class="img-caption"><strong>Figure 3.</strong> Mock-ups showing an action bar with
+tabs (left), then with split action bar (middle); and with the app icon and title disabled
+(right).</p>
+</p>
+</div>
+
+<h3 id="SplitBar">Using split action bar</h3>
+
+<p>Split action bar provides a separate
+bar at the bottom of the screen to display all action items when the activity is running on
+a narrow screen (such as a portrait-oriented handset).</p>
+
+<p>Separating the action items this way
+ensures that a reasonable amount of space is available to display all your action
+items on a narrow screen, while leaving room for navigation and title elements at the top.</p>
+
+<p>To enable split action bar when using the support library, you must do two things:</p>
+<ol>
+  <li>Add <code>uiOptions="splitActionBarWhenNarrow"</code> to each
+<a href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a>
+element or to the
+<a href="../../../guide/topics/manifest/application-element.html"><code>&lt;application&gt;</code></a>
+element. This attribute is understood only by API level 14 and higher (it is ignored
+by older versions).</li>
+  <li>To support older versions, add a <a
+  href="../../../guide/topics/manifest/meta-data-element.html"><code>&lt;meta-data></code></a>
+  element as a child of each
+  <a href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a>
+  element that declares the same value for <code>"android.support.UI_OPTIONS"</code>.</li>
+</ol>
+
+<p>For example:</p>
+
+<pre>
+&lt;manifest ...>
+    &lt;activity uiOptions="splitActionBarWhenNarrow" ... >
+        &lt;meta-data android:name="android.support.UI_OPTIONS"
+                   android:value="splitActionBarWhenNarrow" />
+    &lt;/activity>
+&lt;/manifest>
+</pre>
+
+
+<p>Using split action bar also allows <a href="#Tabs">navigation tabs</a> to collapse into the
+main action bar if you remove the icon and title (as shown on the right in figure 3).
+To create this effect, disable the action bar
+icon and title with <code><a href="../../../reference/android/support/v7/app/ActionBar.html#setDisplayShowHomeEnabled(boolean)">setDisplayShowHomeEnabled(false)</a></code> and <code><a href="../../../reference/android/support/v7/app/ActionBar.html#setDisplayShowTitleEnabled(boolean)">setDisplayShowTitleEnabled(false)</a></code>.</p>
+
+
+
+<h2 id="Home">Navigating Up with the App Icon</h2>
+
+<a class="notice-designers" href="../../../design/patterns/navigation.html">
+  <div>
+    <h3>Design Guide</h3>
+    <p>Navigation with Back and Up</p>
+  </div>
+</a>
+
+<div class="figure" style="width:240px">
+  <img src="../../../images/ui/actionbar-up.png" width="240" alt="" />
+  <p class="img-caption"><strong>Figure 4.</strong> The <em>Up</em> button in Gmail.</p>
+</div>
+
+<p>Enabling the app icon as an <em>Up</em> button allows the user to navigate your app based
+on the hierarchical relationships between screens. For instance, if screen A displays a list of
+items, and selecting an item leads to screen B, then
+screen B should include the <em>Up</em> button, which returns to screen A.</p>
+
+<p class="note"><strong>Note:</strong> Up navigation is distinct from the back navigation provided
+by the system <em>Back</em> button. The <em>Back</em> button is used to navigate in reverse
+chronological order through the history of screens the user has recently worked with. It is
+generally based on the temporal relationships between screens, rather than the app's hierarchy
+structure (which is the basis for up navigation).</p>
+
+<p>To enable the app icon as an <em>Up</em> button, call <code><a href="../../../reference/android/support/v7/app/ActionBar.html#setDisplayHomeAsUpEnabled(boolean)">setDisplayHomeAsUpEnabled()</a></code>.
+For example:</p>
+
+<pre>
+&#64;Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_details);
+
+    ActionBar actionBar = getSupportActionBar();
+    actionBar.setDisplayHomeAsUpEnabled(true);
+    ...
+}
+</pre>
+
+<p>Now the icon in the action bar appears with the <em>Up</em> caret (as shown in figure 4).
+However, it won't do anything by default. To specify the activity to open when the
+user presses <em>Up</em> button, you have two options:</p>
+
+<ul>
+  <li><b>Specify the parent activity in the manifest file.</b>
+    <p>This is the best option when <strong>the parent activity is always the same</strong>. By
+declaring in the manifest which activity is the parent, the action bar automatically performs the
+correct action when the user presses the <em>Up</em> button.</p>
+
+    <p>Beginning in Android 4.1 (API level 16), you can declare the parent with the <a href=
+"../../../guide/topics/manifest/activity-element.html#parent"><code>parentActivityName</code></a>
+attribute in the <a href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a> element.</p>
+    <p>To support older devices with the support library, also
+include a <a href="../../../guide/topics/manifest/meta-data-element.html"><code>&lt;meta-data&gt;</code></a> element that specifies
+the parent activity as the value for <code>android.support.PARENT_ACTIVITY</code>. For example:</p>
+<pre>
+&lt;application ... >
+    ...
+    &lt;!-- The main/home activity (has no parent activity) -->
+    &lt;activity
+        android:name="com.example.myfirstapp.MainActivity" ...>
+        ...
+    &lt;/activity>
+    &lt;!-- A child of the main activity -->
+    &lt;activity
+        android:name="com.example.myfirstapp.DisplayMessageActivity"
+        android:label="&#64;string/title_activity_display_message"
+        android:parentActivityName="com.example.myfirstapp.MainActivity" >
+        &lt;!-- Parent activity meta-data to support API level 7+ -->
+        &lt;meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.myfirstapp.MainActivity" />
+    &lt;/activity>
+&lt;/application>
+</pre>
+
+  <p>Once the parent activity is specified in the manifest like this and you enable the <em>Up</em>
+  button with <code><a href="../../../reference/android/support/v7/app/ActionBar.html#setDisplayHomeAsUpEnabled(boolean)">setDisplayHomeAsUpEnabled()</a></code>, your work
+is done and the action bar properly navigates up.</p>
+  </li>
+
+
+  <li><strong>Or, override <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#getSupportParentActivityIntent()">getSupportParentActivityIntent()</a></code> and <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#onCreateSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder)">onCreateSupportNavigateUpTaskStack()</a></code> in your activity</strong>.</li>
+
+    <p>This is appropriate when <strong>the parent activity may be different</strong> depending
+    on how the user arrived at the current screen. That is, if there are many paths that the user
+    could have taken to reach the current screen, the <em>Up</em> button should navigate
+    backward along the path the user actually followed to get there.</p>
+
+    <p>The system calls <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#getSupportParentActivityIntent()">getSupportParentActivityIntent()</a></code> when the user presses
+the <em>Up</em> button while navigating your app (within your app's own task). If the activity that
+should open upon up navigation differs depending on how the user arrived at the current location,
+then you should override this method to return the <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> that starts the appropriate parent activity.</p>
+
+    <p>The system calls <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#onCreateSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder)">onCreateSupportNavigateUpTaskStack()</a></code> for your activity when the user presses the <em>Up</em>
+button while your activity is running in a task that does <em>not</em> belong to your app. Thus,
+you must use the <code><a href="../../../reference/android/support/v4/app/TaskStackBuilder.html">TaskStackBuilder</a></code> passed to this method to construct
+the appropriate back stack that should be synthesized when the user navigates up.</p>
+
+    <p>Even if you override <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#getSupportParentActivityIntent()">getSupportParentActivityIntent()</a></code> to specify up navigation
+as the user navigates your app, you can avoid the need to implement <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#onCreateSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder)">onCreateSupportNavigateUpTaskStack()</a></code> by declaring "default" parent activities in the manifest file
+as shown above. Then the default implementation of <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#onCreateSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder)">onCreateSupportNavigateUpTaskStack()</a></code> will synthesize a back stack based on the parent activities
+declared in the manifest.</p>
+
+  </li>
+</ul>
+
+<p class="note"><strong>Note:</strong>
+If you've built your app hierarchy using a series of fragments instead of multiple
+activities, then neither of the above options will work. Instead, to navigate up through your
+fragments, override <code><a href="../../../reference/android/support/v7/app/ActionBarActivity.html#onSupportNavigateUp()">onSupportNavigateUp()</a></code>
+to perform the appropriate fragment transaction&mdash;usually by popping
+the current fragment from the back stack by calling <code><a href="../../../reference/android/support/v4/app/FragmentManager.html#popBackStack()">popBackStack()</a></code>.</p>
+
+<p>For more information about implementing <em>Up</em> navigation, read
+<a href="../../../training/implementing-navigation/ancestral.html">Providing Up Navigation</a>.</p>
+
+
+
+<h2 id="ActionView">Adding an Action View</h2>
+
+<div class="figure" style="width:340px">
+<img src="/images/ui/actionbar-searchview@2x.png" alt="" width="340" />
+<p class="img-caption"><strong>Figure 5.</strong> An action bar with a collapsible
+<code><a href="../../../reference/android/support/v7/widget/SearchView.html">SearchView</a></code>.</p>
+</div>
+
+
+<p>An <em>action view</em> is a widget that appears in the action bar as a substitute for an action
+button. An action view provides fast access to rich actions without changing activities or
+fragments, and without replacing the action bar. For example, if you have an action for Search, you
+can add an action view to
+embeds a <code><a href="../../../reference/android/support/v7/widget/SearchView.html">SearchView</a></code> widget in the action bar, as shown in figure
+5.</p>
+
+<p>To declare an action view, use either the <code>actionLayout</code> or <code>actionViewClass</code> attribute to specify either a layout
+resource or widget class to use, respectively. For example, here's how to add
+the <code><a href="../../../reference/android/support/v7/widget/SearchView.html">SearchView</a></code> widget:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
+    &lt;item android:id="@+id/action_search"
+          android:title="@string/action_search"
+          android:icon="@drawable/ic_action_search"
+          yourapp:showAsAction="ifRoom|collapseActionView"
+          <b>yourapp:actionViewClass="android.support.v7.widget.SearchView"</b> /&gt;
+&lt;/menu>
+</pre>
+
+<p>Notice that the <code>showAsAction</code> attribute also includes the <code>"collapseActionView"</code>
+value. This is optional and declares that the action view should be collapsed into a
+button. (This behavior is explained further in the following section about
+<a href="#ActionViewCollapsing">Handling collapsible action views</a>.)</p>
+
+<p>If you need to configure the action view (such as to add event listeners), you can do so during
+the <code><a href="../../../reference/android/app/Activity.html#onCreateOptionsMenu(android.view.Menu)">onCreateOptionsMenu()</a></code> callback. You can
+acquire the action view object by calling the static method <code><a href="../../../reference/android/support/v4/view/MenuItemCompat.html#getActionView(android.view.MenuItem)">MenuItemCompat.getActionView()</a></code> and passing it
+the corresponding <code><a href="../../../reference/android/view/MenuItem.html">MenuItem</a></code>. For example, the search widget from the above
+sample is acquired like this:</p>
+
+
+<pre>
+&#64;Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main_activity_actions, menu);
+    MenuItem searchItem = menu.findItem(R.id.action_search);
+    SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+    // Configure the search info and add any event listeners
+    ...
+    return super.onCreateOptionsMenu(menu);
+}
+</pre>
+
+<div class="note">
+<p><b>On API level 11 or higher</b></p>
+<p>Get the action view by calling <code><a href="../../../reference/android/view/MenuItem.html#getActionView()">getActionView()</a></code> on the
+corresponding <code><a href="../../../reference/android/view/MenuItem.html">MenuItem</a></code>:</p>
+<pre>menu.findItem(R.id.action_search).getActionView()</pre>
+</div>
+
+<p>For more information about using the search widget, see <a
+href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a>.</p>
+
+
+
+<h3 id="ActionViewCollapsing">Handling collapsible action views</h3>
+
+<p>To preserve the action bar space, you can collapse your action view into an action button.
+When collapsed, the system might place the action
+into the action overflow, but the
+action view still appears in the action bar when the user selects it. You can make your action
+view collapsible by adding <code>"collapseActionView"</code> to the <code>showAsAction</code>
+attribute, as shown in the XML above.</p>
+
+<p>Because the system expands the action view when the user selects the action, you
+<em>do not</em> need to respond to the item in the <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> callback. The system still calls
+<code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code>, but if
+you return <code>true</code> (indicating you've handled the event instead), then the
+action view will <em>not</em> expand.</p>
+
+<p>The system also collapses your action view when the user presses the <em>Up</em> button
+or <em>Back</em> button.</p>
+
+<p>If you need to update your activity based on the visibility of your action view, you can receive
+callbacks when the action is expanded and collapsed by defining an <code><a href="../../../reference/android/support/v4/view/MenuItemCompat.OnActionExpandListener.html">OnActionExpandListener</a></code> and
+passing it to <code><a href="../../../reference/android/support/v4/view/MenuItemCompat.html#setOnActionExpandListener(android.view.MenuItem, android.support.v4.view.MenuItemCompat.OnActionExpandListener)">setOnActionExpandListener()</a></code>. For example:</p>
+
+
+<pre>
+&#64;Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.options, menu);
+    MenuItem menuItem = menu.findItem(R.id.actionItem);
+    ...
+
+    // When using the support library, the setOnActionExpandListener() method is
+    // static and accepts the MenuItem object as an argument
+    MenuItemCompat.setOnActionExpandListener(menuItem, new OnActionExpandListener() {
+        &#64;Override
+        public boolean onMenuItemActionCollapse(MenuItem item) {
+            // Do something when collapsed
+            return true;  // Return true to collapse action view
+        }
+
+        &#64;Override
+        public boolean onMenuItemActionExpand(MenuItem item) {
+            // Do something when expanded
+            return true;  // Return true to expand action view
+        }
+    });
+}
+</pre>
+
+
+
+
+<h2 id="ActionProvider">Adding an Action Provider</h2>
+
+<div class="figure" style="width:240px">
+  <img src="../../../images/ui/actionbar-shareaction@2x.png" alt="" width="240" />
+  <p class="img-caption"><strong>Figure 6.</strong> An action bar with
+  <code><a href="../../../reference/android/widget/ShareActionProvider.html">ShareActionProvider</a></code> expanded to show share targets.</p>
+</div>
+
+<p>Similar to an <a href="#ActionView">action view</a>, an <em>action provider</em>
+replaces an action button with a customized layout. However,
+unlike an action view, an action provider takes control of all the action's behaviors
+and an action provider can display a submenu when pressed.</p>
+
+<p>To declare an action provider, supply the <code>actionViewClass</code> attribute in the
+menu <code>&lt;item></code> tag with a fully-qualified class name for an
+<code><a href="../../../reference/android/support/v4/view/ActionProvider.html">ActionProvider</a></code>.</p>
+
+<p>You can build your own action provider by extending the <code><a href="../../../reference/android/support/v4/view/ActionProvider.html">ActionProvider</a></code> class, but Android provides some pre-built action providers
+such as <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code>, which facilitates a "share" action
+by showing a list of possible apps for sharing directly in the action bar (as shown in figure
+6).</p>
+
+<p>Because each <code><a href="../../../reference/android/support/v4/view/ActionProvider.html">ActionProvider</a></code> class defines its own action
+behaviors, you don't need to listen for the action in the <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> method. If necessary though,
+you can still listen for the click event in the <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> method in case you need to simultaneously perform another action. But be
+sure to return <code>false</code> so that the the action provider still receives the <code><a href="../../../reference/android/support/v4/view/ActionProvider.html#onPerformDefaultAction()">onPerformDefaultAction()</a></code> callback to perform its intended
+action.</p>
+
+
+<p>However, if the action provider provides a submenu of actions, then your
+activity does not receive a call to <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> when the user opens the list or selects one of the submenu items.</p>
+
+
+
+<h3 id="ShareActionProvider">Using the ShareActionProvider</h3>
+
+<p>To add a "share" action with <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code>,
+define the <code>actionProviderClass</code> for an <code>&lt;item&gt;</code> tag with
+the <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> class. For example:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
+    &lt;item android:id="@+id/action_share"
+          android:title="@string/share"
+          yourapp:showAsAction="ifRoom"
+          <strong>yourapp:actionProviderClass="android.support.v7.widget.ShareActionProvider"</strong>
+          /&gt;
+    ...
+&lt;/menu>
+</pre>
+
+<p>Now the action provider takes control of the action item and handles both
+its appearance and behavior. But you must
+still provide a title for the item to be used when it appears in the action overflow.</p>
+
+<p>The only thing left to do is define
+the <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> you want to use for sharing. To do so, edit
+your <code><a href="../../../reference/android/app/Activity.html#onCreateOptionsMenu(android.view.Menu)">onCreateOptionsMenu()</a></code> method to call <code><a href="../../../reference/android/support/v4/view/MenuItemCompat.html#getActionProvider(android.view.MenuItem)">MenuItemCompat.getActionProvider()</a></code>
+and pass it the <code><a href="../../../reference/android/view/MenuItem.html">MenuItem</a></code> holding the action provider. Then call <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html#setShareIntent(android.content.Intent)">setShareIntent()</a></code> on the
+returned <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> and pass it an
+<code><a href="../../../reference/android/content/Intent.html#ACTION_SEND">ACTION_SEND</a></code> intent with the appropriate content attached.</p>
+
+<p>You should call <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html#setShareIntent(android.content.Intent)">setShareIntent()</a></code> once during <code><a href="../../../reference/android/app/Activity.html#onCreateOptionsMenu(android.view.Menu)">onCreateOptionsMenu()</a></code> to initialize the share action,
+but because the user context might change, you must update the intent any time the shareable
+content changes by again calling <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html#setShareIntent(android.content.Intent)">setShareIntent()</a></code>.</p>
+
+<p>For example:</p>
+
+<pre>
+private ShareActionProvider mShareActionProvider;
+
+&#64;Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main_activity_actions, menu);
+
+    // Set up ShareActionProvider's default share intent
+    MenuItem shareItem = menu.findItem(R.id.action_share);
+    mShareActionProvider = (ShareActionProvider)
+            MenuItemCompat.getActionProvider(shareItem);
+    mShareActionProvider.setShareIntent(getDefaultIntent());
+
+    return super.onCreateOptionsMenu(menu);
+}
+
+/** Defines a default (dummy) share intent to initialize the action provider.
+  * However, as soon as the actual content to be used in the intent
+  * is known or changes, you must update the share intent by again calling
+  * mShareActionProvider.<code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html#setShareIntent(android.content.Intent)">setShareIntent()</a></code>
+  */
+private Intent getDefaultIntent() {
+    Intent intent = new Intent(Intent.ACTION_SEND);
+    intent.setType("image/*");
+    return intent;
+}
+</pre>
+
+<p>The <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> now handles all user interaction with
+the item and you <em>do not</em> need to handle click events from the <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> callback method.</p>
+
+
+<p>By default, the <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> retains a ranking for each
+share target based on how often the user selects each one. The share targets used more frequently
+appear at the top of the drop-down list and the target used most often appears directly in the
+action bar as the default share target. By default, the ranking information is saved in a private
+file with a name specified by <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html#DEFAULT_SHARE_HISTORY_FILE_NAME">DEFAULT_SHARE_HISTORY_FILE_NAME</a></code>. If you use the
+<code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> or an extension of it for only one type of
+action, then you should continue to use this default history file and there's nothing you need to
+do. However, if you use <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> or an extension of it
+for multiple actions with semantically different meanings, then each <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> should specify its own history file in order to
+maintain its own history. To specify a different history file for the <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code>, call <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html#setShareHistoryFileName(java.lang.String)">setShareHistoryFileName()</a></code>
+and provide an XML file name (for example, <code>"custom_share_history.xml"</code>).</p>
+
+
+<p class="note"><strong>Note:</strong> Although the <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> ranks share targets based on frequency of use, the
+behavior is extensible and extensions of <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> can
+perform different behaviors and ranking based on the history file (if appropriate).</p>
+
+
+
+
+<h3 id="CreatingActionProvider">Creating a custom action provider</h3>
+
+<p>Creating your own action provider allows you to re-use and manage dynamic action item
+behaviors in a self-contained module, rather than handle action item transformations and
+behaviors in your fragment or activity
+code. As shown in the previous section, Android already provides an implementation of <code><a href="../../../reference/android/support/v4/view/ActionProvider.html">ActionProvider</a></code> for share actions: the <code><a href="../../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code>.</p>
+
+<p>To create your own action provider for a different action, simply extend the
+<code><a href="../../../reference/android/support/v4/view/ActionProvider.html">ActionProvider</a></code> class and implement
+its callback methods as appropriate. Most importantly, you should implement the following:</p>
+
+<dl>
+  <dt><code><a href="../../../reference/android/support/v4/view/ActionProvider.html#ActionProvider(android.content.Context)">ActionProvider()</a></code></dt>
+  <dd>This constructor passes you the application <code><a href="../../../reference/android/content/Context.html">Context</a></code>, which you
+should save in a member field to use in the other callback methods.</dd>
+
+  <dt><code><a href="../../../reference/android/support/v4/view/ActionProvider.html#onCreateActionView(android.view.MenuItem)">onCreateActionView(MenuItem)</a></code></dt>
+  <dd>This is where you define the action view for the item. Use the <code><a href="../../../reference/android/content/Context.html">Context</a></code> acquired from the constructor to instantiate a <code><a href="../../../reference/android/view/LayoutInflater.html">LayoutInflater</a></code> and inflate your action view layout from an XML resource, then hook
+up event listeners. For example:
+<pre>
+public View onCreateActionView(MenuItem forItem) {
+    // Inflate the action view to be shown on the action bar.
+    LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+    View view = layoutInflater.inflate(R.layout.action_provider, null);
+    ImageButton button = (ImageButton) view.findViewById(R.id.button);
+    button.setOnClickListener(new View.OnClickListener() {
+        &#064;Override
+        public void onClick(View v) {
+            // Do something...
+        }
+    });
+    return view;
+}
+</pre>
+</dd>
+
+  <dt><code><a href="../../../reference/android/support/v4/view/ActionProvider.html#onPerformDefaultAction()">onPerformDefaultAction()</a></code></dt>
+  <dd>The system calls this when the menu item is selected from the action overflow and the
+action provider should perform a default action for the menu item.
+  <p>However, if your action provider provides a submenu, through the <code><a href="../../../reference/android/support/v4/view/ActionProvider.html#onPrepareSubMenu(android.view.SubMenu)">onPrepareSubMenu()</a></code> callback, then the
+submenu appears even when the action provider is placed in the action overflow. Thus, <code><a href="../../../reference/android/support/v4/view/ActionProvider.html#onPerformDefaultAction()">onPerformDefaultAction()</a></code> is never called when there is a
+submenu.</p>
+
+  <p class="note"><strong>Note:</strong> An activity or a fragment that implements <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> can override the action
+provider's default behavior (unless it uses a submenu) by handling the item-selected event (and
+returning <code>true</code>), in which case, the system does not call <code><a href="../../../reference/android/support/v4/view/ActionProvider.html#onPerformDefaultAction()">onPerformDefaultAction()</a></code>.</p>
+
+</dd>
+</dl>
+
+<p>For an example extension of <code><a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></code>, see <a
+href="../../../resources/samples/ApiDemos/src/com/example/android/apis/app/ActionBarSettingsActionProviderActivity.html"
+>ActionBarSettingsActionProviderActivity</a>.</p>
+
+
+
+
+<h2 id="Tabs">Adding Navigation Tabs</h2>
+
+<img src="../../../images/ui/actionbar-tabs@2x.png" width="760" alt="" />
+<p class="img-caption"><strong>Figure 7.</strong> Action bar tabs on a wide screen.</p>
+
+<a class="notice-designers" href="../../../design/building-blocks/tabs.html">
+  <div>
+    <h3>Design Guide</h3>
+    <p>Tabs</p>
+  </div>
+</a>
+
+<a class="notice-developers" href="../../../training/implementing-navigation/lateral.html">
+  <div>
+    <h3>Also read</h3>
+    <p>Creating Swipe Views with Tabs</p>
+  </div>
+</a>
+
+
+<div class="figure" style="width:240px">
+  <img src="../../../images/ui/actionbar-tabs-stacked@2x.png" width="240" alt="" />
+  <p class="img-caption"><strong>Figure 8.</strong> Tabs on a narrow screen.</p>
+</div>
+
+<p>Tabs in the action bar make it easy for users to explore and switch between different views in
+your app. The tabs provided by the <code><a href="../../../reference/android/support/v7/app/ActionBar.html">ActionBar</a></code> are ideal because they
+adapt to different screen sizes. For example, when the screen is wide enough the tabs appear in the
+action bar alongside the action buttons (such as when on a tablet, shown in figure 7), while when
+on a narrow screen they appear in a separate bar (known as the "stacked action bar", shown in
+figure 8). In some cases, the Android system will instead show your tab items as a drop-down list
+to ensure the best fit in the action bar.</p>
+
+<p>To get started, your layout must include a <code><a href="../../../reference/android/view/ViewGroup.html">ViewGroup</a></code> in which you place
+each <code><a href="../../../reference/android/app/Fragment.html">Fragment</a></code> associated with a tab. Be sure the <code><a href="../../../reference/android/view/ViewGroup.html">ViewGroup</a></code>
+has a resource ID so you can reference it from your code and swap the tabs within it.
+Alternatively, if the tab content will fill the activity layout, then your activity doesn't need a
+layout at all (you don't even need to call <code><a href="../../../reference/android/app/Activity.html#setContentView(android.view.View)">setContentView()</a></code>). Instead, you can place each fragment in the default root view, which you can
+refer to with the <code>android.R.id.content</code> ID.</p>
+
+
+<p>Once you determine where the fragments appear in the layout, the basic procedure to add tabs
+is:</p>
+<ol>
+  <li>Implement the <code><a href="../../../reference/android/support/v7/app/ActionBar.TabListener.html">ActionBar.TabListener</a></code> interface. This interface
+  provides callbacks for tab events, such as when the user presses one so you can swap the
+  tabs.</li>
+  <li>For each tab you want to add, instantiate an <code><a href="../../../reference/android/support/v7/app/ActionBar.Tab.html">ActionBar.Tab</a></code>
+  and set the <code><a href="../../../reference/android/support/v7/app/ActionBar.TabListener.html">ActionBar.TabListener</a></code> by calling <code><a href="../../../reference/android/support/v7/app/ActionBar.Tab.html#setTabListener(android.support.v7.app.ActionBar.TabListener)">setTabListener()</a></code>. Also set the tab's title
+  and with <code><a href="../../../reference/android/app/ActionBar.Tab.html#setText(int)">setText()</a></code> (and optionally, an icon with
+  <code><a href="../../../reference/android/app/ActionBar.Tab.html#setIcon(android.graphics.drawable.Drawable)">setIcon()</a></code>).</li>
+  <li>Then add each tab to the action bar by calling <code><a href="../../../reference/android/support/v7/app/ActionBar.html#addTab(android.support.v7.app.ActionBar.Tab)">addTab()</a></code>.</li>
+</ol>
+
+<p>Notice that the <code><a href="../../../reference/android/support/v7/app/ActionBar.TabListener.html">ActionBar.TabListener</a></code>
+callback methods don't specify which fragment is associated with the tab, but merely which
+<code><a href="../../../reference/android/support/v7/app/ActionBar.Tab.html">ActionBar.Tab</a></code> was selected.
+You must define your own association
+between each <code><a href="../../../reference/android/app/ActionBar.Tab.html">ActionBar.Tab</a></code> and the appropriate <code><a href="../../../reference/android/app/Fragment.html">Fragment</a></code> that
+it represents. There are several ways you
+can define the association, depending on your design.</p>
+
+<p>For example, here's how you might implement the <code><a href="../../../reference/android/app/ActionBar.TabListener.html">ActionBar.TabListener</a></code>
+such that each tab uses its own instance of the listener:</p>
+<pre>
+public static class TabListener&lt;T extends Fragment> implements ActionBar.TabListener {
+    private Fragment mFragment;
+    private final Activity mActivity;
+    private final String mTag;
+    private final Class&lt;T> mClass;
+
+    /** Constructor used each time a new tab is created.
+      * @param activity  The host Activity, used to instantiate the fragment
+      * @param tag  The identifier tag for the fragment
+      * @param clz  The fragment's Class, used to instantiate the fragment
+      */
+    public TabListener(Activity activity, String tag, Class&lt;T> clz) {
+        mActivity = activity;
+        mTag = tag;
+        mClass = clz;
+    }
+
+    /* The following are each of the <code><a href="../../../reference/android/app/ActionBar.TabListener.html">ActionBar.TabListener</a></code> callbacks */
+
+    public void onTabSelected(Tab tab, FragmentTransaction ft) {
+        // Check if the fragment is already initialized
+        if (mFragment == null) {
+            // If not, instantiate and add it to the activity
+            mFragment = Fragment.instantiate(mActivity, mClass.getName());
+            ft.add(android.R.id.content, mFragment, mTag);
+        } else {
+            // If it exists, simply attach it in order to show it
+            ft.attach(mFragment);
+        }
+    }
+
+    public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+        if (mFragment != null) {
+            // Detach the fragment, because another one is being attached
+            ft.detach(mFragment);
+        }
+    }
+
+    public void onTabReselected(Tab tab, FragmentTransaction ft) {
+        // User selected the already selected tab. Usually do nothing.
+    }
+}
+</pre>
+
+<p class="caution"><strong>Caution:</strong> You <strong>must not</strong> call <code><a href="../../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> for the fragment transaction in each of these
+callbacks&mdash;the system calls it for you and it may throw an exception if you call it yourself.
+You also <strong>cannot</strong> add these fragment transactions to the back stack.</p>
+
+<p>In this example, the listener simply attaches (<code><a href="../../../reference/android/app/FragmentTransaction.html#attach(android.app.Fragment)">attach()</a></code>) a fragment to the activity layout&mdash;or if not instantiated, creates the fragment and
+adds (<code><a href="../../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add()</a></code>) it to the layout (as a child of the <code>android.R.id.content</code> view group)&mdash;when the respective tab is selected, and detaches (<code><a href="../../../reference/android/app/FragmentTransaction.html#detach(android.app.Fragment)">detach()</a></code>) it when the tab is unselected.</p>
+
+<p>All that remains is to create each <code><a href="../../../reference/android/app/ActionBar.Tab.html">ActionBar.Tab</a></code> and add it to the <code><a href="../../../reference/android/app/ActionBar.html">ActionBar</a></code>. Additionally, you must call <code><a href="../../../reference/android/app/ActionBar.html#setNavigationMode(int)">setNavigationMode(NAVIGATION_MODE_TABS)</a></code> to make the
+tabs visible.</p>
+
+<p>For example, the following code adds two tabs using the listener defined above:</p>
+
+<pre>
+&#64;Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    // Notice that setContentView() is not used, because we use the root
+    // android.R.id.content as the container for each fragment
+
+    // setup action bar for tabs
+    ActionBar actionBar = getSupportActionBar();
+    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+    actionBar.setDisplayShowTitleEnabled(false);
+
+    Tab tab = actionBar.newTab()
+                       .setText(R.string.artist)
+                       .setTabListener(new TabListener&lt;ArtistFragment>(
+                               this, "artist", ArtistFragment.class));
+    actionBar.addTab(tab);
+
+    tab = actionBar.newTab()
+                   .setText(R.string.album)
+                   .setTabListener(new TabListener&lt;AlbumFragment>(
+                           this, "album", AlbumFragment.class));
+    actionBar.addTab(tab);
+}
+</pre>
+
+
+<p>If your activity stops, you should retain the currently selected tab with the <a href=
+"../../../guide/components/activities.html#SavingActivityState">saved instance state</a> so you
+can open the appropriate tab when the user returns. When it's time to save the state, you can query
+the currently selected tab with <code><a href="../../../reference/android/support/v7/app/ActionBar.html#getSelectedNavigationIndex()">getSelectedNavigationIndex()</a></code>. This returns the index position of
+the selected tab.</p>
+
+
+<p class="caution"><strong>Caution:</strong> It's important that you save the state of each fragment
+so when users switch fragments with the tabs and then return to a previous
+fragment, it looks the way it did when they left. Some of the state is saved by default, but you
+may need to manually save state for customized views. For information about saving the state of your
+fragment, see the <a href="../../../guide/components/fragments.html">Fragments</a>
+API guide.</p>
+
+<p class="note"><strong>Note:</strong> The above implementation for <code><a href="../../../reference/android/support/v7/app/ActionBar.TabListener.html">ActionBar.TabListener</a></code> is one of several possible techniques. Another popular
+option is to use <code><a href="../../../reference/android/support/v4/view/ViewPager.html">ViewPager</a></code> to manage the fragments so users
+can also use a swipe gesture to switch tabs. In this case, you simply tell the
+<code><a href="../../../reference/android/support/v4/view/ViewPager.html">ViewPager</a></code> the current tab position in the
+<code><a href="../../../reference/android/support/v7/app/ActionBar.TabListener.html#onTabSelected(android.support.v7.app.ActionBar.Tab, android.support.v4.app.FragmentTransaction)">onTabSelected()</a></code> callback.
+For more information, read
+<a href="../../../training/implementing-navigation/lateral.html"
+>Creating Swipe Views with Tabs</a>.</p>
+
+
+
+
+
+<h2 id="Dropdown">Adding Drop-down Navigation</h2>
+
+<div class="figure" style="width:240px">
+  <img src="../../../images/ui/actionbar-dropdown@2x.png" alt="" width="240" />
+  <p class="img-caption"><strong>Figure 9.</strong> A drop-down navigation list in the
+action bar.</p>
+</div>
+
+<p>As another mode of navigation (or filtering) for your activity, the action bar offers a built
+in drop-down list (also known as a "spinner"). For example, the drop-down list can offer different
+modes by which content in the activity is sorted.</p>
+
+<p>Using the drop-down list is useful when changing the content is important but not necessarily a
+frequent occurrence. In cases where switching the content is more frequent,
+you should use <a href="#Tabs">navigation tabs</a> instead.</p>
+
+
+<p>The basic procedure to enable drop-down navigation is:</p>
+
+<ol>
+  <li>Create a <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code> that provides the
+list of selectable items for the drop-down and the layout to use when drawing each item in the
+list.</li>
+  <li>Implement <code><a href="../../../reference/android/support/v7/app/ActionBar.OnNavigationListener.html">ActionBar.OnNavigationListener</a></code> to define the
+  behavior that occurs when the user selects an item from the list.</li>
+  <li>During your activity's <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> method, enable the action bar's drop-down list by calling <code><a href="../../../reference/android/support/v7/app/ActionBar.html#setNavigationMode(int)">setNavigationMode(NAVIGATION_MODE_LIST)</a></code>.
+  </li>
+  <li>Set the callback for the drop-down list with <code><a href="../../../reference/android/support/v7/app/ActionBar.html#setListNavigationCallbacks(android.widget.SpinnerAdapter, android.support.v7.app.ActionBar.OnNavigationListener)">setListNavigationCallbacks()</a></code>.
+For example:
+<pre>
+actionBar.setListNavigationCallbacks(mSpinnerAdapter, mNavigationCallback);
+</pre>
+<p>This method takes your <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code> and <code><a href="../../../reference/android/support/v7/app/ActionBar.OnNavigationListener.html">ActionBar.OnNavigationListener</a></code>.</p>
+</li>
+</ol>
+
+<p>This procedure is relatively short, but implementing the <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code>
+and <code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html">ActionBar.OnNavigationListener</a></code> is where most of the work is done. There are
+many ways you can implement these to define the functionality for your drop-down navigation and
+implementing various types of <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code> is beyond the scope of this
+document (you should refer to the <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code> class reference for more
+information). However, below is an example for a <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code> and <code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html">ActionBar.OnNavigationListener</a></code> to get you started (click the title to reveal the
+sample).</p>
+
+
+
+<div class="toggle-content closed">
+
+  <h3 id="Spinner"><a href="#" onclick="return toggleContent(this)">
+    <img src="../../../assets/images/triangle-closed.png" class="toggle-content-img" alt="" />
+    Example SpinnerAdapter and OnNavigationListener
+  </a></h3>
+
+  <div class="toggle-content-toggleme">
+
+<p><code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code> is an adapter that provides data for a spinner widget,
+such as the drop-down list in the action bar. <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code> is an interface
+that you can implement, but Android includes some useful implementations that you can extend, such
+as <code><a href="../../../reference/android/widget/ArrayAdapter.html">ArrayAdapter</a></code> and <code><a href="../../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code>. For example, here's an easy way to create a <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code> by using <code><a href="../../../reference/android/widget/ArrayAdapter.html">ArrayAdapter</a></code> implementation, which
+uses a string array as the data source:</p>
+
+<pre>
+SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.action_list,
+          android.R.layout.simple_spinner_dropdown_item);
+</pre>
+
+<p>The <code><a href="../../../reference/android/widget/ArrayAdapter.html#createFromResource(android.content.Context, int, int)">createFromResource()</a></code> method takes
+three parameters: the application <code><a href="../../../reference/android/content/Context.html">Context</a></code>, the resource ID for the string
+array, and the layout to use for each list item.</p>
+
+<p>A <a href="../../../guide/topics/resources/string-resource.html#StringArray">string array</a>
+defined in a resource looks like this:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+    &lt;string-array name="action_list"&gt;
+        &lt;item&gt;Mercury&lt;/item&gt;
+        &lt;item&gt;Venus&lt;/item&gt;
+        &lt;item&gt;Earth&lt;/item&gt;
+    &lt;/string-array&gt;
+&lt;/pre&gt;
+</pre>
+
+<p>The <code><a href="../../../reference/android/widget/ArrayAdapter.html">ArrayAdapter</a></code> returned by <code><a href="../../../reference/android/widget/ArrayAdapter.html#createFromResource(android.content.Context, int, int)">createFromResource()</a></code> is complete and ready for you
+to pass it to <code><a href="../../../reference/android/app/ActionBar.html#setListNavigationCallbacks(android.widget.SpinnerAdapter, android.app.ActionBar.OnNavigationListener)">setListNavigationCallbacks()</a></code>
+(in step 4 from above). Before you do, though, you need to create the <code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html">OnNavigationListener</a></code>.</p>
+
+
+<p>Your implementation of <code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html">ActionBar.OnNavigationListener</a></code> is where you handle
+fragment changes or other modifications to your activity when the user selects an item from the
+drop-down list. There's only one callback method to implement in the listener: <code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html#onNavigationItemSelected(int, long)">onNavigationItemSelected()</a></code>.</p>
+
+<p>The <code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html#onNavigationItemSelected(int, long)">onNavigationItemSelected()</a></code>
+method receives the position of the item in the list and a unique item ID provided by the <code><a href="../../../reference/android/widget/SpinnerAdapter.html">SpinnerAdapter</a></code>.</p>
+
+<p>Here's an example that instantiates an anonymous implementation of <code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html">OnNavigationListener</a></code>, which inserts a <code><a href="../../../reference/android/app/Fragment.html">Fragment</a></code> into the
+layout container identified by <code>R.id.fragment_container</code>:</p>
+
+<pre>
+mOnNavigationListener = new OnNavigationListener() {
+  // Get the same strings provided for the drop-down's ArrayAdapter
+  String[] strings = getResources().getStringArray(R.array.action_list);
+
+  &#64;Override
+  public boolean onNavigationItemSelected(int position, long itemId) {
+    // Create new fragment from our own Fragment class
+    ListContentFragment newFragment = new ListContentFragment();
+    FragmentTransaction ft = openFragmentTransaction();
+    // Replace whatever is in the fragment container with this fragment
+    //  and give the fragment a tag name equal to the string at the position selected
+    ft.replace(R.id.fragment_container, newFragment, strings[position]);
+    // Apply changes
+    ft.commit();
+    return true;
+  }
+};
+</pre>
+
+<p>This instance of <code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html">OnNavigationListener</a></code> is
+complete and you can now call <code><a href="../../../reference/android/app/ActionBar.html#setListNavigationCallbacks(android.widget.SpinnerAdapter, android.app.ActionBar.OnNavigationListener)">setListNavigationCallbacks()</a></code> (in step 4), passing the <code><a href="../../../reference/android/widget/ArrayAdapter.html">ArrayAdapter</a></code> and this
+<code><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html">OnNavigationListener</a></code>.</p>
+
+<p>In this example, when the user selects an item from the drop-down list, a fragment is added to
+the layout (replacing the current fragment in the <code>R.id.fragment_container</code> view). The
+fragment added is given a tag that uniquely identifies it, which is the same string used to
+identify the fragment in the drop-down list.</p>
+
+<p>Here's a look at the <code>ListContentFragment</code> class that defines each fragment in this
+example:</p>
+
+<pre>
+public class ListContentFragment extends Fragment {
+    private String mText;
+
+    &#64;Override
+    public void onAttach(Activity activity) {
+      // This is the first callback received; here we can set the text for
+      // the fragment as defined by the tag specified during the fragment transaction
+      super.onAttach(activity);
+      mText = getTag();
+    }
+
+    &#64;Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        // This is called to define the layout for the fragment;
+        // we just create a TextView and set its text to be the fragment tag
+        TextView text = new TextView(getActivity());
+        text.setText(mText);
+        return text;
+    }
+}
+</pre>
+
+  </div><!-- end toggle-content-toggleme -->
+
+</div><!-- end toggle-content -->
+
+
+
+
+
+
+
+<h2 id="Style">Styling the Action Bar</h2>
+
+<p>If you want to implement a visual design that represents your app's brand, the action bar allows
+you to customize each detail of its appearance, including the action bar color, text colors, button
+styles, and more. To do so, you need to use Android's <a href=
+"../../../guide/topics/ui/themes.html">style and theme</a> framework to restyle the action bar
+using special style properties.</p>
+
+<p class="caution"><strong>Caution:</strong> For all background drawables you provide, be sure to
+use <a href="../../../guide/topics/graphics/2d-graphics.html#nine-patch">Nine-Patch drawables</a>
+to allow stretching. The nine-patch image should be <em>smaller</em> than 40dp tall and 30dp
+wide.</p>
+
+
+
+<h3 id="GeneralStyles">General appearance</h3>
+
+<dl>
+  <dt><code><a href="../../../reference/android/R.attr.html#actionBarStyle">actionBarStyle</a></code></dt>
+  <dd>Specifies a style resource that defines various style properties
+  for the action bar.
+      <p>The default for this style for this
+      is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Widget_AppCompat_ActionBar">Widget.AppCompat.ActionBar</a></code>, which is what you should use as the parent style.</p>
+      <p>Supported styles include:</p>
+    <dl>
+      <dt><code><a href="../../../reference/android/R.attr.html#background">background</a></code></dt>
+        <dd>Defines a drawable resource for the action bar background.</dd>
+      <dt><code><a href="../../../reference/android/R.attr.html#backgroundStacked">backgroundStacked</a></code></dt>
+        <dd>Defines a drawable resource for the stacked action bar
+          (the <a href="#Tabs">tabs</a>).</dd>
+      <dt><code><a href="../../../reference/android/R.attr.html#backgroundSplit">backgroundSplit</a></code></dt>
+        <dd>Defines a drawable resource for the <a href="#SplitBar">split action bar</a>.</dd>
+      <dt><code><a href="../../../reference/android/R.attr.html#actionButtonStyle">actionButtonStyle</a></code></dt>
+        <dd>Defines a style resource for action buttons.
+          <p>The default for this style for this
+      is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Widget_AppCompat_ActionButton">Widget.AppCompat.ActionButton</a></code>, which is what you should use as the parent style.</p>
+        </dd>
+      <dt><code><a href="../../../reference/android/R.attr.html#actionOverflowButtonStyle">actionOverflowButtonStyle</a></code></dt>
+        <dd>Defines a style resource for overflow action items.
+          <p>The default for this style for this
+      is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Widget_AppCompat_ActionButton_Overflow">Widget.AppCompat.ActionButton.Overflow</a></code>, which is what you should use as the parent style.</p>
+        </dd>
+      <dt><code><a href="../../../reference/android/R.attr.html#displayOptions">displayOptions</a></code></dt>
+        <dd>Defines one or more action bar display options, such as whether to use the app logo,
+        show the activity title, or enable the <em>Up</em> action. See <code><a href="../../../reference/android/R.attr.html#displayOptions">displayOptions</a></code> for all possible values.
+      <dt><code><a href="../../../reference/android/R.attr.html#divider">divider</a></code></dt>
+        <dd>Defines a drawable resource for the divider between action items.</dd>
+      <dt><code><a href="../../../reference/android/R.attr.html#titleTextStyle">titleTextStyle</a></code></dt>
+        <dd>Defines a style resource for the action bar title.
+          <p>The default for this style for this
+      is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#TextAppearance_AppCompat_Widget_ActionBar_Title">TextAppearance.AppCompat.Widget.ActionBar.Title</a></code>, which is what you should use as the parent
+      style.</p></dd>
+    </dl>
+  </dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#windowActionBarOverlay">windowActionBarOverlay</a></code></dt>
+  <dd>Declares whether the action bar should overlay the activity layout rather than offset the
+activity's layout position (for example, the Gallery app uses overlay mode). This is
+<code>false</code> by default.
+  <p>Normally, the action bar requires its own space on the screen and your activity layout fills in
+what's left over. When the action bar is in overlay mode, your activity layout uses all the
+available space and the system draws the action bar on top. Overlay mode can be useful if you want
+your content to keep a fixed size and position when the action bar is hidden and shown. You might
+also like to use it purely as a visual effect, because you can use a semi-transparent background
+for the action bar so the user can still see some of your activity layout behind the action
+bar.</p>
+  <p class="note"><strong>Note:</strong> The <code><a href="../../../reference/android/R.style.html#Theme_Holo">Holo</a></code> theme families
+draw the action bar with a semi-transparent background by default. However, you can modify it with
+your own styles and the <code><a href="../../../reference/android/R.style.html#Theme_DeviceDefault">DeviceDefault</a></code> theme on
+different devices might use an opaque background by default.</p>
+  <p>When overlay mode is enabled, your activity layout has no awareness of the action bar lying on
+top of it. So, you must be careful not to place any important information or UI components in the
+area overlaid by the action bar. If appropriate, you can refer to the platform's value for <code><a href="../../../reference/android/R.attr.html#actionBarSize">actionBarSize</a></code> to determine the height of the action bar, by referencing it
+in your XML layout. For example:</p>
+<pre>
+&lt;SomeView
+    ...
+    android:layout_marginTop="?android:attr/actionBarSize" /&gt;
+</pre>
+  <p>You can also retrieve the action bar height at runtime with <code><a href="../../../reference/android/app/ActionBar.html#getHeight()">getHeight()</a></code>. This reflects the height of the action bar at the time it's
+called, which might not include the stacked action bar (due to navigation tabs) if called during
+early activity lifecycle methods. To see how you can determine the total height at runtime,
+including the stacked action bar, see the <a href=
+"../../../resources/samples/HoneycombGallery/src/com/example/android/hcgallery/TitlesFragment.html">
+<code>TitlesFragment</code></a> class in the <a href=
+"../../../resources/samples/HoneycombGallery/index.html">Honeycomb Gallery</a> sample app.</p>
+
+</dd>
+
+</dl>
+
+
+<h3 id="ActionItemStyles">Action items</h3>
+
+<dl>
+  <dt><code><a href="../../../reference/android/R.attr.html#actionButtonStyle">actionButtonStyle</a></code></dt>
+  <dd>Defines a style resource for the action item buttons.
+      <p>The default for this style for this
+  is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Widget_AppCompat_ActionButton">Widget.AppCompat.ActionButton</a></code>, which is what you should use as the parent style.</p></dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#actionBarItemBackground">actionBarItemBackground</a></code></dt>
+  <dd>Defines a drawable resource for each action item's background.
+    This should be a <a href="../../../guide/topics/resources/drawable-resource.html#StateList"
+    >state-list drawable</a> to indicate different selected states.</dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#itemBackground">itemBackground</a></code></dt>
+  <dd>Defines a drawable resource for each action overflow item's background.
+    This should be a <a href="../../../guide/topics/resources/drawable-resource.html#StateList"
+    >state-list drawable</a> to indicate different selected states.</dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#actionBarDivider">actionBarDivider</a></code></dt>
+  <dd>Defines a drawable resource for the divider between action items.</dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#actionMenuTextColor">actionMenuTextColor</a></code></dt>
+  <dd>Defines a color for text that appears in an action item.</dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#actionMenuTextAppearance">actionMenuTextAppearance</a></code></dt>
+  <dd>Defines a style resource for text that appears in an action item.</dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#actionBarWidgetTheme">actionBarWidgetTheme</a></code></dt>
+  <dd>Defines a theme resource for widgets that are inflated into the action bar as <a
+href="#ActionView">action views</a>.</dd>
+</dl>
+
+
+<h3 id="NavigationStyles">Navigation tabs</h3>
+
+<dl>
+  <dt><code><a href="../../../reference/android/R.attr.html#actionBarTabStyle">actionBarTabStyle</a></code></dt>
+  <dd>Defines a style resource for tabs in the action bar.
+      <p>The default for this style for this
+  is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Widget_AppCompat_ActionBar_TabView">Widget.AppCompat.ActionBar.TabView</a></code>, which is what you should use as the parent style.</p></dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#actionBarTabBarStyle">actionBarTabBarStyle</a></code></dt>
+  <dd>Defines a style resource for the thin bar that appears below the navigation tabs.
+      <p>The default for this style for this
+  is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Widget_AppCompat_ActionBar_TabBar">Widget.AppCompat.ActionBar.TabBar</a></code>, which is what you should use as the parent style.</p></dd>
+
+  <dt><code><a href="../../../reference/android/R.attr.html#actionBarTabTextStyle">actionBarTabTextStyle</a></code></dt>
+  <dd>Defines a style resource for text in the navigation tabs.
+      <p>The default for this style for this
+  is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Widget_AppCompat_ActionBar_TabText">Widget.AppCompat.ActionBar.TabText</a></code>, which is what you should use as the parent style.</p></dd>
+</dl>
+
+
+<h3 id="DropDownStyles">Drop-down lists</h3>
+
+<dl>
+  <dt><code><a href="../../../reference/android/R.attr.html#actionDropDownStyle">actionDropDownStyle</a></code></dt>
+  <dd>Defines a style for the drop-down navigation (such as the background and text styles).
+      <p>The default for this style for this
+  is <code><a href="../../../reference/android/support/v7/appcompat/R.style.html#Widget_AppCompat_Spinner_DropDown_ActionBar">Widget.AppCompat.Spinner.DropDown.ActionBar</a></code>, which is what you should use as the parent
+  style.</p></dd>
+</dl>
+
+
+<h3 id="StyleExample">Example theme</h3>
+
+<p>Here's an example that defines a custom theme for an activity, <code>CustomActivityTheme</code>,
+that includes several styles to customize the action bar.</p>
+
+<p>Notice that there are two version for each action bar style property. The first one
+includes the <code>android:</code> prefix on the property name to support API levels 11 and higher
+that include these properties in the framework. The second version does <em>not</em>
+include the <code>android:</code> prefix and is for older versions of the platform, on which
+the system uses the style property from the support library. The effect for each is the same.</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;resources>
+    &lt;!-- the theme applied to the application or activity -->
+    &lt;style name="CustomActionBarTheme"
+           parent="&#64;style/Theme.AppCompat.Light">
+        &lt;item name="android:actionBarStyle">&#64;style/MyActionBar&lt;/item>
+        &lt;item name="android:actionBarTabTextStyle">&#64;style/TabTextStyle&lt;/item>
+        &lt;item name="android:actionMenuTextColor">&#64;color/actionbar_text&lt;/item>
+
+        &lt;!-- Support library compatibility -->
+        &lt;item name="actionBarStyle">&#64;style/MyActionBar&lt;/item>
+        &lt;item name="actionBarTabTextStyle">&#64;style/TabTextStyle&lt;/item>
+        &lt;item name="actionMenuTextColor">&#64;color/actionbar_text&lt;/item>
+    &lt;/style>
+
+    &lt;!-- general styles for the action bar -->
+    &lt;style name="MyActionBar"
+           parent="&#64;style/Widget.AppCompat.ActionBar">
+        &lt;item name="android:titleTextStyle">&#64;style/TitleTextStyle&lt;/item>
+        &lt;item name="android:background">&#64;drawable/actionbar_background&lt;/item>
+        &lt;item name="android:backgroundStacked">&#64;drawable/actionbar_background&lt;/item>
+        &lt;item name="android:backgroundSplit">&#64;drawable/actionbar_background&lt;/item>
+
+        &lt;!-- Support library compatibility -->
+        &lt;item name="titleTextStyle">&#64;style/TitleTextStyle&lt;/item>
+        &lt;item name="background">&#64;drawable/actionbar_background&lt;/item>
+        &lt;item name="backgroundStacked">&#64;drawable/actionbar_background&lt;/item>
+        &lt;item name="backgroundSplit">&#64;drawable/actionbar_background&lt;/item>
+    &lt;/style>
+
+    &lt;!-- action bar title text -->
+    &lt;style name="TitleTextStyle"
+           parent="&#64;style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        &lt;item name="android:textColor">&#64;color/actionbar_text&lt;/item>
+    &lt;/style>
+
+    &lt;!-- action bar tab text -->
+    &lt;style name="TabTextStyle"
+           parent="&#64;style/Widget.AppCompat.ActionBar.TabText">
+        &lt;item name="android:textColor">&#64;color/actionbar_text&lt;/item>
+    &lt;/style>
+&lt;/resources>
+
+</pre>
+
+<p>In your manifest file, you can apply the theme to your entire app:</p>
+
+<pre>
+&lt;application android:theme="&#64;style/CustomActionBarTheme" ... />
+</pre>
+
+<p>Or to individual activities:</p>
+
+<pre>
+&lt;activity android:theme="&#64;style/CustomActionBarTheme" ... />
+</pre>
+
+
+<p class="caution"><strong>Caution:</strong> Be certain that each theme and style declares a parent
+theme in the <code>&lt;style&gt;</code> tag, from which it inherits all styles not explicitly declared
+by your theme. When modifying the action bar, using a parent theme is important so that you can
+simply override the action bar styles you want to change without re-implementing the styles you
+want to leave alone (such as text size or padding in action items).</p>
+
+<p>For more information about using style and theme resources in your application, read <a
+href="../../../guide/topics/ui/themes.html">Styles and Themes</a>.</p>
+
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

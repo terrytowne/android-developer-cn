@@ -1,0 +1,4643 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>BluetoothAdapter - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+  <div id="doc-api-level" class="5" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/package-summary.html">android</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="selected api apilevel-5">
+  <a href="../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/bluetooth/BluetoothProfile.html">BluetoothProfile</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/bluetooth/BluetoothProfile.ServiceListener.html">BluetoothProfile.ServiceListener</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-11"><a href="../../../reference/android/bluetooth/BluetoothA2dp.html">BluetoothA2dp</a></li>
+          <li class="selected api apilevel-5"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html">BluetoothAdapter</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/bluetooth/BluetoothAssignedNumbers.html">BluetoothAssignedNumbers</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/bluetooth/BluetoothClass.html">BluetoothClass</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/bluetooth/BluetoothClass.Device.html">BluetoothClass.Device</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/bluetooth/BluetoothClass.Device.Major.html">BluetoothClass.Device.Major</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/bluetooth/BluetoothClass.Service.html">BluetoothClass.Service</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothGatt.html">BluetoothGatt</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothGattCallback.html">BluetoothGattCallback</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothGattCharacteristic.html">BluetoothGattCharacteristic</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothGattDescriptor.html">BluetoothGattDescriptor</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothGattServer.html">BluetoothGattServer</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothGattServerCallback.html">BluetoothGattServerCallback</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothGattService.html">BluetoothGattService</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/bluetooth/BluetoothHeadset.html">BluetoothHeadset</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/bluetooth/BluetoothHealth.html">BluetoothHealth</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/bluetooth/BluetoothHealthAppConfiguration.html">BluetoothHealthAppConfiguration</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/bluetooth/BluetoothHealthCallback.html">BluetoothHealthCallback</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/bluetooth/BluetoothManager.html">BluetoothManager</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/bluetooth/BluetoothSocket.html">BluetoothSocket</a></li>
+      </ul>
+    </li>
+              
+              
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12"  id="doc-col">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+Summary:
+
+  <a href="#nestedclasses">Nested Classes</a>
+  
+
+
+
+
+
+  &#124; <a href="#constants">Constants</a>
+  
+
+
+
+
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+  &#124; <a href="#promethods">Protected Methods</a>
+  
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+    final 
+    
+    class
+<h1 itemprop="name">BluetoothAdapter</h1>
+
+
+
+  
+    extends <a href="../../../reference/java/lang/Object.html">Object</a><br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-5">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../reference/java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">android.bluetooth.BluetoothAdapter</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p itemprop="articleBody">Represents the local device Bluetooth adapter. The <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html">BluetoothAdapter</a></code>
+ lets you perform fundamental Bluetooth tasks, such as initiate
+ device discovery, query a list of bonded (paired) devices,
+ instantiate a <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> using a known MAC address, and create
+ a <code><a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a></code> to listen for connection requests from other
+ devices, and start a scan for Bluetooth LE devices.
+
+ <p>To get a <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html">BluetoothAdapter</a></code> representing the local Bluetooth
+ adapter, when running on JELLY_BEAN_MR1 and below, call the
+ static <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getDefaultAdapter()">getDefaultAdapter()</a></code> method; when running on JELLY_BEAN_MR2 and
+ higher, retrieve it through
+ <code><a href="../../../reference/android/content/Context.html#getSystemService(java.lang.String)">getSystemService(String)</a></code> with
+ <code><a href="../../../reference/android/content/Context.html#BLUETOOTH_SERVICE">BLUETOOTH_SERVICE</a></code>.
+ Fundamentally, this is your starting point for all
+ Bluetooth actions. Once you have the local adapter, you can get a set of
+ <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> objects representing all paired devices with
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getBondedDevices()">getBondedDevices()</a></code>; start device discovery with
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#startDiscovery()">startDiscovery()</a></code>; or create a <code><a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a></code> to
+ listen for incoming connection requests with
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#listenUsingRfcommWithServiceRecord(java.lang.String, java.util.UUID)">listenUsingRfcommWithServiceRecord(String, UUID)</a></code>; or start a scan for
+ Bluetooth LE devices with <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#startLeScan(android.bluetooth.BluetoothAdapter.LeScanCallback)">startLeScan(LeScanCallback)</a></code>.
+
+ <p class="note"><strong>Note:</strong>
+ Most methods require the <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code>
+ permission and some also require the
+ <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code> permission.
+
+ <div class="special reference">
+ <h3>Developer Guides</h3>
+ <p>For more information about using Bluetooth, read the
+ <a href="../../../guide/topics/wireless/bluetooth.html">Bluetooth</a> developer guide.</p>
+ </div>
+
+ 
+ 
+</p>
+
+
+
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code></li><li><code><a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a></code></li>
+      </ul>
+  </div>
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<table id="nestedclasses" class="jd-sumtable"><tr><th colspan="12">Nested Classes</th></tr>
+
+
+  
+    <tr class="alt-color api apilevel-18" >
+      <td class="jd-typecol"><nobr>
+        
+         
+         
+        
+        interface</nobr></td>
+      <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a></td>
+      <td class="jd-descrcol" width="100%">Callback interface used to deliver LE scan results.&nbsp;</td>
+    </tr>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="jd-sumtable"><tr><th colspan="12">Constants</th></tr>
+
+
+    
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_CONNECTION_STATE_CHANGED">ACTION_CONNECTION_STATE_CHANGED</a></td>
+        <td class="jd-descrcol" width="100%">Intent used to broadcast the change in connection state of the local
+ Bluetooth adapter to a profile of the remote device.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_DISCOVERY_FINISHED">ACTION_DISCOVERY_FINISHED</a></td>
+        <td class="jd-descrcol" width="100%">Broadcast Action: The local Bluetooth adapter has finished the device
+ discovery process.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_DISCOVERY_STARTED">ACTION_DISCOVERY_STARTED</a></td>
+        <td class="jd-descrcol" width="100%">Broadcast Action: The local Bluetooth adapter has started the remote
+ device discovery process.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_LOCAL_NAME_CHANGED">ACTION_LOCAL_NAME_CHANGED</a></td>
+        <td class="jd-descrcol" width="100%">Broadcast Action: The local Bluetooth adapter has changed its friendly
+ Bluetooth name.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_REQUEST_DISCOVERABLE">ACTION_REQUEST_DISCOVERABLE</a></td>
+        <td class="jd-descrcol" width="100%">Activity Action: Show a system activity that requests discoverable mode.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_REQUEST_ENABLE">ACTION_REQUEST_ENABLE</a></td>
+        <td class="jd-descrcol" width="100%">Activity Action: Show a system activity that allows the user to turn on
+ Bluetooth.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_SCAN_MODE_CHANGED">ACTION_SCAN_MODE_CHANGED</a></td>
+        <td class="jd-descrcol" width="100%">Broadcast Action: Indicates the Bluetooth scan mode of the local Adapter
+ has changed.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></td>
+        <td class="jd-descrcol" width="100%">Broadcast Action: The state of the local Bluetooth adapter has been
+ changed.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ERROR">ERROR</a></td>
+        <td class="jd-descrcol" width="100%">Sentinel error value for this class.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-11" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_CONNECTION_STATE">EXTRA_CONNECTION_STATE</a></td>
+        <td class="jd-descrcol" width="100%">Extra used by <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_CONNECTION_STATE_CHANGED">ACTION_CONNECTION_STATE_CHANGED</a></code>
+
+ This extra represents the current connection state.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_DISCOVERABLE_DURATION">EXTRA_DISCOVERABLE_DURATION</a></td>
+        <td class="jd-descrcol" width="100%">Used as an optional int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_REQUEST_DISCOVERABLE">ACTION_REQUEST_DISCOVERABLE</a></code> intents to request a specific duration
+ for discoverability in seconds.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_LOCAL_NAME">EXTRA_LOCAL_NAME</a></td>
+        <td class="jd-descrcol" width="100%">Used as a String extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_LOCAL_NAME_CHANGED">ACTION_LOCAL_NAME_CHANGED</a></code>
+ intents to request the local Bluetooth name.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_PREVIOUS_CONNECTION_STATE">EXTRA_PREVIOUS_CONNECTION_STATE</a></td>
+        <td class="jd-descrcol" width="100%">Extra used by <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_CONNECTION_STATE_CHANGED">ACTION_CONNECTION_STATE_CHANGED</a></code>
+
+ This extra represents the previous connection state.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_PREVIOUS_SCAN_MODE">EXTRA_PREVIOUS_SCAN_MODE</a></td>
+        <td class="jd-descrcol" width="100%">Used as an int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_SCAN_MODE_CHANGED">ACTION_SCAN_MODE_CHANGED</a></code>
+ intents to request the previous scan mode.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_PREVIOUS_STATE">EXTRA_PREVIOUS_STATE</a></td>
+        <td class="jd-descrcol" width="100%">Used as an int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code>
+ intents to request the previous power state.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_SCAN_MODE">EXTRA_SCAN_MODE</a></td>
+        <td class="jd-descrcol" width="100%">Used as an int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_SCAN_MODE_CHANGED">ACTION_SCAN_MODE_CHANGED</a></code>
+ intents to request the current scan mode.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_STATE">EXTRA_STATE</a></td>
+        <td class="jd-descrcol" width="100%">Used as an int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code>
+ intents to request the current power state.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE">SCAN_MODE_CONNECTABLE</a></td>
+        <td class="jd-descrcol" width="100%">Indicates that inquiry scan is disabled, but page scan is enabled on the
+ local Bluetooth adapter.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE_DISCOVERABLE">SCAN_MODE_CONNECTABLE_DISCOVERABLE</a></td>
+        <td class="jd-descrcol" width="100%">Indicates that both inquiry scan and page scan are enabled on the local
+ Bluetooth adapter.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_NONE">SCAN_MODE_NONE</a></td>
+        <td class="jd-descrcol" width="100%">Indicates that both inquiry scan and page scan are disabled on the local
+ Bluetooth adapter.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_CONNECTED">STATE_CONNECTED</a></td>
+        <td class="jd-descrcol" width="100%">The profile is in connected state </td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-11" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_CONNECTING">STATE_CONNECTING</a></td>
+        <td class="jd-descrcol" width="100%">The profile is in connecting state </td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_DISCONNECTED">STATE_DISCONNECTED</a></td>
+        <td class="jd-descrcol" width="100%">The profile is in disconnected state </td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-11" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_DISCONNECTING">STATE_DISCONNECTING</a></td>
+        <td class="jd-descrcol" width="100%">The profile is in disconnecting state </td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_OFF">STATE_OFF</a></td>
+        <td class="jd-descrcol" width="100%">Indicates the local Bluetooth adapter is off.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></td>
+        <td class="jd-descrcol" width="100%">Indicates the local Bluetooth adapter is on, and ready for use.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_OFF">STATE_TURNING_OFF</a></td>
+        <td class="jd-descrcol" width="100%">Indicates the local Bluetooth adapter is turning off.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_ON">STATE_TURNING_ON</a></td>
+        <td class="jd-descrcol" width="100%">Indicates the local Bluetooth adapter is turning on.</td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#cancelDiscovery()">cancelDiscovery</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Cancel the current device discovery process.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#checkBluetoothAddress(java.lang.String)">checkBluetoothAddress</a></span>(<a href="../../../reference/java/lang/String.html">String</a> address)</nobr>
+        
+        <div class="jd-descrdiv">Validate a String Bluetooth address, such as "00:43:A8:23:10:F0"
+ <p>Alphabetic characters must be uppercase to be valid.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#closeProfileProxy(int, android.bluetooth.BluetoothProfile)">closeProfileProxy</a></span>(int profile, <a href="../../../reference/android/bluetooth/BluetoothProfile.html">BluetoothProfile</a> proxy)</nobr>
+        
+        <div class="jd-descrdiv">Close the connection of the profile proxy to the Service.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#disable()">disable</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Turn off the local Bluetooth adapter&mdash;do not use without explicit
+ user action to turn off Bluetooth.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#enable()">enable</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Turn on the local Bluetooth adapter&mdash;do not use without explicit
+ user action to turn on Bluetooth.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getAddress()">getAddress</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the hardware address of the local Bluetooth adapter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/util/Set.html">Set</a>&lt;<a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getBondedDevices()">getBondedDevices</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the set of <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> objects that are bonded
+ (paired) to the local adapter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            synchronized
+            
+            static
+            
+            <a href="../../../reference/android/bluetooth/BluetoothAdapter.html">BluetoothAdapter</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getDefaultAdapter()">getDefaultAdapter</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get a handle to the default local Bluetooth adapter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getName()">getName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the friendly Bluetooth name of the local Bluetooth adapter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getProfileConnectionState(int)">getProfileConnectionState</a></span>(int profile)</nobr>
+        
+        <div class="jd-descrdiv">Get the current connection state of a profile.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getProfileProxy(android.content.Context, android.bluetooth.BluetoothProfile.ServiceListener, int)">getProfileProxy</a></span>(<a href="../../../reference/android/content/Context.html">Context</a> context, <a href="../../../reference/android/bluetooth/BluetoothProfile.ServiceListener.html">BluetoothProfile.ServiceListener</a> listener, int profile)</nobr>
+        
+        <div class="jd-descrdiv">Get the profile proxy object associated with the profile.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-16" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getRemoteDevice(byte[])">getRemoteDevice</a></span>(byte[] address)</nobr>
+        
+        <div class="jd-descrdiv">Get a <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> object for the given Bluetooth hardware
+ address.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getRemoteDevice(java.lang.String)">getRemoteDevice</a></span>(<a href="../../../reference/java/lang/String.html">String</a> address)</nobr>
+        
+        <div class="jd-descrdiv">Get a <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> object for the given Bluetooth hardware
+ address.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getScanMode()">getScanMode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the current Bluetooth scan mode of the local Bluetooth adapter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getState()">getState</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the current state of the local Bluetooth adapter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#isDiscovering()">isDiscovering</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return true if the local Bluetooth adapter is currently in the device
+ discovery process.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#isEnabled()">isEnabled</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return true if Bluetooth is currently enabled and ready for use.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-10" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#listenUsingInsecureRfcommWithServiceRecord(java.lang.String, java.util.UUID)">listenUsingInsecureRfcommWithServiceRecord</a></span>(<a href="../../../reference/java/lang/String.html">String</a> name, <a href="../../../reference/java/util/UUID.html">UUID</a> uuid)</nobr>
+        
+        <div class="jd-descrdiv">Create a listening, insecure RFCOMM Bluetooth socket with Service Record.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#listenUsingRfcommWithServiceRecord(java.lang.String, java.util.UUID)">listenUsingRfcommWithServiceRecord</a></span>(<a href="../../../reference/java/lang/String.html">String</a> name, <a href="../../../reference/java/util/UUID.html">UUID</a> uuid)</nobr>
+        
+        <div class="jd-descrdiv">Create a listening, secure RFCOMM Bluetooth socket with Service Record.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#setName(java.lang.String)">setName</a></span>(<a href="../../../reference/java/lang/String.html">String</a> name)</nobr>
+        
+        <div class="jd-descrdiv">Set the friendly Bluetooth name of the local Bluetooth adapter.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#startDiscovery()">startDiscovery</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Start the remote device discovery process.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-18" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#startLeScan(android.bluetooth.BluetoothAdapter.LeScanCallback)">startLeScan</a></span>(<a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a> callback)</nobr>
+        
+        <div class="jd-descrdiv">Starts a scan for Bluetooth LE devices.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-18" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#startLeScan(java.util.UUID[], android.bluetooth.BluetoothAdapter.LeScanCallback)">startLeScan</a></span>(<a href="../../../reference/java/util/UUID.html">UUID[]</a> serviceUuids, <a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a> callback)</nobr>
+        
+        <div class="jd-descrdiv">Starts a scan for Bluetooth LE devices, looking for devices that
+ advertise given services.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-18" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#stopLeScan(android.bluetooth.BluetoothAdapter.LeScanCallback)">stopLeScan</a></span>(<a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a> callback)</nobr>
+        
+        <div class="jd-descrdiv">Stops an ongoing Bluetooth LE device scan.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#finalize()">finalize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Invoked when the garbage collector has detected that this instance is no longer reachable.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../reference/java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Creates and returns a copy of this <code>Object</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> o)</nobr>
+        
+        <div class="jd-descrdiv">Compares this instance with the specified object and indicates if they
+ are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#finalize()">finalize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Invoked when the garbage collector has detected that this instance is no longer reachable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#getClass()">getClass</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the unique instance of <code><a href="../../../reference/java/lang/Class.html">Class</a></code> that represents this
+ object's class.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#notify()">notify</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes a thread which is waiting on this object's monitor (by means of
+ calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#notifyAll()">notifyAll</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes all threads which are waiting on this object's monitor (by means
+ of calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a string containing a concise, human-readable description of this
+ object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait()">wait</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait(long, int)">wait</a></span>(long millis, int nanos)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait(long)">wait</a></span>(long millis)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2>Constants</h2>
+
+
+
+
+<A NAME="ACTION_CONNECTION_STATE_CHANGED"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        ACTION_CONNECTION_STATE_CHANGED
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Intent used to broadcast the change in connection state of the local
+ Bluetooth adapter to a profile of the remote device. When the adapter is
+ not connected to any profiles of any remote devices and it attempts a
+ connection to a profile this intent will sent. Once connected, this intent
+ will not be sent for any more connection attempts to any profiles of any
+ remote device. When the adapter disconnects from the last profile its
+ connected to of any remote device, this intent will be sent.
+
+ <p> This intent is useful for applications that are only concerned about
+ whether the local adapter is connected to any profile of any device and
+ are not really concerned about which profile. For example, an application
+ which displays an icon to display whether Bluetooth is connected or not
+ can use this intent.
+
+ <p>This intent will have 3 extras:
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_CONNECTION_STATE">EXTRA_CONNECTION_STATE</a></code> - The current connection state.
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_PREVIOUS_CONNECTION_STATE">EXTRA_PREVIOUS_CONNECTION_STATE</a></code>- The previous connection state.
+ <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html#EXTRA_DEVICE">EXTRA_DEVICE</a></code> - The remote device.
+
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_CONNECTION_STATE">EXTRA_CONNECTION_STATE</a></code> or <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_PREVIOUS_CONNECTION_STATE">EXTRA_PREVIOUS_CONNECTION_STATE</a></code>
+ can be any of <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_DISCONNECTED">STATE_DISCONNECTED</a></code>, <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_CONNECTING">STATE_CONNECTING</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_CONNECTED">STATE_CONNECTED</a></code>, <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_DISCONNECTING">STATE_DISCONNECTING</a></code>.
+
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code> to receive.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ACTION_DISCOVERY_FINISHED"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        ACTION_DISCOVERY_FINISHED
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Broadcast Action: The local Bluetooth adapter has finished the device
+ discovery process.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code> to receive.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.action.DISCOVERY_FINISHED"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ACTION_DISCOVERY_STARTED"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        ACTION_DISCOVERY_STARTED
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Broadcast Action: The local Bluetooth adapter has started the remote
+ device discovery process.
+ <p>This usually involves an inquiry scan of about 12 seconds, followed
+ by a page scan of each new device to retrieve its Bluetooth name.
+ <p>Register for <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html#ACTION_FOUND">ACTION_FOUND</a></code> to be notified as
+ remote Bluetooth devices are found.
+ <p>Device discovery is a heavyweight procedure. New connections to
+ remote Bluetooth devices should not be attempted while discovery is in
+ progress, and existing connections will experience limited bandwidth
+ and high latency. Use <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#cancelDiscovery()">cancelDiscovery()</a></code> to cancel an ongoing
+ discovery.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code> to receive.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.action.DISCOVERY_STARTED"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ACTION_LOCAL_NAME_CHANGED"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        ACTION_LOCAL_NAME_CHANGED
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Broadcast Action: The local Bluetooth adapter has changed its friendly
+ Bluetooth name.
+ <p>This name is visible to remote Bluetooth devices.
+ <p>Always contains the extra field <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_LOCAL_NAME">EXTRA_LOCAL_NAME</a></code> containing
+ the name.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code> to receive.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.action.LOCAL_NAME_CHANGED"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ACTION_REQUEST_DISCOVERABLE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        ACTION_REQUEST_DISCOVERABLE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Activity Action: Show a system activity that requests discoverable mode.
+ This activity will also request the user to turn on Bluetooth if it
+ is not currently enabled.
+ <p>Discoverable mode is equivalent to <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE_DISCOVERABLE">SCAN_MODE_CONNECTABLE_DISCOVERABLE</a></code>. It allows remote devices to see
+ this Bluetooth adapter when they perform a discovery.
+ <p>For privacy, Android is not discoverable by default.
+ <p>The sender of this Intent can optionally use extra field <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_DISCOVERABLE_DURATION">EXTRA_DISCOVERABLE_DURATION</a></code> to request the duration of
+ discoverability. Currently the default duration is 120 seconds, and
+ maximum duration is capped at 300 seconds for each request.
+ <p>Notification of the result of this activity is posted using the
+ <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult(int, int, Intent)</a></code> callback. The
+ <code>resultCode</code>
+ will be the duration (in seconds) of discoverability or
+ <code><a href="../../../reference/android/app/Activity.html#RESULT_CANCELED">RESULT_CANCELED</a></code> if the user rejected
+ discoverability or an error has occurred.
+ <p>Applications can also listen for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_SCAN_MODE_CHANGED">ACTION_SCAN_MODE_CHANGED</a></code>
+ for global notification whenever the scan mode changes. For example, an
+ application can be notified when the device has ended discoverability.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code>
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.action.REQUEST_DISCOVERABLE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ACTION_REQUEST_ENABLE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        ACTION_REQUEST_ENABLE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Activity Action: Show a system activity that allows the user to turn on
+ Bluetooth.
+ <p>This system activity will return once Bluetooth has completed turning
+ on, or the user has decided not to turn Bluetooth on.
+ <p>Notification of the result of this activity is posted using the
+ <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult(int, int, Intent)</a></code> callback. The
+ <code>resultCode</code>
+ will be <code><a href="../../../reference/android/app/Activity.html#RESULT_OK">RESULT_OK</a></code> if Bluetooth has been
+ turned on or <code><a href="../../../reference/android/app/Activity.html#RESULT_CANCELED">RESULT_CANCELED</a></code> if the user
+ has rejected the request or an error has occurred.
+ <p>Applications can also listen for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code>
+ for global notification whenever Bluetooth is turned on or off.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code>
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.action.REQUEST_ENABLE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ACTION_SCAN_MODE_CHANGED"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        ACTION_SCAN_MODE_CHANGED
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Broadcast Action: Indicates the Bluetooth scan mode of the local Adapter
+ has changed.
+ <p>Always contains the extra fields <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_SCAN_MODE">EXTRA_SCAN_MODE</a></code> and <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_PREVIOUS_SCAN_MODE">EXTRA_PREVIOUS_SCAN_MODE</a></code> containing the new and old scan modes
+ respectively.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code>
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.action.SCAN_MODE_CHANGED"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ACTION_STATE_CHANGED"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        ACTION_STATE_CHANGED
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Broadcast Action: The state of the local Bluetooth adapter has been
+ changed.
+ <p>For example, Bluetooth has been turned on or off.
+ <p>Always contains the extra fields <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_STATE">EXTRA_STATE</a></code> and <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#EXTRA_PREVIOUS_STATE">EXTRA_PREVIOUS_STATE</a></code> containing the new and old states
+ respectively.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code> to receive.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.action.STATE_CHANGED"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ERROR"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        ERROR
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sentinel error value for this class. Guaranteed to not equal any other
+ integer constant in this class. Provided as a convenience for functions
+ that require a sentinel error value, for example:
+ <p><code>Intent.getIntExtra(BluetoothAdapter.EXTRA_STATE,
+ BluetoothAdapter.ERROR)</code>
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                -2147483648
+                (0x80000000)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXTRA_CONNECTION_STATE"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        EXTRA_CONNECTION_STATE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Extra used by <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_CONNECTION_STATE_CHANGED">ACTION_CONNECTION_STATE_CHANGED</a></code>
+
+ This extra represents the current connection state.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.extra.CONNECTION_STATE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXTRA_DISCOVERABLE_DURATION"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        EXTRA_DISCOVERABLE_DURATION
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Used as an optional int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_REQUEST_DISCOVERABLE">ACTION_REQUEST_DISCOVERABLE</a></code> intents to request a specific duration
+ for discoverability in seconds. The current default is 120 seconds, and
+ requests over 300 seconds will be capped. These values could change.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.extra.DISCOVERABLE_DURATION"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXTRA_LOCAL_NAME"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        EXTRA_LOCAL_NAME
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Used as a String extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_LOCAL_NAME_CHANGED">ACTION_LOCAL_NAME_CHANGED</a></code>
+ intents to request the local Bluetooth name.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.extra.LOCAL_NAME"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXTRA_PREVIOUS_CONNECTION_STATE"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        EXTRA_PREVIOUS_CONNECTION_STATE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Extra used by <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_CONNECTION_STATE_CHANGED">ACTION_CONNECTION_STATE_CHANGED</a></code>
+
+ This extra represents the previous connection state.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.extra.PREVIOUS_CONNECTION_STATE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXTRA_PREVIOUS_SCAN_MODE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        EXTRA_PREVIOUS_SCAN_MODE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Used as an int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_SCAN_MODE_CHANGED">ACTION_SCAN_MODE_CHANGED</a></code>
+ intents to request the previous scan mode. Possible values are:
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_NONE">SCAN_MODE_NONE</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE">SCAN_MODE_CONNECTABLE</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE_DISCOVERABLE">SCAN_MODE_CONNECTABLE_DISCOVERABLE</a></code>,
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.extra.PREVIOUS_SCAN_MODE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXTRA_PREVIOUS_STATE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        EXTRA_PREVIOUS_STATE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Used as an int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code>
+ intents to request the previous power state. Possible values are:
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_OFF">STATE_OFF</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_ON">STATE_TURNING_ON</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_OFF">STATE_TURNING_OFF</a></code>,
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.extra.PREVIOUS_STATE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXTRA_SCAN_MODE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        EXTRA_SCAN_MODE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Used as an int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_SCAN_MODE_CHANGED">ACTION_SCAN_MODE_CHANGED</a></code>
+ intents to request the current scan mode. Possible values are:
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_NONE">SCAN_MODE_NONE</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE">SCAN_MODE_CONNECTABLE</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE_DISCOVERABLE">SCAN_MODE_CONNECTABLE_DISCOVERABLE</a></code>,
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.extra.SCAN_MODE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXTRA_STATE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        EXTRA_STATE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Used as an int extra field in <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code>
+ intents to request the current power state. Possible values are:
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_OFF">STATE_OFF</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_ON">STATE_TURNING_ON</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_OFF">STATE_TURNING_OFF</a></code>,
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "android.bluetooth.adapter.extra.STATE"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="SCAN_MODE_CONNECTABLE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        SCAN_MODE_CONNECTABLE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates that inquiry scan is disabled, but page scan is enabled on the
+ local Bluetooth adapter. Therefore this device is not discoverable from
+ remote Bluetooth devices, but is connectable from remote devices that
+ have previously discovered this device.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                21
+                (0x00000015)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="SCAN_MODE_CONNECTABLE_DISCOVERABLE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        SCAN_MODE_CONNECTABLE_DISCOVERABLE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates that both inquiry scan and page scan are enabled on the local
+ Bluetooth adapter. Therefore this device is both discoverable and
+ connectable from remote Bluetooth devices.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                23
+                (0x00000017)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="SCAN_MODE_NONE"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        SCAN_MODE_NONE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates that both inquiry scan and page scan are disabled on the local
+ Bluetooth adapter. Therefore this device is neither discoverable
+ nor connectable from remote Bluetooth devices.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                20
+                (0x00000014)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="STATE_CONNECTED"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        STATE_CONNECTED
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The profile is in connected state </p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                2
+                (0x00000002)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="STATE_CONNECTING"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        STATE_CONNECTING
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The profile is in connecting state </p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                1
+                (0x00000001)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="STATE_DISCONNECTED"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        STATE_DISCONNECTED
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The profile is in disconnected state </p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                0
+                (0x00000000)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="STATE_DISCONNECTING"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        STATE_DISCONNECTING
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The profile is in disconnecting state </p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                3
+                (0x00000003)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="STATE_OFF"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        STATE_OFF
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates the local Bluetooth adapter is off.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                10
+                (0x0000000a)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="STATE_ON"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        STATE_ON
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates the local Bluetooth adapter is on, and ready for use.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                12
+                (0x0000000c)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="STATE_TURNING_OFF"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        STATE_TURNING_OFF
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates the local Bluetooth adapter is turning off. Local clients
+ should immediately attempt graceful disconnection of any remote links.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                13
+                (0x0000000d)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="STATE_TURNING_ON"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        STATE_TURNING_ON
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates the local Bluetooth adapter is turning on. However local
+ clients should wait for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code> before attempting to
+ use the adapter.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                11
+                (0x0000000b)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="cancelDiscovery()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">cancelDiscovery</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Cancel the current device discovery process.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code>.
+ <p>Because discovery is a heavyweight procedure for the Bluetooth
+ adapter, this method should always be called before attempting to connect
+ to a remote device with <code><a href="../../../reference/android/bluetooth/BluetoothSocket.html#connect()">connect()</a></code>. Discovery is not managed by
+ the  Activity, but is run as a system service, so an application should
+ always call cancel discovery even if it did not directly request a
+ discovery, just to be sure.
+ <p>If Bluetooth state is not <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>, this API
+ will return false. After turning on Bluetooth,
+ wait for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code> with <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>
+ to get the updated value.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true on success, false on error
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="checkBluetoothAddress(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">checkBluetoothAddress</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> address)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Validate a String Bluetooth address, such as "00:43:A8:23:10:F0"
+ <p>Alphabetic characters must be uppercase to be valid.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>address</td>
+          <td>Bluetooth address as string</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the address is valid, false otherwise
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="closeProfileProxy(int, android.bluetooth.BluetoothProfile)"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">closeProfileProxy</span>
+      <span class="normal">(int profile, <a href="../../../reference/android/bluetooth/BluetoothProfile.html">BluetoothProfile</a> proxy)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Close the connection of the profile proxy to the Service.
+
+ <p> Clients should call this when they are no longer using
+ the proxy obtained from <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#getProfileProxy(android.content.Context, android.bluetooth.BluetoothProfile.ServiceListener, int)">getProfileProxy(Context, BluetoothProfile.ServiceListener, int)</a></code>.
+ Profile can be one of  <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#HEALTH">HEALTH</a></code>, <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#HEADSET">HEADSET</a></code> or
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#A2DP">A2DP</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>proxy</td>
+          <td>Profile proxy object
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="disable()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">disable</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Turn off the local Bluetooth adapter&mdash;do not use without explicit
+ user action to turn off Bluetooth.
+ <p>This gracefully shuts down all Bluetooth connections, stops Bluetooth
+ system services, and powers down the underlying Bluetooth hardware.
+ <p class="caution"><strong>Bluetooth should never be disabled without
+ direct user consent</strong>. The <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#disable()">disable()</a></code> method is
+ provided only for applications that include a user interface for changing
+ system settings, such as a "power manager" app.</p>
+ <p>This is an asynchronous call: it will return immediately, and
+ clients should listen for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code>
+ to be notified of subsequent adapter state changes. If this call returns
+ true, then the adapter state will immediately transition from <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code> to <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_OFF">STATE_TURNING_OFF</a></code>, and some time
+ later transition to either <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_OFF">STATE_OFF</a></code> or <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>. If this call returns false then there was an
+ immediate problem that will prevent the adapter from being turned off -
+ such as the adapter already being turned off.
+ <p>Requires the <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code>
+ permission</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true to indicate adapter shutdown has begun, or false on
+         immediate error
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="enable()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">enable</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Turn on the local Bluetooth adapter&mdash;do not use without explicit
+ user action to turn on Bluetooth.
+ <p>This powers on the underlying Bluetooth hardware, and starts all
+ Bluetooth system services.
+ <p class="caution"><strong>Bluetooth should never be enabled without
+ direct user consent</strong>. If you want to turn on Bluetooth in order
+ to create a wireless connection, you should use the <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_REQUEST_ENABLE">ACTION_REQUEST_ENABLE</a></code> Intent, which will raise a dialog that requests
+ user permission to turn on Bluetooth. The <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#enable()">enable()</a></code> method is
+ provided only for applications that include a user interface for changing
+ system settings, such as a "power manager" app.</p>
+ <p>This is an asynchronous call: it will return immediately, and
+ clients should listen for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code>
+ to be notified of subsequent adapter state changes. If this call returns
+ true, then the adapter state will immediately transition from <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_OFF">STATE_OFF</a></code> to <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_ON">STATE_TURNING_ON</a></code>, and some time
+ later transition to either <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_OFF">STATE_OFF</a></code> or <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>. If this call returns false then there was an
+ immediate problem that will prevent the adapter from being turned on -
+ such as Airplane mode, or the adapter is already turned on.
+ <p>Requires the <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code>
+ permission</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true to indicate adapter startup has begun, or false on
+         immediate error
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAddress()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getAddress</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the hardware address of the local Bluetooth adapter.
+ <p>For example, "00:11:22:AA:BB:CC".
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Bluetooth hardware address as string
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getBondedDevices()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/util/Set.html">Set</a>&lt;<a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a>&gt;
+      </span>
+      <span class="sympad">getBondedDevices</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the set of <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> objects that are bonded
+ (paired) to the local adapter.
+ <p>If Bluetooth state is not <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>, this API
+ will return an empty set. After turning on Bluetooth,
+ wait for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code> with <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>
+ to get the updated value.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>unmodifiable set of <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code>, or null on error
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getDefaultAdapter()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+        synchronized 
+        <a href="../../../reference/android/bluetooth/BluetoothAdapter.html">BluetoothAdapter</a>
+      </span>
+      <span class="sympad">getDefaultAdapter</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get a handle to the default local Bluetooth adapter.
+ <p>Currently Android only supports one Bluetooth adapter, but the API
+ could be extended to support more. This will always return the default
+ adapter.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the default local adapter, or null if Bluetooth is not supported
+         on this hardware platform
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getName()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getName</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the friendly Bluetooth name of the local Bluetooth adapter.
+ <p>This name is visible to remote Bluetooth devices.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the Bluetooth name, or null on error
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getProfileConnectionState(int)"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getProfileConnectionState</span>
+      <span class="normal">(int profile)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the current connection state of a profile.
+ This function can be used to check whether the local Bluetooth adapter
+ is connected to any remote device for a specific profile.
+ Profile can be one of <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#HEALTH">HEALTH</a></code>, <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#HEADSET">HEADSET</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#A2DP">A2DP</a></code>.
+
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code>.
+
+ <p> Return value can be one of
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#STATE_DISCONNECTED">STATE_DISCONNECTED</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#STATE_CONNECTING">STATE_CONNECTING</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#STATE_CONNECTED">STATE_CONNECTED</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#STATE_DISCONNECTING">STATE_DISCONNECTING</a></code>
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getProfileProxy(android.content.Context, android.bluetooth.BluetoothProfile.ServiceListener, int)"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">getProfileProxy</span>
+      <span class="normal">(<a href="../../../reference/android/content/Context.html">Context</a> context, <a href="../../../reference/android/bluetooth/BluetoothProfile.ServiceListener.html">BluetoothProfile.ServiceListener</a> listener, int profile)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the profile proxy object associated with the profile.
+
+ <p>Profile can be one of <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#HEALTH">HEALTH</a></code>, <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#HEADSET">HEADSET</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#A2DP">A2DP</a></code>, <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#GATT">GATT</a></code>, or
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#GATT_SERVER">GATT_SERVER</a></code>. Clients must implement
+ <code><a href="../../../reference/android/bluetooth/BluetoothProfile.ServiceListener.html">BluetoothProfile.ServiceListener</a></code> to get notified of
+ the connection status and to get the proxy object.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>context</td>
+          <td>Context of the application</td>
+        </tr>
+        <tr>
+          <th>listener</td>
+          <td>The service Listener for connection callbacks.</td>
+        </tr>
+        <tr>
+          <th>profile</td>
+          <td>The Bluetooth profile; either <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#HEALTH">HEALTH</a></code>,
+                <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#HEADSET">HEADSET</a></code> or <code><a href="../../../reference/android/bluetooth/BluetoothProfile.html#A2DP">A2DP</a></code>.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true on success, false on error
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getRemoteDevice(byte[])"></A>
+
+<div class="jd-details api apilevel-16"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a>
+      </span>
+      <span class="sympad">getRemoteDevice</span>
+      <span class="normal">(byte[] address)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 16</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get a <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> object for the given Bluetooth hardware
+ address.
+ <p>Valid Bluetooth hardware addresses must be 6 bytes. This method
+ expects the address in network byte order (MSB first).
+ <p>A <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> will always be returned for a valid
+ hardware address, even if this adapter has never seen that device.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>address</td>
+          <td>Bluetooth MAC address (6 bytes)</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>if address is invalid
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getRemoteDevice(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a>
+      </span>
+      <span class="sympad">getRemoteDevice</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> address)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get a <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> object for the given Bluetooth hardware
+ address.
+ <p>Valid Bluetooth hardware addresses must be upper case, in a format
+ such as "00:11:22:33:AA:BB". The helper <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#checkBluetoothAddress(java.lang.String)">checkBluetoothAddress(String)</a></code> is
+ available to validate a Bluetooth address.
+ <p>A <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> will always be returned for a valid
+ hardware address, even if this adapter has never seen that device.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>address</td>
+          <td>valid Bluetooth MAC address</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>if address is invalid
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getScanMode()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getScanMode</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the current Bluetooth scan mode of the local Bluetooth adapter.
+ <p>The Bluetooth scan mode determines if the local adapter is
+ connectable and/or discoverable from remote Bluetooth devices.
+ <p>Possible values are:
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_NONE">SCAN_MODE_NONE</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE">SCAN_MODE_CONNECTABLE</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_CONNECTABLE_DISCOVERABLE">SCAN_MODE_CONNECTABLE_DISCOVERABLE</a></code>.
+ <p>If Bluetooth state is not <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>, this API
+ will return <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#SCAN_MODE_NONE">SCAN_MODE_NONE</a></code>. After turning on Bluetooth,
+ wait for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code> with <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>
+ to get the updated value.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>scan mode
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getState()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getState</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the current state of the local Bluetooth adapter.
+ <p>Possible return values are
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_OFF">STATE_OFF</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_ON">STATE_TURNING_ON</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>,
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_TURNING_OFF">STATE_TURNING_OFF</a></code>.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>current state of Bluetooth adapter
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isDiscovering()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isDiscovering</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return true if the local Bluetooth adapter is currently in the device
+ discovery process.
+ <p>Device discovery is a heavyweight procedure. New connections to
+ remote Bluetooth devices should not be attempted while discovery is in
+ progress, and existing connections will experience limited bandwidth
+ and high latency. Use <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#cancelDiscovery()">cancelDiscovery()</a></code> to cancel an ongoing
+ discovery.
+ <p>Applications can also register for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_DISCOVERY_STARTED">ACTION_DISCOVERY_STARTED</a></code>
+ or <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_DISCOVERY_FINISHED">ACTION_DISCOVERY_FINISHED</a></code> to be notified when discovery
+ starts or completes.
+ <p>If Bluetooth state is not <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>, this API
+ will return false. After turning on Bluetooth,
+ wait for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code> with <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>
+ to get the updated value.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if discovering
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isEnabled()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isEnabled</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return true if Bluetooth is currently enabled and ready for use.
+ <p>Equivalent to:
+ <code>getBluetoothState() == STATE_ON</code>
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the local adapter is turned on
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="listenUsingInsecureRfcommWithServiceRecord(java.lang.String, java.util.UUID)"></A>
+
+<div class="jd-details api apilevel-10"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a>
+      </span>
+      <span class="sympad">listenUsingInsecureRfcommWithServiceRecord</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> name, <a href="../../../reference/java/util/UUID.html">UUID</a> uuid)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 10</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create a listening, insecure RFCOMM Bluetooth socket with Service Record.
+ <p>The link key is not required to be authenticated, i.e the communication may be
+ vulnerable to Man In the Middle attacks. For Bluetooth 2.1 devices,
+ the link will be encrypted, as encryption is mandartory.
+ For legacy devices (pre Bluetooth 2.1 devices) the link will not
+ be encrypted. Use <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#listenUsingRfcommWithServiceRecord(java.lang.String, java.util.UUID)">listenUsingRfcommWithServiceRecord(String, UUID)</a></code>, if an
+ encrypted and authenticated communication channel is desired.
+ <p>Use <code><a href="../../../reference/android/bluetooth/BluetoothServerSocket.html#accept()">accept()</a></code> to retrieve incoming
+ connections from a listening <code><a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a></code>.
+ <p>The system will assign an unused RFCOMM channel to listen on.
+ <p>The system will also register a Service Discovery
+ Protocol (SDP) record with the local SDP server containing the specified
+ UUID, service name, and auto-assigned channel. Remote Bluetooth devices
+ can use the same UUID to query our SDP server and discover which channel
+ to connect to. This SDP record will be removed when this socket is
+ closed, or if this application closes unexpectedly.
+ <p>Use <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html#createRfcommSocketToServiceRecord(java.util.UUID)">createRfcommSocketToServiceRecord(UUID)</a></code> to
+ connect to this socket from another device using the same <code><a href="../../../reference/java/util/UUID.html">UUID</a></code>.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>service name for SDP record</td>
+        </tr>
+        <tr>
+          <th>uuid</td>
+          <td>uuid for SDP record</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a listening RFCOMM BluetoothServerSocket</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/io/IOException.html">IOException</a></td>
+            <td>on error, for example Bluetooth not available, or
+                     insufficient permissions, or channel in use.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="listenUsingRfcommWithServiceRecord(java.lang.String, java.util.UUID)"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a>
+      </span>
+      <span class="sympad">listenUsingRfcommWithServiceRecord</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> name, <a href="../../../reference/java/util/UUID.html">UUID</a> uuid)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create a listening, secure RFCOMM Bluetooth socket with Service Record.
+ <p>A remote device connecting to this socket will be authenticated and
+ communication on this socket will be encrypted.
+ <p>Use <code><a href="../../../reference/android/bluetooth/BluetoothServerSocket.html#accept()">accept()</a></code> to retrieve incoming
+ connections from a listening <code><a href="../../../reference/android/bluetooth/BluetoothServerSocket.html">BluetoothServerSocket</a></code>.
+ <p>The system will assign an unused RFCOMM channel to listen on.
+ <p>The system will also register a Service Discovery
+ Protocol (SDP) record with the local SDP server containing the specified
+ UUID, service name, and auto-assigned channel. Remote Bluetooth devices
+ can use the same UUID to query our SDP server and discover which channel
+ to connect to. This SDP record will be removed when this socket is
+ closed, or if this application closes unexpectedly.
+ <p>Use <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html#createRfcommSocketToServiceRecord(java.util.UUID)">createRfcommSocketToServiceRecord(UUID)</a></code> to
+ connect to this socket from another device using the same <code><a href="../../../reference/java/util/UUID.html">UUID</a></code>.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH">BLUETOOTH</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>service name for SDP record</td>
+        </tr>
+        <tr>
+          <th>uuid</td>
+          <td>uuid for SDP record</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a listening RFCOMM BluetoothServerSocket</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/io/IOException.html">IOException</a></td>
+            <td>on error, for example Bluetooth not available, or
+                     insufficient permissions, or channel in use.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setName(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">setName</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set the friendly Bluetooth name of the local Bluetooth adapter.
+ <p>This name is visible to remote Bluetooth devices.
+ <p>Valid Bluetooth names are a maximum of 248 bytes using UTF-8
+ encoding, although many remote devices can only display the first
+ 40 characters, and some may be limited to just 20.
+ <p>If Bluetooth state is not <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>, this API
+ will return false. After turning on Bluetooth,
+ wait for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code> with <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>
+ to get the updated value.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>a valid Bluetooth name</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the name was set, false otherwise
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="startDiscovery()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">startDiscovery</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Start the remote device discovery process.
+ <p>The discovery process usually involves an inquiry scan of about 12
+ seconds, followed by a page scan of each new device to retrieve its
+ Bluetooth name.
+ <p>This is an asynchronous call, it will return immediately. Register
+ for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_DISCOVERY_STARTED">ACTION_DISCOVERY_STARTED</a></code> and <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_DISCOVERY_FINISHED">ACTION_DISCOVERY_FINISHED</a></code> intents to determine exactly when the
+ discovery starts and completes. Register for <code><a href="../../../reference/android/bluetooth/BluetoothDevice.html#ACTION_FOUND">ACTION_FOUND</a></code> to be notified as remote Bluetooth devices
+ are found.
+ <p>Device discovery is a heavyweight procedure. New connections to
+ remote Bluetooth devices should not be attempted while discovery is in
+ progress, and existing connections will experience limited bandwidth
+ and high latency. Use <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#cancelDiscovery()">cancelDiscovery()</a></code> to cancel an ongoing
+ discovery. Discovery is not managed by the Activity,
+ but is run as a system service, so an application should always call
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#cancelDiscovery()">cancelDiscovery()</a></code> even if it
+ did not directly request a discovery, just to be sure.
+ <p>Device discovery will only find remote devices that are currently
+ <i>discoverable</i> (inquiry scan enabled). Many Bluetooth devices are
+ not discoverable by default, and need to be entered into a special mode.
+ <p>If Bluetooth state is not <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>, this API
+ will return false. After turning on Bluetooth,
+ wait for <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#ACTION_STATE_CHANGED">ACTION_STATE_CHANGED</a></code> with <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.html#STATE_ON">STATE_ON</a></code>
+ to get the updated value.
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true on success, false on error
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="startLeScan(android.bluetooth.BluetoothAdapter.LeScanCallback)"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">startLeScan</span>
+      <span class="normal">(<a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a> callback)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Starts a scan for Bluetooth LE devices.
+
+ <p>Results of the scan are reported using the
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html#onLeScan(android.bluetooth.BluetoothDevice, int, byte[])">onLeScan(BluetoothDevice, int, byte[])</a></code> callback.
+
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code> permission.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>callback</td>
+          <td>the callback LE scan results are delivered</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true, if the scan was started successfully
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="startLeScan(java.util.UUID[], android.bluetooth.BluetoothAdapter.LeScanCallback)"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">startLeScan</span>
+      <span class="normal">(<a href="../../../reference/java/util/UUID.html">UUID[]</a> serviceUuids, <a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a> callback)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Starts a scan for Bluetooth LE devices, looking for devices that
+ advertise given services.
+
+ <p>Devices which advertise all specified services are reported using the
+ <code><a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html#onLeScan(android.bluetooth.BluetoothDevice, int, byte[])">onLeScan(BluetoothDevice, int, byte[])</a></code> callback.
+
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code> permission.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>serviceUuids</td>
+          <td>Array of services to look for</td>
+        </tr>
+        <tr>
+          <th>callback</td>
+          <td>the callback LE scan results are delivered</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true, if the scan was started successfully
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="stopLeScan(android.bluetooth.BluetoothAdapter.LeScanCallback)"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">stopLeScan</span>
+      <span class="normal">(<a href="../../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a> callback)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Stops an ongoing Bluetooth LE device scan.
+
+ <p>Requires <code><a href="../../../reference/android/Manifest.permission.html#BLUETOOTH_ADMIN">BLUETOOTH_ADMIN</a></code> permission.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>callback</td>
+          <td>used to identify which scan to stop
+        must be the same handle used to start the scan
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="finalize()"></A>
+
+<div class="jd-details api apilevel-5"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">finalize</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 5</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Invoked when the garbage collector has detected that this instance is no longer reachable.
+ The default implementation does nothing, but this method can be overridden to free resources.
+
+ <p>Note that objects that override <code>finalize</code> are significantly more expensive than
+ objects that don't. Finalizers may be run a long time after the object is no longer
+ reachable, depending on memory pressure, so it's a bad idea to rely on them for cleanup.
+ Note also that finalizers are run on a single VM-wide finalizer thread,
+ so doing blocking work in a finalizer is a bad idea. A finalizer is usually only necessary
+ for a class that has a native peer and needs to call a native method to destroy that peer.
+ Even then, it's better to provide an explicit <code>close</code> method (and implement
+ <code><a href="../../../reference/java/io/Closeable.html">Closeable</a></code>), and insist that callers manually dispose of instances. This
+ works well for something like files, but less well for something like a <code>BigInteger</code>
+ where typical calling code would have to deal with lots of temporaries. Unfortunately,
+ code that creates lots of temporaries is the worst kind of code from the point of view of
+ the single finalizer thread.
+
+ <p>If you <i>must</i> use finalizers, consider at least providing your own
+ <code><a href="../../../reference/java/lang/ref/ReferenceQueue.html">ReferenceQueue</a></code> and having your own thread process that queue.
+
+ <p>Unlike constructors, finalizers are not automatically chained. You are responsible for
+ calling <code>super.finalize()</code> yourself.
+
+ <p>Uncaught exceptions thrown by finalizers are ignored and do not terminate the finalizer
+ thread.
+
+ See <i>Effective Java</i> Item 7, "Avoid finalizers" for more.
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/Throwable.html">Throwable</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

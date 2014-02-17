@@ -1,0 +1,4085 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>MenuItem - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+  <div id="doc-api-level" class="1" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/package-summary.html">android</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="selected api apilevel-1">
+  <a href="../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/ActionMode.Callback.html">ActionMode.Callback</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/view/ActionProvider.VisibilityListener.html">ActionProvider.VisibilityListener</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/view/Choreographer.FrameCallback.html">Choreographer.FrameCallback</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/view/CollapsibleActionView.html">CollapsibleActionView</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ContextMenu.html">ContextMenu</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ContextMenu.ContextMenuInfo.html">ContextMenu.ContextMenuInfo</a></li>
+          <li class="api apilevel-3"><a href="../../../reference/android/view/GestureDetector.OnDoubleTapListener.html">GestureDetector.OnDoubleTapListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/GestureDetector.OnGestureListener.html">GestureDetector.OnGestureListener</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/view/InputQueue.Callback.html">InputQueue.Callback</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/KeyEvent.Callback.html">KeyEvent.Callback</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/LayoutInflater.Factory.html">LayoutInflater.Factory</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/LayoutInflater.Factory2.html">LayoutInflater.Factory2</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/LayoutInflater.Filter.html">LayoutInflater.Filter</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/Menu.html">Menu</a></li>
+          <li class="selected api apilevel-1"><a href="../../../reference/android/view/MenuItem.html">MenuItem</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html">MenuItem.OnActionExpandListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/MenuItem.OnMenuItemClickListener.html">MenuItem.OnMenuItemClickListener</a></li>
+          <li class="api apilevel-8"><a href="../../../reference/android/view/ScaleGestureDetector.OnScaleGestureListener.html">ScaleGestureDetector.OnScaleGestureListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/SubMenu.html">SubMenu</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/SurfaceHolder.html">SurfaceHolder</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/SurfaceHolder.Callback.html">SurfaceHolder.Callback</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/view/SurfaceHolder.Callback2.html">SurfaceHolder.Callback2</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/view/TextureView.SurfaceTextureListener.html">TextureView.SurfaceTextureListener</a></li>
+          <li class="api apilevel-12"><a href="../../../reference/android/view/View.OnAttachStateChangeListener.html">View.OnAttachStateChangeListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.OnClickListener.html">View.OnClickListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.OnCreateContextMenuListener.html">View.OnCreateContextMenuListener</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/View.OnDragListener.html">View.OnDragListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.OnFocusChangeListener.html">View.OnFocusChangeListener</a></li>
+          <li class="api apilevel-12"><a href="../../../reference/android/view/View.OnGenericMotionListener.html">View.OnGenericMotionListener</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/view/View.OnHoverListener.html">View.OnHoverListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.OnKeyListener.html">View.OnKeyListener</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/View.OnLayoutChangeListener.html">View.OnLayoutChangeListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.OnLongClickListener.html">View.OnLongClickListener</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/View.OnSystemUiVisibilityChangeListener.html">View.OnSystemUiVisibilityChangeListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.OnTouchListener.html">View.OnTouchListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewGroup.OnHierarchyChangeListener.html">ViewGroup.OnHierarchyChangeListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewManager.html">ViewManager</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewParent.html">ViewParent</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewStub.OnInflateListener.html">ViewStub.OnInflateListener</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/view/ViewTreeObserver.OnDrawListener.html">ViewTreeObserver.OnDrawListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewTreeObserver.OnGlobalFocusChangeListener.html">ViewTreeObserver.OnGlobalFocusChangeListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewTreeObserver.OnGlobalLayoutListener.html">ViewTreeObserver.OnGlobalLayoutListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewTreeObserver.OnPreDrawListener.html">ViewTreeObserver.OnPreDrawListener</a></li>
+          <li class="api apilevel-3"><a href="../../../reference/android/view/ViewTreeObserver.OnScrollChangedListener.html">ViewTreeObserver.OnScrollChangedListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewTreeObserver.OnTouchModeChangeListener.html">ViewTreeObserver.OnTouchModeChangeListener</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/view/ViewTreeObserver.OnWindowAttachListener.html">ViewTreeObserver.OnWindowAttachListener</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/view/ViewTreeObserver.OnWindowFocusChangeListener.html">ViewTreeObserver.OnWindowFocusChangeListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/Window.Callback.html">Window.Callback</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/WindowManager.html">WindowManager</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/AbsSavedState.html">AbsSavedState</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/ActionMode.html">ActionMode</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/view/Choreographer.html">Choreographer</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ContextThemeWrapper.html">ContextThemeWrapper</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/Display.html">Display</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/DragEvent.html">DragEvent</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/FocusFinder.html">FocusFinder</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/GestureDetector.html">GestureDetector</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/GestureDetector.SimpleOnGestureListener.html">GestureDetector.SimpleOnGestureListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/Gravity.html">Gravity</a></li>
+          <li class="api apilevel-3"><a href="../../../reference/android/view/HapticFeedbackConstants.html">HapticFeedbackConstants</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/view/InputDevice.html">InputDevice</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/view/InputDevice.MotionRange.html">InputDevice.MotionRange</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/view/InputEvent.html">InputEvent</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/view/InputQueue.html">InputQueue</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/KeyCharacterMap.html">KeyCharacterMap</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/KeyCharacterMap.KeyData.html">KeyCharacterMap.KeyData</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/KeyEvent.html">KeyEvent</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/view/KeyEvent.DispatcherState.html">KeyEvent.DispatcherState</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/LayoutInflater.html">LayoutInflater</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/MenuInflater.html">MenuInflater</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/MotionEvent.html">MotionEvent</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/view/MotionEvent.PointerCoords.html">MotionEvent.PointerCoords</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/view/MotionEvent.PointerProperties.html">MotionEvent.PointerProperties</a></li>
+          <li class="api apilevel-3"><a href="../../../reference/android/view/OrientationEventListener.html">OrientationEventListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/OrientationListener.html">OrientationListener</a></li>
+          <li class="api apilevel-8"><a href="../../../reference/android/view/ScaleGestureDetector.html">ScaleGestureDetector</a></li>
+          <li class="api apilevel-8"><a href="../../../reference/android/view/ScaleGestureDetector.SimpleOnScaleGestureListener.html">ScaleGestureDetector.SimpleOnScaleGestureListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/SoundEffectConstants.html">SoundEffectConstants</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/Surface.html">Surface</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/view/TextureView.html">TextureView</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/TouchDelegate.html">TouchDelegate</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/VelocityTracker.html">VelocityTracker</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.html">View</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/view/View.AccessibilityDelegate.html">View.AccessibilityDelegate</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.BaseSavedState.html">View.BaseSavedState</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/View.MeasureSpec.html">View.MeasureSpec</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewConfiguration.html">ViewConfiguration</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewDebug.html">ViewDebug</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewGroup.html">ViewGroup</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewGroup.LayoutParams.html">ViewGroup.LayoutParams</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewGroup.MarginLayoutParams.html">ViewGroup.MarginLayoutParams</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/view/ViewGroupOverlay.html">ViewGroupOverlay</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/view/ViewOverlay.html">ViewOverlay</a></li>
+          <li class="api apilevel-12"><a href="../../../reference/android/view/ViewPropertyAnimator.html">ViewPropertyAnimator</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewStub.html">ViewStub</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewTreeObserver.html">ViewTreeObserver</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/Window.html">Window</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/view/WindowId.html">WindowId</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/view/WindowId.FocusObserver.html">WindowId.FocusObserver</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/WindowManager.LayoutParams.html">WindowManager.LayoutParams</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewDebug.HierarchyTraceType.html">ViewDebug.HierarchyTraceType</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/ViewDebug.RecyclerTraceType.html">ViewDebug.RecyclerTraceType</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/InflateException.html">InflateException</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/view/KeyCharacterMap.UnavailableException.html">KeyCharacterMap.UnavailableException</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/Surface.OutOfResourcesException.html">Surface.OutOfResourcesException</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/SurfaceHolder.BadSurfaceTypeException.html">SurfaceHolder.BadSurfaceTypeException</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/view/WindowManager.BadTokenException.html">WindowManager.BadTokenException</a></li>
+          <li class="api apilevel-17"><a href="../../../reference/android/view/WindowManager.InvalidDisplayException.html">WindowManager.InvalidDisplayException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12"  id="doc-col">
+
+<div id="api-info-block">
+
+
+
+
+<div class="sum-details-links">
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    interface
+<h1 itemprop="name">MenuItem</h1>
+
+
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-1">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">android.view.MenuItem</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p itemprop="articleBody">Interface for direct access to a previously created menu item.
+ <p>
+ An Item is returned by calling one of the <code><a href="../../../reference/android/view/Menu.html#add(int)">add(int)</a></code>
+ methods.
+ <p>
+ For a feature set of specific menu types, see <code><a href="../../../reference/android/view/Menu.html">Menu</a></code>.
+
+ <div class="special reference">
+ <h3>Developer Guides</h3>
+ <p>For information about creating menus, read the
+ <a href="../../../guide/topics/ui/menus.html">Menus</a> developer guide.</p>
+ </div>
+</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<table id="nestedclasses" class="jd-sumtable"><tr><th colspan="12">Nested Classes</th></tr>
+
+
+  
+    <tr class="alt-color api apilevel-14" >
+      <td class="jd-typecol"><nobr>
+        
+         
+         
+        
+        interface</nobr></td>
+      <td class="jd-linkcol"><a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html">MenuItem.OnActionExpandListener</a></td>
+      <td class="jd-descrcol" width="100%">Interface definition for a callback to be invoked when a menu item
+ marked with <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW">SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW</a></code> is
+ expanded or collapsed.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+      <td class="jd-typecol"><nobr>
+        
+         
+         
+        
+        interface</nobr></td>
+      <td class="jd-linkcol"><a href="../../../reference/android/view/MenuItem.OnMenuItemClickListener.html">MenuItem.OnMenuItemClickListener</a></td>
+      <td class="jd-descrcol" width="100%">Interface definition for a callback to be invoked when a menu item is
+ clicked.&nbsp;</td>
+    </tr>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="jd-sumtable"><tr><th colspan="12">Constants</th></tr>
+
+
+    
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_ALWAYS">SHOW_AS_ACTION_ALWAYS</a></td>
+        <td class="jd-descrcol" width="100%">Always show this item as a button in an Action Bar.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW">SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW</a></td>
+        <td class="jd-descrcol" width="100%">This item's action view collapses to a normal menu item.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_IF_ROOM">SHOW_AS_ACTION_IF_ROOM</a></td>
+        <td class="jd-descrcol" width="100%">Show this item as a button in an Action Bar if the system decides there is room for it.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-11" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_NEVER">SHOW_AS_ACTION_NEVER</a></td>
+        <td class="jd-descrcol" width="100%">Never show this item as a button in an Action Bar.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_WITH_TEXT">SHOW_AS_ACTION_WITH_TEXT</a></td>
+        <td class="jd-descrcol" width="100%">When this item is in the action bar, always show it with a text label even if
+ it also has an icon specified.</td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#collapseActionView()">collapseActionView</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Collapse the action view associated with this menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#expandActionView()">expandActionView</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Expand the action view associated with this menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getActionProvider()">getActionProvider</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the <code><a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/View.html">View</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getActionView()">getActionView</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the currently set action view for this menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            char</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getAlphabeticShortcut()">getAlphabeticShortcut</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the char for this menu item's alphabetic shortcut.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getGroupId()">getGroupId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the group identifier that this menu item is part of.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getIcon()">getIcon</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the icon for this item as a Drawable (getting it from resources if it hasn't been
+ loaded before).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/content/Intent.html">Intent</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getIntent()">getIntent</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the Intent associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getItemId()">getItemId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the identifier for this menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/ContextMenu.ContextMenuInfo.html">ContextMenu.ContextMenuInfo</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getMenuInfo()">getMenuInfo</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the extra information linked to this menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            char</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getNumericShortcut()">getNumericShortcut</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the char for this menu item's numeric (12-key) shortcut.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getOrder()">getOrder</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the category and order within the category of this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/SubMenu.html">SubMenu</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getSubMenu()">getSubMenu</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the sub-menu to be invoked when this item is selected, if it has
+ one.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/CharSequence.html">CharSequence</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getTitle()">getTitle</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieve the current title of the item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/CharSequence.html">CharSequence</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#getTitleCondensed()">getTitleCondensed</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieve the current condensed title of the item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#hasSubMenu()">hasSubMenu</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Check whether this item has an associated sub-menu.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#isActionViewExpanded()">isActionViewExpanded</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns true if this menu item's action view has been expanded.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#isCheckable()">isCheckable</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return whether the item can currently display a check mark.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#isChecked()">isChecked</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return whether the item is currently displaying a check mark.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#isEnabled()">isEnabled</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the enabled state of the menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#isVisible()">isVisible</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the visibility of the menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setActionProvider(android.view.ActionProvider)">setActionProvider</a></span>(<a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a> actionProvider)</nobr>
+        
+        <div class="jd-descrdiv">Sets the <code><a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></code> responsible for creating an action view if
+ the item is placed on the action bar.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setActionView(int)">setActionView</a></span>(int resId)</nobr>
+        
+        <div class="jd-descrdiv">Set an action view for this menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setActionView(android.view.View)">setActionView</a></span>(<a href="../../../reference/android/view/View.html">View</a> view)</nobr>
+        
+        <div class="jd-descrdiv">Set an action view for this menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setAlphabeticShortcut(char)">setAlphabeticShortcut</a></span>(char alphaChar)</nobr>
+        
+        <div class="jd-descrdiv">Change the alphabetic shortcut associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setCheckable(boolean)">setCheckable</a></span>(boolean checkable)</nobr>
+        
+        <div class="jd-descrdiv">Control whether this item can display a check mark.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setChecked(boolean)">setChecked</a></span>(boolean checked)</nobr>
+        
+        <div class="jd-descrdiv">Control whether this item is shown with a check mark.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setEnabled(boolean)">setEnabled</a></span>(boolean enabled)</nobr>
+        
+        <div class="jd-descrdiv">Sets whether the menu item is enabled.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setIcon(android.graphics.drawable.Drawable)">setIcon</a></span>(<a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> icon)</nobr>
+        
+        <div class="jd-descrdiv">Change the icon associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setIcon(int)">setIcon</a></span>(int iconRes)</nobr>
+        
+        <div class="jd-descrdiv">Change the icon associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setIntent(android.content.Intent)">setIntent</a></span>(<a href="../../../reference/android/content/Intent.html">Intent</a> intent)</nobr>
+        
+        <div class="jd-descrdiv">Change the Intent associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setNumericShortcut(char)">setNumericShortcut</a></span>(char numericChar)</nobr>
+        
+        <div class="jd-descrdiv">Change the numeric shortcut associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setOnActionExpandListener(android.view.MenuItem.OnActionExpandListener)">setOnActionExpandListener</a></span>(<a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html">MenuItem.OnActionExpandListener</a> listener)</nobr>
+        
+        <div class="jd-descrdiv">Set an <code><a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html">MenuItem.OnActionExpandListener</a></code> on this menu item to be notified when
+ the associated action view is expanded or collapsed.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setOnMenuItemClickListener(android.view.MenuItem.OnMenuItemClickListener)">setOnMenuItemClickListener</a></span>(<a href="../../../reference/android/view/MenuItem.OnMenuItemClickListener.html">MenuItem.OnMenuItemClickListener</a> menuItemClickListener)</nobr>
+        
+        <div class="jd-descrdiv">Set a custom listener for invocation of this menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setShortcut(char, char)">setShortcut</a></span>(char numericChar, char alphaChar)</nobr>
+        
+        <div class="jd-descrdiv">Change both the numeric and alphabetic shortcut associated with this
+ item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setShowAsAction(int)">setShowAsAction</a></span>(int actionEnum)</nobr>
+        
+        <div class="jd-descrdiv">Sets how this item should display in the presence of an Action Bar.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setShowAsActionFlags(int)">setShowAsActionFlags</a></span>(int actionEnum)</nobr>
+        
+        <div class="jd-descrdiv">Sets how this item should display in the presence of an Action Bar.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setTitle(java.lang.CharSequence)">setTitle</a></span>(<a href="../../../reference/java/lang/CharSequence.html">CharSequence</a> title)</nobr>
+        
+        <div class="jd-descrdiv">Change the title associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setTitle(int)">setTitle</a></span>(int title)</nobr>
+        
+        <div class="jd-descrdiv">Change the title associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setTitleCondensed(java.lang.CharSequence)">setTitleCondensed</a></span>(<a href="../../../reference/java/lang/CharSequence.html">CharSequence</a> title)</nobr>
+        
+        <div class="jd-descrdiv">Change the condensed title associated with this item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../reference/android/view/MenuItem.html">MenuItem</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/view/MenuItem.html#setVisible(boolean)">setVisible</a></span>(boolean visible)</nobr>
+        
+        <div class="jd-descrdiv">Sets the visibility of the menu item.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2>Constants</h2>
+
+
+
+
+<A NAME="SHOW_AS_ACTION_ALWAYS"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        SHOW_AS_ACTION_ALWAYS
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Always show this item as a button in an Action Bar.
+ Use sparingly! If too many items are set to always show in the Action Bar it can
+ crowd the Action Bar and degrade the user experience on devices with smaller screens.
+ A good rule of thumb is to have no more than 2 items set to always show at a time.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                2
+                (0x00000002)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This item's action view collapses to a normal menu item.
+ When expanded, the action view temporarily takes over
+ a larger segment of its container.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                8
+                (0x00000008)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="SHOW_AS_ACTION_IF_ROOM"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        SHOW_AS_ACTION_IF_ROOM
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Show this item as a button in an Action Bar if the system decides there is room for it. </p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                1
+                (0x00000001)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="SHOW_AS_ACTION_NEVER"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        SHOW_AS_ACTION_NEVER
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Never show this item as a button in an Action Bar. </p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                0
+                (0x00000000)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="SHOW_AS_ACTION_WITH_TEXT"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        SHOW_AS_ACTION_WITH_TEXT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>When this item is in the action bar, always show it with a text label even if
+ it also has an icon specified.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                4
+                (0x00000004)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="collapseActionView()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">collapseActionView</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Collapse the action view associated with this menu item.
+ The menu item must have an action view set, as well as the showAsAction flag
+ <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW">SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW</a></code>. If a listener has been set using
+ <code><a href="../../../reference/android/view/MenuItem.html#setOnActionExpandListener(android.view.MenuItem.OnActionExpandListener)">setOnActionExpandListener(OnActionExpandListener)</a></code> it will have its
+ <code><a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html#onMenuItemActionCollapse(android.view.MenuItem)">onMenuItemActionCollapse(MenuItem)</a></code> method invoked.
+ The listener may return false from this method to prevent collapsing the action view.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the action view was collapsed, false otherwise.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="expandActionView()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">expandActionView</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Expand the action view associated with this menu item.
+ The menu item must have an action view set, as well as
+ the showAsAction flag <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW">SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW</a></code>.
+ If a listener has been set using <code><a href="../../../reference/android/view/MenuItem.html#setOnActionExpandListener(android.view.MenuItem.OnActionExpandListener)">setOnActionExpandListener(OnActionExpandListener)</a></code>
+ it will have its <code><a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html#onMenuItemActionExpand(android.view.MenuItem)">onMenuItemActionExpand(MenuItem)</a></code>
+ method invoked. The listener may return false from this method to prevent expanding
+ the action view.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the action view was expanded, false otherwise.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getActionProvider()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a>
+      </span>
+      <span class="sympad">getActionProvider</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the <code><a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The action provider.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.html#setActionProvider(android.view.ActionProvider)">setActionProvider(ActionProvider)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getActionView()"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/View.html">View</a>
+      </span>
+      <span class="sympad">getActionView</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the currently set action view for this menu item.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This item's action view</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setActionView(android.view.View)">setActionView(View)</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.html#setShowAsAction(int)">setShowAsAction(int)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAlphabeticShortcut()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        char
+      </span>
+      <span class="sympad">getAlphabeticShortcut</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the char for this menu item's alphabetic shortcut.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Alphabetic character to use as a shortcut.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getGroupId()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getGroupId</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the group identifier that this menu item is part of. The group
+ identifier can not be changed after the menu is created.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The menu item's group identifier.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getIcon()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a>
+      </span>
+      <span class="sympad">getIcon</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the icon for this item as a Drawable (getting it from resources if it hasn't been
+ loaded before).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The icon as a Drawable.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getIntent()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/content/Intent.html">Intent</a>
+      </span>
+      <span class="sympad">getIntent</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the Intent associated with this item.  This returns a
+ reference to the Intent which you can change as desired to modify
+ what the Item is holding.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the last value supplied to <code><a href="../../../reference/android/view/MenuItem.html#setIntent(android.content.Intent)">setIntent(Intent)</a></code>, or
+         null.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setIntent(android.content.Intent)">setIntent(Intent)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getItemId()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getItemId</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the identifier for this menu item.  The identifier can not
+ be changed after the menu is created.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The menu item's identifier.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getMenuInfo()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/ContextMenu.ContextMenuInfo.html">ContextMenu.ContextMenuInfo</a>
+      </span>
+      <span class="sympad">getMenuInfo</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the extra information linked to this menu item.  This extra
+ information is set by the View that added this menu item to the
+ menu.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The extra information linked to the View that added this
+         menu item to the menu. This can be null.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/View.OnCreateContextMenuListener.html">View.OnCreateContextMenuListener</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getNumericShortcut()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        char
+      </span>
+      <span class="sympad">getNumericShortcut</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the char for this menu item's numeric (12-key) shortcut.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Numeric character to use as a shortcut.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getOrder()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getOrder</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the category and order within the category of this item. This
+ item will be shown before all items (within its category) that have
+ order greater than this value.
+ <p>
+ An order integer contains the item's category (the upper bits of the
+ integer; set by or/add the category with the order within the
+ category) and the ordering of the item within that category (the
+ lower bits). Example categories are <code><a href="../../../reference/android/view/Menu.html#CATEGORY_SYSTEM">CATEGORY_SYSTEM</a></code>,
+ <code><a href="../../../reference/android/view/Menu.html#CATEGORY_SECONDARY">CATEGORY_SECONDARY</a></code>, <code><a href="../../../reference/android/view/Menu.html#CATEGORY_ALTERNATIVE">CATEGORY_ALTERNATIVE</a></code>,
+ <code><a href="../../../reference/android/view/Menu.html#CATEGORY_CONTAINER">CATEGORY_CONTAINER</a></code>. See <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for a full list.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The order of this item.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getSubMenu()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/SubMenu.html">SubMenu</a>
+      </span>
+      <span class="sympad">getSubMenu</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the sub-menu to be invoked when this item is selected, if it has
+ one. See <code><a href="../../../reference/android/view/MenuItem.html#hasSubMenu()">hasSubMenu()</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The associated menu if there is one, else null
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTitle()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/java/lang/CharSequence.html">CharSequence</a>
+      </span>
+      <span class="sympad">getTitle</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve the current title of the item.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The title.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTitleCondensed()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/java/lang/CharSequence.html">CharSequence</a>
+      </span>
+      <span class="sympad">getTitleCondensed</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve the current condensed title of the item. If a condensed
+ title was never set, it will return the normal title.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The condensed title, if it exists.
+         Otherwise the normal title.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="hasSubMenu()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">hasSubMenu</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Check whether this item has an associated sub-menu.  I.e. it is a
+ sub-menu of another menu.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>If true this item has a menu; else it is a
+         normal item.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isActionViewExpanded()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isActionViewExpanded</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns true if this menu item's action view has been expanded.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>true if the item's action view is expanded, false otherwise.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#expandActionView()">expandActionView()</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.html#collapseActionView()">collapseActionView()</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW">SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html">MenuItem.OnActionExpandListener</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isCheckable()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isCheckable</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return whether the item can currently display a check mark.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>If a check mark can be displayed, returns true.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setCheckable(boolean)">setCheckable(boolean)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isChecked()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isChecked</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return whether the item is currently displaying a check mark.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>If a check mark is displayed, returns true.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setChecked(boolean)">setChecked(boolean)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isEnabled()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isEnabled</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the enabled state of the menu item.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>If true the item is enabled and hence invokable; else it is not.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isVisible()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isVisible</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the visibility of the menu item.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>If true the item is visible; else it is hidden.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setActionProvider(android.view.ActionProvider)"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setActionProvider</span>
+      <span class="normal">(<a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a> actionProvider)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the <code><a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></code> responsible for creating an action view if
+ the item is placed on the action bar. The provider also provides a default
+ action invoked if the item is placed in the overflow menu.
+ <p>
+   <strong>Note:</strong> Setting an action provider overrides the action view
+           set via <code><a href="../../../reference/android/view/MenuItem.html#setActionView(int)">setActionView(int)</a></code> or <code><a href="../../../reference/android/view/MenuItem.html#setActionView(android.view.View)">setActionView(View)</a></code>.
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>actionProvider</td>
+          <td>The action provider.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/ActionProvider.html">ActionProvider</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setActionView(int)"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setActionView</span>
+      <span class="normal">(int resId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set an action view for this menu item. An action view will be displayed in place
+ of an automatically generated menu item element in the UI when this item is shown
+ as an action within a parent.
+ <p>
+   <strong>Note:</strong> Setting an action view overrides the action provider
+           set via <code><a href="../../../reference/android/view/MenuItem.html#setActionProvider(android.view.ActionProvider)">setActionProvider(ActionProvider)</a></code>.
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>resId</td>
+          <td>Layout resource to use for presenting this item to the user.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setShowAsAction(int)">setShowAsAction(int)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setActionView(android.view.View)"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setActionView</span>
+      <span class="normal">(<a href="../../../reference/android/view/View.html">View</a> view)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set an action view for this menu item. An action view will be displayed in place
+ of an automatically generated menu item element in the UI when this item is shown
+ as an action within a parent.
+ <p>
+   <strong>Note:</strong> Setting an action view overrides the action provider
+           set via <code><a href="../../../reference/android/view/MenuItem.html#setActionProvider(android.view.ActionProvider)">setActionProvider(ActionProvider)</a></code>.
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>view</td>
+          <td>View to use for presenting this item to the user.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setShowAsAction(int)">setShowAsAction(int)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setAlphabeticShortcut(char)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setAlphabeticShortcut</span>
+      <span class="normal">(char alphaChar)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change the alphabetic shortcut associated with this item. The shortcut
+ will be triggered when the key that generates the given character is
+ pressed alone or along with with the alt key. Case is not significant and
+ shortcut characters will be displayed in lower case. Note that menu items
+ with the characters '\b' or '\n' as shortcuts will get triggered by the
+ Delete key or Carriage Return key, respectively.
+ <p>
+ See <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for the menu types that support shortcuts.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>alphaChar</td>
+          <td>The alphabetic shortcut key. This is the shortcut when
+        using a keyboard with alphabetic keys.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setCheckable(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setCheckable</span>
+      <span class="normal">(boolean checkable)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Control whether this item can display a check mark. Setting this does
+ not actually display a check mark (see <code><a href="../../../reference/android/view/MenuItem.html#setChecked(boolean)">setChecked(boolean)</a></code> for that);
+ rather, it ensures there is room in the item in which to display a
+ check mark.
+ <p>
+ See <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for the menu types that support check marks.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>checkable</td>
+          <td>Set to true to allow a check mark, false to
+            disallow. The default is false.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setChecked(boolean)">setChecked(boolean)</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.html#isCheckable()">isCheckable()</a></code></li><li><code><a href="../../../reference/android/view/Menu.html#setGroupCheckable(int, boolean, boolean)">setGroupCheckable(int, boolean, boolean)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setChecked(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setChecked</span>
+      <span class="normal">(boolean checked)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Control whether this item is shown with a check mark.  Note that you
+ must first have enabled checking with <code><a href="../../../reference/android/view/MenuItem.html#setCheckable(boolean)">setCheckable(boolean)</a></code> or else
+ the check mark will not appear.  If this item is a member of a group that contains
+ mutually-exclusive items (set via <code><a href="../../../reference/android/view/Menu.html#setGroupCheckable(int, boolean, boolean)">setGroupCheckable(int, boolean, boolean)</a></code>,
+ the other items in the group will be unchecked.
+ <p>
+ See <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for the menu types that support check marks.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>checked</td>
+          <td>Set to true to display a check mark, false to hide
+                it.  The default value is false.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setCheckable(boolean)">setCheckable(boolean)</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.html#isChecked()">isChecked()</a></code></li><li><code><a href="../../../reference/android/view/Menu.html#setGroupCheckable(int, boolean, boolean)">setGroupCheckable(int, boolean, boolean)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setEnabled(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setEnabled</span>
+      <span class="normal">(boolean enabled)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets whether the menu item is enabled. Disabling a menu item will not
+ allow it to be invoked via its shortcut. The menu item will still be
+ visible.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>enabled</td>
+          <td>If true then the item will be invokable; if false it is
+        won't be invokable.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setIcon(android.graphics.drawable.Drawable)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setIcon</span>
+      <span class="normal">(<a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> icon)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change the icon associated with this item. This icon will not always be
+ shown, so the title should be sufficient in describing this item. See
+ <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for the menu types that support icons.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>icon</td>
+          <td>The new icon (as a Drawable) to be displayed.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setIcon(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setIcon</span>
+      <span class="normal">(int iconRes)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change the icon associated with this item. This icon will not always be
+ shown, so the title should be sufficient in describing this item. See
+ <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for the menu types that support icons.
+ <p>
+ This method will set the resource ID of the icon which will be used to
+ lazily get the Drawable when this item is being shown.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>iconRes</td>
+          <td>The new icon (as a resource ID) to be displayed.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setIntent(android.content.Intent)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setIntent</span>
+      <span class="normal">(<a href="../../../reference/android/content/Intent.html">Intent</a> intent)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change the Intent associated with this item.  By default there is no
+ Intent associated with a menu item.  If you set one, and nothing
+ else handles the item, then the default behavior will be to call
+ <code><a href="../../../reference/android/content/Context.html#startActivity(android.content.Intent)">startActivity(Intent)</a></code> with the given Intent.
+
+ <p>Note that setIntent() can not be used with the versions of
+ <code><a href="../../../reference/android/view/Menu.html#add(int)">add(int)</a></code> that take a Runnable, because <code><a href="../../../reference/java/lang/Runnable.html#run()">run()</a></code>
+ does not return a value so there is no way to tell if it handled the
+ item.  In this case it is assumed that the Runnable always handles
+ the item, and the intent will never be started.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>intent</td>
+          <td>The Intent to associated with the item.  This Intent
+               object is <em>not</em> copied, so be careful not to
+               modify it later.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#getIntent()">getIntent()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setNumericShortcut(char)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setNumericShortcut</span>
+      <span class="normal">(char numericChar)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change the numeric shortcut associated with this item.
+ <p>
+ See <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for the menu types that support shortcuts.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>numericChar</td>
+          <td>The numeric shortcut key.  This is the shortcut when
+                 using a 12-key (numeric) keyboard.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setOnActionExpandListener(android.view.MenuItem.OnActionExpandListener)"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setOnActionExpandListener</span>
+      <span class="normal">(<a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html">MenuItem.OnActionExpandListener</a> listener)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set an <code><a href="../../../reference/android/view/MenuItem.OnActionExpandListener.html">MenuItem.OnActionExpandListener</a></code> on this menu item to be notified when
+ the associated action view is expanded or collapsed. The menu item must
+ be configured to expand or collapse its action view using the flag
+ <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW">SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>listener</td>
+          <td>Listener that will respond to expand/collapse events</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This menu item instance for call chaining
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setOnMenuItemClickListener(android.view.MenuItem.OnMenuItemClickListener)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setOnMenuItemClickListener</span>
+      <span class="normal">(<a href="../../../reference/android/view/MenuItem.OnMenuItemClickListener.html">MenuItem.OnMenuItemClickListener</a> menuItemClickListener)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set a custom listener for invocation of this menu item. In most
+ situations, it is more efficient and easier to use
+ <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected(MenuItem)</a></code> or
+ <code><a href="../../../reference/android/app/Activity.html#onContextItemSelected(android.view.MenuItem)">onContextItemSelected(MenuItem)</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>menuItemClickListener</td>
+          <td>The object to receive invokations.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected(MenuItem)</a></code></li><li><code><a href="../../../reference/android/app/Activity.html#onContextItemSelected(android.view.MenuItem)">onContextItemSelected(MenuItem)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setShortcut(char, char)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setShortcut</span>
+      <span class="normal">(char numericChar, char alphaChar)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change both the numeric and alphabetic shortcut associated with this
+ item. Note that the shortcut will be triggered when the key that
+ generates the given character is pressed alone or along with with the alt
+ key. Also note that case is not significant and that alphabetic shortcut
+ characters will be displayed in lower case.
+ <p>
+ See <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for the menu types that support shortcuts.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>numericChar</td>
+          <td>The numeric shortcut key. This is the shortcut when
+        using a numeric (e.g., 12-key) keyboard.</td>
+        </tr>
+        <tr>
+          <th>alphaChar</td>
+          <td>The alphabetic shortcut key. This is the shortcut when
+        using a keyboard with alphabetic keys.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setShowAsAction(int)"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setShowAsAction</span>
+      <span class="normal">(int actionEnum)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets how this item should display in the presence of an Action Bar.
+ The parameter actionEnum is a flag set. One of <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_ALWAYS">SHOW_AS_ACTION_ALWAYS</a></code>,
+ <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_IF_ROOM">SHOW_AS_ACTION_IF_ROOM</a></code>, or <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_NEVER">SHOW_AS_ACTION_NEVER</a></code> should
+ be used, and you may optionally OR the value with <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_WITH_TEXT">SHOW_AS_ACTION_WITH_TEXT</a></code>.
+ SHOW_AS_ACTION_WITH_TEXT requests that when the item is shown as an action,
+ it should be shown with a text label.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>actionEnum</td>
+          <td>How the item should display. One of
+ <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_ALWAYS">SHOW_AS_ACTION_ALWAYS</a></code>, <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_IF_ROOM">SHOW_AS_ACTION_IF_ROOM</a></code>, or
+ <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_NEVER">SHOW_AS_ACTION_NEVER</a></code>. SHOW_AS_ACTION_NEVER is the default.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/ActionBar.html">ActionBar</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.html#setActionView(android.view.View)">setActionView(View)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setShowAsActionFlags(int)"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setShowAsActionFlags</span>
+      <span class="normal">(int actionEnum)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets how this item should display in the presence of an Action Bar.
+ The parameter actionEnum is a flag set. One of <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_ALWAYS">SHOW_AS_ACTION_ALWAYS</a></code>,
+ <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_IF_ROOM">SHOW_AS_ACTION_IF_ROOM</a></code>, or <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_NEVER">SHOW_AS_ACTION_NEVER</a></code> should
+ be used, and you may optionally OR the value with <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_WITH_TEXT">SHOW_AS_ACTION_WITH_TEXT</a></code>.
+ SHOW_AS_ACTION_WITH_TEXT requests that when the item is shown as an action,
+ it should be shown with a text label.
+
+ <p>Note: This method differs from <code><a href="../../../reference/android/view/MenuItem.html#setShowAsAction(int)">setShowAsAction(int)</a></code> only in that it
+ returns the current MenuItem instance for call chaining.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>actionEnum</td>
+          <td>How the item should display. One of
+ <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_ALWAYS">SHOW_AS_ACTION_ALWAYS</a></code>, <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_IF_ROOM">SHOW_AS_ACTION_IF_ROOM</a></code>, or
+ <code><a href="../../../reference/android/view/MenuItem.html#SHOW_AS_ACTION_NEVER">SHOW_AS_ACTION_NEVER</a></code>. SHOW_AS_ACTION_NEVER is the default.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This MenuItem instance for call chaining.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/ActionBar.html">ActionBar</a></code></li><li><code><a href="../../../reference/android/view/MenuItem.html#setActionView(android.view.View)">setActionView(View)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setTitle(java.lang.CharSequence)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setTitle</span>
+      <span class="normal">(<a href="../../../reference/java/lang/CharSequence.html">CharSequence</a> title)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change the title associated with this item.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>title</td>
+          <td>The new text to be displayed.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setTitle(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setTitle</span>
+      <span class="normal">(int title)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change the title associated with this item.
+ <p>
+ Some menu types do not sufficient space to show the full title, and
+ instead a condensed title is preferred. See <code><a href="../../../reference/android/view/Menu.html">Menu</a></code> for more
+ information.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>title</td>
+          <td>The resource id of the new text to be displayed.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/MenuItem.html#setTitleCondensed(java.lang.CharSequence)">setTitleCondensed(CharSequence)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setTitleCondensed(java.lang.CharSequence)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setTitleCondensed</span>
+      <span class="normal">(<a href="../../../reference/java/lang/CharSequence.html">CharSequence</a> title)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Change the condensed title associated with this item. The condensed
+ title is used in situations where the normal title may be too long to
+ be displayed.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>title</td>
+          <td>The new text to be displayed as the condensed title.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setVisible(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../reference/android/view/MenuItem.html">MenuItem</a>
+      </span>
+      <span class="sympad">setVisible</span>
+      <span class="normal">(boolean visible)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the visibility of the menu item. Even if a menu item is not visible,
+ it may still be invoked via its shortcut (to completely disable an item,
+ set it to invisible and <code><a href="../../../reference/android/view/MenuItem.html#setEnabled(boolean)">disabled</a></code>).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>visible</td>
+          <td>If true then the item will be visible; if false it is
+        hidden.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This Item so additional setters can be called.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Optimizing Your UI | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Optimizing Your UI</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+    <div id="qv">
+      <h2>In this document</h2>
+
+      <ol>
+        <li>
+            <a href="#HierarchyViewer">
+                Using Hierarchy Viewer
+            </a>
+            <ol>
+                <li><a href="#runhv">Running Hierarchy Viewer and choosing a window</a></li>
+                <li><a href="#viewhierarchy">About the View Hierarchy window</a></li>
+                <li><a href="#indiView">Working with an individual View in Tree View</a></li>
+                <li><a href="#hvdebugging">Debugging with View Hierarchy</a></li>
+                <li><a href="#hvoptimize">Optimizing with View Hierarchy</a></li>
+            </ol>
+        </li>
+        <li>
+            <a href="#pixelperfect">
+                Using Pixel Perfect
+            </a>
+            <ol>
+                <li><a href="#aboutpixelperfect">About the Pixel Perfect window</a></li>
+                <li><a href="#overlays">Working with Pixel Perfect overlays</a></li>
+            </ol>
+        </li>
+        <li><a href="#lint">Using lint to optimize your UI</a></li>
+      </ol>
+      <h2>Related videos</h2>
+          <ol>
+              <li>
+<iframe title="Hierarchyviewer" 
+    width="210" height="160" 
+    src="//www.youtube.com/embed/PAgE7saQUUY?rel=0&amp;hd=1" 
+    frameborder="0" allowfullscreen>
+</iframe>
+              </li>
+              <li>
+<iframe title="Pixel Perfect" 
+    width="210" height="160" 
+    src="//www.youtube.com/embed/C45bMZGdN7Y?rel=0&amp;hd=1" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+              </li>
+          </ol>
+    </div>
+  </div>
+
+  <p>
+Sometimes your application's layout can slow down your application.
+  To help debug issues in your layout, the Android SDK provides the Hierarchy Viewer and
+  <code>lint</code> tools.
+  </p>
+
+  <p>The Hierarchy Viewer application allows you to debug and optimize your user interface. It
+  provides a visual representation of the layout's View hierarchy (the View Hierarchy window)
+  with performance information for each node in the layout,
+  and a magnified view of the display (the Pixel Perfect window) to closely examine the pixels
+  in your layout.</p>
+
+  <p>Android <code>lint</code> is a static code scanning tool that helps you optimize the layouts and layout
+  hierarchies of your applications, as well as detect other common coding problems. You can run it against your layout files or resource
+  directories to quickly check for inefficiencies or other types of problems that could be
+  affecting the performance of your application.</p>
+
+<h2 id="HierarchyViewer">Using Hierarchy Viewer</h2>
+
+<h3 id="runhv">Running Hierarchy Viewer and choosing a window</h3>
+<p>
+    To run Hierarchy Viewer, follow these steps:</p>
+<ol>
+    <li>
+        Connect your device or launch an emulator.
+        <p>
+            To preserve security, Hierarchy Viewer can only connect to devices running a
+            developer version of the Android system.
+        </p>
+    </li>
+    <li>
+        If you have not done so already, install the application you want to work with.
+    </li>
+    <li>
+        Run the application, and ensure that its UI is visible.
+    </li>
+    <li>
+        From a terminal, launch <code>hierarchyviewer</code> from the
+        <code>&lt;sdk&gt;/tools/</code>
+        directory.
+    </li>
+    <li>
+        The first window you see displays a list of devices and emulators. To expand the list
+        of Activity objects for a device or emulator, click the arrow on the left. This displays a
+        list of the Activity objects whose UI is currently visible on the device or emulator. The
+        objects are listed by their Android component name. The list includes both your application
+        Activity and system Activity objects. A screenshot of this window appears in
+        figure 1.
+    </li>
+    <li>
+        Select the name of your Activity from the list. You can now look at its view
+        hierarchy using the View Hierarchy window, or look at a magnified image of the UI using
+        the Pixel Perfect window.
+    </li>
+</ol>
+<p>
+    To learn how to use the View Hierarchy window, go to
+    <a href="#viewhierarchy">About the View Hierarchy window</a>. To learn how to use the
+    Pixel Perfect window, go to <a href="#pixelperfect">About the Pixel Perfect window</a>.
+</p>
+<img id="Fig1" src="../../images/developing/hv_device_window.png" alt="" height="600"/>
+<p class="img-caption"><strong>Figure 1.</strong> Hierarchy Viewer device window</p>
+<h3 id="viewhierarchy">About the View Hierarchy window</h3>
+<p>
+    The View Hierarchy window displays the View objects that form the UI of the
+    Activity that is running on your device or emulator. You use it to look at individual
+    View objects within the context of the entire View tree. For each View object, the View
+    Hierarchy window also displays rendering performance data.
+</p>
+<p>
+    To see the View Hierarchy window, run Hierarchy Viewer as described in
+    the section <a href="#runhv">Running Hierarchy Viewer and choosing a window</a>. Next, click
+    <strong>View Hierarchy</strong> at the top of the device window.
+</p>
+<p>
+    You should see four panes:
+</p>
+<ul>
+    <li>
+        <strong>Tree View</strong>: The left-hand pane displays the Tree View,
+        a diagram of the Activity object's hierarchy of views. Use Tree View to examine individual
+        View objects and see the relationships between View objects in your UI.
+        <p>
+            To zoom in on the pane, use the slider at the bottom of the pane, or use your mouse
+            scroll wheel. To move around in the pane or reveal View objects that are not currently
+            visible, click and drag the pane.
+        </p>
+        <p>
+            To highlight the nodes in the tree whose class or ID match a search string, enter the
+            string in the <strong>Filter by class or id:</strong> edit box at the bottom of the
+            window. The background of nodes that match the search string will change from gray to
+            bright blue.
+        </p>
+        <p>
+            To save a screenshot of Tree View to a PNG file, click <strong>Save As PNG</strong> at
+            the top of the View Hierarchy window. This displays a dialog in which you can choose
+            a directory and file name.
+        </p>
+        <p>
+            To save a layered screenshot of your device or emulator to an Adobe Photoshop (PSD)
+            file, click <strong>Capture Layers</strong> at the top of the View Hierarchy window.
+            This displays a dialog in which you can choose a directory or file name.
+            Each View in the UI is saved as a separate Photoshop layer.
+        </p>
+        <p>
+            In Photoshop (or similar program that accepts .psd files), you can hide, show or edit a
+            layer independently of others. When you save a layered screenshot, you can examine and
+            modify the image of an individual View object. This helps you experiment with design
+            changes.
+        </p>
+    </li>
+    <li>
+        The upper right-hand pane displays the <strong>Tree Overview</strong>, a smaller map
+        representation of the entire Tree View window. Use Tree Overview to identify the part of the
+        view tree that is being displayed in Tree View.
+        <p>
+            You can also use Tree Overview to move around in the Tree View pane. Click and drag
+            the shaded rectangle over an area to reveal it in Tree View.
+        </p>
+    </li>
+    <li>
+        The middle right-hand pane displays the <strong>Properties View</strong>,
+        a list of the properties for a selected View object. With Properties View, you can
+        examine all the properties without having to look at your application source.
+        <p>
+            The properties are organized by category. To find an individual property, expand
+            a category name by clicking the arrow on its left. This reveals all the properties
+            in that category.
+        </p>
+    </li>
+    <li>
+        The lower right-hand pane displays the <strong>Layout View</strong>,
+        a block representation of the UI. Layout View is another way to navigate through your UI.
+        When you click on a View object in Tree View, its position in the UI is highlighted.
+        Conversely, when you click in an area of Layout View, the View object for that area is
+        highlighted in Tree View.
+        <p>
+            The outline colors of blocks in Layout View provide additional information:
+        </p>
+            <ul>
+                <li>
+                    Bold red: The block represents the the View that is currently selected in
+                    Tree View.
+                </li>
+                <li>
+                    Light red: The block represents the parent of the block outlined in bold red.
+                </li>
+                <li>
+                    White: The block represents a visible View that is not a parent or child of the
+                    View that is currently selected in Tree View.
+                </li>
+            </ul>
+    </li>
+</ul>
+<p>
+    When the UI of the current Activity changes, the View Hierarchy window is not automatically
+    updated. To update it, click <strong>Load View Hierarchy</strong> at the top of the window.
+</p>
+<p>
+    Also, the window is not updated if you switch to a new Activity. To update it, start by
+    clicking the window selection icon in the bottom left-hand corner of the window. This
+    navigates back to the Window Selection window. From this window, click the Android
+    component name of the new Activity and then click <strong>Load View Hierarchy</strong>
+    at the top of the window.
+</p>
+<p>
+    A screenshot of the View Hierarchy window appears in figure 2.
+</p>
+<img id="Fig2" src="../../images/developing/hv_view_hierarchy_window.png" alt="" height="600"/>
+<p class="img-caption"><strong>Figure 2.</strong> The View Hierarchy window</p>
+<h3 id="indiView">Working with an individual View in Tree View</h3>
+<p>
+    Each node in Tree View represents a single View. Some information is always visible. Starting
+    at the top of the node, you see the following:
+</p>
+<ol>
+    <li>
+        View class: The View object's class.
+    </li>
+    <li>
+        View object address: A pointer to View object.
+    </li>
+    <li>
+        View object ID: The value of the
+        <code><a href="../../guide/topics/resources/layout-resource.html#idvalue">android:id</a>
+        </code> attribute.
+    </li>
+    <li>
+        Performance indicators: A set of three colored dots that indicate the rendering
+        speed of this View relative to other View objects in the tree. The three dots
+        represent (from left to right) the measure, layout, and draw times of the rendering.
+        <p>
+            The colors indicate the following relative performance:
+        </p>
+        <ul>
+            <li>
+                Green: For this part of the render time, this View is in the faster 50% of all
+                the View objects in the tree. For example, a green dot for the measure time means
+                that this View has a faster measure time than 50% of the View objects in the tree.
+            </li>
+            <li>
+                Yellow: For this part of the render time, this View is in the slower 50% of all
+                the View objects in the tree. For example, a yellow dot for the layout time means
+                that this View has a slower layout time than 50% of the View objects in the tree.
+            </li>
+            <li>
+                Red: For this part of the render time, this View is the slowest one in the tree.
+                For example, a red dot for the draw time means that this View takes the most
+                time to draw of all the View objects in the tree.
+            </li>
+        </ul>
+    </li>
+    <li>
+        View index: The zero-based index of the View in its parent View. If it is the only child,
+        this is 0.
+    </li>
+</ol>
+<p>
+    When you select a node, additional information for the View appears in a small window above
+    the node. When you click one of the nodes, you see the following:
+</p>
+<ul>
+    <li>
+        Image: The actual image of the View, as it would appear in the emulator. If the View has
+        children, these are also displayed.
+    </li>
+    <li>
+        View count: The number of View objects represented by this node. This includes the View
+        itself and a count of its children. For example, this value is 4 for a View that has 3
+        children.
+    </li>
+    <li>
+        Render times: The actual measure, layout, and draw times for the View rendering, in
+        milliseconds. These represent the same values as the performance indicators mentioned in
+        the preceding section.
+    </li>
+</ul>
+<p>
+    An annotated screenshot of an individual node in the Tree View window appears in figure 3.
+</p>
+<img id="Fig3" src="../../images/developing/hv_treeview_screenshot.png" alt="" height="600"/>
+<p class="img-caption"><strong>Figure 3.</strong> An annotated node in Tree View</p>
+<h3 id="hvdebugging">Debugging with View Hierarchy</h3>
+<p>
+    The View Hierarchy window helps you debug an application by providing a static display
+    of the UI. The display starts with your application's opening screen. As you step through
+    your application, the display remains unchanged until you redraw it by invalidating and
+    then requesting layout for a View.
+</p>
+<p>
+    To redraw a View in the display:
+</p>
+    <ul>
+        <li>
+            Select a View in Tree View. As you move up towards the root of the tree (to the
+            left in the Tree View), you see the highest-level View objects. Redrawing a high-level
+            object usually forces the lower-level objects to redraw as well.
+        </li>
+        <li>
+            Click <strong>Invalidate</strong> at the top of the window. This marks the View as
+            invalid, and schedules it for a redraw at the next point that a layout is requested.
+        </li>
+        <li>
+            Click <strong>Request Layout</strong> to request a layout. The View and its children
+            are redrawn, as well as any other View objects that need to be redrawn.
+        </li>
+    </ul>
+<p>
+    Manually redrawing a View allows you to watch the View object tree and examine the properties of
+    individual View objects one step at a time as you go through breakpoints in your code.
+</p>
+<h3 id="hvoptimize">Optimizing with View Hierarchy</h3>
+<p>
+    View Hierarchy also helps you identify slow render performance. You start by looking at the
+    View nodes with red or yellow performance indicators to identify the slower View objects. As you
+    step through your application, you can judge if a View is consistently slow or slow only in
+    certain circumstances.
+</p>
+<p>
+    Remember that slow performance is not necessarily evidence of a problem, especially for
+    ViewGroup objects. View objects that have more children and more complex View objects render
+    more slowly.
+</p>
+<p>
+    The View Hierarchy window also helps you find performance issues. Just by looking at the
+    performance indicators (the dots) for each View node, you can see which View objects are the
+    slowest to measure, layout, and draw. From that, you can quickly identify the problems you
+    should look at first.
+</p>
+<h2 id="pixelperfect">Using Pixel Perfect</h2>
+<p>
+    Pixel Perfect is a tool for examining pixel properties and laying out UIs from a design drawing.
+</p>
+<h3 id="aboutpixelperfect">About the Pixel Perfect window</h3>
+<p>
+    The Pixel Perfect window displays a magnified image of the screen that is currently
+    visible on the emulator or device. In it, you can examine the properties
+    of individual pixels in the screen image. You can also use the Pixel Perfect window
+    to help you lay out your application UI based on a bitmap design.
+</p>
+<p>
+    To see the Pixel Perfect window, run Hierarchy Viewer, as described in
+    the section <a href="#runhv">Running Hierarchy Viewer and choosing a window</a>. Next, click
+    <strong>Inspect Screenshot</strong> at the top of the device window. The Pixel Perfect window
+    appears.
+</p>
+<p>
+    In it, you see three panes:
+</p>
+<ul>
+    <li>
+        View Object pane: This is a hierarchical list of the View objects that are currently
+        visible on the device or emulator screen, including both the ones in your application and
+        the ones generated by the system. The objects are listed by their View class.
+        To see the class names of a View object's children, expand the View by clicking the
+        arrow to its left. When you click a View, its position is highlighted in the Pixel Perfect
+        pane on the right.
+    </li>
+    <li>
+        Pixel Perfect Loupe pane: This is the magnified screen image. It is overlaid by a grid in
+        which each square represents one pixel. To look at the information for a pixel, click in its
+        square. Its color and X,Y coordinates appear at the bottom of the pane.
+        <p>
+            The magenta crosshair in the pane corresponds to the positioning
+            crosshair in the next pane. It only moves when you move the crosshair in the next pane.
+        </p>
+        <p>
+            To zoom in or out on the image, use the <strong>Zoom</strong> slider at the bottom of
+            the pane, or use your mouse's scroll wheel.
+        </p>
+        <p>
+            When you select a pixel in the Loupe pane, you see the following information at the
+            bottom of the pane:
+        </p>
+        <ul>
+            <li>
+                Pixel swatch: A rectangle filled with the same color as the pixel.
+            </li>
+            <li>
+                HTML color code: The hexadecimal RGB code corresponding to the pixel color
+            </li>
+            <li>
+                RGB color values: A list of the (R), green (G), and blue (B) color values of the
+                pixel color. Each value is in the range 0-255.
+            </li>
+            <li>
+                X and Y coordinates: The pixel's coordinates, in device-specific pixel units.
+                The values are 0-based, with X=0 at the left of the screen and Y=0 at the top.
+            </li>
+        </ul>
+    </li>
+    <li>
+        Pixel Perfect pane: This displays the currently visible screen as it would appear in the
+        emulator.
+        <p>
+            You use the cyan crosshair to do coarse positioning. Drag the crosshair in the image,
+            and the Loupe crosshair will move accordingly. You can also click on a point in the
+            Pixel Perfect pane, and the crosshair will move to that point.
+        </p>
+        <p>
+            The image corresponding to the View object selected in the View Object pane is
+            outlined in a box that indicates the View object's position on the screen. For the
+            selected object, the box is bold red. Sibling and parent View objects have a light
+            red box. View objects that are neither parents nor siblings are in white.
+        </p>
+        <p>
+            The layout box may have other rectangles either inside or outside it, each of which
+            indicates part of the View. A purple or green rectangle indicates the View bounding box.
+            A white or black box inside the layout box represents the <strong>padding</strong>, the
+            defined distance between the View object's content and its bounding box. An outer white
+            or black rectangle represents the <strong>margins</strong>, the distance between the
+            View bounding box and adjacent View objects. The padding and margin boxes are white if
+            the layout background is black, and vice versa.
+        </p>
+        <p>
+            You can save the screen image being displayed in the Pixel Perfect pane as a PNG file.
+            This produces a screenshot of the current screen. To do this, click
+            <strong>Save as PNG</strong> at the top of the window. This displays a dialog,
+            in which you can choose a directory and filename for the file.
+        </p>
+    </li>
+</ul>
+<p>
+    The panes are not automatically refreshed when you change one of the View objects or go to
+    another Activity. To refresh the Pixel Perfect pane and the Loupe pane, click
+    <strong>Refresh Screenshot</strong> at the top of the window. This will change the panes
+    to reflect the current screen image. You still may need to refresh the View Object pane;
+    to do this, click <strong>Refresh Tree</strong> at the top of the window.
+</p>
+<p>
+    To automatically refresh the panes while you are debugging, set
+    <strong>Auto Refresh</strong> at the top of the window, and then set a refresh rate
+    with the <strong>Refresh Rate</strong> slider at the bottom of the Loupe pane.
+</p>
+<h3 id="overlays">Working with Pixel Perfect overlays</h3>
+<p>
+    You often construct a UI based on a design done as a bitmap image. The Pixel Perfect window
+    helps you match up your View layout to a bitmap image by allowing you to load the bitmap as an
+    <strong>overlay</strong> on the screen image.
+</p>
+<p>
+    To use a bitmap image as an overlay:
+</p>
+<ul>
+    <li>
+        Start your application in a device or emulator and navigate to the Activity whose UI you
+        want to work with.
+    </li>
+    <li>
+        Start Hierarchy Viewer and navigate to the Pixel Perfect window.
+    </li>
+    <li>
+        At the top of the window, click <strong>Load Overlay</strong>. A dialog opens, prompting
+        for the image file to load. Load the image file.
+    </li>
+    <li>
+        Pixel Perfect displays the overlay over the screen image in the Pixel Perfect pane. The
+        lower left corner of the bitmap image (X=0, Y=<em>max value</em>) is anchored on the lower
+        leftmost pixel (X=0, Y=<em>max screen</em>) of the screen.
+        <p>
+            By default, the overlay has a 50% transparency, which allows you to see the screen
+            image underneath. You can adjust this with the <strong>Overlay:</strong> slider at the
+            bottom of the Loupe pane.
+        </p>
+        <p>
+            Also by default, the overlay is not displayed in the Loupe pane. To display it,
+            set <strong>Show in Loupe</strong> at the top of the window.
+        </p>
+    </li>
+</ul>
+<p>
+    The overlay is not saved as part of the screenshot when you save the screen image as a PNG
+    file.
+</p>
+<p>
+    A screenshot of the Pixel Perfect window appears in figure 4.
+</p>
+<img id="Fig4" src="../../images/developing/hv_pixelperfect.png"
+        alt=""
+        height="600"/>
+<p class="img-caption"><strong>Figure 4.</strong> The Pixel Perfect window</p>
+<h2 id="lint">Using lint to Optimize Your UI</h2>
+<p>The Android <code>lint</code> tool lets you analyze the XML files that define your application's UI to find inefficiencies in the view hierarchy.</p>
+<p class="note"><strong>Note: </strong>The Android <code>layoutopt</code> tool has been replaced by the <code>lint</code> tool beginning in ADT and SDK Tools revision 16. The <code>lint</code> tool reports UI layout performance issues in a similar way as <code>layoutopt</code>, and detects additional problems.</p>
+<p>For more information about using <code>lint</code>, see <a href="../../tools/debugging/improving-w-lint.html">Improving Your Code with lint</a> and the <a  href="../../tools/help/lint.html">lint reference documentation</a>.</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

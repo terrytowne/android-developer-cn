@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>java.util.concurrent - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../../";
+  var devsite = false;
+</script>
+<script src="../../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+
+<body class="gc-documentation 
+  develop">
+  <div id="doc-api-level" class="1" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../../index.html">
+            <img src="../../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../../')" 
+onkeyup="return search_changed(event, false, '../../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/package-summary.html">android</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="selected api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+        <li class="api apilevel-9"><a href="../../../../reference/java/util/concurrent/BlockingDeque.html">BlockingDeque</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/BlockingQueue.html">BlockingQueue</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/Callable.html">Callable</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/CompletionService.html">CompletionService</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ConcurrentMap.html">ConcurrentMap</a></li>
+        <li class="api apilevel-9"><a href="../../../../reference/java/util/concurrent/ConcurrentNavigableMap.html">ConcurrentNavigableMap</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/Delayed.html">Delayed</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/Executor.html">Executor</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ExecutorService.html">ExecutorService</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/Future.html">Future</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/RejectedExecutionHandler.html">RejectedExecutionHandler</a></li>
+        <li class="api apilevel-9"><a href="../../../../reference/java/util/concurrent/RunnableFuture.html">RunnableFuture</a></li>
+        <li class="api apilevel-9"><a href="../../../../reference/java/util/concurrent/RunnableScheduledFuture.html">RunnableScheduledFuture</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ScheduledExecutorService.html">ScheduledExecutorService</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ScheduledFuture.html">ScheduledFuture</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ThreadFactory.html">ThreadFactory</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/AbstractExecutorService.html">AbstractExecutorService</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ArrayBlockingQueue.html">ArrayBlockingQueue</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ConcurrentHashMap.html">ConcurrentHashMap</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ConcurrentLinkedQueue.html">ConcurrentLinkedQueue</a></li>
+        <li class="api apilevel-9"><a href="../../../../reference/java/util/concurrent/ConcurrentSkipListMap.html">ConcurrentSkipListMap</a></li>
+        <li class="api apilevel-9"><a href="../../../../reference/java/util/concurrent/ConcurrentSkipListSet.html">ConcurrentSkipListSet</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/CopyOnWriteArrayList.html">CopyOnWriteArrayList</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/CopyOnWriteArraySet.html">CopyOnWriteArraySet</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/CountDownLatch.html">CountDownLatch</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/CyclicBarrier.html">CyclicBarrier</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/DelayQueue.html">DelayQueue</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/Exchanger.html">Exchanger</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ExecutorCompletionService.html">ExecutorCompletionService</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/Executors.html">Executors</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/FutureTask.html">FutureTask</a></li>
+        <li class="api apilevel-9"><a href="../../../../reference/java/util/concurrent/LinkedBlockingDeque.html">LinkedBlockingDeque</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/LinkedBlockingQueue.html">LinkedBlockingQueue</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/PriorityBlockingQueue.html">PriorityBlockingQueue</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ScheduledThreadPoolExecutor.html">ScheduledThreadPoolExecutor</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/Semaphore.html">Semaphore</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/SynchronousQueue.html">SynchronousQueue</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.AbortPolicy.html">ThreadPoolExecutor.AbortPolicy</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.CallerRunsPolicy.html">ThreadPoolExecutor.CallerRunsPolicy</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.DiscardOldestPolicy.html">ThreadPoolExecutor.DiscardOldestPolicy</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.DiscardPolicy.html">ThreadPoolExecutor.DiscardPolicy</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Enums</h2>
+      <ul>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/TimeUnit.html">TimeUnit</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/BrokenBarrierException.html">BrokenBarrierException</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/CancellationException.html">CancellationException</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/ExecutionException.html">ExecutionException</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/RejectedExecutionException.html">RejectedExecutionException</a></li>
+        <li class="api apilevel-1"><a href="../../../../reference/java/util/concurrent/TimeoutException.html">TimeoutException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12" id="doc-col">
+
+<div id="api-info-block">
+<div class="api-level">
+  
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+  
+  
+
+</div>
+</div>
+
+<div id="jd-header">
+  package
+  <h1>java.util.concurrent</h1>
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-1">
+
+
+  <div class="jd-descr">
+    Utility classes commonly useful in concurrent programming.  This
+ package includes a few small standardized extensible frameworks, as
+ well as some classes that provide useful functionality and are
+ otherwise tedious or difficult to implement.  Here are brief
+ descriptions of the main components.  See also the
+ <code><a href="../../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></code> and
+ <code><a href="../../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></code> packages.
+
+ <h2>Executors</h2>
+
+ <b>Interfaces.</b>
+
+ <code><a href="../../../../reference/java/util/concurrent/Executor.html">Executor</a></code> is a simple standardized
+ interface for defining custom thread-like subsystems, including
+ thread pools, asynchronous I/O, and lightweight task frameworks.
+ Depending on which concrete Executor class is being used, tasks may
+ execute in a newly created thread, an existing task-execution thread,
+ or the thread calling <code><a href="../../../../reference/java/util/concurrent/Executor.html#execute(java.lang.Runnable)">execute</a></code>, and may execute sequentially or concurrently.
+
+ <code><a href="../../../../reference/java/util/concurrent/ExecutorService.html">ExecutorService</a></code> provides a more
+ complete asynchronous task execution framework.  An
+ ExecutorService manages queuing and scheduling of tasks,
+ and allows controlled shutdown.
+
+ The <code><a href="../../../../reference/java/util/concurrent/ScheduledExecutorService.html">ScheduledExecutorService</a></code>
+ subinterface and associated interfaces add support for
+ delayed and periodic task execution.  ExecutorServices
+ provide methods arranging asynchronous execution of any
+ function expressed as <code><a href="../../../../reference/java/util/concurrent/Callable.html">Callable</a></code>,
+ the result-bearing analog of <code><a href="../../../../reference/java/lang/Runnable.html">Runnable</a></code>.
+
+ A <code><a href="../../../../reference/java/util/concurrent/Future.html">Future</a></code> returns the results of
+ a function, allows determination of whether execution has
+ completed, and provides a means to cancel execution.
+
+ A <code><a href="../../../../reference/java/util/concurrent/RunnableFuture.html">RunnableFuture</a></code> is a <code>Future</code>
+ that possesses a <code>run</code> method that upon execution,
+ sets its results.
+
+ <p>
+
+ <b>Implementations.</b>
+
+ Classes <code><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a></code> and
+ <code><a href="../../../../reference/java/util/concurrent/ScheduledThreadPoolExecutor.html">ScheduledThreadPoolExecutor</a></code>
+ provide tunable, flexible thread pools.
+
+ The <code><a href="../../../../reference/java/util/concurrent/Executors.html">Executors</a></code> class provides
+ factory methods for the most common kinds and configurations
+ of Executors, as well as a few utility methods for using
+ them.  Other utilities based on <code>Executors</code> include the
+ concrete class <code><a href="../../../../reference/java/util/concurrent/FutureTask.html">FutureTask</a></code>
+ providing a common extensible implementation of Futures, and
+ <code><a href="../../../../reference/java/util/concurrent/ExecutorCompletionService.html">ExecutorCompletionService</a></code>, that
+ assists in coordinating the processing of groups of
+ asynchronous tasks.
+
+ <h2>Queues</h2>
+
+ The <code><a href="../../../../reference/java/util/concurrent/ConcurrentLinkedQueue.html">ConcurrentLinkedQueue</a></code> class
+ supplies an efficient scalable thread-safe non-blocking FIFO
+ queue.
+
+ <p>Five implementations in <code>java.util.concurrent</code> support
+ the extended <code><a href="../../../../reference/java/util/concurrent/BlockingQueue.html">BlockingQueue</a></code>
+ interface, that defines blocking versions of put and take:
+ <code><a href="../../../../reference/java/util/concurrent/LinkedBlockingQueue.html">LinkedBlockingQueue</a></code>,
+ <code><a href="../../../../reference/java/util/concurrent/ArrayBlockingQueue.html">ArrayBlockingQueue</a></code>,
+ <code><a href="../../../../reference/java/util/concurrent/SynchronousQueue.html">SynchronousQueue</a></code>,
+ <code><a href="../../../../reference/java/util/concurrent/PriorityBlockingQueue.html">PriorityBlockingQueue</a></code>, and
+ <code><a href="../../../../reference/java/util/concurrent/DelayQueue.html">DelayQueue</a></code>.
+ The different classes cover the most common usage contexts
+ for producer-consumer, messaging, parallel tasking, and
+ related concurrent designs.
+
+ <p>The <code><a href="../../../../reference/java/util/concurrent/BlockingDeque.html">BlockingDeque</a></code> interface
+ extends <code>BlockingQueue</code> to support both FIFO and LIFO
+ (stack-based) operations.
+ Class <code><a href="../../../../reference/java/util/concurrent/LinkedBlockingDeque.html">LinkedBlockingDeque</a></code>
+ provides an implementation.
+
+ <h2>Timing</h2>
+
+ The <code><a href="../../../../reference/java/util/concurrent/TimeUnit.html">TimeUnit</a></code> class provides
+ multiple granularities (including nanoseconds) for
+ specifying and controlling time-out based operations.  Most
+ classes in the package contain operations based on time-outs
+ in addition to indefinite waits.  In all cases that
+ time-outs are used, the time-out specifies the minimum time
+ that the method should wait before indicating that it
+ timed-out.  Implementations make a &quot;best effort&quot;
+ to detect time-outs as soon as possible after they occur.
+ However, an indefinite amount of time may elapse between a
+ time-out being detected and a thread actually executing
+ again after that time-out.  All methods that accept timeout
+ parameters treat values less than or equal to zero to mean
+ not to wait at all.  To wait "forever", you can use a value
+ of <code>Long.MAX_VALUE</code>.
+
+ <h2>Synchronizers</h2>
+
+ Four classes aid common special-purpose synchronization idioms.
+ <ul>
+
+ <li><code><a href="../../../../reference/java/util/concurrent/Semaphore.html">Semaphore</a></code> is a classic concurrency tool.
+
+ <li><code><a href="../../../../reference/java/util/concurrent/CountDownLatch.html">CountDownLatch</a></code> is a very simple yet
+ very common utility for blocking until a given number of signals,
+ events, or conditions hold.
+
+ <li>A <code><a href="../../../../reference/java/util/concurrent/CyclicBarrier.html">CyclicBarrier</a></code> is a resettable
+ multiway synchronization point useful in some styles of parallel
+ programming.
+
+ <li>An <code><a href="../../../../reference/java/util/concurrent/Exchanger.html">Exchanger</a></code> allows two threads to
+ exchange objects at a rendezvous point, and is useful in several
+ pipeline designs.
+
+ </ul>
+
+ <h2>Concurrent Collections</h2>
+
+ Besides Queues, this package supplies Collection implementations
+ designed for use in multithreaded contexts:
+ <code><a href="../../../../reference/java/util/concurrent/ConcurrentHashMap.html">ConcurrentHashMap</a></code>,
+ <code><a href="../../../../reference/java/util/concurrent/ConcurrentSkipListMap.html">ConcurrentSkipListMap</a></code>,
+ <code><a href="../../../../reference/java/util/concurrent/ConcurrentSkipListSet.html">ConcurrentSkipListSet</a></code>,
+ <code><a href="../../../../reference/java/util/concurrent/CopyOnWriteArrayList.html">CopyOnWriteArrayList</a></code>, and
+ <code><a href="../../../../reference/java/util/concurrent/CopyOnWriteArraySet.html">CopyOnWriteArraySet</a></code>.
+ When many threads are expected to access a given collection, a
+ <code>ConcurrentHashMap</code> is normally preferable to a synchronized
+ <code>HashMap</code>, and a <code>ConcurrentSkipListMap</code> is normally
+ preferable to a synchronized <code>TreeMap</code>.
+ A <code>CopyOnWriteArrayList</code> is preferable to a synchronized
+ <code>ArrayList</code> when the expected number of reads and traversals
+ greatly outnumber the number of updates to a list.
+
+ <p>The "Concurrent" prefix used with some classes in this package
+ is a shorthand indicating several differences from similar
+ "synchronized" classes.  For example <code>java.util.Hashtable</code> and
+ <code>Collections.synchronizedMap(new HashMap())</code> are
+ synchronized.  But <code><a href="../../../../reference/java/util/concurrent/ConcurrentHashMap.html">ConcurrentHashMap</a></code> is "concurrent".  A
+ concurrent collection is thread-safe, but not governed by a
+ single exclusion lock.  In the particular case of
+ ConcurrentHashMap, it safely permits any number of
+ concurrent reads as well as a tunable number of concurrent
+ writes.  "Synchronized" classes can be useful when you need
+ to prevent all access to a collection via a single lock, at
+ the expense of poorer scalability.  In other cases in which
+ multiple threads are expected to access a common collection,
+ "concurrent" versions are normally preferable.  And
+ unsynchronized collections are preferable when either
+ collections are unshared, or are accessible only when
+ holding other locks.
+
+ <p>Most concurrent Collection implementations (including most
+ Queues) also differ from the usual java.util conventions in that
+ their Iterators provide <em>weakly consistent</em> rather than
+ fast-fail traversal.  A weakly consistent iterator is thread-safe,
+ but does not necessarily freeze the collection while iterating, so
+ it may (or may not) reflect any updates since the iterator was
+ created.
+
+ <h2 id="MemoryVisibility">Memory Consistency Properties</h2>
+
+ <a href="http://java.sun.com/docs/books/jls/third_edition/html/memory.html">
+ Chapter 17 of the Java Language Specification</a> defines the
+ <i>happens-before</i> relation on memory operations such as reads and
+ writes of shared variables.  The results of a write by one thread are
+ guaranteed to be visible to a read by another thread only if the write
+ operation <i>happens-before</i> the read operation.  The
+ <code>synchronized</code> and <code>volatile</code> constructs, as well as the
+ <code>Thread.start()</code> and <code>Thread.join()</code> methods, can form
+ <i>happens-before</i> relationships.  In particular:
+
+ <ul>
+   <li>Each action in a thread <i>happens-before</i> every action in that
+   thread that comes later in the program's order.
+
+   <li>An unlock (<code>synchronized</code> block or method exit) of a
+   monitor <i>happens-before</i> every subsequent lock (<code>synchronized</code>
+   block or method entry) of that same monitor.  And because
+   the <i>happens-before</i> relation is transitive, all actions
+   of a thread prior to unlocking <i>happen-before</i> all actions
+   subsequent to any thread locking that monitor.
+
+   <li>A write to a <code>volatile</code> field <i>happens-before</i> every
+   subsequent read of that same field.  Writes and reads of
+   <code>volatile</code> fields have similar memory consistency effects
+   as entering and exiting monitors, but do <em>not</em> entail
+   mutual exclusion locking.
+
+   <li>A call to <code>start</code> on a thread <i>happens-before</i> any
+   action in the started thread.
+
+   <li>All actions in a thread <i>happen-before</i> any other thread
+   successfully returns from a <code>join</code> on that thread.
+
+ </ul>
+
+
+ The methods of all classes in <code>java.util.concurrent</code> and its
+ subpackages extend these guarantees to higher-level
+ synchronization.  In particular:
+
+ <ul>
+
+   <li>Actions in a thread prior to placing an object into any concurrent
+   collection <i>happen-before</i> actions subsequent to the access or
+   removal of that element from the collection in another thread.
+
+   <li>Actions in a thread prior to the submission of a <code>Runnable</code>
+   to an <code>Executor</code> <i>happen-before</i> its execution begins.
+   Similarly for <code>Callables</code> submitted to an <code>ExecutorService</code>.
+
+   <li>Actions taken by the asynchronous computation represented by a
+   <code>Future</code> <i>happen-before</i> actions subsequent to the
+   retrieval of the result via <code>Future.get()</code> in another thread.
+
+   <li>Actions prior to "releasing" synchronizer methods such as
+   <code>Lock.unlock</code>, <code>Semaphore.release</code>, and
+   <code>CountDownLatch.countDown</code> <i>happen-before</i> actions
+   subsequent to a successful "acquiring" method such as
+   <code>Lock.lock</code>, <code>Semaphore.acquire</code>,
+   <code>Condition.await</code>, and <code>CountDownLatch.await</code> on the
+   same synchronizer object in another thread.
+
+   <li>For each pair of threads that successfully exchange objects via
+   an <code>Exchanger</code>, actions prior to the <code>exchange()</code>
+   in each thread <i>happen-before</i> those subsequent to the
+   corresponding <code>exchange()</code> in another thread.
+
+   <li>Actions prior to calling <code>CyclicBarrier.await</code>
+   <i>happen-before</i> actions performed by the barrier action, and
+   actions performed by the barrier action <i>happen-before</i> actions
+   subsequent to a successful return from the corresponding <code>await</code>
+   in other threads.
+
+ </ul>
+  </div>
+
+
+
+
+
+  
+    <h2>Interfaces</h2>
+    <div class="jd-sumtable">
+    
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-9" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/BlockingDeque.html">BlockingDeque</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/Deque.html">Deque</a></code> that additionally supports blocking operations that wait
+ for the deque to become non-empty when retrieving an element, and wait for
+ space to become available in the deque when storing an element.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/BlockingQueue.html">BlockingQueue</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/Queue.html">Queue</a></code> that additionally supports operations
+ that wait for the queue to become non-empty when retrieving an
+ element, and wait for space to become available in the queue when
+ storing an element.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/Callable.html">Callable</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A task that returns a result and may throw an exception.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/CompletionService.html">CompletionService</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A service that decouples the production of new asynchronous tasks
+ from the consumption of the results of completed tasks.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ConcurrentMap.html">ConcurrentMap</a>&lt;K,&nbsp;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/Map.html">Map</a></code> providing additional atomic
+ <code>putIfAbsent</code>, <code>remove</code>, and <code>replace</code> methods.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-9" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ConcurrentNavigableMap.html">ConcurrentNavigableMap</a>&lt;K,&nbsp;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/concurrent/ConcurrentMap.html">ConcurrentMap</a></code> supporting <code><a href="../../../../reference/java/util/NavigableMap.html">NavigableMap</a></code> operations,
+ and recursively so for its navigable sub-maps.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/Delayed.html">Delayed</a></td>
+              <td class="jd-descrcol" width="100%">A mix-in style interface for marking objects that should be
+ acted upon after a given delay.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/Executor.html">Executor</a></td>
+              <td class="jd-descrcol" width="100%">An object that executes submitted <code><a href="../../../../reference/java/lang/Runnable.html">Runnable</a></code> tasks.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ExecutorService.html">ExecutorService</a></td>
+              <td class="jd-descrcol" width="100%">An <code><a href="../../../../reference/java/util/concurrent/Executor.html">Executor</a></code> that provides methods to manage termination and
+ methods that can produce a <code><a href="../../../../reference/java/util/concurrent/Future.html">Future</a></code> for tracking progress of
+ one or more asynchronous tasks.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/Future.html">Future</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code>Future</code> represents the result of an asynchronous
+ computation.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/RejectedExecutionHandler.html">RejectedExecutionHandler</a></td>
+              <td class="jd-descrcol" width="100%">A handler for tasks that cannot be executed by a <code><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-9" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/RunnableFuture.html">RunnableFuture</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/concurrent/Future.html">Future</a></code> that is <code><a href="../../../../reference/java/lang/Runnable.html">Runnable</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-9" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/RunnableScheduledFuture.html">RunnableScheduledFuture</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/concurrent/ScheduledFuture.html">ScheduledFuture</a></code> that is <code><a href="../../../../reference/java/lang/Runnable.html">Runnable</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ScheduledExecutorService.html">ScheduledExecutorService</a></td>
+              <td class="jd-descrcol" width="100%">An <code><a href="../../../../reference/java/util/concurrent/ExecutorService.html">ExecutorService</a></code> that can schedule commands to run after a given
+ delay, or to execute periodically.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ScheduledFuture.html">ScheduledFuture</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A delayed result-bearing action that can be cancelled.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ThreadFactory.html">ThreadFactory</a></td>
+              <td class="jd-descrcol" width="100%">An object that creates new threads on demand.&nbsp;</td>
+          </tr>
+  </table>
+    </div>
+  
+
+
+  
+    <h2>Classes</h2>
+    <div class="jd-sumtable">
+    
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/AbstractExecutorService.html">AbstractExecutorService</a></td>
+              <td class="jd-descrcol" width="100%">Provides default implementations of <code><a href="../../../../reference/java/util/concurrent/ExecutorService.html">ExecutorService</a></code>
+ execution methods.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ArrayBlockingQueue.html">ArrayBlockingQueue</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">A bounded <code><a href="../../../../reference/java/util/concurrent/BlockingQueue.html">blocking queue</a></code> backed by an
+ array.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ConcurrentHashMap.html">ConcurrentHashMap</a>&lt;K,&nbsp;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A hash table supporting full concurrency of retrievals and
+ adjustable expected concurrency for updates.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ConcurrentLinkedQueue.html">ConcurrentLinkedQueue</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">An unbounded thread-safe <code><a href="../../../../reference/java/util/Queue.html">queue</a></code> based on linked nodes.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-9" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ConcurrentSkipListMap.html">ConcurrentSkipListMap</a>&lt;K,&nbsp;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A scalable concurrent <code><a href="../../../../reference/java/util/concurrent/ConcurrentNavigableMap.html">ConcurrentNavigableMap</a></code> implementation.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-9" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ConcurrentSkipListSet.html">ConcurrentSkipListSet</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">A scalable concurrent <code><a href="../../../../reference/java/util/NavigableSet.html">NavigableSet</a></code> implementation based on
+ a <code><a href="../../../../reference/java/util/concurrent/ConcurrentSkipListMap.html">ConcurrentSkipListMap</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/CopyOnWriteArrayList.html">CopyOnWriteArrayList</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">A thread-safe random-access list.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/CopyOnWriteArraySet.html">CopyOnWriteArraySet</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/Set.html">Set</a></code> that uses an internal <code><a href="../../../../reference/java/util/concurrent/CopyOnWriteArrayList.html">CopyOnWriteArrayList</a></code>
+ for all of its operations.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/CountDownLatch.html">CountDownLatch</a></td>
+              <td class="jd-descrcol" width="100%">A synchronization aid that allows one or more threads to wait until
+ a set of operations being performed in other threads completes.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/CyclicBarrier.html">CyclicBarrier</a></td>
+              <td class="jd-descrcol" width="100%">A synchronization aid that allows a set of threads to all wait for
+ each other to reach a common barrier point.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/DelayQueue.html">DelayQueue</a>&lt;E&nbsp;extends&nbsp;<a href="../../../../reference/java/util/concurrent/Delayed.html">Delayed</a>&gt;</td>
+              <td class="jd-descrcol" width="100%">An unbounded <code><a href="../../../../reference/java/util/concurrent/BlockingQueue.html">blocking queue</a></code> of
+ <code>Delayed</code> elements, in which an element can only be taken
+ when its delay has expired.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/Exchanger.html">Exchanger</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A synchronization point at which threads can pair and swap elements
+ within pairs.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ExecutorCompletionService.html">ExecutorCompletionService</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/concurrent/CompletionService.html">CompletionService</a></code> that uses a supplied <code><a href="../../../../reference/java/util/concurrent/Executor.html">Executor</a></code>
+ to execute tasks.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/Executors.html">Executors</a></td>
+              <td class="jd-descrcol" width="100%">Factory and utility methods for <code><a href="../../../../reference/java/util/concurrent/Executor.html">Executor</a></code>, <code><a href="../../../../reference/java/util/concurrent/ExecutorService.html">ExecutorService</a></code>, <code><a href="../../../../reference/java/util/concurrent/ScheduledExecutorService.html">ScheduledExecutorService</a></code>, <code><a href="../../../../reference/java/util/concurrent/ThreadFactory.html">ThreadFactory</a></code>, and <code><a href="../../../../reference/java/util/concurrent/Callable.html">Callable</a></code> classes defined in this
+ package.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/FutureTask.html">FutureTask</a>&lt;V&gt;</td>
+              <td class="jd-descrcol" width="100%">A cancellable asynchronous computation.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-9" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/LinkedBlockingDeque.html">LinkedBlockingDeque</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">An optionally-bounded <code><a href="../../../../reference/java/util/concurrent/BlockingDeque.html">blocking deque</a></code> based on
+ linked nodes.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/LinkedBlockingQueue.html">LinkedBlockingQueue</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">An optionally-bounded <code><a href="../../../../reference/java/util/concurrent/BlockingQueue.html">blocking queue</a></code> based on
+ linked nodes.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/PriorityBlockingQueue.html">PriorityBlockingQueue</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">An unbounded <code><a href="../../../../reference/java/util/concurrent/BlockingQueue.html">blocking queue</a></code> that uses
+ the same ordering rules as class <code><a href="../../../../reference/java/util/PriorityQueue.html">PriorityQueue</a></code> and supplies
+ blocking retrieval operations.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ScheduledThreadPoolExecutor.html">ScheduledThreadPoolExecutor</a></td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a></code> that can additionally schedule
+ commands to run after a given delay, or to execute
+ periodically.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/Semaphore.html">Semaphore</a></td>
+              <td class="jd-descrcol" width="100%">A counting semaphore.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/SynchronousQueue.html">SynchronousQueue</a>&lt;E&gt;</td>
+              <td class="jd-descrcol" width="100%">A <code><a href="../../../../reference/java/util/concurrent/BlockingQueue.html">blocking queue</a></code> in which each insert
+ operation must wait for a corresponding remove operation by another
+ thread, and vice versa.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.html">ThreadPoolExecutor</a></td>
+              <td class="jd-descrcol" width="100%">An <code><a href="../../../../reference/java/util/concurrent/ExecutorService.html">ExecutorService</a></code> that executes each submitted task using
+ one of possibly several pooled threads, normally configured
+ using <code><a href="../../../../reference/java/util/concurrent/Executors.html">Executors</a></code> factory methods.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.AbortPolicy.html">ThreadPoolExecutor.AbortPolicy</a></td>
+              <td class="jd-descrcol" width="100%">A handler for rejected tasks that throws a
+ <code>RejectedExecutionException</code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.CallerRunsPolicy.html">ThreadPoolExecutor.CallerRunsPolicy</a></td>
+              <td class="jd-descrcol" width="100%">A handler for rejected tasks that runs the rejected task
+ directly in the calling thread of the <code>execute</code> method,
+ unless the executor has been shut down, in which case the task
+ is discarded.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.DiscardOldestPolicy.html">ThreadPoolExecutor.DiscardOldestPolicy</a></td>
+              <td class="jd-descrcol" width="100%">A handler for rejected tasks that discards the oldest unhandled
+ request and then retries <code>execute</code>, unless the executor
+ is shut down, in which case the task is discarded.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ThreadPoolExecutor.DiscardPolicy.html">ThreadPoolExecutor.DiscardPolicy</a></td>
+              <td class="jd-descrcol" width="100%">A handler for rejected tasks that silently discards the
+ rejected task.&nbsp;</td>
+          </tr>
+  </table>
+    </div>
+  
+
+
+  
+    <h2>Enums</h2>
+    <div class="jd-sumtable">
+    
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/TimeUnit.html">TimeUnit</a></td>
+              <td class="jd-descrcol" width="100%">A <code>TimeUnit</code> represents time durations at a given unit of
+ granularity and provides utility methods to convert across units,
+ and to perform timing and delay operations in these units.&nbsp;</td>
+          </tr>
+  </table>
+    </div>
+  
+
+
+  
+    <h2>Exceptions</h2>
+    <div class="jd-sumtable">
+    
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/BrokenBarrierException.html">BrokenBarrierException</a></td>
+              <td class="jd-descrcol" width="100%">Exception thrown when a thread tries to wait upon a barrier that is
+ in a broken state, or which enters the broken state while the thread
+ is waiting.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/CancellationException.html">CancellationException</a></td>
+              <td class="jd-descrcol" width="100%">Exception indicating that the result of a value-producing task,
+ such as a <code><a href="../../../../reference/java/util/concurrent/FutureTask.html">FutureTask</a></code>, cannot be retrieved because the task
+ was cancelled.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/ExecutionException.html">ExecutionException</a></td>
+              <td class="jd-descrcol" width="100%">Exception thrown when attempting to retrieve the result of a task
+ that aborted by throwing an exception.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/RejectedExecutionException.html">RejectedExecutionException</a></td>
+              <td class="jd-descrcol" width="100%">Exception thrown by an <code><a href="../../../../reference/java/util/concurrent/Executor.html">Executor</a></code> when a task cannot be
+ accepted for execution.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/java/util/concurrent/TimeoutException.html">TimeoutException</a></td>
+              <td class="jd-descrcol" width="100%">Exception thrown when a blocking operation times out.&nbsp;</td>
+          </tr>
+  </table>
+    </div>
+  
+
+
+  
+
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end jd-content -->
+</div><!-- doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

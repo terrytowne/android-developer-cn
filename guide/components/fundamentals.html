@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Application Fundamentals | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Application Fundamentals</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+<h2>Quickview</h2>
+<ul>
+  <li>Android applications are composed of one or more application components (activities,
+services, content providers, and broadcast receivers)</li>
+  <li>Each component performs a different role in the overall application behavior, and each
+one can be activated individually (even by other applications)</li>
+  <li>The manifest file must declare all components in the application and should also declare
+all application requirements, such as the minimum version of Android required and any hardware
+configurations required</li>
+  <li>Non-code application resources (images, strings, layout files, etc.) should include
+alternatives for different device configurations (such as different strings for different
+languages and different layouts for different screen sizes)</li>
+</ul>
+
+
+<h2>In this document</h2>
+<ol>
+<li><a href="#Components">Application Components</a>
+  <ol>
+    <li><a href="#ActivatingComponents">Activating components</a></li>
+  </ol>
+</li>
+<li><a href="#Manifest">The Manifest File</a>
+  <ol>
+    <li><a href="#DeclaringComponents">Declaring components</a></li>
+    <li><a href="#DeclaringRequirements">Declaring application requirements</a></li>
+  </ol>
+</li>
+<li><a href="#Resources">Application Resources</a></li>
+</ol>
+</div>
+</div>
+
+<p>Android applications are written in the Java programming language. The Android SDK tools compile
+the code&mdash;along with any data and resource files&mdash;into an <i>Android package</i>, an
+archive file with an <code>.apk</code> suffix. All the code in a single <code>.apk</code> file is considered
+to be one application and is the file that Android-powered devices use to install the
+application.</p>
+
+<p>Once installed on a device, each Android application lives in its own security sandbox: </p>
+
+<ul>
+ <li>The Android operating system is a multi-user Linux system in which each application is a
+different user.</li>
+
+<li>By default, the system assigns each application a unique Linux user ID (the ID is used only by
+the system and is unknown to the application). The system sets permissions for all the files in an
+application so that only the user ID assigned to that application can access them. </li>
+
+<li>Each process has its own virtual machine (VM), so an application's code runs in isolation from
+other applications.</li>
+
+<li>By default, every application runs in its own Linux process. Android starts the process when any
+of the application's components need to be executed, then shuts down the process when it's no longer
+needed or when the system must recover memory for other applications.</li>
+</ul>
+
+<p>In this way, the Android system implements the <em>principle of least privilege</em>. That is,
+each application, by default, has access only to the components that it requires to do its work and
+no more. This creates a very secure environment in which an application cannot access parts of
+the system for which it is not given permission.</p>
+
+<p>However, there are ways for an application to share data with other applications and for an
+application to access system services:</p>
+
+<ul>
+  <li>It's possible to arrange for two applications to share the same Linux user ID, in which case
+they are able to access each other's files.  To conserve system resources, applications with the
+same user ID can also arrange to run in the same Linux process and share the same VM (the
+applications must also be signed with the same certificate).</li>
+  <li>An application can request permission to access device data such as the user's
+contacts, SMS messages, the mountable storage (SD card), camera, Bluetooth, and more. All
+application permissions must be granted by the user at install time.</li>
+</ul>
+
+<p>That covers the basics regarding how an Android application exists within the system. The rest of
+this document introduces you to:</p>
+<ul>
+  <li>The core framework components that define your application.</li>
+  <li>The manifest file in which you declare components and required device features for your
+application.</li>
+  <li>Resources that are separate from the application code and allow your application to
+gracefully optimize its behavior for a variety of device configurations.</li>
+</ul>
+
+<!--
+<p class="note"><strong>Tip:</strong> If you're new to Android development, we suggest that you
+follow the Beginner's Path link at the bottom of this page. For each document in the Application
+Fundamentals, the Beginner's Path points you to the document we suggest you read next, in order
+to get up to speed on the core Android concepts.</p>
+-->
+
+
+<h2 id="Components">Application Components</h2>
+
+<p>Application components are the essential building blocks of an Android application. Each
+component is a different point through which the system can enter your application. Not all
+components are actual entry points for the user and some depend on each other, but each one exists
+as its own entity and plays a specific role&mdash;each one is a unique building block that
+helps define your application's overall behavior.</p>
+
+<p>There are four different types of application components. Each type serves a distinct purpose
+and has a distinct lifecycle that defines how the component is created and destroyed.</p>
+
+<p>Here are the four types of application components:</p>
+
+<dl>
+
+<dt><b>Activities</b></dt>
+
+<dd>An <i>activity</i> represents a single screen with a user interface. For example,
+an email application might have one activity that shows a list of new
+emails, another activity to compose an email, and another activity for reading emails. Although
+the activities work together to form a cohesive user experience in the email application, each one
+is independent of the others. As such, a different application can start any one of these
+activities (if the email application allows it). For example, a camera application can start the
+activity in the email application that composes new mail, in order for the user to share a picture.
+
+<p>An activity is implemented as a subclass of <code><a href="../../reference/android/app/Activity.html">Activity</a></code> and you can learn more
+about it in the <a href="../../guide/components/activities.html">Activities</a>
+developer guide.</p>
+</dd>
+
+
+<dt><b>Services</b></dt>
+
+<dd>A <i>service</i> is a component that runs in the background to perform long-running
+operations or to perform work for remote processes. A service
+does not provide a user interface. For example, a service might play music in the background while
+the user is in a different application, or it might fetch data over the network without
+blocking user interaction with an activity. Another component, such as an activity, can start the
+service and let it run or bind to it in order to interact with it.
+
+<p>A service is implemented as a subclass of <code><a href="../../reference/android/app/Service.html">Service</a></code> and you can learn more
+about it in the <a href="../../guide/components/services.html">Services</a> developer
+guide.</p>
+</dd>
+
+
+<dt><b>Content providers</b></dt>
+
+<dd>A <i>content provider</i> manages a shared set of application data. You can store the data in
+the file system, an SQLite database, on the web, or any other persistent storage location your
+application can access. Through the content provider, other applications can query or even modify
+the data (if the content provider allows it). For example, the Android system provides a content
+provider that manages the user's contact information. As such, any application with the proper
+permissions can query part of the content provider (such as <code><a href="../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code>) to read and write information about a particular person.
+
+<p>Content providers are also useful for reading and writing data that is private to your
+application and not shared. For example, the <a
+href="../../resources/samples/NotePad/index.html">Note Pad</a> sample application uses a
+content provider to save notes.</p>
+
+<p>A content provider is implemented as a subclass of <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code>
+and must implement a standard set of APIs that enable other applications to perform
+transactions. For more information, see the <a
+href="../../guide/topics/providers/content-providers.html">Content Providers</a> developer
+guide.</p>
+</dd>
+
+
+<dt><b>Broadcast receivers</b></dt>
+
+<dd>A <i>broadcast receiver</i> is a component that responds to system-wide broadcast
+announcements.  Many broadcasts originate from the system&mdash;for example, a broadcast announcing
+that the screen has turned off, the battery is low, or a picture was captured.
+Applications can also initiate broadcasts&mdash;for example, to let other applications know that
+some data has been downloaded to the device and is available for them to use. Although broadcast
+receivers don't display a user interface, they may <a
+href="../../guide/topics/ui/notifiers/notifications.html">create a status bar notification</a>
+to alert the user when a broadcast event occurs. More commonly, though, a broadcast receiver is
+just a "gateway" to other components and is intended to do a very minimal amount of work. For
+instance, it might initiate a service to perform some work based on the event.
+
+<p>A broadcast receiver is implemented as a subclass of <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code>
+and each broadcast is delivered as an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> object. For more information,
+see the <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> class.</p>
+</dd>
+
+</dl>
+
+
+
+<p>A unique aspect of the Android system design is that any application can start another
+application’s component. For example, if you want the user to capture a
+photo with the device camera, there's probably another application that does that and your
+application can use it, instead of developing an activity to capture a photo yourself. You don't
+need to incorporate or even link to the code from the camera application.
+Instead, you can simply start the activity in the camera application that captures a
+photo. When complete, the photo is even returned to your application so you can use it. To the user,
+it seems as if the camera is actually a part of your application.</p>
+
+<p>When the system starts a component, it starts the process for that application (if it's not
+already running) and instantiates the classes needed for the component. For example, if your
+application starts the activity in the camera application that captures a photo, that activity
+runs in the process that belongs to the camera application, not in your application's process.
+Therefore, unlike applications on most other systems, Android applications don't have a single entry
+point (there's no <code>main()</code> function, for example).</p>
+
+<p>Because the system runs each application in a separate process with file permissions that
+restrict access to other applications, your application cannot directly activate a component from
+another application. The Android system, however, can. So, to activate a component in
+another application, you must deliver a message to the system that specifies your <em>intent</em> to
+start a particular component. The system then activates the component for you.</p>
+
+
+<h3 id="ActivatingComponents">Activating Components</h3>
+
+<p>Three of the four component types&mdash;activities, services, and
+broadcast receivers&mdash;are activated by an asynchronous message called an <em>intent</em>.
+Intents bind individual components to each other at runtime (you can think of them
+as the messengers that request an action from other components), whether the component belongs
+to your application or another.</p>
+
+<p>An intent is created with an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> object, which defines a message to
+activate either a specific component or a specific <em>type</em> of component&mdash;an intent
+can be either explicit or implicit, respectively.</p>
+
+<p>For activities and services, an intent defines the action to perform (for example, to "view" or
+"send" something) and may specify the URI of the data to act on (among other things that the
+component being started might need to know). For example, an intent might convey a request for an
+activity to show an image or to open a web page. In some cases, you can start an
+activity to receive a result, in which case, the activity also returns
+the result in an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> (for example, you can issue an intent to let
+the user pick a personal contact and have it returned to you&mdash;the return intent includes a
+URI pointing to the chosen contact).</p>
+
+<p>For broadcast receivers, the intent simply defines the
+announcement being broadcast (for example, a broadcast to indicate the device battery is low
+includes only a known action string that indicates "battery is low").</p>
+
+<p>The other component type, content provider, is not activated by intents. Rather, it is
+activated when targeted by a request from a <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code>. The content
+resolver handles all direct transactions with the content provider so that the component that's
+performing transactions with the provider doesn't need to and instead calls methods on the <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code> object. This leaves a layer of abstraction between the content
+provider and the component requesting information (for security).</p>
+
+<p>There are separate methods for activating each type of component:</p>
+<ul>
+  <li>You can start an activity (or give it something new to do) by
+passing an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to <code><a href="../../reference/android/content/Context.html#startActivity(android.content.Intent)">startActivity()</a></code> or <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code>
+(when you want the activity to return a result).</li>
+  <li>You can start a service (or give new instructions to an ongoing service) by
+passing an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to <code><a href="../../reference/android/content/Context.html#startService(android.content.Intent)">startService()</a></code>. Or you can bind to the service by passing an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to
+<code><a href="../../reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)">bindService()</a></code>.</li>
+  <li>You can initiate a broadcast by passing an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to methods like
+<code><a href="../../reference/android/content/Context.html#sendBroadcast(android.content.Intent)">sendBroadcast()</a></code>, <code><a href="../../reference/android/content/Context.html#sendOrderedBroadcast(android.content.Intent, java.lang.String)">sendOrderedBroadcast()</a></code>, or <code><a href="../../reference/android/content/Context.html#sendStickyBroadcast(android.content.Intent)">sendStickyBroadcast()</a></code>.</li>
+  <li>You can perform a query to a content provider by calling <code><a href="../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> on a <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code>.</li>
+</ul>
+
+<p>For more information about using intents, see the <a
+href="../../guide/components/intents-filters.html">Intents and
+Intent Filters</a> document. More information about activating specific components is also provided
+in the following documents: <a
+href="../../guide/components/activities.html">Activities</a>, <a
+href="../../guide/components/services.html">Services</a>, <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> and <a
+href="../../guide/topics/providers/content-providers.html">Content Providers</a>.</p>
+
+
+<h2 id="Manifest">The Manifest File</h2>
+
+<p>Before the Android system can start an application component, the system must know that the
+component exists by reading the application's <code>AndroidManifest.xml</code> file (the "manifest"
+file). Your application must declare all its components in this file, which must be at the root of
+the application project directory.</p>
+
+<p>The manifest does a number of things in addition to declaring the application's components,
+such as:</p>
+<ul>
+  <li>Identify any user permissions the application requires, such as Internet access or
+read-access to the user's contacts.</li>
+  <li>Declare the minimum <a href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API Level</a>
+required by the application, based on which APIs the application uses.</li>
+  <li>Declare hardware and software features used or required by the application, such as a camera,
+bluetooth services, or a multitouch screen.</li>
+  <li>API libraries the application needs to be linked against (other than the Android framework
+APIs), such as the <a
+href="http://code.google.com/android/add-ons/google-apis/maps-overview.html">Google Maps
+library</a>.</li>
+  <li>And more</li>
+</ul>
+
+
+<h3 id="DeclaringComponents">Declaring components</h3>
+
+<p>The primary task of the manifest is to inform the system about the application's components. For
+example, a manifest file can declare an activity as follows: </p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;manifest ... &gt;
+    &lt;application android:icon="@drawable/app_icon.png" ... &gt;
+        &lt;activity android:name="com.example.project.ExampleActivity"
+                  android:label="@string/example_label" ... &gt;
+        &lt;/activity&gt;
+        ...
+    &lt;/application&gt;
+&lt;/manifest&gt;</pre>
+
+<p>In the <code><a
+href="../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></code>
+element, the <code>android:icon</code> attribute points to resources for an icon that identifies the
+application.</p>
+
+<p>In the <code><a
+href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></code> element,
+the <code>android:name</code> attribute specifies the fully qualified class name of the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> subclass and the <code>android:label</code> attributes specifies a string
+to use as the user-visible label for the activity.</p>
+
+<p>You must declare all application components this way:</p>
+<ul>
+  <li><code><a
+href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></code> elements
+for activities</li>
+  <li><code><a
+href="../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></code> elements for
+services</li>
+  <li><code><a
+href="../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></code> elements
+for broadcast receivers</li>
+  <li><code><a
+href="../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></code> elements
+for content providers</li>
+</ul>
+
+<p>Activities, services, and content providers that you include in your source but do not declare
+in the manifest are not visible to the system and, consequently, can never run.  However,
+broadcast
+receivers can be either declared in the manifest or created dynamically in code (as
+<code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> objects) and registered with the system by calling
+<code><a href="../../reference/android/content/Context.html#registerReceiver(android.content.BroadcastReceiver, android.content.IntentFilter)">registerReceiver()</a></code>.</p>
+
+<p>For more about how to structure the manifest file for your application, see <a
+href="../../guide/topics/manifest/manifest-intro.html">The AndroidManifest.xml File</a>
+documentation. </p>
+
+
+
+<h3 id="DeclaringComponentCapabilities">Declaring component capabilities</h3>
+
+<p>As discussed above, in <a href="#ActivatingComponents">Activating Components</a>, you can use an
+<code><a href="../../reference/android/content/Intent.html">Intent</a></code> to start activities, services, and broadcast receivers. You can do so
+by explicitly naming the target component (using the component class name) in the intent. However,
+the real power of intents lies in the concept of intent actions. With intent actions, you simply
+describe the type of action you want to perform (and optionally, the data upon which you’d like to
+perform the action) and allow the system to find a component on the device that can perform the
+action and start it. If there are multiple components that can perform the action described by the
+intent, then the user selects which one to use.</p>
+
+<p>The way the system identifies the components that can respond to an intent is by comparing the
+intent received to the <i>intent filters</i> provided in the manifest file of other applications on
+the device.</p>
+
+<p>When you declare a component in your application's manifest, you can optionally include
+intent filters that declare the capabilities of the component so it can respond to intents
+from other applications. You can declare an intent filter for your component by
+adding an <a href="../../guide/topics/manifest/intent-filter-element.html"><code>&lt;intent-filter&gt;</code></a> element as a child of the component's declaration element.</p>
+
+<p>For example, an email application with an activity for composing a new email might declare an
+intent filter in its manifest entry to respond to "send" intents (in order to send email). An
+activity in your application can then create an intent with the “send” action (<code><a href="../../reference/android/content/Intent.html#ACTION_SEND">ACTION_SEND</a></code>), which the system matches to the email application’s “send”
+activity and launches it when you invoke the intent with <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code>.</p>
+
+<p>For more about creating intent filters, see the <a
+href="../../guide/components/intents-filters.html">Intents and Intent Filters</a> document.
+</p>
+
+
+
+<h3 id="DeclaringRequirements">Declaring application requirements</h3>
+
+<p>There are a variety of devices powered by Android and not all of them provide the
+same features and capabilities. In order to prevent your application from being installed on devices
+that lack features needed by your application, it's important that you clearly define a profile for
+the types of devices your application supports by declaring device and software requirements in your
+manifest file. Most of these declarations are informational only and the system does not read
+them, but external services such as Google Play do read them in order to provide filtering
+for users when they search for applications from their device.</p>
+
+<p>For example, if your application requires a camera and uses APIs introduced in Android 2.1 (<a
+href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API Level</a> 7), you should declare these as
+requirements in your manifest file. That way, devices that do <em>not</em> have a camera and have an
+Android version <em>lower</em> than 2.1 cannot install your application from Google Play.</p>
+
+<p>However, you can also declare that your application uses the camera, but does not
+<em>require</em> it. In that case, your application must perform a check at runtime to determine
+if the device has a camera and disable any features that use the camera if one is not available.</p>
+
+<p>Here are some of the important device characteristics that you should consider as you design and
+develop your application:</p>
+
+<dl>
+  <dt>Screen size and density</dt>
+  <dd>In order to categorize devices by their screen type, Android defines two characteristics for
+each device: screen size (the physical dimensions of the screen) and screen density (the physical
+density of the pixels on the screen, or dpi&mdash;dots per inch). To simplify all the different
+types of screen configurations, the Android system generalizes them into select groups that make
+them easier to target.
+<p>The screen sizes are: small, normal, large, and extra large.<br/>
+The screen densities are: low density, medium density, high density, and extra high density.</p>
+
+<p>By default, your application is compatible with all screen sizes and densities,
+because the Android system makes the appropriate adjustments to your UI layout and image
+resources. However, you should create specialized layouts for certain screen sizes and provide
+specialized images for certain densities, using alternative layout resources, and by declaring in
+your manifest exactly which screen sizes your application supports with the <a
+href="../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> element.</p>
+<p>For more information, see the <a
+href="../../guide/practices/screens_support.html">Supporting Multiple Screens</a>
+document.</p></dd>
+
+  <dt>Input configurations</dt>
+  <dd>Many devices provide a different type of user input mechanism, such as a hardware keyboard, a
+trackball, or a five-way navigation pad. If your application requires a particular kind of input
+hardware, then you should declare it in your manifest with the <a
+href="../../guide/topics/manifest/uses-configuration-element.html"><code>&lt;uses-configuration&gt;</code></a> element. However, it is rare that an application should require
+a certain input configuration.</dd>
+
+  <dt>Device features</dt>
+  <dd>There are many hardware and software features that may or may not exist on a given
+Android-powered device, such as a camera, a light sensor, bluetooth, a certain
+version of OpenGL, or the fidelity of the touchscreen. You should never assume that a certain
+feature is available on all Android-powered devices (other than the availability of the standard
+Android library), so you should declare any features used by your application with the <a
+href="../../guide/topics/manifest/uses-feature-element.html"><code>&lt;uses-feature&gt;</code></a>
+element.</dd>
+
+  <dt>Platform Version</dt>
+  <dd>Different Android-powered devices often run different versions of the Android platform,
+such as Android 1.6 or Android 2.3. Each successive version often includes additional APIs not
+available in the previous version. In order to indicate which set of APIs are available, each
+platform version specifies an <a
+href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API Level</a> (for example, Android 1.0 is API Level
+1 and Android 2.3 is API Level 9). If you use any APIs that were added to the platform after
+version 1.0, you should declare the minimum API Level in which those APIs were introduced using the
+<a href="../../guide/topics/manifest/uses-sdk-element.html"><code>&lt;uses-sdk&gt;</code></a>
+element.</dd>
+</dl>
+
+<p>It's important that you declare all such requirements for your application, because, when you
+distribute your application on Google Play, the store uses these declarations to filter which
+applications are available on each device. As such, your application should be available only to
+devices that meet all your application requirements.</p>
+
+<p>For more information about how Google Play filters applications based on these (and other)
+requirements, see the <a href="../../google/play/filters.html">Filters on Google Play</a>
+document.</p>
+
+
+
+<h2 id="Resources">Application Resources</h2>
+
+<p>An Android application is composed of more than just code&mdash;it requires resources that are
+separate from the source code, such as images, audio files, and anything relating to the visual
+presentation of the application. For example, you should define animations, menus, styles, colors,
+and the layout of activity user interfaces with XML files. Using application resources makes it easy
+to update various characteristics of your application without modifying code and&mdash;by providing
+sets of alternative resources&mdash;enables you to optimize your application for a  variety of
+device configurations (such as different languages and screen sizes).</p>
+
+<p>For every resource that you include in your Android project, the SDK build tools define a unique
+integer ID, which you can use to reference the resource from your application code or from
+other resources defined in XML. For example, if your application contains an image file named <code>logo.png</code> (saved in the <code>res/drawable/</code> directory), the SDK tools generate a resource ID
+named <code>R.drawable.logo</code>, which you can use to reference the image and insert it in your
+user interface.</p>
+
+<p>One of the most important aspects of providing resources separate from your source code
+is the ability for you to provide alternative resources for different device
+configurations. For example, by defining UI strings in XML, you can translate the strings into other
+languages and save those strings in separate files. Then, based on a language <em>qualifier</em>
+that you append to the resource directory's name (such as <code>res/values-fr/</code> for French string
+values) and the user's language setting, the Android system applies the appropriate language strings
+to your UI.</p>
+
+<p>Android supports many different <em>qualifiers</em> for your alternative resources. The
+qualifier is a short string that you include in the name of your resource directories in order to
+define the device configuration for which those resources should be used. As another
+example, you should often create different layouts for your activities, depending on the
+device's screen orientation and size. For example, when the device screen is in portrait
+orientation (tall), you might want a layout with buttons to be vertical, but when the screen is in
+landscape orientation (wide), the buttons should be aligned horizontally. To change the layout
+depending on the orientation, you can define two different layouts and apply the appropriate
+qualifier to each layout's directory name. Then, the system automatically applies the appropriate
+layout depending on the current device orientation.</p>
+
+<p>For more about the different kinds of resources you can include in your application and how
+to create alternative resources for various device configurations, see the <a
+href="../../guide/topics/resources/index.html">Application Resources</a> developer guide.</p>
+
+
+<!--
+<h2>Beginner's Path</h2>
+
+<p>For a close look at implementing activities&mdash;the components your users use to
+interact with your application&mdash;continue with the <b><a
+href="../../guide/components/activities.html">Activities</a></b> document.</p>
+-->
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

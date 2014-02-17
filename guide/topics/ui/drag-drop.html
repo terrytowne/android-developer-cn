@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Drag and Drop | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Drag and Drop</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+    <div id="qv">
+        <h2>Quickview</h2>
+            <ul>
+                <li>
+                    Allow users to move data within your Activity layout using graphical gestures.
+                </li>
+                <li>
+                    Supports operations besides data movement.
+                </li>
+                <li>
+                    Only works within a single application.
+                </li>
+                <li>
+                    Requires API 11.
+                </li>
+            </ul>
+        <h2>In this document</h2>
+        <ol>
+            <li>
+                <a href="#AboutDragging">Overview</a>
+                <ol>
+                    <li>
+                        <a href="#DragDropLifecycle">The drag/drop process</a>
+                    </li>
+                    <li>
+                        <a href="#AboutDragListeners">The drag event listener and callback method</a>
+                    </li>
+                    <li>
+                        <a href="#AboutDragEvent">Drag events</a>
+                    </li>
+                    <li>
+                        <a href="#AboutDragShadowBuilder">
+                        The drag shadow</a>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <a href="#DesignDragOperation">Designing a Drag and Drop Operation</a>
+                <ol>
+                    <li>
+                        <a href="#StartDrag">Starting a drag</a>
+                    </li>
+                    <li>
+                        <a href="#HandleStart">Responding to a drag start</a>
+                    </li>
+                    <li>
+                        <a href="#HandleDuring">Handling events during the drag</a>
+                    </li>
+                    <li>
+                        <a href="#HandleDrop">Responding to a drop</a>
+                    </li>
+                    <li>
+                        <a href="#HandleEnd">Responding to a drag end</a>
+                    </li>
+                    <li>
+                        <a href="#RespondEventSample">Responding to drag events: an example</a>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+        <h2>Key classes</h2>
+        <ol>
+            <li>
+                <code><a href="../../../reference/android/view/View.html">View</a></code>
+            </li>
+            <li>
+                <code><a href="../../../reference/android/view/View.OnLongClickListener.html">OnLongClickListener</a></code>
+            </li>
+            <li>
+                <code><a href="../../../reference/android/view/View.OnDragListener.html">OnDragListener</a></code>
+            </li>
+            <li>
+                <code><a href="../../../reference/android/view/DragEvent.html">DragEvent</a></code>
+            </li>
+            <li>
+                <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">DragShadowBuilder</a></code>
+            </li>
+            <li>
+                <code><a href="../../../reference/android/content/ClipData.html">ClipData</a></code>
+            </li>
+            <li>
+                <code><a href="../../../reference/android/content/ClipDescription.html">ClipDescription</a></code>
+            </li>
+        </ol>
+        <h2>Related Samples</h2>
+        <ol>
+            <li>
+                <a href="../../../resources/samples/HoneycombGallery/index.html">
+                Honeycomb Gallery</a>.
+            </li>
+            <li>
+                <a href="../../../resources/samples/ApiDemos/src/com/example/android/apis/view/DragAndDropDemo.html">
+DragAndDropDemo.java</a> and
+                <a href="../../../resources/samples/ApiDemos/src/com/example/android/apis/view/DraggableDot.html">
+DraggableDot.java</a> in <a href="../../../resources/samples/ApiDemos/index.html">Api Demos</a>.
+            </li>
+        </ol>
+        <h2>See also</h2>
+        <ol>
+            <li>
+            <a href="../../../guide/topics/providers/content-providers.html">Content Providers</a>
+            </li>
+            <li>
+                <a href="../../../guide/topics/ui/ui-events.html">Input Events</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<p>
+    With the Android drag/drop framework, you can allow your users to move data
+    from one View to another View in the current layout using a graphical drag and drop gesture.
+    The framework includes a drag event class, drag listeners, and helper methods and classes.
+</p>
+<p>
+    Although the framework is primarily designed for data movement, you can use
+    it for other UI actions. For example, you could create an app that mixes colors when the user
+    drags a color icon over another icon. The rest of this topic, however, describes the
+    framework in terms of data movement.
+</p>
+<h2 id="AboutDragging">Overview</h2>
+<p>
+    A drag and drop operation starts when the user makes some gesture that you recognize as a
+    signal to start dragging data. In response, your application tells the system that the drag is
+    starting. The system calls back to your application to get a representation of the data
+    being dragged. As the user's finger moves this representation (a &quot;drag shadow&quot;)
+    over the current layout, the system sends drag events to the drag event listener objects and
+    drag event callback methods associated with the <code><a href="../../../reference/android/view/View.html">View</a></code> objects in the layout.
+    Once the user releases the drag shadow, the system ends the drag operation.
+</p>
+<p>
+    You create a drag event listener object (&quot;listeners&quot;) from a class that implements
+    <code><a href="../../../reference/android/view/View.OnDragListener.html">View.OnDragListener</a></code>. You set the drag event listener object for a View
+    with the View object's
+    <code><a href="../../../reference/android/view/View.html#setOnDragListener(android.view.View.OnDragListener)">setOnDragListener()</a></code> method.
+    Each View object also has a <code><a href="../../../reference/android/view/View.html#onDragEvent(android.view.DragEvent)">onDragEvent()</a></code>
+    callback method. Both of these are described in more detail in the section
+    <a href="#AboutDragListeners">The drag event listener and callback method</a>.
+</p>
+<p class="note">
+    <strong>Note</strong>: For the sake of simplicity, the following sections refer to the routine
+    that receives drag events as the &quot;drag event listener&quot;, even though it may actually
+    be a callback method.
+</p>
+<p>
+    When you start a drag, you include both the data you are moving and metadata describing this
+    data as part of the call to the system. During the drag, the system sends drag events to the
+    drag event listeners or callback methods of each View in the layout. The listeners or callback
+    methods can use the metadata to decide if they want to accept the data when it is dropped.
+    If the user drops the data over a View object, and that View object's listener or callback
+    method has previously told the system that it wants to accept the drop, then the system sends
+    the data to the listener or callback method in a drag event.
+</p>
+<p>
+    Your application tells the system to start a drag by calling the
+    <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>
+    method. This tells the system to start sending drag events. The method also sends the data that
+    you are dragging.
+</p>
+<p>
+    You can call
+    <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>
+    for any attached View in the current layout. The system only uses the View object to get access
+    to global settings in your layout.
+</p>
+<p>
+    Once your application calls
+    <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>,
+    the rest of the process uses events that the system sends to the View objects in your current
+    layout.
+</p>
+<h3 id="DragDropLifecycle">The drag/drop process</h3>
+<p>
+    There are basically four steps or states in the drag and drop process:
+</p>
+<dl>
+    <dt>
+        <em>Started</em>
+    </dt>
+    <dd>
+        In response to the user's gesture to begin a drag, your application calls
+        <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>
+        to tell the system to start a drag. The arguments
+        <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>
+        provide the data to be dragged, metadata for this data, and a callback for drawing the
+        drag shadow.
+        <p>
+            The system first responds by calling back to your application to get a drag shadow. It
+            then displays the drag shadow on the device.
+        </p>
+        <p>
+            Next, the system sends a drag event with action type
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_STARTED">ACTION_DRAG_STARTED</a></code> to the drag event listeners for
+            all the View objects in the current layout. To continue to receive drag events,
+            including a possible drop event, a drag event listener must return <code>true</code>.
+            This registers the listener with the system. Only registered listeners continue to
+            receive drag events. At this point, listeners can also change the appearance of their
+            View object to show that the listener can accept a drop event.
+        </p>
+        <p>
+            If the drag event listener returns <code>false</code>, then it will not receive drag
+            events for the current operation until the system sends a drag event with action type
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code>. By sending <code>false</code>, the
+            listener tells the system that it is not interested in the drag operation and
+            does not want to accept the dragged data.
+        </p>
+    </dd>
+    <dt>
+        <em>Continuing</em>
+    </dt>
+    <dd>
+        The user continues the drag. As the drag shadow intersects the bounding box of a View
+        object, the system sends one or more drag events to the View object's drag event
+        listener (if it is registered to receive events). The listener may choose to
+        alter its View object's appearance in response to the event. For example, if the event
+        indicates that the drag shadow has entered the bounding box of the View
+        (action type <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code>), the listener
+        can react by highlighting its View.
+    </dd>
+    <dt>
+        <em>Dropped</em>
+    </dt>
+    <dd>
+        The user releases the drag shadow within the bounding box of a View that can accept the
+        data. The system sends the View object's listener a drag event with action type
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>. The drag event contains the data that was
+        passed to the system in the call to
+        <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>
+        that started the operation. The listener is expected to return boolean <code>true</code> to
+        the system if code for accepting the drop succeeds.
+        <p>
+            Note that this step only occurs if the user drops the drag shadow within the bounding
+            box of a View whose listener is registered to receive drag events. If the user releases
+            the drag shadow in any other situation, no <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>
+            drag event is sent.
+        </p>
+    </dd>
+    <dt>
+        <em>Ended</em>
+    </dt>
+    <dd>
+        After the user releases the drag shadow, and after the system sends out (if necessary)
+        a drag event with action type <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>, the system sends
+        out a drag event with action type <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code> to
+        indicate that the drag operation is over. This is done regardless of where the user released
+        the drag shadow. The event is sent to every listener that is registered to receive drag
+        events, even if the listener received the <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code> event.
+    </dd>
+</dl>
+<p>
+    Each of these four steps is described in more detail in the section
+    <a href="#DesignDragOperation">Designing a Drag and Drop Operation</a>.
+</p>
+<h3 id="AboutDragListeners">The drag event listener and callback method</h3>
+<p>
+    A View receives drag events with either a drag event listener that implements
+    <code><a href="../../../reference/android/view/View.OnDragListener.html">View.OnDragListener</a></code> or with its
+    <code><a href="../../../reference/android/view/View.html#onDragEvent(android.view.DragEvent)">onDragEvent(DragEvent)</a></code> callback method.
+    When the system calls the method or listener, it passes to them
+    a <code><a href="../../../reference/android/view/DragEvent.html">DragEvent</a></code> object.
+</p>
+<p>
+    You will probably want to use the listener in most cases. When you design UIs, you usually
+    don't subclass View classes, but using the callback method forces you to do this in order to
+    override the method. In comparison, you can implement one listener class and then use it with
+    several different View objects. You can also implement it as an anonymous inline class. To
+    set the listener for a View object, call
+<code><a href="../../../reference/android/view/View.html#setOnDragListener(android.view.View.OnDragListener)">setOnDragListener()</a></code>.
+</p>
+<p>
+    You can have both a listener and a callback method for View object. If this occurs,
+    the system first calls the listener. The system doesn't call the callback method unless the
+    listener returns <code>false</code>.
+</p>
+<p>
+    The combination of the <code><a href="../../../reference/android/view/View.html#onDragEvent(android.view.DragEvent)">onDragEvent(DragEvent)</a></code> method and
+    <code><a href="../../../reference/android/view/View.OnDragListener.html">View.OnDragListener</a></code> is analogous to the combination
+    of the <code><a href="../../../reference/android/view/View.html#onTouchEvent(android.view.MotionEvent)">onTouchEvent()</a></code> and
+    <code><a href="../../../reference/android/view/View.OnTouchListener.html">View.OnTouchListener</a></code> used with touch events.
+</p>
+<h3 id="AboutDragEvent">Drag events</h3>
+<p>
+    The system sends out a drag event in the form of a <code><a href="../../../reference/android/view/DragEvent.html">DragEvent</a></code> object. The
+    object contains an action type that tells the listener what is happening in the drag/drop
+    process. The object contains other data, depending on the action type.
+</p>
+<p>
+    To get the action type, a listener calls <code><a href="../../../reference/android/view/DragEvent.html#getAction()">getAction()</a></code>. There
+    are six possible values, defined by constants in the <code><a href="../../../reference/android/view/DragEvent.html">DragEvent</a></code> class. These
+    are listed in <a href="#table1">table 1</a>.
+</p>
+<p>
+    The <code><a href="../../../reference/android/view/DragEvent.html">DragEvent</a></code> object also contains the data that your application provided
+    to the system in the call to
+    <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>.
+    Some of the data is valid only for certain action types. The data that is valid for each action
+    type is summarized in <a href="#table2">table 2</a>. It is also described in detail with
+    the event for which it is valid in the section
+    <a href="#DesignDragOperation">Designing a Drag and Drop Operation</a>.
+</p>
+<p class="table-caption" id="table1">
+  <strong>Table 1.</strong> DragEvent action types
+</p>
+<table>
+    <tr>
+        <th scope="col">getAction() value</th>
+        <th scope="col">Meaning</th>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_STARTED">ACTION_DRAG_STARTED</a></code></td>
+        <td>
+            A View object's drag event listener receives this event action type just after the
+            application calls
+<code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code> and
+            gets a drag shadow.
+        </td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code></td>
+        <td>
+            A View object's drag event listener receives this event action type when the drag shadow
+            has just entered the bounding box of the View. This is the first event action type the
+            listener receives when the drag shadow enters the bounding box. If the listener wants to
+            continue receiving drag events for this operation, it must return boolean
+            <code>true</code> to the system.
+        </td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_LOCATION">ACTION_DRAG_LOCATION</a></code></td>
+        <td>
+            A View object's drag event listener receives this event action type after it receives a
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code> event while the drag shadow is
+            still within the bounding box of the View.
+        </td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_EXITED">ACTION_DRAG_EXITED</a></code></td>
+        <td>
+            A View object's drag event listener receives this event action type after it receives a
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code> and at least one
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_LOCATION">ACTION_DRAG_LOCATION</a></code> event, and after the user has moved
+            the drag shadow outside the bounding box of the View.
+        </td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code></td>
+        <td>
+            A View object's drag event listener receives this event action type when the user
+            releases the drag shadow over the View object. This action type is only sent to a View
+            object's listener if the listener returned boolean <code>true</code> in response to the
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_STARTED">ACTION_DRAG_STARTED</a></code> drag event. This action type is not
+            sent if the user releases the drag shadow on a View whose listener is not registered,
+            or if the user releases the drag shadow on anything that is not part of the current
+            layout.
+            <p>
+                The listener is expected to return boolean <code>true</code> if it successfully
+                processes the drop. Otherwise, it should return <code>false</code>.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code></td>
+        <td>
+            A View object's drag event listener receives this event action type
+            when the system is ending the drag operation. This action type is not necessarily
+            preceded by an <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code> event. If the system sent
+            a <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>, receiving the
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code> action type does not imply that the
+            drop operation succeeded. The listener must call
+            <code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code> to get the value that was
+            returned in response to <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>. If an
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code> event was not sent, then
+            <code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code> returns <code>false</code>.
+        </td>
+    </tr>
+</table>
+<p class="table-caption" id="table2">
+  <strong>Table 2.</strong> Valid DragEvent data by action type</p>
+<table>
+    <tr>
+        <th scope="col"><code><a href="../../../reference/android/view/DragEvent.html#getAction()">getAction()</a></code> value</th>
+        <th scope="col"><code><a href="../../../reference/android/view/DragEvent.html#getClipDescription()">getClipDescription()</a></code> value</th>
+        <th scope="col"><code><a href="../../../reference/android/view/DragEvent.html#getLocalState()">getLocalState()</a></code> value</th>
+        <th scope="col"><code><a href="../../../reference/android/view/DragEvent.html#getX()">getX()</a></code> value</th>
+        <th scope="col"><code><a href="../../../reference/android/view/DragEvent.html#getY()">getY()</a></code> value</th>
+        <th scope="col"><code><a href="../../../reference/android/view/DragEvent.html#getClipData()">getClipData()</a></code> value</th>
+        <th scope="col"><code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code> value</th>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_STARTED">ACTION_DRAG_STARTED</a></code></td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code></td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_LOCATION">ACTION_DRAG_LOCATION</a></code></td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_EXITED">ACTION_DRAG_EXITED</a></code></td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code></td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">&nbsp;</td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code></td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">X</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">&nbsp;</td>
+        <td style="text-align: center;">X</td>
+    </tr>
+</table>
+<p>
+    The <code><a href="../../../reference/android/view/DragEvent.html#getAction()">getAction()</a></code>,
+    <code><a href="../../../reference/android/view/DragEvent.html#describeContents()">describeContents()</a></code>,
+    <code><a href="../../../reference/android/view/DragEvent.html#writeToParcel(android.os.Parcel, int)">writeToParcel()</a></code>, and
+    <code><a href="../../../reference/android/view/DragEvent.html#toString()">toString()</a></code> methods always return valid data.
+</p>
+<p>
+    If a method does not contain valid data for a particular action type, it returns either
+    <code>null</code> or 0, depending on its result type.
+</p>
+<h3 id="AboutDragShadowBuilder">
+    The drag shadow
+</h3>
+<p>
+    During a drag and drop operation, the system displays a image that the user drags.
+    For data movement, this image represents the data being dragged. For other operations, the
+    image represents some aspect of the drag operation.
+</p>
+<p>
+    The image is called a drag shadow. You create it with methods you declare for a
+    <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code> object, and then pass it to the system when you
+    start a drag using
+    <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>.
+    As part of its response to
+    <code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>,
+    the system invokes the callback methods you've defined in
+    <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code> to obtain a drag shadow.
+</p>
+<p>
+    The <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code> class has two constructors:
+</p>
+    <dl>
+    <dt><code><a href="../../../reference/android/view/View.DragShadowBuilder.html#View.DragShadowBuilder(android.view.View)">View.DragShadowBuilder(View)</a></code></dt>
+    <dd>
+        This constructor accepts any of your application's
+        <code><a href="../../../reference/android/view/View.html">View</a></code> objects. The constructor stores the View object
+        in the <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code> object, so during
+        the callback you can access it as you construct your drag shadow.
+        It doesn't have to be associated with the View (if any) that the user
+        selected to start the drag operation.
+        <p>
+            If you use this constructor, you don't have to extend
+            <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code> or override its methods. By default,
+            you will get a drag shadow that has the same appearance as the View you pass as an
+            argument, centered under the location where the user is touching the screen.
+        </p>
+    </dd>
+    <dt><code><a href="../../../reference/android/view/View.DragShadowBuilder.html#View.DragShadowBuilder()">View.DragShadowBuilder()</a></code></dt>
+    <dd>
+        If you use this constructor, no View object is available in the
+        <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code> object (the field is set to <code>null</code>).
+        If you use this constructor, and you don't extend
+        <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code> or override its methods,
+        you will get an invisible drag shadow.
+        The system does <em>not</em> give an error.
+    </dd>
+</dl>
+<p>
+    The <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code> class has two methods:
+</p>
+<dl>
+    <dt>
+<code><a href="../../../reference/android/view/View.DragShadowBuilder.html#onProvideShadowMetrics(android.graphics.Point, android.graphics.Point)">onProvideShadowMetrics()</a></code>
+    </dt>
+    <dd>
+        The system calls this method immediately after you call
+<code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>. Use it
+        to send to the system the dimensions and touch point of the drag shadow. The method has two
+        arguments:
+        <dl>
+            <dt><em>dimensions</em></dt>
+            <dd>
+                A <code><a href="../../../reference/android/graphics/Point.html">Point</a></code> object. The drag shadow width goes in
+                <code><a href="../../../reference/android/graphics/Point.html#x">x</a></code> and its height goes in
+                <code><a href="../../../reference/android/graphics/Point.html#y">y</a></code>.
+            </dd>
+            <dt><em>touch_point</em></dt>
+            <dd>
+                A <code><a href="../../../reference/android/graphics/Point.html">Point</a></code> object. The touch point is the location within the
+                drag shadow that should be under the user's finger during the drag. Its X
+                position goes in <code><a href="../../../reference/android/graphics/Point.html#x">x</a></code> and its Y position goes in
+                <code><a href="../../../reference/android/graphics/Point.html#y">y</a></code>
+            </dd>
+        </dl>
+    </dd>
+    <dt>
+       <code><a href="../../../reference/android/view/View.DragShadowBuilder.html#onDrawShadow(android.graphics.Canvas)">onDrawShadow()</a></code>
+    </dt>
+    <dd>
+        Immediately after the call to
+<code><a href="../../../reference/android/view/View.DragShadowBuilder.html#onProvideShadowMetrics(android.graphics.Point, android.graphics.Point)">onProvideShadowMetrics()</a></code>
+        the system calls
+        <code><a href="../../../reference/android/view/View.DragShadowBuilder.html#onDrawShadow(android.graphics.Canvas)">onDrawShadow()</a></code> to get the
+        drag shadow itself. The method has a single argument, a <code><a href="../../../reference/android/graphics/Canvas.html">Canvas</a></code>
+        object that the system constructs from the parameters you provide in
+<code><a href="../../../reference/android/view/View.DragShadowBuilder.html#onProvideShadowMetrics(android.graphics.Point, android.graphics.Point)">onProvideShadowMetrics()</a></code>
+        Use it to draw the drag shadow in the provided <code><a href="../../../reference/android/graphics/Canvas.html">Canvas</a></code> object.
+    </dd>
+</dl>
+<p>
+    To improve performance, you should keep the size of the drag shadow small. For a single item,
+    you may want to use a icon. For a multiple selection, you may want to use icons in a stack
+    rather than full images spread out over the screen.
+</p>
+<h2 id="DesignDragOperation">Designing a Drag and Drop Operation</h2>
+<p>
+    This section shows step-by-step how to start a drag, how to respond to events during
+    the drag, how respond to a drop event, and how to end the drag and drop operation.
+</p>
+<h3 id="StartDrag">Starting a drag</h3>
+<p>
+    The user starts a drag with a drag gesture, usually a long press, on a View object.
+    In response, you should do the following:
+</p>
+<ol>
+     <li>
+        As necessary, create a <code><a href="../../../reference/android/content/ClipData.html">ClipData</a></code> and
+        <code><a href="../../../reference/android/content/ClipData.Item.html">ClipData.Item</a></code> for the data being moved. As part of the
+        ClipData object, supply metadata that is stored in a <code><a href="../../../reference/android/content/ClipDescription.html">ClipDescription</a></code>
+        object within the ClipData. For a drag and drop operation that does not represent data
+        movement, you may want to use <code>null</code> instead of an actual object.
+        <p>
+            For example, this code snippet shows how to respond to a long press on a ImageView
+            by creating a ClipData object that contains the tag or label of an
+            ImageView. Following this snippet, the next snippet shows how to override the methods in
+            <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code>:
+        </p>
+<pre>
+// Create a string for the ImageView label
+private static final String IMAGEVIEW_TAG = &quot;icon bitmap&quot;
+
+// Creates a new ImageView
+ImageView imageView = new ImageView(this);
+
+// Sets the bitmap for the ImageView from an icon bit map (defined elsewhere)
+imageView.setImageBitmap(mIconBitmap);
+
+// Sets the tag
+imageView.setTag(IMAGEVIEW_TAG);
+
+    ...
+
+// Sets a long click listener for the ImageView using an anonymous listener object that
+// implements the OnLongClickListener interface
+imageView.setOnLongClickListener(new View.OnLongClickListener() {
+
+    // Defines the one method for the interface, which is called when the View is long-clicked
+    public boolean onLongClick(View v) {
+
+    // Create a new ClipData.
+    // This is done in two steps to provide clarity. The convenience method
+    // ClipData.newPlainText() can create a plain text ClipData in one step.
+
+    // Create a new ClipData.Item from the ImageView object's tag
+    ClipData.Item item = new ClipData.Item(v.getTag());
+
+    // Create a new ClipData using the tag as a label, the plain text MIME type, and
+    // the already-created item. This will create a new ClipDescription object within the
+    // ClipData, and set its MIME type entry to &quot;text/plain&quot;
+    ClipData dragData = new ClipData(v.getTag(),ClipData.MIMETYPE_TEXT_PLAIN,item);
+
+    // Instantiates the drag shadow builder.
+    View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageView);
+
+    // Starts the drag
+
+            v.startDrag(dragData,  // the data to be dragged
+                        myShadow,  // the drag shadow builder
+                        null,      // no need to use local data
+                        0          // flags (not currently used, set to 0)
+            );
+
+    }
+}
+</pre>
+    </li>
+    <li>
+        The following code snippet defines <code>myDragShadowBuilder</code>
+        It creates a drag shadow for dragging a TextView as a small gray rectangle:
+<pre>
+    private static class MyDragShadowBuilder extends View.DragShadowBuilder {
+
+    // The drag shadow image, defined as a drawable thing
+    private static Drawable shadow;
+
+        // Defines the constructor for myDragShadowBuilder
+        public MyDragShadowBuilder(View v) {
+
+            // Stores the View parameter passed to myDragShadowBuilder.
+            super(v);
+
+            // Creates a draggable image that will fill the Canvas provided by the system.
+            shadow = new ColorDrawable(Color.LTGRAY);
+        }
+
+        // Defines a callback that sends the drag shadow dimensions and touch point back to the
+        // system.
+        &#64;Override
+        public void onProvideShadowMetrics (Point size, Point touch)
+            // Defines local variables
+            private int width, height;
+
+            // Sets the width of the shadow to half the width of the original View
+            width = getView().getWidth() / 2;
+
+            // Sets the height of the shadow to half the height of the original View
+            height = getView().getHeight() / 2;
+
+            // The drag shadow is a ColorDrawable. This sets its dimensions to be the same as the
+            // Canvas that the system will provide. As a result, the drag shadow will fill the
+            // Canvas.
+            shadow.setBounds(0, 0, width, height);
+
+            // Sets the size parameter's width and height values. These get back to the system
+            // through the size parameter.
+            size.set(width, height);
+
+            // Sets the touch point's position to be in the middle of the drag shadow
+            touch.set(width / 2, height / 2);
+        }
+
+        // Defines a callback that draws the drag shadow in a Canvas that the system constructs
+        // from the dimensions passed in onProvideShadowMetrics().
+        &#64;Override
+        public void onDrawShadow(Canvas canvas) {
+
+            // Draws the ColorDrawable in the Canvas passed in from the system.
+            shadow.draw(canvas);
+        }
+    }
+</pre>
+        <p class="note">
+            <strong>Note:</strong> Remember that you don't have to extend
+            <code><a href="../../../reference/android/view/View.DragShadowBuilder.html">View.DragShadowBuilder</a></code>. The constructor
+            <code><a href="../../../reference/android/view/View.DragShadowBuilder.html#View.DragShadowBuilder(android.view.View)">View.DragShadowBuilder(View)</a></code> creates a
+            default drag shadow that's the same size as the View argument passed to it, with the
+            touch point centered in the drag shadow.
+        </p>
+    </li>
+</ol>
+<h3 id="HandleStart">Responding to a drag start</h3>
+<p>
+    During the drag operation, the system dispatches drag events to the drag event listeners
+    of the View objects in the current layout. The listeners should react
+    by calling <code><a href="../../../reference/android/view/DragEvent.html#getAction()">getAction()</a></code> to get the action type.
+    At the start of a drag, this methods returns <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_STARTED">ACTION_DRAG_STARTED</a></code>.
+</p>
+<p>
+    In response to an event with the action type <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_STARTED">ACTION_DRAG_STARTED</a></code>,
+    a listener should do the following:
+</p>
+<ol>
+    <li>
+        Call <code><a href="../../../reference/android/view/DragEvent.html#getClipDescription()">getClipDescription()</a></code> to get the
+        <code><a href="../../../reference/android/content/ClipDescription.html">ClipDescription</a></code>. Use the MIME type methods in
+        <code><a href="../../../reference/android/content/ClipDescription.html">ClipDescription</a></code> to see if the listener can accept the data being
+        dragged.
+        <p>
+            If the drag and drop operation does not represent data movement, this may not be
+            necessary.
+        </p>
+    </li>
+    <li>
+        If the listener can accept a drop, it should return <code>true</code>. This tells
+        the system to continue to send drag events to the listener.
+        If it can't accept a drop, it should return <code>false</code>, and the system
+        will stop sending drag events until it sends out
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code>.
+    </li>
+</ol>
+<p>
+    Note that for an <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_STARTED">ACTION_DRAG_STARTED</a></code> event, these
+    the following <code><a href="../../../reference/android/view/DragEvent.html">DragEvent</a></code> methods are not valid:
+    <code><a href="../../../reference/android/view/DragEvent.html#getClipData()">getClipData()</a></code>, <code><a href="../../../reference/android/view/DragEvent.html#getX()">getX()</a></code>,
+    <code><a href="../../../reference/android/view/DragEvent.html#getY()">getY()</a></code>, and <code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code>.
+</p>
+<h3 id="HandleDuring">Handling events during the drag</h3>
+<p>
+    During the drag, listeners that returned <code>true</code> in response to
+    the <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_STARTED">ACTION_DRAG_STARTED</a></code> drag event continue to receive drag
+    events. The types of drag events a listener receives during the drag depend on the location of
+    the drag shadow and the visibility of the listener's View.
+</p>
+<p>
+    During the drag, listeners primarily use drag events to decide if they should change the
+    appearance of their View.
+</p>
+<p>
+    During the drag, <code><a href="../../../reference/android/view/DragEvent.html#getAction()">getAction()</a></code> returns one of three
+    values:
+</p>
+<ul>
+    <li>
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code>:
+        The listener receives this when the touch point
+        (the point on the screen underneath the user's finger) has entered the bounding box of the
+        listener's View.
+    </li>
+    <li>
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_LOCATION">ACTION_DRAG_LOCATION</a></code>: Once the listener receives an
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code> event, and before it receives an
+        A<code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_EXITED">ACTION_DRAG_EXITED</a></code> event, it receives a new
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_LOCATION">ACTION_DRAG_LOCATION</a></code> event every time the touch point moves.
+        The <code><a href="../../../reference/android/view/DragEvent.html#getX()">getX()</a></code> and <code><a href="../../../reference/android/view/DragEvent.html#getY()">getY()</a></code> methods
+        return the X and Y coordinates of the touch point.
+    </li>
+    <li>
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_EXITED">ACTION_DRAG_EXITED</a></code>:  This event is sent to a listener that
+        previously received <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code>, after
+        the drag shadow is no longer within the bounding box of the listener's View.
+    </li>
+</ul>
+<p>
+    The listener does not need to react to any of these action types. If the listener returns a
+    value to the system, it is ignored. Here are some guidelines for responding to each of
+    these action types:
+</p>
+<ul>
+    <li>
+        In response to <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code> or
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_LOCATION">ACTION_DRAG_LOCATION</a></code>, the listener can change the appearance
+        of the View to indicate that it is about to receive a drop.
+    </li>
+    <li>
+        An event with the action type <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_LOCATION">ACTION_DRAG_LOCATION</a></code> contains
+        valid data for <code><a href="../../../reference/android/view/DragEvent.html#getX()">getX()</a></code> and
+        <code><a href="../../../reference/android/view/DragEvent.html#getY()">getY()</a></code>, corresponding to the location of the touch point.
+        The listener may want to use this information to alter the appearance of that part of the
+        View that is at the touch point. The listener can also use this information
+        to determine the exact position where the user is going to drop the drag shadow.
+    </li>
+    <li>
+        In response to <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_EXITED">ACTION_DRAG_EXITED</a></code>, the listener should reset
+        any appearance changes it applied in response to
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENTERED">ACTION_DRAG_ENTERED</a></code> or
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_LOCATION">ACTION_DRAG_LOCATION</a></code>. This indicates to the user that
+        the View is no longer an imminent drop target.
+    </li>
+</ul>
+<h3 id="HandleDrop">Responding to a drop</h3>
+<p>
+    When the user releases the drag shadow on a View in the application, and that View previously
+    reported that it could accept the content being dragged, the system dispatches a drag event
+    to that View with the action type <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>. The listener
+    should do the following:
+</p>
+<ol>
+    <li>
+        Call <code><a href="../../../reference/android/view/DragEvent.html#getClipData()">getClipData()</a></code> to get the
+        <code><a href="../../../reference/android/content/ClipData.html">ClipData</a></code> object that was originally supplied in the call
+        to
+<code><a href="../../../reference/android/view/View.html#startDrag(android.content.ClipData, android.view.View.DragShadowBuilder, java.lang.Object, int)">startDrag()</a></code>
+        and store it. If the drag and drop operation does not represent data movement,
+        this may not be necessary.
+    </li>
+    <li>
+        Return boolean <code>true</code> to indicate that the drop was processed successfully, or
+        boolean <code>false</code> if it was not. The returned value becomes the value returned by
+        <code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code> for an
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code> event.
+        <p>
+            Note that if the system does not send out an <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>
+            event, the value of <code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code> for an
+            <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code> event is <code>false</code>.
+        </p>
+    </li>
+</ol>
+<p>
+    For an <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code> event,
+    <code><a href="../../../reference/android/view/DragEvent.html#getX()">getX()</a></code> and <code><a href="../../../reference/android/view/DragEvent.html#getY()">getY()</a></code>
+    return the X and Y position of the drag point at the moment of the drop, using the coordinate
+    system of the View that received the drop.
+</p>
+<p>
+    The system does allow the user to release the drag shadow on a View whose listener is not
+    receiving drag events. It will also allow the user to release the drag shadow
+    on empty regions of the application's UI, or on areas outside of your application.
+    In all of these cases, the system does not send an event with action type
+    <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>, although it does send out an
+    <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code> event.
+</p>
+<h3 id="HandleEnd">Responding to a drag end</h3>
+<p>
+    Immediately after the user releases the drag shadow, the system sends a
+    drag event to all of the drag event listeners in your application, with an action type of
+    <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DRAG_ENDED">ACTION_DRAG_ENDED</a></code>. This indicates that the drag operation is
+    over.
+</p>
+<p>
+    Each listener should do the following:
+</p>
+<ol>
+    <li>
+        If listener changed its View object's appearance during the operation, it should reset the
+        View to its default appearance. This is a visual indication to the user that the operation
+        is over.
+    </li>
+    <li>
+        The listener can optionally call <code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code> to find out more
+        about the operation. If a listener returned <code>true</code> in response to an event of
+        action type <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code>, then
+        <code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code> will return boolean <code>true</code>. In all
+        other cases, <code><a href="../../../reference/android/view/DragEvent.html#getResult()">getResult()</a></code> returns boolean <code>false</code>,
+        including any case in which the system did not send out a
+        <code><a href="../../../reference/android/view/DragEvent.html#ACTION_DROP">ACTION_DROP</a></code> event.
+    </li>
+    <li>
+        The listener should return boolean <code>true</code> to the system.
+    </li>
+</ol>
+<p>
+</p>
+<h3 id="RespondEventSample">Responding to drag events: an example</h3>
+<p>
+    All drag events are initially received by your drag event method or listener. The following
+    code snippet is a simple example of reacting to drag events in a listener:
+</p>
+<pre>
+// Creates a new drag event listener
+mDragListen = new myDragEventListener();
+
+View imageView = new ImageView(this);
+
+// Sets the drag event listener for the View
+imageView.setOnDragListener(mDragListen);
+
+...
+
+protected class myDragEventListener implements View.OnDragEventListener {
+
+    // This is the method that the system calls when it dispatches a drag event to the
+    // listener.
+    public boolean onDrag(View v, DragEvent event) {
+
+        // Defines a variable to store the action type for the incoming event
+        final int action = event.getAction();
+
+        // Handles each of the expected events
+        switch(action) {
+
+            case DragEvent.ACTION_DRAG_STARTED:
+
+                // Determines if this View can accept the dragged data
+                if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
+
+                    // As an example of what your application might do,
+                    // applies a blue color tint to the View to indicate that it can accept
+                    // data.
+                    v.setColorFilter(Color.BLUE);
+
+                    // Invalidate the view to force a redraw in the new tint
+                    v.invalidate();
+
+                    // returns true to indicate that the View can accept the dragged data.
+                    return(true);
+
+                    } else {
+
+                    // Returns false. During the current drag and drop operation, this View will
+                    // not receive events again until ACTION_DRAG_ENDED is sent.
+                    return(false);
+
+                    }
+                break;
+
+            case DragEvent.ACTION_DRAG_ENTERED: {
+
+                // Applies a green tint to the View. Return true; the return value is ignored.
+
+                v.setColorFilter(Color.GREEN);
+
+                // Invalidate the view to force a redraw in the new tint
+                v.invalidate();
+
+                return(true);
+
+                break;
+
+                case DragEvent.ACTION_DRAG_LOCATION:
+
+                // Ignore the event
+                    return(true);
+
+                break;
+
+                case DragEvent.ACTION_DRAG_EXITED:
+
+                    // Re-sets the color tint to blue. Returns true; the return value is ignored.
+                    v.setColorFilter(Color.BLUE);
+
+                    // Invalidate the view to force a redraw in the new tint
+                    v.invalidate();
+
+                    return(true);
+
+                break;
+
+                case DragEvent.ACTION_DROP:
+
+                    // Gets the item containing the dragged data
+                    ClipData.Item item = event.getClipData().getItemAt(0);
+
+                    // Gets the text data from the item.
+                    dragData = item.getText();
+
+                    // Displays a message containing the dragged data.
+                    Toast.makeText(this, "Dragged data is " + dragData, Toast.LENGTH_LONG);
+
+                    // Turns off any color tints
+                    v.clearColorFilter();
+
+                    // Invalidates the view to force a redraw
+                    v.invalidate();
+
+                    // Returns true. DragEvent.getResult() will return true.
+                    return(true);
+
+                break;
+
+                case DragEvent.ACTION_DRAG_ENDED:
+
+                    // Turns off any color tinting
+                    v.clearColorFilter();
+
+                    // Invalidates the view to force a redraw
+                    v.invalidate();
+
+                    // Does a getResult(), and displays what happened.
+                    if (event.getResult()) {
+                        Toast.makeText(this, "The drop was handled.", Toast.LENGTH_LONG);
+
+                    } else {
+                        Toast.makeText(this, "The drop didn't work.", Toast.LENGTH_LONG);
+
+                    };
+
+                    // returns true; the value is ignored.
+                    return(true);
+
+                break;
+
+                // An unknown action type was received.
+                default:
+                    Log.e("DragDrop Example","Unknown action type received by OnDragListener.");
+
+                break;
+        };
+    };
+};
+</pre>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

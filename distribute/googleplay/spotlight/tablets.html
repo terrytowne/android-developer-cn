@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Developer Stories: The Opportunity of Android Tablets | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  distribute" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/index.html">Google Play</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/about/visibility.html">Visibility</a></li>
+      <li><a href="../../../distribute/googleplay/about/monetizing.html">Monetizing</a></li>
+      <li><a href="../../../distribute/googleplay/about/distribution.html">Distribution</a></li>
+    </ul>  
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/publish/register.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/publish/console.html">Developer Console</a></li>
+      <li><a href="../../../distribute/googleplay/publish/localizing.html">Localization Checklist</a></li>
+      <li><a href="../../../distribute/googleplay/publish/preparing.html">Launch Checklist</a></li>
+    </ul>
+  </li>
+  
+<!--  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../distribute/googleplay/developer-console.html">The Developer Console</a>
+    </div>
+    <ul>
+      <li class="nav-section"><a href="../../../distribute/googleplay/register.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/distribution-controls.html">Managing Distribution</a></li>
+      <li><a href="../../../distribute/googleplay/pricing-billing.html">Pricing and Billing</a></li>
+      <li><a href="../../../distribute/googleplay/app-data.html">Reviewing App Data</a></li>
+      <li><a href="../../../distribute/googleplay/advanced-options.html">Advanced Options</a></li>
+      <li><a href="../../../distribute/googleplay/publishing.html">Publishing and Updating</a></li>
+    </ul>
+  </li> end of Developer Console -->
+
+   <li class="nav-section">
+     <div class="nav-section-header"><a href="../../../distribute/googleplay/promote/index.html">Promoting</a>
+     </div>
+     <ul>
+<!--   <li><a href="../../../distribute/googleplay/promote/product-pages.html">Your Product Pages</a></li> -->
+       <li><a href="../../../distribute/googleplay/promote/linking.html">Linking to Your Products</a></li>
+       <li><a href="../../../distribute/googleplay/promote/badges.html">Google Play Badges</a></li>
+       <li><a href="../../../distribute/promote/device-art.html">Device Art Generator</a></li>
+       <li><a href="../../../distribute/googleplay/promote/brand.html">Brand Guidelines</a></li>
+     </ul>
+   </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/quality/core.html">Core App Quality</a></li>
+       <li><a href="../../../distribute/googleplay/quality/tablet.html">Tablet App Quality</a></li>
+       <li><a href="../../../distribute/googleplay/strategies/app-quality.html">Improving App Quality</a></li>
+    </ul>
+  </li> 
+
+   <li class="nav-section">
+     <div class="nav-section-header"><a href="../../../distribute/googleplay/policies/index.html">Policies</a></div>
+     <ul>
+       <li><a href="../../../distribute/googleplay/policies/spam.html">Spam</a></li>
+       <li><a href="../../../distribute/googleplay/policies/ip.html">Intellectual<br />Property</a></li> 
+       <li><a href="../../../distribute/googleplay/policies/ads.html">Ads</a></li>
+     </ul>
+   </li>
+
+<!--    
+   <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/after.html">
+      After Launch</a>
+    </div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/errors.html.html">Reviewing Errors</a></li>
+       <li><a href="../../../distribute/googleplay/reviews.html">Tracking User Reviews</a></li>
+       <li><a href="../../../distribute/googleplay/supporting-users.html">Supporting Users</a></li>
+    </ul>
+  </li> 
+-->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/spotlight/tablets.html">Tablet Stories</a></li>
+       <li><a href="../../../distribute/googleplay/spotlight/games.html">Game Stories</a></li>
+    </ul>
+  </li> 
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/edu/index.html">Google Play for Education</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/edu/about.html">About</a></li>
+      <li><a href="../../../distribute/googleplay/edu/start.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/edu/guidelines.html">Guidelines</a></li>
+      <li><a href="../../../distribute/googleplay/edu/contact.html">Sign Up</a></li>
+    </ul>  
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../distribute/open.html">Open Distribution</a></div>
+  </li>
+</ul>
+  
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Developer Stories: The Opportunity of Android Tablets</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <p>More and more, developers are investing in a full tablet experience
+for their apps and are seeing those investments pay off big. The increased
+screen area on tablets opens up a world of possibilities, allowing for more
+engagement with the user &mdash; which can mean an increase in usage as well as
+more monetization opportunities. And with the growing wave of Android tablets that
+continue to hit the market, it’s an important piece of any developer’s mobile
+offering. </p>
+
+<p>Here are some stories from developers who are seeing real results as they
+expand their offering to include Android tablets.</p>
+
+
+<div style="margin-bottom:2em;" id="rememberthemilk"><!-- START STORY -->
+
+<h3>Remember The Milk: Lifting installs with tablet design</h3>
+
+  <img alt="" class="screenshot thumbnail" style="-webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px height:78px;
+            width: 78px;
+            float: left;
+            margin: 12px 20px 9px 20px;" src=
+            "//lh3.ggpht.com/xmnal18taauP2mjQFEhr1PhcItQ_W32IRuaD86IoL2U_4E-mfeKiliKtkISgOuA6Ln9n=w124">
+          
+  <div style="list-style: none;height:100%;
+  float: right;
+  border-top: 1px solid #9C0;
+  width: 220px;
+  margin: 4px 20px;padding: .5em;">
+  
+
+    <h5>About the app</h5> 
+    
+    
+    <ul>
+      <li><a href="//play.google.com/store/apps/details?id=com.rememberthemilk.MobileRTM">Remember The Milk</a></li>
+      <li>A feature-packed to-do list app; never forget the milk (or anything else) again</li>
+    </ul>
+
+    <h5>Tablet Results</h5> 
+
+    <ul>
+      <li>83% jump in tablet installs following update </li>
+      <li>Nexus 7 is most popular Android device for app </li>
+      <li>Single APK for phones and tablets</li>
+      </ul>
+    
+    <div style="padding:.5em 0 0 1em;">
+      <a href="//play.google.com/store/apps/details?id=com.rememberthemilk.MobileRTM">
+        <img alt="Android app on Google Play"
+         src="//developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+      </a>
+      
+    </div>
+  </div>
+
+  <div style="line-height:1.4em;">
+    <p style="margin-top:0;margin-bottom:12px;">When the Android tablet guidelines
+      came out in 2012, the team at Remember The Milk had already been thinking about
+      a redesign for their <a href="//play.google.com/store/apps/details?id=com.rememberthemilk.MobileRTM">feature-packed
+      to-do list app</a>. Omar Kilani, Co-founder of Remember The Milk, explains how
+      <a href="//blog.rememberthemilk.com/2013/04/the-all-new-remember-the-milk-for-android-and-tablets-too/">updating</a>
+      their app to meet the tablet guidelines lead to an 83% jump in tablet installs: </p>
+
+    <p>“We took this as an opportunity to think about how we were going to approach
+      Android tablets differently from a user experience perspective. The guidelines
+      were a helpful resource, and with the extra screen real estate tablets afford,
+      users have the opportunity to see all of their data in context and drill down
+      on more items. All of this is accomplished using a single APK on Play, even though
+      the phone and tablet versions each capture completely different use cases for us.”</p>
+
+    <p>“In the month after updating, we saw our tablet installs on Google Play jump 83%,
+      and the Nexus 7 is now the most popular Android device amongst our users. For us,
+      designing for tablets was an investment that has really paid off.”</p>
+
+    <p>The team also came out with a number of other goodies &mdash; including a new set of
+      widgets and richer notifications, and more ways to provide an immersive experience
+      for their users.</p>
+  </div>
+
+  <div style="clear:both;margin-top:30px;width:auto;">
+  
+    <img src="../../../images/distribute/rememberthemilk.png">
+
+    <div style="width:600px;margin-top:0px;padding:0 90px;">
+      <p class="image-caption"><span style="font-weight:500;">Tablet redesign led to lift
+      in installs</span>: Following the redesign of the Android app, in part to meet the tablet
+      design criteria, Remember The Milk saw an 83% increase in tablet installs.</p>
+    </div>
+
+  </div>
+
+</div> <!-- END STORY -->
+
+
+<div style="margin-bottom:2em;" id="mint"><!-- START STORY -->
+
+<h3>Mint: More screen real estate = more engagement</h3>
+
+  <img alt="" class="screenshot thumbnail" style="-webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px height:78px;
+            width: 78px;
+            float: left;
+            margin: 12px 20px 9px 20px;" src=
+            "https://lh5.ggpht.com/0xAIZJ1uE05b4RHNHgBBTIH6nRdPTY660T104xY7O2GbHXwab6YVmpU5yYg8yacfBg=w124">
+          
+  <div style="list-style: none;height:100%;
+  float: right;
+  border-top: 1px solid #9C0;
+  width: 220px;
+  margin: 4px 20px;padding: .5em;">
+  
+
+    <h5>About the app</h5> 
+    
+    
+    <ul>
+ <li><a href="http://play.google.com/store/apps/details?id=com.mint">Mint.com Personal Finance</a> by Intuit Inc.</li>
+      <li>Financial management app targeting 7- to 10-inch tablets and phones</li>
+    </ul>
+
+    <h5>Tablet Results</h5> 
+
+    <ul>
+      <li>Able to offer richer UI features</li>
+      <li>Much higher user engagement</li>
+      <li>Longer sessions &mdash; more Android tablet users have sessions longer than 5 minutes</li>
+      </ul>
+    
+    <div style="padding:.5em 0 0 1em;">
+<a href="http://play.google.com/store/apps/details?id=com.mint">
+  <img alt="Android app on Google Play"
+       src="//developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+</a>
+      
+    </div>
+  </div>
+
+  <div style="line-height:1.4em;">
+    <p style="margin-top:0;margin-bottom:12px;">When Intuit was thinking about
+expanding their Mint mobile offering to include a version optimized for Android
+tablets, they knew that taking the layout that worked for phones and simply
+showing an enlarged version wouldn’t take full advantage of the opportunities
+that tablets afford.</p>
+    
+    <p>“We knew we had a lot more real estate, and we wanted to provide a more
+immersive experience for our users” said Ken Sun, Intuit Group Product Manager
+at Mint.</p>
+
+<p>Intuit’s Mint app, which has a 4-star rating on Google Play, brings a number
+of features to Android tablets that aren’t available for phones, including a
+more visual presentation of personal financial data.</p>
+
+<p>“Whereas our app for phones is used throughout the day for quick sessions,
+we’ve seen a larger percentage of our tablet usage happen in the evening, for
+much longer sessions,” said Sun. “People are doing a lot more than just checking
+their spending. They’re looking at historical trends, re-categorizing
+transactions, analyzing the data and setting financial goals for the future
+&mdash; digging much deeper and being more thoughtful. One example is how much
+users are interacting with their own budgets in the tablet app.  Customer budget
+operations (view, edit, drill-down, etc.) are 7x higher on Android tablets than
+they are on phones.”</p>
+
+<p>Fifty percent more Android tablet users have Mint sessions of 5 minutes or
+longer than they do on phones.  “We’ve found that phone usage is indicative of a
+customer’s regular financial check-in, while tablet usage points towards more
+analysis and interaction with that customer’s personal financial data.  This is
+the sort of immersive engagement experience we were looking for; the tablet and
+phone apps serve as great complements to each other."</p>
+  </div>
+
+  <div style="clear:both;margin-top:40px;width:auto;">
+  
+    <img src="../../../images/distribute/mint.png">
+
+    <div style="width:600px;margin-top:0px;padding:0 90px;">
+      <p class="image-caption"><span style="font-weight:500;">Making the most of tablet screens</span>: Mint used the extra screen area on tablets to offer quick access to additional tools and information.</p>
+    </div>
+
+  </div>
+
+</div> <!-- END STORY -->
+
+
+<div style="margin:3em auto"><!-- START STORY -->
+
+
+<h3>TinyCo: Monetization opportunities abound on tablets</h3>
+
+  <img alt="" class="screenshot thumbnail" style="-webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px height:78px;
+            width: 78px;
+            float: left;
+            margin: 12px 20px 30px 20px;" src=
+            "https://lh6.ggpht.com/QTy7lOGRTS58NW4XEeym2sxpWKDmRNod_n3kBrHlqTRIyzIv2gkw8DfwiR4GIAdxiHw=w124">
+
+          
+  <div style="list-style: none;height:100%;
+  float: right;
+  border-top: 1px solid #9C0;
+  width: 220px;
+  margin: 4px 20px;padding: .5em;">
+
+    <h5>About the app</h5> 
+
+    <ul>
+                <li><a href="http://play.google.com/store/apps/details?id=com.tinyco.village">Tiny Village</a> by TinyCo</li>
+            <li>Game targeting 7- to 10-inch tablets and phones</li>
+    </ul>
+
+    <h5>Tablet Results</h5> 
+
+    <ul>
+      <li>35% higher average revenue per paying user (ARPPU)</li>
+      <li>Consistent increase in user retention</li>
+      <li>3x increase in downloads to Android tablets in the last 6 months</li>
+    </ul>
+    
+    <div style="padding:.5em 0 0 1em;">
+<a href="http://play.google.com/store/apps/details?id=com.tinyco.village">
+  <img alt="Android app on Google Play"
+       src="//developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+</a>
+      
+    </div>
+  </div>
+
+  <div style="line-height:1.4em;">
+    <p style="margin-top:0;margin-bottom:12px;">
+    
+<p>Over a year ago, app developer TinyCo, makers of a suite of games such as
+Tiny Monsters, decided to prioritize launching across multiple platforms
+effectively. They chose Android as one of their primary launch platforms because
+of its large installed base and global reach. They also knew that the growing
+base of Android tablet users represented a huge opportunity.</p>
+    
+    <p>Tiny Village was their first title to take advantage of the strategy, and
+it proved to be a winning one &mdash; especially in terms of Android
+tablets.</p>
+    
+    <p> “With continued optimization of the gameplay experience and a genuine
+commitment to our Android offering through our Griffin engine, all of our
+metrics started to rise,” said Rajeev Nagpal, Head of Product at TinyCo. In
+fact, they’ve seen Android tablet downloads more than triple in the last six
+months.</p>
+
+    <p>One of the first things they noticed about usage of Tiny Village on
+tablets was an increase in average revenue per paying user (ARPPU)&mdash;about 35%
+higher than on smaller-screen devices such as phones. Additionally, average
+revenue per user ARPU is now about 35% higher as well. “The game is just much
+more immersive on tablet.”</p>
+
+    <p>In addition to an increase in monetization metrics, they’ve also seen a
+consistent increase in retention over other platforms. “These are really
+important metrics for games &mdash; if you can get users to both stay around
+longer and spend more while they’re there, you have a recipe for success.”</p>
+  </div>
+
+  <div style="clear:both;margin-top:40px;width:auto;">
+  
+    <img src="../../../images/distribute/tinyvillage.png">
+
+    <div style="width:600px;margin-top:0px;padding:0 90px;">
+      <p class="image-caption"><span style="font-weight:500;">More monetization
+on tablets</span>: On Android tablets TinyCo has seen higher ARPPU and user
+retention than on phones.</p>
+    </div>
+
+  </div>
+
+</div> <!-- END STORY -->
+
+
+<div style="margin-bottom:2em;"><!-- START STORY -->
+
+<h3>Instapaper: Riding the growing wave of Android tablets</h3>
+
+
+  <img alt="" class="screenshot thumbnail" style="-webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px height:78px;
+            width: 78px;
+            float: left;
+            margin: 12px 20px 9px 20px;" src=
+            "https://lh3.ggpht.com/30KKcrIFO8V_wRfhnHaI9l0CLH_orIVFE7Xywtr9TBxAf0hi2BaZkKyBOs63Yfavpg=w124">
+
+          
+  <div style="list-style: none;height:100%;
+  float: right;
+  border-top: 1px solid #9C0;
+  width: 220px;
+  margin: 4px 20px;padding: .5em;">
+  
+  
+  
+
+    <h5>About the app</h5> 
+    <ul>
+                <li><a href="http://play.google.com/store/apps/details?id=com.instapaper.android">Instapaper</a> by Mobelux</li>
+      <li>Content-browsing utility that targets 7- to 10-inch tablets and phones</li>
+    </ul>
+
+    <h5>Tablet Results</h5> 
+
+    <ul>
+      <li>Tablets are now 50% of the app's installed base.</li>
+    </ul>
+    
+    <div style="padding:.5em 0 0 1em;">
+<a href="http://play.google.com/store/apps/details?id=com.instapaper.android">
+  <img alt="Android app on Google Play"
+       src="//developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+</a>
+      
+    </div>
+  </div>
+
+  <div style="line-height:1.4em;">
+    <p style="margin-top:0;margin-bottom:12px;">Instapaper for Android is an app
+for saving web content to read later. Developer Mobelux decided that creating a
+great UI for Android tablet users would be an essential part of their initial launch
+plan.</p>
+    
+    <p>The app launched at the beginning of the summer of 2012, just in time to
+take advantage of a new tide of Android tablets, including the <span
+style="white-space:nowrap;">Nexus 7</span> tablet. The app has since seen huge
+popularity among tablet users, in particular, on Nexus 7. On the day that
+pre-orders of Nexus 7 began arriving, Mobelux saw a 600% jump in downloads of
+its app on Google Play.</p>
+
+    <p>“We saw a promising new set of Android tablets about to hit the market
+and wanted to position ourselves to be ready for them” said Jeff Rock of
+Mobelux. “It was a market that others were hesitant to explore, but the decision
+to prioritize tablets has paid off very well for us.”</p>
+
+    <p>Since that initial 600% jump in downloads, Instapaper for Android has
+continued to see a successful run on Android tablets. In fact, Android tablets
+now represent about 50% of their installed base. “With more and more Android
+tablets coming online, we’re excited to see how our investment in Android
+tablets continues to pay off.”</p>
+  </div>
+
+  <div style="clear:both;margin-top:40px;width:auto;">
+  
+    <img src="../../../images/distribute/instapaper.png">
+
+    <div style="width:600px;margin-top:0px;padding:0 90px;">
+      <p class="image-caption"><span style="font-weight:500;">Popular with
+tablet users</span>: A great tablet UI and browsing convenience make Instapaper
+popular with Android tablet users.</p>
+    </div>
+
+  </div>
+
+</div> <!-- END STORY -->
+
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

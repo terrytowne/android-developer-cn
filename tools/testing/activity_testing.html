@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Activity Testing | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Activity Testing</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+  <h2>In this document</h2>
+  <ol>
+    <li>
+      <a href="#ActivityTestAPI">The Activity Testing API</a>
+      <ol>
+        <li>
+            <a href="#ActivityInstrumentationTestCase2">ActivityInstrumentationTestCase2</a>
+        </li>
+        <li>
+            <a href="#ActivityUnitTestCase">ActivityUnitTestCase</a>
+        </li>
+        <li>
+            <a href="#SingleLaunchActivityTestCase">SingleLaunchActivityTestCase</a>
+        </li>
+        <li>
+            <a href="#MockObjectNotes">Mock objects and activity testing</a>
+        </li>
+        <li>
+            <a href="#AssertionNotes">Assertions for activity testing</a>
+        </li>
+      </ol>
+    </li>
+    <li>
+        <a href="#WhatToTest">What to Test</a>
+    </li>
+    <li>
+        <a href="#NextSteps">Next Steps</a>
+    </li>
+    <li>
+      <a href="#UITesting">Appendix: UI Testing Notes</a>
+      <ol>
+        <li>
+          <a href="#RunOnUIThread">Testing on the UI thread</a>
+        </li>
+        <li>
+          <a href="#NotouchMode">Turning off touch mode</a>
+        </li>
+        <li>
+          <a href="#UnlockDevice">Unlocking the Emulator or Device</a>
+        </li>
+        <li>
+          <a href="#UITestTroubleshooting">Troubleshooting UI tests</a>
+        </li>
+      </ol>
+    </li>
+    </ol>
+<h2>Key Classes</h2>
+    <ol>
+      <li><code><a href="../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></code></li>
+      <li><code><a href="../../reference/android/test/ActivityInstrumentationTestCase2.html">ActivityInstrumentationTestCase2</a></code></li>
+      <li><code><a href="../../reference/android/test/ActivityUnitTestCase.html">ActivityUnitTestCase</a></code></li>
+    </ol>
+<h2>Related Tutorials</h2>
+    <ol>
+      <li>
+         <a href="../../tools/testing/activity_test.html">Activity Testing Tutorial</a>
+      </li>
+    </ol>
+<h2>See Also</h2>
+      <ol>
+        <li>
+          <a href="../../tools/testing/testing_eclipse.html">
+          Testing from Eclipse with ADT</a>
+        </li>
+        <li>
+          <a href="../../tools/testing/testing_otheride.html">
+          Testing from Other IDEs</a>
+        </li>
+      </ol>
+  </div>
+</div>
+<p>
+    Activity testing is particularly dependent on the Android instrumentation framework.
+    Unlike other components, activities have a complex lifecycle based on callback methods; these
+    can't be invoked directly except by instrumentation. Also, the only way to send events to the
+    user interface from a program is through instrumentation.
+</p>
+<p>
+    This document describes how to test activities using instrumentation and other test
+    facilities. The document assumes you have already read
+    <a href="../../tools/testing/testing_android.html">Testing Fundamentals</a>,
+    the introduction to the Android testing and instrumentation framework.
+</p>
+<h2 id="ActivityTestAPI">The Activity Testing API</h2>
+<p>
+    The activity testing API base class is <code><a href="../../reference/android/test/InstrumentationTestCase.html">InstrumentationTestCase</a></code>,
+    which provides instrumentation to the test case subclasses you use for Activities.
+</p>
+<p>
+    For activity testing, this base class provides these functions:
+</p>
+<ul>
+    <li>
+        Lifecycle control: With instrumentation, you can start the activity under test, pause it,
+        and destroy it, using methods provided by the test case classes.
+    </li>
+    <li>
+        Dependency injection: Instrumentation allows you to create mock system objects such as
+        Contexts or Applications and use them to run the activity under test. This
+        helps you control the test environment and isolate it from production systems. You can
+        also set up customized Intents and start an activity with them.
+    </li>
+    <li>
+        User interface interaction: You use instrumentation to send keystrokes or touch events
+        directly to the UI of the activity under test.
+    </li>
+</ul>
+<p>
+    The activity testing classes also provide the JUnit framework by extending
+    <code><a href="../../reference/junit/framework/TestCase.html">TestCase</a></code> and <code><a href="../../reference/junit/framework/Assert.html">Assert</a></code>.
+</p>
+<p>
+    The two main testing subclasses are <code><a href="../../reference/android/test/ActivityInstrumentationTestCase2.html">ActivityInstrumentationTestCase2</a></code> and
+    <code><a href="../../reference/android/test/ActivityUnitTestCase.html">ActivityUnitTestCase</a></code>. To test an Activity that is launched in a mode
+    other than <code>standard</code>, you use <code><a href="../../reference/android/test/SingleLaunchActivityTestCase.html">SingleLaunchActivityTestCase</a></code>.
+</p>
+<h3 id="ActivityInstrumentationTestCase2">ActivityInstrumentationTestCase2</h3>
+<p>
+    The <code><a href="../../reference/android/test/ActivityInstrumentationTestCase2.html">ActivityInstrumentationTestCase2</a></code> test case class is designed to do
+    functional testing of one or more Activities in an application, using a normal system
+    infrastructure. It runs the Activities in a normal instance of the application under test,
+    using a standard system Context. It allows you to send mock Intents to the activity under
+    test, so you can use it to test an activity that responds to multiple types of intents, or
+    an activity that expects a certain type of data in the intent, or both. Notice, though, that it
+    does not allow mock Contexts or Applications, so you can not isolate the test from the rest of
+    a production system.
+</p>
+<h3 id="ActivityUnitTestCase">ActivityUnitTestCase</h3>
+<p>
+    The <code><a href="../../reference/android/test/ActivityUnitTestCase.html">ActivityUnitTestCase</a></code> test case class tests a single activity in
+    isolation. Before you start the activity, you can inject a mock Context or Application, or both.
+    You use it to run activity tests in isolation, and to do unit testing of methods
+    that do not interact with Android. You can not send mock Intents to the activity under test,
+    although you can call
+    <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">Activity.startActivity(Intent)</a></code> and then
+    look at arguments that were received.
+</p>
+<h3 id="SingleLaunchActivityTestCase">SingleLaunchActivityTestCase</h3>
+<p>
+    The <code><a href="../../reference/android/test/SingleLaunchActivityTestCase.html">SingleLaunchActivityTestCase</a></code> class is a convenience class for
+    testing a single activity in an environment that doesn't change from test to test.
+    It invokes <code><a href="../../reference/junit/framework/TestCase.html#setUp()">setUp()</a></code> and
+    <code><a href="../../reference/junit/framework/TestCase.html#tearDown()">tearDown()</a></code> only once, instead of once per
+    method call. It does not allow you to inject any mock objects.
+</p>
+<p>
+    This test case is useful for testing an activity that runs in a mode other than
+    <code>standard</code>. It ensures that the test fixture is not reset between tests. You
+    can then test that the activity handles multiple calls correctly.
+</p>
+<h3 id="MockObjectNotes">Mock objects and activity testing</h3>
+<p>
+    This section contains notes about the use of the mock objects defined in
+    <code><a href="../../reference/android/test/mock/package-summary.html">android.test.mock</a></code> with activity tests.
+</p>
+<p>
+    The mock object <code><a href="../../reference/android/test/mock/MockApplication.html">MockApplication</a></code> is only available for activity
+    testing if you use the <code><a href="../../reference/android/test/ActivityUnitTestCase.html">ActivityUnitTestCase</a></code> test case class.
+    By default, <code>ActivityUnitTestCase</code>, creates a hidden <code>MockApplication</code>
+    object that is used as the application under test. You can inject your own object using
+    <code><a href="../../reference/android/test/ActivityUnitTestCase.html#setApplication(android.app.Application)">setApplication()</a></code>.
+</p>
+<h3 id="AssertionNotes">Assertions for activity testing</h3>
+<p>
+    <code><a href="../../reference/android/test/ViewAsserts.html">ViewAsserts</a></code> defines assertions for Views. You use it to verify the
+    alignment and position of View objects, and to look at the state of ViewGroup objects.
+</p>
+<h2 id="WhatToTest">What To Test</h2>
+<ul>
+    <li>
+        Input validation: Test that an activity responds correctly to input values in an
+        EditText View. Set up a keystroke sequence, send it to the activity, and then
+        use <code><a href="../../reference/android/view/View.html#findViewById(int)">findViewById(int)</a></code> to examine the state of the View. You can
+        verify that a valid keystroke sequence enables an OK button, while an invalid one leaves the
+        button disabled. You can also verify that the Activity responds to invalid input by
+        setting error messages in the View.
+    </li>
+    <li>
+        Lifecycle events: Test that each of your application's activities handles lifecycle events
+        correctly. In general, lifecycle events are actions, either from the system or from the
+        user, that trigger a callback method such as <code>onCreate()</code> or
+        <code>onClick()</code>. For example, an activity should respond to pause or destroy events
+        by saving its state. Remember that even a change in screen orientation causes the current
+        activity to be destroyed, so you should test that accidental device movements don't
+        accidentally lose the application state.
+    </li>
+    <li>
+        Intents: Test that each activity correctly handles the intents listed in the intent
+        filter specified in its manifest. You can use
+        <code><a href="../../reference/android/test/ActivityInstrumentationTestCase2.html">ActivityInstrumentationTestCase2</a></code> to send mock Intents to the
+        activity under test.
+    </li>
+    <li>
+        Runtime configuration changes: Test that each activity responds correctly to the
+        possible changes in the device's configuration while your application is running. These
+        include a change to the device's orientation, a change to the current language, and so
+        forth. Handling these changes is described in detail in the topic
+        <a href="../../guide/topics/resources/runtime-changes.html">Handling Runtime
+        Changes</a>.
+    </li>
+    <li>
+        Screen sizes and resolutions: Before you publish your application, make sure to test it on
+        all of the screen sizes and densities on which you want it to run. You can test the
+        application on multiple sizes and densities using AVDs, or you can test your application
+        directly on the devices that you are targeting. For more information, see the topic
+        <a href="../../guide/practices/screens_support.html">Supporting Multiple Screens</a>.
+    </li>
+</ul>
+<h2 id="NextSteps">Next Steps</h2>
+<p>
+    To learn how to set up and run tests in Eclipse, please refer to 
+<a href="../../tools/testing/testing_eclipse.html">Testing from Eclipse with ADT</a>.
+    If you're not working in Eclipse, refer to 
+<a href="../../tools/testing/testing_otheride.html">Testing from Other IDEs</a>.
+</p>
+<p>
+    If you want a step-by-step introduction to testing activities, try the 
+    <a href="../../tools/testing/activity_test.html">Activity Testing Tutorial</a>, which
+    guides you through a testing scenario that you develop against an activity-oriented application.
+</p>
+<h2 id="UITesting">Appendix: UI Testing Notes</h2>
+<p>
+    The following sections have tips for testing the UI of your Android application, specifically
+    to help you handle actions that run in the UI thread, touch screen and keyboard events, and home
+    screen unlock during testing.
+</p>
+<h3 id="RunOnUIThread">Testing on the UI thread</h3>
+<p>
+    An application's activities run on the application's <strong>UI thread</strong>. Once the
+    UI is instantiated, for example in the activity's <code>onCreate()</code> method, then all
+    interactions with the UI must run in the UI thread. When you run the application normally, it
+    has access to the thread and does not have to do anything special.
+</p>
+<p>
+    This changes when you run tests against the application. With instrumentation-based classes,
+    you can invoke methods against the UI of the application under test. The other test classes
+    don't allow this. To run an entire test method on the UI thread, you can annotate the thread
+    with <code>@UIThreadTest</code>. Notice that this will run <em>all</em> of the method statements
+    on the UI thread.  Methods that do not interact with the UI are not allowed; for example, you
+    can't invoke <code>Instrumentation.waitForIdleSync()</code>.
+</p>
+<p>
+    To run a subset of a test method on the UI thread, create an anonymous class of type
+    <code>Runnable</code>, put the statements you want in the <code>run()</code> method, and
+    instantiate a new instance of the class as a parameter to the method
+    <code><em>appActivity</em>.runOnUiThread()</code>, where <code><em>appActivity</em></code> is
+    the instance of the application you are testing.
+</p>
+<p>
+    For example, this code instantiates an activity to test, requests focus (a UI action) for the
+    Spinner displayed by the activity, and then sends a key to it. Notice that the calls to
+    <code>waitForIdleSync</code> and <code>sendKeys</code> aren't allowed to run on the UI thread:
+</p>
+<pre>
+  private MyActivity mActivity; // MyActivity is the class name of the app under test
+  private Spinner mSpinner;
+
+  ...
+
+  protected void setUp() throws Exception {
+      super.setUp();
+      mInstrumentation = getInstrumentation();
+
+      mActivity = getActivity(); // get a references to the app under test
+
+      /*
+       * Get a reference to the main widget of the app under test, a Spinner
+       */
+      mSpinner = (Spinner) mActivity.findViewById(com.android.demo.myactivity.R.id.Spinner01);
+
+  ...
+
+  public void aTest() {
+      /*
+       * request focus for the Spinner, so that the test can send key events to it
+       * This request must be run on the UI thread. To do this, use the runOnUiThread method
+       * and pass it a Runnable that contains a call to requestFocus on the Spinner.
+       */
+      mActivity.runOnUiThread(new Runnable() {
+          public void run() {
+              mSpinner.requestFocus();
+          }
+      });
+
+      mInstrumentation.waitForIdleSync();
+
+      this.sendKeys(KeyEvent.KEYCODE_DPAD_CENTER);
+</pre>
+
+<h3 id="NotouchMode">Turning off touch mode</h3>
+<p>
+    To control the emulator or a device with key events you send from your tests, you must turn off
+    touch mode. If you do not do this, the key events are ignored.
+</p>
+<p>
+    To turn off touch mode, you invoke
+    <code>ActivityInstrumentationTestCase2.setActivityTouchMode(false)</code>
+    <em>before</em> you call <code>getActivity()</code> to start the activity. You must invoke the
+    method in a test method that is <em>not</em> running on the UI thread. For this reason, you
+    can't invoke the touch mode method from a test method that is annotated with
+    <code>@UIThread</code>. Instead, invoke the touch mode method from <code>setUp()</code>.
+</p>
+<h3 id="UnlockDevice">Unlocking the emulator or device</h3>
+<p>
+    You may find that UI tests don't work if the emulator's or device's home screen is disabled with
+    the keyguard pattern. This is because the application under test can't receive key events sent
+    by <code>sendKeys()</code>. The best way to avoid this is to start your emulator or device
+    first and then disable the keyguard for the home screen.
+</p>
+<p>
+    You can also explicitly disable the keyguard. To do this,
+    you need to add a permission in the manifest file (<code>AndroidManifest.xml</code>) and
+    then disable the keyguard in your application under test. Note, though, that you either have to
+    remove this before you publish your application, or you have to disable it with code in
+    the published application.
+</p>
+<p>
+    To add the permission, add the element
+    <code>&lt;uses-permission android:name="android.permission.DISABLE_KEYGUARD"/&gt;</code>
+    as a child of the <code>&lt;manifest&gt;</code> element. To disable the KeyGuard, add the
+    following code to the <code>onCreate()</code> method of activities you intend to test:
+</p>
+<pre>
+  mKeyGuardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+  mLock = mKeyGuardManager.newKeyguardLock("<em>activity_classname</em>");
+  mLock.disableKeyguard();
+</pre>
+<p>where <code><em>activity_classname</em></code> is the class name of the activity.</p>
+<h3 id="UITestTroubleshooting">Troubleshooting UI tests</h3>
+<p>
+    This section lists some of the common test failures you may encounter in UI testing, and their
+    causes:
+</p>
+<dl>
+    <dt><code>WrongThreadException</code></dt>
+    <dd>
+      <p><strong>Problem:</strong></p>
+      For a failed test, the Failure Trace contains the following error message:
+      <code>
+        android.view.ViewRoot$CalledFromWrongThreadException: Only the original thread that created
+        a view hierarchy can touch its views.
+      </code>
+      <p><strong>Probable Cause:</strong></p>
+        This error is common if you tried to send UI events to the UI thread from outside the UI
+        thread. This commonly happens if you send UI events from the test application, but you don't
+        use the <code>@UIThread</code> annotation or the <code>runOnUiThread()</code> method. The
+        test method tried to interact with the UI outside the UI thread.
+      <p><strong>Suggested Resolution:</strong></p>
+        Run the interaction on the UI thread. Use a test class that provides instrumentation. See
+        the previous section <a href="#RunOnUIThread">Testing on the UI Thread</a>
+        for more details.
+    </dd>
+    <dt><code>java.lang.RuntimeException</code></dt>
+    <dd>
+      <p><strong>Problem:</strong></p>
+        For a failed test, the Failure Trace contains the following error message:
+      <code>
+        java.lang.RuntimeException: This method can not be called from the main application thread
+      </code>
+      <p><strong>Probable Cause:</strong></p>
+        This error is common if your test method is annotated with <code>@UiThreadTest</code> but
+        then tries to do something outside the UI thread or tries to invoke
+        <code>runOnUiThread()</code>.
+      <p><strong>Suggested Resolution:</strong></p>
+        Remove the <code>@UiThreadTest</code> annotation, remove the <code>runOnUiThread()</code>
+        call, or re-factor your tests.
+    </dd>
+</dl>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

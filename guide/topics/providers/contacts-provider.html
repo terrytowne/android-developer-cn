@@ -1,0 +1,3425 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Contacts Provider | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Contacts Provider</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+<h2>Quickview</h2>
+<ul>
+    <li>Android's repository of information about people.</li>
+    <li>
+        Syncs with the web.
+    </li>
+    <li>
+        Integrates social stream data.
+    </li>
+</ul>
+<h2>In this document</h2>
+<ol>
+    <li>
+        <a href="#InformationTypes">Contacts Provider Organization</a>
+    </li>
+    <li>
+        <a href="#RawContactBasics">Raw contacts</a>
+    </li>
+    <li>
+        <a href="#DataBasics">Data</a>
+    </li>
+    <li>
+        <a href="#ContactBasics">Contacts</a>
+    </li>
+    <li>
+        <a href="#Sources">Data From Sync Adapters</a>
+    </li>
+    <li>
+        <a href="#Permissions">Required Permissions</a>
+    </li>
+    <li>
+        <a href="#UserProfile">The User Profile</a>
+    </li>
+    <li>
+        <a href="#ContactsProviderMetadata">Contacts Provider Metadata</a>
+    </li>
+    <li>
+        <a href="#Access">Contacts Provider Access</a>
+    <li>
+    </li>
+    <li>
+        <a href="#SyncAdapters">Contacts Provider Sync Adapters</a>
+    </li>
+    <li>
+        <a href="#SocialStream">Social Stream Data</a>
+    </li>
+    <li>
+        <a href="#AdditionalFeatures">Additional Contacts Provider Features</a>
+    </li>
+</ol>
+<h2>Key classes</h2>
+<ol>
+    <li><code><a href="../../../reference/android/provider/ContactsContract.Contacts.html">ContactsContract.Contacts</a></code></li>
+    <li><code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code></li>
+    <li><code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code></li>
+    <li><code><a href="../../../reference/android/provider/ContactsContract.StreamItems.html">ContactsContract.StreamItems</a></code></li>
+</ol>
+<h2>Related Samples</h2>
+<ol>
+    <li>
+        <a href="../../../resources/samples/ContactManager/index.html">
+        Contact Manager
+        </a>
+    </li>
+    <li>
+        <a href="../../../resources/samples/SampleSyncAdapter/index.html">
+        Sample Sync Adapter</a>
+    </li>
+</ol>
+<h2>See Also</h2>
+<ol>
+    <li>
+        <a href="../../../guide/topics/providers/content-provider-basics.html">
+        Content Provider Basics
+        </a>
+    </li>
+</ol>
+</div>
+</div>
+<p>
+    The Contacts Provider is a powerful and flexible Android component that manages the
+    device's central repository of data about people. The Contacts Provider is the source of data
+    you see in the device's contacts application, and you can also access its data in your own
+    application and transfer data between the device and online services. The provider accommodates
+    a wide range of data sources and tries to manage as much data as possible for each person, with
+    the result that its organization is complex. Because of this, the provider's API includes an
+    extensive set of contract classes and interfaces that facilitate both data retrieval and
+    modification.
+</p>
+<p>
+    This guide describes the following:
+</p>
+    <ul>
+        <li>
+            The basic provider structure.
+        </li>
+        <li>
+            How to retrieve data from the provider.
+        </li>
+        <li>
+            How to modify data in the provider.
+        </li>
+        <li>
+            How to write a sync adapter for synchronizing data from your server to the
+            Contacts Provider.
+        </li>
+    </ul>
+<p>
+    This guide assumes that you know the basics of Android content providers. To learn more
+    about Android content providers, read the
+    <a href="../../../guide/topics/providers/content-provider-basics.html">
+    Content Provider Basics</a> guide. The
+    <a href="../../../resources/samples/SampleSyncAdapter/index.html">Sample Sync Adapter</a>
+    sample app is an example of using a sync adapter to transfer data between the Contacts
+    Provider and a sample application hosted by Google Web Services.
+</p>
+<h2 id="InformationTypes">Contacts Provider Organization</h2>
+<p>
+    The Contacts Provider is an Android content provider component. It maintains three types of
+    data about a person, each of which corresponds to a table offered by the provider, as
+    illustrated in figure 1:
+</p>
+<img src="../../../images/providers/contacts_structure.png" alt=""
+    height="364" id="figure1" />
+<p class="img-caption">
+  <strong>Figure 1.</strong> Contacts Provider table structure.
+</p>
+<p>
+    The three tables are commonly referred to by the names of their contract classes. The classes
+    define constants for content URIs, column names, and column values used by the tables:
+</p>
+<dl>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html">ContactsContract.Contacts</a></code> table
+    </dt>
+    <dd>
+        Rows representing different people, based on aggregations of raw contact rows.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> table
+    </dt>
+    <dd>
+        Rows containing a summary of a person's data, specific to a user account and type.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table
+    </dt>
+    <dd>
+        Rows containing the details for raw contact, such as email addresses or phone numbers.
+    </dd>
+</dl>
+<p>
+    The other tables represented by contract classes in <code><a href="../../../reference/android/provider/ContactsContract.html">ContactsContract</a></code>
+    are auxiliary tables that the Contacts Provider uses to manage its operations or support
+    specific functions in the device's contacts or telephony applications.
+</p>
+<h2 id="RawContactBasics">Raw contacts</h2>
+<p>
+    A raw contact represents a person's data coming from a single account type and account
+    name. Because the Contacts Provider allows more than one online service as the source of
+    data for a person, the Contacts Provider allows multiple raw contacts for the same person.
+    Multiple raw contacts also allow a user to combine a person's data from more than one account
+    from the same account type.
+</p>
+<p>
+    Most of the data for a raw contact isn't stored in the
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> table. Instead, it's stored in one or more
+    rows in the <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table. Each data row has a column
+    <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#RAW_CONTACT_ID">Data.RAW_CONTACT_ID</a></code> that
+    contains the <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">RawContacts._ID</a></code> value of its
+    parent <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> row.
+</p>
+<h3 id="RawContactsColumns">Important raw contact columns</h3>
+<p>
+    The important columns in the <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> table are
+    listed in table 1. Please read the notes that follow after the table:
+</p>
+<p class="table-caption" id="table1">
+    <strong>Table 1.</strong> Important raw contact columns.
+</p>
+<table>
+    <tr>
+        <th scope="col">Column name</th>
+        <th scope="col">Use</th>
+        <th scope="col">Notes</th>
+    </tr>
+    <tr>
+        <td>
+            <code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#ACCOUNT_NAME">ACCOUNT_NAME</a></code>
+        </td>
+        <td>
+            The account name for the account type that's the source of this raw contact.
+            For example, the account name of a Google account is one of the device owner's Gmail
+            addresses. See the next entry for
+            <code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#ACCOUNT_TYPE">ACCOUNT_TYPE</a></code> for more
+            information.
+        </td>
+        <td>
+            The format of this name is specific to its account type. It is not
+            necessarily an email address.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#ACCOUNT_TYPE">ACCOUNT_TYPE</a></code>
+        </td>
+        <td>
+            The account type that's the source of this raw contact. For example, the account
+            type of a Google account is <code>com.google</code>. Always qualify your account type
+            with a domain identifier for a domain you own or control. This will ensure that your
+            account type is unique.
+        </td>
+        <td>
+            An account type that offers contacts data usually has an associated sync adapter that
+            synchronizes with the Contacts Provider.
+    </tr>
+    <tr>
+        <td>
+            <code><a href="../../../reference/android/provider/ContactsContract.RawContactsColumns.html#DELETED">DELETED</a></code>
+        </td>
+        <td>
+            The "deleted" flag for a raw contact.
+        </td>
+        <td>
+            This flag allows the Contacts Provider to maintain the row internally until sync
+            adapters are able to delete the row from their servers and then finally delete the row
+            from the repository.
+        </td>
+    </tr>
+</table>
+<h4>Notes</h4>
+<p>
+    The following are important notes about the
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> table:
+</p>
+<ul>
+    <li>
+        A raw contact's name is not stored in its row in
+        <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code>. Instead, it's stored in
+        the <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table, in a
+        <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.StructuredName.html">ContactsContract.CommonDataKinds.StructuredName</a></code> row. A raw contact
+        has only one row of this type in the <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table.
+    </li>
+    <li>
+        <strong>Caution:</strong> To use your own account data in a raw contact row, it must
+        first be registered with the <code><a href="../../../reference/android/accounts/AccountManager.html">AccountManager</a></code>. To do this, prompt
+        users to add the account type and their account name to the list of accounts. If you don't
+        do this, the Contacts Provider will automatically delete your raw contact row.
+        <p>
+            For example, if you want your app to maintain contacts data for your web-based service
+            with the domain <code>com.example.dataservice</code>, and the user's account for your service
+            is <code>becky.sharp@dataservice.example.com</code>, the user must first add the account
+            "type" (<code>com.example.dataservice</code>) and account "name"
+            (<code>becky.smart@dataservice.example.com</code>) before your app can add raw contact rows.
+            You can explain this requirement to the user in documentation, or you can prompt the
+            user to add the type and name, or both. Account types and account names
+            are described in more detail in the next section.
+    </li>
+</ul>
+<h3 id="RawContactsExample">Sources of raw contacts data</h3>
+<p>
+    To understand how raw contacts work, consider the user "Emily Dickinson" who has the following
+    three user accounts defined on her device:
+</p>
+<ul>
+    <li><code>emily.dickinson@gmail.com</code></li>
+    <li><code>emilyd@gmail.com</code></li>
+    <li>Twitter account "belle_of_amherst"</li>
+</ul>
+<p>
+    This user has enabled <em>Sync Contacts</em> for all three of these accounts in the
+    <em>Accounts</em> settings.
+</p>
+<p>
+    Suppose Emily Dickinson opens a browser window, logs into Gmail as
+    <code>emily.dickinson@gmail.com</code>, opens
+    Contacts, and adds "Thomas Higginson". Later on, she logs into Gmail as
+    <code>emilyd@gmail.com</code> and sends an email to "Thomas Higginson", which automatically
+    adds him as a contact. She also follows "colonel_tom" (Thomas Higginson's Twitter ID) on
+    Twitter.
+</p>
+<p>
+    The Contacts Provider creates three raw contacts as a result of this work:
+</p>
+<ol>
+    <li>
+        A raw contact for "Thomas Higginson" associated with <code>emily.dickinson@gmail.com</code>.
+        The user account type is Google.
+    </li>
+    <li>
+        A second raw contact for "Thomas Higginson" associated with <code>emilyd@gmail.com</code>.
+        The user account type is also Google. There is a second raw contact even
+        though the name is identical to a previous name, because the person was added for a
+        different user account.
+    </li>
+    <li>
+        A third raw contact for "Thomas Higginson" associated with "belle_of_amherst". The user
+        account type is Twitter.
+    </li>
+</ol>
+<h2 id="DataBasics">Data</h2>
+<p>
+    As noted previously, the data for a raw contact is stored in a
+    <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> row that is linked to the raw contact's
+    <code>_ID</code> value. This allows a single raw contact to have multiple instances of the same
+    type of data such as email addresses or phone numbers. For example, if
+    "Thomas Higginson" for <code>emilyd@gmail.com</code>  (the raw contact row for Thomas Higginson
+    associated with the Google account <code>emilyd@gmail.com</code>) has a home email address of
+    <code>thigg@gmail.com</code> and a work email address of
+    <code>thomas.higginson@gmail.com</code>, the Contacts Provider stores the two email address
+    rows and links them both to the raw contact.
+</p>
+<p>
+    Notice that different types of data are stored in this single table. Display name,
+    phone number, email, postal address, photo, and website detail rows are all found in the
+    <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table. To help manage this, the
+    <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table has some columns with descriptive names,
+    and others with generic names. The contents of a descriptive-name column have the same meaning
+    regardless of the type of data in the row, while the contents of a generic-name column have
+    different meanings depending on the type of data.
+</p>
+<h3 id="DescriptiveColumns">Descriptive column names</h3>
+<p>
+    Some examples of descriptive column names are:
+</p>
+<dl>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#RAW_CONTACT_ID">RAW_CONTACT_ID</a></code>
+    </dt>
+    <dd>
+        The value of the <code>_ID</code> column of the raw contact for this data.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#MIMETYPE">MIMETYPE</a></code>
+    </dt>
+    <dd>
+        The type of data stored in this row, expressed as a custom MIME type. The Contacts Provider
+        uses the MIME types defined in the subclasses of
+        <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.html">ContactsContract.CommonDataKinds</a></code>. These MIME types are open source,
+        and can be used by any application or sync adapter that works with the Contacts Provider.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#IS_PRIMARY">IS_PRIMARY</a></code>
+    </dt>
+    <dd>
+        If this type of data row can occur more than once for a raw contact, the
+        <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#IS_PRIMARY">IS_PRIMARY</a></code> column flags
+        the data row that contains the primary data for the type. For example, if
+        the user long-presses a phone number for a contact and selects <strong>Set default</strong>,
+        then the <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> row containing that number
+        has its <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#IS_PRIMARY">IS_PRIMARY</a></code> column set to a
+        non-zero value.
+    </dd>
+</dl>
+<h3 id="GenericColumns">Generic column names</h3>
+<p>
+    There are 15 generic columns named <code>DATA1</code> through
+    <code>DATA15</code> that are generally available and an additional four generic
+    columns <code>SYNC1</code> through <code>SYNC4</code> that should only be used by sync
+    adapters. The generic column name constants always work, regardless of the type of
+    data the row contains.
+</p>
+<p>
+    The <code>DATA1</code> column is indexed.  The Contacts Provider always uses this column for
+    the data that the provider expects will be the most frequent target of a query. For example,
+    in an email row, this column contains the actual email address.
+</p>
+<p>
+    By convention, the column <code>DATA15</code> is reserved for storing Binary Large Object
+    (BLOB) data such as photo thumbnails.
+</p>
+<h3 id="TypeSpecificNames">Type-specific column names</h3>
+<p>
+    To facilitate working with the columns for a particular type of row, the Contacts Provider
+    also provides type-specific column name constants, defined in subclasses of
+    <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.html">ContactsContract.CommonDataKinds</a></code>. The constants simply give a
+    different constant name to the same column name, which helps you access data in a row of a
+    particular type.
+</p>
+<p>
+    For example, the <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html">ContactsContract.CommonDataKinds.Email</a></code> class defines
+    type-specific column name constants for a <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> row
+    that has the MIME type
+    <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html#CONTENT_ITEM_TYPE">Email.CONTENT_ITEM_TYPE</a></code>. The class contains the constant
+    <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html#ADDRESS">ADDRESS</a></code> for the email address
+    column. The actual value of
+    <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html#ADDRESS">ADDRESS</a></code> is "data1", which is
+    the same as the column's generic name.
+</p>
+<p class="caution">
+    <strong>Caution:</strong> Don't add your own custom data to the
+    <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table using a row that has one of the
+    provider's pre-defined MIME types. If you do, you may lose the data or cause the provider to
+    malfunction. For example, you should not add a row with the MIME type
+    <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html#CONTENT_ITEM_TYPE">Email.CONTENT_ITEM_TYPE</a></code> that contains a user name instead of an email address in the
+    column <code>DATA1</code>. If you use your own custom MIME type for the row, then you are free
+    to define your own type-specific column names and use the columns however you wish.
+</p>
+<p>
+    Figure 2 shows how descriptive columns and data columns appear in a
+    <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> row, and how type-specific column names "overlay"
+    the generic column names
+</p>
+<img src="../../../images/providers/data_columns.png"
+    alt="How type-specific column names map to generic column names"
+    height="311" id="figure2" />
+<p class="img-caption">
+  <strong>Figure 2.</strong> Type-specific column names and generic column names.
+</p>
+<h3 id="ColumnMaps">Type-specific column name classes</h3>
+<p>
+    Table 2 lists the most commonly-used type-specific column name classes:
+</p>
+<p class="table-caption" id="table2">
+  <strong>Table 2.</strong> Type-specific column name classes</p>
+<table>
+  <tr>
+    <th scope="col">Mapping class</th>
+    <th scope="col">Type of data</th>
+    <th scope="col">Notes</th>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.StructuredName.html">ContactsContract.CommonDataKinds.StructuredName</a></code></td>
+    <td>The name data for the raw contact associated with this data row.</td>
+    <td>A raw contact has only one of these rows.</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Photo.html">ContactsContract.CommonDataKinds.Photo</a></code></td>
+    <td>The main photo for the raw contact associated with this data row.</td>
+    <td>A raw contact has only one of these rows.</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html">ContactsContract.CommonDataKinds.Email</a></code></td>
+    <td>An email address for the raw contact associated with this data row.</td>
+    <td>A raw contact can have multiple email addresses.</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.StructuredPostal.html">ContactsContract.CommonDataKinds.StructuredPostal</a></code></td>
+    <td>A postal address for the raw contact associated with this data row.</td>
+    <td>A raw contact can have multiple postal addresses.</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.GroupMembership.html">ContactsContract.CommonDataKinds.GroupMembership</a></code></td>
+    <td>An identifier that links the raw contact to one of the groups in the Contacts Provider.</td>
+    <td>
+        Groups are an optional feature of an account type and account name. They're described in
+        more detail in the section <a href="#Groups">Contact groups</a>.
+    </td>
+  </tr>
+</table>
+<h3 id="ContactBasics">Contacts</h3>
+<p>
+    The Contacts Provider combines the raw contact rows across all account types and account names
+    to form a <strong>contact</strong>. This facilitates displaying and modifying all the data a
+    user has collected for a person. The Contacts Provider manages the creation of new contact
+    rows, and the aggregation of raw contacts with an existing contact row. Neither applications nor
+    sync adapters are allowed to add contacts, and some columns in a contact row are read-only.
+</p>
+<p class="note">
+    <strong>Note:</strong> If you try to add a contact to the Contacts Provider with an
+    <code><a href="../../../reference/android/content/ContentResolver.html#insert(android.net.Uri, android.content.ContentValues)">insert()</a></code>, you'll get
+    an <code><a href="../../../reference/java/lang/UnsupportedOperationException.html">UnsupportedOperationException</a></code> exception. If you try to update a column
+    that's listed as "read-only," the update is ignored.
+</p>
+<p>
+    The Contacts Provider creates a new contact in response to the addition of a new raw contact
+    that doesn't match any existing contacts. The provider also does this if an existing raw
+    contact's data changes in such a way that it no longer matches the contact to which it was
+    previously attached. If an application or sync adapter creates a new raw contact that
+    <em>does</em> match an existing contact, the new raw contact is aggregated to the existing
+    contact.
+</p>
+<p>
+    The Contacts Provider links a contact row to its raw contact rows with the contact row's
+    <code>_ID</code> column in the <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html">Contacts</a></code>
+    table. The <code>CONTACT_ID</code> column of the raw contacts table
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> contains <code>_ID</code> values for
+    the contacts row associated with each raw contacts row.
+</p>
+<p>
+    The <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html">ContactsContract.Contacts</a></code> table also has the column
+    <code><a href="../../../reference/android/provider/ContactsContract.ContactsColumns.html#LOOKUP_KEY">LOOKUP_KEY</a></code> that is a
+    "permanent" link to the contact row. Because the Contacts Provider maintains contacts
+    automatically, it may change a contact row's <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> value
+    in response to an aggregation or sync. Even If this happens, the content URI
+    <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html#CONTENT_LOOKUP_URI">CONTENT_LOOKUP_URI</a></code> combined with
+    contact's <code><a href="../../../reference/android/provider/ContactsContract.ContactsColumns.html#LOOKUP_KEY">LOOKUP_KEY</a></code> will still
+    point to the contact row, so you can use
+    <code><a href="../../../reference/android/provider/ContactsContract.ContactsColumns.html#LOOKUP_KEY">LOOKUP_KEY</a></code>
+    to maintain links to "favorite" contacts, and so forth. This column has its own format that is
+    unrelated to the format of the <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> column.
+</p>
+<p>
+    Figure 3 shows how the three main tables relate to each other.
+</p>
+<img src="../../../images/providers/contacts_tables.png" alt="Contacts provider main tables"
+    height="514" id="figure4" />
+<p class="img-caption">
+  <strong>Figure 3.</strong> Contacts, Raw Contacts, and Details table relationships.
+</p>
+<h2 id="Sources">Data From Sync Adapters</h2>
+<p>
+    Users enter contacts data directly into the device, but data also flows into the Contacts
+    Provider from web services via <strong>sync adapters</strong>, which automate
+    the transfer of data between the device and services. Sync adapters run in the background
+    under the control of the system, and they call <code><a href="../../../reference/android/content/ContentResolver.html">ContentResolver</a></code> methods
+    to manage data.
+</p>
+<p>
+    In Android, the web service that a sync adapter works with is identified by an account type.
+    Each sync adapter works with one account type, but it can support multiple account names for
+    that type. Account types and account names are described briefly in the section
+    <a href="#RawContactsExample">Sources of raw contacts data</a>. The following definitions offer
+    more detail, and describe how account type and name relate to sync adapters and services.
+</p>
+<dl>
+    <dt>
+        Account type
+    </dt>
+    <dd>
+        Identifies a service in which the user has stored data. Most of the time, the user has to
+        authenticate with the service. For example, Google Contacts is an account type, identified
+        by the code <code>google.com</code>. This value corresponds to the account type used by
+        <code><a href="../../../reference/android/accounts/AccountManager.html">AccountManager</a></code>.
+    </dd>
+    <dt>
+        Account name
+    </dt>
+    <dd>
+        Identifies a particular account or login for an account type. Google Contacts accounts
+        are the same as Google accounts, which have an email address as an account name.
+        Other services may use a single-word username or numeric id.
+    </dd>
+</dl>
+<p>
+    Account types don't have to be unique. A user can configure multiple Google Contacts accounts
+    and download their data to the Contacts Provider; this may happen if the user has one set of
+    personal contacts for a personal account name, and another set for work. Account names are
+    usually unique. Together, they identify a specific data flow between the Contacts Provider and
+    an external service.
+</p>
+<p>
+    If you want to transfer your service's data to the Contacts Provider, you need to write your
+    own sync adapter. This is described in more detail in the section
+    <a href="#SyncAdapters">Contacts Provider Sync Adapters</a>.
+</p>
+<p>
+    Figure 4 shows how the Contacts Provider fits into the flow of data
+    about people. In the box marked "sync adapters," each adapter is labeled by its account type.
+</p>
+<img src="../../../images/providers/ContactsDataFlow.png" alt="Flow of data about people"
+    height="252" id="figure5" />
+<p class="img-caption">
+  <strong>Figure 4.</strong> The Contacts Provider flow of data.
+</p>
+<h2 id="Permissions">Required Permissions</h2>
+<p>
+    Applications that want to access the Contacts Provider must request the following
+    permissions:
+</p>
+<dl>
+    <dt>Read access to one or more tables</dt>
+    <dd>
+        <code><a href="../../../reference/android/Manifest.permission.html#READ_CONTACTS">READ_CONTACTS</a></code>, specified in
+        <code>AndroidManifest.xml</code> with the
+        <code><a href="../../../guide/topics/manifest/uses-permission-element.html">
+        &lt;uses-permission&gt;</a></code> element as
+        <code>&lt;uses-permission android:name="android.permission.READ_CONTACTS"&gt;</code>.
+    </dd>
+    <dt>Write access to one or more tables</dt>
+    <dd>
+        <code><a href="../../../reference/android/Manifest.permission.html#WRITE_CONTACTS">WRITE_CONTACTS</a></code>, specified in
+        <code>AndroidManifest.xml</code> with the
+        <code><a href="../../../guide/topics/manifest/uses-permission-element.html">
+        &lt;uses-permission&gt;</a></code> element as
+        <code>&lt;uses-permission android:name="android.permission.WRITE_CONTACTS"&gt;</code>.
+    </dd>
+</dl>
+<p>
+    These permissions do not extend to the user profile data. The user profile and its
+    required permissions are discussed in the following section,
+    <a href="#UserProfile">The User Profile</a>.
+</p>
+<p>
+    Remember that the user's contacts data is personal and sensitive. Users are concerned about
+    their privacy, so they don't want applications collecting data about them or their contacts.
+    If it's not obvious why you need permission to access their contacts data, they may give
+    your application low ratings or simply refuse to install it.
+</p>
+<h2 id="UserProfile">The User Profile</h2>
+<p>
+    The <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html">ContactsContract.Contacts</a></code> table has a single row containing
+    profile data for the device's user. This data describes the device's <code>user</code> rather
+    than one of the user's contacts. The profile contacts row is linked to a raw
+    contacts row for each system that uses a profile.
+    Each profile raw contact row can have multiple data rows. Constants for accessing the user
+    profile are available in the <code><a href="../../../reference/android/provider/ContactsContract.Profile.html">ContactsContract.Profile</a></code> class.
+</p>
+<p>
+    Access to the user profile requires special permissions. In addition to the
+    <code><a href="../../../reference/android/Manifest.permission.html#READ_CONTACTS">READ_CONTACTS</a></code> and
+    <code><a href="../../../reference/android/Manifest.permission.html#WRITE_CONTACTS">WRITE_CONTACTS</a></code> permissions needed to read and write, access
+    to the user profile requires the <code><a href="../../../reference/android/Manifest.permission.html#READ_PROFILE">READ_PROFILE</a></code> and
+    <code><a href="../../../reference/android/Manifest.permission.html#WRITE_PROFILE">WRITE_PROFILE</a></code> permissions for read and write access,
+    respectively.
+</p>
+<p>
+    Remember that you should consider a user's profile to be sensitive. The permission
+    <code><a href="../../../reference/android/Manifest.permission.html#READ_PROFILE">READ_PROFILE</a></code> allows you to access the device user's
+    personally-identifying data. Make sure to tell the user why
+    you need user profile access permissions in the description of your application.
+</p>
+<p>
+    To retrieve the contact row that contains the user's profile,
+    call <code><a href="../../../reference/android/content/ContentResolver.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">ContentResolver.query()</a></code>. Set the content URI to
+    <code><a href="../../../reference/android/provider/ContactsContract.Profile.html#CONTENT_URI">CONTENT_URI</a></code> and don't provide any
+    selection criteria. You can also use this content URI as the base URI for retrieving raw
+    contacts or data for the profile. For example, this snippet retrieves data for the profile:
+</p>
+<pre>
+// Sets the columns to retrieve for the user profile
+mProjection = new String[]
+    {
+        Profile._ID,
+        Profile.DISPLAY_NAME_PRIMARY,
+        Profile.LOOKUP_KEY,
+        Profile.PHOTO_THUMBNAIL_URI
+    };
+
+// Retrieves the profile from the Contacts Provider
+mProfileCursor =
+        getContentResolver().query(
+                Profile.CONTENT_URI,
+                mProjection ,
+                null,
+                null,
+                null);
+</pre>
+<p class="note">
+    <strong>Note:</strong> If you retrieve multiple contact rows, and you want to determine if one of them
+    is the user profile, test the row's
+    <code><a href="../../../reference/android/provider/ContactsContract.ContactsColumns.html#IS_USER_PROFILE">IS_USER_PROFILE</a></code> column. This column
+    is set to "1" if the contact is the user profile.
+</p>
+<h2 id="ContactsProviderMetadata">Contacts Provider Metadata</h2>
+<p>
+    The Contacts Provider manages data that keeps track of the state of contacts data in the
+    repository. This metadata about the repository is stored in various places, including the
+    Raw Contacts, Data, and Contacts table rows, the
+    <code><a href="../../../reference/android/provider/ContactsContract.Settings.html">ContactsContract.Settings</a></code> table, and the
+    <code><a href="../../../reference/android/provider/ContactsContract.SyncState.html">ContactsContract.SyncState</a></code> table. The following table shows the
+    effect of each of these pieces of metadata:
+</p>
+<p class="table-caption" id="table3">
+  <strong>Table 3.</strong> Metadata in the Contacts Provider</p>
+<table>
+    <tr>
+        <th scope="col">Table</th>
+        <th scope="col">Column</th>
+        <th scope="col">Values</th>
+        <th scope="col">Meaning</th>
+    </tr>
+    <tr>
+        <td rowspan="2"><code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code></td>
+        <td rowspan="2"><code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#DIRTY">DIRTY</a></code></td>
+        <td>"0" - not changed since the last sync.</td>
+        <td rowspan="2">
+            Marks raw contacts that were changed on the device and have to be synced back to the
+            server. The value is set automatically by the Contacts Provider when Android
+            applications update a row.
+            <p>
+                Sync adapters that modify the raw contact or data tables should always append the
+                string <code><a href="../../../reference/android/provider/ContactsContract.html#CALLER_IS_SYNCADAPTER">CALLER_IS_SYNCADAPTER</a></code> to the
+                content URI they use. This prevents the provider from marking rows as dirty.
+                Otherwise, sync adapter modifications appear to be local modifications and are
+                sent to the server, even though the server was the source of the modification.
+            </p>
+        </td>
+    </tr>
+    <tr>
+            <td>"1" - changed since last sync, needs to be synced back to the server.</td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code></td>
+        <td><code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#VERSION">VERSION</a></code></td>
+        <td>The version number of this row.</td>
+        <td>
+            The Contacts Provider automatically increments this value whenever the row or
+            its related data changes.
+        </td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code></td>
+        <td><code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#DATA_VERSION">DATA_VERSION</a></code></td>
+        <td>The version number of this row.</td>
+        <td>
+            The Contacts Provider automatically increments this value whenever the data row
+            is changed.
+        </td>
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code></td>
+        <td><code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#SOURCE_ID">SOURCE_ID</a></code></td>
+        <td>
+            A string value that uniquely identifies this raw contact to the account in
+            which it was created.
+        </td>
+        <td>
+            When a sync adapter creates a new raw contact, this column should be set to the
+            server's unique ID for the raw contact. When an Android application creates a new
+            raw contact, the application should leave this column empty. This signals the sync
+            adapter that it should create a new raw contact on the server, and get a
+            value for the <code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#SOURCE_ID">SOURCE_ID</a></code>.
+            <p>
+                In particular, the source id must be <strong>unique</strong> for each account
+                type and should be stable across syncs:
+            </p>
+                <ul>
+                    <li>
+                        Unique: Each raw contact for an account must have its own source id. If you
+                        don't enforce this, you'll cause problems in the contacts application.
+                        Notice that two raw contacts for the same account <em>type</em> may have
+                        the same source id. For example, the raw contact "Thomas Higginson" for the
+                        account <code>emily.dickinson@gmail.com</code> is allowed to have the same source
+                        id as the raw contact "Thomas Higginson" for the account
+                        <code>emilyd@gmail.com</code>.
+                    </li>
+                    <li>
+                        Stable: Source ids are a permanent part of the online service's data for
+                        the raw contact. For example, if the user clears Contacts Storage from the
+                        Apps settings and re-syncs, the restored raw contacts should have the same
+                        source ids as before. If you don't enforce this, shortcuts will stop
+                        working.
+                    </li>
+                </ul>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2"><code><a href="../../../reference/android/provider/ContactsContract.Groups.html">ContactsContract.Groups</a></code></td>
+        <td rowspan="2"><code><a href="../../../reference/android/provider/ContactsContract.GroupsColumns.html#GROUP_VISIBLE">GROUP_VISIBLE</a></code></td>
+        <td>"0" - Contacts in this group should not be visible in Android application UIs.</td>
+        <td>
+            This column is for compatibility with servers that allow a user to hide contacts in
+            certain groups.
+        </td>
+    </tr>
+    <tr>
+        <td>"1" - Contacts in this group are allowed to be visible in application UIs.</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><code><a href="../../../reference/android/provider/ContactsContract.Settings.html">ContactsContract.Settings</a></code></td>
+        <td rowspan="2">
+            <code><a href="../../../reference/android/provider/ContactsContract.SettingsColumns.html#UNGROUPED_VISIBLE">UNGROUPED_VISIBLE</a></code></td>
+        <td>
+            "0" - For this account and account type, contacts that don't belong to a group are
+            invisible to Android application UIs.
+        </td>
+        <td rowspan="2">
+            By default, contacts are invisible if none of their raw contacts belongs to a group
+            (Group membership for a raw contact is indicated by one or more
+            <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.GroupMembership.html">ContactsContract.CommonDataKinds.GroupMembership</a></code> rows
+            in the <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table).
+            By setting this flag in the <code><a href="../../../reference/android/provider/ContactsContract.Settings.html">ContactsContract.Settings</a></code> table row
+            for an account type and account, you can force contacts without groups to be visible.
+            One use of this flag is to show contacts from servers that don't use groups.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            "1" - For this account and account type, contacts that don't belong to a group are
+            visible to application UIs.
+        </td>
+
+    </tr>
+    <tr>
+        <td><code><a href="../../../reference/android/provider/ContactsContract.SyncState.html">ContactsContract.SyncState</a></code></td>
+        <td>(all)</td>
+        <td>
+            Use this table to store metadata for your sync adapter.
+        </td>
+        <td>
+            With this table you can store sync state and other sync-related data persistently on
+            the device.
+        </td>
+    </tr>
+</table>
+<h2 id="Access">Contacts Provider Access</h2>
+<p>
+    This section describes guidelines for accessing data from the Contacts Provider, focusing on
+    the following:
+</p>
+<ul>
+    <li>
+        Entity queries.
+    </li>
+    <li>
+        Batch modification.
+    </li>
+    <li>
+        Retrieval and modification with intents.
+    </li>
+    <li>
+        Data integrity.
+    </li>
+</ul>
+<p>
+    Making modifications from a sync adapter is also covered in more detail in the section
+    <a href="#SyncAdapters">Contacts Provider Sync Adapters</a>.
+</p>
+<h3 id="Entities">Querying entities</h3>
+<p>
+    Because the Contacts Provider tables are organized in a hierarchy, it's often useful to
+    retrieve a row and all of the "child" rows that are linked to it. For example, to display
+    all the information for a person, you may want to retrieve all the
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> rows for a single
+    <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html">ContactsContract.Contacts</a></code> row, or all the
+    <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html">ContactsContract.CommonDataKinds.Email</a></code> rows for a single
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> row. To facilitate this, the Contacts
+    Provider offers <strong>entity</strong> constructs, which act like database joins between
+    tables.
+</p>
+<p>
+    An entity is like a table composed of selected columns from a parent table and its child table.
+    When you query an entity, you supply a projection and search criteria based on the columns
+    available from the entity. The result is a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> that contains
+    contains one row for each child table row that was retrieved. For example, if you query
+    <code><a href="../../../reference/android/provider/ContactsContract.Contacts.Entity.html">ContactsContract.Contacts.Entity</a></code> for a contact name
+    and all the <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html">ContactsContract.CommonDataKinds.Email</a></code> rows for all the
+    raw contacts for that name, you get back a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> containing one row
+    for each <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html">ContactsContract.CommonDataKinds.Email</a></code> row.
+</p>
+<p>
+    Entities simplify queries. Using an entity, you can retrieve all of the contacts data for a
+    contact or raw contact at once, instead of having to query the parent table first to get an
+    ID, and then having to query the child table with that ID. Also, the Contacts Provider processes
+    a query against an entity in a single transaction, which ensures that the retrieved data is
+    internally consistent.
+</p>
+<p class="note">
+    <strong>Note:</strong> An entity usually doesn't contain all the columns of the parent and
+    child table. If you attempt to work with a column name that isn't in the list of column name
+    constants for the entity, you'll get an <code><a href="../../../reference/java/lang/Exception.html">Exception</a></code>.
+</p>
+<p>
+    The following snippet shows how to retrieve all the raw contact rows for a contact. The snippet
+    is part of a larger application that has two activities, "main" and "detail". The main activity
+    shows a list of contact rows; when the user select one, the activity sends its ID to the detail
+    activity. The detail activity uses the <code><a href="../../../reference/android/provider/ContactsContract.Contacts.Entity.html">ContactsContract.Contacts.Entity</a></code>
+    to display all of the data rows from all of the raw contacts associated with the selected
+    contact.
+</p>
+<p>
+    This snippet is taken from the "detail" activity:
+</p>
+<pre>
+...
+    /*
+     * Appends the entity path to the URI. In the case of the Contacts Provider, the
+     * expected URI is content://com.google.contacts/#/entity (# is the ID value).
+     */
+    mContactUri = Uri.withAppendedPath(
+            mContactUri,
+            ContactsContract.Contacts.Entity.CONTENT_DIRECTORY);
+
+    // Initializes the loader identified by LOADER_ID.
+    getLoaderManager().initLoader(
+            LOADER_ID,  // The identifier of the loader to initialize
+            null,       // Arguments for the loader (in this case, none)
+            this);      // The context of the activity
+
+    // Creates a new cursor adapter to attach to the list view
+    mCursorAdapter = new SimpleCursorAdapter(
+            this,                        // the context of the activity
+            R.layout.detail_list_item,   // the view item containing the detail widgets
+            mCursor,                     // the backing cursor
+            mFromColumns,                // the columns in the cursor that provide the data
+            mToViews,                    // the views in the view item that display the data
+            0);                          // flags
+
+    // Sets the ListView's backing adapter.
+    mRawContactList.setAdapter(mCursorAdapter);
+...
+&#64;Override
+public Loader&lt;Cursor&gt; onCreateLoader(int id, Bundle args) {
+
+    /*
+     * Sets the columns to retrieve.
+     * RAW_CONTACT_ID is included to identify the raw contact associated with the data row.
+     * DATA1 contains the first column in the data row (usually the most important one).
+     * MIMETYPE indicates the type of data in the data row.
+     */
+    String[] projection =
+        {
+            ContactsContract.Contacts.Entity.RAW_CONTACT_ID,
+            ContactsContract.Contacts.Entity.DATA1,
+            ContactsContract.Contacts.Entity.MIMETYPE
+        };
+
+    /*
+     * Sorts the retrieved cursor by raw contact id, to keep all data rows for a single raw
+     * contact collated together.
+     */
+    String sortOrder =
+            ContactsContract.Contacts.Entity.RAW_CONTACT_ID +
+            " ASC";
+
+    /*
+     * Returns a new CursorLoader. The arguments are similar to
+     * ContentResolver.query(), except for the Context argument, which supplies the location of
+     * the ContentResolver to use.
+     */
+    return new CursorLoader(
+            getApplicationContext(),  // The activity's context
+            mContactUri,              // The entity content URI for a single contact
+            projection,               // The columns to retrieve
+            null,                     // Retrieve all the raw contacts and their data rows.
+            null,                     //
+            sortOrder);               // Sort by the raw contact ID.
+}
+</pre>
+<p>
+    When the load is finished, <code><a href="../../../reference/android/app/LoaderManager.html">LoaderManager</a></code> invokes a callback to
+    <code><a href="../../../reference/android/app/LoaderManager.LoaderCallbacks.html#onLoadFinished(android.content.Loader<D>, D)">onLoadFinished()</a></code>. One of the incoming arguments to this method is a
+    <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> with the results of the query. In your own app, you can get the
+    data from this <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> to display it or work with it further.
+</p>
+<h3 id="Transactions">Batch modification</h3>
+<p>
+    Whenever possible, you should insert, update, and delete data in the Contacts Provider in
+    "batch mode", by creating an <code><a href="../../../reference/java/util/ArrayList.html">ArrayList</a></code> of
+    <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code> objects and calling
+    <code><a href="../../../reference/android/content/ContentResolver.html#applyBatch(java.lang.String, java.util.ArrayList<android.content.ContentProviderOperation>)">applyBatch()</a></code>. Because
+    the Contacts Provider performs all of the operations in an
+    <code><a href="../../../reference/android/content/ContentResolver.html#applyBatch(java.lang.String, java.util.ArrayList<android.content.ContentProviderOperation>)">applyBatch()</a></code> in a single
+    transaction, your modifications will never leave the contacts repository in an inconsistent
+    state. A batch modification also facilitates inserting a raw contact and its detail data at
+    the same time.
+</p>
+<p class="note">
+    <strong>Note:</strong> To modify a <em>single</em> raw contact, consider sending an intent to
+    the device's contacts application rather than handling the modification in your app.
+    Doing this is described in more detail in the section
+    <a href="#Intents">Retrieval and modification with intents</a>.
+</p>
+<h4>Yield points</h4>
+<p>
+    A batch modification containing a large number of operations can block other processes,
+    resulting in a bad overall user experience. To organize all the modifications you want to
+    perform in as few separate lists as possible, and at the same time prevent them from
+    blocking the system, you should set <strong>yield points</strong> for one or more operations.
+    A yield point is a <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code> object that has its
+    <code><a href="../../../reference/android/content/ContentProviderOperation.html#isYieldAllowed()">isYieldAllowed()</a></code> value set to
+    <code>true</code>. When the Contacts Provider encounters a yield point, it pauses its work to
+    let other processes run and closes the current transaction. When the provider starts again, it
+    continues with the next operation in the <code><a href="../../../reference/java/util/ArrayList.html">ArrayList</a></code> and starts a new
+    transaction.
+</p>
+<p>
+    Yield points do result in more than one transaction per call to
+    <code><a href="../../../reference/android/content/ContentResolver.html#applyBatch(java.lang.String, java.util.ArrayList<android.content.ContentProviderOperation>)">applyBatch()</a></code>. Because of
+    this, you should set a yield point for the last operation for a set of related rows.
+    For example, you should set a yield point for the last operation in a set that adds a
+    raw contact rows and its associated data rows, or the last operation for a set of rows related
+    to a single contact.
+</p>
+<p>
+    Yield points are also a unit of atomic operation. All accesses between two yield points will
+    either succeed or fail as a single unit. If you don't set any yield points, the smallest
+    atomic operation is the entire batch of operations. If you do use yield points, you prevent
+    operations from degrading system performance, while at the same time ensuring that a subset of
+    operations is atomic.
+</p>
+<h4>Modification back references</h4>
+<p>
+    When you're inserting a new raw contact row and its associated data rows as a set of
+    <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code> objects, you have to link the data rows to
+    the raw contact row by inserting the raw contact's
+    <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> value as the
+    <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#RAW_CONTACT_ID">RAW_CONTACT_ID</a></code> value. However, this
+    value isn't available when you're creating the <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code>
+    for the data row, because you haven't yet applied the
+    <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code> for the raw contact row. To work around this,
+    the <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html">ContentProviderOperation.Builder</a></code> class has the method
+    <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html#withValueBackReference(java.lang.String, int)">withValueBackReference()</a></code>.
+    This method allows you to insert or modify a column with the
+    result of a previous operation.
+</p>
+<p>
+    The <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html#withValueBackReference(java.lang.String, int)">withValueBackReference()</a></code>
+    method has two arguments:
+</p>
+    <dl>
+        <dt>
+            <code>key</code>
+        </dt>
+        <dd>
+            The key of a key-value pair. The value of this argument should be the name of a column
+            in the table that you're modifying.
+        </dd>
+        <dt>
+            <code>previousResult</code>
+        </dt>
+        <dd>
+            The 0-based index of a value in the array of
+            <code><a href="../../../reference/android/content/ContentProviderResult.html">ContentProviderResult</a></code> objects from
+            <code><a href="../../../reference/android/content/ContentResolver.html#applyBatch(java.lang.String, java.util.ArrayList<android.content.ContentProviderOperation>)">applyBatch()</a></code>. As
+            the batch operations are applied, the result of each operation is stored in an
+            intermediate array of results. The <code>previousResult</code> value is the index
+            of one of these results, which is retrieved and stored with the <code>key</code>
+            value. This allows you to insert a new raw contact record and get back its
+            <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> value, then make a "back reference" to the
+            value when you add a <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> row.
+            <p>
+                The entire result array is created when you first call
+                <code><a href="../../../reference/android/content/ContentResolver.html#applyBatch(java.lang.String, java.util.ArrayList<android.content.ContentProviderOperation>)">applyBatch()</a></code>,
+                with a size equal to the size of the <code><a href="../../../reference/java/util/ArrayList.html">ArrayList</a></code> of
+                <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code> objects you provide. However, all
+                the elements in the result array are set to <code>null</code>, and if you try
+                to do a back reference to a result for an operation that hasn't yet been applied,
+<code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html#withValueBackReference(java.lang.String, int)">withValueBackReference()</a></code>
+                throws an <code><a href="../../../reference/java/lang/Exception.html">Exception</a></code>.
+
+            </p>
+        </dd>
+    </dl>
+<p>
+    The following snippets show how to insert a new raw contact and data in batch. They
+    includes code that establishes a yield point and uses a back reference. The snippets are an
+    expanded version of the <code>createContacEntry()</code> method, which is part of the
+    <code>ContactAdder</code> class in the
+    <code><a href="../../../resources/samples/ContactManager/index.html">
+    Contact Manager</a></code> sample application.
+</p>
+<p>
+    The first snippet retrieves contact data from the UI. At this point, the user has already
+    selected the account for which the new raw contact should be added.
+</p>
+<pre>
+// Creates a contact entry from the current UI values, using the currently-selected account.
+protected void createContactEntry() {
+    /*
+     * Gets values from the UI
+     */
+    String name = mContactNameEditText.getText().toString();
+    String phone = mContactPhoneEditText.getText().toString();
+    String email = mContactEmailEditText.getText().toString();
+
+    int phoneType = mContactPhoneTypes.get(
+            mContactPhoneTypeSpinner.getSelectedItemPosition());
+
+    int emailType = mContactEmailTypes.get(
+            mContactEmailTypeSpinner.getSelectedItemPosition());
+</pre>
+<p>
+    The next snippet creates an operation to insert the raw contact row into the
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> table:
+</p>
+<pre>
+    /*
+     * Prepares the batch operation for inserting a new raw contact and its data. Even if
+     * the Contacts Provider does not have any data for this person, you can't add a Contact,
+     * only a raw contact. The Contacts Provider will then add a Contact automatically.
+     */
+
+     // Creates a new array of ContentProviderOperation objects.
+    ArrayList&lt;ContentProviderOperation&gt; ops =
+            new ArrayList&lt;ContentProviderOperation&gt;();
+
+    /*
+     * Creates a new raw contact with its account type (server type) and account name
+     * (user's account). Remember that the display name is not stored in this row, but in a
+     * StructuredName data row. No other data is required.
+     */
+    ContentProviderOperation.Builder op =
+            ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
+            .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, mSelectedAccount.getType())
+            .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, mSelectedAccount.getName());
+
+    // Builds the operation and adds it to the array of operations
+    ops.add(op.build());
+</pre>
+<p>
+    Next, the code creates data rows for the display name, phone, and email rows.
+</p>
+<p>
+    Each operation builder object uses
+    <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html#withValueBackReference(java.lang.String, int)">withValueBackReference()</a></code>
+    to get the
+    <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#RAW_CONTACT_ID">RAW_CONTACT_ID</a></code>. The reference points
+    back to the <code><a href="../../../reference/android/content/ContentProviderResult.html">ContentProviderResult</a></code> object from the first operation,
+    which adds the raw contact row and returns its new <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code>
+    value. As a result, each data row is automatically linked by its
+    <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#RAW_CONTACT_ID">RAW_CONTACT_ID</a></code>
+    to the new <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> row to which it belongs.
+</p>
+<p>
+    The <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html">ContentProviderOperation.Builder</a></code> object that adds the email row is
+    flagged with <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html#withYieldAllowed(boolean)">withYieldAllowed()</a></code>, which sets a yield point:
+</p>
+<pre>
+    // Creates the display name for the new raw contact, as a StructuredName data row.
+    op =
+            ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+            /*
+             * withValueBackReference sets the value of the first argument to the value of
+             * the ContentProviderResult indexed by the second argument. In this particular
+             * call, the raw contact ID column of the StructuredName data row is set to the
+             * value of the result returned by the first operation, which is the one that
+             * actually adds the raw contact row.
+             */
+            .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+
+            // Sets the data row's MIME type to StructuredName
+            .withValue(ContactsContract.Data.MIMETYPE,
+                    ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+
+            // Sets the data row's display name to the name in the UI.
+            .withValue(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, name);
+
+    // Builds the operation and adds it to the array of operations
+    ops.add(op.build());
+
+    // Inserts the specified phone number and type as a Phone data row
+    op =
+            ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+            /*
+             * Sets the value of the raw contact id column to the new raw contact ID returned
+             * by the first operation in the batch.
+             */
+            .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+
+            // Sets the data row's MIME type to Phone
+            .withValue(ContactsContract.Data.MIMETYPE,
+                    ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+
+            // Sets the phone number and type
+            .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, phone)
+            .withValue(ContactsContract.CommonDataKinds.Phone.TYPE, phoneType);
+
+    // Builds the operation and adds it to the array of operations
+    ops.add(op.build());
+
+    // Inserts the specified email and type as a Phone data row
+    op =
+            ContentProviderOperation.newInsert(ContactsContract.Data.CONTENT_URI)
+            /*
+             * Sets the value of the raw contact id column to the new raw contact ID returned
+             * by the first operation in the batch.
+             */
+            .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+
+            // Sets the data row's MIME type to Email
+            .withValue(ContactsContract.Data.MIMETYPE,
+                    ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE)
+
+            // Sets the email address and type
+            .withValue(ContactsContract.CommonDataKinds.Email.ADDRESS, email)
+            .withValue(ContactsContract.CommonDataKinds.Email.TYPE, emailType);
+
+    /*
+     * Demonstrates a yield point. At the end of this insert, the batch operation's thread
+     * will yield priority to other threads. Use after every set of operations that affect a
+     * single contact, to avoid degrading performance.
+     */
+    op.withYieldAllowed(true);
+
+    // Builds the operation and adds it to the array of operations
+    ops.add(op.build());
+</pre>
+<p>
+    The last snippet shows the call to
+    <code><a href="../../../reference/android/content/ContentResolver.html#applyBatch(java.lang.String, java.util.ArrayList<android.content.ContentProviderOperation>)">applyBatch()</a></code> that
+    inserts the new raw contact and data rows.
+</p>
+<pre>
+    // Ask the Contacts Provider to create a new contact
+    Log.d(TAG,"Selected account: " + mSelectedAccount.getName() + " (" +
+            mSelectedAccount.getType() + ")");
+    Log.d(TAG,"Creating contact: " + name);
+
+    /*
+     * Applies the array of ContentProviderOperation objects in batch. The results are
+     * discarded.
+     */
+    try {
+
+            getContentResolver().applyBatch(ContactsContract.AUTHORITY, ops);
+    } catch (Exception e) {
+
+            // Display a warning
+            Context ctx = getApplicationContext();
+
+            CharSequence txt = getString(R.string.contactCreationFailure);
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(ctx, txt, duration);
+            toast.show();
+
+            // Log exception
+            Log.e(TAG, "Exception encountered while inserting contact: " + e);
+    }
+}
+</pre>
+<p>
+    Batch operations also allow you to implement <strong>optimistic concurrency control</strong>,
+    a method of applying modification transactions without having to lock the underlying repository.
+    To use this method, you apply the transaction and then check for other modifications that
+    may have been made at the same time. If you find an inconsistent modification has occurred, you
+    roll back your transaction and retry it.
+</p>
+<p>
+    Optimistic concurrency control is useful for a mobile device, where there's only one user at
+    a time, and simultaneous accesses to a data repository are rare. Because locking isn't used,
+    no time is wasted on setting locks or waiting for other transactions to release their locks.
+</p>
+<p>
+    To use optimistic concurrency control while updating a single
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> row, follow these steps:
+</p>
+<ol>
+    <li>
+        Retrieve the raw contact's <code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#VERSION">VERSION</a></code>
+        column along with the other data you retrieve.
+    </li>
+    <li>
+        Create a <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html">ContentProviderOperation.Builder</a></code> object suitable for
+        enforcing a constraint, using the method
+        <code><a href="../../../reference/android/content/ContentProviderOperation.html#newAssertQuery(android.net.Uri)">newAssertQuery(Uri)</a></code>. For the content URI,
+        use <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html#CONTENT_URI">RawContacts.CONTENT_URI</a></code>
+        with the raw contact's <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> appended to it.
+    </li>
+    <li>
+        For the <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html">ContentProviderOperation.Builder</a></code> object, call
+        <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html#withValue(java.lang.String, java.lang.Object)">withValue()</a></code> to compare the <code><a href="../../../reference/android/provider/ContactsContract.SyncColumns.html#VERSION">VERSION</a></code>
+        column to the version number you just retrieved.
+    </li>
+    <li>
+        For the same <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html">ContentProviderOperation.Builder</a></code>, call
+        <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html#withExpectedCount(int)">withExpectedCount()</a></code> to ensure that only one row is tested by this assertion.
+    </li>
+    <li>
+        Call <code><a href="../../../reference/android/content/ContentProviderOperation.Builder.html#build()">build()</a></code> to create the
+        <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code> object, then add this object as the
+        first object in the <code><a href="../../../reference/java/util/ArrayList.html">ArrayList</a></code> that you pass to
+        <code><a href="../../../reference/android/content/ContentResolver.html#applyBatch(java.lang.String, java.util.ArrayList<android.content.ContentProviderOperation>)">applyBatch()</a></code>.
+    </li>
+    <li>
+        Apply the batch transaction.
+    </li>
+</ol>
+<p>
+    If the raw contact row is updated by another operation between the time you read the row and
+    the time you attempt to modify it, the "assert" <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code>
+    will fail, and the entire batch of operations will be backed out. You can then choose to retry
+    the batch or take some other action.
+</p>
+<p>
+    The following snippet demonstrates how to create an "assert"
+    <code><a href="../../../reference/android/content/ContentProviderOperation.html">ContentProviderOperation</a></code> after querying for a single raw contact using
+    a <code><a href="../../../reference/android/content/CursorLoader.html">CursorLoader</a></code>:
+</p>
+<pre>
+/*
+ * The application uses CursorLoader to query the raw contacts table. The system calls this method
+ * when the load is finished.
+ */
+public void onLoadFinished(Loader&lt;Cursor&gt; loader, Cursor cursor) {
+
+    // Gets the raw contact's _ID and VERSION values
+    mRawContactID = cursor.getLong(cursor.getColumnIndex(BaseColumns._ID));
+    mVersion = cursor.getInt(cursor.getColumnIndex(SyncColumns.VERSION));
+}
+
+...
+
+// Sets up a Uri for the assert operation
+Uri rawContactUri = ContentUris.withAppendedId(RawContacts.CONTENT_URI, mRawContactID);
+
+// Creates a builder for the assert operation
+ContentProviderOperation.Builder assertOp = ContentProviderOperation.netAssertQuery(rawContactUri);
+
+// Adds the assertions to the assert operation: checks the version and count of rows tested
+assertOp.withValue(SyncColumns.VERSION, mVersion);
+assertOp.withExpectedCount(1);
+
+// Creates an ArrayList to hold the ContentProviderOperation objects
+ArrayList ops = new ArrayList&lt;ContentProviderOperationg&gt;;
+
+ops.add(assertOp.build());
+
+// You would add the rest of your batch operations to "ops" here
+
+...
+
+// Applies the batch. If the assert fails, an Exception is thrown
+try
+    {
+        ContentProviderResult[] results =
+                getContentResolver().applyBatch(AUTHORITY, ops);
+
+    } catch (OperationApplicationException e) {
+
+        // Actions you want to take if the assert operation fails go here
+    }
+</pre>
+<h3 id="Intents">Retrieval and modification with intents</h3>
+<p>
+    Sending an intent to the device's contacts application allows you to access the Contacts
+    Provider indirectly. The intent starts the device's contacts application UI, in which users can
+    do contacts-related work. With this type of access, users can:
+    <ul>
+        <li>Pick a contact from a list and have it returned to your app for further work.</li>
+        <li>Edit an existing contact's data.</li>
+        <li>Insert a new raw contact for any of their accounts.</li>
+        <li>Delete a contact or contacts data.</li>
+    </ul>
+<p>
+    If the user is inserting or updating data, you can collect the data first and send it as
+    part of the intent.
+</p>
+<p>
+    When you use intents to access the Contacts Provider via the device's contacts application, you
+    don't have to write your own UI or code for accessing the provider. You also don't have to
+    request permission to read or write to the provider. The device's contacts application can
+    delegate read permission for a contact to you, and because you're making modifications to the
+    provider through another application, you don't have to have write permissions.
+</p>
+<p>
+    The general process of sending an intent to access a provider is described in detail in the
+    <a href="../../../guide/topics/providers/content-provider-basics.html">
+    Content Provider Basics</a> guide in the section "Data access via intents." The action,
+    MIME type, and data values you use for the available tasks are summarized in Table 4, while the
+    extras values you can use with
+    <code><a href="../../../reference/android/content/Intent.html#putExtra(java.lang.String, java.lang.String)">putExtra()</a></code> are listed in the
+    reference documentation for <code><a href="../../../reference/android/provider/ContactsContract.Intents.Insert.html">ContactsContract.Intents.Insert</a></code>:
+</p>
+<p class="table-caption" id="table4">
+  <strong>Table 4.</strong> Contacts Provider Intents.
+</p>
+<table style="width:75%">
+    <tr>
+        <th scope="col" style="width:10%">Task</th>
+        <th scope="col" style="width:5%">Action</th>
+        <th scope="col" style="width:10%">Data</th>
+        <th scope="col" style="width:10%">MIME type</th>
+        <th scope="col" style="width:25%">Notes</th>
+    </tr>
+    <tr>
+        <td><strong>Pick a contact from a list</strong></td>
+        <td><code><a href="../../../reference/android/content/Intent.html#ACTION_PICK">ACTION_PICK</a></code></td>
+        <td>
+            One of:
+            <ul>
+                <li>
+<code><a href="../../../reference/android/provider/ContactsContract.Contacts.html#CONTENT_URI">Contacts.CONTENT_URI</a></code>,
+                    which displays a list of contacts.
+                </li>
+                <li>
+<code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Phone.html#CONTENT_URI">Phone.CONTENT_URI</a></code>,
+                    which displays a list of phone numbers for a raw contact.
+                </li>
+                <li>
+<code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.StructuredPostal.html#CONTENT_URI">StructuredPostal.CONTENT_URI</a></code>,
+                    which displays a list of postal addresses for a raw contact.
+                </li>
+                <li>
+<code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Email.html#CONTENT_URI">Email.CONTENT_URI</a></code>,
+                    which displays a list of email addresses for a raw contact.
+                </li>
+            </ul>
+        </td>
+        <td>
+            Not used
+        </td>
+        <td>
+            Displays a list of raw contacts or a list of data from a raw contact, depending on the
+            content URI type you supply.
+            <p>
+                Call
+         <code><a href="../../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code>,
+                which returns the content URI of the selected row. The form of the URI is the
+                table's content URI with the row's <code>LOOKUP_ID</code> appended to it.
+                The device's contacts app delegates read and write permissions to this content URI
+                for the life of your activity. See the
+                <a href="../../../guide/topics/providers/content-provider-basics.html">
+                Content Provider Basics</a> guide for more details.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td><strong>Insert a new raw contact</strong></td>
+        <td><code><a href="../../../reference/android/provider/ContactsContract.Intents.Insert.html#ACTION">Insert.ACTION</a></code></td>
+        <td>N/A</td>
+        <td>
+            <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html#CONTENT_TYPE">RawContacts.CONTENT_TYPE</a></code>, MIME type for a set of raw contacts.
+        </td>
+        <td>
+            Displays the device's contacts application's <strong>Add Contact</strong> screen. The
+            extras values you add to the intent are displayed. If sent with
+        <code><a href="../../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code>,
+            the content URI of the newly-added raw contact is passed back to your activity's
+            <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code>
+            callback method in the <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> argument, in the
+            "data" field. To get the value, call <code><a href="../../../reference/android/content/Intent.html#getData()">getData()</a></code>.
+        </td>
+    </tr>
+    <tr>
+        <td><strong>Edit a contact</strong></td>
+        <td><code><a href="../../../reference/android/content/Intent.html#ACTION_EDIT">ACTION_EDIT</a></code></td>
+        <td>
+            <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html#CONTENT_LOOKUP_URI">CONTENT_LOOKUP_URI</a></code> for
+            the contact. The editor activity will allow the user to edit any of the data associated
+            with this contact.
+        </td>
+        <td>
+            <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html#CONTENT_ITEM_TYPE">Contacts.CONTENT_ITEM_TYPE</a></code>, a single contact.</td>
+        <td>
+            Displays the Edit Contact screen in the contacts application. The extras values you add
+            to the intent are displayed. When the user clicks <strong>Done</strong> to save the
+            edits, your activity returns to the foreground.
+        </td>
+    </tr>
+    <tr>
+        <td><strong>Display a picker that can also add data.</strong></td>
+        <td><code><a href="../../../reference/android/content/Intent.html#ACTION_INSERT_OR_EDIT">ACTION_INSERT_OR_EDIT</a></code></td>
+        <td>
+            N/A
+        </td>
+        <td>
+            <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html#CONTENT_ITEM_TYPE">CONTENT_ITEM_TYPE</a></code>
+        </td>
+         <td>
+            This intent always displays the contacts app's picker screen. The user can either
+            pick a contact to edit, or add a new contact. Either the edit or the add screen
+            appears, depending on the user's choice, and the extras data you pass in the intent
+            is displayed. If your app displays contact data such as an email or phone number, use
+            this intent to allow the user to add the data to an existing contact.
+            contact,
+            <p class="note">
+                <strong>Note:</strong> There's no need to send a name value in this intent's extras,
+                because the user always picks an existing name or adds a new one. Moreover,
+                if you send a name, and the user chooses to do an edit, the contacts app will
+                display the name you send, overwriting the previous value. If the user doesn't
+                notice this and saves the edit, the old value is lost.
+            </p>
+         </td>
+    </tr>
+</table>
+<p>
+    The device's contacts app doesn't allow you to delete a raw contact or any of its data with an
+    intent. Instead, to delete a raw contact, use
+    <code><a href="../../../reference/android/content/ContentResolver.html#delete(android.net.Uri, java.lang.String, java.lang.String[])">ContentResolver.delete()</a></code>
+    or <code><a href="../../../reference/android/content/ContentProviderOperation.html#newDelete(android.net.Uri)">ContentProviderOperation.newDelete()</a></code>.
+</p>
+<p>
+    The following snippet shows how to construct and send an intent that inserts a new raw
+    contact and data:
+</p>
+<pre>
+// Gets values from the UI
+String name = mContactNameEditText.getText().toString();
+String phone = mContactPhoneEditText.getText().toString();
+String email = mContactEmailEditText.getText().toString();
+
+String company = mCompanyName.getText().toString();
+String jobtitle = mJobTitle.getText().toString();
+
+// Creates a new intent for sending to the device's contacts application
+Intent insertIntent = new Intent(ContactsContract.Intents.Insert.ACTION);
+
+// Sets the MIME type to the one expected by the insertion activity
+insertIntent.setType(ContactsContract.RawContacts.CONTENT_TYPE);
+
+// Sets the new contact name
+insertIntent.putExtra(ContactsContract.Intents.Insert.NAME, name);
+
+// Sets the new company and job title
+insertIntent.putExtra(ContactsContract.Intents.Insert.COMPANY, company);
+insertIntent.putExtra(ContactsContract.Intents.Insert.JOB_TITLE, jobtitle);
+
+/*
+ * Demonstrates adding data rows as an array list associated with the DATA key
+ */
+
+// Defines an array list to contain the ContentValues objects for each row
+ArrayList&lt;ContentValues&gt; contactData = new ArrayList&lt;ContentValues&gt;();
+
+
+/*
+ * Defines the raw contact row
+ */
+
+// Sets up the row as a ContentValues object
+ContentValues rawContactRow = new ContentValues();
+
+// Adds the account type and name to the row
+rawContactRow.put(ContactsContract.RawContacts.ACCOUNT_TYPE, mSelectedAccount.getType());
+rawContactRow.put(ContactsContract.RawContacts.ACCOUNT_NAME, mSelectedAccount.getName());
+
+// Adds the row to the array
+contactData.add(rawContactRow);
+
+/*
+ * Sets up the phone number data row
+ */
+
+// Sets up the row as a ContentValues object
+ContentValues phoneRow = new ContentValues();
+
+// Specifies the MIME type for this data row (all data rows must be marked by their type)
+phoneRow.put(
+        ContactsContract.Data.MIMETYPE,
+        ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE
+);
+
+// Adds the phone number and its type to the row
+phoneRow.put(ContactsContract.CommonDataKinds.Phone.NUMBER, phone);
+
+// Adds the row to the array
+contactData.add(phoneRow);
+
+/*
+ * Sets up the email data row
+ */
+
+// Sets up the row as a ContentValues object
+ContentValues emailRow = new ContentValues();
+
+// Specifies the MIME type for this data row (all data rows must be marked by their type)
+emailRow.put(
+        ContactsContract.Data.MIMETYPE,
+        ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE
+);
+
+// Adds the email address and its type to the row
+emailRow.put(ContactsContract.CommonDataKinds.Email.ADDRESS, email);
+
+// Adds the row to the array
+contactData.add(emailRow);
+
+/*
+ * Adds the array to the intent's extras. It must be a parcelable object in order to
+ * travel between processes. The device's contacts app expects its key to be
+ * Intents.Insert.DATA
+ */
+insertIntent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, contactData);
+
+// Send out the intent to start the device's contacts app in its add contact activity.
+startActivity(insertIntent);
+</pre>
+<h3 id="DataIntegrity">Data integrity</h3>
+<p>
+    Because the contacts repository contains important and sensitive data that users expect to be
+    correct and up-to-date, the Contacts Provider has well-defined rules for data integrity. It's
+    your responsibility to conform to these rules when you modify contacts data. The important
+    rules are listed here:
+</p>
+<dl>
+    <dt>
+        Always add a <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.StructuredName.html">ContactsContract.CommonDataKinds.StructuredName</a></code> row
+        for every <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> row you add.
+    </dt>
+    <dd>
+        A <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> row without a
+        <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.StructuredName.html">ContactsContract.CommonDataKinds.StructuredName</a></code> row in the
+        <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table may cause problems during
+        aggregation.
+    </dd>
+    <dt>
+        Always link new <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> rows to their parent
+        <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> row.
+    </dt>
+    <dd>
+        A <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> row that isn't linked to a
+        <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> won't be visible in the device's
+        contacts application, and it might cause problems with sync adapters.
+    </dd>
+    <dt>
+        Change data only for those raw contacts that you own.
+    </dt>
+    <dd>
+        Remember that the Contacts Provider is usually managing data from several different
+        account types/online services. You need to ensure that your application only modifies
+        or deletes data for rows that belong to you, and that it only inserts data with an
+        account type and name that you control.
+    </dd>
+    <dt>
+        Always use the constants defined in <code><a href="../../../reference/android/provider/ContactsContract.html">ContactsContract</a></code> and its
+        subclasses for authorities, content URIs, URI paths, column names, MIME types, and
+        <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.CommonColumns.html#TYPE">TYPE</a></code> values.
+    </dt>
+    <dd>
+        Using these constants helps you to avoid errors. You'll also be notified with compiler
+        warnings if any of the constants is deprecated.
+    </dd>
+</dl>
+<h3 id="CustomData">Custom data rows</h3>
+<p>
+    By creating and using your own custom MIME types, you can insert, edit, delete, and retrieve
+    your own data rows in the <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table. Your rows
+    are limited to using the column defined in
+    <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html">ContactsContract.DataColumns</a></code>, although you can map your own
+    type-specific column names to the default column names. In the device's contacts application,
+    the data for your rows is displayed but can't be edited or deleted, and users can't add
+    additional data. To allow users to modify your custom data rows, you must provide an editor
+    activity in your own application.
+</p>
+<p>
+    To display your custom data, provide a <code>contacts.xml</code> file containing a
+    <code>&lt;ContactsAccountType&gt;</code> element and one or more of its
+    <code>&lt;ContactsDataKind&gt;</code> child elements. This is described in more detail in the
+    section <a href="#SocialStreamDataKind"><code>&lt;ContactsDataKind&gt; element</code></a>.
+</p>
+<p>
+    To learn more about custom MIME types, read the
+    <a href="../../../guide/topics/providers/content-provider-creating.html">
+    Creating a Content Provider</a> guide.
+</p>
+<h2 id="SyncAdapters">Contacts Provider Sync Adapters</h2>
+<p>
+    The Contacts Provider is specifically designed for handling <strong>synchronization</strong>
+    of contacts data between a device and an online service. This allows users to download
+    existing data to a new device and upload existing data to a new account.
+    Synchronization also ensures that users have the latest data at hand, regardless
+    of the source of additions and changes. Another advantage of synchronization is that it makes
+    contacts data available even when the device is not connected to the network.
+</p>
+<p>
+    Although you can implement synchronization in a variety of ways, the Android system provides
+    a plug-in synchronization framework that automates the following tasks:
+    <ul>
+
+    <li>
+        Checking network availability.
+    </li>
+    <li>
+        Scheduling and executing synchronization, based on user preferences.
+    </li>
+    <li>
+        Restarting synchronizations that have stopped.
+    </li>
+    </ul>
+<p>
+    To use this framework, you supply a sync adapter plug-in. Each sync adapter is unique to a
+    service and content provider, but can handle multiple account names for the same service. The
+    framework also allows multiple sync adapters for the same service and provider.
+</p>
+<h3 id="SyncClassesFiles">Sync adapter classes and files</h3>
+<p>
+    You implement a sync adapter as a subclass of
+    <code><a href="../../../reference/android/content/AbstractThreadedSyncAdapter.html">AbstractThreadedSyncAdapter</a></code> and install it as part of an Android
+    application. The system learns about the sync adapter from elements in your application
+    manifest, and from a special XML file pointed to by the manifest. The XML file defines the
+    account type for the online service and the authority for the content provider, which together
+    uniquely identify the adapter. The sync adapter does not become active until the user adds an
+    account for the sync adapter's  account type and enables synchronization for the content
+    provider the sync adapter syncs with.  At that point, the system starts managing the adapter,
+    calling it as necessary to synchronize between the content provider and the server.
+</p>
+<p class="note">
+    <strong>Note:</strong> Using an account type as part of the sync adapter's identification allows
+    the system to detect and group together sync adapters that access different services from the
+    same organization. For example, sync adapters for Google online services all have the same
+    account type <code>com.google</code>. When users add a Google account to their devices, all
+    of the installed sync adapters for Google services are listed together; each sync adapter
+    listed syncs with a different content provider on the device.
+</p>
+<p>
+    Because most services require users to verify their identity before accessing
+    data, the Android system offers an authentication framework that is similar to, and often
+    used in conjunction with, the sync adapter framework. The authentication framework uses
+    plug-in authenticators that are subclasses of
+    <code><a href="../../../reference/android/accounts/AbstractAccountAuthenticator.html">AbstractAccountAuthenticator</a></code>. An authenticator verifies
+    the user's identity in the following steps:
+    <ol>
+        <li>
+            Collects the user's name, password or similar information (the user's
+            <strong>credentials</strong>).
+        </li>
+        <li>
+            Sends the credentials to the service
+        </li>
+        <li>
+            Examines the service's reply.
+        </li>
+    </ol>
+<p>
+    If the service accepts the credentials, the authenticator can
+    store the credentials for later use. Because of the plug-in authenticator framework, the
+    <code><a href="../../../reference/android/accounts/AccountManager.html">AccountManager</a></code> can provide access to any authtokens an authenticator
+    supports and chooses to expose, such as OAuth2 authtokens.
+</p>
+<p>
+    Although authentication is not required, most contacts services use it.
+    However, you're not required to use the Android authentication framework to do authentication.
+</p>
+<h3 id="SyncAdapterImplementing">Sync adapter implementation</h3>
+<p>
+    To implement a sync adapter for the Contacts Provider, you start by creating an
+    Android application that contains the following:
+</p>
+    <dl>
+        <dt>
+            A <code><a href="../../../reference/android/app/Service.html">Service</a></code> component that responds to requests from the system to
+            bind to the sync adapter.
+        </dt>
+        <dd>
+            When the system wants to run a synchronization, it calls the service's
+            <code><a href="../../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> method to get an
+            <code><a href="../../../reference/android/os/IBinder.html">IBinder</a></code> for the sync adapter. This allows the system to do
+            cross-process calls to the adapter's methods.
+            <p>
+                In the <a href="../../../resources/samples/SampleSyncAdapter/index.html">
+                Sample Sync Adapter</a> sample app, the class name of this service is
+                <code>com.example.android.samplesync.syncadapter.SyncService</code>.
+            </p>
+        </dd>
+        <dt>
+            The actual sync adapter, implemented as a concrete subclass of
+            <code><a href="../../../reference/android/content/AbstractThreadedSyncAdapter.html">AbstractThreadedSyncAdapter</a></code>.
+        </dt>
+        <dd>
+            This class does the work of downloading data from the server, uploading data from the
+            device, and resolving conflicts. The main work of the adapter is
+            done in the method <code><a href="../../../reference/android/content/AbstractThreadedSyncAdapter.html#onPerformSync(android.accounts.Account, android.os.Bundle, java.lang.String, android.content.ContentProviderClient, android.content.SyncResult)">onPerformSync()</a></code>. This class must be instantiated as a singleton.
+            <p>
+                In the <a href="../../../resources/samples/SampleSyncAdapter/index.html">
+                Sample Sync Adapter</a> sample app, the sync adapter is defined in the class
+                <code>com.example.android.samplesync.syncadapter.SyncAdapter</code>.
+            </p>
+        </dd>
+        <dt>
+            A subclass of <code><a href="../../../reference/android/app/Application.html">Application</a></code>.
+        </dt>
+        <dd>
+            This class acts as a factory for the sync adapter singleton. Use the
+            <code><a href="../../../reference/android/app/Application.html#onCreate()">onCreate()</a></code> method to instantiate the sync adapter, and
+            provide a static "getter" method to return the singleton to the
+            <code><a href="../../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> method of the sync adapter's
+            service.
+        </dd>
+        <dt>
+            <strong>Optional:</strong> A <code><a href="../../../reference/android/app/Service.html">Service</a></code> component that responds to
+            requests from the system for user authentication.
+        </dt>
+        <dd>
+            <code><a href="../../../reference/android/accounts/AccountManager.html">AccountManager</a></code> starts this service to begin the authentication
+            process. The service's <code><a href="../../../reference/android/app/Service.html#onCreate()">onCreate()</a></code> method instantiates an
+            authenticator object. When the system wants to authenticate a user account for the
+            application's sync adapter, it calls the service's
+            <code><a href="../../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> method to get an
+            <code><a href="../../../reference/android/os/IBinder.html">IBinder</a></code> for the authenticator. This allows the system to do
+            cross-process calls to the authenticator's methods..
+            <p>
+                In the <a href="../../../resources/samples/SampleSyncAdapter/index.html">
+                Sample Sync Adapter</a> sample app, the class name of this service is
+                <code>com.example.android.samplesync.authenticator.AuthenticationService</code>.
+            </p>
+        </dd>
+        <dt>
+            <strong>Optional:</strong> A concrete subclass of
+            <code><a href="../../../reference/android/accounts/AbstractAccountAuthenticator.html">AbstractAccountAuthenticator</a></code> that handles requests for
+            authentication.
+        </dt>
+        <dd>
+            This class provides methods that the <code><a href="../../../reference/android/accounts/AccountManager.html">AccountManager</a></code> invokes
+            to authenticate the user's credentials with the server. The details of the
+            authentication process vary widely, based on the server technology in use. You should
+            refer to the documentation for your server software to learn more about authentication.
+            <p>
+                In the <a href="../../../resources/samples/SampleSyncAdapter/index.html">
+                Sample Sync Adapter</a> sample app, the authenticator is defined in the class
+                <code>com.example.android.samplesync.authenticator.Authenticator</code>.
+            </p>
+        </dd>
+        <dt>
+            XML files that define the sync adapter and authenticator to the system.
+        </dt>
+        <dd>
+            The sync adapter and authenticator service components described previously are
+            defined in
+<code>&lt;<a href="../../../guide/topics/manifest/service-element.html">service</a>&gt;</code>
+            elements in the application manifest. These elements
+            contain
+<code>&lt;<a href="../../../guide/topics/manifest/meta-data-element.html">meta-data</a>&gt;</code>
+child elements that provide specific data to the
+            system:
+            <ul>
+                <li>
+                    The
+<code>&lt;<a href="../../../guide/topics/manifest/meta-data-element.html">meta-data</a>&gt;</code>
+                    element for the sync adapter service points to the
+                    XML file <code>res/xml/syncadapter.xml</code>. In turn, this file specifies
+                    a URI for the web service that will be synchronized with the Contacts Provider,
+                    and an account type for the web service.
+                </li>
+                <li>
+                    <strong>Optional:</strong> The
+<code>&lt;<a href="../../../guide/topics/manifest/meta-data-element.html">meta-data</a>&gt;</code>
+                    element for the authenticator points to the XML file
+                    <code>res/xml/authenticator.xml</code>. In turn, this file specifies the
+                    account type that this authenticator supports, as well as UI resources that
+                    appear during the authentication process. The account type specified in this
+                    element must be the same as the account type specified for the sync
+                    adapter.
+                </li>
+            </ul>
+        </dd>
+    </dl>
+<h2 id="SocialStream">Social Stream Data</h2>
+<p>
+    The <code><a href="../../../reference/android/provider/ContactsContract.StreamItems.html">ContactsContract.StreamItems</a></code> and
+    <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotos.html">ContactsContract.StreamItemPhotos</a></code> tables
+    manage incoming data from social networks. You can write a sync adapter that adds stream data
+    from your own network to these tables, or you can read stream data from these tables and
+    display it in your own application, or both. With these features, your social networking
+    services and applications can be integrated into Android's social networking experience.
+</p>
+<h3 id="StreamText">Social stream text</h3>
+<p>
+    Stream items are always associated with a raw contact. The
+    <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#RAW_CONTACT_ID">RAW_CONTACT_ID</a></code> links to the
+    <code>_ID</code> value for the raw contact. The account type and account name of the raw
+    contact are also stored in the stream item row.
+</p>
+<p>
+    Store the data from your stream in the following columns:
+</p>
+<dl>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#ACCOUNT_TYPE">ACCOUNT_TYPE</a></code>
+    </dt>
+    <dd>
+        <strong>Required.</strong> The user's account type for the raw contact associated with this
+        stream item. Remember to set this value when you insert a stream item.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#ACCOUNT_NAME">ACCOUNT_NAME</a></code>
+    </dt>
+    <dd>
+        <strong>Required.</strong> The user's account name for the raw contact associated with this
+        stream item. Remember to set this value when you insert a stream item.
+    </dd>
+    <dt>
+        Identifier columns
+    </dt>
+    <dd>
+        <strong>Required.</strong> You must insert the following identifier columns when you
+        insert a stream item:
+        <ul>
+            <li>
+                <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#CONTACT_ID">CONTACT_ID</a></code>: The
+                <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> value of the contact that this stream
+                item is associated with.
+            </li>
+            <li>
+                <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#CONTACT_LOOKUP_KEY">CONTACT_LOOKUP_KEY</a></code>: The
+                <code><a href="../../../reference/android/provider/ContactsContract.ContactsColumns.html#LOOKUP_KEY">LOOKUP_KEY</a></code> value of the
+                contact this stream item is associated with.
+            </li>
+            <li>
+                <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#RAW_CONTACT_ID">RAW_CONTACT_ID</a></code>: The
+                <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> value of the raw contact that this stream
+                item is associated with.
+            </li>
+        </ul>
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#COMMENTS">COMMENTS</a></code>
+    </dt>
+    <dd>
+        Optional. Stores summary information that you can display at the beginning of a stream item.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#TEXT">TEXT</a></code>
+    </dt>
+    <dd>
+        The text of the stream item, either the content that was posted by the source of the item,
+        or a description of some action that generated the stream item. This column can contain
+        any formatting and embedded resource images that can be rendered by
+        <code><a href="../../../reference/android/text/Html.html#fromHtml(java.lang.String)">fromHtml()</a></code>. The provider may truncate or
+        ellipsize long content, but it will try to avoid breaking tags.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#TIMESTAMP">TIMESTAMP</a></code>
+    </dt>
+    <dd>
+        A text string containing the time the stream item was inserted or updated, in the form
+        of <em>milliseconds</em> since epoch. Applications that insert or update stream items are
+        responsible for maintaining this column; it is not automatically maintained by the
+        Contacts Provider.
+    </dd>
+</dl>
+<p>
+    To display identifying information for your stream items, use the
+    <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#RES_ICON">RES_ICON</a></code>,
+    <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#RES_LABEL">RES_LABEL</a></code>, and
+    <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#RES_PACKAGE">RES_PACKAGE</a></code> to link to resources
+    in your application.
+</p>
+<p>
+    The <code><a href="../../../reference/android/provider/ContactsContract.StreamItems.html">ContactsContract.StreamItems</a></code> table also contains the columns
+    <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#SYNC1">SYNC1</a></code> through
+    <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#SYNC4">SYNC4</a></code> for the exclusive use of
+    sync adapters.
+</p>
+<h3 id="StreamPhotos">Social stream photos</h3>
+<p>
+   The <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotos.html">ContactsContract.StreamItemPhotos</a></code> table stores photos associated
+   with a stream item. The table's
+   <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotosColumns.html#STREAM_ITEM_ID">STREAM_ITEM_ID</a></code> column
+   links to values in the <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> column of
+   <code><a href="../../../reference/android/provider/ContactsContract.StreamItems.html">ContactsContract.StreamItems</a></code> table. Photo references are stored in the
+   table in these columns:
+</p>
+<dl>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotos.html#PHOTO">PHOTO</a></code> column (a BLOB).
+    </dt>
+    <dd>
+        A binary representation of the photo, resized by the provider for storage and display.
+        This column is available for backwards compatibility with previous versions of the Contacts
+        Provider that used it for storing photos. However, in the current version
+        you should not use this column to store photos. Instead, use
+        either <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotosColumns.html#PHOTO_FILE_ID">PHOTO_FILE_ID</a></code> or
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotosColumns.html#PHOTO_URI">PHOTO_URI</a></code> (both of
+        which are described in the following points) to store photos in a file. This column now
+        contains a thumbnail of the photo, which is available for reading.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotosColumns.html#PHOTO_FILE_ID">PHOTO_FILE_ID</a></code>
+    </dt>
+    <dd>
+        A numeric identifier of a photo for a raw contact. Append this value to the constant
+        <code><a href="../../../reference/android/provider/ContactsContract.DisplayPhoto.html#CONTENT_URI">DisplayPhoto.CONTENT_URI</a></code>
+        to get a content URI pointing to a single photo file, and then call
+        <code><a href="../../../reference/android/content/ContentResolver.html#openAssetFileDescriptor(android.net.Uri, java.lang.String)">openAssetFileDescriptor()</a></code> to get a handle to the photo file.
+    </dd>
+    <dt>
+        <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotosColumns.html#PHOTO_URI">PHOTO_URI</a></code>
+    </dt>
+    <dd>
+        A content URI pointing directly to the photo file for the photo represented by this row.
+        Call <code><a href="../../../reference/android/content/ContentResolver.html#openAssetFileDescriptor(android.net.Uri, java.lang.String)">openAssetFileDescriptor()</a></code> with this URI to get a handle to the photo file.
+    </dd>
+</dl>
+<h3 id="SocialStreamTables">Using the social stream tables</h3>
+<p>
+    These tables work the same as the other main tables in the Contacts Provider, except that:
+</p>
+    <ul>
+        <li>
+            These tables require additional access permissions. To read from them, your application
+            must have the permission <code><a href="../../../reference/android/Manifest.permission.html#READ_SOCIAL_STREAM">READ_SOCIAL_STREAM</a></code>. To
+            modify them, your application must have the permission
+            <code><a href="../../../reference/android/Manifest.permission.html#WRITE_SOCIAL_STREAM">WRITE_SOCIAL_STREAM</a></code>.
+        </li>
+        <li>
+            For the <code><a href="../../../reference/android/provider/ContactsContract.StreamItems.html">ContactsContract.StreamItems</a></code> table, the number of rows
+            stored for each raw contact is limited. Once this limit is reached,
+            the Contacts Provider makes space for new stream item rows by automatically deleting
+            the rows having the oldest
+            <code><a href="../../../reference/android/provider/ContactsContract.StreamItemsColumns.html#TIMESTAMP">TIMESTAMP</a></code>. To get the
+            limit, issue a query to the content URI
+            <code><a href="../../../reference/android/provider/ContactsContract.StreamItems.html#CONTENT_LIMIT_URI">CONTENT_LIMIT_URI</a></code>. You can leave
+            all the arguments other than the content URI set to <code>null</code>. The query
+            returns a Cursor containing a single row, with the single column
+            <code><a href="../../../reference/android/provider/ContactsContract.StreamItems.html#MAX_ITEMS">MAX_ITEMS</a></code>.
+        </li>
+    </ul>
+
+<p>
+    The class <code><a href="../../../reference/android/provider/ContactsContract.StreamItems.StreamItemPhotos.html">ContactsContract.StreamItems.StreamItemPhotos</a></code> defines a
+    sub-table of <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotos.html">ContactsContract.StreamItemPhotos</a></code> containing the photo
+    rows for a single stream item.
+</p>
+<h3 id="SocialStreamInteraction">Social stream interactions</h3>
+<p>
+    The social stream data managed by the Contacts Provider, in conjunction with the
+    device's contacts application, offers a powerful way to connect your social networking system
+    with existing contacts. The following features are available:
+</p>
+    <ul>
+        <li>
+            By syncing your social networking service to the Contacts Provider with a sync
+            adapter, you can retrieve recent activity for a user's contacts and store it in
+            the <code><a href="../../../reference/android/provider/ContactsContract.StreamItems.html">ContactsContract.StreamItems</a></code> and
+            <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotos.html">ContactsContract.StreamItemPhotos</a></code> tables for later use.
+        </li>
+        <li>
+            Besides regular synchronization, you can trigger your sync adapter to retrieve
+            additional data when the user selects a contact to view. This allows your sync adapter
+            to retrieve high-resolution photos and the most recent stream items for the contact.
+        </li>
+        <li>
+            By registering a notification with the device's contacts application and the Contacts
+            Provider, you can <em>receive</em> an intent when a contact is viewed, and at that point
+            update the contact's status from your service. This approach may be faster and use less
+            bandwidth than doing a full sync with a sync adapter.
+        </li>
+        <li>
+            Users can add a contact to your social networking service while looking at the contact
+            in the device's contacts application. You enable this with the "invite contact" feature,
+            which you enable with a combination of an activity that adds an existing contact to your
+            network, and an XML file that provides the device's contacts application and the
+            Contacts Provider with the details of your application.
+        </li>
+    </ul>
+<p>
+    Regular synchronization of stream items with the Contacts Provider is the same as
+    other synchronizations. To learn more about synchronization, see the section
+    <a href="#SyncAdapters">Contacts Provider Sync Adapters</a>. Registering notifications and
+    inviting contacts are covered in the next two sections.
+</p>
+<h4>Registering to handle social networking views</h4>
+<p>
+    To register your sync adapter to receive notifications when the user views a contact that's
+    managed by your sync adapter:
+</p>
+<ol>
+    <li>
+        Create a file named <code>contacts.xml</code> in your project's <code>res/xml/</code>
+        directory. If you already have this file, you can skip this step.
+    </li>
+    <li>
+        In this file, add the element
+<code>&lt;ContactsAccountType xmlns:android="http://schemas.android.com/apk/res/android"&gt;</code>.
+        If this element already exists, you can skip this step.
+    </li>
+    <li>
+        To register a service that is notified when the user opens a contact's detail page in
+        the device's contacts application, add the attribute
+        <code>viewContactNotifyService="<em>serviceclass</em>"</code> to the element, where
+        <code><em>serviceclass</em></code> is the fully-qualified classname of the service
+        that should receive the intent from the device's contacts application. For the notifier
+        service, use a class that extends <code><a href="../../../reference/android/app/IntentService.html">IntentService</a></code>, to allow the service to
+        receive intents. The data in the incoming intent contains the content URI of the raw
+        contact the user clicked. From the notifier service, you can bind to and then call your
+        sync adapter to update the data for the raw contact.
+    </li>
+</ol>
+<p>
+    To register an activity to be called when the user clicks on a stream item or photo or both:
+</p>
+<ol>
+    <li>
+        Create a file named <code>contacts.xml</code> in your project's <code>res/xml/</code>
+        directory. If you already have this file, you can skip this step.
+    </li>
+    <li>
+        In this file, add the element
+<code>&lt;ContactsAccountType xmlns:android="http://schemas.android.com/apk/res/android"&gt;</code>.
+        If this element already exists, you can skip this step.
+    </li>
+    <li>
+        To register one of your activities to handle the user clicking on a stream item in the
+        device's contacts application, add the attribute
+        <code>viewStreamItemActivity="<em>activityclass</em>"</code> to the element, where
+        <code><em>activityclass</em></code> is the fully-qualified classname of the activity
+        that should receive the intent from the device's contacts application.
+    </li>
+    <li>
+        To register one of your activities to handle the user clicking on a stream photo in the
+        device's contacts application, add the attribute
+        <code>viewStreamItemPhotoActivity="<em>activityclass</em>"</code> to the element, where
+        <code><em>activityclass</em></code> is the fully-qualified classname of the activity
+        that should receive the intent from the device's contacts application.
+    </li>
+</ol>
+<p>
+    The <code>&lt;ContactsAccountType&gt;</code> element is described in more detail in the
+    section <a href="#SocialStreamAcctType">&lt;ContactsAccountType&gt; element</a>.
+</p>
+<p>
+    The incoming intent contains the content URI of the item or photo that the user clicked.
+    To have separate activities for text items and for photos, use both attributes in the same file.
+</p>
+<h4>Interacting with your social networking service</h4>
+<p>
+    Users don't have to leave the device's contacts application to invite a contact to your social
+    networking site. Instead, you can have the device's contacts app send an intent for inviting the
+    contact to one of your activities. To set this up:
+</p>
+<ol>
+    <li>
+        Create a file named <code>contacts.xml</code> in your project's <code>res/xml/</code>
+        directory. If you already have this file, you can skip this step.
+    </li>
+    <li>
+        In this file, add the element
+<code>&lt;ContactsAccountType xmlns:android="http://schemas.android.com/apk/res/android"&gt;</code>.
+        If this element already exists, you can skip this step.
+    </li>
+    <li>
+        Add the following attributes:
+        <ul>
+            <li><code>inviteContactActivity="<em>activityclass</em>"</code></li>
+            <li>
+                <code>inviteContactActionLabel="&#64;string/<em>invite_action_label</em>"</code>
+            </li>
+        </ul>
+        The <code><em>activityclass</em></code> value is the fully-qualified classname of the
+        activity that should receive the intent. The <code><em>invite_action_label</em></code>
+        value is a text string that's displayed in the <strong>Add Connection</strong> menu in the
+        device's contacts application.
+    </li>
+</ol>
+<p class="note">
+    <strong>Note:</strong> <code>ContactsSource</code> is a deprecated tag name for
+    <code>ContactsAccountType</code>.
+</p>
+<h3 id="ContactsFile">contacts.xml reference</h3>
+<p>
+    The file <code>contacts.xml</code> contains XML elements that control the interaction of your
+    sync adapter and application with the contacts application and the Contacts Provider. These
+    elements are described in the following sections.
+</p>
+<h4 id="SocialStreamAcctType">&lt;ContactsAccountType&gt; element</h4>
+<p>
+    The <code>&lt;ContactsAccountType&gt;</code> element controls the interaction of your
+    application with the contacts application. It has the following syntax:
+</p>
+<pre>
+&lt;ContactsAccountType
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        inviteContactActivity="<em>activity_name</em>"
+        inviteContactActionLabel="<em>invite_command_text</em>"
+        viewContactNotifyService="<em>view_notify_service</em>"
+        viewGroupActivity="<em>group_view_activity</em>"
+        viewGroupActionLabel="<em>group_action_text</em>"
+        viewStreamItemActivity="<em>viewstream_activity_name</em>"
+        viewStreamItemPhotoActivity="<em>viewphotostream_activity_name</em>"&gt;
+</pre>
+<p>
+    <strong>contained in:</strong>
+</p>
+<p>
+    <code>res/xml/contacts.xml</code>
+</p>
+<p>
+    <strong>can contain:</strong>
+</p>
+<p>
+    <strong><code>&lt;ContactsDataKind&gt;</code></strong>
+</p>
+<p>
+    <strong>Description:</strong>
+</p>
+<p>
+    Declares Android components and UI labels that allow users to invite one of their contacts to
+    a social network, notify users when one of their social networking streams is updated, and
+    so forth.
+</p>
+<p>
+    Notice that the attribute prefix <code>android:</code> is not necessary for the attributes
+    of <code>&lt;ContactsAccountType&gt;</code>.
+</p>
+<p>
+    <strong>Attributes:</strong>
+</p>
+<dl>
+    <dt><code>inviteContactActivity</code></dt>
+    <dd>
+        The fully-qualified class name of the activity in your application that you want to
+        activate when the user selects <strong>Add connection</strong> from the device's
+        contacts application.
+    </dd>
+    <dt><code>inviteContactActionLabel</code></dt>
+    <dd>
+        A text string that is displayed for the activity specified in
+        <code>inviteContactActivity</code>, in the <strong>Add connection</strong> menu.
+        For example, you can use the string "Follow in my network". You can use a string resource
+        identifier for this label.
+    </dd>
+    <dt><code>viewContactNotifyService</code></dt>
+    <dd>
+        The fully-qualified class name of a service in your application that should receive
+        notifications when the user views a contact. This notification is sent by the device's
+        contacts application; it allows your application to postpone data-intensive operations
+        until they're needed. For example, your application can respond to this notification
+        by reading in and displaying the contact's high-resolution photo and most recent
+        social stream items. This feature is described in more detail in the section
+        <a href="#SocialStreamInteraction">Social stream interactions</a>. You can see an
+        example of the notification service in the <code>NotifierService.java</code> file in the
+        <a href="../../../resources/samples/SampleSyncAdapter/index.html">SampleSyncAdapter</a>
+        sample app.
+    </dd>
+    <dt><code>viewGroupActivity</code></dt>
+    <dd>
+        The fully-qualified class name of an activity in your application that can display
+        group information. When the user clicks the group label in the device's contacts
+        application, the UI for this activity is displayed.
+    </dd>
+    <dt><code>viewGroupActionLabel</code></dt>
+    <dd>
+        The label that the contacts application displays for a UI control that allows
+        the user to look at groups in your application.
+        <p>
+            For example, if you install the Google+ application on your device and you sync
+            Google+ with the contacts application, you'll see Google+ circles listed as groups
+            in your contacts application's <strong>Groups</strong> tab. If you click on a
+            Google+ circle, you'll see people in that circle listed as a "group". At the top of
+            the display, you'll see a Google+ icon; if you click it, control switches to the
+            Google+ app. The contacts application does this with the
+            <code>viewGroupActivity</code>, using the Google+ icon as the value of
+            <code>viewGroupActionLabel</code>.
+        </p>
+        <p>
+            A string resource identifier is allowed for this attribute.
+        </p>
+    </dd>
+    <dt><code>viewStreamItemActivity</code></dt>
+    <dd>
+        The fully-qualified class name of an activity in your application that the device's
+        contacts application launches when the user clicks a stream item for a raw contact.
+    </dd>
+    <dt><code>viewStreamItemPhotoActivity</code></dt>
+    <dd>
+        The fully-qualified class name of an activity in your application that the device's
+        contacts application launches when the user clicks a photo in the stream item
+        for a raw contact.
+    </dd>
+</dl>
+<h4 id="SocialStreamDataKind">&lt;ContactsDataKind&gt; element</h4>
+<p>
+    The <code>&lt;ContactsDataKind&gt;</code> element controls the display of your application's
+    custom data rows in the contacts application's UI. It has the following syntax:
+</p>
+<pre>
+&lt;ContactsDataKind
+        android:mimeType="<em>MIMEtype</em>"
+        android:icon="<em>icon_resources</em>"
+        android:summaryColumn="<em>column_name</em>"
+        android:detailColumn="<em>column_name</em>"&gt;
+</pre>
+<p>
+    <strong>contained in:</strong>
+</p>
+<code>&lt;ContactsAccountType&gt;</code>
+<p>
+    <strong>Description:</strong>
+</p>
+<p>
+    Use this element to have the contacts application display the contents of a custom data row as
+    part of the details of a raw contact. Each <code>&lt;ContactsDataKind&gt;</code> child element
+    of <code>&lt;ContactsAccountType&gt;</code> represents a type of custom data row that your sync
+    adapter adds to the <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table. Add one
+    <code>&lt;ContactsDataKind&gt;</code> element for each custom MIME type you use. You don't have
+    to add the element if you have a custom data row for which you don't want to display data.
+</p>
+<p>
+    <strong>Attributes:</strong>
+</p>
+<dl>
+    <dt><code>android:mimeType</code></dt>
+    <dd>
+        The custom MIME type you've defined for one of your custom data row types in the
+        <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table. For example, the value
+        <code>vnd.android.cursor.item/vnd.example.locationstatus</code> could be a custom
+        MIME type for a data row that records a contact's last known location.
+    </dd>
+    <dt><code>android:icon</code></dt>
+    <dd>
+        An Android
+        <a href="../../../guide/topics/resources/drawable-resource.html">drawable resource</a>
+        that the contacts application displays next to your data. Use this to indicate to the
+        user that the data comes from your service.
+    </dd>
+    <dt><code>android:summaryColumn</code></dt>
+    <dd>
+        The column name for the first of two values retrieved from the data row. The
+        value is displayed as the first line of the entry for this data row. The first line is
+        intended to be used as a summary of the data, but that is optional. See also
+        <a href="#detailColumn">android:detailColumn</a>.
+    </dd>
+    <dt><code>android:detailColumn</code></dt>
+    <dd>
+        The column name for the second of two values retrieved from the data row. The value is
+        displayed as the second line of the entry for this data row. See also
+        <code>android:summaryColumn</code>.
+    </dd>
+</dl>
+<h2 id="AdditionalFeatures">Additional Contacts Provider Features</h2>
+<p>
+    Besides the main features described in previous sections, the Contacts Provider offers
+    these useful features for working with contacts data:
+</p>
+    <ul>
+       <li>Contact groups</li>
+       <li>Photo features</li>
+    </ul>
+<h3 id="Groups">Contact groups</h3>
+<p>
+    The Contacts Provider can optionally label collections of related contacts with
+    <strong>group</strong> data. If the server associated with a user account
+    wants to maintain groups, the sync adapter for the account's account type should transfer
+    groups data between the Contacts Provider and the server. When users add a new contact to the
+    server and then put this contact in a new group, the sync adapter must add the new group
+    to the <code><a href="../../../reference/android/provider/ContactsContract.Groups.html">ContactsContract.Groups</a></code> table. The group or groups a raw
+    contact belongs to are stored in the <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table, using
+    the <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.GroupMembership.html">ContactsContract.CommonDataKinds.GroupMembership</a></code> MIME type.
+</p>
+<p>
+    If you're designing a sync adapter that will add raw contact data from
+    server to the Contacts Provider, and you aren't using groups, then you need to tell the
+    Provider to make your data visible. In the code that is executed when a user adds an account
+    to the device, update the <code><a href="../../../reference/android/provider/ContactsContract.Settings.html">ContactsContract.Settings</a></code>
+    row that the Contacts Provider adds for the account. In this row, set the value of the
+    <code><a href="../../../reference/android/provider/ContactsContract.SettingsColumns.html#UNGROUPED_VISIBLE">Settings.UNGROUPED_VISIBLE</a></code> column to 1. When you do this, the Contacts Provider will always
+    make your contacts data visible, even if you don't use groups.
+</p>
+<h3 id="Photos">Contact photos</h3>
+<p>
+    The <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table stores photos as rows with MIME type
+    <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Photo.html#CONTENT_ITEM_TYPE">Photo.CONTENT_ITEM_TYPE</a></code>. The row's
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContactsColumns.html#CONTACT_ID">CONTACT_ID</a></code> column is linked to the
+    <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code> column of the raw contact to which it belongs.
+    The class <code><a href="../../../reference/android/provider/ContactsContract.Contacts.Photo.html">ContactsContract.Contacts.Photo</a></code> defines a sub-table of
+    <code><a href="../../../reference/android/provider/ContactsContract.Contacts.html">ContactsContract.Contacts</a></code> containing photo information for a contact's
+    primary photo, which is the primary photo of the contact's primary raw contact. Similarly,
+    the class <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.DisplayPhoto.html">ContactsContract.RawContacts.DisplayPhoto</a></code> defines a sub-table
+    of <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.html">ContactsContract.RawContacts</a></code> containing photo information for a
+    raw contact's primary photo.
+</p>
+<p>
+    The reference documentation for <code><a href="../../../reference/android/provider/ContactsContract.Contacts.Photo.html">ContactsContract.Contacts.Photo</a></code> and
+    <code><a href="../../../reference/android/provider/ContactsContract.RawContacts.DisplayPhoto.html">ContactsContract.RawContacts.DisplayPhoto</a></code> contain examples of
+    retrieving photo information. There is no convenience class for retrieving the primary
+    thumbnail for a raw contact, but you can send a query to the
+    <code><a href="../../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code> table, selecting on the raw contact's
+    <code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code>, the
+    <code><a href="../../../reference/android/provider/ContactsContract.CommonDataKinds.Photo.html#CONTENT_ITEM_TYPE">Photo.CONTENT_ITEM_TYPE</a></code>, and the <code><a href="../../../reference/android/provider/ContactsContract.DataColumns.html#IS_PRIMARY">IS_PRIMARY</a></code>
+    column to find the raw contact's primary photo row.
+</p>
+<p>
+    Social stream data for a person may also include photos. These are stored in the
+    <code><a href="../../../reference/android/provider/ContactsContract.StreamItemPhotos.html">ContactsContract.StreamItemPhotos</a></code> table, which is described in more
+    detail in the section <a href="#StreamPhotos">Social stream photos</a>.
+</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Visibility for Your Apps | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  distribute" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/index.html">Google Play</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/about/visibility.html">Visibility</a></li>
+      <li><a href="../../../distribute/googleplay/about/monetizing.html">Monetizing</a></li>
+      <li><a href="../../../distribute/googleplay/about/distribution.html">Distribution</a></li>
+    </ul>  
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/publish/register.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/publish/console.html">Developer Console</a></li>
+      <li><a href="../../../distribute/googleplay/publish/localizing.html">Localization Checklist</a></li>
+      <li><a href="../../../distribute/googleplay/publish/preparing.html">Launch Checklist</a></li>
+    </ul>
+  </li>
+  
+<!--  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../distribute/googleplay/developer-console.html">The Developer Console</a>
+    </div>
+    <ul>
+      <li class="nav-section"><a href="../../../distribute/googleplay/register.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/distribution-controls.html">Managing Distribution</a></li>
+      <li><a href="../../../distribute/googleplay/pricing-billing.html">Pricing and Billing</a></li>
+      <li><a href="../../../distribute/googleplay/app-data.html">Reviewing App Data</a></li>
+      <li><a href="../../../distribute/googleplay/advanced-options.html">Advanced Options</a></li>
+      <li><a href="../../../distribute/googleplay/publishing.html">Publishing and Updating</a></li>
+    </ul>
+  </li> end of Developer Console -->
+
+   <li class="nav-section">
+     <div class="nav-section-header"><a href="../../../distribute/googleplay/promote/index.html">Promoting</a>
+     </div>
+     <ul>
+<!--   <li><a href="../../../distribute/googleplay/promote/product-pages.html">Your Product Pages</a></li> -->
+       <li><a href="../../../distribute/googleplay/promote/linking.html">Linking to Your Products</a></li>
+       <li><a href="../../../distribute/googleplay/promote/badges.html">Google Play Badges</a></li>
+       <li><a href="../../../distribute/promote/device-art.html">Device Art Generator</a></li>
+       <li><a href="../../../distribute/googleplay/promote/brand.html">Brand Guidelines</a></li>
+     </ul>
+   </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/quality/core.html">Core App Quality</a></li>
+       <li><a href="../../../distribute/googleplay/quality/tablet.html">Tablet App Quality</a></li>
+       <li><a href="../../../distribute/googleplay/strategies/app-quality.html">Improving App Quality</a></li>
+    </ul>
+  </li> 
+
+   <li class="nav-section">
+     <div class="nav-section-header"><a href="../../../distribute/googleplay/policies/index.html">Policies</a></div>
+     <ul>
+       <li><a href="../../../distribute/googleplay/policies/spam.html">Spam</a></li>
+       <li><a href="../../../distribute/googleplay/policies/ip.html">Intellectual<br />Property</a></li> 
+       <li><a href="../../../distribute/googleplay/policies/ads.html">Ads</a></li>
+     </ul>
+   </li>
+
+<!--    
+   <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/after.html">
+      After Launch</a>
+    </div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/errors.html.html">Reviewing Errors</a></li>
+       <li><a href="../../../distribute/googleplay/reviews.html">Tracking User Reviews</a></li>
+       <li><a href="../../../distribute/googleplay/supporting-users.html">Supporting Users</a></li>
+    </ul>
+  </li> 
+-->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/spotlight/tablets.html">Tablet Stories</a></li>
+       <li><a href="../../../distribute/googleplay/spotlight/games.html">Game Stories</a></li>
+    </ul>
+  </li> 
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/edu/index.html">Google Play for Education</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/edu/about.html">About</a></li>
+      <li><a href="../../../distribute/googleplay/edu/start.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/edu/guidelines.html">Guidelines</a></li>
+      <li><a href="../../../distribute/googleplay/edu/contact.html">Sign Up</a></li>
+    </ul>  
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../distribute/open.html">Open Distribution</a></div>
+  </li>
+</ul>
+  
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Visibility for Your Apps</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div style="float:right;margin:0px 0px 24px 0px;">
+  <img src="../../../images/gp-tab.png" style="width:420px" alt="" />
+</div>
+
+<p>A billion downloads a month and growing. Get your apps in front of millions
+of users at Google's scale. </p>  
+
+
+<h2 id="reach">Worldwide reach, rapid growth</h2>
+
+<p>Google Play is the premier store for distributing Android apps. It’s
+preinstalled on more than 400 million devices worldwide, a number growing by
+more than a million every day. Android users have downloaded
+more than <strong style="text-wrap:none;">25 billion apps</strong> from Google
+Play, growing at a rate of more than 1.5 billion per month.</p>
+
+<p>When you publish on Google Play, you put your apps in front of Android's huge
+base of active customers, in more than 130 countries and territories across the
+world. </p>
+
+<p>Google Play is a central part of the Android experience. New users
+personalize their devices with apps, games, and other Google Play content.
+Existing users return regularly to see what's trending and new. Downloading new
+apps is extremely convenient and fast&mdash; Google Play pushes  apps to the
+user's devices instantly, over the air. No cable or sync is ever needed.</p>
+
+<div style="float:left;margin:0px 20px 0px 0px;width:374px;">
+<div  style="width:378px;padding:2px;">
+<img src="../../../images/gp-growth-downloads.png" style="width:600px;margin-bottom:0em;">
+</div>
+<p class="image-caption" style="padding:.5em"><span
+style="font-weight:500;">Growth in app consumption</span>: Users download more than
+1.5 billion apps from Google Play each month.</p>
+</div>
+
+<div>
+<p>Google Play is also a top destination for visitors from the web. Anyone
+with a browser can explore everything that Google Play has to offer from its <a
+href="http://play.google.com/store">web site</a>. Android users can even buy and
+install the apps they want and Google Play pushes them automatically to their
+devices over the air. </p>
+
+<p>The accessiblility and convenience of the Google Play web
+site give you new ways to drive traffic to your products from online ads, web
+search, cross-linking, and more.</p>
+</div>
+
+   <div style="clear:both;">
+<h2>Built for app discovery</h2>
+
+<p>Google Play is designed to connect users with great apps and games. It
+provides key channels to help your app get noticed and gain traction in the
+marketplace.</p>
+
+<h3 id="ratings">User ratings and reviews</h3>
+
+<p>When you develop a great app, Android users show their appreciation through
+ratings and reviews. They rate your app (out of 5 stars) after downloading it
+and can post a short description of their experience. When other users are
+considering your app, they look at the ratings and reviews as key benchmarks of
+the app’s quality. </p>
+
+   </div>
+
+<p>Your app’s rating is one of the most important factors influencing its
+ranking in the various lists and search results in Google Play. It's also one of
+the key signals that the editorial staff looks for, when curating apps and games
+for promotion in the store.</p>
+
+<div style="border:1px solid #DDD;padding:1px;margin-left:110px;width:504px;">
+<img src="../../../images/gp-rating-web.png" style="width:500px;padding:0;margin:0;">
+</div>
+
+<h3 id="category" stdle="padding-top:2em;">Category browsing</h3>
+
+<p>When you publish an app in Google Play, you pick the category in which you
+want users to find your app. More than 30 categories are available. Inside each
+category, apps are ranked based on a combination of ratings, reviews, downloads,
+country, and other factors. Many popular categories also start with a collection
+of featured apps selected by the Google Play editorial staff.</p>
+
+<div style="clear:both;margin-top:2em;margin-left:10%;width:560px;">
+<div style="clear:both;margin-top:2em;">
+<img src="../../../images/gpp-cat-feature280-puzzle.png" style="width:180px">
+<img src="../../../images/gpp-cat-feature280-photo.png" style="width:180px">
+<img src="../../../images/gpp-cat-feature280-sports.png" style="width:180px">
+</div>
+<p class="image-caption"><span style="font-weight:500;">Featuring in
+categories</span>: Most app and game categories include a featured list curated
+by the editorial team.</p>
+</div>
+
+<h3 id="search">Search</h3>
+
+<p>Search on Google Play lets users pinpoint an app or game quickly. Search uses
+powerful heuristics to suggest terms as the user types, and it offers direct
+links to apps as suggestions. In results, users find the most relevant, most
+popular apps at the top. </p>
+
+<div style="float:left;margin:12px 24px 0px 0px;">
+<img src="../../../images/gp-top-new-paid.png" style="width:250px">
+</div>
+
+<h3 id="top-charts" style="padding-top:1em">Top charts and lists</h3>
+
+<p>Top charts keep users in touch with what’s popular and trending with Android
+users, right from the Apps and Games home pages. The charts are generated
+several times each day based on recent download activity, keeping them fresh and
+allowing new apps to move upward in the charts. To make the charts as relevant
+as possible for users across the world, they are also country-specific in
+Google Play's most popular countries.</p>
+
+<p>As your apps get traction and build momentum in downloads and ratings,
+they’ll climb one or more of the top charts and gain even more exposure.</p>
+
+<div>
+<table style="width:440px">
+<tr>
+<td style="width:100px">Top Free</td><td>Free apps and games</td></tr>
+<td style="width:140px">Top Paid</td><td>Priced apps and games</td></tr>
+<td>Top New Free</td><td>Less than 30 days old</td></tr>
+<td>Top New Paid</td><td>Less than 30 days old</td></tr>
+<td>Top Grossing</td><td>Gross proceeds, free or priced</td></tr>
+<td>Best Selling</td><td>Popular priced games</td></tr>
+<td>Trending</td><td>New arrivals growing quickly in installs</td>
+</tr>
+</table>
+</div>
+
+<div style="clear:both">
+<h4 id="featured" style="padding-top:2.5em;">Featured, Staff Picks, Collections,
+and Badges</h4>
+
+
+<div style="float:right;margin-left:18px;">
+<img src="../../../images/gp-apps-home.png" style="width:180px">
+<img src="../../../images/gp-games-home.png" style="width:180px">
+</div>
+
+<p>The Google Play editorial team is dedicated to bringing the best apps to the
+attention of users and setting the tone for app quality throughout the store. 
+It constantly reviews apps from across Google Play to find
+not only the best-known apps and games, but also the “diamonds in the rough” that
+they want more people to see. </p>
+
+<p>When the team finds great apps and games, it uses the <em>Featured</em>,
+<em>Staff Picks</em>, and other collections to promote them to users.</p>
+
+<p>You can't nominate your app for featuring, but the team is always
+on the lookout for great apps through a number of signals and indicators. 
+If you build an app that users love and that looks great on Android devices,
+the editorial team will notice.</p>
+</div>
+
+<h4>Featured and Staff Picks</h4>
+
+<p>Each week the Google Play editorial staff selects a new set of apps to
+promote in its popular <em>Featured</em> and <em>Staff Picks</em> collections.
+</p>
+
+The <em>Featured</em> collections highlight the latest and greatest app and game
+titles available for Android. Category featuring highlights the best and most
+popular apps in the top categories.
+
+<em>Staff Picks</em> collects all recently featured apps and games on Google
+Play. To better reach tablet users, there’s a special <em>Staff Picks</em>
+collection that highlights the best apps for Android tablets.</p>
+
+<div style="float:left;margin-right:18px;">
+<img src="../../../images/gp-collectibles.png" stydle="width:180px">
+
+</div>
+
+<h4>App collections</h4>
+
+<p>From time to time the editorial staff puts together a collection of apps and
+games based on a theme or seasonal event. The collections are popular with
+customers because they are timely and relevant, and they provide a new way to
+showcase great Android apps to users.</p>
+
+<p>The editorial staff chooses apps for collection promotions in a similar way
+as for featuring&mdash;high-quality apps that show the best of Android on phones
+and tablets. For collections the staff also looks for apps that can make an
+interesting or unique contribution to the collection as a whole. </p>
+
+<h4><img style="margin-right:.25em;margin-bottom:.5em;"
+src="../../../images/editorschoice_ann.png"> EDITORS' CHOICE</h4>
+
+<p><em>Editors’ Choice</em> is a curated collection of apps that highlights some
+of the very best apps available on Android. These apps are chosen for high
+quality and great UI, long-term popularity, and innovative use of Android
+features.</p>
+
+<p>Apps chosen for <em>Editors’ Choice</em> also receive a badge that is
+displayed wherever the app name is seen in Google Play.</p>
+
+<h4><img style="margin-right:.25em;margin-bottom:.5em;"
+src="../../../images/topdev_ann.png"> TOP DEVELOPER</h4>
+
+<p>Top Developer is a badge recognizing established, respected developers for
+their commitment to launching high-quality and innovative apps on
+Android. The Google Play editorial staff selects developers awards a Top
+Developer badge from time to time, based on the cumulative work of the
+developer.</p>
+
+<p>The Top Developer badge appears next to the developer name wherever it is
+displayed in Google Play. For a developer, the badge means long-term recognition
+of all of your apps. For users, the badge signifies an additional level of trust
+and confidence in your products.</p>
+
+<h3 id="details">Rich, colorful product pages</h3>
+
+<p>In Google Play, your app’s storefront is its <em>product details page</em>
+&mdash; a rich and colorful page that lets you promote your app, highlight its
+ratings and reviews, and show what your app can do. 
+
+<p>Your product details page is the one page where your users come to find out
+everything about your app. When they see your app listed in search results, top
+charts, category listings, and collections, one tap takes them directly to your 
+product details page.</p>
+
+<div style="float:right;margin-left:10px;">
+<img src="../../../images/gp-details-pages-magicpiano.png" style="width:500px">
+</div>
+
+<p>You can manage your product details page through the <span
+style="font-weight:500">Google Play Android Develeper Console</span>, from any
+web browser. Just sign in, upload or update your brand assets, and enter your
+product details in the languages of your markets. </p>
+
+<p>When you publish, Google Play adds your app’s ratings, reviews, links to your
+other products, and more, and makes sure your product details page looks great
+on phones, tablets, or in a web browser.</p>
+
+<p>You can link web users directly to your product details page from outside
+Google Play, such as from your web site, an ad campaign, reviews, social media
+posts, and more. See <a href="../../../distribute/googleplay/promote/linking.html">Linking
+to Your Products</a> to find out how. </p>
+
+<p>To learn more about how to create your product details page, see
+<a href="../../../distribute/googleplay/publish/index.html">Publishing on Google Play</a>.</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Google Play Badges | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  distribute" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/index.html">Google Play</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/about/visibility.html">Visibility</a></li>
+      <li><a href="../../../distribute/googleplay/about/monetizing.html">Monetizing</a></li>
+      <li><a href="../../../distribute/googleplay/about/distribution.html">Distribution</a></li>
+    </ul>  
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/publish/register.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/publish/console.html">Developer Console</a></li>
+      <li><a href="../../../distribute/googleplay/publish/localizing.html">Localization Checklist</a></li>
+      <li><a href="../../../distribute/googleplay/publish/preparing.html">Launch Checklist</a></li>
+    </ul>
+  </li>
+  
+<!--  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../../distribute/googleplay/developer-console.html">The Developer Console</a>
+    </div>
+    <ul>
+      <li class="nav-section"><a href="../../../distribute/googleplay/register.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/distribution-controls.html">Managing Distribution</a></li>
+      <li><a href="../../../distribute/googleplay/pricing-billing.html">Pricing and Billing</a></li>
+      <li><a href="../../../distribute/googleplay/app-data.html">Reviewing App Data</a></li>
+      <li><a href="../../../distribute/googleplay/advanced-options.html">Advanced Options</a></li>
+      <li><a href="../../../distribute/googleplay/publishing.html">Publishing and Updating</a></li>
+    </ul>
+  </li> end of Developer Console -->
+
+   <li class="nav-section">
+     <div class="nav-section-header"><a href="../../../distribute/googleplay/promote/index.html">Promoting</a>
+     </div>
+     <ul>
+<!--   <li><a href="../../../distribute/googleplay/promote/product-pages.html">Your Product Pages</a></li> -->
+       <li><a href="../../../distribute/googleplay/promote/linking.html">Linking to Your Products</a></li>
+       <li><a href="../../../distribute/googleplay/promote/badges.html">Google Play Badges</a></li>
+       <li><a href="../../../distribute/promote/device-art.html">Device Art Generator</a></li>
+       <li><a href="../../../distribute/googleplay/promote/brand.html">Brand Guidelines</a></li>
+     </ul>
+   </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/quality/core.html">Core App Quality</a></li>
+       <li><a href="../../../distribute/googleplay/quality/tablet.html">Tablet App Quality</a></li>
+       <li><a href="../../../distribute/googleplay/strategies/app-quality.html">Improving App Quality</a></li>
+    </ul>
+  </li> 
+
+   <li class="nav-section">
+     <div class="nav-section-header"><a href="../../../distribute/googleplay/policies/index.html">Policies</a></div>
+     <ul>
+       <li><a href="../../../distribute/googleplay/policies/spam.html">Spam</a></li>
+       <li><a href="../../../distribute/googleplay/policies/ip.html">Intellectual<br />Property</a></li> 
+       <li><a href="../../../distribute/googleplay/policies/ads.html">Ads</a></li>
+     </ul>
+   </li>
+
+<!--    
+   <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/after.html">
+      After Launch</a>
+    </div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/errors.html.html">Reviewing Errors</a></li>
+       <li><a href="../../../distribute/googleplay/reviews.html">Tracking User Reviews</a></li>
+       <li><a href="../../../distribute/googleplay/supporting-users.html">Supporting Users</a></li>
+    </ul>
+  </li> 
+-->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></div>
+    <ul>
+       <li><a href="../../../distribute/googleplay/spotlight/tablets.html">Tablet Stories</a></li>
+       <li><a href="../../../distribute/googleplay/spotlight/games.html">Game Stories</a></li>
+    </ul>
+  </li> 
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../distribute/googleplay/edu/index.html">Google Play for Education</a></div>
+    <ul>
+      <li><a href="../../../distribute/googleplay/edu/about.html">About</a></li>
+      <li><a href="../../../distribute/googleplay/edu/start.html">Get Started</a></li>
+      <li><a href="../../../distribute/googleplay/edu/guidelines.html">Guidelines</a></li>
+      <li><a href="../../../distribute/googleplay/edu/contact.html">Sign Up</a></li>
+    </ul>  
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../distribute/open.html">Open Distribution</a></div>
+  </li>
+</ul>
+  
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Google Play Badges</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <p itemprop="description">Google Play badges allow you to promote your app with official branding
+in your online ads, promotional materials, or anywhere else you want a link to your app.</p>
+
+<p>In the form below,
+input your app's package name or publisher name, choose the badge style,
+click <em>Build my badge</em>, then paste the HTML into your web content.</p>
+
+<p>If you're creating a promotional web page for your app, you should also use the
+<a href="../../../distribute/promote/device-art.html">Device Art Generator</a>, which quickly
+wraps your screenshots in real device artwork.</p>
+
+<p>For guidelines when using the Google Play badge and other brand assets,
+see the <a href="../../../distribute/googleplay/promote/brand.html#brand-google_play">Brand
+Guidelines</a>.</p>
+
+<style type="text/css">
+
+form.button-form {
+  margin-top:2em;
+}
+
+/* the label and input elements are blocks that float left in order to
+   keep the left edgets of the input aligned, and IE 6/7 do not fully support "inline-block" */
+label.block {
+  display: block;
+  float: left;
+  width: 100px;
+  padding-right: 10px;
+}
+
+input.text {
+  display: block;
+  float: left;
+  width: 250px;
+}
+
+div.button-row {
+  white-space:nowrap;
+  min-height:80px;
+}
+
+div.button-row input {
+  vertical-align:middle;
+  margin:0 5px 0 0;
+}
+
+#jd-content div.button-row img {
+  margin: 0;
+  vertical-align:middle;
+}
+
+</style>
+
+<script type="text/javascript">
+
+// locales for which we have the 'app' badge
+var APP_LANGS = ['it','pt-br','pt-pt','nl','ko','ja','fr','es','es-419','en','de'];
+
+// variables for creating 'try it out' demo button
+var imagePath = "https://developer.android.com/images/brand/"
+var linkStart = "<a href=\"https://play.google.com/store/";
+var imageStart = "\">\n"
+        + "  <img alt=\"";
+  // leaves opening for the alt text value
+var imageSrc = "\"\n       src=\"" + imagePath;
+  // leaves opening for the image file name
+var imageEnd = ".png\" />\n</a>";
+
+// variables for creating code snippet
+var linkStartCode = "&lt;a href=\"https://play.google.com/store/";
+var imageStartCode = "\"&gt;\n"
+        + "  &lt;img alt=\"";
+  // leaves opening for the alt text value
+var imageSrcCode = "\"\n       src=\"" + imagePath;
+  // leaves opening for the image file name
+var imageEndCode = ".png\" />\n&lt;/a>";
+
+/** Generate the HTML snippet and demo based on form values */
+function buildButton(form) {
+  var lang = $('#locale option:selected').val();
+  var selectedValue = lang + $('form input[type=radio]:checked').val();
+  var altText = selectedValue.indexOf("generic") != -1 ? "Get it on Google Play" : "Android app on Google Play";
+
+  if (form["package"].value != "com.example.android") {
+    $("#preview").show();
+    var packageName = escapeHTML(form["package"].value);
+    $("#snippet").show().html(linkStartCode + "apps/details?id=" + packageName
+            + imageStartCode + altText + imageSrcCode
+            + selectedValue + imageEndCode);
+    $("#button-preview").html(linkStart + "apps/details?id=" + packageName
+            + imageStart + altText + imageSrc
+            + selectedValue + imageEnd);
+            
+    // Send the event to Analytics
+    _gaq.push(['_trackEvent', 'Distribute', 'Create Google Play Badge', 'Package ' + selectedValue]);
+  } else if (form["publisher"].value != "Example, Inc.") {
+    $("#preview").show();
+    var publisherName = escapeHTML(form["publisher"].value);
+    $("#snippet").show().html(linkStartCode + "search?q=pub:" + publisherName
+            + imageStartCode + altText + imageSrcCode
+            + selectedValue + imageEndCode);
+    $("#button-preview").html(linkStart + "search?q=pub:" + publisherName
+            + imageStart + altText + imageSrc
+            + selectedValue + imageEnd);
+   
+    // Send the event to Analytics
+    _gaq.push(['_trackEvent', 'Distribute', 'Create Google Play Badge', 'Publisher ' + selectedValue]);
+  } else {
+    alert("Please enter your package name or publisher name");
+  }
+  return false;
+}
+
+/** Listen for Enter key */
+function onTextEntered(event, form, me) {
+  // 13 = enter
+  if (event.keyCode == 13) {
+    buildButton(form);
+  }
+}
+
+/** When input is focused, remove example text and disable other input */
+function onInputFocus(object, example) {
+  if (object.value == example) {
+    $(object).val('').css({'color' : '#000'});
+  }
+  $('input[type="text"]:not(input[name='+object.name+'])',
+          object.parentNode).attr('disabled','true');
+  $('#'+object.name+'-clear').show();
+}
+
+/** When input is blured, restore example text if appropriate and enable other input */
+function onInputBlur(object, example) {
+  if (object.value.length < 1) {
+    $(object).attr('value',example).css({'color':'#ccc'});
+    $('input[type="text"]', object.parentNode).removeAttr('disabled');
+    $('#'+object.name+'-clear').hide();
+  }
+}
+
+/** Clear the form to start over */
+function clearLabel(id, example) {
+  $("#preview").hide();
+  $('#'+id+'').html('').attr('value',example).css({'color':'#ccc'});
+  $('input[type="text"]', $('#'+id+'').parent()).removeAttr('disabled');
+  $('#'+id+'-clear').hide();
+  return false;
+}
+
+/** Switch the badge urls for selected language */
+function changeBadgeLang() {
+  var lang = $('#locale option:selected').val();
+  
+  // check if we have the 'app' badge for this lang and show notice if not
+  $("div.button-row.error").remove();  // remove any existing instance of error message
+  if ($.inArray(lang,APP_LANGS) == -1) {
+    $("div.button-row.app").hide();
+    $("div.button-row.app").after('<div class="button-row error"><p class="note" style="margin:1em 0 -1em">'
+        + 'Sorry, we currently don\'t have the '
+        + '<em>Android app on Google Play</em> badge translated for '
+        + $("select#locale option[value="+lang+"]").attr("title")
+        + '.<br>Please check back later or instead use the <em>Get it on Google Play</em> badge below.'
+        + '</p></div>');
+  } else {
+    $("div.button-row.app").show(); // show the 'app' badge row
+  }
+  
+  $('.button-row img').each(function() {
+    var id = $(this).parent().attr('for');
+    var imgName = lang + $('input#'+id).attr('value') + '.png';
+    var lastSlash = $(this).attr('src').lastIndexOf('/');
+    var imgPath = $(this).attr('src').substring(0, lastSlash+1);
+    $(this).attr('src', imgPath + imgName);
+  });
+}
+
+/** When the doc is ready, find the inputs and color the input grey if the value is the example
+    text. This is necessary to handle back-navigation, which can auto-fill the form with previous
+    values (and text should not be grey) */
+$(document).ready(function() {
+  $(".button-form input.text").each(function(index) {
+    if ($(this).val() == $(this).attr("default")) {
+      $(this).css("color","#ccc");
+    } else {
+      /* This is necessary to handle back-navigation to the page after form was filled */
+      $('input[type="text"]:not(input[name='+this.name+'])',
+              this.parentNode).attr('disabled','true');
+      $('#'+this.name+'-clear').show();
+    }
+  });
+});
+
+</script>
+
+<form class="button-form">
+  <label class="block" for="locale">Language:</label>
+  <select id="locale" style="display:block;float:left;margin:0"
+          onchange="changeBadgeLang()">
+    <option title="Afrikaans"
+            value="af">Afrikaans</option>
+    <option title="Arabic"
+            value="ar">العربية</option>
+    <option title="Belarusian"
+            value="be">Беларуская</option>
+    <option title="Bulgarian"
+            value="bg">Български</option>
+    <option title="Catalan"
+            value="ca">Català</option>
+    <option title="Chinese (China)"
+            value="zh-cn">中文 (中国)</option>
+    <option title="Chinese (Hong Kong)"
+            value="zh-hk">中文（香港）</option>
+    <option title="Chinese (Taiwan)"
+            value="zh-tw">中文 (台灣)</option>
+    <option title="Croatian"
+            value="hr">Hrvatski</option>
+    <option title="Czech"
+            value="cs">Česky</option>
+    <option title="Danish"
+            value="da">Dansk</option>
+    <option title="Dutch"
+            value="nl">Nederlands</option>
+    <option title="Estonian"
+            value="et">Eesti</option>
+    <option title="Farsi - Persian"
+            value="fa">فارسی</option>
+    <option title="Filipino"
+            value="fil">Tagalog</option>
+    <option title="Finnish"
+            value="fi">Suomi</option>
+    <option title="French"
+            value="fr">Français</option>
+    <option title="German"
+            value="de">Deutsch</option>
+    <option title="Greek"
+            value="el">Ελληνικά</option>
+    <option title="English"
+            value="en" selected="true">English</option>
+<!--
+    <option title="Hebrew"
+            value="iw-he">עברית</option>
+-->
+    <option title="Hungarian"
+            value="hu">Magyar</option>
+    <option title="Indonesian"
+            value="id-in">Bahasa Indonesia</option>
+    <option title="Italian"
+            value="it">Italiano</option>
+    <option title="Japanese"
+            value="ja">日本語</option>
+    <option title="Korean"
+            value="ko">한국어</option>
+    <option title="Latvian"
+            value="lv">Latviešu</option>
+    <option title="Lithuanian"
+            value="lt">Lietuviškai</option>
+    <option title="Malay"
+            value="ms">Bahasa Melayu</option>
+    <option title="Norwegian"
+            value="no">Norsk (bokmål)‎</option>
+    <option title="Polish"
+            value="pl">Polski</option>
+    <option title="Portuguese (Brazil)"
+            value="pt-br">Português (Brasil)</option>
+    <option title="Portuguese (Portugal)"
+            value="pt-pt">Português (Portugal)</option>
+    <option title="Romanian"
+            value="ro">Română</option>
+    <option title="Russian"
+            value="ru">Русский</option>
+    <option title="Serbian"
+            value="sr">Српски / srpski</option>
+    <option title="Slovak"
+            value="sk">Slovenčina</option>
+    <option title="Slovenian"
+            value="sl">Slovenščina</option>
+    <option title="Spanish (Spain)"
+            value="es">Español (España)</option>
+    <option title="Spanish (Latin America)"
+            value="es-419">Español (Latinoamérica)</option>
+    <option title="Swedish"
+            value="sv">Svenska</option>
+    <option title="Swahili"
+            value="sw">Kiswahili</option>
+    <option title="Thai"
+            value="th">ไทย</option>
+    <option title="Turkish"
+            value="tr">Türkçe</option>
+    <option title="Ukrainian"
+            value="uk">Українська</option>
+    <option title="Vietnamese"
+            value="vi">Tiếng Việt</option>
+    <option title="Zulu"
+            value="zu">isiZulu</option>
+  </select>
+  <p style="clear:both;margin:0">&nbsp;</p>
+  <label class="block" for="package" style="clear:left">Package name:</label>
+  <input class="text" type="text" id="package" name="package"
+         value="com.example.android"
+         default="com.example.android"
+         onfocus="onInputFocus(this, 'com.example.android')"
+         onblur="onInputBlur(this, 'com.example.android')"
+         onkeyup="return onTextEntered(event, this.parentNode, this)"/>&nbsp;
+         <a id="package-clear" style="display:none" href="#"
+            onclick="return clearLabel('package','com.example.android');">clear</a>
+  <p style="clear:both;margin:0">&nbsp;<em>or</em></p>
+  <label class="block" style="margin-top:5px" for="publisher">Publisher&nbsp;name:</label>
+  <input class="text" type="text" id="publisher" name="publisher"
+         value="Example, Inc."
+         default="Example, Inc."
+         onfocus="onInputFocus(this, 'Example, Inc.')"
+         onblur="onInputBlur(this, 'Example, Inc.')"
+         onkeyup="return onTextEntered(event, this.parentNode, this)"/>&nbsp;
+         <a id="publisher-clear" style="display:none" href="#"
+            onclick="return clearLabel('publisher','Example, Inc.');">clear</a>
+         <br/><br/>
+
+
+<div class="button-row app">
+  <input type="radio" name="buttonStyle" value="_app_rgb_wo_45" id="ws" />
+    <label for="ws"><img src="../../../images/brand/en_app_rgb_wo_45.png"
+alt="Android app on Google Play (small)" /></label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="radio" name="buttonStyle" value="_app_rgb_wo_60" id="wm" />
+    <label for="wm"><img src="../../../images/brand/en_app_rgb_wo_60.png"
+alt="Android app on Google Play (large)" /></label>
+</div>
+
+<div class="button-row">
+  <input type="radio" name="buttonStyle" value="_generic_rgb_wo_45" id="ns" checked="checked" />
+    <label for="ns"><img src="../../../images/brand/en_generic_rgb_wo_45.png"
+alt="Get it on Google Play (small)" /></label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="radio" name="buttonStyle" value="_generic_rgb_wo_60" id="nm" />
+    <label for="nm"><img src="../../../images/brand/en_generic_rgb_wo_60.png"
+alt="Get it on Google Play (large)" /></label>
+</div>
+
+  <input class="button" onclick="return buildButton(this.parentNode);"
+    type="button" value="Build my badge" style="padding:10px" />
+  <br/>
+</form>
+
+<div id="preview" style="display:none">
+  <p>Copy and paste this HTML into your web site:</p>
+  <textarea id="snippet" cols="100" rows="5" onclick="this.select()"
+style="font-family:monospace;background-color:#efefef;padding:5px;display:none;margin-bottom:1em">
+  </textarea >
+
+<p>Try it out:</p>
+<div id="button-preview" style="margin-top:1em"></div>
+</div>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Android 3.2 APIs | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  about" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+<ul id="nav">
+  
+<li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/index.html">Welcome</a></div>
+    <ul>
+      <li><a href="../../about/start.html">Get Started</a></li>
+    </ul>
+  </li> 
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/kitkat.html">
+      <span class="en">KitKat</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.4.html">Android 4.4 APIs</a></li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/jelly-bean.html">
+      <span class="en">Jelly Bean</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.3.html">Android 4.3 APIs</a></li>
+        <li><a href="../../about/versions/android-4.2.html">Android 4.2 APIs</a></li>
+        <li><a href="../../about/versions/android-4.1.html">Android 4.1 APIs</a></li>
+      </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-4.0-highlights.html">
+      <span class="en">Ice Cream Sandwich</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.0.3.html">Android 4.0.3 APIs</a></li>
+        <li><a href="../../about/versions/android-4.0.html">Android 4.0 APIs</a> </li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-3.0-highlights.html">
+      <span class="en">Honeycomb</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-3.2.html">Android 3.2 APIs</a></li>
+        <li><a href="../../about/versions/android-3.1.html">Android 3.1 APIs</a></li>
+        <li><a href="../../about/versions/android-3.0.html">Android 3.0 APIs</a> </li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-2.3-highlights.html">
+      <span class="en">Gingerbread</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-2.3.4.html">Android 2.3.4 APIs</a></li>
+        <li><a href="../../about/versions/android-2.3.3.html">Android 2.3.3 APIs</a></li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../about/dashboards/index.html">Dashboards</a></div>
+  </li>
+
+</ul>
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Android 3.2 APIs</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+<h2>In this document</h2>
+<ol>
+  <li><a href="#highlights">Highlights</a></li>
+  <li><a href="#api">API Overview</a></li>
+  <li><a href="#api-level">API Level</a></li>
+</ol>
+
+<h2>Reference</h2>
+<ol>
+<li><a
+href="../../sdk/api_diff/13/changes.html">API
+Differences Report &raquo;</a> </li>
+</ol>
+
+</div>
+</div>
+
+
+<p><em>API Level:</em>&nbsp;<strong>13</strong></p>
+
+<p>Android 3.2 (<code><a href="../../reference/android/os/Build.VERSION_CODES.html#HONEYCOMB_MR2">HONEYCOMB_MR2</a></code>) is an incremental platform release that adds new
+capabilities for users and developers. The sections below provide an overview
+of the new features and developer APIs.</p>
+
+<p>For developers, the Android 3.2 platform is available as a
+downloadable component for the Android SDK. The downloadable platform includes
+an Android library and system image, as well as a set of emulator skins and
+more. To get started developing or testing against Android 3.2,
+use the Android SDK Manager to download the platform into your SDK.</p>
+
+
+
+<h2 id="highlights" style="margin-top:1.5em;">Platform Highlights</h2>
+
+<h3>New user features</h3>
+
+<ul>
+<li><strong>Optimizations for a wider range of tablets</strong>
+
+<p>Android 3.2 includes a variety of optimizations across the system
+to ensure a great user experience on a wider range of tablet devices.</p></li>
+
+<li><strong>Compatibility zoom for fixed-sized apps</strong>
+
+<p>Android 3.2 introduces a new <em>compatibility zoom</em> mode that gives
+users a new way to view fixed-sized apps on larger devices. The new mode provides a
+pixel-scaled alternative to the standard UI stretching for apps that are not
+designed to run on larger screen sizes, such as on tablets. The new mode is
+accessible to users from a menu icon in the system bar, for apps that need
+compatibility support.</p></li>
+
+<li><strong>Media sync from SD card</strong>
+<p>On devices that support an SD card, users can now load media files directly
+from the SD card to apps that use them. A system facility makes the files
+accessible to apps from the system media store.</p></li>
+</ul>
+
+
+<h3>New developer features</h3>
+
+<ul>
+<li><strong>Extended API for managing screens support</strong>
+
+<p>Android 3.2 introduces extensions to the platform's screen support API to
+give developers additional ways to manage application UI across the range of
+Android-powered devices. The API includes new resource qualifiers and new
+manifest attributes that give you more precise control over how your
+apps are displayed on different sizes, rather than relying on generalized
+size categories.</p>
+
+<p>To ensure the best possible display for fixed-sized apps and apps with limited
+support for various screen sizes, the platform also provides a new zoom
+compatibility mode that renders the UI on a smaller screen area, then scales it
+up to fill the space available on the display. For more information about the
+screen support API and the controls it provides, see the sections below. </p></li>
+</ul>
+
+
+<h2 id="api">API Overview</h2>
+
+<h3 id="usb">Screens Support APIs</h3>
+
+<p>Android 3.2 introduces new screens support APIs that give you more
+control over how their applications are displayed across different screen sizes.
+The API builds on the existing screens-support API, including the platform's
+generalized screen density model, but extends it with the ability to precisely
+target specific screen ranges by their dimensions, measured in
+density-independent pixel units (such as 600dp or 720dp wide), rather than
+by their generalized screen sizes (such as large or xlarge)</p>
+
+<p>When designing an application's UI, you can still rely on the platform to
+provide density abstraction, which means that applications do not need to
+compensate for the differences in actual pixel density across devices. You
+can design the application UI according to the amount of horizontal or vertical
+space available. The platform expresses the amount of space available using three new
+characteristics: <em>smallestWidth</em>, <em>width</em>, and
+<em>height</em>.</p>
+
+<ul>
+<li>A screen's <em>smallestWidth</em> is its fundamental minimum size,
+measured in density-independent pixel ("dp") units. Of the screen's height or
+width, it is the shorter of the two. For a screen in portrait orientation, the
+smallestWidth is normally based on its width, while in landscape orientation it is based
+on its height. In all cases, the smallestWidth is derived from a fixed characteristic of the
+screen and the value does not change, regardless of orientation. The smallestWidth
+is important for applications because it represents the shortest possible width
+in which the application UI will need to be drawn, not including screen areas
+reserved by the system.
+</li>
+
+<li>In contrast, a screen's <em>width</em> and <em>height</em> represent the
+current horizontal or vertical space available for application layout, measured
+in "dp" units, not including screen areas reserved by the system. The width and
+height of a screen change when the user switches orientation between landscape
+and portrait. </li>
+
+</ul>
+
+<p>The new screens support API is designed to let you manage application UI
+according to the smallestWidth of the current screen. You can also manage the
+UI according to current width or height, as needed. For those purposes, the API
+provides these tools:</p>
+
+<ul>
+<li>New resource qualifiers for targeting layouts and other resources to a
+minimum smallestWidth, width, or height, and</li> 
+<li>New manifest attributes, for specifying the app's maximum
+screen compatibility range</li>
+</ul>
+
+<p>Additionally, applications can still query the system and manage UI and
+resource loading at runtime, as in the previous versions of the platform.</p>
+
+<p>Since the new API lets you target screens more directly through smallestWidth,
+width, and height, it's helpful to understand the typical
+characteristics of the different screen types. The table below provides some
+examples, measured in "dp" units. </p>
+
+<p class="caption"><strong>Table 1.</strong> Typical devices, with density
+and size in dp.</p>
+
+<table>
+<tr>
+<th>Type</th>
+<th>Density (generalized)</th>
+<th>Dimensions (dp)</th>
+<th>smallestWidth (dp)</th>
+</tr>
+<tr>
+<td>Baseline phone</td>
+<td>mdpi</td>
+<td>320x480</td>
+<td>320</td>
+</td>
+<tr>
+<td>Small tablet/large phone</td>
+<td>mdpi</td>
+<td>480x800</td>
+<td>480</td>
+</tr>
+<tr>
+<td>7-inch tablet</td>
+<td>mdpi</td>
+<td>600x1024</td>
+<td>600</td>
+</tr>
+<tr>
+<td>10-inch tablet</td>
+<td>mdpi</td>
+<td>800x1280</td>
+<td>800</td>
+</tr>
+</table>
+
+<p>The sections below provide more information about the new screen qualifiers
+and manifest attributes. For complete information about how to use the screen
+support API, see <a
+href="../../guide/practices/screens_support.html">Supporting Multiple
+Screens</a>.</p>
+
+<h4>New resource qualifiers for screens support</h4>
+
+<p>The new resource qualifiers in Android 3.2 let you better target your layouts
+for ranges of screen sizes. Using the qualifiers, you can create resource
+configurations designed for a specific minimum smallestWidth, current width, or
+current height, measured in density-independent pixels.</p>
+
+<p>The new qualifiers are:</p>
+<ul>
+<li><code>swNNNdp</code> &mdash; Specifies the minimum smallestWidth on which
+the resource should be used, measured in "dp" units. As mentioned above, a
+screen's smallestWidth is constant, regardless of orientation. Examples:
+<code>sw320dp</code>, <code>sw720dp</code>, <code>sw720dp</code>.</li>
+
+<li><code>wNNNdp</code> and <code>hNNNdp</code> &mdash; Specifies the minimum 
+width or height on which the resource should be used, measured in "dp" units. As
+mentioned above, a screen's width and height are relative to the orientation of
+the screen and change whenever the orientation changes. Examples:
+<code>w320dp</code>, <code>w720dp</code>, <code>h1024dp</code>.</p></li>
+</ul>
+
+<p>You can also create multiple overlapping resource configurations if needed.
+For example, you could tag some resources for use on any screen wider than 480
+dp, others for wider than 600  dp, and others for wider than 720 dp. When
+multiple resource configurations are qualified for a given screen, the system
+selects the configuration that is the closest match. For precise control over
+which resources are loaded on a given screen, you can tag resources with one
+qualifier or combine several new or existing qualifiers. 
+
+<p>Based on the typical dimensions listed earlier, here are some examples of how
+you could use the new qualifiers:</p>
+
+<pre class="classic prettyprint">res/layout/main_activity.xml   # For phones
+res/layout-sw600dp/main_activity.xml   # For 7” tablets
+res/layout-sw720dp/main_activity.xml   # For 10” tablets
+res/layout-w600dp/main_activity.xml   # Multi-pane when enough width
+res/layout-sw600dp-w720dp/main_activity.xml   # For large width</pre>
+
+<p>Older versions of the platform will ignore the new qualifiers, so you can
+mix them as needed to ensure that your app looks great on any device. Here
+are some examples:</p>
+
+<pre class="classic prettyprint">res/layout/main_activity.xml   # For phones
+res/layout-xlarge/main_activity.xml   # For pre-3.2 tablets
+res/layout-sw600dp/main_activity.xml   # For 3.2 and up tablets</pre>
+
+<p>For complete information about how to use the new qualifiers, see <a href="../../guide/practices/screens_support.html#NewQualifiers">Using new
+size qualifiers</a>.</p>
+
+<h4>New manifest attributes for screen-size compatibility</h4>
+
+<p>The framework offers a new set of <a
+href="../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> manifest attributes that let
+you manage your app's support for different screen sizess.
+Specifically, you can specify the largest and smallest screens on which your app
+is designed to run, as well as the largest screen on which it is designed run
+without needing the system's new <a href="../../guide/practices/screen-compat-mode.html">screen
+compatibility mode</a>. Like the resource qualifiers described above, the new
+manifest attributes specify the range of screens that the application supports,
+as specified by the smallestWidth. </p>
+
+<p>The new manifest attributes for screen support are: </p>
+
+<ul>
+<li><code>android:compatibleWidthLimitDp="<em>numDp"</em></code> &mdash; This
+attribute lets you specify the maximum smallestWidth on which the application
+can run without needing compatibility mode. If the current screen is larger than
+the value specified, the system displays the application in normal mode but
+allows the user to optionally switch to compatibility mode through a setting in
+the system bar.</li>
+
+<li><code>android:largestWidthLimitDp="<em>numDp</em>"</code> &mdash; This
+attribute lets you specify the maximum smallestWidth on which the application
+is designed to run.  If the current screen is larger than the value specified,
+the system forces the application into screen compatibility mode, to ensure best
+display on the current screen.</li>
+
+<li><code>android:requiresSmallestWidthDp="<em>numDp"</em></code> &mdash; This
+attribute lets you specify the minimum smallestWidth on which the application
+can run. If the current screen is smaller than the value specified, the system
+considers the application incompatible with the device, but does not prevent it
+from being installed and run.</li>
+</ul>
+
+<p class="note"><strong>Note:</strong> Google Play does not currently filter
+apps based on any of the attributes above. Support for filtering will be
+added in a later platform release. Applications that require
+filtering based on screen size can use the existing <code>&lt;supports-screens&gt;</code>
+attributes.</p>
+
+<p>For complete information about how to use the new attributes, see <a href="../../guide/practices/screens_support.html#DeclaringScreenSizeSupport">Declaring
+screen size support</a>.</p>
+
+<h4>Screen compatibility mode</h4>
+
+<p>Android 3.2 provides a new screen compatibility mode for applications
+explicitly declaring that they do not support screens as large as the one on
+which they are running. This new "zoom" mode is a pixel-scaled &mdash; it
+renders the application in a smaller screen area and then scales the pixels to
+fill the current screen.</p>
+
+<p>By default, the system offers screen compatibility mode as an user option, for apps
+that require it. Users can turn the zoom mode on and off using a control available
+in the system bar. </p>
+
+<p>Because the new screen compatibility mode may not be appropriate for all
+applications, the platform allows the application to disable it using manifest
+attributes. When disabled by the app, the system does not offer "zoom" compatibility
+mode as an option for users when the app is running.</p>
+
+<p class="note"><strong>Note:</strong> For important information about how
+to control compatibility mode in your applications, please review the <a
+href="http://android-developers.blogspot.com/2011/07/new-mode-for-apps-on-large-
+screens.html">New Mode for Apps on Large Screens</a> article on the Android
+Developers Blog. </p>
+
+<h4>New screen density for 720p televisions and similar devices</h4>
+
+<p>To meet the needs of applications running on 720p televisions or similar with
+moderate density screens, Android 3.2 introduces a new generalized density,
+<code>tvdpi</code>, with an approximate dpi of 213. Applications can query for
+the new density in <code><a href="../../reference/android/util/DisplayMetrics.html#densityDpi">densityDpi</a></code> and can use
+the new <code>tvdpi</code> qualifier to tag resources for televisions and
+similar devices. For example:</p>
+
+<pre class="classic prettyprint">res/drawable-tvdpi/my_icon.png   # Bitmap for tv density</pre>
+
+<p>In general, applications should not need to work with this density. For situations
+where output is needed for a 720p screen, the UI elements can be scaled
+automatically by the platform.</p>
+
+
+<h3 id="ui" style="margin-top:1.25em;">UI framework</h3>
+<ul>
+<li>Fragments
+  <ul>
+    <li>New <code><a href="../../reference/android/app/Fragment.SavedState.html">Fragment.SavedState</a></code> class holds the state
+    information retrieved from a fragment instance through
+    <code><a href="../../reference/android/app/FragmentManager.html#saveFragmentInstanceState(android.app.Fragment)">saveFragmentInstanceState()</a></code>.</li>
+    <li>New method <code><a href="../../reference/android/app/FragmentManager.html#saveFragmentInstanceState(android.app.Fragment)">saveFragmentInstanceState()</a></code>
+    saves the current instance state of
+    the given Fragment. The state can be used later when creating a new instance
+    of the Fragment that matches the current state.</li>
+    <li>New method <code><a href="../../reference/android/app/Fragment.html#setInitialSavedState(android.app.Fragment.SavedState)">setInitialSavedState()</a></code>
+    sets the initial saved state for a Fragment when first constructed.</li>
+    <li>New <code><a href="../../reference/android/app/Fragment.html#onViewCreated(android.view.View, android.os.Bundle)">onViewCreated()</a></code> callback method notifies the Fragment that
+    <code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code>
+    has returned, but before any saved state has been restored in to the View.</li>
+    <li><code><a href="../../reference/android/app/Fragment.html#isDetached()">isDetached()</a></code> method determines whether
+    the Fragment has been explicitly detached from the UI.</li>
+    <li>New <code><a href="../../reference/android/app/FragmentTransaction.html#attach(android.app.Fragment)">attach()</a></code>
+    and <code><a href="../../reference/android/app/FragmentTransaction.html#detach(android.app.Fragment)">detach()</a></code>
+    methods let an application re-attach or detach fragments in the UI.</li>
+    <li>A new <code><a href="../../reference/android/app/FragmentTransaction.html#setCustomAnimations(int, int, int, int)">setCustomAnimations()</a></code> overload method lets you set specific animation
+    resources to run for enter/exit operations and specifically when
+    popping the back stack. The existing implementation does not account
+    for the different behavior of fragments when popping the back stack.</li>
+  </ul>
+</li>
+<li>Screen size information in ActivityInfo and ApplicationInfo
+  <ul>
+    <li><code><a href="../../reference/android/content/pm/ActivityInfo.html">ActivityInfo</a></code> adds <code><a href="../../reference/android/content/pm/ActivityInfo.html#CONFIG_SCREEN_SIZE">CONFIG_SCREEN_SIZE</a></code>
+    and <code><a href="../../reference/android/content/pm/ActivityInfo.html#CONFIG_SMALLEST_SCREEN_SIZE">CONFIG_SMALLEST_SCREEN_SIZE</a></code> as bit masks
+    in <code><a href="../../reference/android/R.attr.html#configChanges">configChanges</a></code>. The bits indicate whether an Activity can
+    itself handle the screen size and smallest screen size.</li>
+    <li><code><a href="../../reference/android/content/pm/ApplicationInfo.html">ApplicationInfo</a></code> adds
+    <code><a href="../../reference/android/content/pm/ApplicationInfo.html#largestWidthLimitDp">largestWidthLimitDp</a></code>, <code><a href="../../reference/android/content/pm/ApplicationInfo.html#compatibleWidthLimitDp">compatibleWidthLimitDp</a></code>,
+    and <code><a href="../../reference/android/content/pm/ApplicationInfo.html#requiresSmallestWidthDp">requiresSmallestWidthDp</a></code> fields,
+    derived from the corresponding <code>&lt;supports-screens&gt;</code> attributes
+    in the application manifest file.</li>
+  </ul>
+</li>
+<li>Helpers for getting display size from WindowManager
+  <ul>
+    <li>New methods <code><a href="../../reference/android/view/Display.html#getSize(android.graphics.Point)">getSize()</a></code> and <code><a href="../../reference/android/view/Display.html#getRectSize(android.graphics.Rect)">getRectSize()</a></code> let applications get the raw size of the display.</li>
+  </ul>
+</li>
+<li>New public "holographic" styles
+  <ul>
+    <li>The platform now exposes a variety of public "holographic" styles
+    for text, actionbar widgets and tabs, and more. See
+    <code><a href="../../reference/android/R.style.html">R.style</a></code> for a full list.</li>
+  </ul>
+</li>
+<li><code><a href="../../reference/android/app/LocalActivityManager.html">LocalActivityManager</a></code>, <code><a href="../../reference/android/app/ActivityGroup.html">ActivityGroup</a></code>, and
+    <code><a href="../../reference/android/app/LocalActivityManager.html">LocalActivityManager</a></code> are now deprecated
+  <ul>
+    <li>New applications should use Fragments instead of these classes. To
+    continue to run on older versions of the platform, you can use the v4 Support
+    Library (compatibility library), available in the Android SDK. The v4 Support
+    Library provides a version of the Fragment API that is compatible down to
+    Android 1.6 (API level 4).
+    <li>For apps developing against Android 3.0 (API level
+    11) or higher, tabs are typically presented in the UI using the new
+    <code><a href="../../reference/android/app/ActionBar.html#newTab()">ActionBar.newTab()</a></code> and related APIs
+    for placing tabs within their action bar area.</p></li>
+  </ul>
+</li>
+</ul>
+
+<h3 id="media" style="margin-top:1em;">Media framework</h3>
+<ul>
+    <li>Applications that use the platform's media provider (<code><a href="../../reference/android/provider/MediaStore.html">MediaStore</a></code>) can now read media data directly from the
+    removeable SD card, where supported by the device. Applications can also
+    interact with the SD card files directly, using the MTP API. </li>
+
+</ul>
+<h3 id="graphics" style="margin-top:1.25em;">Graphics</h3>
+<ul>
+<li>Parcelable utilities in Point and PointF
+  <ul>
+    <li><code><a href="../../reference/android/graphics/Point.html">Point</a></code> and <code><a href="../../reference/android/graphics/PointF.html">PointF</a></code>
+    classes now include the <code><a href="../../reference/android/os/Parcelable.html">Parcelable</a></code> interface and utility methods <code><a href="../../reference/android/graphics/Point.html#describeContents()">describeContents()</a></code>, <code><a href="../../reference/android/graphics/Point.html#readFromParcel(android.os.Parcel)">readFromParcel()</a></code>, and <code><a href="../../reference/android/graphics/Point.html#writeToParcel(android.os.Parcel, int)">writeToParcel()</a></code>.</li>
+  </ul>
+</li>
+</ul>
+
+
+<h3 id="ime" style="margin-top:1.25em;">IME framework</h3>
+<ul>
+    <li>New <code><a href="../../reference/android/view/KeyEvent.html#getModifiers()">getModifiers()</a></code> method for
+    retrieving the current state of the modifier keys.</li>
+</ul>
+
+
+<h3 id="usb" style="margin-top:1.25em;">USB framework</h3>
+<ul>
+    <li>New <code><a href="../../reference/android/hardware/usb/UsbDeviceConnection.html#getRawDescriptors()">getRawDescriptors()</a></code> method for
+    retrieving the raw USB descriptors for the device. You can use the
+    method to access descriptors not supported directly via the higher
+    level APIs.</li>
+</ul>
+
+
+<h3 id="network" style="margin-top:1.25em;">Network</h3>
+<ul>
+<li>Network type constants
+   <ul>
+     <li><code><a href="../../reference/android/net/ConnectivityManager.html">ConnectivityManager</a></code> adds the constants <code><a href="../../reference/android/net/ConnectivityManager.html#TYPE_ETHERNET">TYPE_ETHERNET</a></code> and <code><a href="../../reference/android/net/ConnectivityManager.html#TYPE_BLUETOOTH">TYPE_BLUETOOTH</a></code>.</li>
+  </ul>
+</li>
+</ul>
+
+
+<h3 id="telephony" style="margin-top:1.25em;">Telephony</h3>
+<ul>
+    <li>New <code><a href="../../reference/android/telephony/TelephonyManager.html#NETWORK_TYPE_HSPAP">NETWORK_TYPE_HSPAP</a></code> network type constant.</li>
+</ul>
+
+<h3 id="other" style="margin-top:1.25em;">Core utilities</h3>
+<ul>
+<li>Parcelable utilities
+  <ul>
+    <li>New interface <code><a href="../../reference/android/os/Parcelable.ClassLoaderCreator.html">Parcelable.ClassLoaderCreator</a></code> allows
+    the application to receive the ClassLoader in which the object is being created.</li>
+    <li>New <code><a href="../../reference/android/os/ParcelFileDescriptor.html#adoptFd(int)">adoptFd</a></code>, <code><a href="../../reference/android/os/ParcelFileDescriptor.html#dup(java.io.FileDescriptor)">dup()</a></code>, and <code><a href="../../reference/android/os/ParcelFileDescriptor.html#fromFd(int)">fromFd()</a></code> for managing
+    <code><a href="../../reference/android/os/ParcelFileDescriptor.html">ParcelFileDescriptor</a></code> objects.</li>
+  </ul>
+</li>
+<li>Binder and IBinder
+  <ul>
+    <li>New method <code><a href="../../reference/android/os/Binder.html#dumpAsync(java.io.FileDescriptor, java.lang.String[])">dumpAsync()</a></code>
+    in <code><a href="../../reference/android/os/Binder.html">Binder</a></code> and <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> let applications
+    dump to a specified file, ensuring that the target executes asynchronously.</li>
+    <li>New <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> protocol transaction code <code><a href="../../reference/android/os/IBinder.html#TWEET_TRANSACTION">TWEET_TRANSACTION</a></code> lets applications send a tweet
+    to the target object.</li>
+  </ul>
+</li>
+</ul>
+
+
+
+
+<h3 id="features">New feature constants</h3>
+
+<p>The platform adds new hardware feature constants that you can declare
+in their application manifests, to inform external entities such as Google
+Play of required hardware and software capabilities. You declare these
+and other feature constants in <a
+href="../../guide/topics/manifest/uses-feature-element.html"><code>&lt;uses-feature&gt;</code></a> manifest elements.
+
+<p>Google Play filters applications based on their <code>&lt;uses-feature&gt;</code> attributes, to ensure that they are available only to devices on which their requirements are met. </p>
+
+<ul>
+<li>Feature constants for landscape or portrait requirements
+
+<p>Android 3.2 introduces new feature constants that let applications specify whether they require display in landscape orientation, portrait orientation, or both. Declaring these constants indicates that the application must not be installed on a device that doesn't offer the associated orientation. Conversely, if one or both of the constants are not declared, it indicates that the application does not have a preference for the undeclared orientations and may be installed on a device that doesn't offer them. </p>
+
+<ul>
+  <li><code><a href="../../reference/android/content/pm/PackageManager.html#FEATURE_SCREEN_LANDSCAPE">android.hardware.screen.landscape</a></code> &mdash; The application requires display in
+landscape orientation.</li>
+  <li><code><a href="../../reference/android/content/pm/PackageManager.html#FEATURE_SCREEN_PORTRAIT">android.hardware.screen.portrait</a></code> &mdash; The application requires display in
+portrait orientation.</li>
+</ul>
+
+<p>A typical application that functions properly in both landscape and portrait orientations would not normally need to declare an orientation requirement. Rather, an application designed primarily for one orientation, such as an app designed for a television, could declare one of the constants to ensure that it isn't available to devices that don't provide that orientation.</p>
+
+<p>If any of activities declared in the manifest request that they run in a specific orientation,
+using the <a href="../../guide/topics/manifest/activity-element.html#screen"><code>android:screenOrientation</code></a> attribute, then this also declares that the application
+requires that orientation.</p>
+
+</li>
+<li>Other feature constants
+
+<ul>
+  <li><code><a href="../../reference/android/content/pm/PackageManager.html#FEATURE_FAKETOUCH_MULTITOUCH_DISTINCT">android.hardware.faketouch.multitouch.distinct</a></code> &mdash; The application requires support for emulated mulitouch input with distinct tracking of two or more points.</li>
+
+  <li><code><a href="../../reference/android/content/pm/PackageManager.html#FEATURE_FAKETOUCH_MULTITOUCH_JAZZHAND">android.hardware.faketouch.multitouch.jazzhand</a></code> &mdash; The application requires support for emulated mulitouch input with distinct tracking of five or more points.</li>
+</ul>
+
+</li>
+</ul>
+
+
+<h3 id="api-diff">API Differences Report</h3>
+
+<p>For a detailed view of all API changes in Android 3.2 (API
+Level
+13), see the <a
+href="../../sdk/api_diff/13/changes.html">API
+Differences Report</a>.</p>
+
+
+
+
+
+<h2 id="api-level">API Level</h2>
+
+<p>The Android 3.2 platform delivers an updated version of
+the framework API. The Android 3.2 API
+is assigned an integer identifier &mdash;
+<strong>13</strong> &mdash; that is
+stored in the system itself. This identifier, called the "API Level", allows the
+system to correctly determine whether an application is compatible with
+the system, prior to installing the application. </p>
+
+<p>To use APIs introduced in Android 3.2 in your application,
+you need compile the application against the Android library that is provided in
+the Android 3.2 SDK platform. Depending on your needs, you
+might
+also need to add an <code>android:minSdkVersion="13"</code>
+attribute to the <code>&lt;uses-sdk&gt;</code> element in the application's
+manifest.</p>
+
+<p>For more information, read <a href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">What is API
+Level?</a></p>
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

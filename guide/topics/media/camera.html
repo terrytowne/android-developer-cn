@@ -1,0 +1,2496 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Camera | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Camera</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+  <h2>In this document</h2>
+  <ol>
+    <li><a href="#considerations">Considerations</a></li>
+    <li><a href="#basics">The Basics</a>
+    <li><a href="#manifest">Manifest Declarations</a></li>
+    <li><a href="#intents">Using Existing Camera Apps</a>
+      <ol>
+        <li><a href="#intent-image">Image capture intent</a></li>
+        <li><a href="#intent-video">Video capture intent</a></li>
+        <li><a href="#intent-receive">Receiving camera intent result</a></li>
+      </ol>
+    <li><a href="#custom-camera">Building a Camera App</a>
+      <ol>
+        <li><a href="#detect-camera">Detecting camera hardware</a></li>
+        <li><a href="#access-camera">Accessing cameras</a></li>
+        <li><a href="#check-camera-features">Checking camera features</a></li>
+        <li><a href="#camera-preview">Creating a preview class</a></li>
+        <li><a href="#preview-layout">Placing preview in a layout</a></li>
+        <li><a href="#capture-picture">Capturing pictures</a></li>
+        <li><a href="#capture-video">Capturing videos</a></li>
+        <li><a href="#release-camera">Releasing the camera</a></li>
+      </ol>
+    </li>
+    <li><a href="#saving-media">Saving Media Files</a></li>
+    <li><a href="#camera-features">Camera Features</a>
+      <ol>
+        <li><a href="#check-feature">Checking feature availability</a></li>
+        <li><a href="#using-features">Using camera features</a></li>
+        <li><a href="#metering-focus-areas">Metering and focus areas</a></li>
+        <li><a href="#face-detection">Face detection</a></li>
+        <li><a href="#time-lapse-video">Time lapse video</a></li>
+      </ol>
+    </li>
+  </ol>
+  <h2>Key Classes</h2>
+  <ol>
+    <li><code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code></li>
+    <li><code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code></li>
+    <li><code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code></li>
+    <li><code><a href="../../../reference/android/content/Intent.html">Intent</a></code></li>
+  </ol>
+  <h2>See also</h2>
+  <ol>
+    <li><a href="../../../guide/topics/media/mediaplayer.html">Media Playback</a></li>
+    <li><a href="../../../guide/topics/data/data-storage.html">Data Storage</a></li>
+  </ol>
+  </div>
+</div>
+
+
+<p>The Android framework includes support for various cameras and camera features available on
+devices, allowing you to capture pictures and videos in your applications. This document discusses a
+quick, simple approach to image and video capture and outlines an advanced approach for creating
+custom camera experiences for your users.</p>
+
+<h2 id="considerations">Considerations</h2>
+<p>Before enabling your application to use cameras on Android devices, you should consider a few
+questions about how your app intends to use this hardware feature.</p>
+
+<ul>
+  <li><strong>Camera Requirement</strong> - Is the use of a camera so important to your
+application that you do not want your application installed on a device that does not have a
+camera? If so, you should declare the <a href="#manifest">camera requirement in your
+manifest</a>.</li>
+
+  <li><strong>Quick Picture or Customized Camera</strong> - How will your application use the
+camera? Are you just interested in snapping a quick picture or video clip, or will your application
+provide a new way to use cameras? For a getting a quick snap or clip, consider
+<a href="#intents">Using Existing Camera Apps</a>. For developing a customized camera feature, check
+out the <a href="#custom-camera">Building a Camera App</a> section.</li>
+
+  <li><strong>Storage</strong> - Are the images or videos your application generates intended to be
+only visible to your application or shared so that other applications such as Gallery or other
+media and social apps can use them? Do you want the pictures and videos to be available even if your
+application is uninstalled? Check out the <a href="#saving-media">Saving Media Files</a> section to
+see how to implement these options.</li>
+</ul>
+
+
+
+<h2 id="basics">The Basics</h2>
+<p>The Android framework supports capturing images and video through the
+<code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code> API or camera <code><a href="../../../reference/android/content/Intent.html">Intent</a></code>. Here are the relevant
+classes:</p>
+
+<dl>
+  <dt><code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code></dt>
+  <dd>This class is the primary API for controlling device cameras. This class is used to take
+pictures or videos when you are building a camera application.</dd>
+
+  <dt><code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code></dt>
+  <dd>This class is used to present a live camera preview to the user.</dd>
+
+  <dt><code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code></dt>
+  <dd>This class is used to record video from the camera.</dd>
+
+  <dt><code><a href="../../../reference/android/content/Intent.html">Intent</a></code></dt>
+  <dd>An intent action type of <code><a href="../../../reference/android/provider/MediaStore.html#ACTION_IMAGE_CAPTURE">MediaStore.ACTION_IMAGE_CAPTURE</a></code> or <code><a href="../../../reference/android/provider/MediaStore.html#ACTION_VIDEO_CAPTURE">MediaStore.ACTION_VIDEO_CAPTURE</a></code> can be used to capture images or videos without directly
+using the <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code> object.</dd>
+</dl>
+
+
+<h2 id="manifest">Manifest Declarations</h2>
+<p>Before starting development on your application with the Camera API, you should make sure
+your manifest has the appropriate declarations to allow use of camera hardware and other
+related features.</p>
+
+<ul>
+  <li><strong>Camera Permission</strong> - Your application must request permission to use a device
+camera.
+<pre>
+&lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;
+</pre>
+  <p class="note"><strong>Note:</strong> If you are using the camera <a href="#intents">via an
+intent</a>, your application does not need to request this permission.</p>
+  </li>
+  <li><strong>Camera Features</strong> - Your application must also declare use of camera features,
+for example:
+<pre>
+&lt;uses-feature android:name=&quot;android.hardware.camera&quot; /&gt;
+</pre>
+  <p>For a list of camera features, see the manifest
+<a href="../../../guide/topics/manifest/uses-feature-element.html#hw-features">Features
+Reference</a>.</p>
+  <p>Adding camera features to your manifest causes Google Play to prevent your application from
+being installed to devices that do not include a camera or do not support the camera features you
+specify. For more information about using feature-based filtering with Google Play, see <a
+href="../../../guide/topics/manifest/uses-feature-element.html#market-feature-filtering">Google
+Play and Feature-Based Filtering</a>.</p>
+  <p>If your application <em>can use</em> a camera or camera feature for proper operation, but does
+not <em>require</em> it, you should specify this in the manifest by including the <code>android:required</code> attribute, and setting it to <code>false</code>:</p>
+<pre>
+&lt;uses-feature android:name="android.hardware.camera" android:required="false" /&gt;
+</pre>
+
+  </li>
+  <li><strong>Storage Permission</strong> - If your application saves images or videos to the
+device's external storage (SD Card), you must also specify this in the manifest.
+<pre>
+&lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+</pre>
+  </li>
+  <li><strong>Audio Recording Permission</strong> - For recording audio with video capture, your
+application must request the audio capture permission.
+<pre>
+&lt;uses-permission android:name="android.permission.RECORD_AUDIO" /&gt;
+</pre>
+  </li>
+  <li><strong>Location Permission</strong> - If your application tags images with GPS location
+information, you must request location permission:
+<pre>
+&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+</pre>
+<p>For more information about getting user location, see
+<a href="../../../guide/topics/location/strategies.html">Location Strategies</a>.</p>
+  </li>
+</ul>
+
+
+<h2 id="intents">Using Existing Camera Apps</h2>
+<p>A quick way to enable taking pictures or videos in your application without a lot of extra code
+is to use an <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> to invoke an existing Android camera application. A
+camera intent makes a request to capture a picture or video clip through an existing camera app and
+then returns control back to your application. This section shows you how to capture an image or
+video using this technique.</p>
+
+<p>The procedure for invoking a camera intent follows these general steps:</p>
+
+<ol>
+  <li><strong>Compose a Camera Intent</strong> - Create an <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> that
+requests an image or video, using one of these intent types:
+    <ul>
+      <li><code><a href="../../../reference/android/provider/MediaStore.html#ACTION_IMAGE_CAPTURE">MediaStore.ACTION_IMAGE_CAPTURE</a></code> -
+Intent action type for requesting an image from an existing camera application.</li>
+      <li><code><a href="../../../reference/android/provider/MediaStore.html#ACTION_VIDEO_CAPTURE">MediaStore.ACTION_VIDEO_CAPTURE</a></code> -
+Intent action type for requesting a video from an existing camera application. </li>
+    </ul>
+  </li>
+  <li><strong>Start the Camera Intent</strong> - Use the <code><a href="../../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code>
+method to execute the camera intent. After you start the intent, the Camera application user
+interface appears on the device screen and the user can take a picture or video.</li>
+  <li><strong>Receive the Intent Result</strong> - Set up an <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> method
+in your application to receive the callback and data from the camera intent. When the user
+finishes taking a picture or video (or cancels the operation), the system calls this method.</li>
+</ol>
+
+
+<h3 id="intent-image">Image capture intent</h3>
+<p>Capturing images using a camera intent is quick way to enable your application to take pictures
+with minimal coding. An image capture intent can include the following extra information:</p>
+
+<ul>
+  <li><code><a href="../../../reference/android/provider/MediaStore.html#EXTRA_OUTPUT">MediaStore.EXTRA_OUTPUT</a></code> - This setting
+requires a <code><a href="../../../reference/android/net/Uri.html">Uri</a></code> object specifying a path and file name where you'd like to
+save the picture. This setting is optional but strongly recommended. If you do not specify this
+value, the camera application saves the requested picture in the default location with a default
+name, specified in the returned intent's <code><a href="../../../reference/android/content/Intent.html#getData()">Intent.getData()</a></code>
+field.</li>
+</ul>
+
+<p>The following example demonstrates how to construct a image capture intent and execute it.
+The <code>getOutputMediaFileUri()</code> method in this example refers to the sample code shown in <a
+href= "#saving-media">Saving Media Files</a>.</p>
+
+<pre>
+private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+private Uri fileUri;
+
+&#64;Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+
+    // create Intent to take a picture and return control to the calling application
+    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+    fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
+    intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
+
+    // start the image capture Intent
+    startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+}
+</pre>
+
+<p>When the <code><a href="../../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code> method is executed, users see a camera application interface.
+After the user finishes taking a picture (or cancels the operation), the user interface returns to
+your application, and you must intercept the <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code>
+method to receive the result of the intent and continue your application execution. For information
+on how to receive the completed intent, see <a href="#intent-receive">Receiving camera intent
+result</a>.</p>
+
+
+<h3 id="intent-video">Video capture intent</h3>
+<p>Capturing video using a camera intent is a quick way to enable your application to take videos
+with minimal coding. A video capture intent can include the following extra information:</p>
+
+<ul>
+  <li><code><a href="../../../reference/android/provider/MediaStore.html#EXTRA_OUTPUT">MediaStore.EXTRA_OUTPUT</a></code> - This setting
+requires a <code><a href="../../../reference/android/net/Uri.html">Uri</a></code> specifying a path and file name where you'd like to save the
+video. This setting is optional but strongly recommended. If you do not specify this value, the
+Camera application saves the requested video in the default location with a default name, specified
+in the returned intent's <code><a href="../../../reference/android/content/Intent.html#getData()">Intent.getData()</a></code> field.</li>
+  <li><code><a href="../../../reference/android/provider/MediaStore.html#EXTRA_VIDEO_QUALITY">MediaStore.EXTRA_VIDEO_QUALITY</a></code> -
+This value can be 0 for lowest quality and smallest file size or 1 for highest quality and
+larger file size.</li>
+  <li><code><a href="../../../reference/android/provider/MediaStore.html#EXTRA_DURATION_LIMIT">MediaStore.EXTRA_DURATION_LIMIT</a></code> -
+Set this value to limit the length, in seconds, of the video being captured.</li>
+  <li><code><a href="../../../reference/android/provider/MediaStore.html#EXTRA_SIZE_LIMIT">MediaStore.EXTRA_SIZE_LIMIT</a></code> -
+Set this value to limit the file size, in bytes, of the video being captured.
+</li>
+</ul>
+
+<p>The following example demonstrates how to construct a video capture intent and execute it.
+The <code>getOutputMediaFileUri()</code> method in this example refers to the sample code shown in <a
+href= "#saving-media">Saving Media Files</a>.</p>
+
+<pre>
+private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
+private Uri fileUri;
+
+&#64;Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main);
+
+    //create new Intent
+    Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+
+    fileUri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);  // create a file to save the video
+    intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);  // set the image file name
+
+    intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1); // set the video image quality to high
+
+    // start the Video Capture Intent
+    startActivityForResult(intent, CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE);
+}
+</pre>
+
+<p>When the <code><a href="../../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code> method is executed, users see a modified camera application interface.
+After the user finishes taking a video (or cancels the operation), the user interface
+returns to your application, and you must intercept the <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code>
+method to receive the result of the intent and continue your application execution. For information
+on how to receive the completed intent, see the next section.</p>
+
+<h3 id="intent-receive">Receiving camera intent result</h3>
+<p>Once you have constructed and executed an image or video camera intent, your application must be
+configured to receive the result of the intent. This section shows you how to intercept the callback
+from a camera intent so your application can do further processing of the captured image or
+video.</p>
+
+<p>In order to receive the result of an intent, you must override the <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> in the
+activity that started the intent. The following example demonstrates how to override <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> to
+capture the result of the <a href="#intent-image">image camera intent</a> or <a
+href="#intent-video">video camera intent</a> examples shown in the previous sections.</p>
+
+<pre>
+private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+private static final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
+
+&#64;Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+        if (resultCode == RESULT_OK) {
+            // Image captured and saved to fileUri specified in the Intent
+            Toast.makeText(this, "Image saved to:\n" +
+                     data.getData(), Toast.LENGTH_LONG).show();
+        } else if (resultCode == RESULT_CANCELED) {
+            // User cancelled the image capture
+        } else {
+            // Image capture failed, advise user
+        }
+    }
+
+    if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE) {
+        if (resultCode == RESULT_OK) {
+            // Video captured and saved to fileUri specified in the Intent
+            Toast.makeText(this, "Video saved to:\n" +
+                     data.getData(), Toast.LENGTH_LONG).show();
+        } else if (resultCode == RESULT_CANCELED) {
+            // User cancelled the video capture
+        } else {
+            // Video capture failed, advise user
+        }
+    }
+}
+</pre>
+
+<p>Once your activity receives a successful result, the captured image or video is available in the
+specified location for your application to access.</p>
+
+
+
+<h2 id="custom-camera">Building a Camera App</h2>
+<p>Some developers may require a camera user interface that is customized to the look of their
+application or provides special features. Creating a customized camera activity requires more
+code than <a href="#intents">using an intent</a>, but it can provide a more compelling experience
+for your users.</p>
+
+<p>The general steps for creating a custom camera interface for your application are as follows:</p>
+
+<ul>
+   <li><strong>Detect and Access Camera</strong> - Create code to check for the existence of
+cameras and request access.</li>
+   <li><strong>Create a Preview Class</strong> - Create a camera preview class that extends <code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code> and implements the <code><a href="../../../reference/android/view/SurfaceHolder.html">SurfaceHolder</a></code> interface. This
+class previews the live images from the camera.</li>
+   <li><strong>Build a Preview Layout</strong> - Once you have the camera preview class, create a
+view layout that incorporates the preview and the user interface controls you want.</li>
+   <li><strong>Setup Listeners for Capture</strong> - Connect listeners for your interface
+controls to start image or video capture in response to user actions, such as pressing a
+button.</li>
+   <li><strong>Capture and Save Files</strong> - Setup the code for capturing pictures or
+videos and saving the output.</li>
+   <li><strong>Release the Camera</strong> - After using the camera, your application must
+properly release it for use by other applications.</li>
+</ul>
+
+<p>Camera hardware is a shared resource that must be carefully managed so your application does
+not collide with other applications that may also want to use it. The following sections discusses
+how to detect camera hardware, how to request access to a camera, how to capture pictures or video
+and how to release the camera when your application is done using it.</p>
+
+<p class="caution"><strong>Caution:</strong> Remember to release the <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code>
+object by calling the <code><a href="../../../reference/android/hardware/Camera.html#release()">Camera.release()</a></code> when your
+application is done using it! If your application does not properly release the camera, all
+subsequent attempts to access the camera, including those by your own application, will fail and may
+cause your or other applications to be shut down.</p>
+
+
+<h3 id="detect-camera">Detecting camera hardware</h3>
+<p>If your application does not specifically require a camera using a manifest declaration, you
+should check to see if a camera is available at runtime. To perform this check, use the <code><a href="../../../reference/android/content/pm/PackageManager.html#hasSystemFeature(java.lang.String)">PackageManager.hasSystemFeature()</a></code> method, as shown in the example code below:</p>
+
+<pre>
+/** Check if this device has a camera */
+private boolean checkCameraHardware(Context context) {
+    if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
+        // this device has a camera
+        return true;
+    } else {
+        // no camera on this device
+        return false;
+    }
+}
+</pre>
+
+<p>Android devices can have multiple cameras, for example a back-facing camera for photography and a
+front-facing camera for video calls. Android 2.3 (API Level 9) and later allows you to check the
+number of cameras available on a device using the <code><a href="../../../reference/android/hardware/Camera.html#getNumberOfCameras()">Camera.getNumberOfCameras()</a></code> method.</p>
+
+<h3 id="access-camera">Accessing cameras</h3>
+<p>If you have determined that the device on which your application is running has a camera, you
+must request to access it by getting an instance of <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code> (unless you
+are using an <a href="#intents">intent to access the camera</a>). </p>
+
+<p>To access the primary camera, use the <code><a href="../../../reference/android/hardware/Camera.html#open()">Camera.open()</a></code> method
+and be sure to catch any exceptions, as shown in the code below:</p>
+
+<pre>
+/** A safe way to get an instance of the Camera object. */
+public static Camera getCameraInstance(){
+    Camera c = null;
+    try {
+        c = Camera.open(); // attempt to get a Camera instance
+    }
+    catch (Exception e){
+        // Camera is not available (in use or does not exist)
+    }
+    return c; // returns null if camera is unavailable
+}
+</pre>
+
+<p class="caution"><strong>Caution:</strong> Always check for exceptions when using <code><a href="../../../reference/android/hardware/Camera.html#open()">Camera.open()</a></code>. Failing to check for exceptions if the camera is in
+use or does not exist will cause your application to be shut down by the system.</p>
+
+<p>On devices running Android 2.3 (API Level 9) or higher, you can access specific cameras using
+<code><a href="../../../reference/android/hardware/Camera.html#open(int)">Camera.open(int)</a></code>. The example code above will access
+the first, back-facing camera on a device with more than one camera.</p>
+
+<h3 id="check-camera-features">Checking camera features</h3>
+<p>Once you obtain access to a camera, you can get further information about its capabilities using
+the <code><a href="../../../reference/android/hardware/Camera.html#getParameters()">Camera.getParameters()</a></code> method and checking the
+returned <code><a href="../../../reference/android/hardware/Camera.Parameters.html">Camera.Parameters</a></code> object for supported capabilities. When using
+API Level 9 or higher, use the <code><a href="../../../reference/android/hardware/Camera.html#getCameraInfo(int, android.hardware.Camera.CameraInfo)">Camera.getCameraInfo()</a></code> to determine if a camera is on the front
+or back of the device, and the orientation of the image.</p>
+
+
+
+<h3 id="camera-preview">Creating a preview class</h3>
+<p>For users to effectively take pictures or video, they must be able to see what the device camera
+sees. A camera preview class is a <code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code> that can display the live image
+data coming from a camera, so users can frame and capture a picture or video.</p>
+
+<p>The following example code demonstrates how to create a basic camera preview class that can be
+included in a <code><a href="../../../reference/android/view/View.html">View</a></code> layout. This class implements <code><a href="../../../reference/android/view/SurfaceHolder.Callback.html">SurfaceHolder.Callback</a></code> in order to capture the callback events
+for creating and destroying the view, which are needed for assigning the camera preview input.</p>
+
+<pre>
+/** A basic Camera preview class */
+public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
+    private SurfaceHolder mHolder;
+    private Camera mCamera;
+
+    public CameraPreview(Context context, Camera camera) {
+        super(context);
+        mCamera = camera;
+
+        // Install a SurfaceHolder.Callback so we get notified when the
+        // underlying surface is created and destroyed.
+        mHolder = getHolder();
+        mHolder.addCallback(this);
+        // deprecated setting, but required on Android versions prior to 3.0
+        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+    }
+
+    public void surfaceCreated(SurfaceHolder holder) {
+        // The Surface has been created, now tell the camera where to draw the preview.
+        try {
+            mCamera.setPreviewDisplay(holder);
+            mCamera.startPreview();
+        } catch (IOException e) {
+            Log.d(TAG, "Error setting camera preview: " + e.getMessage());
+        }
+    }
+
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        // empty. Take care of releasing the Camera preview in your activity.
+    }
+
+    public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+        // If your preview can change or rotate, take care of those events here.
+        // Make sure to stop the preview before resizing or reformatting it.
+
+        if (mHolder.getSurface() == null){
+          // preview surface does not exist
+          return;
+        }
+
+        // stop preview before making changes
+        try {
+            mCamera.stopPreview();
+        } catch (Exception e){
+          // ignore: tried to stop a non-existent preview
+        }
+
+        // set preview size and make any resize, rotate or
+        // reformatting changes here
+
+        // start preview with new settings
+        try {
+            mCamera.setPreviewDisplay(mHolder);
+            mCamera.startPreview();
+
+        } catch (Exception e){
+            Log.d(TAG, "Error starting camera preview: " + e.getMessage());
+        }
+    }
+}
+</pre>
+
+<p>If you want to set a specific size for your camera preview, set this in the <code>surfaceChanged()</code> method as noted in the comments above. When setting preview size, you
+<em>must use</em> values from <code><a href="../../../reference/android/hardware/Camera.Parameters.html#getSupportedPreviewSizes()">getSupportedPreviewSizes()</a></code>.
+<em>Do not</em> set arbitrary values in the <code><a href="../../../reference/android/hardware/Camera.Parameters.html#setPreviewSize(int, int)">setPreviewSize()</a></code> method.</p>
+
+
+<h3 id="preview-layout">Placing preview in a layout</h3>
+<p>A camera preview class, such as the example shown in the previous section, must be placed in the
+layout of an activity along with other user interface controls for taking a picture or video. This
+section shows you how to build a basic layout and activity for the preview.</p>
+
+<p>The following layout code provides a very basic view that can be used to display a camera
+preview. In this example, the <code><a href="../../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> element is meant to be the
+container for the camera preview class. This layout type is used so that additional picture
+information or controls can be overlayed on the live camera preview images.</p>
+
+<pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;fill_parent&quot;
+    &gt;
+  &lt;FrameLayout
+    android:id=&quot;@+id/camera_preview&quot;
+    android:layout_width=&quot;fill_parent&quot;
+    android:layout_height=&quot;fill_parent&quot;
+    android:layout_weight=&quot;1&quot;
+    /&gt;
+
+  &lt;Button
+    android:id=&quot;@+id/button_capture&quot;
+    android:text=&quot;Capture&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_gravity=&quot;center&quot;
+    /&gt;
+&lt;/LinearLayout&gt;
+</pre>
+
+<p>On most devices, the default orientation of the camera preview is landscape. This example layout
+specifies a horizontal (landscape) layout and the code below fixes the orientation of the
+application to landscape. For simplicity in rendering a camera preview, you should change your
+application's preview activity orientation to landscape by adding the following to your
+manifest.</p>
+
+<pre>
+&lt;activity android:name=&quot;.CameraActivity&quot;
+          android:label=&quot;@string/app_name&quot;
+
+          android:screenOrientation=&quot;landscape&quot;&gt;
+          &lt;!-- configure this activity to use landscape orientation --&gt;
+
+          &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</pre>
+
+<p class="note"><strong>Note:</strong> A camera preview does not have to be in landscape mode.
+Starting in Android 2.2 (API Level 8), you can use the <code><a href="../../../reference/android/hardware/Camera.html#setDisplayOrientation(int)">setDisplayOrientation()</a></code> method to set the
+rotation of the preview image. In order to change preview orientation as the user re-orients the
+phone, within the <code><a href="../../../reference/android/view/SurfaceHolder.Callback.html#surfaceChanged(android.view.SurfaceHolder, int, int, int)">surfaceChanged()</a></code> method of your preview class, first stop the preview with <code><a href="../../../reference/android/hardware/Camera.html#stopPreview()">Camera.stopPreview()</a></code> change the orientation and then
+start the preview again with <code><a href="../../../reference/android/hardware/Camera.html#startPreview()">Camera.startPreview()</a></code>.</p>
+
+<p>In the activity for your camera view, add your preview class to the <code><a href="../../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> element shown in the example above. Your camera activity must also
+ensure that it releases the camera when it is paused or shut down. The following example shows how
+to modify a camera activity to attach the preview class shown in <a href="#camera-preview">Creating
+a preview class</a>.</p>
+
+<pre>
+public class CameraActivity extends Activity {
+
+    private Camera mCamera;
+    private CameraPreview mPreview;
+
+    &#64;Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
+        // Create an instance of Camera
+        mCamera = getCameraInstance();
+
+        // Create our Preview view and set it as the content of our activity.
+        mPreview = new CameraPreview(this, mCamera);
+        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        preview.addView(mPreview);
+    }
+}
+</pre>
+
+<p class="note"><strong>Note:</strong> The <code>getCameraInstance()</code> method in the example above
+refers to the example method shown in <a href="#access-camera">Accessing cameras</a>.</p>
+
+
+<h3 id="capture-picture">Capturing pictures</h3>
+<p>Once you have built a preview class and a view layout in which to display it, you are ready to
+start capturing images with your application. In your application code, you must set up listeners
+for your user interface controls to respond to a user action by taking a picture.</p>
+
+<p>In order to retrieve a picture, use the <code><a href="../../../reference/android/hardware/Camera.html#takePicture(android.hardware.Camera.ShutterCallback, android.hardware.Camera.PictureCallback, android.hardware.Camera.PictureCallback)">Camera.takePicture()</a></code> method. This method takes three parameters which receive data from the camera.
+In order to receive data in a JPEG format, you must implement an <code><a href="../../../reference/android/hardware/Camera.PictureCallback.html">Camera.PictureCallback</a></code> interface to receive the image data and
+write it to a file. The following code shows a basic implementation of the <code><a href="../../../reference/android/hardware/Camera.PictureCallback.html">Camera.PictureCallback</a></code> interface to save an image received from the camera.</p>
+
+<pre>
+private PictureCallback mPicture = new PictureCallback() {
+
+    &#64;Override
+    public void onPictureTaken(byte[] data, Camera camera) {
+
+        File pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
+        if (pictureFile == null){
+            Log.d(TAG, "Error creating media file, check storage permissions: " +
+                e.getMessage());
+            return;
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            fos.write(data);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            Log.d(TAG, "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.d(TAG, "Error accessing file: " + e.getMessage());
+        }
+    }
+};
+</pre>
+
+<p>Trigger capturing an image by calling the <code><a href="../../../reference/android/hardware/Camera.html#takePicture(android.hardware.Camera.ShutterCallback, android.hardware.Camera.PictureCallback, android.hardware.Camera.PictureCallback)">Camera.takePicture()</a></code> method. The following example code shows how to call this method from a
+button <code><a href="../../../reference/android/view/View.OnClickListener.html">View.OnClickListener</a></code>.</p>
+
+<pre>
+// Add a listener to the Capture button
+Button captureButton = (Button) findViewById(id.button_capture);
+captureButton.setOnClickListener(
+    new View.OnClickListener() {
+        &#64;Override
+        public void onClick(View v) {
+            // get an image from the camera
+            mCamera.takePicture(null, null, mPicture);
+        }
+    }
+);
+</pre>
+
+<p class="note"><strong>Note:</strong> The <code>mPicture</code> member in the following example refers
+to the example code above.</p>
+
+<p class="caution"><strong>Caution:</strong> Remember to release the <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code>
+object by calling the <code><a href="../../../reference/android/hardware/Camera.html#release()">Camera.release()</a></code> when your
+application is done using it! For information about how to release the camera, see <a
+href="#release-camera">Releasing the camera</a>.</p>
+
+
+<h3 id="capture-video">Capturing videos</h3>
+
+<p>Video capture using the Android framework requires careful management of the <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code> object and coordination with the <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code>
+class. When recording video with <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code>, you must manage the <code><a href="../../../reference/android/hardware/Camera.html#lock()">Camera.lock()</a></code> and <code><a href="../../../reference/android/hardware/Camera.html#unlock()">Camera.unlock()</a></code> calls to allow <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> access to the camera hardware,
+in addition to the <code><a href="../../../reference/android/hardware/Camera.html#open()">Camera.open()</a></code> and <code><a href="../../../reference/android/hardware/Camera.html#release()">Camera.release()</a></code> calls.</p>
+
+<p class="note"><strong>Note:</strong> Starting with Android 4.0 (API level 14), the <code><a href="../../../reference/android/hardware/Camera.html#lock()">Camera.lock()</a></code> and <code><a href="../../../reference/android/hardware/Camera.html#unlock()">Camera.unlock()</a></code> calls are managed for you automatically.</p>
+
+<p>Unlike taking pictures with a device camera, capturing video requires a very particular call
+order. You must follow a specific order of execution to successfully prepare for and capture video
+with your application, as detailed below.</p>
+
+<ol>
+  <li><strong>Open Camera</strong> - Use the <code><a href="../../../reference/android/hardware/Camera.html#open()">Camera.open()</a></code>
+to get an instance of the camera object.</li>
+  <li><strong>Connect Preview</strong> - Prepare a live camera image preview by connecting a <code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code> to the camera using <code><a href="../../../reference/android/hardware/Camera.html#setPreviewDisplay(android.view.SurfaceHolder)">Camera.setPreviewDisplay()</a></code>.
+  </li>
+  <li><strong>Start Preview</strong> - Call <code><a href="../../../reference/android/hardware/Camera.html#startPreview()">Camera.startPreview()</a></code> to begin displaying the live camera images.</li>
+  <li><strong>Start Recording Video</strong> - The following steps must be completed <em>in
+order</em> to successfully record video:
+    <ol style="list-style-type: lower-alpha;">
+      <li><strong>Unlock the Camera</strong> - Unlock the camera for use by <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> by calling <code><a href="../../../reference/android/hardware/Camera.html#unlock()">Camera.unlock()</a></code>.</li>
+      <li><strong>Configure MediaRecorder</strong> - Call in the following <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> methods <em>in this order</em>. For more information, see the <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> reference documentation.
+        <ol>
+          <li><code><a href="../../../reference/android/media/MediaRecorder.html#setCamera(android.hardware.Camera)">setCamera()</a></code> - Set the camera to be used for video capture, use your application's current instance
+of <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code>.</li>
+          <li><code><a href="../../../reference/android/media/MediaRecorder.html#setAudioSource(int)">setAudioSource()</a></code> - Set the
+audio source, use <code><a href="../../../reference/android/media/MediaRecorder.AudioSource.html#CAMCORDER">MediaRecorder.AudioSource.CAMCORDER</a></code>. </li>
+          <li><code><a href="../../../reference/android/media/MediaRecorder.html#setVideoSource(int)">setVideoSource()</a></code> - Set
+the video source, use <code><a href="../../../reference/android/media/MediaRecorder.VideoSource.html#CAMERA">MediaRecorder.VideoSource.CAMERA</a></code>.</li>
+          <li>Set the video output format and encoding. For Android 2.2 (API Level 8) and
+higher, use the <code><a href="../../../reference/android/media/MediaRecorder.html#setProfile(android.media.CamcorderProfile)">MediaRecorder.setProfile</a></code> method, and get a profile instance using <code><a href="../../../reference/android/media/CamcorderProfile.html#get(int)">CamcorderProfile.get()</a></code>. For versions of Android prior to
+2.2, you must set the video output format and encoding parameters:
+          <ol style="list-style-type: lower-roman;">
+            <li><code><a href="../../../reference/android/media/MediaRecorder.html#setOutputFormat(int)">setOutputFormat()</a></code> - Set
+the output format, specify the default setting or <code><a href="../../../reference/android/media/MediaRecorder.OutputFormat.html#MPEG_4">MediaRecorder.OutputFormat.MPEG_4</a></code>.</li>
+            <li><code><a href="../../../reference/android/media/MediaRecorder.html#setAudioEncoder(int)">setAudioEncoder()</a></code> - Set
+the sound encoding type, specify the default setting or <code><a href="../../../reference/android/media/MediaRecorder.AudioEncoder.html#AMR_NB">MediaRecorder.AudioEncoder.AMR_NB</a></code>.</li>
+            <li><code><a href="../../../reference/android/media/MediaRecorder.html#setVideoEncoder(int)">setVideoEncoder()</a></code> - Set
+the video encoding type, specify the default setting or <code><a href="../../../reference/android/media/MediaRecorder.VideoEncoder.html#MPEG_4_SP">MediaRecorder.VideoEncoder.MPEG_4_SP</a></code>.</li>
+          </ol>
+          </li>
+          <li><code><a href="../../../reference/android/media/MediaRecorder.html#setOutputFile(java.lang.String)">setOutputFile()</a></code> -
+Set the output file, use <code>getOutputMediaFile(MEDIA_TYPE_VIDEO).toString()</code> from the example
+method in the <a href="#saving-media">Saving Media Files</a> section.</li>
+          <li><code><a href="../../../reference/android/media/MediaRecorder.html#setPreviewDisplay(android.view.Surface)">setPreviewDisplay()</a></code> - Specify the <code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code> preview layout element for
+your application. Use the same object you specified for <strong>Connect Preview</strong>.</li>
+        </ol>
+        <p class="caution"><strong>Caution:</strong> You must call these <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> configuration methods <em>in this order</em>, otherwise your
+application will encounter errors and the recording will fail.</p>
+      </li>
+      <li><strong>Prepare MediaRecorder</strong> - Prepare the <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code>
+with provided configuration settings by calling <code><a href="../../../reference/android/media/MediaRecorder.html#prepare()">MediaRecorder.prepare()</a></code>.</li>
+      <li><strong>Start MediaRecorder</strong> - Start recording video by calling <code><a href="../../../reference/android/media/MediaRecorder.html#start()">MediaRecorder.start()</a></code>.</li>
+    </ol>
+  </li>
+  <li><strong>Stop Recording Video</strong> - Call the following methods <em>in order</em>, to
+successfully complete a video recording:
+    <ol style="list-style-type: lower-alpha;">
+      <li><strong>Stop MediaRecorder</strong> - Stop recording video by calling <code><a href="../../../reference/android/media/MediaRecorder.html#stop()">MediaRecorder.stop()</a></code>.</li>
+      <li><strong>Reset MediaRecorder</strong> - Optionally, remove the configuration settings from
+the recorder by calling <code><a href="../../../reference/android/media/MediaRecorder.html#reset()">MediaRecorder.reset()</a></code>.</li>
+      <li><strong>Release MediaRecorder</strong> - Release the <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code>
+by calling <code><a href="../../../reference/android/media/MediaRecorder.html#release()">MediaRecorder.release()</a></code>.</li>
+      <li><strong>Lock the Camera</strong> - Lock the camera so that future <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> sessions can use it by calling <code><a href="../../../reference/android/hardware/Camera.html#lock()">Camera.lock()</a></code>. Starting with Android 4.0 (API level 14), this call is not required unless the
+<code><a href="../../../reference/android/media/MediaRecorder.html#prepare()">MediaRecorder.prepare()</a></code> call fails.</li>
+    </ol>
+  </li>
+  <li><strong>Stop the Preview</strong> - When your activity has finished using the camera, stop the
+preview using <code><a href="../../../reference/android/hardware/Camera.html#stopPreview()">Camera.stopPreview()</a></code>.</li>
+  <li><strong>Release Camera</strong> - Release the camera so that other applications can use
+it by calling <code><a href="../../../reference/android/hardware/Camera.html#release()">Camera.release()</a></code>.</li>
+</ol>
+
+<p class="note"><strong>Note:</strong> It is possible to use <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code>
+without creating a camera preview first and skip the first few steps of this process. However,
+since users typically prefer to see a preview before starting a recording, that process is not
+discussed here.</p>
+
+<p class="note"><strong>Tip:</strong> If your application is typically used for recording video, set
+<code><a href="../../../reference/android/hardware/Camera.Parameters.html#setRecordingHint(boolean)">setRecordingHint(boolean)</a></code> to <code>true</code> prior to starting your
+preview. This setting can help reduce the time it takes to start recording.</p>
+
+<h4 id="configuring-mediarecorder">Configuring MediaRecorder</h4>
+<p>When using the <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> class to record video, you must perform
+configuration steps in a <em>specific order</em> and then call the <code><a href="../../../reference/android/media/MediaRecorder.html#prepare()">MediaRecorder.prepare()</a></code> method to check and implement the
+configuration. The following example code demonstrates how to properly configure and prepare the
+<code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> class for video recording.</p>
+
+<pre>
+private boolean prepareVideoRecorder(){
+
+    mCamera = getCameraInstance();
+    mMediaRecorder = new MediaRecorder();
+
+    // Step 1: Unlock and set camera to MediaRecorder
+    mCamera.unlock();
+    mMediaRecorder.setCamera(mCamera);
+
+    // Step 2: Set sources
+    mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
+    mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+
+    // Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
+    mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
+
+    // Step 4: Set output file
+    mMediaRecorder.setOutputFile(getOutputMediaFile(MEDIA_TYPE_VIDEO).toString());
+
+    // Step 5: Set the preview output
+    mMediaRecorder.setPreviewDisplay(mPreview.getHolder().getSurface());
+
+    // Step 6: Prepare configured MediaRecorder
+    try {
+        mMediaRecorder.prepare();
+    } catch (IllegalStateException e) {
+        Log.d(TAG, "IllegalStateException preparing MediaRecorder: " + e.getMessage());
+        releaseMediaRecorder();
+        return false;
+    } catch (IOException e) {
+        Log.d(TAG, "IOException preparing MediaRecorder: " + e.getMessage());
+        releaseMediaRecorder();
+        return false;
+    }
+    return true;
+}
+</pre>
+
+<p>Prior to Android 2.2 (API Level 8), you must set the output format and encoding formats
+parameters directly, instead of using <code><a href="../../../reference/android/media/CamcorderProfile.html">CamcorderProfile</a></code>. This approach is
+demonstrated in the following code:</p>
+
+<pre>
+    // Step 3: Set output format and encoding (for versions prior to API Level 8)
+    mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+    mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+    mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
+</pre>
+
+<p>The following video recording parameters for <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> are given
+default settings, however, you may want to adjust these settings for your application:</p>
+
+<ul>
+  <li><code><a href="../../../reference/android/media/MediaRecorder.html#setVideoEncodingBitRate(int)">setVideoEncodingBitRate()</a></code></li>
+  <li><code><a href="../../../reference/android/media/MediaRecorder.html#setVideoSize(int, int)">setVideoSize()</a></code></li>
+  <li><code><a href="../../../reference/android/media/MediaRecorder.html#setVideoFrameRate(int)">setVideoFrameRate()</a></code></li>
+  <li><code><a href="../../../reference/android/media/MediaRecorder.html#setAudioEncodingBitRate(int)">setAudioEncodingBitRate()</a></code></li>  <li><code><a href="../../../reference/android/media/MediaRecorder.html#setAudioChannels(int)">setAudioChannels()</a></code></li>
+  <li><code><a href="../../../reference/android/media/MediaRecorder.html#setAudioSamplingRate(int)">setAudioSamplingRate()</a></code></li>
+</ul>
+
+<h4 id="start-stop-mediarecorder">Starting and stopping MediaRecorder</h4>
+<p>When starting and stopping video recording using the <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> class,
+you must follow a specific order, as listed below.</p>
+
+<ol>
+  <li>Unlock the camera with <code><a href="../../../reference/android/hardware/Camera.html#unlock()">Camera.unlock()</a></code></li>
+  <li>Configure <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> as shown in the code example above</li>
+  <li>Start recording using <code><a href="../../../reference/android/media/MediaRecorder.html#start()">MediaRecorder.start()</a></code></li>
+  <li>Record the video</li>
+  <li>Stop recording using <code><a href="../../../reference/android/media/MediaRecorder.html#stop()">MediaRecorder.stop()</a></code></li>
+  <li>Release the media recorder with <code><a href="../../../reference/android/media/MediaRecorder.html#release()">MediaRecorder.release()</a></code></li>
+  <li>Lock the camera using <code><a href="../../../reference/android/hardware/Camera.html#lock()">Camera.lock()</a></code></li>
+</ol>
+
+<p>The following example code demonstrates how to wire up a button to properly start and stop
+video recording using the camera and the <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> class.</p>
+
+<p class="note"><strong>Note:</strong> When completing a video recording, do not release the camera
+or else your preview will be stopped.</p>
+
+<pre>
+private boolean isRecording = false;
+
+// Add a listener to the Capture button
+Button captureButton = (Button) findViewById(id.button_capture);
+captureButton.setOnClickListener(
+    new View.OnClickListener() {
+        &#64;Override
+        public void onClick(View v) {
+            if (isRecording) {
+                // stop recording and release camera
+                mMediaRecorder.stop();  // stop the recording
+                releaseMediaRecorder(); // release the MediaRecorder object
+                mCamera.lock();         // take camera access back from MediaRecorder
+
+                // inform the user that recording has stopped
+                setCaptureButtonText("Capture");
+                isRecording = false;
+            } else {
+                // initialize video camera
+                if (prepareVideoRecorder()) {
+                    // Camera is available and unlocked, MediaRecorder is prepared,
+                    // now you can start recording
+                    mMediaRecorder.start();
+
+                    // inform the user that recording has started
+                    setCaptureButtonText("Stop");
+                    isRecording = true;
+                } else {
+                    // prepare didn't work, release the camera
+                    releaseMediaRecorder();
+                    // inform user
+                }
+            }
+        }
+    }
+);
+</pre>
+
+<p class="note"><strong>Note:</strong> In the above example, the <code>prepareVideoRecorder()</code>
+method refers to the example code shown in <a
+href="#configuring-mediarecorder">Configuring MediaRecorder</a>. This method takes care of locking
+the camera, configuring and preparing the <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> instance.</p>
+
+
+<h3 id="release-camera">Releasing the camera</h3>
+<p>Cameras are a resource that is shared by applications on a device. Your application can make
+use of the camera after getting an instance of <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code>, and you must be
+particularly careful to release the camera object when your application stops using it, and as
+soon as your application is paused (<code><a href="../../../reference/android/app/Activity.html#onPause()">Activity.onPause()</a></code>). If
+your application does not properly release the camera, all subsequent attempts to access the camera,
+including those by your own application, will fail and may cause your or other applications to be
+shut down.</p>
+
+<p>To release an instance of the <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code> object, use the <code><a href="../../../reference/android/hardware/Camera.html#release()">Camera.release()</a></code> method, as shown in the example code below.</p>
+
+<pre>
+public class CameraActivity extends Activity {
+    private Camera mCamera;
+    private SurfaceView mPreview;
+    private MediaRecorder mMediaRecorder;
+
+    ...
+
+    &#64;Override
+    protected void onPause() {
+        super.onPause();
+        releaseMediaRecorder();       // if you are using MediaRecorder, release it first
+        releaseCamera();              // release the camera immediately on pause event
+    }
+
+    private void releaseMediaRecorder(){
+        if (mMediaRecorder != null) {
+            mMediaRecorder.reset();   // clear recorder configuration
+            mMediaRecorder.release(); // release the recorder object
+            mMediaRecorder = null;
+            mCamera.lock();           // lock camera for later use
+        }
+    }
+
+    private void releaseCamera(){
+        if (mCamera != null){
+            mCamera.release();        // release the camera for other applications
+            mCamera = null;
+        }
+    }
+}
+</pre>
+
+<p class="caution"><strong>Caution:</strong> If your application does not properly release the
+camera, all subsequent attempts to access the camera, including those by your own application, will
+fail and may cause your or other applications to be shut down.</p>
+
+
+<h2 id="saving-media">Saving Media Files</h2>
+<p>Media files created by users such as pictures and videos should be saved to a device's external
+storage directory (SD Card) to conserve system space and to allow users to access these files
+without their device. There are many possible directory locations to save media files on a device,
+however there are only two standard locations you should consider as a developer:</p>
+
+<ul>
+  <li><strong><code><a href="../../../reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String)">Environment.getExternalStoragePublicDirectory</a></code>(<code><a href="../../../reference/android/os/Environment.html#DIRECTORY_PICTURES">Environment.DIRECTORY_PICTURES</a></code>)</strong> - This method returns the standard, shared and recommended
+location for saving pictures and videos. This directory is shared (public), so other applications
+can easily discover, read, change and delete files saved in this location. If your application is
+uninstalled by the user, media files saved to this location will not be removed. To avoid
+interfering with users existing pictures and videos, you should create a sub-directory for your
+application's media files within this directory, as shown in the code sample below. This method is
+available in Android 2.2 (API Level 8), for equivalent calls in earlier API versions, see <a
+href="../../../guide/topics/data/data-storage.html#SavingSharedFiles">Saving Shared Files</a>.</li>
+  <li><strong><code><a href="../../../reference/android/content/Context.html#getExternalFilesDir(java.lang.String)">Context.getExternalFilesDir</a></code>(<code><a href="../../../reference/android/os/Environment.html#DIRECTORY_PICTURES">Environment.DIRECTORY_PICTURES</a></code>)</strong> - This method returns a standard location for saving
+pictures and videos which are associated with your application. If your application is uninstalled,
+any files saved in this location are removed. Security is not enforced for files in this
+location and other applications may read, change and delete them.</li>
+</ul>
+
+<p>The following example code demonstrates how to create a <code><a href="../../../reference/java/io/File.html">File</a></code> or <code><a href="../../../reference/android/net/Uri.html">Uri</a></code> location for a media file that can be used when invoking a device's camera with
+an <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> or as part of a <a href="#custom-camera">Building a Camera
+App</a>.</p>
+
+<pre>
+public static final int MEDIA_TYPE_IMAGE = 1;
+public static final int MEDIA_TYPE_VIDEO = 2;
+
+/** Create a file Uri for saving an image or video */
+private static Uri getOutputMediaFileUri(int type){
+      return Uri.fromFile(getOutputMediaFile(type));
+}
+
+/** Create a File for saving an image or video */
+private static File getOutputMediaFile(int type){
+    // To be safe, you should check that the SDCard is mounted
+    // using Environment.getExternalStorageState() before doing this.
+
+    File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+              Environment.DIRECTORY_PICTURES), "MyCameraApp");
+    // This location works best if you want the created images to be shared
+    // between applications and persist after your app has been uninstalled.
+
+    // Create the storage directory if it does not exist
+    if (! mediaStorageDir.exists()){
+        if (! mediaStorageDir.mkdirs()){
+            Log.d("MyCameraApp", "failed to create directory");
+            return null;
+        }
+    }
+
+    // Create a media file name
+    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+    File mediaFile;
+    if (type == MEDIA_TYPE_IMAGE){
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+        "IMG_"+ timeStamp + ".jpg");
+    } else if(type == MEDIA_TYPE_VIDEO) {
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+        "VID_"+ timeStamp + ".mp4");
+    } else {
+        return null;
+    }
+
+    return mediaFile;
+}
+</pre>
+
+<p class="note"><strong>Note:</strong> <code><a href="../../../reference/android/os/Environment.html#getExternalStoragePublicDirectory(java.lang.String)">Environment.getExternalStoragePublicDirectory()</a></code> is available in Android 2.2 (API Level 8) or
+higher. If you are targeting devices with earlier versions of Android, use <code><a href="../../../reference/android/os/Environment.html#getExternalStorageDirectory()">Environment.getExternalStorageDirectory()</a></code>
+instead. For more information, see <a
+href="../../../guide/topics/data/data-storage.html#SavingSharedFiles">Saving Shared Files</a>.</p>
+
+<p>For more information about saving files on an Android device, see <a
+href="../../../guide/topics/data/data-storage.html">Data Storage</a>.</p>
+
+
+<h2 id="camera-features">Camera Features</h2>
+<p>Android supports a wide array of camera features you can control with your camera application,
+such as picture format, flash mode, focus settings, and many more. This section lists the common
+camera features, and briefly discusses how to use them. Most camera features can be accessed and set
+using the through <code><a href="../../../reference/android/hardware/Camera.Parameters.html">Camera.Parameters</a></code> object. However, there are several
+important features that require more than simple settings in <code><a href="../../../reference/android/hardware/Camera.Parameters.html">Camera.Parameters</a></code>. These features are covered in the following sections:<p>
+
+<ul>
+  <li><a href="#metering-focus-areas">Metering and focus areas</a></li>
+  <li><a href="#face-detection">Face detection</a></li>
+  <li><a href="#time-lapse-video">Time lapse video</a></li>
+</ul>
+
+<p>For general information about how to use features that are controlled through <code><a href="../../../reference/android/hardware/Camera.Parameters.html">Camera.Parameters</a></code>, review the <a href="#using-features">Using camera
+features</a> section. For more detailed information about how to use features controlled through the
+camera parameters object, follow the links in the feature list below to the API reference
+documentation.</p>
+
+<p class="table-caption" id="table1">
+  <strong>Table 1.</strong> Common camera features sorted by the Android API Level in which they
+were introduced.</p>
+<table>
+  <tr>
+    <th>Feature</th>  <th>API Level</th>  <th>Description</th>
+  </tr>
+  <tr>
+    <td><a href="#face-detection">Face Detection</a></td>
+    <td>14</td>
+    <td>Identify human faces within a picture and use them for focus, metering and white
+balance</td>
+  </tr>
+  <tr>
+    <td><a href="#metering-focus-areas">Metering Areas</a></td>
+    <td>14</td>
+    <td>Specify one or more areas within an image for calculating white balance</td>
+  </tr>
+  <tr>
+    <td><a href="#metering-focus-areas">Focus Areas</a></td>
+    <td>14</td>
+    <td>Set one or more areas within an image to use for focus</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setAutoWhiteBalanceLock(boolean)">White Balance Lock</a></code></td>
+    <td>14</td>
+    <td>Stop or start automatic white balance adjustments</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setAutoExposureLock(boolean)">Exposure Lock</a></code></td>
+    <td>14</td>
+    <td>Stop or start automatic exposure adjustments</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.html#takePicture(android.hardware.Camera.ShutterCallback, android.hardware.Camera.PictureCallback, android.hardware.Camera.PictureCallback)">Video Snapshot</a></code></td>
+    <td>14</td>
+    <td>Take a picture while shooting video (frame grab)</td>
+  </tr>
+  <tr>
+    <td><a href="#time-lapse-video">Time Lapse Video</a></td>
+    <td>11</td>
+    <td>Record frames with set delays to record a time lapse video</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.html#open(int)">Multiple Cameras</a></code></td>
+    <td>9</td>
+    <td>Support for more than one camera on a device, including front-facing and back-facing
+cameras</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#getFocusDistances(float[])">Focus Distance</a></code></td>
+    <td>9</td>
+    <td>Reports distances between the camera and objects that appear to be in focus</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setZoom(int)">Zoom</a></code></td>
+    <td>8</td>
+    <td>Set image magnification</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setExposureCompensation(int)">Exposure
+Compensation</a></code></td>
+    <td>8</td>
+    <td>Increase or decrease the light exposure level</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setGpsLatitude(double)">GPS Data</a></code></td>
+    <td>5</td>
+    <td>Include or omit geographic location data with the image</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setWhiteBalance(java.lang.String)">White Balance</a></code></td>
+    <td>5</td>
+    <td>Set the white balance mode, which affects color values in the captured image</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setFocusMode(java.lang.String)">Focus Mode</a></code></td>
+    <td>5</td>
+    <td>Set how the camera focuses on a subject such as automatic, fixed, macro or infinity</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setSceneMode(java.lang.String)">Scene Mode</a></code></td>
+    <td>5</td>
+    <td>Apply a preset mode for specific types of photography situations such as night, beach, snow
+or candlelight scenes</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setJpegQuality(int)">JPEG Quality</a></code></td>
+    <td>5</td>
+    <td>Set the compression level for a JPEG image, which increases or decreases image output file
+quality and size</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setFlashMode(java.lang.String)">Flash Mode</a></code></td>
+    <td>5</td>
+    <td>Turn flash on, off, or use automatic setting</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setColorEffect(java.lang.String)">Color Effects</a></code></td>
+    <td>5</td>
+    <td>Apply a color effect to the captured image such as black and white, sepia tone or negative.
+</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setAntibanding(java.lang.String)">Anti-Banding</a></code></td>
+    <td>5</td>
+    <td>Reduces the effect of banding in color gradients due to JPEG compression</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setPictureFormat(int)">Picture Format</a></code></td>
+    <td>1</td>
+    <td>Specify the file format for the picture</td>
+  </tr>
+  <tr>
+    <td><code><a href="../../../reference/android/hardware/Camera.Parameters.html#setPictureSize(int, int)">Picture Size</a></code></td>
+    <td>1</td>
+    <td>Specify the pixel dimensions of the saved picture</td>
+  </tr>
+</table>
+
+<p class="note"><strong>Note:</strong> These features are not supported on all devices due to
+hardware differences and software implementation. For information on checking the availability
+of features on the device where your application is running, see <a href="#check-feature">Checking
+feature availability</a>.</p>
+
+
+<h3 id="check-feature">Checking feature availability</h3>
+<p>The first thing to understand when setting out to use camera features on Android devices is that
+not all camera features are supported on all devices. In addition, devices that support a particular
+feature may support them to different levels or with different options. Therefore, part of your
+decision process as you develop a camera application is to decide what camera features you want to
+support and to what level. After making that decision, you should plan on including code in your
+camera application that checks to see if device hardware supports those features and fails
+gracefully if a feature is not available.</p>
+
+<p>You can check the availabilty of camera features by getting an instance of a camera’s parameters
+object, and checking the relevant methods. The following code sample shows you how to obtain a
+<code><a href="../../../reference/android/hardware/Camera.Parameters.html">Camera.Parameters</a></code> object and check if the camera supports the autofocus
+feature:</p>
+
+<pre>
+// get Camera parameters
+Camera.Parameters params = mCamera.getParameters();
+
+List&lt;String&gt; focusModes = params.getSupportedFocusModes();
+if (focusModes.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+  // Autofocus mode is supported
+}
+</pre>
+
+<p>You can use the technique shown above for most camera features. The
+<code><a href="../../../reference/android/hardware/Camera.Parameters.html">Camera.Parameters</a></code> object provides a <code>getSupported...()</code>, <code>is...Supported()</code> or <code>getMax...()</code> method to determine if (and to what extent) a feature is
+supported.</p>
+
+<p>If your application requires certain camera features in order to function properly, you can
+require them through additions to your application manifest. When you declare the use of specific
+camera features, such as flash and auto-focus, Google Play restricts your application from
+being installed on devices which do not support these features. For a list of camera features that
+can be declared in your app manifest, see the manifest
+<a href="../../../guide/topics/manifest/uses-feature-element.html#hw-features"> Features
+Reference</a>.</p>
+
+<h3 id="using-features">Using camera features</h3>
+<p>Most camera features are activated and controlled using a <code><a href="../../../reference/android/hardware/Camera.Parameters.html">Camera.Parameters</a></code> object. You obtain this object by first getting an instance of
+the <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code> object, calling the <code><a href="../../../reference/android/hardware/Camera.html#getParameters()">getParameters()</a></code> method, changing the returned parameter
+object and then setting it back into the camera object, as demonstrated in the following example
+code:</p>
+
+<pre>
+// get Camera parameters
+Camera.Parameters params = mCamera.getParameters();
+// set the focus mode
+params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+// set Camera parameters
+mCamera.setParameters(params);
+</pre>
+
+<p>This technique works for nearly all camera features, and most parameters can be changed at any
+time after you have obtained an instance of the <code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code> object. Changes to
+parameters are typically visible to the user immediately in the application’s camera preview.
+On the software side, parameter changes may take several frames to actually take effect as the
+camera hardware processes the new instructions and then sends updated image data.</p>
+
+<p class="caution"><strong>Important:</strong> Some camera features cannot be changed at will. In
+particular, changing the size or orientation of the camera preview requires that you first stop the
+preview, change the preview size, and then restart the preview. Starting with Android 4.0 (API
+Level 14) preview orientation can be changed without restarting the preview.</p>
+
+<p>Other camera features require more code in order to implement, including:</p>
+<ul>
+  <li>Metering and focus areas</li>
+  <li>Face detection</li>
+  <li>Time lapse video</li>
+</ul>
+<p>A quick outline of how to implement these features is provided in the following sections.</p>
+
+
+<h3 id="metering-focus-areas">Metering and focus areas</h3>
+<p>In some photographic scenarios, automatic focusing and light metering may not produce the
+desired results. Starting with Android 4.0 (API Level 14), your camera application can provide
+additional controls to allow your app or users to specify areas in an image to use for determining
+focus or light level settings and pass these values to the camera hardware for use in capturing
+images or video.</p>
+
+<p>Areas for metering and focus work very similarly to other camera features, in that you control
+them through methods in the <code><a href="../../../reference/android/hardware/Camera.Parameters.html">Camera.Parameters</a></code> object. The following code
+demonstrates setting two light metering areas for an instance of
+<code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code>:</p>
+
+<pre>
+// Create an instance of Camera
+mCamera = getCameraInstance();
+
+// set Camera parameters
+Camera.Parameters params = mCamera.getParameters();
+
+if (params.getMaxNumMeteringAreas() > 0){ // check that metering areas are supported
+    List&lt;Camera.Area&gt; meteringAreas = new ArrayList&lt;Camera.Area&gt;();
+
+    Rect areaRect1 = new Rect(-100, -100, 100, 100);    // specify an area in center of image
+    meteringAreas.add(new Camera.Area(areaRect1, 600)); // set weight to 60%
+    Rect areaRect2 = new Rect(800, -1000, 1000, -800);  // specify an area in upper right of image
+    meteringAreas.add(new Camera.Area(areaRect2, 400)); // set weight to 40%
+    params.setMeteringAreas(meteringAreas);
+}
+
+mCamera.setParameters(params);
+</pre>
+
+<p>The <code><a href="../../../reference/android/hardware/Camera.Area.html">Camera.Area</a></code> object contains two data parameters: A <code><a href="../../../reference/android/graphics/Rect.html">Rect</a></code> object for specifying an area within the camera’s field of view and a weight
+value, which tells the camera what level of importance this area should be given in light metering
+or focus calculations.</p>
+
+<p>The <code><a href="../../../reference/android/graphics/Rect.html">Rect</a></code> field in a <code><a href="../../../reference/android/hardware/Camera.Area.html">Camera.Area</a></code> object
+describes a rectangular shape mapped on a 2000 x 2000 unit grid. The coordinates -1000, -1000
+represent the top, left corner of the camera image, and coordinates 1000, 1000 represent the
+bottom, right corner of the camera image, as shown in the illustration below.</p>
+
+<img src='images/camera-area-coordinates.png' />
+<p class="img-caption">
+  <strong>Figure 1.</strong> The red lines illustrate the coordinate system for specifying a
+<code><a href="../../../reference/android/hardware/Camera.Area.html">Camera.Area</a></code> within a camera preview. The blue box shows the location and
+shape of an camera area with the <code><a href="../../../reference/android/graphics/Rect.html">Rect</a></code> values 333,333,667,667.
+</p>
+
+<p>The bounds of this coordinate system always correspond to the outer edge of the image visible in
+the camera preview and do not shrink or expand with the zoom level. Similarly, rotation of the image
+preview using <code><a href="../../../reference/android/hardware/Camera.html#setDisplayOrientation(int)">Camera.setDisplayOrientation()</a></code>
+does not remap the coordinate system.</p>
+
+
+<h3 id="face-detection">Face detection</h3>
+<p>For pictures that include people, faces are usually the most important part of the picture, and
+should be used for determining both focus and white balance when capturing an image. The Android 4.0
+(API Level 14) framework provides APIs for identifying faces and calculating picture settings using
+face recognition technology.</p>
+
+<p class="note"><strong>Note:</strong> While the face detection feature is running,
+<code><a href="../../../reference/android/hardware/Camera.Parameters.html#setWhiteBalance(java.lang.String)">setWhiteBalance(String)</a></code>,
+<code><a href="../../../reference/android/hardware/Camera.Parameters.html#setFocusAreas(java.util.List<android.hardware.Camera.Area>)">setFocusAreas(List<Camera.Area>)</a></code> and
+<code><a href="../../../reference/android/hardware/Camera.Parameters.html#setMeteringAreas(java.util.List<android.hardware.Camera.Area>)">setMeteringAreas(List<Camera.Area>)</a></code> have no effect.</p>
+
+<p>Using the face detection feature in your camera application requires a few general steps:</p>
+<ul>
+  <li>Check that face detection is supported on the device</li>
+  <li>Create a face detection listener</li>
+  <li>Add the face detection listener to your camera object</li>
+  <li>Start face detection after preview (and after <em>every</em> preview restart)</li>
+</ul>
+
+<p>The face detection feature is not supported on all devices. You can check that this feature is
+supported by calling <code><a href="../../../reference/android/hardware/Camera.Parameters.html#getMaxNumDetectedFaces()">getMaxNumDetectedFaces()</a></code>. An
+example of this check is shown in the <code>startFaceDetection()</code> sample method below.</p>
+
+<p>In order to be notified and respond to the detection of a face, your camera application must set
+a listener for face detection events. In order to do this, you must create a listener class that
+implements the <code><a href="../../../reference/android/hardware/Camera.FaceDetectionListener.html">Camera.FaceDetectionListener</a></code> interface as shown in the
+example code below.</p>
+
+<pre>
+class MyFaceDetectionListener implements Camera.FaceDetectionListener {
+
+    &#064;Override
+    public void onFaceDetection(Face[] faces, Camera camera) {
+        if (faces.length > 0){
+            Log.d("FaceDetection", "face detected: "+ faces.length +
+                    " Face 1 Location X: " + faces[0].rect.centerX() +
+                    "Y: " + faces[0].rect.centerY() );
+        }
+    }
+}
+</pre>
+
+<p>After creating this class, you then set it into your application’s
+<code><a href="../../../reference/android/hardware/Camera.html">Camera</a></code> object, as shown in the example code below:</p>
+
+<pre>
+mCamera.setFaceDetectionListener(new MyFaceDetectionListener());
+</pre>
+
+<p>Your application must start the face detection function each time you start (or restart) the
+camera preview. Create a method for starting face detection so you can call it as needed, as shown
+in the example code below.</p>
+
+<pre>
+public void startFaceDetection(){
+    // Try starting Face Detection
+    Camera.Parameters params = mCamera.getParameters();
+
+    // start face detection only *after* preview has started
+    if (params.getMaxNumDetectedFaces() > 0){
+        // camera supports face detection, so can start it:
+        mCamera.startFaceDetection();
+    }
+}
+</pre>
+
+<p>You must start face detection <em>each time</em> you start (or restart) the camera preview. If
+you use the preview class shown in <a href="#camera-preview">Creating a preview class</a>, add your
+<code><a href="../../../reference/android/hardware/Camera.html#startFaceDetection()">startFaceDetection()</a></code> method to both the
+<code><a href="../../../reference/android/view/SurfaceHolder.Callback.html#surfaceCreated(android.view.SurfaceHolder)">surfaceCreated()</a></code> and <code><a href="../../../reference/android/view/SurfaceHolder.Callback.html#surfaceChanged(android.view.SurfaceHolder, int, int, int)">surfaceChanged()</a></code> methods in your preview class,
+as shown in the sample code below.</p>
+
+<pre>
+public void surfaceCreated(SurfaceHolder holder) {
+    try {
+        mCamera.setPreviewDisplay(holder);
+        mCamera.startPreview();
+
+        startFaceDetection(); // start face detection feature
+
+    } catch (IOException e) {
+        Log.d(TAG, "Error setting camera preview: " + e.getMessage());
+    }
+}
+
+public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+
+    if (mHolder.getSurface() == null){
+        // preview surface does not exist
+        Log.d(TAG, "mHolder.getSurface() == null");
+        return;
+    }
+
+    try {
+        mCamera.stopPreview();
+
+    } catch (Exception e){
+        // ignore: tried to stop a non-existent preview
+        Log.d(TAG, "Error stopping camera preview: " + e.getMessage());
+    }
+
+    try {
+        mCamera.setPreviewDisplay(mHolder);
+        mCamera.startPreview();
+
+        startFaceDetection(); // re-start face detection feature
+
+    } catch (Exception e){
+        // ignore: tried to stop a non-existent preview
+        Log.d(TAG, "Error starting camera preview: " + e.getMessage());
+    }
+}
+</pre>
+
+<p class="note"><strong>Note:</strong> Remember to call this method <em>after</em> calling
+<code><a href="../../../reference/android/hardware/Camera.html#startPreview()">startPreview()</a></code>. Do not attempt to start face detection
+in the <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> method of your camera app’s main activity,
+as the preview is not available by this point in your application's the execution.</p>
+
+
+<h3 id="time-lapse-video">Time lapse video</h3>
+<p>Time lapse video allows users to create video clips that combine pictures taken a few seconds or
+minutes apart. This feature uses <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code> to record the images for a time
+lapse sequence. </p>
+
+<p>To record a time lapse video with <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code>, you must configure the
+recorder object as if you are recording a normal video, setting the captured frames per second to a
+low number and using one of the time lapse quality settings, as shown in the code example below.</p>
+
+<pre>
+// Step 3: Set a CamcorderProfile (requires API Level 8 or higher)
+mMediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_TIME_LAPSE_HIGH));
+...
+// Step 5.5: Set the video capture rate to a low number
+mMediaRecorder.setCaptureRate(0.1); // capture a frame every 10 seconds
+</pre>
+
+<p>These settings must be done as part of a larger configuration procedure for <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code>. For  a full configuration code example, see <a
+href="#configuring-mediarecorder">Configuring MediaRecorder</a>. Once the configuration is complete,
+you start the video recording as if you were recording a normal video clip. For more information
+about configuring and running <code><a href="../../../reference/android/media/MediaRecorder.html">MediaRecorder</a></code>, see <a
+href="#capture-video">Capturing videos</a>.</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

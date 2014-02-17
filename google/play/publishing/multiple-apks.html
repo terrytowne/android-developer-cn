@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Multiple APK Support | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation google
+  " itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/index.html">
+          <span class="en">Overview</span>
+      </a></div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/games.html">
+          <span class="en">Games</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/location.html">
+          <span class="en">Location</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/plus.html">
+          <span class="en">Google+</span>
+                </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/maps.html">
+          <span class="en">Maps</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/play-services/ads.html">
+      <span class="en">Ads</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../google/play-services/id.html">
+          <span class="en">Advertising ID</span></a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/wallet.html">
+          <span class="en">Wallet</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/auth.html">
+          <span class="en">Authorization</span>
+      </a></div>
+  </li>
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/play-services/index.html">
+      <span class="en">Google Play Services</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../google/play-services/setup.html">
+          <span class="en">Setup</span></a>
+      </li>
+      <li id="gms-tree-list" class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../reference/gms-packages.html">
+            <span class="en">Reference</span>
+          </a>
+        <div>
+      </li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/play/billing/index.html">
+      <span class="en">Google Play In-app Billing</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../google/play/billing/billing_overview.html">
+              <span class="en">Overview</span></a>
+      </li>
+      <li class="nav-section"><div class="nav-section-header"><a href="../../../google/play/billing/api.html">
+              <span class="en">Version 3 API</span></a></div>
+              <ul>
+              <li><a href="../../../google/play/billing/billing_integrate.html">
+              <span class="en">Implementing the API</span></a></li>
+              <li><a href="../../../google/play/billing/billing_reference.html">
+              <span class="en">Reference</span></a></li>
+              </ul>
+      </li>
+      <li class="nav-section"><div class="nav-section-header"><a href="../../../google/play/billing/v2/api.html">
+              <span class="en">Version 2 API</span></a></div>
+              <ul>
+              <li><a href="../../../google/play/billing/v2/billing_integrate.html">
+              <span class="en">Implementing the API</span></a></li>
+              <li><a href="../../../google/play/billing/v2/billing_subscriptions.html">
+              <span class="en">Subscriptions</span></a></li>
+              <li><a href="../../../google/play/billing/v2/billing_reference.html">
+              <span class="en">Reference</span></a></li>
+              </ul>
+      </li>
+      <li><a href="../../../google/play/billing/billing_subscriptions.html">
+              <span class="en">Subscriptions</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/billing_best_practices.html">
+              <span class="en">Security and Design</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/billing_testing.html">
+              <span class="en">Testing In-app Billing</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/billing_admin.html">
+              <span class="en">Administering In-app Billing</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/gp-purchase-status-api.html">
+              <span class="en">Purchase Status API</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/versions.html">
+              <span class="en">Version Notes</span></a>
+      </li>
+    </ul>
+  </li>
+
+
+
+  <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../google/gcm/index.html">
+        <span class="en">Google Cloud Messaging</span></a>
+      </div>
+      <ul>
+        <li><a href="../../../google/gcm/gs.html">
+            <span class="en">Getting Started</span></a>
+        </li>
+        <li><a href="../../../google/gcm/gcm.html">
+            <span class="en">Architectural Overview</span></a>
+        </li>
+         <li><a href="../../../google/gcm/ccs.html">
+              <span class="en">Cloud Connection Server</span></a>
+        </li>
+        <li><a href="../../../google/gcm/notifications.html">
+              <span class="en">User Notifications</span></a>
+        </li>
+        <li><a href="../../../google/gcm/client.html">
+            <span class="en">GCM Client</span></a>
+        </li>
+        <li><a href="../../../google/gcm/server.html">
+            <span class="en">GCM Server</span></a>
+        </li>
+        <li><a href="../../../google/gcm/adv.html">
+            <span class="en">Advanced Topics</span></a>
+        </li>
+        <li><a href="../../../google/gcm/c2dm.html">
+            <span class="en">Migration</span></a>
+        </li>
+        <li id="gcm-tree-list" class="nav-section">
+          <div class="nav-section-header">
+            <a href="../../../reference/gcm-packages.html">
+              <span class="en">Reference</span>
+            </a>
+          <div>
+        </li>
+      </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/play/dist.html">
+      <span class="en">Google Play Distribution</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../google/play/filters.html">
+          <span class="en">Filters on Google Play</span></a>
+      </li>
+
+      <li><a href="../../../google/play/publishing/multiple-apks.html">
+          <span class="en">Multiple APK Support</span></a>
+      </li>
+      <li><a href="../../../google/play/expansion-files.html">
+          <span class="en">APK Expansion Files</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../google/play/licensing/index.html">
+          <span class="en">Application Licensing</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../google/play/licensing/overview.html">
+              <span class="en">Licensing Overview</span></a>
+          </li>
+          <li><a href="../../../google/play/licensing/setting-up.html">
+              <span class="en">Setting Up for Licensing</span></a>
+          </li>
+          <li><a href="../../../google/play/licensing/adding-licensing.html">
+              <span class="en">Adding Licensing to Your App</span></a>
+          </li>
+          <li><a href="../../../google/play/licensing/licensing-reference.html">
+              <span class="en">Licensing Reference</span></a>
+          </li>
+        </ul>
+      </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/backup/index.html">
+      Android Backup Service</a>
+    </div>
+    <ul>
+      <li><a href="../../../google/backup/signup.html">
+          Register</a>
+      </li>
+    </ul>
+  </li>
+
+  </ul>
+
+</li>
+
+
+
+</ul>
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+      <script type="text/javascript">
+       showGoogleRefTree();
+    
+      </script>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Multiple APK Support</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+  <h2>Quickview</h2>
+  <ul>
+    <li>Simultaneously publish different APKs for different
+device configurations</li>
+    <li>You should publish multiple APKs only when it's not possible to
+support all desired devices with a single APK</li>
+  </ul>
+
+  <h2>In this document</h2>
+<ol>
+  <li><a href="#Concepts">Publishing Concepts</a>
+    <ol>
+      <li><a href="#Active">Active APKs</a></li>
+      <li><a href="#SimpleAndAdvanced">Simple mode and advanced mode</a></li>
+    </ol>
+  </li>
+  <li><a href="#HowItWorks">How Multiple APKs Work</a>
+    <ol>
+      <li><a href="#SupportedFilters">Supported filters</a></li>
+      <li><a href="#Rules">Rules for multiple APKs</a></li>
+    </ol>
+  </li>
+  <li><a href="#CreatingApks">Creating Multiple APKs</a>
+    <ol>
+      <li><a href="#VersionCodes">Assigning version codes</a></li>
+    </ol>
+  </li>
+  <li><a href="#SingleAPK">Using a Single APK Instead</a>
+    <ol>
+      <li><a href="#TextureOptions">Supporting multiple GL textures</a></li>
+      <li><a href="#ScreenOptions">Supporting multiple screens</a></li>
+      <li><a href="#ApiLevelOptions">Supporting multiple API levels</a></li>
+      <li><a href="#CpuArchOptions">Supporting multiple CPU architectures</a></li>
+    </ol>
+  </li>
+</ol>
+
+  <h2>See also</h2>
+<ol>
+  <li><a href="../../../google/play/expansion-files.html">APK Expansion Files</a></li>
+  <li><a href="../../../google/play/filters.html">Filters on Google Play</a></li>
+  <li><a href="../../../guide/practices/screens_support.html">Supporting Multiple Screens</a></li>
+  <li><a href="../../../tools/support-library/index.html">Support Library</a></li>
+  <li><a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">Android API Levels</a></li>
+</ol>
+
+</div>
+</div>
+
+<p>Multiple APK support is a feature on Google Play that allows you to publish different APKs
+for your application that are each targeted to different device configurations. Each APK is a
+complete and independent version of your application, but they share the same application listing on
+Google Play and must share the same package name and be signed with the same release key. This
+feature is useful for cases in which your application cannot reach all desired devices with a single
+APK.</p>
+
+<p>Android-powered devices may differ in several ways and it's important
+to the success of your application that you make it available to as many devices as possible.
+Android applications usually run on most compatible devices with a single APK, by supplying
+alternative resources for different configurations (for example, different layouts for different
+screen sizes) and the Android system selects the appropriate resources for the device at runtime. In
+a few cases, however, a single APK is unable to support all device configurations, because
+alternative resources make the APK file too big (greater than 50MB) or other technical challenges
+prevent a single APK from working on all devices.</p>
+
+<p>Although <strong>we encourage you to develop and publish a single APK</strong> that supports as
+many device configurations as possible, doing so is sometimes not possible. To help
+you publish your application for as many devices as possible, Google Play allows you to
+publish multiple APKs under the same application listing. Google Play then supplies each APK to
+the appropriate devices based on configuration support you've declared in the manifest file of each
+APK. </p>
+
+<p>By publishing your application with multiple APKs, you can:</p>
+
+<ul>
+  <li>Support different OpenGL texture compression formats with each APK.</li>
+  <li>Support different screen sizes and densities with each APK.</li>
+  <li>Support different platform versions with each APK.</li>
+  <li>Support different CPU architectures with each APK (such as for ARM, x86, and MIPS, when your
+  app uses the <a href="../../../tools/sdk/ndk/index.html">Android NDK</a>).</li>
+</ul>
+
+<p>Currently, these are the only device characteristics that Google Play supports for publishing
+multiple APKs as the same application.</p>
+
+<p class="note"><strong>Note:</strong> You should generally use multiple APKs to support
+different device configurations <strong>only when your APK is too large</strong> (greater than
+50MB) due to the alternative resources needed for different device configurations.
+Using a single APK to support different configurations is always the best practice,
+because it makes the path for application updates simple and clear for users (and also makes
+your life simpler by avoiding development and publishing complexity). Read the section below about
+<a href="#SingleAPK">Using a Single APK Instead</a> to
+consider your options before publishing multiple APKs.</p>
+
+
+<h2 id="Concepts">Publishing Concepts</h2>
+
+<p>Before you start publishing multiple APKs on Google Play, you must understand a few
+concepts regarding how the Google Play Developer Console works.</p>
+
+<h3 id="Active">Active APKs</h3>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+  <h4>The difference between "Publish" and "Save"</h4>
+  <p>When editing your application, there are two buttons on the top-right side of the page. The
+first button is either <strong>Publish</strong> or <strong>Unpublish</strong> and the second
+button is always <strong>Save</strong> (but its behavior changes).</p>
+  <p>When your application is new or you have unpublished it from Google Play, the first
+button says <strong>Publish</strong>. Clicking it will publish any APKs listed as
+Active, making them available on Google Play. Also while your application is new
+or unpublished, clicking <strong>Save</strong> will save any changes you've made, such
+as information added to the Product details and APKs you've uploaded, but nothing is made visible on
+Google Play&mdash;this allows you to save your changes and sign out of the Developer Console before
+deciding to publish.</p>
+ <p>Once you've published your application, the first button changes to
+<strong>Unpublish</strong>. Clicking it in this state unpublishes your application so that none
+of the APKs are available on Google Play. Also while published, the behavior of the
+<strong>Save</strong> button is different. In this state, clicking <strong>Save</strong> not
+only saves all your changes, but also publishes them to Google Play. For example, if you've
+already published your application and then make changes to your product details or activate new
+APKs, clicking <strong>Save</strong> makes all those changes live on Google Play.</p>
+</div>
+</div>
+
+
+<p>Before you can publish your application (whether publishing one or multiple APKs), you
+must "activate" your APK(s) from the <strong>APK files</strong> tab. When you activate an APK, it
+moves into the list of <em>Active</em> APKs. This list allows you to preview which APK(s)
+you're about to publish.</p>
+
+<p>If there are no errors, any "active" APK will be published to
+Google Play when you click the <strong>Publish</strong> button (if the application is
+unpublished) or when you click the <strong>Save</strong> button (if the application is
+already published).</p>
+
+
+<h3 id="SimpleAndAdvanced">Simple mode and advanced mode</h3>
+
+<p>The Google Play Developer Console provides two modes for managing the APKs associated with
+your application: <em>simple mode</em> and <em>advanced mode</em>. You can switch between these by
+clicking the
+link at the top-right corner of the <strong>APK files</strong> tab.</p>
+
+<p>Simple mode is the traditional way to publish an application, using one APK at a time. In
+simple mode, only one APK can be activated at a time. If you upload a new APK to update
+the application, clicking "Activate" on the new APK deactivates the currently
+active APK (you must then click <strong>Save</strong> to publish the new APK).</p>
+
+<p>Advanced mode allows you to activate and publish multiple APKs that are each designed for a
+specific set of device configurations. However, there are several rules based on the manifest
+declarations in each APK that determine whether you're allowed to activate each APK along with
+others. When you activate an APK and it violates one of the rules, you will receive an error or
+warning message. If it's an error, you cannot publish until you resolve the problem; if it's a
+warning, you can publish the activated APKs, but there might be unintended consequences as to
+whether your application is available for different devices. These rules are discussed more
+below.</p>
+
+
+<h2 id="HowItWorks">How Multiple APKs Work</h2>
+
+<p>The concept for using multiple APKs on Google Play is that you have just one entry in
+Google Play for your application, but different devices might download a different APK. This
+means that:</p>
+
+<ul>
+  <li>You maintain only one set of product details (app description, icons, screenshots, etc.).
+This also means you <em>cannot</em> charge a different price for different APKs.</li>
+  <li>All users see only one version of your application on Google Play, so they are not
+confused by different versions you may have published that are "for tablets" or
+"for phones."</li>
+  <li>All user reviews are applied to the same application listing, even though users on different
+devices may have different APKs.</li>
+  <li>If you publish different APKs for different versions of Android (for different API levels),
+then when a user's device receives a system update that qualifies them for a different APK you've
+published, Google Play updates the user's application to the APK designed for the higher version
+of Android. Any system data associated with the application is retained (the same as with normal
+application updates when using a single APK).</li>
+</ul>
+
+<p>To publish multiple APKs for the same application, you must enable <strong>Advanced mode</strong>
+in your application's <strong>APK files</strong> tab (as discussed in the previous section). Once
+in advanced mode, you can upload, activate, then publish multiple APKs for the same application. The
+following sections describe more about how it works.</p>
+
+
+<h3 id="SupportedFilters">Supported filters</h3>
+
+<p>Which devices receive each APK is determined by <a
+href="../../../google/play/filters.html">Google Play filters</a> that are specified by
+elements in the manifest file of each APK. However, Google Play allows you to publish multiple
+APKs only when each APK uses filters to support a variation of the following
+device characteristics:</p>
+
+<ul>
+  <li><strong>OpenGL texture compression formats</strong>
+    <p>This is based on your manifest file's <a
+href="../../../guide/topics/manifest/supports-gl-texture-element.html"><code>&lt;supports-gl-texture&gt;</code></a> element(s).</p>
+    <p>For example, when developing a game that uses OpenGL ES, you can provide one APK for
+devices that support ATI texture compression and a separate APK for devices
+that support PowerVR compression (among many others).</p>
+  <br/>
+  </li>
+
+  <li><strong>Screen size (and, optionally, screen density)</strong>
+    <p>This is based on your manifest file's <a
+href="../../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> <em>or</em> <a
+href="../../../guide/topics/manifest/compatible-screens-element.html"><code>&lt;compatible-screens&gt;</code></a> element. You should never use both elements and you should use only
+<a href="../../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> when possible.</p>
+    <p>For example, you can provide one APK that supports small and normal size screens and another
+APK that supports large and xlarge screens.</p>
+
+    <p class="note"><strong>Note:</strong> The Android system provides strong support for
+applications to support all screen configurations with a single APK. You should avoid creating
+multiple APKs to support different screens unless absolutely necessary and instead follow the guide
+to <a href="../../../guide/practices/screens_support.html">Supporting Multiple
+Screens</a> so that your application is flexible and can adapt to all screen configurations
+with a single APK.</p>
+    <p class="caution"><strong>Caution:</strong> By default, all screen size attributes in the <a
+href="../../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> element are "true" if you do not declare them otherwise. However,
+because the <code>android:xlargeScreens</code> attribute was added in Android 2.3 (API level
+9), Google Play will assume that it is "false" if your application does not set either <a
+href="../../../guide/topics/manifest/uses-sdk-element.html#min"><code>android:minSdkVersion</code></a> or <a
+href="../../../guide/topics/manifest/uses-sdk-element.html#target"><code>android:targetSdkVersion</code></a> to "9" or higher.</p>
+    <p class="caution"><strong>Caution:</strong> You should not combine both <a
+href="../../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> and <a
+href="../../../guide/topics/manifest/compatible-screens-element.html"><code>&lt;compatible-screens&gt;</code></a> elements in your manifest file. Using both increases the chances
+that you'll introduce an error due to conflicts between them. For help deciding which to use, read
+<a href="../../../guide/practices/screens-distribution.html">Distributing to Specific Screens</a>.
+If you can't avoid using both, be aware that for any conflicts in agreement between a given size,
+"false" will win.</p>
+  <br/>
+  </li>
+
+  <li><strong>API level</strong>
+    <p>This is based on your manifest file's <a
+href="../../../guide/topics/manifest/uses-sdk-element.html"><code>&lt;uses-sdk&gt;</code></a> element.
+You
+can use both the <a href="../../../guide/topics/manifest/uses-sdk-element.html#min"><code>android:minSdkVersion</code></a> and <a
+href="../../../guide/topics/manifest/uses-sdk-element.html#max"><code>android:maxSdkVersion</code></a>
+attributes to specify support for different API levels.</p>
+    <p>For example, you can publish your application with one APK that supports API levels 4 - 7
+(Android 1.6 - 2.1)&mdash;using only APIs available since API level 4 or lower&mdash;and another
+APK that supports API levels 8 and above (Android 2.2+)&mdash;using APIs available since API level 8
+or lower.</p>
+    <div class="note">
+      <p><strong>Note:</strong></p>
+      <ul>
+        <li>If you use this characteristic as the factor to distinguish multiple APKs, then the APK
+with a higher <a href="../../../guide/topics/manifest/uses-sdk-element.html#min"><code>android:minSdkVersion</code></a> value must have a higher <a
+href="../../../guide/topics/manifest/manifest-element.html#vcode"><code>android:versionCode</code></a>
+value. This is also true if two APKs overlap their device support based on a different supported
+filter. This ensures that when a device receives a system update, Google Play can offer the user
+an update for your application (because updates are based on an increase in the app version code).
+This requirement is described further in the section below about <a href="#Rules">Rules for
+multiple APKs</a>.</li>
+        <li>You should avoid using <a
+href="../../../guide/topics/manifest/uses-sdk-element.html#max"><code>android:maxSdkVersion</code></a> in general, because as long as you've properly developed your
+application with public APIs, it is always compatible with future versions of Android. If you want
+to publish a different APK for higher API levels, you still do not need to specify the
+maximum version, because if the <a
+href="../../../guide/topics/manifest/uses-sdk-element.html#min"><code>android:minSdkVersion</code></a> is <code>"4"</code> in one APK and <code>"8"</code> in another, devices that
+support API level 8 or higher will always receive the second APK (because it's version code is
+higher, as per the previous note).</li>
+    </ul>
+  </div>
+  </li>
+
+  <li><strong>CPU architecture (ABI)</strong>
+    <p>This is based on the native libraries included in each APK (which are
+    determined by the architectures you declare in the <code>Application.mk</code>
+    file) when using the Android NDK.</p></li>
+</ul>
+
+<p>Other manifest elements that enable <a
+href="../../../google/play/filters.html">Google Play filters</a>&mdash;but are not
+listed above&mdash;are still applied for each APK as usual. However, Google Play does not allow
+you to publish separate APKs based on variations of those device characteristics. Thus, you cannot
+publish multiple APKs if the above listed filters are the same for each APK (but the APKs differ
+based on other characteristics in the manifest or APK). For
+example, you cannot provide different APKs that differ purely on the <a
+href="../../../guide/topics/manifest/uses-configuration-element.html"><code>&lt;uses-configuration&gt;</code></a> characteristics.</p>
+
+
+
+<h3 id="Rules">Rules for multiple APKs</h3>
+
+<p>Before you enable advanced mode to publish multiple APKs for your application, you need to
+understand the following rules that define how publishing multiple APKs works:</p>
+
+<ul>
+  <li>All APKs you publish for the same application <strong>must have the same package
+name and be signed with the same certificate key</strong>.</li>
+
+  <li>Each APK <strong>must have a different version code</strong>, specified by the
+<a href="../../../guide/topics/manifest/manifest-element.html#vcode"><code>android:versionCode</code></a> attribute.</li>
+
+  <li>Each APK <strong>must not exactly match the configuration support of another APK</strong>.
+    <p>That is, each APK must declare slightly different support for at least one of
+the <a href="#SupportedFilters">supported Google Play filters</a> (listed above).</p>
+    <p>Usually, you will differentiate your APKs based on a specific characteristic (such as the
+supported texture compression formats), and thus, each APK will declare support for different
+devices. However, it's OK to publish multiple APKs that overlap their support slightly. When two
+APKs do overlap (they support some of the same device configurations), a device that falls within
+that overlap range will receive the APK with a higher version code (defined by <a
+href="../../../guide/topics/manifest/manifest-element.html#vcode"><code>android:versionCode</code></a>).</p></li>
+
+  <li>You cannot activate a new APK that has a version code lower than that of the APK it's
+replacing. For example, say you have an active APK for screen sizes small - normal with version code
+0400, then try to replace it with an APK for the same screen sizes with version code 0300. This
+raises an error, because it means users of the previous APK will not be able to update the
+application.</li>
+
+  <li>An APK that requires a <strong>higher API level</strong> must have a <strong>higher
+version code</strong>.
+    <p>This is true only when either: the APKs differ based <em>only</em> on the
+supported API levels (no other <a href="#SupportedFilters">supported filters</a>
+distinguish the APKs from each other) <em>or</em> when the APKs do use another supported filter, but
+there is an overlap between the APKs within that filter.</p>
+    <p>This is important because a user's device receives an application update from
+Google Play only if the version code for the APK on Google Play is higher than the version
+code of the APK currently on the device. This ensures that if a device receives a system update that
+then qualifies it to install the APK for higher API levels, the device receives an application
+update because the version code increases.</p>
+<p class="note"><strong>Note:</strong> The size of the version code increase is irrelevant; it
+simply needs to be larger in the version that supports higher API levels.</p>
+    <p>Here are some examples:</p>
+    <ul>
+      <li>If an APK you've uploaded for API levels 4 and above (Android 1.6+) has a version code of
+<code>0400</code>, then an APK for API levels 8 and above (Android 2.2+) must be <code>0401</code> or
+greater. In this case, the API level is the only supported filter used, so the version codes
+<strong>must increase</strong> in correlation with the API level support for each APK, so that users
+get an update when they receive a system update.</li>
+      <li>If you have one APK that's for API level 4 (and above) <em>and</em> small -
+large screens, and another APK for API level 8 (and above) <em>and</em> large - xlarge screens, then
+the version codes <strong>must increase</strong> in correlation with the API levels.
+In this case, the API level filter is used to
+distinguish each APK, but so is the screen size. Because the screen sizes overlap (both APKs
+support large screens), the version codes must still be in order. This ensures that a large screen
+device that receives a system update to API level 8 will receive an update for the second
+APK.</li>
+      <li>If you have one APK that's for API level 4 (and above) <em>and</em> small -
+normal screens, and another APK for API level 8 (and above) <em>and</em> large - xlarge
+screens, then the version codes <strong>do not need to increase</strong> in correlation with the API
+levels. Because there is no overlap within the screen size filter, there are no devices that
+could potentially move between these two APKs, so there's no need for the version codes to
+increase from the lower API level to the higher API level.</li>
+      <li>If you have one APK that's for API level 4 (and above) <em>and</em> ARMv7 CPUs,
+and another APK for API level 8 (and above) <em>and</em> ARMv5TE CPUs,
+then the version codes <strong>must increase</strong> in correlation with the API levels.
+In this case, the API level filter is used to
+distinguish each APK, but so is the CPU architecture. Because an APK with ARMv5TE libraries is
+compatible with devices that have an ARMv7 CPU, the APKs overlap on this characteristic.
+As such, the version code for the APK that supports API level 8 and above must be higher.
+This ensures that a device with an ARMv7 CPU that receives a system update to API level 8
+will receive an update for the second APK that's designed for API level 8.
+However, because this kind of update results in the ARMv7 device using an APK that's not
+fully optimized for that device's CPU, you should provide an
+APK for both the ARMv5TE and the ARMv7 architecture at each API level in order to optimize
+the app performance on each CPU.
+<strong>Note:</strong> This applies <em>only</em> when comparing APKs with the ARMv5TE and
+ARMv7 libraries, and not when comparing other native libraries.</li>
+    </ul>
+  </li>
+
+</ul>
+
+<p>Failure to abide by the above rules results in an error on the Google Play Developer Console
+when you activate your APKs&mdash;you will be unable to publish your application until you
+resolve the error.</p>
+
+<p>There are other conflicts that might occur when you activate your APKs, but which will result
+in warnings rather than errors. Warnings can be caused by the following:</p>
+
+<ul>
+  <li>When you modify an APK to "shrink" the support for a device's characteristics and no other
+APKs support the devices that then fall outside the supported range. For example, if an APK
+currently supports small and normal size screens and you change it to support only small screens,
+then you have shrunk the pool of supported devices and some devices will no longer see your
+application on Google Play. You can resolve this by adding another APK that supports normal size
+screens so that all previously-supported devices are still supported.</li>
+
+  <li>When there are "overlaps" between two or more APKs. For example, if an APK supports screen
+sizes small, normal, and large, while another APK supports sizes large and xlarge, there is an
+overlap, because both APKs support large screens. If you do not resolve this, then devices that
+qualify for both APKs (large screen devices in the example) will receive whichever APK has the
+highest version code.
+  <p class="note"><strong>Note:</strong> If you're creating separate APKs for different CPU
+  architectures, be aware that an APK for ARMv5TE will overlap with an APK for ARMv7. That is,
+  an APK designed for ARMv5TE is compatible with an ARMv7 device,
+but the reverse is not true (an APK with only the ARMv7 libraries is
+<em>not</em> compatible with an ARMv5TE device).</li>
+</ul>
+
+<p>When such conflicts occur, you will see a warning message, but you can still publish your
+application.</p>
+
+
+
+<h2 id="CreatingApks">Creating Multiple APKs</h2>
+
+<p>Once you decide to publish multiple APKs, you probably need to create separate
+Android projects for each APK you intend to publish so that you can appropriately develop them
+separately. You can do this by simply duplicating your existing project and give it a new name.
+(Alternatively, you might use a build system that can output different resources&mdash;such
+as textures&mdash;based on the build configuration.)</p>
+
+<p class="note"><strong>Tip:</strong> One way to avoid duplicating large portions of your
+application code is to use a <a
+href="../../../tools/projects/index.html#LibraryProjects">library project</a>. A library
+project holds shared code and resources, which you can include in your actual application
+projects.</p>
+
+<p>When creating multiple projects for the same application, it's a good practice to identify each
+one with a name that indicates the device restrictions to be placed on the APK, so you can
+easily identify them. For example, "HelloWorld_8" might be a good name for an
+application designed for API level 8 and above.</p>
+
+<p class="note"><strong>Note:</strong> All APKs you publish for the same application
+<strong>must have the same package name and be signed with the same certificate key</strong>. Be
+sure you also understand each of the <a href="#Rules">Rules for multiple APKs</a>.</p>
+
+
+<h3 id="VersionCodes">Assigning version codes</h3>
+
+<p>Each APK for the same application <strong>must have a unique version code</strong>, specified by
+the <a href="../../../guide/topics/manifest/manifest-element.html#vcode"><code>android:versionCode</code></a> attribute. You must be careful about assigning version codes when
+publishing multiple APKs, because they must each be different, but in some
+cases, must or should be defined in a specific order, based on the configurations that each APK
+supports.</p>
+
+<h4>Ordering version codes</h4>
+
+<p>An APK that requires a higher API level must usually have a higher version code. For example, if
+you create two APKs to support different API levels, the APK for the higher API levels must have the
+higher version code. This ensures that if a device receives a system update that then qualifies it
+to install the APK for higher API levels, the user receives a notification to update the app. For
+more information about how this requirement applies, see the section above about <a
+href="#Rules">Rules for multiple APKs</a>.</p>
+
+<p>You should also consider how the order of version codes might affect which APK your users
+receive either due to overlap between coverage of different APKs or future changes you might make to
+your APKs.</p>
+
+<p>For example, if you have different APKs based on screen size, such as one for small - normal and
+one for large - xlarge, but foresee a time when you will change the APKs to be one for small and one
+for normal - xlarge, then you should make the version code for the large - xlarge APK be higher.
+That way, a normal size device will receive the appropriate update when you make the change, because
+the version code increases from the existing APK to the new APK that now supports the device. </p>
+
+<p>Also, when creating multiple APKs that differ based on support for different OpenGL texture
+compression formats, be aware that many devices support multiple formats. Because a device
+receives the APK with the highest version code when there is an overlap in coverage between two
+APKs, you should order the version codes among your APKs so that the APK with the
+preferred compression format has the highest version code. For example, you might want to perform
+separate builds for your app using PVRTC, ATITC, and ETC1 compression formats. If you prefer these
+formats in this exact order, then the APK that uses PVRTC should have the highest version code, the
+APK that uses ATITC has a lower version code, and the version with ETC1 has the lowest. Thus, if a
+device supports both PVRTC and ETC1, it receives the APK with PVRTC, because it has the highest
+version code.</p>
+
+
+<h4>Using a version code scheme</h4>
+
+<p>In order to allow different APKs to update their version codes independent of others (for
+example, when you fix a bug in only one APK, so don't need to update all APKs), you should use a
+scheme for your version codes that
+provides sufficient room between each APK so that you can increase the code in one without requiring
+an increase in others. You should also include your actual version name in the code (that is, the
+user visible version assigned to <a
+href="../../../guide/topics/manifest/manifest-element.html#vname"><code>android:versionName</code></a>),
+so that it's easy for you to associate the version code and version name.</p>
+
+<p class="note"><strong>Note:</strong> When you increase the version code for an APK, Google
+Play will prompt users of the previous version to update the application. Thus, to avoid
+unnecessary updates, you should not increase the version code for APKs that do not actually
+include changes.</p>
+
+<p>We suggest using a version code with at least 7 digits: integers that represent
+the supported configurations are in the higher order bits, and the version name (from <a
+href="../../../guide/topics/manifest/manifest-element.html#vname"><code>android:versionName</code></a>) is in the lower order bits. For example, when the application version
+name is 3.1.0, version codes for an API level 4
+APK and an API level 11 APK would be something like 0400310 and 1100310, respectively. The first
+two digits are reserved for the API Level (4 and 11, respectively), the middle two digits are for
+either screen sizes or GL texture formats (not used in these examples), and the last three digits
+are for the application's version name (3.1.0). Figure 1 shows two examples that split based on both
+the platform version (API Level) and screen size.</p>
+
+<img src="../../../images/market/version-codes.png" alt="" />
+<p class="img-caption"><strong>Figure 1.</strong> A suggested scheme for your version codes,
+using the first two digits for the API Level, the second and third digits for the minimum and
+maximum screen size (1 - 4 indicating each of the four sizes) or to denote the texture formats
+and the last three digits for the app version.</p>
+
+<p>This scheme for version codes is just a suggestion for how you should establish a
+pattern that is scalable as your application evolves. In particular, this scheme doesn't
+demonstrate a solution for identifying different texture compression formats. One option might be
+to define your own table that specifies a different integer to each of the different
+compression formats your application supports (for example, 1 might correspond to ETC1 and 2 is
+ATITC, and so on).</p>
+
+<p>You can use any scheme you want, but you should carefully consider how future versions of your
+application will need to increase their version codes and how devices can receive updates when
+either the device configuration changes (for example, due to a system update) or when you modify the
+configuration support for one or several of the APKs.</p>
+
+
+
+
+<h2 id="SingleAPK">Using a Single APK Instead</h2>
+
+<p><strong>Creating multiple APKs for your application is not the normal procedure</strong> for
+publishing an application on Google Play. In most cases, you should be able to publish your
+application to most users with a single APK and we encourage that you do so. When you encounter
+a situation in which using a single APK becomes difficult, you should carefully consider all your
+options before deciding to publish multiple APKs.</p>
+
+<p>First of all, there are a few key benefits to developing a single APK that supports all
+devices:</p>
+
+<ul>
+  <li><strong>Publishing and managing your application is easier.</strong>
+    <p>With only one APK to worry about at any given time, you're less likely to become confused by
+which APK is what. You also don't have to keep track of multiple version codes for each
+APK&mdash;by using only one APK, you can simply increase the version code with each release and
+be done.</p>  </li>
+  <li><strong>You need to manage only a single code base.</strong>
+    <p>Although you can use a <a
+href="../../../tools/projects/index.html#LibraryProjects">library project</a>
+to share code between multiple Android projects, it's still likely that you'll reproduce some code
+across each project and this could become difficult to manage, especially when resolving
+bugs.</p></li>
+  <li><strong>Your application can adapt to device configuration changes.</strong>
+    <p>By creating a single APK that contains all the resources for each device configuration, your
+application can adapt to configuration changes that occur at runtime. For example, if the user docks
+or otherwise connects a handset device to a larger screen, there's a chance that this will invoke a
+system configuration change to support the larger screen. If you include all resources for different
+screen configurations in the same APK, then your application will load alternative resources and
+optimize the user experience for the new interface.</p>
+  </li>
+  <li><strong>App restore across devices just works.</strong>
+    <p>If a user has enabled data backup on his or her current device and then buys a new device
+that has a different configuration, then when the user's apps are automatically restored during
+setup, the user receives your application and it runs using the resources optimized for that device.
+For example, on a new tablet, the user receives your application and it runs with your
+tablet-optimized resources. This restore
+process does not work across different APKs, because each APK can potentially have different
+permissions that the user has not agreed to, so Google Play may not restore the application at
+all. (If you use multiple APKs, the user receives either the exact same APK if it's compatible or
+nothing at all and must manually download your application to get the APK designed for the new
+device.)</p></li>
+</ul>
+
+<p>The following sections describe some of the other options you should use to support multiple
+device configurations before deciding to publish multiple APKs.</p>
+
+
+
+<h3 id="TextureOptions">Supporting multiple GL textures</h3>
+
+<p>To support multiple types of GL textures with a single APK, your application should query the GL
+texture formats supported on the device and then use the appropriate resources or download
+them from a web server. For example, in order to keep the size of your APK small, you can query the
+device's support for different GL texture formats when the application starts for the first time and
+then download only the textures you need for that device.</p>
+
+<p>For maximum performance and compatibility, your application should use ETC1 textures wherever it
+doesn't impact the visual quality. However, because ETC1 cannot deal with images that have drastic
+chroma changes, such as line art and (most) text, and doesn't support alpha, it may not the best
+format for all textures.</p>
+
+<p>With a single APK, you should try to use ETC1 textures and uncompressed textures whenever
+reasonable, and consider the use of PVRTC, ATITC, or DXTC as a last resort when ETC1 does not
+suffice.</p>
+
+<p>Here's an example query for supported texture compression formats from inside a
+<code><a href="../../../reference/android/opengl/GLSurfaceView.Renderer.html">GLSurfaceView.Renderer</a></code>:</p>
+
+<pre>
+public void onSurfaceChanged(GL10 gl, int w, int h) {
+    String extensions = gl.glGetString(GL10.GL_EXTENSIONS);
+    Log.d("ExampleActivity", extensions);
+}
+</pre>
+
+<p>This returns a string that lists each of the supported compression formats.</p>
+
+
+
+<h3 id="ScreenOptions">Supporting multiple screens</h3>
+
+<p>Unless your APK file exceeds the Google Play size limit of 50MB, supporting multiple screens
+should always be done with a single APK. Since Android 1.6, the Android system manages most of the
+work required for your application to run successfully on a variety of screen sizes and
+densities.</p>
+
+<p>To further optimize your application for different screen sizes and densities, you should provide
+<a href="../../../guide/topics/resources/providing-resources.html#AlternativeResources">alternative
+resources</a> such as bitmap drawables at different resolutions and different layout designs for
+different screen sizes.</p>
+
+<p>For more information about how to support multiple screens with a single APK, read <a
+href="../../../guide/practices/screens_support.html">Supporting Multiple Screens</a>.</p>
+
+<p>Additionally, you should consider using a support library from the <a
+href="../../../tools/support-library/index.html">Compatibility Package</a> so that you can add <a
+href="../../../guide/components/fragments.html">Fragments</a> to your activity designs
+when running on larger screens such as tablets.</p>
+
+
+
+<h3 id="ApiLevelOptions">Supporting multiple API levels</h3>
+
+<p>If you want to support as many versions of the Android platform as possible, you should use
+only APIs available in the lowest reasonable version. For example, your application may not require
+APIs newer than Android 2.1 (API Level 7), which makes an application available to
+over 95% of Android-powered devices (as indicated by the <a
+href="../../../about/dashboards/index.html">Platform Versions</a> dashboard).</p>
+
+<p>By using a support library from the <a
+href="../../../tools/support-library/index.html">Compatibility Package</a>, you can also use APIs
+from some of the latest versions (such as Android 3.0) while
+still supporting versions as low as Android 1.6. The support library includes APIs for <a
+href="../../../guide/components/fragments.html">Fragments</a>, <a
+href="../../../guide/components/loaders.html">Loaders</a>, and more. Using the fragment
+APIs is particularly valuable so that you can optimize your user interface for large devices such as
+tablets.</p>
+
+<p>Alternatively, if you want to use some APIs that are available only in newer versions of Android
+(which your application can still function without), then you should consider using reflection. By
+using reflection, you can check whether the current device supports certain APIs. If the APIs are
+not available, your application can gracefully disable and hide the feature.</p>
+
+<p>Another way to use new APIs only when running on a version that supports them is to check the
+API level of the current device. That is, you can query the value of <code><a href="../../../reference/android/os/Build.VERSION.html#SDK_INT">SDK_INT</a></code> and create different code paths depending on the API level
+supported by the device. For example:</p>
+
+<pre>
+if (android.os.Build.VERSION.SDK_INT >= 11) {
+    // Use APIs supported by API level 11 (Android 3.0) and up
+} else {
+    // Do something different to support older versions
+}
+</pre>
+
+
+<h3 id="CpuArchOptions">Supporting multiple CPU architectures</h3>
+
+<p>When using the Android NDK, you can create a single APK that supports multiple CPU architectures
+by declaring each of the desired architectures with the <code>APP_ABI</code> variable in the
+<code>Application.mk</code> file.</p>
+
+<p>For example, here's an <code>Application.mk</code> file that declares support for three
+different CPU architectures:</p>
+
+<pre>
+APP_ABI := armeabi armeabi-v7a mips
+APP_PLATFORM := android-9
+</pre>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

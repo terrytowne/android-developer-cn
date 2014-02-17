@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Layouts | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Layouts</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+  <h2>In this document</h2>
+<ol>
+  <li><a href="#write">Write the XML</a></li>
+  <li><a href="#load">Load the XML Resource</a></li>
+  <li><a href="#attributes">Attributes</a>
+    <ol>
+      <li><a href="#id">ID</a></li>
+      <li><a href="#layout-params">Layout Parameters</a></li>
+    </ol>
+  </li>
+  <li><a href="#Position">Layout Position</a></li>
+  <li><a href="#SizePaddingMargins">Size, Padding and Margins</a></li>
+  <li><a href="#CommonLayouts">Common Layouts</a></li>
+  <li><a href="#AdapterViews">Building Layouts with an Adapter</a>
+    <ol>
+      <li><a href="#FillingTheLayout">Filling an adapter view with data</a></li>
+      <li><a href="#HandlingUserSelections">Handling click events</a></li>
+    </ol>
+  </li>
+</ol>
+
+  <h2>Key classes</h2>
+  <ol>
+    <li><code><a href="../../../reference/android/view/View.html">View</a></code></li>
+    <li><code><a href="../../../reference/android/view/ViewGroup.html">ViewGroup</a></code></li>
+    <li><code><a href="../../../reference/android/view/ViewGroup.LayoutParams.html">ViewGroup.LayoutParams</a></code></li>
+  </ol>
+  
+  <h2>See also</h2>
+  <ol>
+    <li><a href="../../../training/basics/firstapp/building-ui.html">Building a Simple User
+Interface</a></li> </div>
+</div>
+
+<p>A layout defines the visual structure for a user interface, such as the UI for an <a
+href="../../../guide/components/activities.html">activity</a> or <a
+href="../../../guide/topics/appwidgets/index.html">app widget</a>.
+You can declare a layout in two ways:</p>
+<ul>
+<li><strong>Declare UI elements in XML</strong>. Android provides a straightforward XML 
+vocabulary that corresponds to the View classes and subclasses, such as those for widgets and layouts.</li>
+<li><strong>Instantiate layout elements at runtime</strong>. Your 
+application can create View and ViewGroup objects (and manipulate their properties) programmatically. </li>
+</ul>
+
+<p>The Android framework gives you the flexibility to use either or both of these methods for declaring and managing your application's UI. For example, you could declare your application's default layouts in XML, including the screen elements that will appear in them and their properties. You could then add code in your application that would modify the state of the screen objects, including those declared in XML, at run time. </p>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+  <ul>
+  <li>The <a href="../../../tools/sdk/eclipse-adt.html">ADT
+  Plugin for Eclipse</a> offers a layout preview of your XML &mdash; 
+  with the XML file opened, select the <strong>Layout</strong> tab.</li>
+  <li>You should also try the 
+  <a href="../../../tools/debugging/debugging-ui.html#hierarchyViewer">Hierarchy Viewer</a> tool, 
+  for debugging layouts &mdash; it reveals layout property values, 
+  draws wireframes with padding/margin indicators, and full rendered views while 
+  you debug on the emulator or device.</li>
+  <li>The <a href="../../../tools/debugging/debugging-ui.html#layoutopt">layoutopt</a> tool lets
+  you quickly analyze your layouts and hierarchies for inefficiencies or other problems.</li>
+</div>
+</div>
+
+<p>The advantage to declaring your UI in XML is that it enables you to better separate the presentation of your application from the code that controls its behavior. Your UI descriptions are external to your application code, which means that you can modify or adapt it without having to modify your source code and recompile. For example, you can create XML layouts for different screen orientations, different device screen sizes, and different languages. Additionally, declaring the layout in XML makes it easier to visualize the structure of your UI, so it's easier to debug problems. As such, this document focuses on teaching you how to declare your layout in XML. If you're
+interested in instantiating View objects at runtime, refer to the <code><a href="../../../reference/android/view/ViewGroup.html">ViewGroup</a></code> and 
+<code><a href="../../../reference/android/view/View.html">View</a></code> class references.</p>
+
+<p>In general, the XML vocabulary for declaring UI elements closely follows the structure and naming of the classes and methods, where element names correspond to class names and attribute names correspond to methods. In fact, the correspondence is often so direct that you can guess what XML attribute corresponds to a class method, or guess what class corresponds to a given xml element. However, note that not all vocabulary is identical. In some cases, there are slight naming differences. For
+example, the EditText element has a <code>text</code> attribute that corresponds to
+<code>EditText.setText()</code>. </p>
+
+<p class="note"><strong>Tip:</strong> Learn more about different layout types in <a href="../../../guide/topics/ui/layout-objects.html">Common
+Layout Objects</a>. There are also a collection of tutorials on building various layouts in the
+<a href="../../../resources/tutorials/views/index.html">Hello Views</a> tutorial guide.</p>
+
+<h2 id="write">Write the XML</h2>
+
+<p>Using Android's XML vocabulary, you can quickly design UI layouts and the screen elements they contain, in the same way you create web pages in HTML &mdash; with a series of nested elements. </p>
+
+<p>Each layout file must contain exactly one root element, which must be a View or ViewGroup object. Once you've defined the root element, you can add additional layout objects or widgets as child elements to gradually build a View hierarchy that defines your layout. For example, here's an XML layout that uses a vertical <code><a href="../../../reference/android/widget/LinearLayout.html">LinearLayout</a></code>
+to hold a <code><a href="../../../reference/android/widget/TextView.html">TextView</a></code> and a <code><a href="../../../reference/android/widget/Button.html">Button</a></code>:</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="fill_parent" 
+              android:orientation="vertical" >
+    &lt;TextView android:id="@+id/text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Hello, I am a TextView" />
+    &lt;Button android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello, I am a Button" />
+&lt;/LinearLayout>
+</pre>
+
+<p>After you've declared your layout in XML, save the file with the <code>.xml</code> extension, 
+in your Android project's <code>res/layout/</code> directory, so it will properly compile. </p>
+
+<p>More information about the syntax for a layout XML file is available in the <a
+href="../../../guide/topics/resources/layout-resource.html">Layout Resources</a> document.</p>
+
+<h2 id="load">Load the XML Resource</h2>
+
+<p>When you compile your application, each XML layout file is compiled into a
+<code><a href="../../../reference/android/view/View.html">View</a></code> resource. You should load the layout resource from your application code, in your 
+<code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">Activity.onCreate()</a></code> callback implementation.
+Do so by calling <code><code><a href="../../../reference/android/app/Activity.html#setContentView(int)">setContentView()</a></code></code>, 
+passing it the reference to your layout resource in the form of: 
+<code>R.layout.<em>layout_file_name</em></code>  
+For example, if your XML layout is saved as <code>main_layout.xml</code>, you would load it
+for your Activity like so:</p>
+<pre>
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.main_layout);
+}
+</pre>
+
+<p>The <code>onCreate()</code> callback method in your Activity is called by the Android framework when
+your Activity is launched (see the discussion about lifecycles, in the 
+<a href="../../../guide/components/activities.html#Lifecycle">Activities</a>
+document).</p>
+
+
+<h2 id="attributes">Attributes</h2>
+
+<p>Every View and ViewGroup object supports their own variety of XML attributes.
+Some attributes are specific to a View object (for example, TextView supports the <code>textSize</code>
+attribute), but these attributes are also inherited by any View objects that may extend this class.
+Some are common to all View objects, because they are inherited from the root View class (like 
+the <code>id</code> attribute). And, other attributes are considered "layout parameters," which are 
+attributes that describe certain layout orientations of the View object, as defined by that object's
+parent ViewGroup object.</p>
+
+<h3 id="id">ID</h3>
+
+<p>Any View object may have an integer ID associated with it, to uniquely identify the View within the tree.
+When the application is compiled, this ID is referenced as an integer, but the ID is typically 
+assigned in the layout XML file as a string, in the <code>id</code> attribute.
+This is an XML attribute common to all View objects
+(defined by the <code><a href="../../../reference/android/view/View.html">View</a></code> class) and you will use it very often. 
+The syntax for an ID, inside an XML tag is:</p>
+<pre>android:id="&#64;+id/my_button"</pre>
+
+<p>The  at-symbol (&#64;) at the beginning of the string indicates that the XML parser should parse and expand the rest
+of the ID string and identify it as an ID resource. The plus-symbol (+) means that this is a new resource name that must
+be created and added to our resources (in the <code>R.java</code> file). There are a number of other ID resources that
+are offered by the Android framework. When referencing an Android resource ID, you do not need the plus-symbol,
+but must add the <code>android</code> package namespace, like so:</p>
+<pre>android:id="&#64;android:id/empty"</pre>
+<p>With the <code>android</code> package namespace in place, we're now referencing an ID from the <code>android.R</code>
+resources class, rather than the local resources class.</p>
+
+<p>In order to create views and reference them from the application, a common pattern is to:</p>
+<ol>
+  <li>Define a view/widget in the layout file and assign it a unique ID:
+<pre>
+&lt;Button android:id="&#64;+id/my_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&#64;string/my_button_text"/>
+</pre>
+  </li>
+  <li>Then create an instance of the view object and capture it from the layout 
+(typically in the <code><code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code></code> method):
+<pre>
+Button myButton = (Button) findViewById(R.id.my_button);
+</pre>
+  </li>
+</ol>
+<p>Defining IDs for view objects is important when creating a <code><a href="../../../reference/android/widget/RelativeLayout.html">RelativeLayout</a></code>.
+In a relative layout, sibling views can define their layout relative to another sibling view, 
+which is referenced by the unique ID.</p>
+<p>An ID need not be unique throughout the entire tree, but it should be
+unique within the part of the tree you are searching (which may often be the entire tree, so it's best 
+to be completely unique when possible).</p>
+
+
+<h3 id="layout-params">Layout Parameters</h3>
+
+<p>XML layout attributes named <code>layout_<em>something</em></code> define 
+layout parameters for the View that are appropriate for the ViewGroup in which it resides.</p>
+
+<p>Every ViewGroup class implements a nested class that extends <code><a href="../../../reference/android/view/ViewGroup.LayoutParams.html">ViewGroup.LayoutParams</a></code>. This subclass
+contains property types that define the size and position for each child view, as
+appropriate for the view group. As you can see in figure 1, the parent
+view group defines layout parameters for each child view (including the child view group).</p>
+
+<img src="../../../images/layoutparams.png" alt="" />
+<p class="img-caption"><strong>Figure 1.</strong> Visualization of a view hierarchy with layout
+parameters associated with each view.</p>
+
+<p>Note that every LayoutParams subclass has its own syntax for setting
+values. Each child element must define LayoutParams that are appropriate for its parent, 
+though it may also define different LayoutParams for its own children. </p>
+
+<p>All view groups include a width and height (<code>layout_width</code> and
+<code>layout_height</code>), and each view is required to define them. Many
+LayoutParams also include optional margins and borders. <p>
+
+<p>You can specify width and height with exact measurements, though you probably
+won't want to do this often. More often, you will use one of these constants to
+set the width or height: </p>
+
+<ul>
+  <li><var>wrap_content</var> tells your view to size itself to the dimensions
+required by its content</li>
+  <li><var>fill_parent</var> (renamed <var>match_parent</var> in API Level 8)
+tells your view to become as big as its parent view group will allow.</li>
+</ul>
+
+<p>In general, specifying a layout width and height using absolute units such as
+pixels is not recommended. Instead, using relative measurements such as
+density-independent pixel units (<var>dp</var>), <var>wrap_content</var>, or
+<var>fill_parent</var>, is a better approach, because it helps ensure that
+your application will display properly across a variety of device screen sizes.
+The accepted measurement types are defined in the
+<a href="../../../guide/topics/resources/available-resources.html#dimension">
+Available Resources</a> document.</p>
+
+
+<h2 id="Position">Layout Position</h2>
+   <p>
+   The geometry of a view is that of a rectangle. A view has a location,
+   expressed as a pair of <em>left</em> and <em>top</em> coordinates, and
+   two dimensions, expressed as a width and a height. The unit for location
+   and dimensions is the pixel.
+   </p>
+  
+   <p>
+   It is possible to retrieve the location of a view by invoking the methods
+   <code><a href="../../../reference/android/view/View.html#getLeft()">getLeft()</a></code> and <code><a href="../../../reference/android/view/View.html#getTop()">getTop()</a></code>. The former returns the left, or X,
+   coordinate of the rectangle representing the view. The latter returns the
+   top, or Y, coordinate of the rectangle representing the view. These methods
+   both return the location of the view relative to its parent. For instance,
+   when getLeft() returns 20, that means the view is located 20 pixels to the
+   right of the left edge of its direct parent.
+   </p>
+  
+   <p>
+   In addition, several convenience methods are offered to avoid unnecessary
+   computations, namely <code><a href="../../../reference/android/view/View.html#getRight()">getRight()</a></code> and <code><a href="../../../reference/android/view/View.html#getBottom()">getBottom()</a></code>.
+   These methods return the coordinates of the right and bottom edges of the
+   rectangle representing the view. For instance, calling <code><a href="../../../reference/android/view/View.html#getRight()">getRight()</a></code>
+   is similar to the following computation: <code>getLeft() + getWidth()</code>.
+   </p>
+   
+
+<h2 id="SizePaddingMargins">Size, Padding and Margins</h2>
+   <p>
+   The size of a view is expressed with a width and a height. A view actually
+   possess two pairs of width and height values.
+   </p>
+  
+   <p>
+   The first pair is known as <em>measured width</em> and
+   <em>measured height</em>. These dimensions define how big a view wants to be
+   within its parent. The
+   measured dimensions can be obtained by calling <code><a href="../../../reference/android/view/View.html#getMeasuredWidth()">getMeasuredWidth()</a></code>
+   and <code><a href="../../../reference/android/view/View.html#getMeasuredHeight()">getMeasuredHeight()</a></code>.
+   </p>
+  
+   <p>
+   The second pair is simply known as <em>width</em> and <em>height</em>, or
+   sometimes <em>drawing width</em> and <em>drawing height</em>. These
+   dimensions define the actual size of the view on screen, at drawing time and
+   after layout. These values may, but do not have to, be different from the
+   measured width and height. The width and height can be obtained by calling
+   <code><a href="../../../reference/android/view/View.html#getWidth()">getWidth()</a></code> and <code><a href="../../../reference/android/view/View.html#getHeight()">getHeight()</a></code>. 
+   </p>
+  
+   <p>
+   To measure its dimensions, a view takes into account its padding. The padding
+   is expressed in pixels for the left, top, right and bottom parts of the view.
+   Padding can be used to offset the content of the view by a specific amount of
+   pixels. For instance, a left padding of 2 will push the view's content by
+   2 pixels to the right of the left edge. Padding can be set using the
+   <code><a href="../../../reference/android/view/View.html#setPadding(int, int, int, int)">setPadding(int, int, int, int)</a></code> method and queried by calling
+   <code><a href="../../../reference/android/view/View.html#getPaddingLeft()">getPaddingLeft()</a></code>, <code><a href="../../../reference/android/view/View.html#getPaddingTop()">getPaddingTop()</a></code>,
+   <code><a href="../../../reference/android/view/View.html#getPaddingRight()">getPaddingRight()</a></code> and <code><a href="../../../reference/android/view/View.html#getPaddingBottom()">getPaddingBottom()</a></code>.  
+   </p>
+  
+   <p>
+   Even though a view can define a padding, it does not provide any support for
+   margins. However, view groups provide such a support. Refer to
+   <code><a href="../../../reference/android/view/ViewGroup.html">ViewGroup</a></code> and
+   <code><a href="../../../reference/android/view/ViewGroup.MarginLayoutParams.html">ViewGroup.MarginLayoutParams</a></code> for further information.
+   </p>
+
+   <p>For more information about dimensions, see 
+   <a href="../../../guide/topics/resources/more-resources.html#Dimension">Dimension Values</a>.
+   </p>
+   
+
+   
+   
+
+
+<style type="text/css">
+div.layout {
+  float:left;
+  width:200px;
+  margin:0 0 20px 20px;
+}
+div.layout.first {
+  margin-left:0;
+  clear:left;
+}
+</style>
+
+
+
+
+<h2 id="CommonLayouts">Common Layouts</h2>
+
+<p>Each subclass of the <code><a href="../../../reference/android/view/ViewGroup.html">ViewGroup</a></code> class provides a unique way to display
+the views you nest within it. Below are some of the more common layout types that are built
+into the Android platform.</p>
+
+<p class="note"><strong>Note:</strong> Although you can nest one or more layouts within another
+layout to acheive your UI design, you should strive to keep your layout hierarchy as shallow as
+possible. Your layout draws faster if it has fewer nested layouts (a wide view hierarchy is
+better than a deep view hierarchy).</p>
+
+<!-- 
+<h2 id="framelayout">FrameLayout</h2>
+<p><code><a href="../../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> is the simplest type of layout
+object. It's basically a blank space on your screen that you can
+later fill with a single object &mdash; for example, a picture that you'll swap in and out.
+All child elements of the FrameLayout are pinned to the top left corner of the screen; you cannot
+specify a different location for a child view. Subsequent child views will simply be drawn over
+previous ones,
+partially or totally obscuring them (unless the newer object is transparent).
+</p>
+-->
+
+
+<div class="layout first">
+  <h4><a href="layout/linear.html">Linear Layout</a></h4>
+  <a href="layout/linear.html"><img src="../../../images/ui/linearlayout-small.png" alt="" /></a>
+  <p>A layout that organizes its children into a single horizontal or vertical row. It
+  creates a scrollbar if the length of the window exceeds the length of the screen.</p>
+</div>
+
+<div class="layout">
+  <h4><a href="layout/relative.html">Relative Layout</a></h4>
+  <a href="layout/relative.html"><img src="../../../images/ui/relativelayout-small.png" alt=""
+/></a>
+  <p>Enables you to specify the location of child objects relative to each other (child A to
+the left of child B) or to the parent (aligned to the top of the parent).</p>
+</div>
+
+<div class="layout">
+  <h4><a href="../../../guide/webapps/webview.html">Web View</a></h4>
+  <a href="../../../guide/webapps/webview.html"><img src="../../../images/ui/webview-small.png"
+alt="" /></a>
+  <p>Displays web pages.</p>
+</div>
+
+
+
+
+<h2 id="AdapterViews" style="clear:left">Building Layouts with an Adapter</h2>
+
+<p>When the content for your layout is dynamic or not pre-determined, you can use a layout that
+subclasses <code><a href="../../../reference/android/widget/AdapterView.html">AdapterView</a></code> to populate the layout with views at runtime. A
+subclass of the <code><a href="../../../reference/android/widget/AdapterView.html">AdapterView</a></code> class uses an <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> to
+bind data to its layout. The <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> behaves as a middle-man between the data
+source and the <code><a href="../../../reference/android/widget/AdapterView.html">AdapterView</a></code> layout&mdash;the <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code>
+retrieves the data (from a source such as an array or a database query) and converts each entry
+into a view that can be added into the <code><a href="../../../reference/android/widget/AdapterView.html">AdapterView</a></code> layout.</p>
+
+<p>Common layouts backed by an adapter include:</p>
+
+<div class="layout first">
+  <h4><a href="layout/listview.html">List View</a></h4>
+  <a href="layout/listview.html"><img src="../../../images/ui/listview-small.png" alt="" /></a>
+  <p>Displays a scrolling single column list.</p>
+</div>
+
+<div class="layout">
+  <h4><a href="layout/gridview.html">Grid View</a></h4>
+  <a href="layout/gridview.html"><img src="../../../images/ui/gridview-small.png" alt="" /></a>
+  <p>Displays a scrolling grid of columns and rows.</p>
+</div>
+
+
+
+<h3 id="FillingTheLayout" style="clear:left">Filling an adapter view with data</h3>
+
+<p>You can populate an <code><a href="../../../reference/android/widget/AdapterView.html">AdapterView</a></code> such as <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code> or
+<code><a href="../../../reference/android/widget/GridView.html">GridView</a></code> by binding the <code><a href="../../../reference/android/widget/AdapterView.html">AdapterView</a></code> instance to an
+<code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code>, which retrieves data from an external source and creates a <code><a href="../../../reference/android/view/View.html">View</a></code> that represents each data entry.</p>
+
+<p>Android provides several subclasses of <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> that are useful for
+retrieving different kinds of data and building views for an <code><a href="../../../reference/android/widget/AdapterView.html">AdapterView</a></code>. The
+two most common adapters are:</p>
+
+<dl>
+  <dt><code><a href="../../../reference/android/widget/ArrayAdapter.html">ArrayAdapter</a></code></dt>
+    <dd>Use this adapter when your data source is an array. By default, <code><a href="../../../reference/android/widget/ArrayAdapter.html">ArrayAdapter</a></code> creates a view for each array item by calling <code><a href="../../../reference/java/lang/Object.html#toString()">toString()</a></code> on each item and placing the contents in a <code><a href="../../../reference/android/widget/TextView.html">TextView</a></code>.
+      <p>For example, if you have an array of strings you want to display in a <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>, initialize a new <code><a href="../../../reference/android/widget/ArrayAdapter.html">ArrayAdapter</a></code> using a
+constructor to specify the layout for each string and the string array:</p>
+<pre>
+ArrayAdapter adapter = new ArrayAdapter&lt;String>(this, 
+        android.R.layout.simple_list_item_1, myStringArray);
+</pre>
+<p>The arguments for this constructor are:</p>
+<ul>
+  <li>Your app <code><a href="../../../reference/android/content/Context.html">Context</a></code></li>
+  <li>The layout that contains a <code><a href="../../../reference/android/widget/TextView.html">TextView</a></code> for each string in the array</li>
+  <li>The string array</li>
+</ul>
+<p>Then simply call
+<code><a href="../../../reference/android/widget/AdapterView.html#setAdapter(T)">setAdapter()</a></code> on your <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>:</p>
+<pre>
+ListView listView = (ListView) findViewById(R.id.listview);
+listView.setAdapter(adapter);
+</pre>
+
+      <p>To customize the appearance of each item you can override the <code><a href="../../../reference/java/lang/Object.html#toString()">toString()</a></code> method for the objects in your array. Or, to create a view for each
+item that's something other than a <code><a href="../../../reference/android/widget/TextView.html">TextView</a></code> (for example, if you want an
+<code><a href="../../../reference/android/widget/ImageView.html">ImageView</a></code> for each array item), extend the <code><a href="../../../reference/android/widget/ArrayAdapter.html">ArrayAdapter</a></code> class and override <code><a href="../../../reference/android/widget/ArrayAdapter.html#getView(int, android.view.View, android.view.ViewGroup)">getView()</a></code> to return the type of view you want for each item.</p>
+
+</dd>
+
+  <dt><code><a href="../../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code></dt>
+    <dd>Use this adapter when your data comes from a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code>. When
+using <code><a href="../../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code>, you must specify a layout to use for each
+row in the <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> and which columns in the <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code>
+should be inserted into which views of the layout. For example, if you want to create a list of
+people's names and phone numbers, you can perform a query that returns a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> containing a row for each person and columns for the names and
+numbers. You then create a string array specifying which columns from the <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> you want in the layout for each result and an integer array specifying the
+corresponding views that each column should be placed:</p>
+<pre>
+String[] fromColumns = {ContactsContract.Data.DISPLAY_NAME, 
+                        ContactsContract.CommonDataKinds.Phone.NUMBER};
+int[] toViews = {R.id.display_name, R.id.phone_number};
+</pre>
+<p>When you instantiate the <code><a href="../../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code>, pass the layout to use for
+each result, the <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> containing the results, and these two arrays:</p>
+<pre>
+SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, 
+        R.layout.person_name_and_number, cursor, fromColumns, toViews, 0);
+ListView listView = getListView();
+listView.setAdapter(adapter);
+</pre>
+<p>The <code><a href="../../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code> then creates a view for each row in the
+<code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> using the provided layout by inserting each <code>fromColumns</code> item into the corresponding <code>toViews</code> view.</p>.</dd>
+</dl>
+
+
+<p>If, during the course of your application's life, you change the underlying data that is read by
+your adapter, you should call <code><a href="../../../reference/android/widget/ArrayAdapter.html#notifyDataSetChanged()">notifyDataSetChanged()</a></code>. This will
+notify the attached view that the data has been changed and it should refresh itself.</p>
+
+
+
+<h3 id="HandlingUserSelections">Handling click events</h3>
+
+<p>You can respond to click events on each item in an <code><a href="../../../reference/android/widget/AdapterView.html">AdapterView</a></code> by
+implementing the <code><a href="../../../reference/android/widget/AdapterView.OnItemClickListener.html">AdapterView.OnItemClickListener</a></code> interface. For example:</p>
+
+<pre>
+// Create a message handling object as an anonymous class.
+private OnItemClickListener mMessageClickedHandler = new OnItemClickListener() {
+    public void onItemClick(AdapterView parent, View v, int position, long id) {
+        // Do something in response to the click
+    }
+};
+
+listView.setOnItemClickListener(mMessageClickedHandler); 
+</pre>
+
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+
