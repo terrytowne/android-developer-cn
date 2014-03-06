@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Implementing In-app Billing <span style="font-size:16px;">(IAB Version 3)</span> | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation google
+  " itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/index.html">
+          <span class="en">Overview</span>
+      </a></div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/games.html">
+          <span class="en">Games</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/location.html">
+          <span class="en">Location</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/plus.html">
+          <span class="en">Google+</span>
+                </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/maps.html">
+          <span class="en">Maps</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/play-services/ads.html">
+      <span class="en">Ads</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../google/play-services/id.html">
+          <span class="en">Advertising ID</span></a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/wallet.html">
+          <span class="en">Wallet</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../google/play-services/auth.html">
+          <span class="en">Authorization</span>
+      </a></div>
+  </li>
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/play-services/index.html">
+      <span class="en">Google Play Services</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../google/play-services/setup.html">
+          <span class="en">Setup</span></a>
+      </li>
+      <li id="gms-tree-list" class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../reference/gms-packages.html">
+            <span class="en">Reference</span>
+          </a>
+        <div>
+      </li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/play/billing/index.html">
+      <span class="en">Google Play In-app Billing</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../google/play/billing/billing_overview.html">
+              <span class="en">Overview</span></a>
+      </li>
+      <li class="nav-section"><div class="nav-section-header"><a href="../../../google/play/billing/api.html">
+              <span class="en">Version 3 API</span></a></div>
+              <ul>
+              <li><a href="../../../google/play/billing/billing_integrate.html">
+              <span class="en">Implementing the API</span></a></li>
+              <li><a href="../../../google/play/billing/billing_reference.html">
+              <span class="en">Reference</span></a></li>
+              </ul>
+      </li>
+      <li class="nav-section"><div class="nav-section-header"><a href="../../../google/play/billing/v2/api.html">
+              <span class="en">Version 2 API</span></a></div>
+              <ul>
+              <li><a href="../../../google/play/billing/v2/billing_integrate.html">
+              <span class="en">Implementing the API</span></a></li>
+              <li><a href="../../../google/play/billing/v2/billing_subscriptions.html">
+              <span class="en">Subscriptions</span></a></li>
+              <li><a href="../../../google/play/billing/v2/billing_reference.html">
+              <span class="en">Reference</span></a></li>
+              </ul>
+      </li>
+      <li><a href="../../../google/play/billing/billing_subscriptions.html">
+              <span class="en">Subscriptions</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/billing_best_practices.html">
+              <span class="en">Security and Design</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/billing_testing.html">
+              <span class="en">Testing In-app Billing</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/billing_admin.html">
+              <span class="en">Administering In-app Billing</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/gp-purchase-status-api.html">
+              <span class="en">Purchase Status API</span></a>
+      </li>
+      <li><a href="../../../google/play/billing/versions.html">
+              <span class="en">Version Notes</span></a>
+      </li>
+    </ul>
+  </li>
+
+
+
+  <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../google/gcm/index.html">
+        <span class="en">Google Cloud Messaging</span></a>
+      </div>
+      <ul>
+        <li><a href="../../../google/gcm/gs.html">
+            <span class="en">Getting Started</span></a>
+        </li>
+        <li><a href="../../../google/gcm/gcm.html">
+            <span class="en">Architectural Overview</span></a>
+        </li>
+         <li><a href="../../../google/gcm/ccs.html">
+              <span class="en">Cloud Connection Server</span></a>
+        </li>
+        <li><a href="../../../google/gcm/notifications.html">
+              <span class="en">User Notifications</span></a>
+        </li>
+        <li><a href="../../../google/gcm/client.html">
+            <span class="en">GCM Client</span></a>
+        </li>
+        <li><a href="../../../google/gcm/server.html">
+            <span class="en">GCM Server</span></a>
+        </li>
+        <li><a href="../../../google/gcm/adv.html">
+            <span class="en">Advanced Topics</span></a>
+        </li>
+        <li><a href="../../../google/gcm/c2dm.html">
+            <span class="en">Migration</span></a>
+        </li>
+        <li id="gcm-tree-list" class="nav-section">
+          <div class="nav-section-header">
+            <a href="../../../reference/gcm-packages.html">
+              <span class="en">Reference</span>
+            </a>
+          <div>
+        </li>
+      </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/play/dist.html">
+      <span class="en">Google Play Distribution</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../google/play/filters.html">
+          <span class="en">Filters on Google Play</span></a>
+      </li>
+
+      <li><a href="../../../google/play/publishing/multiple-apks.html">
+          <span class="en">Multiple APK Support</span></a>
+      </li>
+      <li><a href="../../../google/play/expansion-files.html">
+          <span class="en">APK Expansion Files</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../google/play/licensing/index.html">
+          <span class="en">Application Licensing</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../google/play/licensing/overview.html">
+              <span class="en">Licensing Overview</span></a>
+          </li>
+          <li><a href="../../../google/play/licensing/setting-up.html">
+              <span class="en">Setting Up for Licensing</span></a>
+          </li>
+          <li><a href="../../../google/play/licensing/adding-licensing.html">
+              <span class="en">Adding Licensing to Your App</span></a>
+          </li>
+          <li><a href="../../../google/play/licensing/licensing-reference.html">
+              <span class="en">Licensing Reference</span></a>
+          </li>
+        </ul>
+      </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../google/backup/index.html">
+      Android Backup Service</a>
+    </div>
+    <ul>
+      <li><a href="../../../google/backup/signup.html">
+          Register</a>
+      </li>
+    </ul>
+  </li>
+
+  </ul>
+
+</li>
+
+
+
+</ul>
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+      <script type="text/javascript">
+       showGoogleRefTree();
+    
+      </script>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Implementing In-app Billing <span style="font-size:16px;">(IAB Version 3)</span></h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+  <h2>In this document</h2>
+  <ol>
+    <li><a href="#billing-add-aidl">Adding the AIDL file</a></li>
+    <li><a href="#billing-permission">Updating Your Manifest</a></li>
+    <li><a href="#billing-service">Creating a ServiceConnection</a></li>
+    <li><a href="#billing-requests">Making In-app Billing Requests</a>
+       <ol>
+       <li><a href="#QueryDetails">Querying Items Available for Purchase</a><li>
+       <li><a href="#Purchase">Purchasing an Item</a></li>
+       <li><a href="#QueryPurchases">Querying Purchased Items</a></li>
+       <li><a href="#Consume">Consuming a Purchase</a><li>
+       <li><a href="#Subs">Implementing Subscriptions</a><li>
+       </ol>
+    </li>
+    <li><a href="#billing-security">Securing Your App</a>
+  </ol>
+  <h2>Reference</h2>
+  <ol>
+    <li><a href="../../../google/play/billing/billing_reference.html">In-app Billing
+    Reference (V3)</a></li>
+  </ol>
+  <h2>Related Samples</h2>
+  <ol>
+    <li><a href="../../../training/in-app-billing/preparing-iab-app.html#GetSample">Sample Application (V3)</a></li>
+  </ol>
+  <h2>See also</h2>
+  <ol>
+    <li><a href="../../../training/in-app-billing/index.html">Selling In-app Products</a></li>
+  </ol>  
+</div>
+</div>
+
+<p>In-app Billing on Google Play provides a straightforward, simple interface for sending In-app Billing requests and managing In-app Billing transactions using Google Play. The information below covers the basics of how to make calls from your application to the In-app Billing service using the Version 3 API. </p>
+
+<p class="note"><strong>Note:</strong> To see a complete implementation and learn how to test your application, see the <a href="../../../training/in-app-billing/index.html">Selling In-app Products</a> training class. The training class provides a complete sample In-app Billing application, including convenience classes to handle key tasks related to setting up your connection, sending billing requests and processing responses from Google Play, and managing background threading so that you can make In-app Billing calls from your main activity.</p>
+
+<p>Before you start, be sure that you read the <a href="../../../google/play/billing/billing_overview.html">In-app Billing Overview</a> to familiarize yourself with 
+concepts that will make it easier for you to implement In-app Billing.</p>
+
+<p>To implement In-app Billing in your application, you need to do the 
+following:</p>
+<ol>
+  <li>Add the In-app Billing library to your project.</li>
+  <li>Update your <code>AndroidManifest.xml</code> file.</li>
+  <li>Create a <code>ServiceConnection</code> and bind it to 
+<code>IInAppBillingService</code>.</li>
+  <li>Send In-app Billing requests from your application to 
+<code>IInAppBillingService</code>.</li>
+  <li>Handle In-app Billing responses from Google Play.</li>
+</ol>
+
+<h2 id="billing-add-aidl">Adding the AIDL file to your project</h2>
+
+<p><code>IInAppBillingService.aidl</code> is an Android Interface Definition 
+Language (AIDL) file that defines the interface to the In-app Billing Version 
+3 service. You will use this interface to make billing requests by invoking IPC 
+method calls.</p>
+<p>To get the AIDL file:</p>
+<ol>
+<li>Open the <a href="../../../tools/help/sdk-manager.html">Android SDK Manager</a>.</li>
+<li>In the SDK Manager, expand the <code>Extras</code> section.</li>
+<li>Select <strong>Google Play Billing Library</strong>.</li>
+<li>Click <strong>Install packages</strong> to complete the download.</li>
+</ol>
+<p>The <code>IInAppBillingService.aidl</code> file will be installed to <code>&lt;sdk&gt;/extras/google/play_billing/</code>.</p>
+
+<p>To add the AIDL to your project:</p>
+<ol>
+<li>Copy the <code>IInAppBillingService.aidl</code> file to your Android project.
+  <ul>
+  <li>If you are using Eclipse: 
+     <ol type="a">
+        <li>If you are starting from an existing Android project, open the project 
+in Eclipse. If you are creating a new Android project from scratch, click 
+<strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Android Application 
+Project</strong>, then follow the instructions in the <strong>New Android 
+Application</strong> wizard to create a new project in your workspace.</li>
+	<li>In the <code>/src</code> directory, click <strong>File</strong> &gt; 
+<strong>New</strong> &gt; <strong>Package</strong>, then create a package named <code>com.android.vending.billing</code>.</li>
+	<li>Copy the <code>IInAppBillingService.aidl</code> file from <code>&lt;sdk&gt;/extras/google/play_billing/</code> and paste it into the <code>src/com.android.vending.billing/</code> 
+folder in your workspace.</li>
+     </ol>
+  </li>
+  <li>If you are developing in a non-Eclipse environment: Create the following 
+directory <code>/src/com/android/vending/billing</code> and copy the 
+<code>IInAppBillingService.aidl</code> file into this directory. Put the AIDL file 
+into your project and use the Ant tool to build your project so that the
+<code>IInAppBillingService.java</code> file gets generated.</li>
+  </ul>
+</li>
+<li>Build your application. You should see a generated file named 
+<code>IInAppBillingService.java</code> in the <code>/gen</code> directory of your 
+project.</li>
+</ol>
+
+
+<h2 id="billing-permission">Updating Your Application's Manifest</h2>
+
+<p>In-app billing relies on the Google Play application, which handles all communication between your application and the Google Play server. To use the Google Play application, your application must request the proper permission. You can do this by adding the <code>com.android.vending.BILLING</code> permission to your AndroidManifest.xml file. If your application does not declare the In-app Billing permission, but attempts to send billing requests, Google Play will refuse the requests and respond with an error.</p>
+
+<p>To give your app the necessary permission, add this line in your <code>Android.xml</code> manifest file:</p>
+<pre>
+&lt;uses-permission android:name="com.android.vending.BILLING" /&gt;
+</pre>
+
+<h2 id="billing-service">Creating a ServiceConnection</h2>
+
+<p>Your application must have a <code><a href="../../../reference/android/content/ServiceConnection.html">ServiceConnection</a></code> to facilitate messaging between
+your application and Google Play. At a minimum, your application must do the following:</p>
+
+<ul>
+  <li>Bind to <code>IInAppBillingService</code>.
+  <li>Send billing requests (as IPC method calls) to the Google Play application.</li>
+  <li>Handle the synchronous response messages that are returned with each billing request.</li>
+</ul>
+
+<h3>Binding to IInAppBillingService</h3>
+<p>To establish a connection with the In-app Billing service on Google Play, implement a <code><a href="../../../reference/android/content/ServiceConnection.html">ServiceConnection</a></code> to bind your activity to <code>IInAppBillingService</code>. Override the <code><a href="../../../reference/android/content/ServiceConnection.html#onServiceDisconnected(android.content.ComponentName)">onServiceDisconnected</a></code> and <code><a href="../../../reference/android/content/ServiceConnection.html#onServiceConnected(android.content.ComponentName, android.os.IBinder)">onServiceConnected</a></code> methods to get a reference to the <code>IInAppBillingService</code> instance after a connection has been established.</p>
+<pre>
+IInAppBillingService mService;
+
+ServiceConnection mServiceConn = new ServiceConnection() {
+   &#64;Override
+   public void onServiceDisconnected(ComponentName name) {
+       mService = null;
+   }
+
+   &#64;Override
+   public void onServiceConnected(ComponentName name, 
+      IBinder service) {
+       mService = IInAppBillingService.Stub.asInterface(service);
+   }
+};
+</pre>
+
+<p>In your activity’s <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate</a></code> method, perform the binding by calling the <code><a href="../../../reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)">bindService</a></code> method. Pass the method an <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> that references the In-app Billing service and an instance of the <code><a href="../../../reference/android/content/ServiceConnection.html">ServiceConnection</a></code> that you created.</p>
+<pre>
+&#64;Override
+public void onCreate(Bundle savedInstanceState) {    
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);        
+    bindService(new 
+        Intent("com.android.vending.billing.InAppBillingService.BIND"),
+                mServiceConn, Context.BIND_AUTO_CREATE);
+</pre>
+<p>You can now use the mService reference to communicate with the Google Play service.</p>
+<p class="note"><strong>Important:</strong> Remember to unbind from the In-app Billing service when you are done with your <code><a href="../../../reference/android/app/Activity.html">Activity</a></code>. If you don’t unbind, the open service connection could cause your device’s performance to degrade. This example shows how to perform the unbind operation on a service connection to In-app Billing called <code>mServiceConn</code> by overriding the activity’s <code><a href="../../../reference/android/app/Activity.html#onDestroy()">onDestroy</a></code> method.</p>
+<pre>
+&#64;Override
+public void onDestroy() {
+    super.onDestroy();
+    if (mServiceConn != null) {
+        unbindService(mServiceConn);
+    }	
+}
+</pre>
+
+<p>For a complete implementation of a service connection that binds to the <code>IInAppBillingService</code>,
+see the <a href="../../../training/in-app-billing/preparing-iab-app.html">Selling In-app
+Products</a> training class and associated sample.</p>
+
+<h2 id="billing-requests">Making In-app Billing Requests</h2>
+<p>Once your application is connected to Google Play, you can initiate purchase requests for in-app products. Google Play provides a checkout interface for users to enter their payment method, so your application does not need to handle payment transactions directly. When an item is purchased, Google Play recognizes that the user has ownership of that item and prevents the user from purchasing another item with the same product ID until it is consumed. You can control how the item is consumed in your application, and notify Google Play to make the item available for purchase again. You can also query Google Play to quickly retrieve the list of purchases that were made by the user. This is useful, for example, when you want to restore the user's purchases when your user launches your app.
+</p>
+
+<h3 id="QueryDetails">Querying for Items Available for Purchase</h3>
+<p>In your application, you can query the item details from Google Play using the In-app Billing Version 3 API. To pass a request to the In-app Billing service, first create a <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code>  that contains a String <code><a href="../../../reference/java/util/ArrayList.html">ArrayList</a></code> of product IDs with key "ITEM_ID_LIST", where each string is a product ID for an purchasable item.</p>
+<pre>
+ArrayList<String> skuList = new ArrayList<String>();
+skuList.add("premiumUpgrade");
+skuList.add("gas");
+Bundle querySkus = new Bundle();
+querySkus.putStringArrayList(“ITEM_ID_LIST”, skuList);
+</pre>
+<p>To retrieve this information from Google Play, call the <code>getSkuDetails</code> method on the In-app Billing Version 3 API, and pass the method the In-app Billing API version (“3”), the package name of your calling app, the purchase type (“inapp”), and the <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> that you created.</p>
+<pre>
+Bundle skuDetails = mService.getSkuDetails(3, 
+   getPackageName(), "inapp", querySkus);
+</pre>
+<p>If the request is successful, the returned <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code>has a response code of <code>BILLING_RESPONSE_RESULT_OK</code> (0).</p>
+<p class="note"><strong>Warning:</strong> Do not call the <code>getSkuDetails</code> method on the main thread. Calling this method triggers a network request which could block your main thread.  Instead, create a separate thread and call the <code>getSkuDetails</code> method from inside that thread.</p>
+
+<p>To see all the possible response codes from Google Play, see <a href="../../../google/play/billing/billing_reference.html#billing-codes">In-app Billing Reference</a>.</p>  
+
+<p>The query results are stored in a String ArrayList with key <code>DETAILS_LIST</code>.  The purchase information is stored in the String in JSON format. To see the types of product detail information that are returned, see <a href="../../../google/play/billing/billing_reference.html#getSkuDetails">In-app Billing Reference</a>.</p>
+
+<p>In this example, you are retrieving the prices for your in-app items from the skuDetails <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> returned from the previous code snippet.</p>
+<pre>
+int response = skuDetails.getInt("RESPONSE_CODE");
+if (response == 0) {
+   ArrayList<String> responseList 
+      = skuDetails.getStringArrayList("DETAILS_LIST");
+   
+   for (String thisResponse : responseList) {
+      JSONObject object = new JSONObject(thisResponse);
+      String sku = object.getString("productId");
+      String price = object.getString("price");
+      if (sku.equals("premiumUpgrade")) mPremiumUpgradePrice = price;
+      else if (sku.equals("gas")) mGasPrice = price;
+   }
+}
+</pre>
+
+<h3 id="Purchase">Purchasing an Item</h3>
+<p>To start a purchase request from your app, call the <code>getBuyIntent</code> method on the In-app Billing service. Pass in to the method the In-app Billing API version (“3”), the package name of your calling app, the product ID for the item to purchase, the purchase type (“inapp” or "subs"), and a <code>developerPayload</code> String. The <code>developerPayload</code> String is used to  specify any additional arguments that you want Google Play to send back along with the purchase information.</p>
+
+<pre>
+Bundle buyIntentBundle = mService.getBuyIntent(3, getPackageName(),
+   sku, "inapp", "bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ");
+</pre>
+<p>
+If the request is successful, the returned <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> has a response code of <code>BILLING_RESPONSE_RESULT_OK</code> (0) and a <code><a href="../../../reference/android/app/PendingIntent.html">PendingIntent</a></code> that you can use to start the purchase flow. To see all the possible response codes from Google Play, see <a href="../../../google/play/billing/billing_reference.html#billing-codes">In-app Billing Reference</a>. Next, extract a <code><a href="../../../reference/android/app/PendingIntent.html">PendingIntent</a></code> from the response <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> with key <code>BUY_INTENT</code>.
+</p>
+<pre>
+PendingIntent pendingIntent = buyIntentBundle.getParcelable("BUY_INTENT");
+</pre>
+<p>
+To complete the purchase transaction, call the <code><a href="../../../reference/android/app/Activity.html#startIntentSenderForResult(android.content.IntentSender, int, android.content.Intent, int, int, int)">startIntentSenderForResult</a></code> method and use the <code><a href="../../../reference/android/app/PendingIntent.html">PendingIntent</a></code> that you created. In this example, you are using an arbitrary value of 1001 for the request code.</p>
+<pre>
+startIntentSenderForResult(pendingIntent.getIntentSender(),
+   1001, new Intent(), Integer.valueOf(0), Integer.valueOf(0),
+   Integer.valueOf(0));
+</pre>
+<p>Google Plays sends a response to your <code><a href="../../../reference/android/app/PendingIntent.html">PendingIntent</a></code> to the <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult</a></code> method of your application. The <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult</a></code> method will have a result code of <code>Activity.RESULT_OK</code> (1) or <code>Activity.RESULT_CANCELED</code> (0). To see the types of order information that is returned in the response <code><a href="../../../reference/android/content/Intent.html">Intent</a></code>, see <a href="../../../google/play/billing/billing_reference.html#getBuyIntent">In-app Billing Reference</a>.</p> 
+
+<p>The purchase data for the order is a String in JSON format that is mapped to the <code>INAPP_PURCHASE_DATA</code> key in the response <code><a href="../../../reference/android/content/Intent.html">Intent</a></code>, for example:
+<pre>
+'{ 
+   "orderId":"12999763169054705758.1371079406387615", 
+   "packageName":"com.example.app",
+   "productId":"exampleSku",
+   "purchaseTime":1345678900000,
+   "purchaseState":0,
+   "developerPayload":"bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ",
+   "purchaseToken":"rojeslcdyyiapnqcynkjyyjh"
+ }'
+</pre>
+</p>
+
+<p>Continuing from the previous example, you get the response code, purchase data, and signature from the response <code><a href="../../../reference/android/content/Intent.html">Intent</a></code>.</p>
+<pre>
+&#64;Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {	
+   if (requestCode == 1001) {    	
+      int responseCode = data.getIntExtra("RESPONSE_CODE", 0);
+      String purchaseData = data.getStringExtra("INAPP_PURCHASE_DATA");
+      String dataSignature = data.getStringExtra("INAPP_DATA_SIGNATURE");
+        
+      if (resultCode == RESULT_OK) {
+         try {
+            JSONObject jo = new JSONObject(purchaseData);
+            String sku = jo.getString("productId");
+            alert("You have bought the " + sku + ". Excellent choice, 
+               adventurer!");
+          }
+          catch (JSONException e) {
+             alert("Failed to parse purchase data.");
+             e.printStackTrace();
+          }
+      }
+   }
+}
+</pre>
+<p class="note"><strong>Security Recommendation:</strong> When you send a purchase request, create a String token that uniquely identifies this purchase request and include this token in the <code>developerPayload</code>.You can use a randomly generated string as the token. When you receive the purchase response from Google Play, make sure to check the returned data signature, the <code>orderId</code>, and the <code>developerPayload</code> String. For added security, you should perform the checking on your own secure server. Make sure to verify that the <code>orderId</code> is a unique value that you have not previously processed, and the <code>developerPayload</code> String matches the token that you sent previously with the purchase request.</p>
+
+<h3 id="QueryPurchases">Querying for Purchased Items</h3>
+<p>To retrieve information about purchases made by a user from your app, call the <code>getPurchases</code> method on the In-app Billing Version 3 service. Pass in to the method the In-app Billing API version (“3”), the package name of your calling app, and the purchase type (“inapp” or "subs").</p>
+<pre>
+Bundle ownedItems = mService.getPurchases(3, getPackageName(), "inapp", null);
+</pre>
+<p>The Google Play service returns only the purchases made by the user account that is currently logged in to the device. If the request is successful, the returned <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> has a response code of 0. The response <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> also contains a list of the product IDs, a list of the order details for each purchase, and the signatures for each purchase.</p>
+<p>To improve performance, the In-app Billing service returns only up to 700 products that are owned by the user when <code>getPurchase</code> is first called. If the user owns a large number of products, Google Play includes a String token mapped to the key <code>INAPP_CONTINUATION_TOKEN</code> in the response <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> to indicate that more products can be retrieved. Your application can then make a subsequent <code>getPurchases</code> call, and pass in this token as an argument. Google Play continues to return a continuation token in the response <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> until all products that are owned by the user has been sent to your app.</p>
+<p>For more information about the data returned by <code>getPurchases</code>, see <a href="../../../google/play/billing/billing_reference.html#getPurchases">In-app Billing Reference</a>. The following example shows how you can retrieve this data from the response.
+<pre>
+int response = ownedItems.getInt("RESPONSE_CODE");
+if (response == 0) {
+   ArrayList<String> ownedSkus = 
+      ownedItems.getStringArrayList("INAPP_PURCHASE_ITEM_LIST");
+   ArrayList<String> purchaseDataList = 
+      ownedItems.getStringArrayList("INAPP_PURCHASE_DATA_LIST");
+   ArrayList<String> signatureList = 
+      ownedItems.getStringArrayList("INAPP_DATA_SIGNATURE");
+   String continuationToken = 
+      ownedItems.getString("INAPP_CONTINUATION_TOKEN");
+   
+   for (int i = 0; i < purchaseDataList.size(); ++i) {
+      String purchaseData = purchaseDataList.get(i);
+      String signature = signatureList.get(i);
+      String sku = ownedSkus.get(i);
+  
+      // do something with this purchase information
+      // e.g. display the updated list of products owned by user
+   } 
+
+   // if continuationToken != null, call getPurchases again 
+   // and pass in the token to retrieve more items
+}
+
+</pre>
+
+<h3 id="Consume">Consuming a Purchase</h3>
+<p>You can use the In-app Billing Version 3 API to track the ownership of 
+purchased in-app products in Google Play. Once an in-app product is purchased, 
+it is considered to be "owned" and cannot be purchased from Google Play. You 
+must send a consumption request for the in-app product before Google Play makes 
+it available for purchase again.</p>
+<p class="caution"><strong>Important</strong>: Managed in-app products are 
+consumable, but subscriptions are not.</p>
+<p>How you use the consumption mechanism in your app is up to you. Typically, 
+you would implement consumption for in-app products with temporary benefits that 
+users may want to purchase multiple times (for example, in-game currency or 
+equipment). You would typically not want to implement consumption for in-app 
+products that are purchased once and provide a permanent effect (for example, 
+a premium upgrade).</p>
+<p>To record a purchase consumption, send the <code>consumePurchase</code> method to 
+the In-app Billing service and pass in the <code>purchaseToken</code> String value 
+that identifies the purchase to be removed. The <code>purchaseToken</code> is part 
+of the data returned in the <code>INAPP_PURCHASE_DATA</code> String by the Google 
+Play service following a successful purchase request. In this example, you are 
+recording the consumption of a product that is identified with the 
+<code>purchaseToken</code> in the <code>token</code> variable.</p>
+<pre>
+int response = mService.consumePurchase(3, getPackageName(), token);
+</pre>
+<p class="note"><strong>Warning:</strong> Do not call the <code>consumePurchase</code> method on the main thread.  Calling this method triggers a network request which could block your main thread.  Instead, create a separate thread and call the <code>consumePurchase</code> method from inside that thread.</p>
+<p>It's your responsibility to control and track how the in-app product is provisioned to the user. For example, if the user purchased in-game currency, you should update the player's inventory with the amount of currency purchased.</p>
+<p class="note"><strong>Security Recommendation:</strong> You must send a consumption request before provisioning the benefit of the consumable in-app purchase to the user. Make sure that you have received a successful consumption response from Google Play before you provision the item.</p>
+
+<h3 id="Subs">Implementing Subscriptions</h3>
+<p>Launching a purchase flow for a subscription is similar to launching the 
+purchase flow for a product, with the exception that the product type must be set 
+to "subs". The purchase result is delivered to your Activity's 
+<code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult</a></code> method, exactly 
+as in the case of in-app products.</p>
+<pre>
+Bundle bundle = mService.getBuyIntent(3, "com.example.myapp",
+   MY_SKU, "subs", developerPayload);
+
+PendingIntent pendingIntent = bundle.getParcelable(RESPONSE_BUY_INTENT);
+if (bundle.getInt(RESPONSE_CODE) == BILLING_RESPONSE_RESULT_OK) {
+   // Start purchase flow (this brings up the Google Play UI).
+   // Result will be delivered through onActivityResult().
+   startIntentSenderForResult(pendingIntent, RC_BUY, new Intent(),
+       Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0));
+}
+</pre>
+<p>To query for active subscriptions, use the <code>getPurchases</code> method, again 
+with the product type parameter set to "subs".</p>
+<pre>
+Bundle activeSubs = mService.getPurchases(3, "com.example.myapp",
+                   "subs", continueToken);
+</pre>
+<p>The call returns a <code>Bundle</code> with all the active subscriptions owned by 
+the user. Once a subscription expires without renewal, it will no longer appear 
+in the returned <code>Bundle</code>.</p>
+
+<h2 id="billing-security">Securing Your Application</h2>
+
+<p>To help ensure the integrity of the transaction information that is sent to 
+your application, Google Play signs the JSON string that contains the response 
+data for a purchase order. Google Play uses the private key that is associated 
+with your application in the Developer Console to create this signature. The 
+Developer Console generates an RSA key pair for each application.<p>
+
+<p class="note"><strong>Note:</strong>To find the public key portion of this key 
+pair, open your application's details in the Developer Console, then click on 
+<strong>Services & APIs</strong>, and look at the field titled 
+<strong>Your License Key for This Application</strong>.</p>
+
+<p>The Base64-encoded RSA public key generated by Google Play is in binary 
+encoded, X.509 subjectPublicKeyInfo DER SEQUENCE format. It is the same public 
+key that is used with Google Play licensing.</p>
+
+<p>When your application receives this signed response you can 
+use the public key portion of your RSA key pair to verify the signature. 
+By performing signature verification you can detect responses that have 
+been tampered with or that have been spoofed. You can perform this signature 
+verification step in your application; however, if your application connects 
+to a secure remote server then we recommend that you perform the signature 
+verification on that server.</p>
+
+<p>For more information about best practices for security and design, see <a
+href="../../../google/play/billing/billing_best_practices.html">Security and Design</a>.</p>
+
+
+
+
+
+
+
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

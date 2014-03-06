@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Android 1.5 Platform Highlights | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  about" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+<ul id="nav">
+  
+<li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/index.html">Welcome</a></div>
+    <ul>
+      <li><a href="../../about/start.html">Get Started</a></li>
+    </ul>
+  </li> 
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/kitkat.html">
+      <span class="en">KitKat</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.4.html">Android 4.4 APIs</a></li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/jelly-bean.html">
+      <span class="en">Jelly Bean</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.3.html">Android 4.3 APIs</a></li>
+        <li><a href="../../about/versions/android-4.2.html">Android 4.2 APIs</a></li>
+        <li><a href="../../about/versions/android-4.1.html">Android 4.1 APIs</a></li>
+      </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-4.0-highlights.html">
+      <span class="en">Ice Cream Sandwich</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.0.3.html">Android 4.0.3 APIs</a></li>
+        <li><a href="../../about/versions/android-4.0.html">Android 4.0 APIs</a> </li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-3.0-highlights.html">
+      <span class="en">Honeycomb</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-3.2.html">Android 3.2 APIs</a></li>
+        <li><a href="../../about/versions/android-3.1.html">Android 3.1 APIs</a></li>
+        <li><a href="../../about/versions/android-3.0.html">Android 3.0 APIs</a> </li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-2.3-highlights.html">
+      <span class="en">Gingerbread</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-2.3.4.html">Android 2.3.4 APIs</a></li>
+        <li><a href="../../about/versions/android-2.3.3.html">Android 2.3.3 APIs</a></li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../about/dashboards/index.html">Dashboards</a></div>
+  </li>
+
+</ul>
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Android 1.5 Platform Highlights</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <p>
+<em>April 2009</em>
+</p>
+
+
+<p>The Android 1.5 platform introduces many new features for users and developers. 
+The list below provides an overview of the changes. </p>
+
+<ul>
+<li><a href="#ui">User Interface Refinements</a>
+<li><a href="#perf">Performance Improvements</a>
+<li><a href="#features">New Features</a>
+<li><a href="#apis">New APIs and Manifest Elements</a>
+</ul>
+
+<h2 id="ui">User Interface Refinements</h2>
+<ul>
+    <li>System-wide:
+      <ul>
+        <li>Refinement of all core UI elements</li>
+        <li>Animated window transitions (off by default)</li>
+        <li>Accelerometer-based application rotations</li>
+      </ul>
+   </li>
+    <li>UI polish for:
+      <ul>
+        <li>In-call experience</li>
+        <li>Contacts, Call log, and Favorites</li>
+        <li>SMS &amp; MMS</li>
+        <li>Browser</li>
+        <li>Gmail</li>
+        <li>Calendar</li>
+        <li>Email</li>
+        <li>Camera &amp; Gallery</li>
+        <li>Application management</li>
+      </ul>
+   </li>
+</ul>
+
+<h2 id="perf">Performance Improvements</h2>
+
+<ul>
+<li>Faster Camera start-up and image capture</li>
+<li>Much faster acquisition of GPS location (powered by SUPL AGPS)</li>
+<li>Smoother page scrolling in Browser</li>
+<li>Speedier GMail conversation list scrolling</li>
+</ul>
+
+<h2 id="features">New Features</h2>
+
+<ul>
+  <li>On-screen soft keyboard
+  <ul>
+    <li>Works in both portrait and landscape orientation</li>
+    <li>Support for user installation of 3rd party keyboards</li>
+    <li>User dictionary for custom words</li>
+  </ul>
+</li>
+
+<li>Home screen
+  <ul>
+     <li>Widgets
+     <ul>
+       <li>Bundled home screen widgets include: analog clock, calendar, 
+           music player, picture frame, and search</li>
+     </ul></li>
+     <li>Live folders</li>
+  </ul>
+</li>
+
+<li>Camera &amp; Gallery
+  <ul>
+  <li>Video recording</li>
+  <li>Video playback (MPEG-4 &amp; 3GP formats)</li>
+  </ul>
+</li>
+
+<li>Bluetooth&nbsp;
+  <ul>
+    <li>Stereo Bluetooth support (A2DP and AVCRP profiles)</li>
+    <li>Auto-pairing</li>
+    <li>Improved handsfree experience</li>
+  </ul>
+</li>
+
+<li>Browser
+  <ul>
+    <li>Updated with latest Webkit browser &amp; Squirrelfish Javascript engines</li>
+    <li>Copy 'n paste in browser</li>
+    <li>Search within a page</li>
+    <li>User-selectable text-encoding</li>
+    <li>UI changes include:
+      <ul>
+        <li>Unified Go and Search box</li>
+        <li>Tabbed bookmarks/history/most-visited screen</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+
+<li>Contacts
+  <ul>
+    <li>Shows user picture for Favorites</li>
+    <li>Specific date/time stamp for events in call log</li>
+    <li>One-touch access to a contact card from call log event</li>
+  </ul>
+</li>
+
+<li>System
+<ul>
+  <li>New Linux kernel (version 2.6.27)</li>
+  <li>SD card filesystem auto-checking and repair</li>
+  <li>SIM Application Toolkit 1.0 </li>
+</ul>
+</li>
+
+<li>Google applications (not available in the Android 1.5 System Image that is
+included in the Android SDK)
+  <ul>
+    <li>View Google Talk friends' status in Contacts, SMS, MMS, GMail, and 
+        Email applications</li>
+    <li>Batch actions such as archive, delete, and label on Gmail messages</li>
+    <li>Upload videos to Youtube</li>
+    <li>Upload photos on Picasa</li>
+  </ul>
+</li>
+</ul>
+
+<h2 id="apis">New APIs and Manifest Elements</h2>
+
+<ul>
+<li>UI framework
+  <ul>
+    <li>Framework for easier background/UI thread interaction</li>
+    <li>New <code><a href="../../reference/android/widget/SlidingDrawer.html">SlidingDrawer</a></code> widget</li>
+    <li>New <code><a href="../../reference/android/widget/HorizontalScrollView.html">HorizontalScrollview</a></code> widget</li>
+  </ul>
+</li>
+
+<li>AppWidget framework
+  <ul>
+    <li>APIs for creating secure home screen <code><a href="../../reference/android/appwidget/package-summary.html">AppWidgets</a></code>. For information about how to use AppWidgets, see the Developer's
+Guide <a href="../../guide/topics/appwidgets/index.html">AppWidgets</a>
+documentation. Also see <a
+href="http://android-developers.blogspot.com/2009/04/introducing-home-screen-widgets-and.html">
+Introducing home screen widgets and the AppWidget
+framework</a> on the Android Developer's Blog.</li>
+    <li>APIs for populating <code><a href="../../reference/android/provider/LiveFolders.html">Live Folders</a></code>
+        with custom content.</li>
+  </ul>
+</li>
+
+<li>Media framework
+  <ul>
+    <li>Raw audio recording and playback APIs</li>
+    <li>Interactive MIDI playback engine</li>
+    <li><code><a href="../../reference/android/media/MediaRecorder.html">Video Recording APIs</a></code> for developers (3GP format).</li>
+    <li>Video and photo sharing Intents</li>
+    <li>Media search Intent</li>
+  </ul>
+</li>
+
+<li>Input Method framework 
+   <ul>
+    <li><code><a href="../../reference/android/inputmethodservice/InputMethodService.html">Input Method
+        Service</a></code> framework</li>
+    <li>Text-prediction engine</li>
+    <li>Ability to provide downloadable IMEs to users</li>
+  </ul>
+</li>
+
+<li>Application-defined hardware requirements
+   <p>Applications can now use a new element in their manifest files, <a
+href="../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-
+configuration&gt;</a> to indicate to the Android system what hardware features
+they require in order to function properly. For example, an application might
+use the element to specify that it requires a physical keyboard or a particular
+navigation device, such as a trackball. Prior to installing the application, the
+Android system checks the attributes defined for the
+<code>&lt;uses-configuration&gt;</code> element and allows the installation to
+continue only if the required hardware is present.</p>
+</li>
+
+<li>Speech recognition framework
+    <ul>
+    <li>Support for using speech recognition libraries via Intent. See <code><a href="../../reference/android/speech/RecognizerIntent.html">RecognizerIntent</a></code>.</li>
+  </ul>
+</li>
+
+<li>Miscellaneous API additions
+  <ul>
+    <li>LocationManager - Applications can get location change updates via
+        Intent</li>
+    <li>WebView - Touch start/end/move/cancel DOM event support</li>
+    <li>Redesigned <code><a href="../../reference/android/hardware/SensorManager.html">Sensor Manager
+        APIs</a></code></li>
+    <li>GLSurfaceView - convenience framework for creating OpenGL
+        applications</li>
+    <li>Broadcast Intent for app update install succeeded - for smoother app
+        upgrade experience</li>
+  </ul>
+</li>
+</ul>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

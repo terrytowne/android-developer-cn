@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>GCM Advanced Topics | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation google
+  " itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../google/index.html">
+          <span class="en">Overview</span>
+      </a></div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../google/play-services/games.html">
+          <span class="en">Games</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../google/play-services/location.html">
+          <span class="en">Location</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../google/play-services/plus.html">
+          <span class="en">Google+</span>
+                </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../google/play-services/maps.html">
+          <span class="en">Maps</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../google/play-services/ads.html">
+      <span class="en">Ads</span></a>
+    </div>
+    <ul>
+      <li><a href="../../google/play-services/id.html">
+          <span class="en">Advertising ID</span></a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../google/play-services/wallet.html">
+          <span class="en">Wallet</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../google/play-services/auth.html">
+          <span class="en">Authorization</span>
+      </a></div>
+  </li>
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../google/play-services/index.html">
+      <span class="en">Google Play Services</span></a>
+    </div>
+    <ul>
+      <li><a href="../../google/play-services/setup.html">
+          <span class="en">Setup</span></a>
+      </li>
+      <li id="gms-tree-list" class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../reference/gms-packages.html">
+            <span class="en">Reference</span>
+          </a>
+        <div>
+      </li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../google/play/billing/index.html">
+      <span class="en">Google Play In-app Billing</span></a>
+    </div>
+    <ul>
+      <li><a href="../../google/play/billing/billing_overview.html">
+              <span class="en">Overview</span></a>
+      </li>
+      <li class="nav-section"><div class="nav-section-header"><a href="../../google/play/billing/api.html">
+              <span class="en">Version 3 API</span></a></div>
+              <ul>
+              <li><a href="../../google/play/billing/billing_integrate.html">
+              <span class="en">Implementing the API</span></a></li>
+              <li><a href="../../google/play/billing/billing_reference.html">
+              <span class="en">Reference</span></a></li>
+              </ul>
+      </li>
+      <li class="nav-section"><div class="nav-section-header"><a href="../../google/play/billing/v2/api.html">
+              <span class="en">Version 2 API</span></a></div>
+              <ul>
+              <li><a href="../../google/play/billing/v2/billing_integrate.html">
+              <span class="en">Implementing the API</span></a></li>
+              <li><a href="../../google/play/billing/v2/billing_subscriptions.html">
+              <span class="en">Subscriptions</span></a></li>
+              <li><a href="../../google/play/billing/v2/billing_reference.html">
+              <span class="en">Reference</span></a></li>
+              </ul>
+      </li>
+      <li><a href="../../google/play/billing/billing_subscriptions.html">
+              <span class="en">Subscriptions</span></a>
+      </li>
+      <li><a href="../../google/play/billing/billing_best_practices.html">
+              <span class="en">Security and Design</span></a>
+      </li>
+      <li><a href="../../google/play/billing/billing_testing.html">
+              <span class="en">Testing In-app Billing</span></a>
+      </li>
+      <li><a href="../../google/play/billing/billing_admin.html">
+              <span class="en">Administering In-app Billing</span></a>
+      </li>
+      <li><a href="../../google/play/billing/gp-purchase-status-api.html">
+              <span class="en">Purchase Status API</span></a>
+      </li>
+      <li><a href="../../google/play/billing/versions.html">
+              <span class="en">Version Notes</span></a>
+      </li>
+    </ul>
+  </li>
+
+
+
+  <li class="nav-section">
+      <div class="nav-section-header"><a href="../../google/gcm/index.html">
+        <span class="en">Google Cloud Messaging</span></a>
+      </div>
+      <ul>
+        <li><a href="../../google/gcm/gs.html">
+            <span class="en">Getting Started</span></a>
+        </li>
+        <li><a href="../../google/gcm/gcm.html">
+            <span class="en">Architectural Overview</span></a>
+        </li>
+         <li><a href="../../google/gcm/ccs.html">
+              <span class="en">Cloud Connection Server</span></a>
+        </li>
+        <li><a href="../../google/gcm/notifications.html">
+              <span class="en">User Notifications</span></a>
+        </li>
+        <li><a href="../../google/gcm/client.html">
+            <span class="en">GCM Client</span></a>
+        </li>
+        <li><a href="../../google/gcm/server.html">
+            <span class="en">GCM Server</span></a>
+        </li>
+        <li><a href="../../google/gcm/adv.html">
+            <span class="en">Advanced Topics</span></a>
+        </li>
+        <li><a href="../../google/gcm/c2dm.html">
+            <span class="en">Migration</span></a>
+        </li>
+        <li id="gcm-tree-list" class="nav-section">
+          <div class="nav-section-header">
+            <a href="../../reference/gcm-packages.html">
+              <span class="en">Reference</span>
+            </a>
+          <div>
+        </li>
+      </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../google/play/dist.html">
+      <span class="en">Google Play Distribution</span></a>
+    </div>
+    <ul>
+      <li><a href="../../google/play/filters.html">
+          <span class="en">Filters on Google Play</span></a>
+      </li>
+
+      <li><a href="../../google/play/publishing/multiple-apks.html">
+          <span class="en">Multiple APK Support</span></a>
+      </li>
+      <li><a href="../../google/play/expansion-files.html">
+          <span class="en">APK Expansion Files</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../google/play/licensing/index.html">
+          <span class="en">Application Licensing</span></a>
+        </div>
+        <ul>
+          <li><a href="../../google/play/licensing/overview.html">
+              <span class="en">Licensing Overview</span></a>
+          </li>
+          <li><a href="../../google/play/licensing/setting-up.html">
+              <span class="en">Setting Up for Licensing</span></a>
+          </li>
+          <li><a href="../../google/play/licensing/adding-licensing.html">
+              <span class="en">Adding Licensing to Your App</span></a>
+          </li>
+          <li><a href="../../google/play/licensing/licensing-reference.html">
+              <span class="en">Licensing Reference</span></a>
+          </li>
+        </ul>
+      </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../google/backup/index.html">
+      Android Backup Service</a>
+    </div>
+    <ul>
+      <li><a href="../../google/backup/signup.html">
+          Register</a>
+      </li>
+    </ul>
+  </li>
+
+  </ul>
+
+</li>
+
+
+
+</ul>
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+      <script type="text/javascript">
+       showGoogleRefTree();
+    
+      </script>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >GCM Advanced Topics</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+<h2>Quickview</h2>
+
+<ul>
+<li>Learn more about GCM advanced features.</li>
+</ul>
+
+
+<h2>In this document</h2>
+
+<ol>
+<li><a href="#lifetime">Lifetime of a Message</a></li>
+<li><a href="#throttling">Throttling</a></li>
+<li><a href="#reg-state">Keeping the Registration State in Sync</a>
+  <ol>
+    <li><a href="#canonical">Canonical IDs</a></li>
+  </ol>
+</li>
+<li><a href="#retry">Automatic Retry Using Exponential Back-Off</a></li>
+<li><a href="#unreg">How Unregistration Works</a></li>
+<li><a href="#collapsible">Send-to-Sync vs. Messages with Payload</a>
+  <ol>
+    <li><a href="#s2s">Send-to-sync messages</a></li>
+    <li><a href="#payload">Messages with payload</a></li>
+<li><a href="#which">Which should I use?</a></li>
+    </ol>
+</li>
+<li><a href="#ttl">Setting an Expiration Date for a Message</a> </li>
+<li><a href="#throttling"></a><a href="#multi-senders">Receiving Messages from Multiple Senders</a></li>
+</ol>
+
+</div>
+</div>
+<p>This document covers advanced topics for GCM.</p>
+
+
+
+
+<h2 id="msg-lifetime">Lifetime of a Message</h2>
+<p>When a 3rd-party server posts a message to GCM and receives a message ID back, it does not mean that the message was already delivered to the device. Rather, it means that it was accepted for delivery. What happens to the message after it is accepted depends on many factors.</p>
+<p>In the best-case scenario, if the device is connected to GCM, the screen is on, and there are no throttling restrictions (see <a href="#throttling">Throttling</a>), the message will be delivered right away.</p>
+<p>If the device is connected but idle, the message will still be
+delivered right away unless the <code>delay_while_idle</code> flag is set to true. Otherwise, it will be stored in the GCM servers until the device is awake. And that's where the <code>collapse_key</code> flag plays a role: if there is already a message with the same collapse key (and registration ID) stored and waiting for delivery, the old message will be discarded and the new message will take its place (that is, the old message will be collapsed by the new one). However, if the collapse key is not set, both the new and old messages are stored for future delivery.</p>
+
+<p class="note"><strong>Note:</strong> There is a limit on how many messages can be stored without collapsing. That limit is currently 100. If the limit is reached, all stored messages are discarded. Then when the device is back online, it receives a special message indicating that the limit was reached. The application can then handle the situation properly, typically by requesting a full sync.</p>
+
+<p>If the device is not connected to GCM, the message will be stored until a connection is established (again respecting the collapse key rules). When a connection is established, GCM will deliver all pending messages to the device, regardless of the <code>delay_while_idle</code> flag. If the device never gets connected again (for instance, if it was factory reset), the message will eventually time out and be discarded from GCM storage. The default timeout is 4 weeks, unless the <code>time_to_live</code> flag is set.</p>
+
+<p>Finally, when GCM attempts to deliver a message to the device and the application was uninstalled, GCM will discard that message right away and invalidate the registration ID. Future attempts to send a message to that device will get a <code>NotRegistered</code> error. See <a href="#unreg">How Unregistration Works</a> for more information.</p>
+<p>Although is not possible to track the status of each individual message, the Google APIs Console stats are broken down by messages sent to device, messages collapsed, and messages waiting for delivery.</p>
+
+<h2 id="throttling">Throttling</h2>
+<p>To prevent abuse (such as sending a flood of messages to a device) and
+to optimize for the overall network efficiency and battery life of
+devices, GCM implements throttling of messages using a token bucket
+scheme. Messages are throttled on a per application and per <a href="#collapsible">collapse
+key</a> basis (including non-collapsible messages). Each application
+collapse key is granted some initial tokens, and new tokens are granted
+periodically therefter. Each token is valid for a single message sent to
+the device. If an application collapse key exhausts its supply of
+available tokens, new messages are buffered in a pending queue until
+new tokens become available at the time of the periodic grant. Thus
+throttling in between periodic grant intervals may add to the latency
+of message delivery for an application collapse key that sends a large
+number of messages within a short period of time. Messages in the pending
+queue of an application collapse key may be delivered before the time
+of the next periodic grant, if they are piggybacked with messages
+belonging to a non-throttled category by GCM for network and battery
+efficiency reasons.</p>
+
+<h2 id="reg-state">Keeping the Registration State in Sync</h2>
+<p>Whenever the application receives a <code>com.google.android.c2dm.intent.REGISTRATION</code> intent with a <code>registration_id</code> extra, it should save the ID for future use, pass it to the 3rd-party server to complete the registration, and keep track of whether the server completed the registration. If the server fails to complete the registration, it should try again or unregister from GCM.</p>
+<p>There are also two other scenarios that require special care:</p>
+<ul>
+  <li>Application update</li>
+  <li>Backup and restore
+  </li>
+</ul>
+<p>When an application is updated, it should invalidate its existing registration ID, as it is not guaranteed to work with the new version.  Because there is no lifecycle method called when the application is updated, the best way to achieve this validation is by storing the current application version when a registration ID is stored. Then when the application is started, compare the stored value with the current application version. If they do not match, invalidate the stored data and start the registration process again.</p>
+
+<p>Similarly, you should not save the registration ID when an application is backed up. This is because the registration ID could become invalid by the time the application is restored, which would put the application in an invalid state  (that is, the application thinks it is registered, but the server and GCM do not store that registration ID anymore&mdash;thus the application will not get more messages).</p>
+<h3 id="canonical">Canonical IDs</h3>
+<p>On the server side, as long as the application is behaving well, everything should work normally. However, if a bug in the application triggers multiple registrations for the same device, it can be hard to reconcile state and you might end up with duplicate messages.</p>
+<p>GCM provides a facility called &quot;canonical registration IDs&quot; to easily recover from these situations. A canonical registration ID is defined to be the ID of the last registration requested by your application. This is the ID that the server should use when sending messages to the device.</p>
+<p>If later on you try to send a message using a different registration ID, GCM will process the request as usual, but it will include the canonical registration ID in the <code>registration_id</code> field of the response. Make sure to replace the registration ID stored in your server with this canonical ID, as eventually the ID you're using will stop working.</p>
+
+<h2 id="retry">Automatic Retry Using Exponential Back-Off</h2>
+
+<p>When the application receives a <code>com.google.android.c2dm.intent.REGISTRATION</code> intent with the <code>error</code> extra set as <code>SERVICE_NOT_AVAILABLE</code>, it should retry the failed operation (register or unregister).</p>
+<p>In the simplest case, if your application just calls <code>register</code> and GCM is not a fundamental part of the application, the application could simply ignore the error and try to register again the next time it starts. Otherwise, it should retry the previous operation using exponential back-off. In exponential back-off, each time there is a failure, it should wait twice the previous amount of time before trying again. If the register (or unregister) operation was synchronous, it could be retried in a simple loop. However, since it is asynchronous, the best approach is to schedule a pending intent to retry the operation. The following steps describe how to implement this in the <code>MyIntentService</code> example used above:</p>
+<ol>
+  <li> Create a random token to verify the origin of the retry intent:
+
+<pre class="prettyprint pretty-java">private static final String TOKEN =
+        Long.toBinaryString(new Random().nextLong());
+</pre>
+
+  <li> Change the <code>handleRegistration()</code> method so it creates the pending intent when appropriate:</li>
+
+<pre class="prettyprint pretty-java">...
+if (error != null) {
+ if ("SERVICE_NOT_AVAILABLE".equals(error)) {
+   long backoffTimeMs = // get back-off time from shared preferences
+   long nextAttempt = SystemClock.elapsedRealtime() + backoffTimeMs;
+   Intent retryIntent = new Intent("com.example.gcm.intent.RETRY");
+   retryIntent.putExtra("token", TOKEN);
+   PendingIntent retryPendingIntent =
+       PendingIntent.getBroadcast(context, 0, retryIntent, 0);
+   AlarmManager am = (AlarmManager)   
+       context.getSystemService(Context.ALARM_SERVICE);
+   am.set(AlarmManager.ELAPSED_REALTIME, nextAttempt, retryPendingIntent);
+   backoffTimeMs *= 2; // Next retry should wait longer.
+   // update back-off time on shared preferences
+ } else {
+   // Unrecoverable error, log it
+   Log.i(TAG, "Received error: " + error);
+}
+...</pre>
+<p> The back-off time is stored in a shared preference. This ensures that it is persistent across multiple activity launches. The name of the intent does not matter, as long as the same intent is used in the following steps.</p></li>
+
+  <li> Change the <code>onHandleIntent()</code> method adding an <code>else if</code> case for the retry intent:</li>
+
+<pre class="prettyprint pretty-java">...
+} else if (action.equals("com.example.gcm.intent.RETRY")) {
+    String token = intent.getStringExtra("token");
+    // make sure intent was generated by this class, not by a malicious app
+    if (TOKEN.equals(token)) {
+        String registrationId = // get from shared properties
+        if (registrationId != null) {
+        // last operation was attempt to unregister; send UNREGISTER intent again
+    } else {
+        // last operation was attempt to register; send REGISTER intent again
+    }
+}
+...</pre>
+
+  <li> Create a new instance of <code>MyReceiver</code> in your activity:</li>
+
+<pre class="prettyprint pretty-java">private final MyBroadcastReceiver mRetryReceiver = new MyBroadcastReceiver();
+</pre>
+
+  <li>In the activity's <code>onCreate()</code> method, register the new instance to receive the <code>com.example.gcm.intent.RETRY</code> intent:
+    <pre class="prettyprint pretty-java">...
+IntentFilter filter = new IntentFilter(&quot;com.example.gcm.intent.RETRY&quot;);
+filter.addCategory(getPackageName());
+registerReceiver(mRetryReceiver, filter);
+...</pre>
+
+<p class="note"><strong>Note:</strong> You must dynamically create a new instance of the broadcast receiver since the one defined by the manifest can only receive intents with the <code>com.google.android.c2dm.permission.SEND</code> permission. The permission <code>com.google.android.c2dm.permission.SEND</code> is a system permission and as such it cannot be granted to a regular application.</p>
+
+</li>
+
+  <li>In the activity's <code>onDestroy()</code> method, unregister the broadcast receiver:</li>
+
+<pre class="prettyprint pretty-java">unregisterReceiver(mRetryReceiver);</pre>
+</ol>
+<h2 id="unreg">How Unregistration Works</h2>
+<p>There are two ways to unregister a device from GCM: manually and automatically.</p>
+<p>An Android application can manually unregister itself by issuing a <code>com.google.android.c2dm.intent.UNREGISTER</code> intent, which is useful when the application offers a logoff feature (so it can unregister on logoff and register again on logon). See the <a href="gcm.html#unregistering">Architectural Overview</a> for more discussion of this topic. This is the sequence of events when an application unregisters itself:</p>
+<ol>
+  <li> The application issues a <code>com.google.android.c2dm.intent.UNREGISTER</code> intent, passing the package name as an extra.</li>
+  <li>When the GCM server is done with the unregistration, it sends a <code>com.google.android.c2dm.intent.REGISTRATION</code> intent with the <code>unregistered</code> extra set.</li>
+  <li>The application then must contact the 3rd-party server so it can remove the registration ID.</li>
+  <li>The application should also clear its registration ID.
+  </li>
+</ol>
+<p>An application can be automatically unregistered after it is uninstalled from the device. However, this process does not happens right away, as Android does not provide an uninstall callback. What happens in this scenario is as follows:</p>
+<ol>
+  <li>The end user uninstalls the application.</li>
+  <li>The 3rd-party server sends a message to GCM server.</li>
+  <li>The GCM server sends the message to the device.</li>
+  <li>The GCM client receives the message and queries Package Manager about whether there are broadcast receivers configured to receive it, which returns <code>false</code>. 
+</li>
+  <li>The GCM client informs the GCM server that the application was uninstalled.</li>
+  <li>The GCM server marks the registration ID for deletion.</li>
+  <li>The 3rd-party server sends a message to  GCM.</li>
+  <li>The GCM returns a <code>NotRegistered</code> error message to the 3rd-party server.</li>
+  <li>The 3rd-party deletes the registration ID.
+  </li>
+</ol>
+
+<p class ="note"><strong>Note:</strong> The GCM client is the Google Cloud Messaging framework present on the device.</p>
+
+<p>Note that it might take a while for the registration ID be completely removed from GCM. Thus it is possible that messages sent during step 7 above gets a valid message ID as response, even though the message will not be delivered to the device. Eventually, the registration ID will be removed and the server will get a <code>NotRegistered</code> error, without any further action being required from the 3rd-party server (this scenario happens frequently while an application is being developed and tested).</p>
+
+<h2 id="collapsible">Send-to-Sync  vs. Messages with Payload</h2>
+
+<p>Every message sent in GCM has the following characteristics:</p>
+<ul>
+  <li>It has a payload limit of 4096 bytes.</li>
+  <li>By default, it is stored by GCM for 4 weeks.</li>
+</ul>
+
+<p>But despite these similarities, messages can behave very differently depending on their particular settings. One major distinction between messages is whether they are collapsed (where each new message replaces the preceding message) or not collapsed (where each individual message is delivered). Every message sent in GCM is either a &quot;send-to-sync&quot; (collapsible) message or a &quot;message with payload&quot; (non-collapsible message). These concepts are described in more detail in the following sections.</p>
+
+<h3 id="s2s"><strong>Send-to-sync messages</strong></h3>
+
+<p>A send-to-sync (collapsible) message is often a &quot;tickle&quot; that tells a mobile application to sync data from the server. For example, suppose you have an email application. When a user receives new email on the server, the server pings the mobile application with a &quot;New mail&quot; message. This tells the application to sync to the server to pick up the new email. The server might send this message multiple times as new mail continues to accumulate, before the application has had a chance to sync. But if the user has received 25 new emails, there's no need to preserve every &quot;New mail&quot; message. One is sufficient. Another example would be a sports application that updates users with the latest score. Only the most recent message is relevant, so it makes sense to have each new message replace the preceding message. </p>
+
+<p>The email and sports applications are cases where you would probably use the GCM <code>collapse_key</code> parameter. A <em>collapse key</em> is an arbitrary string that is used to collapse a group of like messages when the device is offline, so that only the most recent message gets sent to the client. For example, &quot;New mail,&quot; &quot;Updates available,&quot; and so on</p>
+<p>GCM allows a maximum of 4 different collapse keys to be used by the GCM server at any given time. In other words, the GCM server can simultaneously store 4 different send-to-sync messages, each with a different collapse key. If you exceed this number GCM will only keep 4 collapse keys, with no guarantees about which ones they will be.</p>
+
+<h3 id="payload">Messages with payload</h3>
+<p>Unlike a send-to-sync message, every &quot;message with payload&quot; (non-collapsible message) is delivered. The payload the message contains can be up to 4kb. For example, here is a JSON-formatted message in an IM application in which spectators are discussing a sporting event:</p>
+
+<pre class="prettyprint pretty-json">{
+  "registration_id" : "APA91bHun4MxP5egoKMwt2KZFBaFUH-1RYqx...",
+  "data" : {
+    "Nick" : "Mario",
+    "Text" : "great match!",
+    "Room" : "PortugalVSDenmark",
+  },
+}</pre>
+
+<p>A &quot;message with payload&quot; is not simply a &quot;ping&quot; to the mobile application to contact the server to fetch data. In the aforementioned IM application, for example, you would want to deliver every message, because every message has different content. To specify a non-collapsible message, you simply omit the <code>collapse_key</code> parameter. Thus GCM will send each message individually. Note that the order of delivery is not guaranteed.</p>
+<p>GCM will store up to 100 non-collapsible messages. After that, all messages are discarded from GCM, and a new message is created that tells the client how far behind it is. The message is delivered through a regular <code>com.google.android.c2dm.intent.RECEIVE</code> intent, with the following extras:</p>
+<ul>
+  <li> <code>message_type</code>&mdash;The value is always the string &quot;deleted_messages&quot;.</li>
+  <li><code>total_deleted</code>&mdash;The value  is a string with the number of deleted messages.</li>
+</ul>
+<p>The application should respond by syncing with the server to recover the discarded messages. </p>
+
+<h3 id="which">Which should I use?</h3>
+  <p>If your application does not need to use non-collapsible messages, collapsible messages are a better choice from a performance standpoint, because they put less of a burden on the device battery.</p>
+
+<h2 dir="ltr" id="ttl">Setting an Expiration Date for a Message</h2>
+<p>The Time to Live (TTL) feature lets  the sender  specify the maximum lifespan of a message using the <code>time_to_live</code> parameter in the send request. The value of this parameter must be a duration from 0 to 2,419,200 seconds, and it corresponds to the maximum period of time for which GCM will store and try to deliver the message. Requests that don't contain this field default to the maximum period of 4 weeks.</p>
+<p>Here are some possible uses for this feature:</p>
+<ul>
+  <li>Video chat incoming calls</li>
+  <li>Expiring invitation events</li>
+  <li>Calendar events</li>
+</ul>
+<h3 id="bg">Background </h3>
+<p>GCM will usually deliver messages immediately after they are sent. However, this might not always be possible. For example, the device could be turned off, offline, or otherwise unavailable. In other cases, the sender itself might request that messages not be delivered until the device becomes active by using the <code>delay_while_idle</code> flag. Finally, GCM might intentionally delay messages to prevent an application from consuming excessive resources and negatively impacting battery life.</p>
+<p>When this happens, GCM will store the message and deliver it as soon as it's feasible. While this is fine in most cases, there are some applications for which a late message might as well never be delivered. For example, if the message is an incoming call or video chat notification, it will only be meaningful for a small period of time before the call is terminated. Or if the message is an invitation to an event, it will be useless if received after the event has ended.</p>
+<p>Another advantage of specifying the expiration date for a message is that GCM will never throttle messages with a <code>time_to_live</code> value of 0 seconds. In other words, GCM will guarantee best effort for messages that must be delivered &quot;now or never.&quot; Keep in mind that a <code>time_to_live</code> value of 0 means messages that can't be delivered immediately will be discarded. However, because such messages are never stored, this provides the best latency for sending notifications.</p>
+<p>Here is an example of a JSON-formatted request that includes TTL:</p>
+<pre class="prettyprint pretty-json">
+{
+  "collapse_key" : "demo",
+  "delay_while_idle" : true,
+  "registration_ids" : ["xyz"],
+  "data" : {
+    "key1" : "value1",
+    "key2" : "value2",
+  },
+  "time_to_live" : 3
+},
+</pre>
+
+
+<h2 id="multi-senders">Receiving Messages from Multiple Senders</h2>
+<p>GCM allows multiple parties to send messages to the same application. For example, suppose your application is an articles aggregator with multiple contributors, and you want each of them to be able to send a message when they publish a new article. This message might contain a URL so that the application can download the article. Instead of having to centralize all sending activity in one location, GCM gives you the ability to let each of these contributors send its own messages.</p>
+<p>To make this possible, all you need to do is have each sender generate its own project number. Then include those IDs in the sender field, separated by commas, when requesting a registration. Finally, share the registration ID with your partners, and they'll be able to send messages to your application using their own authentication keys.</p>
+<p>This code snippet illustrates this feature. Senders are passed as an intent extra in a comma-separated list:</p>
+<pre class="prettyprint pretty-java">Intent intent = new Intent(GCMConstants.INTENT_TO_GCM_REGISTRATION);
+intent.setPackage(GSF_PACKAGE);
+intent.putExtra(GCMConstants.EXTRA_APPLICATION_PENDING_INTENT,
+        PendingIntent.getBroadcast(context, 0, new Intent(), 0));
+String senderIds = &quot;968350041068,652183961211&quot;;
+intent.putExtra(GCMConstants.EXTRA_SENDER, senderIds);
+ontext.startService(intent);
+ </pre>
+
+<p>Note that there is limit of 100 multiple senders.</p>
+ 
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

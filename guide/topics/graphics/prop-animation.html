@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Property Animation | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Property Animation</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+    <div id="qv">
+      <h2>In this document</h2>
+
+      <ol>
+        <li><a href="#how">How Property Animation Works</a></li>
+
+        <li><a href="#value-animator">Animating with ValueAnimator</a></li>
+
+        <li><a href="#object-animator">Animating with ObjectAnimator</a></li>
+
+        <li><a href="#choreography">Choreographing Multiple Animations with
+        AnimatorSet</a></li>
+
+        <li><a href="#listeners">Animation Listeners</a></li>
+
+        <li><a href="#type-evaluator">Using a TypeEvaluator</a></li>
+
+        <li><a href="#interpolators">Using Interpolators</a></li>
+
+        <li><a href="#keyframes">Specifying Keyframes</a></li>
+
+        <li><a href="#layout">Animating Layout Changes to ViewGroups</a></li>
+
+        <li><a href="#views">Animating Views</a>
+          <ol>
+            <li><a href="#view-prop-animator">ViewPropertyAnimator</a></li>
+          </ol>
+        </li>
+
+        <li><a href="#declaring-xml">Declaring Animations in XML</a></li>
+      </ol>
+
+      <h2>Key classes</h2>
+
+      <ol>
+        <li><code><a href=
+        "/reference/android/animation/ValueAnimator.html">ValueAnimator</a></code></li>
+
+        <li><code><a href=
+        "/reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code></li>
+
+        <li><code><a href=
+        "/reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code></li>
+      </ol>
+
+      <h2>Related samples</h2>
+
+      <ol>
+        <li><a href=
+        "../../../resources/samples/ApiDemos/src/com/example/android/apis/animation/index.html">API
+        Demos</a></li>
+      </ol>
+    </div>
+  </div>
+  <p>The property animation system is a robust framework that allows you
+  to animate almost anything. You can define an animation to change any object property over time,
+  regardless of whether it draws to the screen or not. A property animation changes a property's
+  (a field in an object) value over a specified length of time. To animate something, you specify the
+  object property that you want to animate, such as an object's position on the screen, how long
+  you want to animate it for, and what values you want to animate between. </p>
+
+  <p>The property animation system lets you define the following characteristics of an
+  animation:</p>
+
+  <ul>
+    <li>Duration: You can specify the duration of an animation. The default length is 300 ms.</li>
+
+    <li>Time interpolation: You can specify how the values for the property are calculated as a
+    function of the animation's current elapsed time.</li>
+
+    <li>Repeat count and behavior: You can specify whether or not to have an animation repeat when
+    it reaches the end of a duration and how many times to repeat the animation. You can also
+    specify whether you want the animation to play back in reverse. Setting it to reverse plays
+    the animation forwards then backwards repeatedly, until the number of repeats is reached.</li>
+
+    <li>Animator sets: You can group animations into logical sets that play together or
+    sequentially or after specified delays.</li>
+
+    <li>Frame refresh delay: You can specify how often to refresh frames of your animation. The
+    default is set to  refresh every 10 ms, but the speed in which your application can refresh frames is
+    ultimately dependent on how busy the system is overall and how fast the system can service the underlying timer.</li>
+  </ul>
+
+
+  <h2 id="how">How Property Animation Works</h2>
+
+  <p>First, let's go over how an animation works with a simple example. Figure 1 depicts a
+  hypothetical object that is animated with its <code>x</code> property, which represents its
+  horizontal location on a screen. The duration of the animation is set to 40 ms and the distance
+  to travel is 40 pixels. Every 10 ms, which is the default frame refresh rate, the object moves
+  horizontally by 10 pixels. At the end of 40ms, the animation stops, and the object ends at
+  horizontal position 40. This is an example of an animation with linear interpolation, meaning the
+  object moves at a constant speed.</p><img src="../../../images/animation/animation-linear.png">
+
+  <p class="img-caption"><strong>Figure 1.</strong> Example of a linear animation</p>
+
+  <p>You can also specify animations to have a non-linear interpolation. Figure 2 illustrates a
+  hypothetical object that accelerates at the beginning of the animation, and decelerates at the
+  end of the animation. The object still moves 40 pixels in 40 ms, but non-linearly. In the
+  beginning, this animation accelerates up to the halfway point then decelerates from the
+  halfway point until the end of the animation. As Figure 2 shows, the distance traveled
+  at the beginning and end of the animation is less than in the middle.</p><img src=
+  "../../../images/animation/animation-nonlinear.png">
+
+  <p class="img-caption"><strong>Figure 2.</strong> Example of a non-linear animation</p>
+
+  <p>Let's take a detailed look at how the important components of the property animation system
+  would calculate animations like the ones illustrated above. Figure 3 depicts how the main classes
+  work with one another.</p><img src="../../../images/animation/valueanimator.png">
+
+  <p class="img-caption"><strong>Figure 3.</strong> How animations are calculated</p>
+
+  <p>The <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> object keeps track of your animation's timing,
+  such as how long the animation has been running, and the current value of the property that it is
+  animating.</p>
+
+  <p>The <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> encapsulates a <code><a href="../../../reference/android/animation/TimeInterpolator.html">TimeInterpolator</a></code>, which defines animation interpolation, and a <code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code>, which defines how to calculate values for the property being
+  animated. For example, in Figure 2, the <code><a href="../../../reference/android/animation/TimeInterpolator.html">TimeInterpolator</a></code> used would be
+  <code><a href="../../../reference/android/view/animation/AccelerateDecelerateInterpolator.html">AccelerateDecelerateInterpolator</a></code> and the <code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code> would be <code><a href="../../../reference/android/animation/IntEvaluator.html">IntEvaluator</a></code>.</p>
+
+  <p>To start an animation, create a <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> and give it the
+  starting and ending values for the property that you want to animate, along with the duration of
+  the animation. When you call <code><a href="../../../reference/android/animation/ValueAnimator.html#start()">start()</a></code> the animation
+  begins. During the whole animation, the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> calculates an <em>elapsed fraction</em>
+  between 0 and 1, based on the duration of the animation and how much time has elapsed. The
+  elapsed fraction represents the percentage of time that the animation has completed, 0 meaning 0%
+  and 1 meaning 100%. For example, in Figure 1, the elapsed fraction at t = 10 ms would be .25
+  because the total duration is t = 40 ms.</p>
+
+  <p>When the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> is done calculating an elapsed fraction, it
+  calls the <code><a href="../../../reference/android/animation/TimeInterpolator.html">TimeInterpolator</a></code> that is currently set, to calculate an
+  <em>interpolated fraction</em>. An interpolated fraction maps the elapsed fraction to a new
+  fraction that takes into account the time interpolation that is set. For example, in Figure 2,
+  because the animation slowly accelerates, the interpolated fraction, about .15, is less than the
+  elapsed fraction, .25, at t = 10 ms. In Figure 1, the interpolated fraction is always the same as
+  the elapsed fraction.</p>
+
+  <p>When the interpolated fraction is calculated, <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> calls
+  the appropriate <code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code>, to calculate the value of the
+  property that you are animating, based on the interpolated fraction, the starting value, and the
+  ending value of the animation. For example, in Figure 2, the interpolated fraction was .15 at t =
+  10 ms, so the value for the property at that time would be .15 X (40 - 0), or 6.</p>
+
+ <!-- <p>When the final value is calculated, the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> calls the
+  <code><a href="../../../reference/android/animation/ValueAnimator.AnimatorUpdateListener.html#onAnimationUpdate(android.animation.ValueAnimator)">onAnimationUpdate()</a></code> method. Implement this callback to obtain the property value by
+  calling <code><a href="../../../reference/android/animation/ValueAnimator.html#getAnimatedValue()">getAnimatedValue()</a></code> and set the
+  value for the property in the object that you are animating. Setting the property doesn't redraw
+  the object on the screen, so you need to call <code><a href="../../../reference/android/view/View.html#invalidate()">invalidate()</a></code> to refresh the View that the object
+  resides in. If the object is actually a View object, then the system calls <code><a href="../../../reference/android/view/View.html#invalidate()">invalidate()</a></code> when the property is changed.
+  The system redraws the window and the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code>
+  repeats the process.</p>-->
+
+  <p>The <code>com.example.android.apis.animation</code> package in the <a href=
+  "../../../resources/samples/ApiDemos/src/com/example/android/apis/animation/index.html">API
+  Demos</a> sample project provides many examples on how to use the property
+  animation system.</p>
+  
+  <h2 id="property-vs-view">How Property Animation Differs from View Animation</h2>
+  
+  <p>The view animation system provides the capability to only animate <code><a href="../../../reference/android/view/View.html">View</a></code>
+  objects, so if you wanted to animate non-<code><a href="../../../reference/android/view/View.html">View</a></code> objects, you have to implement
+  your own code to do so. The view animation system is also constrained in the fact that it only
+  exposes a few aspects of a <code><a href="../../../reference/android/view/View.html">View</a></code> object to animate, such as the scaling and
+  rotation of a View but not the background color, for instance.</p>
+
+  <p>Another disadvantage of the view animation system is that it only modified where the
+  View was drawn, and not the actual View itself. For instance, if you animated a button to move
+  across the screen, the button draws correctly, but the actual location where you can click the
+  button does not change, so you have to implement your own logic to handle this.</p>
+
+  <p>With the property animation system, these constraints are completely removed, and you can animate
+  any property of any object (Views and non-Views) and the object itself is actually modified.
+  The property animation system is also more robust in the way it carries out animation. At
+  a high level, you assign animators to the properties that you want to animate, such as color,
+  position, or size and can define aspects of the animation such as interpolation and
+  synchronization of multiple animators.</p>
+
+  <p>The view animation system, however, takes less time to setup and requires less code to write.
+  If view animation accomplishes everything that you need to do, or if your existing code already
+  works the way you want, there is no need to use the property animation system. It also might
+  make sense to use both animation systems for different situations if the use case arises.</p>
+
+  <h2>API Overview</h2>
+
+  <p>You can find most of the property animation system's APIs in <code><a href="../../../reference/android/animation/package-summary.html">android.animation</a></code>. Because the view animation system already
+  defines many interpolators in <code><a href="../../../reference/android/view/animation/package-summary.html">android.view.animation</a></code>, you can use
+  those interpolators in the property animation system as well. The following tables describe the main
+  components of the property animation system.</p>
+
+  <p>The <code><a href="../../../reference/android/animation/Animator.html">Animator</a></code> class provides the basic structure for creating
+  animations. You normally do not use this class directly as it only provides minimal
+  functionality that must be extended to fully support animating values. The following
+  subclasses extend <code><a href="../../../reference/android/animation/Animator.html">Animator</a></code>:
+  </p>
+  <p class="table-caption"><strong>Table 1.</strong> Animators</p>
+      <table>
+        <tr>
+          <th>Class</th>
+
+          <th>Description</th>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code></td>
+
+          <td>The main timing engine for property animation that also computes the values for the
+          property to be animated. It has all of the core functionality that calculates animation
+          values and contains the timing details of each animation, information about whether an
+          animation repeats, listeners that receive update events, and the ability to set custom
+          types to evaluate. There are two pieces to animating properties: calculating the animated
+          values and setting those values on the object and property that is being animated. <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> does not carry out the second piece, so you must listen
+          for updates to values calculated by the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> and
+          modify the objects that you want to animate with your own logic. See the section about
+          <a href="#value-animator">Animating with ValueAnimator</a> for more information.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code></td>
+
+          <td>A subclass of <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> that allows you to set a target
+          object and object property to animate. This class updates the property accordingly when
+          it computes a new value for the animation. You want to use
+          <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code> most of the time,
+          because it makes the process of animating values on target objects much easier. However,
+          you sometimes want to use <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> directly because <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code> has a few more restrictions, such as requiring specific
+          acessor methods to be present on the target object.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/animation/AnimatorSet.html">AnimatorSet</a></code></td>
+
+          <td>Provides a mechanism to group animations together so that they run in
+          relation to one another. You can set animations to play together, sequentially, or after
+          a specified delay. See the section about <a href="#choreography">Choreographing multiple
+          animations with Animator Sets</a> for more information.</td>
+        </tr>
+      </table>
+
+
+      <p>Evaluators tell the property animation system how to calculate values for a given
+      property. They take the timing data that is provided by an <code><a href="../../../reference/android/animation/Animator.html">Animator</a></code>
+      class, the animation's start and end value, and calculate the animated values of the property
+      based on this data. The property animation system provides the following evaluators:</p>
+      <p class="table-caption"><strong>Table 2.</strong> Evaluators</p>
+      <table>
+        <tr>
+          <th>Class/Interface</th>
+
+          <th>Description</th>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/animation/IntEvaluator.html">IntEvaluator</a></code></td>
+
+          <td>The default evaluator to calculate values for <code>int</code> properties.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/animation/FloatEvaluator.html">FloatEvaluator</a></code></td>
+
+          <td>The default evaluator to calculate values for <code>float</code> properties.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/animation/ArgbEvaluator.html">ArgbEvaluator</a></code></td>
+
+          <td>The default evaluator to calculate values for color properties that are represented
+          as hexidecimal values.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code></td>
+
+          <td>An interface that allows you to create your own evaluator. If you are animating an
+          object property that is <em>not</em> an <code>int</code>, <code>float</code>, or color,
+          you must implement the <code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code> interface to specify how
+          to compute the object property's animated values. You can also specify a custom <code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code> for <code>int</code>, <code>float</code>, and color
+          values as well, if you want to process those types differently than the default behavior.
+          See the section about <a href="#type-evaluator">Using a TypeEvaluator</a> for more
+          information on how to write a custom evaluator.</td>
+        </tr>
+      </table>
+
+
+
+
+      <p>A time interpolator defines how specific values in an animation are calculated as a
+      function of time. For example, you can specify animations to happen linearly across the whole
+      animation, meaning the animation moves evenly the entire time, or you can specify animations
+      to use non-linear time, for example, accelerating at the beginning and decelerating at the
+      end of the animation. Table 3 describes the interpolators that are contained in <code><a href="../../../reference/android/view/animation/package-summary.html">android.view.animation</a></code>. If none of the provided interpolators suits
+      your needs, implement the <code><a href="../../../reference/android/animation/TimeInterpolator.html">TimeInterpolator</a></code> interface and create your own. See <a href=
+  "#interpolators">Using interpolators</a> for more information on how to write a custom
+  interpolator.</p>
+      <p class="table-caption"><strong>Table 3.</strong> Interpolators</p>
+      <table>
+        <tr>
+          <th>Class/Interface</th>
+
+          <th>Description</th>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/AccelerateDecelerateInterpolator.html">AccelerateDecelerateInterpolator</a></code></td>
+
+          <td>An interpolator whose rate of change starts and ends slowly but accelerates
+          through the middle.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/AccelerateInterpolator.html">AccelerateInterpolator</a></code></td>
+
+          <td>An interpolator whose rate of change starts out slowly and then
+          accelerates.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/AnticipateInterpolator.html">AnticipateInterpolator</a></code></td>
+
+          <td>An interpolator whose change starts backward then flings forward.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/AnticipateOvershootInterpolator.html">AnticipateOvershootInterpolator</a></code></td>
+
+          <td>An interpolator whose change starts backward, flings forward and overshoots
+          the target value, then finally goes back to the final value.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/BounceInterpolator.html">BounceInterpolator</a></code></td>
+
+          <td>An interpolator whose change bounces at the end.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/CycleInterpolator.html">CycleInterpolator</a></code></td>
+
+          <td>An interpolator whose animation repeats for a specified number of cycles.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/DecelerateInterpolator.html">DecelerateInterpolator</a></code></td>
+
+          <td>An interpolator whose rate of change starts out quickly and and then
+          decelerates.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/LinearInterpolator.html">LinearInterpolator</a></code></td>
+
+          <td>An interpolator whose rate of change is constant.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/view/animation/OvershootInterpolator.html">OvershootInterpolator</a></code></td>
+
+          <td>An interpolator whose change flings forward and overshoots the last value then
+          comes back.</td>
+        </tr>
+
+        <tr>
+          <td><code><a href="../../../reference/android/animation/TimeInterpolator.html">TimeInterpolator</a></code></td>
+
+          <td>An interface that allows you to implement your own interpolator.</td>
+        </tr>
+      </table>
+
+  <h2 id="value-animator">Animating with ValueAnimator</h2>
+
+  <p>The <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> class lets you animate values of some type for the
+  duration of an animation by specifying a set of <code>int</code>, <code>float</code>, or color
+  values to animate through. You obtain a <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> by calling one of
+  its factory methods: <code><a href="../../../reference/android/animation/ValueAnimator.html#ofInt(int...)">ofInt()</a></code>, <code><a href="../../../reference/android/animation/ValueAnimator.html#ofFloat(float...)">ofFloat()</a></code>, or <code><a href="../../../reference/android/animation/ValueAnimator.html#ofObject(android.animation.TypeEvaluator, java.lang.Object...)">ofObject()</a></code>. For example:</p>
+  <pre>
+ValueAnimator animation = ValueAnimator.ofFloat(0f, 1f);
+animation.setDuration(1000);
+animation.start();
+</pre>
+
+  <p>In this code, the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> starts calculating the values of the
+  animation, between 0 and 1, for a duration of 1000 ms, when the <code>start()</code> method
+  runs.</p>
+
+  <p>You can also specify a custom type to animate by doing the following:</p>
+  <pre>
+ValueAnimator animation = ValueAnimator.ofObject(new MyTypeEvaluator(), startPropertyValue, endPropertyValue);
+animation.setDuration(1000);
+animation.start();
+</pre>
+
+  <p>In this code, the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> starts calculating the values of the
+  animation, between <code>startPropertyValue</code> and <code>endPropertyValue</code> using the
+  logic supplied by <code>MyTypeEvaluator</code> for a duration of 1000 ms, when the <code><a href="../../../reference/android/animation/ValueAnimator.html#start()">start()</a></code> method runs.</p>
+
+  <p>The previous code snippets, however, has no real effect on an object, because the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> does not operate on objects or properties directly. The most likely thing
+  that you want to do is modify the objects that you want to animate with these calculated values. You do
+  this by defining listeners in the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> to appropriately handle important events
+  during the animation's lifespan, such as frame updates. When implementing the listeners, you can
+  obtain the calculated value for that specific frame refresh by calling <code><a href="../../../reference/android/animation/ValueAnimator.html#getAnimatedValue()">getAnimatedValue()</a></code>. For more information on listeners,
+  see the section about <a href="#listeners">Animation Listeners</a>.
+
+  <h2 id="object-animator">Animating with ObjectAnimator</h2>
+
+  <p>The <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code> is a subclass of the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> (discussed in the previous section) and combines the timing
+  engine and value computation of <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> with the ability to
+  animate a named property of a target object. This makes animating any object much easier, as you
+  no longer need to implement the <code><a href="../../../reference/android/animation/ValueAnimator.AnimatorUpdateListener.html">ValueAnimator.AnimatorUpdateListener</a></code>,
+  because the animated property updates automatically.</p>
+
+  <p>Instantiating an <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code> is similar to a <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code>, but you also specify the object and the name of that object's property (as
+  a String) along with the values to animate between:</p>
+  <pre>
+ObjectAnimator anim = ObjectAnimator.ofFloat(foo, "alpha", 0f, 1f);
+anim.setDuration(1000);
+anim.start();
+</pre>
+
+  <p>To have the <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code> update properties correctly, you must do
+  the following:</p>
+
+  <ul>
+    <li>The object property that you are animating must have a setter function (in camel case) in the form of
+    <code>set&lt;propertyName&gt;()</code>. Because the <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code>
+    automatically updates the property during animation, it must be able to access the property
+    with this setter method. For example, if the property name is <code>foo</code>, you need to
+    have a <code>setFoo()</code> method. If this setter method does not exist, you have three
+    options:
+
+      <ul>
+        <li>Add the setter method to the class if you have the rights to do so.</li>
+
+        <li>Use a wrapper class that you have rights to change and have that wrapper receive the
+        value with a valid setter method and forward it to the original object.</li>
+
+        <li>Use <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> instead.</li>
+      </ul>
+    </li>
+
+    <li>If you specify only one value for the <code>values...</code> parameter in one of the <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code> factory methods, it is assumed to be the ending value of the
+    animation. Therefore, the object property that you are animating must have a getter function
+    that is used to obtain the starting value of the animation. The getter function must be in the
+    form of <code>get&lt;propertyName&gt;()</code>. For example, if the property name is
+    <code>foo</code>, you need to have a <code>getFoo()</code> method.</li>
+
+    <li>The getter (if needed) and setter methods of the property that you are animating must
+    operate on the same type as the starting and ending values that you specify to <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code>. For example, you must have
+    <code>targetObject.setPropName(float)</code> and <code>targetObject.getPropName(float)</code>
+    if you construct the following <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code>:
+      <pre>
+ObjectAnimator.ofFloat(targetObject, "propName", 1f)
+</pre>
+    </li>
+
+    <li>Depending on what property or object you are animating, you might need to call the <code><a href="../../../reference/android/view/View.html#invalidate()">invalidate()</a></code> method on a View to force the screen to redraw itself with the
+    updated animated values. You do this in the
+    <code><a href="../../../reference/android/animation/ValueAnimator.AnimatorUpdateListener.html#onAnimationUpdate(android.animation.ValueAnimator)">onAnimationUpdate()</a></code>
+    callback. For example, animating the color property of a Drawable object only cause updates to the
+    screen when that object redraws itself. All of the property setters on View, such as
+    <code><a href="../../../reference/android/view/View.html#setAlpha(float)">setAlpha()</a></code> and <code><a href="../../../reference/android/view/View.html#setTranslationX(float)">setTranslationX()</a></code>
+    invalidate the View properly, so you do not need to invalidate the View when calling these
+    methods with new values. For more information on listeners, see the section about <a href="#listeners">Animation Listeners</a>.
+    </li>
+  </ul>
+
+  <h2 id="choreography">Choreographing Multiple Animations with AnimatorSet</h2>
+
+  <p>In many cases, you want to play an animation that depends on when another animation starts or
+  finishes. The Android system lets you bundle animations together into an <code><a href="../../../reference/android/animation/AnimatorSet.html">AnimatorSet</a></code>, so that you can specify whether to start animations
+  simultaneously, sequentially, or after a specified delay. You can also nest <code><a href="../../../reference/android/animation/AnimatorSet.html">AnimatorSet</a></code> objects within each other.</p>
+
+  <p>The following sample code taken from the <a href=
+  "../../../resources/samples/ApiDemos/src/com/example/android/apis/animation/BouncingBalls.html">Bouncing
+  Balls</a> sample (modified for simplicity) plays the following <code><a href="../../../reference/android/animation/Animator.html">Animator</a></code>
+  objects in the following manner:</p>
+
+  <ol>
+    <li>Plays <code>bounceAnim</code>.</li>
+
+    <li>Plays <code>squashAnim1</code>, <code>squashAnim2</code>, <code>stretchAnim1</code>, and
+    <code>stretchAnim2</code> at the same time.</li>
+
+    <li>Plays <code>bounceBackAnim</code>.</li>
+
+    <li>Plays <code>fadeAnim</code>.</li>
+  </ol>
+  <pre>
+AnimatorSet bouncer = new AnimatorSet();
+bouncer.play(bounceAnim).before(squashAnim1);
+bouncer.play(squashAnim1).with(squashAnim2);
+bouncer.play(squashAnim1).with(stretchAnim1);
+bouncer.play(squashAnim1).with(stretchAnim2);
+bouncer.play(bounceBackAnim).after(stretchAnim2);
+ValueAnimator fadeAnim = ObjectAnimator.ofFloat(newBall, "alpha", 1f, 0f);
+fadeAnim.setDuration(250);
+AnimatorSet animatorSet = new AnimatorSet();
+animatorSet.play(bouncer).before(fadeAnim);
+animatorSet.start();
+</pre>
+
+  <p>For a more complete example on how to use animator sets, see the <a href=
+  "../../../resources/samples/ApiDemos/src/com/example/android/apis/animation/BouncingBalls.html">Bouncing
+  Balls</a> sample in APIDemos.</p>
+
+<h2 id="listeners">Animation Listeners</h2>
+<p>
+You can listen for important events during an animation's duration with the listeners described below.
+</p>
+
+  <ul>
+    <li><code><a href="../../../reference/android/animation/Animator.AnimatorListener.html">Animator.AnimatorListener</a></code>
+
+      <ul>
+        <li><code><a href="../../../reference/android/animation/Animator.AnimatorListener.html#onAnimationStart(android.animation.Animator)">onAnimationStart()</a></code>
+        - Called when the animation starts.</li>
+
+        <li><code><a href="../../../reference/android/animation/Animator.AnimatorListener.html#onAnimationEnd(android.animation.Animator)">onAnimationEnd()</a></code> -
+        Called when the animation ends.</li>
+
+        <li><code><a href="../../../reference/android/animation/Animator.AnimatorListener.html#onAnimationRepeat(android.animation.Animator)">onAnimationRepeat()</a></code> - Called when the animation repeats itself.</li>
+
+        <li><code><a href="../../../reference/android/animation/Animator.AnimatorListener.html#onAnimationCancel(android.animation.Animator)">onAnimationCancel()</a></code> - Called when the animation is canceled. A cancelled animation
+        also calls <code><a href="../../../reference/android/animation/Animator.AnimatorListener.html#onAnimationEnd(android.animation.Animator)">onAnimationEnd()</a></code>,
+        regardless of how they were ended.</li>
+      </ul>
+    </li>
+
+    <li><code><a href="../../../reference/android/animation/ValueAnimator.AnimatorUpdateListener.html">ValueAnimator.AnimatorUpdateListener</a></code>
+
+      <ul>
+        <li>
+          <p><code><a href="../../../reference/android/animation/ValueAnimator.AnimatorUpdateListener.html#onAnimationUpdate(android.animation.ValueAnimator)">onAnimationUpdate()</a></code> - called on every frame of the animation. Listen to this event to
+          use the calculated values generated by <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> during an
+          animation. To use the value, query the <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> object
+          passed into the event to get the current animated value with the <code><a href="../../../reference/android/animation/ValueAnimator.html#getAnimatedValue()">getAnimatedValue()</a></code> method. Implementing this
+          listener is required if you use <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code>. </p>
+
+          <p>
+          Depending on what property or object you are animating, you might need to call
+          <code><a href="../../../reference/android/view/View.html#invalidate()">invalidate()</a></code> on a View to force that area of the
+          screen to redraw itself with the new animated values. For example, animating the
+          color property of a Drawable object only cause updates to the screen when that object
+          redraws itself. All of the property setters on View,
+          such as <code><a href="../../../reference/android/view/View.html#setAlpha(float)">setAlpha()</a></code> and
+          <code><a href="../../../reference/android/view/View.html#setTranslationX(float)">setTranslationX()</a></code> invalidate the View
+          properly, so you do not need to invalidate the View when calling these methods with new values.
+          </p>
+
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+<p>You can extend the <code><a href="../../../reference/android/animation/AnimatorListenerAdapter.html">AnimatorListenerAdapter</a></code> class instead of
+implementing the <code><a href="../../../reference/android/animation/Animator.AnimatorListener.html">Animator.AnimatorListener</a></code> interface, if you do not
+want to implement all of the methods of the <code><a href="../../../reference/android/animation/Animator.AnimatorListener.html">Animator.AnimatorListener</a></code>
+interface. The <code><a href="../../../reference/android/animation/AnimatorListenerAdapter.html">AnimatorListenerAdapter</a></code> class provides empty
+implementations of the methods that you can choose to override.</p>
+  <p>For example, the <a href=
+  "../../../resources/samples/ApiDemos/src/com/example/android/apis/animation/BouncingBalls.html">Bouncing
+  Balls</a> sample in the API demos creates an <code><a href="../../../reference/android/animation/AnimatorListenerAdapter.html">AnimatorListenerAdapter</a></code>
+  for just the <code><a href="../../../reference/android/animation/Animator.AnimatorListener.html#onAnimationEnd(android.animation.Animator)">onAnimationEnd()</a></code>
+  callback:</p>
+  <pre>
+ValueAnimatorAnimator fadeAnim = ObjectAnimator.ofFloat(newBall, "alpha", 1f, 0f);
+fadeAnim.setDuration(250);
+fadeAnim.addListener(new AnimatorListenerAdapter() {
+public void onAnimationEnd(Animator animation) {
+    balls.remove(((ObjectAnimator)animation).getTarget());
+}
+</pre>
+
+
+  <h2 id="layout">Animating Layout Changes to ViewGroups</h2>
+
+  <p>The property animation system provides the capability to animate changes to ViewGroup objects
+  as well as provide an easy way to animate View objects themselves.</p>
+
+  <p>You can animate layout changes within a ViewGroup with the <code><a href="../../../reference/android/animation/LayoutTransition.html">LayoutTransition</a></code> class. Views inside a ViewGroup can go through an appearing
+  and disappearing animation when you add them to or remove them from a ViewGroup or when you call
+  a View's <code><a href="../../../reference/android/view/View.html#setVisibility(int)">setVisibility()</a></code> method with <code><a href="../../../reference/android/view/View.html#VISIBLE">VISIBLE</a></code>, android.view.View#INVISIBLE}, or <code><a href="../../../reference/android/view/View.html#GONE">GONE</a></code>. The remaining Views in the
+  ViewGroup can also animate into their new positions when you add or remove Views. You can define
+  the following animations in a <code><a href="../../../reference/android/animation/LayoutTransition.html">LayoutTransition</a></code> object by calling <code><a href="../../../reference/android/animation/LayoutTransition.html#setAnimator(int, android.animation.Animator)">setAnimator()</a></code> and passing in an <code><a href="../../../reference/android/animation/Animator.html">Animator</a></code> object with one of the following <code><a href="../../../reference/android/animation/LayoutTransition.html">LayoutTransition</a></code> constants:</p>
+
+  <ul>
+    <li><code>APPEARING</code> - A flag indicating the animation that runs on items that are
+    appearing in the container.</li>
+
+    <li><code>CHANGE_APPEARING</code> - A flag indicating the animation that runs on items that are
+    changing due to a new item appearing in the container.</li>
+
+    <li><code>DISAPPEARING</code> - A flag indicating the animation that runs on items that are
+    disappearing from the container.</li>
+
+    <li><code>CHANGE_DISAPPEARING</code> - A flag indicating the animation that runs on items that
+    are changing due to an item disappearing from the container.</li>
+  </ul>
+
+  <p>You can define your own custom animations for these four types of events to customize the look
+  of your layout transitions or just tell the animation system to use the default animations.</p>
+
+  <p>The <a href=
+  "../../../resources/samples/ApiDemos/src/com/example/android/apis/animation/LayoutAnimations.html">
+  LayoutAnimations</a> sample in API Demos shows you how to define animations for layout
+  transitions and then set the animations on the View objects that you want to animate.</p>
+
+  <p>The <a href=
+  "../../../resources/samples/ApiDemos/src/com/example/android/apis/animation/LayoutAnimationsByDefault.html">
+  LayoutAnimationsByDefault</a> and its corresponding <a href=
+  "../../../resources/samples/ApiDemos/res/layout/layout_animations_by_default.html">layout_animations_by_default.xml</a>
+  layout resource file show you how to enable the default layout transitions for ViewGroups in XML.
+  The only thing that you need to do is to set the <code>android:animateLayoutchanges</code>
+  attribute to <code>true</code> for the ViewGroup. For example:</p>
+  <pre>
+&lt;LinearLayout
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:id="@+id/verticalContainer"
+    android:animateLayoutChanges="true" /&gt;
+</pre>
+
+  <p>Setting this attribute to true automatically animates Views that are added or removed from the
+  ViewGroup as well as the remaining Views in the ViewGroup.</p>
+
+  <h2 id="type-evaluator">Using a TypeEvaluator</h2>
+
+  <p>If you want to animate a type that is unknown to the Android system, you can create your own
+  evaluator by implementing the <code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code> interface. The types that
+  are known by the Android system are <code>int</code>, <code>float</code>, or a color, which are
+  supported by the <code><a href="../../../reference/android/animation/IntEvaluator.html">IntEvaluator</a></code>, <code><a href="../../../reference/android/animation/FloatEvaluator.html">FloatEvaluator</a></code>, and <code><a href="../../../reference/android/animation/ArgbEvaluator.html">ArgbEvaluator</a></code> type
+  evaluators.</p>
+
+  <p>There is only one method to implement in the <code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code>
+  interface, the <code><a href="../../../reference/android/animation/TypeEvaluator.html#evaluate(float, T, T)">evaluate()</a></code> method. This allows
+  the animator that you are using to return an appropriate value for your animated property at the
+  current point of the animation. The <code><a href="../../../reference/android/animation/FloatEvaluator.html">FloatEvaluator</a></code> class demonstrates
+  how to do this:</p>
+  <pre>
+public class FloatEvaluator implements TypeEvaluator {
+
+    public Object evaluate(float fraction, Object startValue, Object endValue) {
+        float startFloat = ((Number) startValue).floatValue();
+        return startFloat + fraction * (((Number) endValue).floatValue() - startFloat);
+    }
+}
+</pre>
+
+  <p class="note"><strong>Note:</strong> When <code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> (or <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code>) runs, it calculates a current elapsed fraction of the
+  animation (a value between 0 and 1) and then calculates an interpolated version of that depending
+  on what interpolator that you are using. The interpolated fraction is what your <code><a href="../../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code> receives through the <code>fraction</code> parameter, so you do
+  not have to take into account the interpolator when calculating animated values.</p>
+
+  <h2 id="interpolators">Using Interpolators</h2>
+
+  <p>An interpolator define how specific values in an animation are calculated as a function of
+  time. For example, you can specify animations to happen linearly across the whole animation,
+  meaning the animation moves evenly the entire time, or you can specify animations to use
+  non-linear time, for example, using acceleration or deceleration at the beginning or end of the
+  animation.</p>
+
+  <p>Interpolators in the animation system receive a fraction from Animators that represent the
+  elapsed time of the animation. Interpolators modify this fraction to coincide with the type of
+  animation that it aims to provide. The Android system provides a set of common interpolators in
+  the <code><a href="../../../reference/android/view/animation/package-summary.html">android.view.animation package</a></code>. If none of these suit your
+  needs, you can implement the <code><a href="../../../reference/android/animation/TimeInterpolator.html">TimeInterpolator</a></code> interface and create your
+  own.</p>
+
+  <p>As an example, how the default interpolator <code><a href="../../../reference/android/view/animation/AccelerateDecelerateInterpolator.html">AccelerateDecelerateInterpolator</a></code> and the <code><a href="../../../reference/android/view/animation/LinearInterpolator.html">LinearInterpolator</a></code> calculate interpolated fractions are compared below.
+  The <code><a href="../../../reference/android/view/animation/LinearInterpolator.html">LinearInterpolator</a></code> has no effect on the elapsed fraction. The <code><a href="../../../reference/android/view/animation/AccelerateDecelerateInterpolator.html">AccelerateDecelerateInterpolator</a></code> accelerates into the animation and
+  decelerates out of it. The following methods define the logic for these interpolators:</p>
+
+  <p><strong>AccelerateDecelerateInterpolator</strong></p>
+  <pre>
+public float getInterpolation(float input) {
+    return (float)(Math.cos((input + 1) * Math.PI) / 2.0f) + 0.5f;
+}
+</pre>
+
+  <p><strong>LinearInterpolator</strong></p>
+  <pre>
+public float getInterpolation(float input) {
+    return input;
+}
+</pre>
+
+  <p>The following table represents the approximate values that are calculated by these
+  interpolators for an animation that lasts 1000ms:</p>
+
+  <table>
+    <tr>
+      <th>ms elapsed</th>
+
+      <th>Elapsed fraction/Interpolated fraction (Linear)</th>
+
+      <th>Interpolated fraction (Accelerate/Decelerate)</th>
+    </tr>
+
+    <tr>
+      <td>0</td>
+
+      <td>0</td>
+
+      <td>0</td>
+    </tr>
+
+    <tr>
+      <td>200</td>
+
+      <td>.2</td>
+
+      <td>.1</td>
+    </tr>
+
+    <tr>
+      <td>400</td>
+
+      <td>.4</td>
+
+      <td>.345</td>
+    </tr>
+
+    <tr>
+      <td>600</td>
+
+      <td>.6</td>
+
+      <td>.8</td>
+    </tr>
+
+    <tr>
+      <td>800</td>
+
+      <td>.8</td>
+
+      <td>.9</td>
+    </tr>
+
+    <tr>
+      <td>1000</td>
+
+      <td>1</td>
+
+      <td>1</td>
+    </tr>
+  </table>
+
+  <p>As the table shows, the <code><a href="../../../reference/android/view/animation/LinearInterpolator.html">LinearInterpolator</a></code> changes the values
+  at the same speed, .2 for every 200ms that passes. The <code><a href="../../../reference/android/view/animation/AccelerateDecelerateInterpolator.html">AccelerateDecelerateInterpolator</a></code> changes the values faster than <code><a href="../../../reference/android/view/animation/LinearInterpolator.html">LinearInterpolator</a></code> between 200ms and 600ms and slower between 600ms and
+  1000ms.</p>
+
+  <h2 id="keyframes">Specifying Keyframes</h2>
+
+  <p>A <code><a href="../../../reference/android/animation/Keyframe.html">Keyframe</a></code> object consists of a time/value pair that lets you define
+  a specific state at a specific time of an animation. Each keyframe can also have its own
+  interpolator to control the behavior of the animation in the interval between the previous
+  keyframe's time and the time of this keyframe.</p>
+
+  <p>To instantiate a <code><a href="../../../reference/android/animation/Keyframe.html">Keyframe</a></code> object, you must use one of the factory
+  methods, <code><a href="../../../reference/android/animation/Keyframe.html#ofInt(float)">ofInt()</a></code>, <code><a href="../../../reference/android/animation/Keyframe.html#ofFloat(float)">ofFloat()</a></code>, or <code><a href="../../../reference/android/animation/Keyframe.html#ofObject(float)">ofObject()</a></code> to obtain the appropriate type of <code><a href="../../../reference/android/animation/Keyframe.html">Keyframe</a></code>. You then call
+  the <code><a href="../../../reference/android/animation/PropertyValuesHolder.html#ofKeyframe(android.util.Property, android.animation.Keyframe...)">ofKeyframe()</a></code> factory method to
+  obtain a <code><a href="../../../reference/android/animation/PropertyValuesHolder.html">PropertyValuesHolder</a></code> object. Once you have the object, you can
+  obtain an animator by passing in the <code><a href="../../../reference/android/animation/PropertyValuesHolder.html">PropertyValuesHolder</a></code> object and
+  the object to animate. The following code snippet demonstrates how to do this:</p>
+  <pre>
+Keyframe kf0 = Keyframe.ofFloat(0f, 0f);
+Keyframe kf1 = Keyframe.ofFloat(.5f, 360f);
+Keyframe kf2 = Keyframe.ofFloat(1f, 0f);
+PropertyValuesHolder pvhRotation = PropertyValuesHolder.ofKeyframe("rotation", kf0, kf1, kf2);
+ObjectAnimator rotationAnim = ObjectAnimator.ofPropertyValuesHolder(target, pvhRotation)
+rotationAnim.setDuration(5000ms);
+</pre>
+
+  <p>For a more complete example on how to use keyframes, see the <a href=
+  "../../../resources/samples/ApiDemos/src/com/example/android/apis/animation/MultiPropertyAnimation.html">
+  MultiPropertyAnimation</a> sample in APIDemos.</p>
+
+  <h2 id="views">Animating Views</h2>
+
+  <p>The property animation system allow streamlined animation of View objects and offers
+  a few advantages over the view animation system. The view
+  animation system transformed View objects by changing the way that they were drawn. This was
+  handled in the container of each View, because the View itself had no properties to manipulate.
+  This resulted in the View being animated, but caused no change in the View object itself. This
+  led to behavior such as an object still existing in its original location, even though it was
+  drawn on a different location on the screen. In Android 3.0, new properties and the corresponding
+  getter and setter methods were added to eliminate this drawback.</p>
+  <p>The property animation system
+  can animate Views on the screen by changing the actual properties in the View objects. In
+  addition, Views also automatically call the <code><a href="../../../reference/android/view/View.html#invalidate()">invalidate()</a></code>
+  method to refresh the screen whenever its properties are changed. The new properties in the <code><a href="../../../reference/android/view/View.html">View</a></code> class that facilitate property animations are:</p>
+
+  <ul>
+    <li><code>translationX</code> and <code>translationY</code>: These properties control where the
+    View is located as a delta from its left and top coordinates which are set by its layout
+    container.</li>
+
+    <li><code>rotation</code>, <code>rotationX</code>, and <code>rotationY</code>: These properties
+    control the rotation in 2D (<code>rotation</code> property) and 3D around the pivot point.</li>
+
+    <li><code>scaleX</code> and <code>scaleY</code>: These properties control the 2D scaling of a
+    View around its pivot point.</li>
+
+    <li><code>pivotX</code> and <code>pivotY</code>: These properties control the location of the
+    pivot point, around which the rotation and scaling transforms occur. By default, the pivot
+    point is located at the center of the object.</li>
+
+    <li><code>x</code> and <code>y</code>: These are simple utility properties to describe the
+    final location of the View in its container, as a sum of the left and top values and
+    translationX and translationY values.</li>
+
+    <li><code>alpha</code>: Represents the alpha transparency on the View. This value is 1 (opaque)
+    by default, with a value of 0 representing full transparency (not visible).</li>
+  </ul>
+
+  <p>To animate a property of a View object, such as its color or rotation value, all you need to
+  do is create a property animator and specify the View property that you want to
+  animate. For example:</p>
+  <pre>
+ObjectAnimator.ofFloat(myView, "rotation", 0f, 360f);
+</pre>
+
+<p>For more information on creating animators, see the sections on animating with
+<a href="#value-animator">ValueAnimator</a> and <a href="#object-animator">ObjectAnimator</a>.
+</p>
+
+<h3 id="view-prop-animator">Animating with ViewPropertyAnimator</h3>
+<p>The <code><a href="../../../reference/android/view/ViewPropertyAnimator.html">ViewPropertyAnimator</a></code> provides a simple way to animate several
+properties of a <code><a href="../../../reference/android/view/View.html">View</a></code> in parallel, using a single underlying <code><a href="../../../reference/android/animation/Animator.html">Animator</a></code>
+object. It behaves much like an <code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code>, because it modifies the
+actual values of the view's properties, but is more efficient when animating many properties at
+once. In addition, the code for using the <code><a href="../../../reference/android/view/ViewPropertyAnimator.html">ViewPropertyAnimator</a></code> is much
+more concise and easier to read. The following code snippets show the differences in using multiple
+<code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code> objects, a single
+<code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code>, and the <code><a href="../../../reference/android/view/ViewPropertyAnimator.html">ViewPropertyAnimator</a></code> when
+simultaneously animating the <code>x</code> and <code>y</code> property of a view.</p>
+
+<p><strong>Multiple ObjectAnimator objects</strong></p>
+<pre>
+ObjectAnimator animX = ObjectAnimator.ofFloat(myView, "x", 50f);
+ObjectAnimator animY = ObjectAnimator.ofFloat(myView, "y", 100f);
+AnimatorSet animSetXY = new AnimatorSet();
+animSetXY.playTogether(animX, animY);
+animSetXY.start();
+</pre>
+
+<p><strong>One ObjectAnimator</strong></p>
+<pre>
+PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("x", 50f);
+PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("y", 100f);
+ObjectAnimator.ofPropertyValuesHolder(myView, pvhX, pvyY).start();
+</pre>
+
+<p><strong>ViewPropertyAnimator</strong></p>
+<pre>
+myView.animate().x(50f).y(100f);
+</pre>
+
+<p>
+For more detailed information about <code><a href="../../../reference/android/view/ViewPropertyAnimator.html">ViewPropertyAnimator</a></code>, see the corresponding Android Developers
+<a href="http://android-developers.blogspot.com/2011/05/introducing-viewpropertyanimator.html">blog
+post</a>.</p>
+
+<h2 id="declaring-xml">Declaring Animations in XML</h2>
+
+  <p>The property animation system lets you declare property animations with XML instead of doing
+  it programmatically. By defining your animations in XML, you can easily reuse your animations
+in multiple activities and more easily edit the animation sequence.</p>
+
+<p>To distinguish animation files that use the new property animation APIs from those that use the
+legacy <a href="../../../guide/topics/graphics/view-animation.html">view animation</a> framework,
+starting with Android 3.1, you should save the XML files for property animations in the <code>res/animator/</code> directory (instead of <code>res/anim/</code>). Using the <code>animator</code> directory name
+is optional, but necessary if you want to use the layout editor tools in the Eclipse ADT plugin (ADT
+11.0.0+), because ADT only searches the <code>res/animator/</code> directory for property animation
+resources.</p>
+
+<p>The following property animation classes have XML declaration support with the
+  following XML tags:</p>
+
+  <ul>
+    <li><code><a href="../../../reference/android/animation/ValueAnimator.html">ValueAnimator</a></code> - <code>&lt;animator&gt;</code></li>
+
+    <li><code><a href="../../../reference/android/animation/ObjectAnimator.html">ObjectAnimator</a></code> - <code>&lt;objectAnimator&gt;</code></li>
+
+    <li><code><a href="../../../reference/android/animation/AnimatorSet.html">AnimatorSet</a></code> - <code>&lt;set&gt;</code></li>
+  </ul>
+
+<p>The following example plays the two sets of object animations sequentially, with the first nested
+set playing two object animations together:</p>
+
+<pre>
+&lt;set android:ordering="sequentially"&gt;
+    &lt;set&gt;
+        &lt;objectAnimator
+            android:propertyName="x"
+            android:duration="500"
+            android:valueTo="400"
+            android:valueType="intType"/&gt;
+        &lt;objectAnimator
+            android:propertyName="y"
+            android:duration="500"
+            android:valueTo="300"
+            android:valueType="intType"/&gt;
+    &lt;/set&gt;
+    &lt;objectAnimator
+        android:propertyName="alpha"
+        android:duration="500"
+        android:valueTo="1f"/&gt;
+&lt;/set&gt;
+</pre>
+  <p>In order to run this animation, you must inflate the XML resources in your code to an <code><a href="../../../reference/android/animation/AnimatorSet.html">AnimatorSet</a></code> object, and then set the target objects for all of the animations
+  before starting the animation set. Calling <code><a href="../../../reference/android/animation/AnimatorSet.html#setTarget(java.lang.Object)">setTarget()</a></code> sets a single target object for all children of the <code><a href="../../../reference/android/animation/AnimatorSet.html">AnimatorSet</a></code> as a convenience. The following code shows how to do this:</p>
+
+<pre>
+AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(myContext,
+    R.anim.property_animator);
+set.setTarget(myObject);
+set.start();
+</pre>
+
+<p>For information about the XML syntax for defining property animations, see <a
+href="../../../guide/topics/resources/animation-resource.html#Property">Animation Resources</a>.
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

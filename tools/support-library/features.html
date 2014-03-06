@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Support Library Features | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Support Library Features</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+
+    <h2>In this document</h2>
+    <ol>
+      <li><a href="#v4">v4 Support Library</a></li>
+      <li><a href="#v7">v7 Libraries</a>
+        <ol>
+          <li><a href="#v7-appcompat">v7 appcompat library</a></li>
+          <li><a href="#v7-gridlayout">v7 gridlayout library</a></li>
+          <li><a href="#v7-mediarouter">v7 mediarouter library</a></li>
+        </ol>
+      </li>
+      <li><a href="#v8">v8 Support Library</a></li>
+      <li><a href="#v13">v13 Support Library</a></li>
+    </ol>
+
+    <h2>See also</h2>
+    <ol>
+      <li><a href="../../tools/support-library/index.html#revisions">
+        Support Library Revisions</a></li>
+      <li><a href="../../tools/support-library/setup.html">
+        Support Library Setup</a></li>
+    </ol>
+
+  </div>
+</div>
+
+<p>The Android Support Library package contains several libraries that can be included
+  in your application. Each of these libraries supports a specific range of Android platform
+  versions and set of features.</p>
+
+<p>This guide explains the important features and version support provided by the Support
+  Libraries to help you decide which of them you should include in your application. In general,
+  we recommend including the <a href="#v4">v4 support</a> and <a href="#v7-appcompat">v7
+  appcompat</a> libraries, because they support a wide range of
+  Android versions and provide APIs for recommended user interface patterns.</p>
+
+<p>In order to use any of the following libraries, you must download the library files to your
+  Android SDK installation. Follow the directions for downloading the Support Libraries in
+  <a href="../../tools/support-library/setup.html#download">Support Library Setup</a> to
+  complete this step. You must take additional steps to include a specific Support Library in
+  your application. See the end of each library section below for important information on how to
+  include the library in your application.</p>
+
+
+<h2 id="v4">v4 Support Library</h2>
+
+<p>This library is designed to be used with Android 1.6 (API level 4) and higher. It includes the
+  largest set of APIs compared to the other libraries, including support for application components,
+  user interface features, accessibility, data handling, network connectivity, and programming
+  utilities. Here are a few of the key classes included in the v4 library:</p>
+
+<ul>
+  <li>App Components
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/app/Fragment.html">Fragment</a></code>
+        - Adds support encapsulation of user interface and functionality with Fragments, enabling
+        applications provide layouts that adjust between small and large-screen devices.</li>
+    </ul>
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/app/NotificationCompat.html">NotificationCompat</a></code> - Adds support for rich notification
+        features.</li>
+    </ul>
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/content/LocalBroadcastManager.html">LocalBroadcastManager</a></code> - Allows applications to easily
+        register for and receive intents within a single application without broadcasting them
+        globally.</li>
+    </ul>
+  </li>
+  <li>User Interface
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/view/ViewPager.html">ViewPager</a></code> - Adds a
+      <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code> that manages the layout for the
+      child views, which the user can swipe between.</li>
+      <li><code><a href="../../reference/android/support/v4/view/PagerTitleStrip.html">PagerTitleStrip</a></code>
+        - Adds a non-interactive title strip, that can be added as a child of
+        <code><a href="../../reference/android/support/v4/view/ViewPager.html">ViewPager</a></code>.</li>
+      <li><code><a href="../../reference/android/support/v4/view/PagerTabStrip.html">PagerTabStrip</a></code> - Adds a
+        navigation widget for switching between paged views, that can also be used with
+        <code><a href="../../reference/android/support/v4/view/ViewPager.html">ViewPager</a></code>.</li>
+      <li><code><a href="../../reference/android/support/v4/widget/DrawerLayout.html">DrawerLayout</a></code> - Adds
+      support for creating a <a href="../../training/implementing-navigation/nav-drawer.html"
+      >Navigation Drawer</a> that can be pulled in from the edge of a window.</li>
+      <li><code><a href="../../reference/android/support/v4/widget/SlidingPaneLayout.html">SlidingPaneLayout</a></code>
+        - Adds widget for creating linked summary and detail views that
+        appropriately adapt to various screen sizes.</li>
+    </ul>
+  </li>
+  <li>Accessibility
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/widget/ExploreByTouchHelper.html">ExploreByTouchHelper</a></code>
+        - Adds a helper class for implementing accessibility support for custom views.</li>
+    </ul>
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/view/accessibility/AccessibilityEventCompat.html">AccessibilityEventCompat</a></code> - Adds support for
+      <code><a href="../../reference/android/view/accessibility/AccessibilityEvent.html">AccessibilityEvent</a></code>. For more information about implementing
+      accessibility, see <a href="../../guide/topics/ui/accessibility/index.html"
+      >Accessibility</a>.</li>
+    </ul>
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/view/accessibility/AccessibilityNodeInfoCompat.html">AccessibilityNodeInfoCompat</a></code> - Adds support
+      for <code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html">AccessibilityNodeInfo</a></code>.</li>
+    </ul>
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/view/accessibility/AccessibilityNodeProviderCompat.html">AccessibilityNodeProviderCompat</a></code> - Adds
+      support for <code><a href="../../reference/android/view/accessibility/AccessibilityNodeProvider.html">AccessibilityNodeProvider</a></code>.</li>
+    </ul>
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/view/AccessibilityDelegateCompat.html">AccessibilityDelegateCompat</a></code> - Adds support for
+      <code><a href="../../reference/android/view/View.AccessibilityDelegate.html">View.AccessibilityDelegate</a></code>.</li>
+    </ul>
+  </li>
+  <li>Content
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/content/Loader.html">Loader</a></code> - Adds support for asynchronous loading of data.
+        The library also provides concrete implementations of this class, including
+        <code><a href="../../reference/android/support/v4/content/CursorLoader.html">CursorLoader</a></code> and
+        <code><a href="../../reference/android/support/v4/content/AsyncTaskLoader.html">AsyncTaskLoader</a></code>.</li>
+    </ul>
+    <ul>
+      <li><code><a href="../../reference/android/support/v4/content/FileProvider.html">FileProvider</a></code> - Adds support for sharing of private
+        files between applications.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>
+  There are many other APIs included in this library. For complete, detailed information about the
+  v4 Support Library APIs, see the <code><a href="../../reference/android/support/v4/app/package-summary.html">android.support.v4</a></code> package in the
+  API reference.
+</p>
+
+<p>This library is located in the <code>&lt;sdk&gt;/extras/android/support/v4/</code> directory after
+  you download the Android Support Libraries. This library does not contain user interface
+  resources. To include it in your application project, follow the instructions for
+  <a href="../../tools/support-library/setup.html#libs-without-res">adding libraries without
+  resources</a>.</p>
+
+<p>The Gradle build script dependency identifier for this library is as follows:</p>
+
+<pre>
+com.android.support:support-v4:18.0.+
+</pre>
+
+<p>This dependency notation specifies the release version 18.0.0 or higher.</p>
+
+
+<h2 id="v7">v7 Libraries</h2>
+
+<p>There are several libraries designed to be used with Android 2.1 (API level 7) and higher.
+  These libraries provide specific feature sets and can be included in your application
+  independently from each other.</p>
+
+
+<h3 id="v7-appcompat">v7 appcompat library</h3>
+
+<p>This library adds support for the <a href="../../guide/topics/ui/actionbar.html">Action
+  Bar</a> user interface <a href="../../design/patterns/actionbar.html">design pattern</a>.
+</p>
+
+<p class="note"><strong>Note:</strong>
+  This library depends on the v4 Support Library. If you are using Ant or Eclipse, make sure
+  you include the v4 Support Library as part of this library's classpath.
+</p>
+
+<p>Here are a few of the key classes included in the v7 appcompat library:</p>
+
+<ul>
+  <li><code><a href="../../reference/android/support/v7/app/ActionBar.html">ActionBar</a></code> - Provides an implementation of the action bar
+      <a href="../../design/patterns/actionbar.html">user interface pattern</a>. For more
+      information on using the Action Bar, see the
+      <a href="../../guide/topics/ui/actionbar.html">Action Bar</a> developer guide.
+  </li>
+  <li><code><a href="../../reference/android/support/v7/app/ActionBarActivity.html">ActionBarActivity</a></code> - Adds an application activity class that
+      must be used as a base class for activities that uses the Support Library action bar
+      implementation.
+  </li>
+  <li><code><a href="../../reference/android/support/v7/widget/ShareActionProvider.html">ShareActionProvider</a></code> - Adds support for a standardized
+    sharing action (such as email or posting to social applications) that can be included in an
+    action bar.
+  </li>
+</ul>
+
+<p>This library is located in the <code>&lt;sdk&gt;/extras/android/support/v7/appcompat/</code>
+  directory after you download the Android Support Libraries. This library contains user
+  interface resources. To include it in your application project, follow the instructions for
+  <a href="../../tools/support-library/setup.html#libs-with-res">adding libraries with
+  resources</a>.</p>
+
+<p>The Gradle build script dependency identifier for this library is as follows:</p>
+
+<pre>
+com.android.support:appcompat-v7:18.0.+
+</pre>
+
+<p>This dependency notation specifies the release version 18.0.0 or higher.</p>
+
+<h3 id="v7-gridlayout">v7 gridlayout library</h3>
+
+<p>This library adds support for the <code><a href="../../reference/android/support/v7/widget/GridLayout.html">GridLayout</a></code> class, which
+  allows you to arrange user interface elements using a grid of rectangular cells.
+  For detailed information about the v7 gridlayout library APIs, see the
+  <code><a href="../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></code> package in the API reference.</p>
+
+<p>This library is located in the <code>&lt;sdk&gt;/extras/android/support/v7/gridlayout/</code>
+  directory after you download the Android Support Libraries. This library contains user
+  interface resources. To include it in your application project, follow the instructions for
+  <a href="../../tools/support-library/setup.html#libs-with-res">adding libraries with
+  resources</a>.</p>
+
+<p>The Gradle build script dependency identifier for this library is as follows:</p>
+
+<pre>
+com.android.support:gridlayout-v7:18.0.+
+</pre>
+
+<p>This dependency notation specifies the release version 18.0.0 or higher.</p>
+
+<h3 id="v7-mediarouter">v7 mediarouter library</h3>
+
+<p>This library provides <code><a href="../../reference/android/support/v7/media/MediaRouter.html">MediaRouter</a></code>, <code><a href="../../reference/android/support/v7/media/MediaRouteProvider.html">MediaRouteProvider</a></code>, and related media classes that
+support the <a href="https://developers.google.com/cast/">Google Cast
+developer preview</a>. </p>
+
+<p>In general, the APIs in the v7 mediarouter library provide a means of
+controlling the routing of media channels and streams from the current device to
+external screens, speakers, and other destination devices. The library includes
+APIs for publishing app-specific media route providers, for discovering and
+selecting destination devices, for checking media status, and more. For detailed
+information about the v7 mediarouter library APIs, see the
+<code><a href="../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></code> package in the API
+reference.</p>
+
+<p>The v7 mediarouter library is located in the
+<code>&lt;sdk&gt;/extras/android/support/v7/mediarouter/</code> directory after
+you download the Android Support Library. It's provided as a library project
+with a dependency on the v7 appcompat library, so you'll need to include both
+libraries in your build path when setting up your project. For more information
+on how to set up your project, follow the instructions in <a
+href="../../tools/support-library/setup.html#libs-with-res">adding libraries
+with resources</a>. If you are developing in Eclipse/ADT, make sure to include
+both the <code>android-support-v7-mediarouter.jar</code> and
+<code>android-support-v7-appcompat.jar</code> files.</p>
+
+<p>If you are using Android Studio, all you need to do is specify the Gradle build
+script dependency identifier <code>com.android.support:support-v7-mediarouter:&lt;revision&gt;</code>,
+where "18.0.0" is the minimum revision at which the library is available. For example:</p>
+
+<pre>
+com.android.support:mediarouter-v7:18.0.+
+</pre>
+
+<p class="caution">The v7 mediarouter library APIs introduced in Support Library
+r18 are subject to change in later revisions of the Support Library. At this
+time, we recommend using the library only in connection with the <a
+href="https://developers.google.com/cast/">Google Cast
+developer preview</a>. </p>
+
+
+<h2 id="v8">v8 Support Library</h2>
+
+<p>This library is designed to be used with Android (API level 8) and higher. It adds support for
+  the <a href="../../guide/topics/renderscript/compute.html">RenderScript</a> computation
+  framework. These APIs are included in the <code><a href="../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></code> package. You
+  should be aware that the steps for including these APIs in your application is <em>very
+  different</em> from other support library APIs. For more information about using these APIs
+  in your application, see the
+  <a href="../../guide/topics/renderscript/compute.html#access-rs-apis">RenderScript</a>
+  developer guide.</p>
+
+<p class="note">
+  <strong>Note:</strong> Use of RenderScript with the support library is supported with the Android
+  Eclipse plugin and Ant build tools. It is <em>not currently</em> supported with Android Studio or
+  Gradle-based builds.
+</p>
+
+
+<h2 id="v13">v13 Support Library</h2>
+
+<p>This library is designed to be used for Android 3.2 (API level 13) and higher. It adds support
+  for the <a href="../../guide/components/fragments.html">Fragment</a> user interface pattern
+  with the (<code><a href="../../reference/android/support/v13/app/FragmentCompat.html">FragmentCompat</a></code>) class and additional fragment support
+  classes For more information about fragments, see the
+  <a href="../../guide/components/fragments.html">Fragments</a> developer guide. For detailed
+  information about the v13 Support Library APIs, see the <code><a href="../../reference/android/support/v13/app/package-summary.html">android.support.v13</a></code> package in the API reference.
+</p>
+
+<p>This library is located in the <code>&lt;sdk&gt;/extras/android/support/v13/</code> directory after
+  you download the Android Support Libraries. This library does not contain user interface
+  resources. To include it in your application project, follow the instructions for
+  <a href="../../tools/support-library/setup.html#libs-without-res">adding libraries without
+  resources</a>.</p>
+
+<p>The Gradle build script dependency identifier for this library is as follows:</p>
+
+<pre>
+com.android.support:support-v13:18.0.+
+</pre>
+
+<p>This dependency notation specifies the release version 18.0.0 or higher.</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

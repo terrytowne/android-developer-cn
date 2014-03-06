@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Android Interface Definition Language (AIDL) | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Android Interface Definition Language (AIDL)</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+<h2>In this document</h2>
+<ol>
+  <li><a href="#Defining">Defining an AIDL Interface</a>
+    <ol>
+      <li><a href="#Create">Create the .aidl file</a></li>
+      <li><a href="#Implement">Implement the interface</a></li>
+      <li><a href="#Expose">Expose the interface to clients</a></li>
+    </ol>
+  </li>
+  <li><a href="#PassingObjects">Passing Objects over IPC</a></li>
+  <li><a href="#Calling">Calling an IPC Method</a></li>
+</ol>
+
+<h2>See also</h2>
+<ol>
+  <li><a href="../../guide/components/bound-services.html">Bound Services</a></li>
+</ol>
+
+</div>
+</div>
+
+
+<p>AIDL (Android Interface Definition Language) is similar to other IDLs you might have
+worked with. It allows you to define the programming interface that both
+the client and service agree upon in order to communicate with each other using
+interprocess communication (IPC). On Android, one process cannot normally access the
+memory of another process. So to talk, they need to decompose their objects into primitives that the
+operating system can understand, and marshall the objects across that boundary for you. The code to
+do that marshalling is tedious to write, so Android handles it for you with AIDL.</p>
+
+<p class="note"><strong>Note:</strong> Using AIDL is necessary only if you allow clients from
+different applications to access your service for IPC and want to handle multithreading in your
+service. If you do not need to perform concurrent IPC across
+different applications, you should create your interface by <a
+href="../../guide/components/bound-services.html#Binder">implementing a
+Binder</a> or, if you want to perform IPC, but do <em>not</em> need to handle multithreading,
+implement your interface <a
+href="../../guide/components/bound-services.html#Messenger">using a Messenger</a>.
+Regardless, be sure that you understand <a
+href="../../guide/components/bound-services.html">Bound Services</a> before
+implementing an AIDL.</p>
+
+<p>Before you begin designing your AIDL interface, be aware that calls to an AIDL interface are
+direct function calls.  You should not make assumptions about the thread in which the call
+occurs.  What happens is different depending on whether the call is from a thread in the
+local process or a remote process. Specifically:</p>
+
+<ul>
+<li>Calls made from the local process are executed in the same thread that is making the call. If
+this is your main UI thread, that thread continues to execute in the AIDL interface.  If it is
+another thread, that is the one that executes your code in the service.  Thus, if only local
+threads are accessing the service, you can completely control which threads are executing in it (but
+if that is the case, then you shouldn't be using AIDL at all, but should instead create the
+interface by <a href="../../guide/components/bound-services.html#Binder">implementing a
+Binder</a>).</li>
+
+<li>Calls from a remote process are dispatched from a thread pool the platform maintains inside of
+your own process.  You must be prepared for incoming calls from unknown threads, with multiple calls
+happening at the same time.  In other words, an implementation of an AIDL interface must be
+completely thread-safe.</li>
+
+<li>The <code>oneway</code> keyword modifies the behavior of remote calls.  When used, a remote call does
+not block; it simply sends the transaction data and immediately returns.
+The implementation of the interface eventually receives this as a regular call from the <code><a href="../../reference/android/os/Binder.html">Binder</a></code> thread pool as a normal remote call. If <code>oneway</code> is used with a local call,
+there is no impact and the call is still synchronous.</li>
+</ul>
+
+
+<h2 id="Defining">Defining an AIDL Interface</h2>
+
+<p>You must define your AIDL interface in an <code>.aidl</code> file using the Java
+programming language syntax, then save it in the source code (in the <code>src/</code> directory) of both
+the application hosting the service and any other application that binds to the service.</p>
+
+<p>When you build each application that contains the <code>.aidl</code> file, the Android SDK tools
+generate an <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> interface based on the <code>.aidl</code> file and save it in
+the project's <code>gen/</code> directory. The service must implement the <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code>
+interface as appropriate. The client applications can then bind to the service and call methods from
+the <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> to perform IPC.</p>
+
+<p>To create a bounded service using AIDL, follow these steps:</p>
+<ol>
+    <li><a href="#CreateAidl">Create the .aidl file</a>
+      <p>This file defines the programming interface with method signatures.</p>
+    </li>
+    <li><a href="#ImplementTheInterface">Implement the interface</a>
+      <p>The Android SDK tools generate an interface in the Java programming language, based on your
+<code>.aidl</code> file. This interface has an inner abstract class named <code>Stub</code> that extends
+<code><a href="../../reference/android/os/Binder.html">Binder</a></code> and implements methods from your AIDL interface. You must extend the
+<code>Stub</code> class and implement the methods.</p>
+    </li>
+    <li><a href="#ExposeTheInterface">Expose the interface to clients</a>
+      <p>Implement a <code><a href="../../reference/android/app/Service.html">Service</a></code> and override <code><a href="../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> to return your implementation of the <code>Stub</code>
+class.</p>
+    </li>
+</ol>
+
+<p class="caution"><strong>Caution:</strong> Any changes that you make to your AIDL interface after
+your first release must remain backward compatible in order to avoid breaking other applications
+that use your service. That is, because your <code>.aidl</code> file must be copied to other applications
+in order for them to access your service's interface, you must maintain support for the original
+interface.</p>
+
+
+<h3 id="Create">1. Create the .aidl file</h3>
+
+<p>AIDL uses a simple syntax that lets you declare an interface with one or more methods that can
+take parameters and return values. The parameters and return values can be of any type, even other
+AIDL-generated interfaces.</p>
+
+<p>You must construct the <code>.aidl</code> file using the Java programming language. Each <code>.aidl</code>
+file must define a single interface and requires only the interface declaration and method
+signatures.</p>
+
+<p>By default, AIDL supports the following data types:</p>
+
+<ul>
+  <li>All primitive types in the Java programming language (such as <code>int</code>, <code>long</code>,
+<code>char</code>, <code>boolean</code>, and so on)</li>
+  <li><code><a href="../../reference/java/lang/String.html">String</a></code></li>
+  <li><code><a href="../../reference/java/lang/CharSequence.html">CharSequence</a></code></li>
+  <li><code><a href="../../reference/java/util/List.html">List</a></code>
+    <p>All elements in the <code><a href="../../reference/java/util/List.html">List</a></code> must be one of the supported data types in this
+list or one of the other AIDL-generated interfaces or parcelables you've declared. A <code><a href="../../reference/java/util/List.html">List</a></code> may optionally be used as a "generic" class (for example,
+<code>List&lt;String&gt;</code>).
+The actual concrete class that the other side receives is always an <code><a href="../../reference/java/util/ArrayList.html">ArrayList</a></code>, although the method is generated to use the <code><a href="../../reference/java/util/List.html">List</a></code> interface.</p>
+  </li>
+  <li><code><a href="../../reference/java/util/Map.html">Map</a></code>
+    <p>All elements in the <code><a href="../../reference/java/util/Map.html">Map</a></code> must be one of the supported data types in this
+list or one of the other AIDL-generated interfaces or parcelables you've declared.  Generic maps,
+(such as those of the form
+<code>Map&lt;String,Integer&gt;</code> are not supported. The actual concrete class that the other side
+receives is always a <code><a href="../../reference/java/util/HashMap.html">HashMap</a></code>, although the method is generated to
+use the <code><a href="../../reference/java/util/Map.html">Map</a></code> interface.</p>
+  </li>
+</ul>
+
+<p>You must include an <code>import</code> statement for each additional type not listed above, even if
+they are defined in the same package as your interface.</p>
+
+<p>When defining your service interface, be aware that:</p>
+<ul>
+  <li>Methods can take zero or more parameters, and return a value or void.</li>
+  <li>All non-primitive parameters require a directional tag indicating which way the data goes.
+Either <code>in</code>, <code>out</code>, or <code>inout</code> (see the example below).
+    <p>Primitives are <code>in</code> by default, and cannot be otherwise.</p>
+    <p class="caution"><strong>Caution:</strong> You should limit the direction to what is truly
+needed, because marshalling parameters is expensive.</p></li>
+  <li>All code comments included in the <code>.aidl</code> file are included in the generated <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> interface (except for comments before the import and package
+statements).</li>
+    <li>Only methods are supported; you cannot expose static fields in AIDL.</li>
+</ul>
+
+<p>Here is an example <code>.aidl</code> file:</p>
+
+<pre>
+// IRemoteService.aidl
+package com.example.android;
+
+// Declare any non-default types here with import statements
+
+/** Example service interface */
+interface IRemoteService {
+    /** Request the process ID of this service, to do evil things with it. */
+    int getPid();
+
+    /** Demonstrates some basic types that you can use as parameters
+     * and return values in AIDL.
+     */
+    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
+            double aDouble, String aString);
+}
+</pre>
+
+<p>Simply save your <code>.aidl</code> file in your project's <code>src/</code> directory and when you
+build your application, the SDK tools generate the <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> interface file in your
+project's <code>gen/</code> directory. The generated file name matches the <code>.aidl</code> file name, but
+with a <code>.java</code> extension (for example, <code>IRemoteService.aidl</code> results in <code>IRemoteService.java</code>).</p>
+
+<p>If you use Eclipse, the incremental build generates the binder class almost immediately. If you
+do not use Eclipse, then the Ant tool generates the binder class next time you build your
+application&mdash;you should build your project with <code>ant debug</code> (or <code>ant
+release</code>) as soon as you're finished writing the <code>.aidl</code> file, so that your code can
+link against the generated class.</p>
+
+
+<h3 id="Implement">2. Implement the interface</h3>
+
+<p>When you build your application, the Android SDK tools generate a <code>.java</code> interface file
+named after your <code>.aidl</code> file. The generated interface includes a subclass named <code>Stub</code>
+that is an abstract implementation of its parent interface (for example, <code>YourInterface.Stub</code>) and declares all the methods from the <code>.aidl</code> file.</p>
+
+<p class="note"><strong>Note:</strong> <code>Stub</code> also
+defines a few helper methods, most notably <code>asInterface()</code>, which takes an <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> (usually the one passed to a client's <code><a href="../../reference/android/content/ServiceConnection.html#onServiceConnected(android.content.ComponentName, android.os.IBinder)">onServiceConnected()</a></code> callback method) and
+returns an instance of the stub interface. See the section <a href="#Calling">Calling an IPC
+Method</a> for more details on how to make this cast.</p>
+
+<p>To implement the interface generated from the <code>.aidl</code>, extend the generated <code><a href="../../reference/android/os/Binder.html">Binder</a></code> interface (for example, <code>YourInterface.Stub</code>) and implement the methods
+inherited from the <code>.aidl</code> file.</p>
+
+<p>Here is an example implementation of an interface called <code>IRemoteService</code> (defined by the
+<code>IRemoteService.aidl</code> example, above) using an anonymous instance:</p>
+  
+<pre>
+private final IRemoteService.Stub mBinder = new IRemoteService.Stub() {
+    public int getPid(){
+        return Process.myPid();
+    }
+    public void basicTypes(int anInt, long aLong, boolean aBoolean,
+        float aFloat, double aDouble, String aString) {
+        // Does nothing
+    }
+};
+</pre>
+
+<p>Now the <code>mBinder</code> is an instance of the <code>Stub</code> class (a <code><a href="../../reference/android/os/Binder.html">Binder</a></code>),
+which defines the RPC interface for the service. In the next step, this instance is exposed to
+clients so they can interact with the service.</p>
+
+<p>There are a few rules you should be aware of when implementing your AIDL interface: </p>
+<ul>
+    <li>Incoming calls are not guaranteed to be executed on the main thread, so you need to think
+about multithreading from the start and properly build your service to be thread-safe.</li>
+    <li>By default, RPC calls are synchronous. If you know that the service takes more than a few
+milliseconds to complete a request, you should not call it from the activity's main thread, because
+it might hang the application (Android might display an &quot;Application is Not Responding&quot;
+dialog)&mdash;you should usually call them from a separate thread in the client. </li>
+    <li>No exceptions that you throw are sent back to the caller.</li>
+</ul>
+
+
+<h3 id="Expose">3. Expose the interface to clients</h3>
+
+<p>Once you've implemented the interface for your service, you need to expose it to
+clients so they can bind to it. To expose the interface
+for your service, extend <code><a href="../../reference/android/app/Service.html">Service</a></code> and implement <code><a href="../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> to return an instance of your class that implements
+the generated <code>Stub</code> (as discussed in the previous section). Here's an example
+service that exposes the <code>IRemoteService</code> example interface to clients. </p>
+
+<pre>
+public class RemoteService extends Service {
+    &#64;Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    &#64;Override
+    public IBinder onBind(Intent intent) {
+        // Return the interface
+        return mBinder;
+    }
+
+    private final IRemoteService.Stub mBinder = new IRemoteService.Stub() {
+        public int getPid(){
+            return Process.myPid();
+        }
+        public void basicTypes(int anInt, long aLong, boolean aBoolean,
+            float aFloat, double aDouble, String aString) {
+            // Does nothing
+        }
+    };
+}
+</pre>
+
+<p>Now, when a client (such as an activity) calls <code><a href="../../reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)">bindService()</a></code> to connect to this service, the client's <code><a href="../../reference/android/content/ServiceConnection.html#onServiceConnected(android.content.ComponentName, android.os.IBinder)">onServiceConnected()</a></code> callback receives the
+<code>mBinder</code> instance returned by the service's <code><a href="../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code>
+method.</p>
+
+<p>The client must also have access to the interface class, so if the client and service are in
+separate applications, then the client's application must have a copy of the <code>.aidl</code> file
+in its <code>src/</code> directory (which generates the <code>android.os.Binder</code>
+interface&mdash;providing the client access to the AIDL methods).</p>
+
+<p>When the client receives the <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> in the <code><a href="../../reference/android/content/ServiceConnection.html#onServiceConnected(android.content.ComponentName, android.os.IBinder)">onServiceConnected()</a></code> callback, it must call
+<code><em>YourServiceInterface</em>.Stub.asInterface(service)</code> to cast the returned
+parameter to <code><em>YourServiceInterface</em></code> type. For example:</p>
+
+<pre>
+IRemoteService mIRemoteService;
+private ServiceConnection mConnection = new ServiceConnection() {
+    // Called when the connection with the service is established
+    public void onServiceConnected(ComponentName className, IBinder service) {
+        // Following the example above for an AIDL interface,
+        // this gets an instance of the IRemoteInterface, which we can use to call on the service
+        mIRemoteService = IRemoteService.Stub.asInterface(service);
+    }
+
+    // Called when the connection with the service disconnects unexpectedly
+    public void onServiceDisconnected(ComponentName className) {
+        Log.e(TAG, "Service has unexpectedly disconnected");
+        mIRemoteService = null;
+    }
+};
+</pre>
+
+<p>For more sample code, see the <a
+href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/RemoteService.html"><code>RemoteService.java</code></a> class in <a
+href="../../resources/samples/ApiDemos/index.html">ApiDemos</a>.</p>
+
+
+
+
+
+
+  
+
+<h2 id="PassingObjects">Passing Objects over IPC</h2>
+
+<p>If you have a class that you would like to send from one process to another through
+an IPC interface, you can do that. However, you must ensure that the code for your class is
+available to the other side of the IPC channel and your class must support the <code><a href="../../reference/android/os/Parcelable.html">Parcelable</a></code> interface. Supporting the <code><a href="../../reference/android/os/Parcelable.html">Parcelable</a></code> interface is
+important because it allows the Android system to decompose objects into primitives that can be
+marshalled across processes.</p>
+
+<p>To create a class that supports the <code><a href="../../reference/android/os/Parcelable.html">Parcelable</a></code> protocol, you must do the
+following:</b>
+<ol>
+<li>Make your class implement the <code><a href="../../reference/android/os/Parcelable.html">Parcelable</a></code> interface.</li>
+<li>Implement <code><a href="../../reference/android/os/Parcelable.html#writeToParcel(android.os.Parcel, int)">writeToParcel</a></code>, which takes the
+current state of the object and writes it to a <code><a href="../../reference/android/os/Parcel.html">Parcel</a></code>.</li>
+<li>Add a static field called <code>CREATOR</code> to your class which is an object implementing
+the <code><a href="../../reference/android/os/Parcelable.Creator.html">Parcelable.Creator</a></code> interface.</li>
+<li>Finally, create an <code>.aidl</code> file that declares your parcelable class (as shown for the
+<code>Rect.aidl</code> file, below).
+  <p>If you are using a custom build process, do <em>not</em> add the <code>.aidl</code> file to your
+build. Similar to a header file in the C language, this <code>.aidl</code> file isn't compiled.</p></li>
+</ol>
+
+<p>AIDL uses these methods and fields in the code it generates to marshall and unmarshall
+your objects.</p>
+
+<p>For example, here is a <code>Rect.aidl</code> file to create a <code>Rect</code> class that's
+parcelable:</p>
+
+<pre>
+package android.graphics;
+
+// Declare Rect so AIDL can find it and knows that it implements
+// the parcelable protocol.
+parcelable Rect;
+</pre>
+
+<p>And here is an example of how the <code><a href="../../reference/android/graphics/Rect.html">Rect</a></code> class implements the
+<code><a href="../../reference/android/os/Parcelable.html">Parcelable</a></code> protocol.</p>
+
+<pre>
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public final class Rect implements Parcelable {
+    public int left;
+    public int top;
+    public int right;
+    public int bottom;
+
+    public static final Parcelable.Creator&lt;Rect&gt; CREATOR = new
+Parcelable.Creator&lt;Rect&gt;() {
+        public Rect createFromParcel(Parcel in) {
+            return new Rect(in);
+        }
+
+        public Rect[] newArray(int size) {
+            return new Rect[size];
+        }
+    };
+
+    public Rect() {
+    }
+
+    private Rect(Parcel in) {
+        readFromParcel(in);
+    }
+
+    public void writeToParcel(Parcel out) {
+        out.writeInt(left);
+        out.writeInt(top);
+        out.writeInt(right);
+        out.writeInt(bottom);
+    }
+
+    public void readFromParcel(Parcel in) {
+        left = in.readInt();
+        top = in.readInt();
+        right = in.readInt();
+        bottom = in.readInt();
+    }
+}
+</pre>
+
+<p>The marshalling in the <code>Rect</code> class is pretty simple.  Take a look at the other
+methods on <code><a href="../../reference/android/os/Parcel.html">Parcel</a></code> to see the other kinds of values you can write
+to a Parcel.</p>
+
+<p class="warning"><strong>Warning:</strong> Don't forget the security implications of receiving
+data from other processes.  In this case, the <code>Rect</code> reads four numbers from the <code><a href="../../reference/android/os/Parcel.html">Parcel</a></code>, but it is up to you to ensure that these are within the acceptable range of
+values for whatever the caller is trying to do.  See <a
+href="../../guide/topics/security/security.html">Security and Permissions</a> for more
+information about how to keep your application secure from malware.</p>
+
+
+
+<h2 id="Calling">Calling an IPC Method</h2>
+
+<p>Here are the steps a calling class must take to call a remote interface defined with AIDL: </p>
+<ol>
+    <li>Include the <code>.aidl</code> file in the project <code>src/</code> directory.</li>
+    <li>Declare an instance of the <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> interface (generated based on the
+AIDL). </li>
+    <li>Implement <code><a href="../../reference/android/content/ServiceConnection.html">ServiceConnection</a></code>. </li>
+    <li>Call <code><a href="../../reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)">Context.bindService()</a></code>, passing in your <code><a href="../../reference/android/content/ServiceConnection.html">ServiceConnection</a></code> implementation. </li>
+    <li>In your implementation of <code><a href="../../reference/android/content/ServiceConnection.html#onServiceConnected(android.content.ComponentName, android.os.IBinder)">onServiceConnected()</a></code>,
+you will receive an <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> instance (called <code>service</code>). Call
+<code><em>YourInterfaceName</em>.Stub.asInterface((IBinder)<em>service</em>)</code> to
+        cast the returned parameter to <em>YourInterface</em> type.</li>
+    <li>Call the methods that you defined on your interface. You should always trap
+        <code><a href="../../reference/android/os/DeadObjectException.html">DeadObjectException</a></code> exceptions, which are thrown when
+        the connection has broken; this will be the only exception thrown by remote
+        methods.</li>
+    <li>To disconnect, call <code><a href="../../reference/android/content/Context.html#unbindService(android.content.ServiceConnection)">Context.unbindService()</a></code> with the instance of your interface. </li>
+</ol>
+<p>A few comments on calling an IPC service:</p>
+<ul>
+    <li>Objects are reference counted across processes. </li>
+    <li>You can send anonymous objects
+        as method arguments. </li>
+</ul>
+
+<p>For more information about binding to a service, read the <a
+href="../../guide/components/bound-services.html#Binding">Bound Services</a>
+document.</p>
+
+<p>Here is some sample code demonstrating calling an AIDL-created service, taken
+    from the Remote Service sample in the ApiDemos project.</p>
+<p><pre>public static class Binding extends Activity {
+    /** The primary interface we will be calling on the service. */
+    IRemoteService mService = null;
+    /** Another interface we use on the service. */
+    ISecondary mSecondaryService = null;
+
+    Button mKillButton;
+    TextView mCallbackText;
+
+    private boolean mIsBound;
+
+    /**
+     * Standard initialization of this activity.  Set up the UI, then wait
+     * for the user to poke it before doing anything.
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.remote_service_binding);
+
+        // Watch for button clicks.
+        Button button = (Button)findViewById(R.id.bind);
+        button.setOnClickListener(mBindListener);
+        button = (Button)findViewById(R.id.unbind);
+        button.setOnClickListener(mUnbindListener);
+        mKillButton = (Button)findViewById(R.id.kill);
+        mKillButton.setOnClickListener(mKillListener);
+        mKillButton.setEnabled(false);
+
+        mCallbackText = (TextView)findViewById(R.id.callback);
+        mCallbackText.setText("Not attached.");
+    }
+
+    /**
+     * Class for interacting with the main interface of the service.
+     */
+    private ServiceConnection mConnection = new ServiceConnection() {
+        public void onServiceConnected(ComponentName className,
+                IBinder service) {
+            // This is called when the connection with the service has been
+            // established, giving us the service object we can use to
+            // interact with the service.  We are communicating with our
+            // service through an IDL interface, so get a client-side
+            // representation of that from the raw service object.
+            mService = IRemoteService.Stub.asInterface(service);
+            mKillButton.setEnabled(true);
+            mCallbackText.setText("Attached.");
+
+            // We want to monitor the service for as long as we are
+            // connected to it.
+            try {
+                mService.registerCallback(mCallback);
+            } catch (RemoteException e) {
+                // In this case the service has crashed before we could even
+                // do anything with it; we can count on soon being
+                // disconnected (and then reconnected if it can be restarted)
+                // so there is no need to do anything here.
+            }
+
+            // As part of the sample, tell the user what happened.
+            Toast.makeText(Binding.this, R.string.remote_service_connected,
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        public void onServiceDisconnected(ComponentName className) {
+            // This is called when the connection with the service has been
+            // unexpectedly disconnected -- that is, its process crashed.
+            mService = null;
+            mKillButton.setEnabled(false);
+            mCallbackText.setText("Disconnected.");
+
+            // As part of the sample, tell the user what happened.
+            Toast.makeText(Binding.this, R.string.remote_service_disconnected,
+                    Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    /**
+     * Class for interacting with the secondary interface of the service.
+     */
+    private ServiceConnection mSecondaryConnection = new ServiceConnection() {
+        public void onServiceConnected(ComponentName className,
+                IBinder service) {
+            // Connecting to a secondary interface is the same as any
+            // other interface.
+            mSecondaryService = ISecondary.Stub.asInterface(service);
+            mKillButton.setEnabled(true);
+        }
+
+        public void onServiceDisconnected(ComponentName className) {
+            mSecondaryService = null;
+            mKillButton.setEnabled(false);
+        }
+    };
+
+    private OnClickListener mBindListener = new OnClickListener() {
+        public void onClick(View v) {
+            // Establish a couple connections with the service, binding
+            // by interface names.  This allows other applications to be
+            // installed that replace the remote service by implementing
+            // the same interface.
+            bindService(new Intent(IRemoteService.class.getName()),
+                    mConnection, Context.BIND_AUTO_CREATE);
+            bindService(new Intent(ISecondary.class.getName()),
+                    mSecondaryConnection, Context.BIND_AUTO_CREATE);
+            mIsBound = true;
+            mCallbackText.setText("Binding.");
+        }
+    };
+
+    private OnClickListener mUnbindListener = new OnClickListener() {
+        public void onClick(View v) {
+            if (mIsBound) {
+                // If we have received the service, and hence registered with
+                // it, then now is the time to unregister.
+                if (mService != null) {
+                    try {
+                        mService.unregisterCallback(mCallback);
+                    } catch (RemoteException e) {
+                        // There is nothing special we need to do if the service
+                        // has crashed.
+                    }
+                }
+
+                // Detach our existing connection.
+                unbindService(mConnection);
+                unbindService(mSecondaryConnection);
+                mKillButton.setEnabled(false);
+                mIsBound = false;
+                mCallbackText.setText("Unbinding.");
+            }
+        }
+    };
+
+    private OnClickListener mKillListener = new OnClickListener() {
+        public void onClick(View v) {
+            // To kill the process hosting our service, we need to know its
+            // PID.  Conveniently our service has a call that will return
+            // to us that information.
+            if (mSecondaryService != null) {
+                try {
+                    int pid = mSecondaryService.getPid();
+                    // Note that, though this API allows us to request to
+                    // kill any process based on its PID, the kernel will
+                    // still impose standard restrictions on which PIDs you
+                    // are actually able to kill.  Typically this means only
+                    // the process running your application and any additional
+                    // processes created by that app as shown here; packages
+                    // sharing a common UID will also be able to kill each
+                    // other's processes.
+                    Process.killProcess(pid);
+                    mCallbackText.setText("Killed service process.");
+                } catch (RemoteException ex) {
+                    // Recover gracefully from the process hosting the
+                    // server dying.
+                    // Just for purposes of the sample, put up a notification.
+                    Toast.makeText(Binding.this,
+                            R.string.remote_call_failed,
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    };
+
+    // ----------------------------------------------------------------------
+    // Code showing how to deal with callbacks.
+    // ----------------------------------------------------------------------
+
+    /**
+     * This implementation is used to receive callbacks from the remote
+     * service.
+     */
+    private IRemoteServiceCallback mCallback = new IRemoteServiceCallback.Stub() {
+        /**
+         * This is called by the remote service regularly to tell us about
+         * new values.  Note that IPC calls are dispatched through a thread
+         * pool running in each process, so the code executing here will
+         * NOT be running in our main thread like most other things -- so,
+         * to update the UI, we need to use a Handler to hop over there.
+         */
+        public void valueChanged(int value) {
+            mHandler.sendMessage(mHandler.obtainMessage(BUMP_MSG, value, 0));
+        }
+    };
+
+    private static final int BUMP_MSG = 1;
+
+    private Handler mHandler = new Handler() {
+        @Override public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case BUMP_MSG:
+                    mCallbackText.setText("Received from service: " + msg.arg1);
+                    break;
+                default:
+                    super.handleMessage(msg);
+            }
+        }
+
+    };
+}</pre></p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>bmgr | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >bmgr</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <!-- quickview box content here -->
+
+<div id="qv-wrapper">
+<div id="qv">
+  <h2>In this document</h2>
+  <ol>
+<li><a href="#backup">Forcing a Backup Operation</a></li>
+<li><a href="#restore">Forcing a Restore Operation</a></li>
+<li><a href="#other">Other Commands</a></li>
+  </ol>
+
+  <h2>See also</h2>
+  <ol>
+    <li><a href="../../guide/topics/data/backup.html">Data Backup</a></li>
+  </ol>
+
+</div>
+</div>
+
+<!-- normal page content here -->
+
+<p><code>bmgr</code> is a shell tool you can use to interact with the Backup Manager
+on Android devices supporting API Level 8 or greater.  It provides commands to induce backup
+and restore operations so that you don't need to repeatedly wipe data or take similar
+intrusive steps in order to test your application's backup agent.  These commands are
+accessed via the <a href="../../tools/help/adb.html">adb</a> shell.
+
+<p>For information about adding support for backup in your application, read <a
+href="../../guide/topics/data/backup.html">Data Backup</a>, which includes a guide to testing
+your application using <code>bmgr</code>.</p>
+
+
+<h2 id="backup">Forcing a Backup Operation</h2>
+
+<p>Normally, your application must notify the Backup Manager when its data has changed, via <code><a href="../../reference/android/app/backup/BackupManager.html#dataChanged()">dataChanged()</a></code>. The Backup Manager will then invoke your
+backup agent's <code><a href="../../reference/android/app/backup/BackupAgent.html#onBackup(android.os.ParcelFileDescriptor, android.app.backup.BackupDataOutput, android.os.ParcelFileDescriptor)">onBackup()</a></code> implementation at some time in the future. However, instead of calling <code><a href="../../reference/android/app/backup/BackupManager.html#dataChanged()">dataChanged()</a></code>, you can invoke a backup request from the command
+line by running the <code>bmgr backup</code> command:
+
+    <pre class="no-pretty-print">adb shell bmgr backup <em>&lt;package&gt;</em></pre>
+
+<p><code><em>&lt;package&gt;</em></code> is the formal package name of the application you wish to
+schedule for
+backup. When you execute this backup command, your application's backup agent will be invoked to
+perform a backup operation at some time in the future (via your <code><a href="../../reference/android/app/backup/BackupAgent.html#onBackup(android.os.ParcelFileDescriptor, android.app.backup.BackupDataOutput, android.os.ParcelFileDescriptor)">onBackup()</a></code> method), though there is no guarantee when it will occur. However, you can force all
+pending backup operations to run immediately by using the <code>bmgr run</code> command:
+
+    <pre class="no-pretty-print">adb shell bmgr run</pre>
+
+<p>This causes a backup pass to execute immediately, invoking the backup agents of all applications
+that had previously called <code><a href="../../reference/android/app/backup/BackupManager.html#dataChanged()">dataChanged()</a></code> since the
+last backup operation, plus any applications which had been manually scheduled for
+backup via <code>bmgr backup</code>.
+
+
+
+<h2 id="restore">Forcing a Restore Operation</h2>
+
+<p>Unlike backup operations, which are batched together and run on an occasional basis, restore
+operations execute immediately.  The Backup Manager currently provides two kinds of restore
+operations.  The first kind restores an entire device with the data that has been backed up.  This
+is typically performed only when a device is first provisioned (to replicate settings and other
+saved state from the user's previous device) and is an operation that only the system can
+perform. The second kind of restore operation restores
+a single application to its "active" data set; that is, the application will abandon its current
+data and revert to the last-known-good data that is held in the current backup image. You can
+invoke this second restore operation with the <code><a href="../../reference/android/app/backup/BackupManager.html#requestRestore(android.app.backup.RestoreObserver)">requestRestore()</a></code> method. The
+Backup Manager will then invoke your backup agent's <code><a href="../../reference/android/app/backup/BackupAgent.html#onRestore(android.app.backup.BackupDataInput, int, android.os.ParcelFileDescriptor)">onRestore()</a></code> implementation.
+
+<p>While testing your application, you can immediately invoke the restore operation (bypassing the
+<code><a href="../../reference/android/app/backup/BackupManager.html#requestRestore(android.app.backup.RestoreObserver)">requestRestore()</a></code> method)
+for your application by using the <code>bmgr restore</code> command:
+
+    <pre class="no-pretty-print">adb shell bmgr restore <em>&lt;package&gt;</em></pre>
+
+<p><code><em>&lt;package&gt;</em></code> is the formal Java-style package name of the application
+participating in the backup/restore mechanism, which you would like to restore. The Backup
+Manager will immediately instantiate the application's backup agent and invoke it for restore. This
+will happen even if your application is not currently running.
+
+
+
+
+
+<h2 id="other">Other Commands</h2>
+
+<h3>Wiping data</h3>
+
+<p>The data for a single application can be erased from the active data set on demand.  This is
+very useful while you're developing a backup agent, in case bugs lead you to write corrupt data
+or saved state information. You can wipe an application's data with the <code>bmgr wipe</code>
+command:
+
+    <pre class="no-pretty-print">adb shell bmgr wipe <em>&lt;package&gt;</em></pre>
+
+<p><code><em>&lt;package&gt;</em></code> is the formal package name of the application whose data
+you wish to
+erase.  The next backup operation that the application's agent processes will look as
+though the application had never backed anything up before.
+
+
+<h3>Enabling and disabling backup</h3>
+
+<p>You can see whether the Backup Manager is operational at all with the <code>bmgr
+enabled</code> command:
+
+    <pre class="no-pretty-print">adb shell bmgr enabled</pre>
+
+<p>This might be useful if your application's backup agent is never being invoked for backup, to
+verify whether the operating system thinks it should be performing such operations at all.</p>
+
+<p>You can also directly disable or enable the Backup Manager with this command:
+
+    <pre class="no-pretty-print">adb shell bmgr enable <em>&lt;boolean&gt;</em></pre>
+
+<p><code><em>&lt;boolean&gt;</em></code> is either <code>true</code> or <code>false</code>.
+This is equivalent to disabling or enabling backup in the device's main Settings UI.</p>
+
+<p class="warning"><strong>Warning!</strong>  When backup is disabled, the current backup transport
+will explicitly wipe
+the entire active data set from its backend storage.  This is so that when a user says
+they do <em>not</em> want their data backed up, the Backup Manager respects that wish.  No further
+data will be saved from the device, and no restore operations will be possible, unless the Backup
+Manager is re-enabled (either through Settings or through the above <code>bmgr</code> command).
+
+
+
+
+<!-- The following is not useful to applications, but may be some useful information some day...
+
+
+<h2 id="transports">Applying a Backup Transport</h2>
+
+<p>A "backup transport" is the code module responsible for moving backup and restore data
+to and from some storage location.  A device can have multipe transports installed, though only
+one is active at any given time.  Transports are identified by name.  You can see what
+transports are available on your device or emulator by running the
+<code>bmgr list transports</code> command:
+
+    <pre class="no-pretty-print">adb shell bmgr list transports</pre>
+
+<p>The output of this command is a list of the transports available on the device.  The currently
+active transport is flagged with a <code>*</code> character.  Transport names may look like
+component names (for example, <code>android/com.android.internal.backup.LocalTransport</code>),
+but they need not be, and the strings are never used as direct class references.  The use of
+a component-like naming scheme is simply for purposes of preventing name collisions.
+
+<p>You can change which transport is currently active from the command line as well:
+
+    <pre class="no-pretty-print">adb shell bmgr transport <em>&lt;name&gt;</em></pre>
+
+<p><code><em>&lt;name&gt;</em></code> is one of the names as printed by the <code>bmgr list
+transports</code>
+command.  From this point forward, backup and restore operations will be directed through the
+newly-selected transport.  Backup state tracking is managed separately for each transport, so
+switching back and forth between them will not corrupt the saved state.
+
+
+
+
+<h2 id="restoresets">Viewing Restore Sets</h2>
+
+<p>All of the application data that a device has written to its backup transport is tracked
+as a group that is collectively called a "restore set," because each data set is
+most often manipulated during a restore operation. When a device is provisioned for the first
+time, a new restore set is established.  You can get a listing of all the restore sets available to
+the current transport by running the <code>bmgr list sets</code> command:
+
+    <pre class="no-pretty-print">adb shell bmgr list sets</pre>
+
+<p>The output is a listing of available restore sets, one per line.  The first item on each line is
+a token (a hexadecimal value that identifies the restore set to the transport).  Following
+the token is a string that briefly identifies the restore set.
+Only the token is used within the backup and restore mechanism.
+
+
+-->
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

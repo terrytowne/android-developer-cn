@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>Pattern - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../../";
+  var devsite = false;
+</script>
+<script src="../../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+  <div id="doc-api-level" class="1" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../../index.html">
+            <img src="../../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../../')" 
+onkeyup="return search_changed(event, false, '../../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/package-summary.html">android</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="selected api apilevel-1">
+  <a href="../../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../../reference/java/util/regex/MatchResult.html">MatchResult</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../../reference/java/util/regex/Matcher.html">Matcher</a></li>
+          <li class="selected api apilevel-1"><a href="../../../../reference/java/util/regex/Pattern.html">Pattern</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../../reference/java/util/regex/PatternSyntaxException.html">PatternSyntaxException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12"  id="doc-col">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+Summary:
+
+
+
+
+
+  <a href="#constants">Constants</a>
+  
+
+
+
+
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+  &#124; <a href="#promethods">Protected Methods</a>
+  
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+    final 
+    
+    class
+<h1 itemprop="name">Pattern</h1>
+
+
+
+  
+    extends <a href="../../../../reference/java/lang/Object.html">Object</a><br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        <a href="../../../../reference/java/io/Serializable.html">Serializable</a> 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-1">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../reference/java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">java.util.regex.Pattern</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p itemprop="articleBody">Patterns are compiled regular expressions. In many cases, convenience methods such as
+ <code><a href="../../../../reference/java/lang/String.html#matches(java.lang.String)">String.matches</a></code>, <code><a href="../../../../reference/java/lang/String.html#replaceAll(java.lang.String, java.lang.String)">String.replaceAll</a></code> and
+ <code><a href="../../../../reference/java/lang/String.html#split(java.lang.String)">String.split</a></code> will be preferable, but if you need to do a lot of work
+ with the same regular expression, it may be more efficient to compile it once and reuse it.
+ The <code>Pattern</code> class and its companion, <code><a href="../../../../reference/java/util/regex/Matcher.html">Matcher</a></code>, also offer more functionality
+ than the small amount exposed by <code>String</code>.
+
+ <pre>
+ // String convenience methods:
+ boolean sawFailures = s.matches("Failures: \\d+");
+ String farewell = s.replaceAll("Hello, (\\S+)", "Goodbye, $1");
+ String[] fields = s.split(":");
+
+ // Direct use of Pattern:
+ Pattern p = Pattern.compile("Hello, (\\S+)");
+ Matcher m = p.matcher(inputString);
+ while (m.find()) { // Find each match in turn; String can't do this.
+     String name = m.group(1); // Access a submatch group; String can't do this.
+ }
+ </pre>
+
+ <h3>Regular expression syntax</h3>
+ <span class="datatable">
+ <style type="text/css">
+ .datatable td { padding-right: 20px; }
+ </style>
+
+ <p>Java supports a subset of Perl 5 regular expression syntax. An important gotcha is that Java
+ has no regular expression literals, and uses plain old string literals instead. This means that
+ you need an extra level of escaping. For example, the regular expression <code>\s+</code> has to
+ be represented as the string <code>"\\s+"</code>.
+
+ <h3>Escape sequences</h3>
+ <p><table>
+ <tr> <td> \ </td> <td>Quote the following metacharacter (so <code>\.</code> matches a literal <code>.</code>).</td> </tr>
+ <tr> <td> \Q </td> <td>Quote all following metacharacters until <code>\E</code>.</td> </tr>
+ <tr> <td> \E </td> <td>Stop quoting metacharacters (started by <code>\Q</code>).</td> </tr>
+ <tr> <td> \\ </td> <td>A literal backslash.</td> </tr>
+ <tr> <td> &#x005c;u<i>hhhh</i> </td> <td>The Unicode character U+hhhh (in hex).</td> </tr>
+ <tr> <td> &#x005c;x<i>hh</i> </td> <td>The Unicode character U+00hh (in hex).</td> </tr>
+ <tr> <td> \c<i>x</i> </td> <td>The ASCII control character ^x (so <code>\cH</code> would be ^H, U+0008).</td> </tr>
+
+ <tr> <td> \a </td> <td>The ASCII bell character (U+0007).</td> </tr>
+ <tr> <td> \e </td> <td>The ASCII ESC character (U+001b).</td> </tr>
+ <tr> <td> \f </td> <td>The ASCII form feed character (U+000c).</td> </tr>
+ <tr> <td> \n </td> <td>The ASCII newline character (U+000a).</td> </tr>
+ <tr> <td> \r </td> <td>The ASCII carriage return character (U+000d).</td> </tr>
+ <tr> <td> \t </td> <td>The ASCII tab character (U+0009).</td> </tr>
+ </table>
+
+ <h3>Character classes</h3>
+ <p>It's possible to construct arbitrary character classes using set operations:
+ <table>
+ <tr> <td> [abc] </td> <td>Any one of <code>a</code>, <code>b</code>, or <code>c</code>. (Enumeration.)</td> </tr>
+ <tr> <td> [a-c] </td> <td>Any one of <code>a</code>, <code>b</code>, or <code>c</code>. (Range.)</td> </tr>
+ <tr> <td> [^abc] </td> <td>Any character <i>except</i> <code>a</code>, <code>b</code>, or <code>c</code>. (Negation.)</td> </tr>
+ <tr> <td> [[a-f][0-9]] </td> <td>Any character in either range. (Union.)</td> </tr>
+ <tr> <td> [[a-z]&&[jkl]] </td> <td>Any character in both ranges. (Intersection.)</td> </tr>
+ </table>
+ <p>Most of the time, the built-in character classes are more useful:
+ <table>
+ <tr> <td> \d </td> <td>Any digit character (see note below).</td> </tr>
+ <tr> <td> \D </td> <td>Any non-digit character (see note below).</td> </tr>
+ <tr> <td> \s </td> <td>Any whitespace character (see note below).</td> </tr>
+ <tr> <td> \S </td> <td>Any non-whitespace character (see note below).</td> </tr>
+ <tr> <td> \w </td> <td>Any word character (see note below).</td> </tr>
+ <tr> <td> \W </td> <td>Any non-word character (see note below).</td> </tr>
+ <tr> <td> \p{<i>NAME</i>} </td> <td> Any character in the class with the given <i>NAME</i>. </td> </tr>
+ <tr> <td> \P{<i>NAME</i>} </td> <td> Any character <i>not</i> in the named class. </td> </tr>
+ </table>
+ <p>Note that these built-in classes don't just cover the traditional ASCII range. For example,
+ <code>\w</code> is equivalent to the character class <code>[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}]</code>.
+ For more details see <a href="http://www.unicode.org/reports/tr18/#Compatibility_Properties">Unicode TR-18</a>,
+ and bear in mind that the set of characters in each class can vary between Unicode releases.
+ If you actually want to match only ASCII characters, specify the explicit characters you want;
+ if you mean 0-9 use <code>[0-9]</code> rather than <code>\d</code>, which would also include
+ Gurmukhi digits and so forth.
+ <p>There are also a variety of named classes:
+ <ul>
+ <li><a href="../../lang/Character.html#unicode_categories">Unicode category names</a>,
+ prefixed by <code>Is</code>. For example <code>\p{IsLu</code>} for all uppercase letters.
+ <li>POSIX class names. These are 'Alnum', 'Alpha', 'ASCII', 'Blank', 'Cntrl', 'Digit',
+ 'Graph', 'Lower', 'Print', 'Punct', 'Upper', 'XDigit'.
+ <li>Unicode block names, as accepted as input to <code><a href="../../../../reference/java/lang/Character.UnicodeBlock.html#forName(java.lang.String)">forName(String)</a></code>,
+ prefixed by <code>In</code>. For example <code>\p{InHebrew</code>} for all characters in the Hebrew block.
+ <li>Character method names. These are all non-deprecated methods from <code><a href="../../../../reference/java/lang/Character.html">Character</a></code>
+ whose name starts with <code>is</code>, but with the <code>is</code> replaced by <code>java</code>.
+ For example, <code>\p{javaLowerCase</code>}.
+ </ul>
+
+ <h3>Quantifiers</h3>
+ <p>Quantifiers match some number of instances of the preceding regular expression.
+ <table>
+ <tr> <td> * </td> <td>Zero or more.</td> </tr>
+ <tr> <td> ? </td> <td>Zero or one.</td> </tr>
+ <tr> <td> + </td> <td>One or more.</td> </tr>
+ <tr> <td> {<i>n</i>} </td> <td>Exactly <i>n</i>.</td> </tr>
+ <tr> <td> {<i>n,</i>} </td> <td>At least <i>n</i>.</td> </tr>
+ <tr> <td> {<i>n</i>,<i>m</i>} </td> <td>At least <i>n</i> but not more than <i>m</i>.</td> </tr>
+ </table>
+ <p>Quantifiers are "greedy" by default, meaning that they will match the longest possible input
+ sequence. There are also non-greedy quantifiers that match the shortest possible input sequence.
+ They're same as the greedy ones but with a trailing <code>?</code>:
+ <table>
+ <tr> <td> *? </td> <td>Zero or more (non-greedy).</td> </tr>
+ <tr> <td> ?? </td> <td>Zero or one (non-greedy).</td> </tr>
+ <tr> <td> +? </td> <td>One or more (non-greedy).</td> </tr>
+ <tr> <td> {<i>n</i>}? </td> <td>Exactly <i>n</i> (non-greedy).</td> </tr>
+ <tr> <td> {<i>n,</i>}? </td> <td>At least <i>n</i> (non-greedy).</td> </tr>
+ <tr> <td> {<i>n</i>,<i>m</i>}? </td> <td>At least <i>n</i> but not more than <i>m</i> (non-greedy).</td> </tr>
+ </table>
+ <p>Quantifiers allow backtracking by default. There are also possessive quantifiers to prevent
+ backtracking. They're same as the greedy ones but with a trailing <code>+</code>:
+ <table>
+ <tr> <td> *+ </td> <td>Zero or more (possessive).</td> </tr>
+ <tr> <td> ?+ </td> <td>Zero or one (possessive).</td> </tr>
+ <tr> <td> ++ </td> <td>One or more (possessive).</td> </tr>
+ <tr> <td> {<i>n</i>}+ </td> <td>Exactly <i>n</i> (possessive).</td> </tr>
+ <tr> <td> {<i>n,</i>}+ </td> <td>At least <i>n</i> (possessive).</td> </tr>
+ <tr> <td> {<i>n</i>,<i>m</i>}+ </td> <td>At least <i>n</i> but not more than <i>m</i> (possessive).</td> </tr>
+ </table>
+
+ <h3>Zero-width assertions</h3>
+ <p><table>
+ <tr> <td> ^ </td> <td>At beginning of line.</td> </tr>
+ <tr> <td> $ </td> <td>At end of line.</td> </tr>
+ <tr> <td> \A </td> <td>At beginning of input.</td> </tr>
+ <tr> <td> \b </td> <td>At word boundary.</td> </tr>
+ <tr> <td> \B </td> <td>At non-word boundary.</td> </tr>
+ <tr> <td> \G </td> <td>At end of previous match.</td> </tr>
+ <tr> <td> \z </td> <td>At end of input.</td> </tr>
+ <tr> <td> \Z </td> <td>At end of input, or before newline at end.</td> </tr>
+ </table>
+
+ <h3>Look-around assertions</h3>
+ <p>Look-around assertions assert that the subpattern does (positive) or doesn't (negative) match
+ after (look-ahead) or before (look-behind) the current position, without including the matched
+ text in the containing match. The maximum length of possible matches for look-behind patterns
+ must not be unbounded.
+ <p><table>
+ <tr> <td> (?=<i>a</i>) </td> <td>Zero-width positive look-ahead.</td> </tr>
+ <tr> <td> (?!<i>a</i>) </td> <td>Zero-width negative look-ahead.</td> </tr>
+ <tr> <td> (?&lt;=<i>a</i>) </td> <td>Zero-width positive look-behind.</td> </tr>
+ <tr> <td> (?&lt;!<i>a</i>) </td> <td>Zero-width negative look-behind.</td> </tr>
+ </table>
+
+ <h3>Groups</h3>
+
+ <p><table>
+ <tr> <td> (<i>a</i>) </td> <td>A capturing group.</td> </tr>
+ <tr> <td> (?:<i>a</i>) </td> <td>A non-capturing group.</td> </tr>
+ <tr> <td> (?&gt;<i>a</i>) </td> <td>An independent non-capturing group. (The first match of the subgroup is the only match tried.)</td> </tr>
+ <tr> <td> \<i>n</i> </td> <td>The text already matched by capturing group <i>n</i>.</td> </tr>
+ </table>
+ <p>See <code><a href="../../../../reference/java/util/regex/Matcher.html#group()">group()</a></code> for details of how capturing groups are numbered and accessed.
+
+ <h3>Operators</h3>
+ <p><table>
+ <tr> <td> <i>ab</i> </td> <td>Expression <i>a</i> followed by expression <i>b</i>.</td> </tr>
+ <tr> <td> <i>a</i>|<i>b</i> </td> <td>Either expression <i>a</i> or expression <i>b</i>.</td> </tr>
+ </table>
+
+ <a name="flags"><h3>Flags</h3></a>
+ <p><table>
+ <tr> <td> (?dimsux-dimsux:<i>a</i>) </td> <td>Evaluates the expression <i>a</i> with the given flags enabled/disabled.</td> </tr>
+ <tr> <td> (?dimsux-dimsux) </td> <td>Evaluates the rest of the pattern with the given flags enabled/disabled.</td> </tr>
+ </table>
+
+ <p>The flags are:
+ <table>
+ <tr><td><code>i</code></td> <td><code><a href="../../../../reference/java/util/regex/Pattern.html#CASE_INSENSITIVE">CASE_INSENSITIVE</a></code></td> <td>case insensitive matching</td></tr>
+ <tr><td><code>d</code></td> <td><code><a href="../../../../reference/java/util/regex/Pattern.html#UNIX_LINES">UNIX_LINES</a></code></td>       <td>only accept <code>'\n'</code> as a line terminator</td></tr>
+ <tr><td><code>m</code></td> <td><code><a href="../../../../reference/java/util/regex/Pattern.html#MULTILINE">MULTILINE</a></code></td>        <td>allow <code>^</code> and <code>$</code> to match beginning/end of any line</td></tr>
+ <tr><td><code>s</code></td> <td><code><a href="../../../../reference/java/util/regex/Pattern.html#DOTALL">DOTALL</a></code></td>           <td>allow <code>.</code> to match <code>'\n'</code> ("s" for "single line")</td></tr>
+ <tr><td><code>u</code></td> <td><code><a href="../../../../reference/java/util/regex/Pattern.html#UNICODE_CASE">UNICODE_CASE</a></code></td>     <td>enable Unicode case folding</td></tr>
+ <tr><td><code>x</code></td> <td><code><a href="../../../../reference/java/util/regex/Pattern.html#COMMENTS">COMMENTS</a></code></td>         <td>allow whitespace and comments</td></tr>
+ </table>
+ <p>Either set of flags may be empty. For example, <code>(?i-m)</code> would turn on case-insensitivity
+ and turn off multiline mode, <code>(?i)</code> would just turn on case-insensitivity,
+ and <code>(?-m)</code> would just turn off multiline mode.
+ <p>Note that on Android, <code>UNICODE_CASE</code> is always on: case-insensitive matching will
+ always be Unicode-aware.
+ <p>There are two other flags not settable via this mechanism: <code><a href="../../../../reference/java/util/regex/Pattern.html#CANON_EQ">CANON_EQ</a></code> and
+ <code><a href="../../../../reference/java/util/regex/Pattern.html#LITERAL">LITERAL</a></code>. Attempts to use <code><a href="../../../../reference/java/util/regex/Pattern.html#CANON_EQ">CANON_EQ</a></code> on Android will throw an exception.
+ </span>
+
+ <h3>Implementation notes</h3>
+
+ <p>The regular expression implementation used in Android is provided by
+ <a href="http://www.icu-project.org">ICU</a>. The notation for the regular
+ expressions is mostly a superset of those used in other Java language
+ implementations. This means that existing applications will normally work as
+ expected, but in rare cases Android may accept a regular expression that is
+ not accepted by other implementations.
+
+ <p>In some cases, Android will recognize that a regular expression is a simple
+ special case that can be handled more efficiently. This is true of both the convenience methods
+ in <code>String</code> and the methods in <code>Pattern</code>.</p>
+
+
+
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/java/util/regex/Matcher.html">Matcher</a></code></li>
+      </ul>
+  </div>
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="jd-sumtable"><tr><th colspan="12">Constants</th></tr>
+
+
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/java/util/regex/Pattern.html#CANON_EQ">CANON_EQ</a></td>
+        <td class="jd-descrcol" width="100%">This constant specifies that a character in a <code>Pattern</code> and a
+ character in the input string only match if they are canonically
+ equivalent.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/java/util/regex/Pattern.html#CASE_INSENSITIVE">CASE_INSENSITIVE</a></td>
+        <td class="jd-descrcol" width="100%">This constant specifies that a <code>Pattern</code> is matched
+ case-insensitively.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/java/util/regex/Pattern.html#COMMENTS">COMMENTS</a></td>
+        <td class="jd-descrcol" width="100%">This constant specifies that a <code>Pattern</code> may contain whitespace or
+ comments.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/java/util/regex/Pattern.html#DOTALL">DOTALL</a></td>
+        <td class="jd-descrcol" width="100%">This constant specifies that the '.' meta character matches arbitrary
+ characters, including line endings, which is normally not the case.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/java/util/regex/Pattern.html#LITERAL">LITERAL</a></td>
+        <td class="jd-descrcol" width="100%">This constant specifies that the whole <code>Pattern</code> is to be taken
+ literally, that is, all meta characters lose their meanings.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/java/util/regex/Pattern.html#MULTILINE">MULTILINE</a></td>
+        <td class="jd-descrcol" width="100%">This constant specifies that the meta characters '^' and '$' match only
+ the beginning and end of an input line, respectively.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/java/util/regex/Pattern.html#UNICODE_CASE">UNICODE_CASE</a></td>
+        <td class="jd-descrcol" width="100%">This constant specifies that a <code>Pattern</code> that uses case-insensitive matching
+ will use Unicode case folding.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/java/util/regex/Pattern.html#UNIX_LINES">UNIX_LINES</a></td>
+        <td class="jd-descrcol" width="100%">This constant specifies that a pattern matches Unix line endings ('\n')
+ only against the '.', '^', and '$' meta characters.</td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/java/util/regex/Pattern.html">Pattern</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#compile(java.lang.String, int)">compile</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> regularExpression, int flags)</nobr>
+        
+        <div class="jd-descrdiv">Returns a compiled form of the given <code>regularExpression</code>, as modified by the
+ given <code>flags</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/java/util/regex/Pattern.html">Pattern</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#compile(java.lang.String)">compile</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> pattern)</nobr>
+        
+        <div class="jd-descrdiv">Equivalent to <code>Pattern.compile(pattern, 0)</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#flags()">flags</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the flags supplied to <code>compile</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/util/regex/Matcher.html">Matcher</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#matcher(java.lang.CharSequence)">matcher</a></span>(<a href="../../../../reference/java/lang/CharSequence.html">CharSequence</a> input)</nobr>
+        
+        <div class="jd-descrdiv">Returns a <code><a href="../../../../reference/java/util/regex/Matcher.html">Matcher</a></code> for this pattern applied to the given <code>input</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#matches(java.lang.String, java.lang.CharSequence)">matches</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> regularExpression, <a href="../../../../reference/java/lang/CharSequence.html">CharSequence</a> input)</nobr>
+        
+        <div class="jd-descrdiv">Tests whether the given <code>regularExpression</code> matches the given <code>input</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#pattern()">pattern</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the regular expression supplied to <code>compile</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#quote(java.lang.String)">quote</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> string)</nobr>
+        
+        <div class="jd-descrdiv">Quotes the given <code>string</code> using "\Q" and "\E", so that all
+ meta-characters lose their special meaning.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String[]</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#split(java.lang.CharSequence)">split</a></span>(<a href="../../../../reference/java/lang/CharSequence.html">CharSequence</a> input)</nobr>
+        
+        <div class="jd-descrdiv">Equivalent to <code>split(input, 0)</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String[]</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#split(java.lang.CharSequence, int)">split</a></span>(<a href="../../../../reference/java/lang/CharSequence.html">CharSequence</a> input, int limit)</nobr>
+        
+        <div class="jd-descrdiv">Splits the given <code>input</code> at occurrences of this pattern.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a string containing a concise, human-readable description of this
+ object.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/util/regex/Pattern.html#finalize()">finalize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Invoked when the garbage collector has detected that this instance is no longer reachable.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../reference/java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Creates and returns a copy of this <code>Object</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../../reference/java/lang/Object.html">Object</a> o)</nobr>
+        
+        <div class="jd-descrdiv">Compares this instance with the specified object and indicates if they
+ are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#finalize()">finalize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Invoked when the garbage collector has detected that this instance is no longer reachable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../../reference/java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#getClass()">getClass</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the unique instance of <code><a href="../../../../reference/java/lang/Class.html">Class</a></code> that represents this
+ object's class.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#notify()">notify</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes a thread which is waiting on this object's monitor (by means of
+ calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#notifyAll()">notifyAll</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes all threads which are waiting on this object's monitor (by means
+ of calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a string containing a concise, human-readable description of this
+ object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#wait()">wait</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#wait(long, int)">wait</a></span>(long millis, int nanos)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#wait(long)">wait</a></span>(long millis)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2>Constants</h2>
+
+
+
+
+<A NAME="CANON_EQ"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        CANON_EQ
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant specifies that a character in a <code>Pattern</code> and a
+ character in the input string only match if they are canonically
+ equivalent. It is (currently) not supported in Android.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                128
+                (0x00000080)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="CASE_INSENSITIVE"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        CASE_INSENSITIVE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant specifies that a <code>Pattern</code> is matched
+ case-insensitively. That is, the patterns "a+" and "A+" would both match
+ the string "aAaAaA". See <code><a href="../../../../reference/java/util/regex/Pattern.html#UNICODE_CASE">UNICODE_CASE</a></code>. Corresponds to <code>(?i)</code>.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                2
+                (0x00000002)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="COMMENTS"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        COMMENTS
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant specifies that a <code>Pattern</code> may contain whitespace or
+ comments. Otherwise comments and whitespace are taken as literal
+ characters. Corresponds to <code>(?x)</code>.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                4
+                (0x00000004)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="DOTALL"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        DOTALL
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant specifies that the '.' meta character matches arbitrary
+ characters, including line endings, which is normally not the case.
+ Corresponds to <code>(?s)</code>.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                32
+                (0x00000020)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="LITERAL"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        LITERAL
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant specifies that the whole <code>Pattern</code> is to be taken
+ literally, that is, all meta characters lose their meanings.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                16
+                (0x00000010)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="MULTILINE"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        MULTILINE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant specifies that the meta characters '^' and '$' match only
+ the beginning and end of an input line, respectively. Normally, they
+ match the beginning and the end of the complete input. Corresponds to <code>(?m)</code>.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                8
+                (0x00000008)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="UNICODE_CASE"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        UNICODE_CASE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant specifies that a <code>Pattern</code> that uses case-insensitive matching
+ will use Unicode case folding. On Android, <code>UNICODE_CASE</code> is always on:
+ case-insensitive matching will always be Unicode-aware. If your code is intended to
+ be portable and uses case-insensitive matching on non-ASCII characters, you should
+ use this flag. Corresponds to <code>(?u)</code>.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                64
+                (0x00000040)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="UNIX_LINES"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        UNIX_LINES
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant specifies that a pattern matches Unix line endings ('\n')
+ only against the '.', '^', and '$' meta characters. Corresponds to <code>(?d)</code>.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                1
+                (0x00000001)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="compile(java.lang.String, int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../reference/java/util/regex/Pattern.html">Pattern</a>
+      </span>
+      <span class="sympad">compile</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> regularExpression, int flags)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a compiled form of the given <code>regularExpression</code>, as modified by the
+ given <code>flags</code>. See the <a href="#flags">flags overview</a> for more on flags.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/java/util/regex/PatternSyntaxException.html">PatternSyntaxException</a></td>
+            <td>if the regular expression is syntactically incorrect.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/java/util/regex/Pattern.html#CANON_EQ">CANON_EQ</a></code></li><li><code><a href="../../../../reference/java/util/regex/Pattern.html#CASE_INSENSITIVE">CASE_INSENSITIVE</a></code></li><li><code><a href="../../../../reference/java/util/regex/Pattern.html#COMMENTS">COMMENTS</a></code></li><li><code><a href="../../../../reference/java/util/regex/Pattern.html#DOTALL">DOTALL</a></code></li><li><code><a href="../../../../reference/java/util/regex/Pattern.html#LITERAL">LITERAL</a></code></li><li><code><a href="../../../../reference/java/util/regex/Pattern.html#MULTILINE">MULTILINE</a></code></li><li><code><a href="../../../../reference/java/util/regex/Pattern.html#UNICODE_CASE">UNICODE_CASE</a></code></li><li><code><a href="../../../../reference/java/util/regex/Pattern.html#UNIX_LINES">UNIX_LINES</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="compile(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../reference/java/util/regex/Pattern.html">Pattern</a>
+      </span>
+      <span class="sympad">compile</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> pattern)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Equivalent to <code>Pattern.compile(pattern, 0)</code>.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="flags()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">flags</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the flags supplied to <code>compile</code>.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="matcher(java.lang.CharSequence)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/java/util/regex/Matcher.html">Matcher</a>
+      </span>
+      <span class="sympad">matcher</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/CharSequence.html">CharSequence</a> input)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a <code><a href="../../../../reference/java/util/regex/Matcher.html">Matcher</a></code> for this pattern applied to the given <code>input</code>.
+ The <code>Matcher</code> can be used to match the <code>Pattern</code> against the
+ whole input, find occurrences of the <code>Pattern</code> in the input, or
+ replace parts of the input.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="matches(java.lang.String, java.lang.CharSequence)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">matches</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> regularExpression, <a href="../../../../reference/java/lang/CharSequence.html">CharSequence</a> input)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Tests whether the given <code>regularExpression</code> matches the given <code>input</code>.
+ Equivalent to <code>Pattern.compile(regularExpression).matcher(input).matches()</code>.
+ If the same regular expression is to be used for multiple operations, it may be more
+ efficient to reuse a compiled <code>Pattern</code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/java/util/regex/Pattern.html#compile(java.lang.String, int)">compile(java.lang.String, int)</a></code></li><li><code><a href="../../../../reference/java/util/regex/Matcher.html#matches()">matches()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="pattern()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">pattern</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the regular expression supplied to <code>compile</code>.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="quote(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">quote</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> string)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Quotes the given <code>string</code> using "\Q" and "\E", so that all
+ meta-characters lose their special meaning. This method correctly
+ escapes embedded instances of "\Q" or "\E". If the entire result
+ is to be passed verbatim to <code><a href="../../../../reference/java/util/regex/Pattern.html#compile(java.lang.String)">compile(String)</a></code>, it's usually clearer
+ to use the <code><a href="../../../../reference/java/util/regex/Pattern.html#LITERAL">LITERAL</a></code> flag instead.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="split(java.lang.CharSequence)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/java/lang/String.html">String[]</a>
+      </span>
+      <span class="sympad">split</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/CharSequence.html">CharSequence</a> input)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Equivalent to <code>split(input, 0)</code>.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="split(java.lang.CharSequence, int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/java/lang/String.html">String[]</a>
+      </span>
+      <span class="sympad">split</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/CharSequence.html">CharSequence</a> input, int limit)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Splits the given <code>input</code> at occurrences of this pattern.
+
+ <p>If this pattern does not occur in the input, the result is an
+ array containing the input (converted from a <code>CharSequence</code> to
+ a <code>String</code>).
+
+ <p>Otherwise, the <code>limit</code> parameter controls the contents of the
+ returned array as described below.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>limit</td>
+          <td>Determines the maximum number of entries in the resulting
+            array, and the treatment of trailing empty strings.
+            <ul>
+            <li>For n &gt; 0, the resulting array contains at most n
+            entries. If this is fewer than the number of matches, the
+            final entry will contain all remaining input.
+            <li>For n &lt; 0, the length of the resulting array is
+            exactly the number of occurrences of the <code>Pattern</code>
+            plus one for the text after the final separator.
+            All entries are included.
+            <li>For n == 0, the result is as for n &lt; 0, except
+            trailing empty strings will not be returned. (Note that
+            the case where the input is itself an empty string is
+            special, as described above, and the limit parameter does
+            not apply there.)
+            </ul>
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="toString()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">toString</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a string containing a concise, human-readable description of this
+ object. Subclasses are encouraged to override this method and provide an
+ implementation that takes into account the object's type and data. The
+ default implementation is equivalent to the following expression:
+ <pre>
+   getClass().getName() + '@' + Integer.toHexString(hashCode())</pre>
+ <p>See <a href="../../../../reference/java/lang/Object.html#writing_toString">Writing a useful
+ <code>toString</code> method</a>
+ if you intend implementing your own <code>toString</code> method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a printable representation of this object.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="finalize()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">finalize</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Invoked when the garbage collector has detected that this instance is no longer reachable.
+ The default implementation does nothing, but this method can be overridden to free resources.
+
+ <p>Note that objects that override <code>finalize</code> are significantly more expensive than
+ objects that don't. Finalizers may be run a long time after the object is no longer
+ reachable, depending on memory pressure, so it's a bad idea to rely on them for cleanup.
+ Note also that finalizers are run on a single VM-wide finalizer thread,
+ so doing blocking work in a finalizer is a bad idea. A finalizer is usually only necessary
+ for a class that has a native peer and needs to call a native method to destroy that peer.
+ Even then, it's better to provide an explicit <code>close</code> method (and implement
+ <code><a href="../../../../reference/java/io/Closeable.html">Closeable</a></code>), and insist that callers manually dispose of instances. This
+ works well for something like files, but less well for something like a <code>BigInteger</code>
+ where typical calling code would have to deal with lots of temporaries. Unfortunately,
+ code that creates lots of temporaries is the worst kind of code from the point of view of
+ the single finalizer thread.
+
+ <p>If you <i>must</i> use finalizers, consider at least providing your own
+ <code><a href="../../../../reference/java/lang/ref/ReferenceQueue.html">ReferenceQueue</a></code> and having your own thread process that queue.
+
+ <p>Unlike constructors, finalizers are not automatically chained. You are responsible for
+ calling <code>super.finalize()</code> yourself.
+
+ <p>Uncaught exceptions thrown by finalizers are ignored and do not terminate the finalizer
+ thread.
+
+ See <i>Effective Java</i> Item 7, "Avoid finalizers" for more.
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/java/lang/Throwable.html">Throwable</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

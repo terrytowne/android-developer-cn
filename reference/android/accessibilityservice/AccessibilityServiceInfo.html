@@ -1,0 +1,4256 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>AccessibilityServiceInfo - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+  <div id="doc-api-level" class="4" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/package-summary.html">android</a></li>
+    <li class="selected api apilevel-4">
+  <a href="../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-4"><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></li>
+          <li class="selected api apilevel-4"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html">AccessibilityServiceInfo</a></li>
+      </ul>
+    </li>
+              
+              
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12"  id="doc-col">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+Summary:
+
+
+  <a href="#lattrs">XML Attrs</a>
+  
+
+
+
+
+  &#124; <a href="#constants">Constants</a>
+  
+
+
+  &#124; <a href="#inhconstants">Inherited Constants</a>
+  
+
+
+  &#124; <a href="#lfields">Fields</a>
+  
+
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1 itemprop="name">AccessibilityServiceInfo</h1>
+
+
+
+  
+    extends <a href="../../../reference/java/lang/Object.html">Object</a><br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        <a href="../../../reference/android/os/Parcelable.html">Parcelable</a> 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-4">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../reference/java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">android.accessibilityservice.AccessibilityServiceInfo</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p itemprop="articleBody">This class describes an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code>. The system notifies an
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> for <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html">AccessibilityEvent</a></code>s
+ according to the information encapsulated in this class.
+
+ <div class="special reference">
+ <h3>Developer Guides</h3>
+ <p>For more information about creating AccessibilityServices, read the
+ <a href="../../../guide/topics/ui/accessibility/index.html">Accessibility</a>
+ developer guide.</p>
+ </div></p>
+
+
+
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html">AccessibilityEvent</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityManager.html">AccessibilityManager</a></code></li>
+      </ul>
+  </div>
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lattrs" class="jd-sumtable"><tr><th colspan="12">XML Attributes</th></tr>
+
+
+    <tr>
+        <td><nobr><em>Attribute Name</em></nobr></td>
+        <td><nobr><em>Related Method</em></nobr></td>
+        <td><nobr><em>Description</em></nobr></td>
+    </tr>
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:accessibilityEventTypes">android:accessibilityEventTypes</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">The event types this serivce would like to receive as specified in
+             <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html">AccessibilityEvent</a></code>.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:accessibilityFeedbackType">android:accessibilityFeedbackType</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">The feedback types this serivce provides as specified in
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html">AccessibilityServiceInfo</a></code>.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:accessibilityFlags">android:accessibilityFlags</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Additional flags as specified in
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html">AccessibilityServiceInfo</a></code>.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:canRequestEnhancedWebAccessibility">android:canRequestEnhancedWebAccessibility</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Attribute whether the accessibility service wants to be able to request enhanced
+             web accessibility enhancements.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:canRequestFilterKeyEvents">android:canRequestFilterKeyEvents</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Attribute whether the accessibility service wants to be able to request to
+             filter key events.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:canRequestTouchExplorationMode">android:canRequestTouchExplorationMode</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Attribute whether the accessibility service wants to be able to request touch
+             exploration mode in which touched items are spoken aloud and the UI can be
+             explored via gestures.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:canRetrieveWindowContent">android:canRetrieveWindowContent</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Attribute whether the accessibility service wants to be able to retrieve the
+             active window content.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:description">android:description</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Short description of the accessibility serivce purpose or behavior.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:notificationTimeout">android:notificationTimeout</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">The minimal period in milliseconds between two accessibility events of the same type
+             are sent to this serivce.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:packageNames">android:packageNames</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Comma separated package names from which this serivce would like to receive events (leave out for all packages).&nbsp;</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#attr_android:settingsActivity">android:settingsActivity</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Component name of an activity that allows the user to modify
+             the settings for this service.&nbsp;</td>
+    </tr>
+    
+    
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="jd-sumtable"><tr><th colspan="12">Constants</th></tr>
+
+
+    
+    <tr class="alt-color api apilevel-18" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY">CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY</a></td>
+        <td class="jd-descrcol" width="100%">Capability: This accessibility service can request enhanced web accessibility
+ enhancements.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-18" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS">CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS</a></td>
+        <td class="jd-descrcol" width="100%">Capability: This accessibility service can request to filter the key event stream.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-18" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION">CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION</a></td>
+        <td class="jd-descrcol" width="100%">Capability: This accessibility service can request touch exploration mode in which
+ touched items are spoken aloud and the UI can be explored via gestures.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-18" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT">CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT</a></td>
+        <td class="jd-descrcol" width="100%">Capability: This accessibility service can retrieve the active window content.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-4" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#DEFAULT">DEFAULT</a></td>
+        <td class="jd-descrcol" width="100%">If an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> is the default for a given type.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_ALL_MASK">FEEDBACK_ALL_MASK</a></td>
+        <td class="jd-descrcol" width="100%">Mask for all feedback types.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-4" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_AUDIBLE">FEEDBACK_AUDIBLE</a></td>
+        <td class="jd-descrcol" width="100%">Denotes audible (not spoken) feedback.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-17" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_BRAILLE">FEEDBACK_BRAILLE</a></td>
+        <td class="jd-descrcol" width="100%">Denotes braille feedback.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-4" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_GENERIC">FEEDBACK_GENERIC</a></td>
+        <td class="jd-descrcol" width="100%">Denotes generic feedback.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-4" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_HAPTIC">FEEDBACK_HAPTIC</a></td>
+        <td class="jd-descrcol" width="100%">Denotes haptic feedback.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-4" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_SPOKEN">FEEDBACK_SPOKEN</a></td>
+        <td class="jd-descrcol" width="100%">Denotes spoken feedback.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-4" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_VISUAL">FEEDBACK_VISUAL</a></td>
+        <td class="jd-descrcol" width="100%">Denotes visual feedback.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-16" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_INCLUDE_NOT_IMPORTANT_VIEWS">FLAG_INCLUDE_NOT_IMPORTANT_VIEWS</a></td>
+        <td class="jd-descrcol" width="100%">If this flag is set the system will regard views that are not important
+ for accessibility in addition to the ones that are important for accessibility.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-18" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REPORT_VIEW_IDS">FLAG_REPORT_VIEW_IDS</a></td>
+        <td class="jd-descrcol" width="100%">This flag requests that the <code><a href="../../../reference/android/view/accessibility/AccessibilityNodeInfo.html">AccessibilityNodeInfo</a></code>s obtained
+ by an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> contain the id of the source view.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-18" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY">FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY</a></td>
+        <td class="jd-descrcol" width="100%">This flag requests from the system to enable web accessibility enhancing
+ extensions.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-18" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_FILTER_KEY_EVENTS">FLAG_REQUEST_FILTER_KEY_EVENTS</a></td>
+        <td class="jd-descrcol" width="100%">This flag requests from the system to filter key events.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-16" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_TOUCH_EXPLORATION_MODE">FLAG_REQUEST_TOUCH_EXPLORATION_MODE</a></td>
+        <td class="jd-descrcol" width="100%">This flag requests that the system gets into touch exploration mode.</td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="inhconstants" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-android.os.Parcelable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-android.os.Parcelable-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+<a href="../../../reference/android/os/Parcelable.html">android.os.Parcelable</a>
+<div id="inherited-constants-android.os.Parcelable">
+  <div id="inherited-constants-android.os.Parcelable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-android.os.Parcelable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/os/Parcelable.html#CONTENTS_FILE_DESCRIPTOR">CONTENTS_FILE_DESCRIPTOR</a></td>
+        <td class="jd-descrcol" width="100%">Bit masks for use with <code><a href="../../../reference/android/os/Parcelable.html#describeContents()">describeContents()</a></code>: each bit represents a
+ kind of object considered to have potential special significance when
+ marshalled.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../reference/android/os/Parcelable.html#PARCELABLE_WRITE_RETURN_VALUE">PARCELABLE_WRITE_RETURN_VALUE</a></td>
+        <td class="jd-descrcol" width="100%">Flag for use with <code><a href="../../../reference/android/os/Parcelable.html#writeToParcel(android.os.Parcel, int)">writeToParcel(Parcel, int)</a></code>: the object being written
+ is a return value, that is the result of a function such as
+ "<code>Parcelable someFunction()</code>",
+ "<code>void someFunction(out Parcelable)</code>", or
+ "<code>void someFunction(inout Parcelable)</code>".</td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
+
+
+    
+      <tr class="alt-color api apilevel-4" >
+          <td class="jd-typecol"><nobr>
+          public
+          static
+          final
+          <a href="../../../reference/android/os/Parcelable.Creator.html">Creator</a>&lt;<a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html">AccessibilityServiceInfo</a>&gt;</nobr></td>
+          <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CREATOR">CREATOR</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-4" >
+          <td class="jd-typecol"><nobr>
+          public
+          
+          
+          int</nobr></td>
+          <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#eventTypes">eventTypes</a></td>
+          <td class="jd-descrcol" width="100%">The event types an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> is interested in.</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-4" >
+          <td class="jd-typecol"><nobr>
+          public
+          
+          
+          int</nobr></td>
+          <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#feedbackType">feedbackType</a></td>
+          <td class="jd-descrcol" width="100%">The feedback type an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> provides.</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-4" >
+          <td class="jd-typecol"><nobr>
+          public
+          
+          
+          int</nobr></td>
+          <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#flags">flags</a></td>
+          <td class="jd-descrcol" width="100%">This field represents a set of flags used for configuring an
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code>.</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-4" >
+          <td class="jd-typecol"><nobr>
+          public
+          
+          
+          long</nobr></td>
+          <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#notificationTimeout">notificationTimeout</a></td>
+          <td class="jd-descrcol" width="100%">The timeout after the most recent event of a given type before an
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> is notified.</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-4" >
+          <td class="jd-typecol"><nobr>
+          public
+          
+          
+          <a href="../../../reference/java/lang/String.html">String[]</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#packageNames">packageNames</a></td>
+          <td class="jd-descrcol" width="100%">The package names an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> is interested in.</td>
+      </tr>
+      
+    
+
+</table>
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-4" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#AccessibilityServiceInfo()">AccessibilityServiceInfo</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Creates a new instance.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-18" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#capabilityToString(int)">capabilityToString</a></span>(int capability)</nobr>
+        
+        <div class="jd-descrdiv">Returns the string representation of a capability.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-4" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#describeContents()">describeContents</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Describe the kinds of special objects contained in this Parcelable's
+ marshalled representation.
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-4" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> obj)</nobr>
+        
+        <div class="jd-descrdiv">Compares this instance with the specified object and indicates if they
+ are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#feedbackTypeToString(int)">feedbackTypeToString</a></span>(int feedbackType)</nobr>
+        
+        <div class="jd-descrdiv">Returns the string representation of a feedback type.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#flagToString(int)">flagToString</a></span>(int flag)</nobr>
+        
+        <div class="jd-descrdiv">Returns the string representation of a flag.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#getCanRetrieveWindowContent()">getCanRetrieveWindowContent</a></span>()</nobr>
+        
+        <div class="jd-descrdiv"><em>
+      This method was deprecated
+      in API level 18.
+    Use <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#getCapabilities()">getCapabilities()</a></code>.
+</em></div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-18" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#getCapabilities()">getCapabilities</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the bit mask of capabilities this accessibility service has such as
+ being able to retrieve the active window content, etc.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#getDescription()">getDescription</a></span>()</nobr>
+        
+        <div class="jd-descrdiv"><em>
+      This method was deprecated
+      in API level 16.
+    Use <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#loadDescription(android.content.pm.PackageManager)">loadDescription(PackageManager)</a></code>.
+</em></div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#getId()">getId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">The accessibility service id.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/content/pm/ResolveInfo.html">ResolveInfo</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#getResolveInfo()">getResolveInfo</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">The service <code><a href="../../../reference/android/content/pm/ResolveInfo.html">ResolveInfo</a></code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-14" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#getSettingsActivityName()">getSettingsActivityName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">The settings activity name.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-4" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-16" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#loadDescription(android.content.pm.PackageManager)">loadDescription</a></span>(<a href="../../../reference/android/content/pm/PackageManager.html">PackageManager</a> packageManager)</nobr>
+        
+        <div class="jd-descrdiv">The localized description of the accessibility service.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-4" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a string containing a concise, human-readable description of this
+ object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-4" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#writeToParcel(android.os.Parcel, int)">writeToParcel</a></span>(<a href="../../../reference/android/os/Parcel.html">Parcel</a> parcel, int flagz)</nobr>
+        
+        <div class="jd-descrdiv">Flatten this object in to a Parcel.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../reference/java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Creates and returns a copy of this <code>Object</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> o)</nobr>
+        
+        <div class="jd-descrdiv">Compares this instance with the specified object and indicates if they
+ are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#finalize()">finalize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Invoked when the garbage collector has detected that this instance is no longer reachable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#getClass()">getClass</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the unique instance of <code><a href="../../../reference/java/lang/Class.html">Class</a></code> that represents this
+ object's class.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#notify()">notify</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes a thread which is waiting on this object's monitor (by means of
+ calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#notifyAll()">notifyAll</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes all threads which are waiting on this object's monitor (by means
+ of calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a string containing a concise, human-readable description of this
+ object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait()">wait</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait(long, int)">wait</a></span>(long millis, int nanos)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait(long)">wait</a></span>(long millis)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-android.os.Parcelable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-android.os.Parcelable-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../reference/android/os/Parcelable.html">android.os.Parcelable</a>
+
+<div id="inherited-methods-android.os.Parcelable">
+  <div id="inherited-methods-android.os.Parcelable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-android.os.Parcelable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/os/Parcelable.html#describeContents()">describeContents</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Describe the kinds of special objects contained in this Parcelable's
+ marshalled representation.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/os/Parcelable.html#writeToParcel(android.os.Parcel, int)">writeToParcel</a></span>(<a href="../../../reference/android/os/Parcel.html">Parcel</a> dest, int flags)</nobr>
+        
+        <div class="jd-descrdiv">Flatten this object in to a Parcel.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>XML Attributes</h2>
+
+
+
+<A NAME="attr_android:accessibilityEventTypes"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:accessibilityEventTypes
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>The event types this serivce would like to receive as specified in
+             <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html">AccessibilityEvent</a></code>. This setting
+             can be changed at runtime by calling
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)">android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)</a></code>. 
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>typeViewClicked</code></td><td>0x00000001</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_CLICKED">TYPE_VIEW_CLICKED</a></code> events.</td></tr>
+<tr><td><code>typeViewLongClicked</code></td><td>0x00000002</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_LONG_CLICKED">TYPE_VIEW_LONG_CLICKED</a></code> events. </td></tr>
+<tr><td><code>typeViewSelected</code></td><td>0x00000004</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_SELECTED">TYPE_VIEW_SELECTED</a></code> events. </td></tr>
+<tr><td><code>typeViewFocused</code></td><td>0x00000008</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_FOCUSED">TYPE_VIEW_FOCUSED</a></code> events. </td></tr>
+<tr><td><code>typeViewTextChanged</code></td><td>0x00000010</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_TEXT_CHANGED">TYPE_VIEW_TEXT_CHANGED</a></code> events. </td></tr>
+<tr><td><code>typeWindowStateChanged</code></td><td>0x00000020</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_WINDOW_STATE_CHANGED">TYPE_WINDOW_STATE_CHANGED</a></code> events. </td></tr>
+<tr><td><code>typeNotificationStateChanged</code></td><td>0x00000040</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_NOTIFICATION_STATE_CHANGED">TYPE_NOTIFICATION_STATE_CHANGED</a></code> events. </td></tr>
+<tr><td><code>typeViewHoverEnter</code></td><td>0x00000080</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_HOVER_ENTER">TYPE_VIEW_HOVER_ENTER</a></code> events. </td></tr>
+<tr><td><code>typeViewHoverExit</code></td><td>0x00000100</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_HOVER_EXIT">TYPE_VIEW_HOVER_EXIT</a></code> events. </td></tr>
+<tr><td><code>typeTouchExplorationGestureStart</code></td><td>0x00000200</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_TOUCH_EXPLORATION_GESTURE_START">TYPE_TOUCH_EXPLORATION_GESTURE_START</a></code> events. </td></tr>
+<tr><td><code>typeTouchExplorationGestureEnd</code></td><td>0x00000400</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_TOUCH_EXPLORATION_GESTURE_END">TYPE_TOUCH_EXPLORATION_GESTURE_END</a></code> events. </td></tr>
+<tr><td><code>typeWindowContentChanged</code></td><td>0x00000800</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_WINDOW_CONTENT_CHANGED">TYPE_WINDOW_CONTENT_CHANGED</a></code> events. </td></tr>
+<tr><td><code>typeViewScrolled</code></td><td>0x000001000</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_SCROLLED">TYPE_VIEW_SCROLLED</a></code> events. </td></tr>
+<tr><td><code>typeViewTextSelectionChanged</code></td><td>0x000002000</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_TEXT_SELECTION_CHANGED">TYPE_VIEW_TEXT_SELECTION_CHANGED</a></code> events. </td></tr>
+<tr><td><code>typeAllMask</code></td><td>0xffffffff</td><td> Receives <code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPES_ALL_MASK">TYPES_ALL_MASK</a></code> i.e. all events. </td></tr>
+</table>
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#accessibilityEventTypes">accessibilityEventTypes</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:accessibilityFeedbackType"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:accessibilityFeedbackType
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>The feedback types this serivce provides as specified in
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html">AccessibilityServiceInfo</a></code>. This setting
+             can be changed at runtime by calling
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)">android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)</a></code>. 
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>feedbackSpoken</code></td><td>0x00000001</td><td> Provides <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_SPOKEN">FEEDBACK_SPOKEN</a></code> feedback. </td></tr>
+<tr><td><code>feedbackHaptic</code></td><td>0x00000002</td><td> Provides <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_HAPTIC">FEEDBACK_HAPTIC</a></code> feedback. </td></tr>
+<tr><td><code>feedbackAudible</code></td><td>0x00000004</td><td> Provides <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_AUDIBLE">FEEDBACK_AUDIBLE</a></code> feedback. </td></tr>
+<tr><td><code>feedbackVisual</code></td><td>0x00000008</td><td> Provides <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_VISUAL">FEEDBACK_VISUAL</a></code> feedback. </td></tr>
+<tr><td><code>feedbackGeneric</code></td><td>0x00000010</td><td> Provides <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_GENERIC">FEEDBACK_GENERIC</a></code> feedback. </td></tr>
+<tr><td><code>feedbackAllMask</code></td><td>0xffffffff</td><td> Provides <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_ALL_MASK">FEEDBACK_ALL_MASK</a></code> feedback. </td></tr>
+</table>
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#accessibilityFeedbackType">accessibilityFeedbackType</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:accessibilityFlags"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:accessibilityFlags
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Additional flags as specified in
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html">AccessibilityServiceInfo</a></code>.
+             This setting can be changed at runtime by calling
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)">android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)</a></code>. 
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>flagDefault</code></td><td>0x00000001</td><td> Has flag <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#DEFAULT">DEFAULT</a></code> </td></tr>
+<tr><td><code>flagIncludeNotImportantViews</code></td><td>0x00000002</td><td> Has flag <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_INCLUDE_NOT_IMPORTANT_VIEWS">FLAG_INCLUDE_NOT_IMPORTANT_VIEWS</a></code> </td></tr>
+<tr><td><code>flagRequestTouchExplorationMode</code></td><td>0x00000004</td><td> Has flag <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_TOUCH_EXPLORATION_MODE">FLAG_REQUEST_TOUCH_EXPLORATION_MODE</a></code> </td></tr>
+<tr><td><code>flagRequestEnhancedWebAccessibility</code></td><td>0x00000008</td><td> Has flag <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY">FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY</a></code> </td></tr>
+<tr><td><code>flagReportViewIds</code></td><td>0x00000010</td><td> Has flag <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REPORT_VIEW_IDS">FLAG_REPORT_VIEW_IDS</a></code> </td></tr>
+<tr><td><code>flagRequestFilterKeyEvents</code></td><td>0x00000020</td><td> Has flag <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_FILTER_KEY_EVENTS">FLAG_REQUEST_FILTER_KEY_EVENTS</a></code> </td></tr>
+</table>
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#accessibilityFlags">accessibilityFlags</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:canRequestEnhancedWebAccessibility"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:canRequestEnhancedWebAccessibility
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Attribute whether the accessibility service wants to be able to request enhanced
+             web accessibility enhancements. For example, installing scripts to make app
+             content more accessible.
+             <p>
+             Required to allow setting the <code><a href="../../../reference/android/accessibilityservice/package-summary.html">#AccessibilityServiceInfo#FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY</a></code> flag.
+             </p>
+
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#canRequestEnhancedWebAccessibility">canRequestEnhancedWebAccessibility</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:canRequestFilterKeyEvents"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:canRequestFilterKeyEvents
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Attribute whether the accessibility service wants to be able to request to
+             filter key events.
+             <p>
+             Required to allow setting the <code><a href="../../../reference/android/accessibilityservice/package-summary.html">#AccessibilityServiceInfo#FLAG_REQUEST_FILTER_KEY_EVENTS</a></code> flag.
+             </p>
+
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#canRequestFilterKeyEvents">canRequestFilterKeyEvents</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:canRequestTouchExplorationMode"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:canRequestTouchExplorationMode
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Attribute whether the accessibility service wants to be able to request touch
+             exploration mode in which touched items are spoken aloud and the UI can be
+             explored via gestures.
+             <p>
+             Required to allow setting the <code><a href="../../../reference/android/accessibilityservice/package-summary.html">#AccessibilityServiceInfo#FLAG_REQUEST_TOUCH_EXPLORATION_MODE</a></code> flag.
+             </p>
+
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#canRequestTouchExplorationMode">canRequestTouchExplorationMode</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:canRetrieveWindowContent"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:canRetrieveWindowContent
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Attribute whether the accessibility service wants to be able to retrieve the
+             active window content. This setting cannot be changed at runtime. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#canRetrieveWindowContent">canRetrieveWindowContent</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:description"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:description
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Short description of the accessibility serivce purpose or behavior.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#description">description</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:notificationTimeout"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:notificationTimeout
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>The minimal period in milliseconds between two accessibility events of the same type
+             are sent to this serivce. This setting can be changed at runtime by calling
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)">android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)</a></code>. 
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#notificationTimeout">notificationTimeout</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:packageNames"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:packageNames
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Comma separated package names from which this serivce would like to receive events (leave out for all packages).
+             <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)">android.accessibilityservice.AccessibilityService.setServiceInfo(android.accessibilityservice.AccessibilityServiceInfo)</a></code>. 
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#packageNames">packageNames</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:settingsActivity"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:settingsActivity
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Component name of an activity that allows the user to modify
+             the settings for this service. This setting cannot be changed at runtime. 
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../reference/android/R.attr.html#settingsActivity">settingsActivity</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2>Constants</h2>
+
+
+
+
+<A NAME="CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Capability: This accessibility service can request enhanced web accessibility
+ enhancements. For example, installing scripts to make app content more accessible.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/R.styleable.html#AccessibilityService_canRequestEnhancedWebAccessibility">AccessibilityService_canRequestEnhancedWebAccessibility</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                4
+                (0x00000004)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        CAPABILITY_CAN_REQUEST_FILTER_KEY_EVENTS
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Capability: This accessibility service can request to filter the key event stream.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/R.styleable.html#AccessibilityService_canRequestFilterKeyEvents">AccessibilityService_canRequestFilterKeyEvents</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                8
+                (0x00000008)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Capability: This accessibility service can request touch exploration mode in which
+ touched items are spoken aloud and the UI can be explored via gestures.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/R.styleable.html#AccessibilityService_canRequestTouchExplorationMode">AccessibilityService_canRequestTouchExplorationMode</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                2
+                (0x00000002)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Capability: This accessibility service can retrieve the active window content.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/R.styleable.html#AccessibilityService_canRetrieveWindowContent">AccessibilityService_canRetrieveWindowContent</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                1
+                (0x00000001)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="DEFAULT"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        DEFAULT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>If an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> is the default for a given type.
+ Default service is invoked only if no package specific one exists. In case of
+ more than one package specific service only the earlier registered is notified.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                1
+                (0x00000001)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEEDBACK_ALL_MASK"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FEEDBACK_ALL_MASK
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Mask for all feedback types.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_SPOKEN">FEEDBACK_SPOKEN</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_HAPTIC">FEEDBACK_HAPTIC</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_AUDIBLE">FEEDBACK_AUDIBLE</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_VISUAL">FEEDBACK_VISUAL</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_GENERIC">FEEDBACK_GENERIC</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_BRAILLE">FEEDBACK_BRAILLE</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                -1
+                (0xffffffff)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEEDBACK_AUDIBLE"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FEEDBACK_AUDIBLE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Denotes audible (not spoken) feedback.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                4
+                (0x00000004)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEEDBACK_BRAILLE"></A>
+
+<div class="jd-details api apilevel-17"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FEEDBACK_BRAILLE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 17</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Denotes braille feedback.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                32
+                (0x00000020)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEEDBACK_GENERIC"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FEEDBACK_GENERIC
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Denotes generic feedback.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                16
+                (0x00000010)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEEDBACK_HAPTIC"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FEEDBACK_HAPTIC
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Denotes haptic feedback.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                2
+                (0x00000002)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEEDBACK_SPOKEN"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FEEDBACK_SPOKEN
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Denotes spoken feedback.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                1
+                (0x00000001)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEEDBACK_VISUAL"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FEEDBACK_VISUAL
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Denotes visual feedback.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                8
+                (0x00000008)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FLAG_INCLUDE_NOT_IMPORTANT_VIEWS"></A>
+
+<div class="jd-details api apilevel-16"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FLAG_INCLUDE_NOT_IMPORTANT_VIEWS
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 16</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>If this flag is set the system will regard views that are not important
+ for accessibility in addition to the ones that are important for accessibility.
+ That is, views that are marked as not important for accessibility via
+ <code><a href="../../../reference/android/view/View.html#IMPORTANT_FOR_ACCESSIBILITY_NO">IMPORTANT_FOR_ACCESSIBILITY_NO</a></code> or
+ <code><a href="../../../reference/android/view/View.html#IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS">IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS</a></code> and views that are
+ marked as potentially important for accessibility via
+ <code><a href="../../../reference/android/view/View.html#IMPORTANT_FOR_ACCESSIBILITY_AUTO">IMPORTANT_FOR_ACCESSIBILITY_AUTO</a></code> for which the system has determined
+ that are not important for accessibility, are reported while querying the window
+ content and also the accessibility service will receive accessibility events from
+ them.
+ <p>
+ <strong>Note:</strong> For accessibility services targeting API version
+ <code><a href="../../../reference/android/os/Build.VERSION_CODES.html#JELLY_BEAN">JELLY_BEAN</a></code> or higher this flag has to be explicitly
+ set for the system to regard views that are not important for accessibility. For
+ accessibility services targeting API version lower than
+ <code><a href="../../../reference/android/os/Build.VERSION_CODES.html#JELLY_BEAN">JELLY_BEAN</a></code> this flag is ignored and all views are
+ regarded for accessibility purposes.
+ </p>
+ <p>
+ Usually views not important for accessibility are layout managers that do not
+ react to user actions, do not draw any content, and do not have any special
+ semantics in the context of the screen content. For example, a three by three
+ grid can be implemented as three horizontal linear layouts and one vertical,
+ or three vertical linear layouts and one horizontal, or one grid layout, etc.
+ In this context the actual layout mangers used to achieve the grid configuration
+ are not important, rather it is important that there are nine evenly distributed
+ elements.
+ </p>
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                2
+                (0x00000002)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FLAG_REPORT_VIEW_IDS"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FLAG_REPORT_VIEW_IDS
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This flag requests that the <code><a href="../../../reference/android/view/accessibility/AccessibilityNodeInfo.html">AccessibilityNodeInfo</a></code>s obtained
+ by an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> contain the id of the source view.
+ The source view id will be a fully qualified resource name of the
+ form "package:id/name", for example "foo.bar:id/my_list", and it is
+ useful for UI test automation. This flag is not set by default.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                16
+                (0x00000010)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This flag requests from the system to enable web accessibility enhancing
+ extensions. Such extensions aim to provide improved accessibility support
+ for content presented in a <code><a href="../../../reference/android/webkit/WebView.html">WebView</a></code>. An example of such
+ an extension is injecting JavaScript from a secure source. The system will enable
+ enhanced web accessibility if there is at least one accessibility service
+ that has this flag set. Hence, clearing this flag does not guarantee that the
+ device will not have enhanced web accessibility enabled since there may be
+ another enabled service that requested it.
+ <p>
+ Services that want to set this flag have to declare this capability
+ in their meta-data by setting the attribute <code><a href="../../../reference/android/R.attr.html">#canRequestEnhancedWebAccessibility canRequestEnhancedWebAccessibility</a></code> to
+ true, otherwise this flag will be ignored. For how to declare the meta-data
+ of a service refer to <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#SERVICE_META_DATA">AccessibilityService.SERVICE_META_DATA</a></code>.
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/R.styleable.html#AccessibilityService_canRequestEnhancedWebAccessibility">AccessibilityService_canRequestEnhancedWebAccessibility</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                8
+                (0x00000008)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FLAG_REQUEST_FILTER_KEY_EVENTS"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FLAG_REQUEST_FILTER_KEY_EVENTS
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This flag requests from the system to filter key events. If this flag
+ is set the accessibility service will receive the key events before
+ applications allowing it implement global shortcuts. Setting this flag
+ does not guarantee that this service will filter key events since only
+ one service can do so at any given time. This avoids user confusion due
+ to behavior change in case different key filtering services are enabled.
+ If there is already another key filtering service enabled, this one will
+ not receive key events.
+ <p>
+ Services that want to set this flag have to declare this capability
+ in their meta-data by setting the attribute <code><a href="../../../reference/android/R.attr.html">#canRequestFilterKeyEvents canRequestFilterKeyEvents</a></code> to true,
+ otherwise this flag will be ignored. For how to declare the meta-data
+ of a service refer to <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#SERVICE_META_DATA">AccessibilityService.SERVICE_META_DATA</a></code>.
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/R.styleable.html#AccessibilityService_canRequestFilterKeyEvents">AccessibilityService_canRequestFilterKeyEvents</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                32
+                (0x00000020)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FLAG_REQUEST_TOUCH_EXPLORATION_MODE"></A>
+
+<div class="jd-details api apilevel-16"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        FLAG_REQUEST_TOUCH_EXPLORATION_MODE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 16</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This flag requests that the system gets into touch exploration mode.
+ In this mode a single finger moving on the screen behaves as a mouse
+ pointer hovering over the user interface. The system will also detect
+ certain gestures performed on the touch screen and notify this service.
+ The system will enable touch exploration mode if there is at least one
+ accessibility service that has this flag set. Hence, clearing this
+ flag does not guarantee that the device will not be in touch exploration
+ mode since there may be another enabled service that requested it.
+ <p>
+ For accessibility services targeting API version higher than
+ <code><a href="../../../reference/android/os/Build.VERSION_CODES.html#JELLY_BEAN_MR1">JELLY_BEAN_MR1</a></code> that want to set
+ this flag have to declare this capability in their meta-data by setting
+ the attribute <code><a href="../../../reference/android/R.attr.html#canRequestTouchExplorationMode">canRequestTouchExplorationMode</a></code> to true, otherwise this flag will
+ be ignored. For how to declare the meta-data of a service refer to
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#SERVICE_META_DATA">AccessibilityService.SERVICE_META_DATA</a></code>.
+ </p>
+ <p>
+ Services targeting API version equal to or lower than
+ <code><a href="../../../reference/android/os/Build.VERSION_CODES.html#JELLY_BEAN_MR1">JELLY_BEAN_MR1</a></code> will work normally, i.e.
+ the first time they are run, if this flag is specified, a dialog is
+ shown to the user to confirm enabling explore by touch.
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/R.styleable.html#AccessibilityService_canRequestTouchExplorationMode">AccessibilityService_canRequestTouchExplorationMode</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                4
+                (0x00000004)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="CREATOR"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/android/os/Parcelable.Creator.html">Creator</a>&lt;<a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html">AccessibilityServiceInfo</a>&gt;
+      </span>
+        CREATOR
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/os/Parcelable.Creator.html">Parcelable.Creator</a></code></li>
+      </ul>
+  </div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="eventTypes"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        int
+      </span>
+        eventTypes
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The event types an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> is interested in.
+ <p>
+   <strong>Can be dynamically set at runtime.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_CLICKED">TYPE_VIEW_CLICKED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_LONG_CLICKED">TYPE_VIEW_LONG_CLICKED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_FOCUSED">TYPE_VIEW_FOCUSED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_SELECTED">TYPE_VIEW_SELECTED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_TEXT_CHANGED">TYPE_VIEW_TEXT_CHANGED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_WINDOW_STATE_CHANGED">TYPE_WINDOW_STATE_CHANGED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_NOTIFICATION_STATE_CHANGED">TYPE_NOTIFICATION_STATE_CHANGED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_TOUCH_EXPLORATION_GESTURE_START">TYPE_TOUCH_EXPLORATION_GESTURE_START</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_TOUCH_EXPLORATION_GESTURE_END">TYPE_TOUCH_EXPLORATION_GESTURE_END</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_HOVER_ENTER">TYPE_VIEW_HOVER_ENTER</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_HOVER_EXIT">TYPE_VIEW_HOVER_EXIT</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_SCROLLED">TYPE_VIEW_SCROLLED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_VIEW_TEXT_SELECTION_CHANGED">TYPE_VIEW_TEXT_SELECTION_CHANGED</a></code></li><li><code><a href="../../../reference/android/view/accessibility/AccessibilityEvent.html#TYPE_WINDOW_CONTENT_CHANGED">TYPE_WINDOW_CONTENT_CHANGED</a></code></li>
+      </ul>
+  </div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="feedbackType"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        int
+      </span>
+        feedbackType
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The feedback type an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> provides.
+ <p>
+   <strong>Can be dynamically set at runtime.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_AUDIBLE">FEEDBACK_AUDIBLE</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_GENERIC">FEEDBACK_GENERIC</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_HAPTIC">FEEDBACK_HAPTIC</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_SPOKEN">FEEDBACK_SPOKEN</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_VISUAL">FEEDBACK_VISUAL</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_BRAILLE">FEEDBACK_BRAILLE</a></code></li>
+      </ul>
+  </div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="flags"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        int
+      </span>
+        flags
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This field represents a set of flags used for configuring an
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code>.
+ <p>
+   <strong>Can be dynamically set at runtime.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#DEFAULT">DEFAULT</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_INCLUDE_NOT_IMPORTANT_VIEWS">FLAG_INCLUDE_NOT_IMPORTANT_VIEWS</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_TOUCH_EXPLORATION_MODE">FLAG_REQUEST_TOUCH_EXPLORATION_MODE</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY">FLAG_REQUEST_ENHANCED_WEB_ACCESSIBILITY</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REQUEST_FILTER_KEY_EVENTS">FLAG_REQUEST_FILTER_KEY_EVENTS</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FLAG_REPORT_VIEW_IDS">FLAG_REPORT_VIEW_IDS</a></code></li>
+      </ul>
+  </div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="notificationTimeout"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        long
+      </span>
+        notificationTimeout
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The timeout after the most recent event of a given type before an
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> is notified.
+ <p>
+   <strong>Can be dynamically set at runtime.</strong>.
+ </p>
+ <p>
+ <strong>Note:</strong> The event notification timeout is useful to avoid propagating
+       events to the client too frequently since this is accomplished via an expensive
+       interprocess call. One can think of the timeout as a criteria to determine when
+       event generation has settled down.
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="packageNames"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        <a href="../../../reference/java/lang/String.html">String[]</a>
+      </span>
+        packageNames
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The package names an <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> is interested in. Setting
+ to <code>null</code> is equivalent to all packages.
+ <p>
+   <strong>Can be dynamically set at runtime.</strong>
+ </p>
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="AccessibilityServiceInfo()"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">AccessibilityServiceInfo</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates a new instance.
+</p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="capabilityToString(int)"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">capabilityToString</span>
+      <span class="normal">(int capability)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the string representation of a capability. For example,
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT">CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT</a></code> is represented
+ by the string CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>capability</td>
+          <td>The capability.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The string representation.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="describeContents()"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">describeContents</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Describe the kinds of special objects contained in this Parcelable's
+ marshalled representation.
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a bitmask indicating the set of special object types marshalled
+ by the Parcelable.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="equals(java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">equals</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Object.html">Object</a> obj)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Compares this instance with the specified object and indicates if they
+ are equal. In order to be equal, <code>o</code> must represent the same object
+ as this instance using a class-specific comparison. The general contract
+ is that this comparison should be reflexive, symmetric, and transitive.
+ Also, no object reference other than null is equal to null.
+
+ <p>The default implementation returns <code>true</code> only if <code>this ==
+ o</code>. See <a href="../../../reference/java/lang/Object.html#writing_equals">Writing a correct
+ <code>equals</code> method</a>
+ if you intend implementing your own <code>equals</code> method.
+
+ <p>The general contract for the <code>equals</code> and <code><a href="../../../reference/java/lang/Object.html#hashCode()">hashCode()</a></code> methods is that if <code>equals</code> returns <code>true</code> for
+ any two objects, then <code>hashCode()</code> must return the same value for
+ these objects. This means that subclasses of <code>Object</code> usually
+ override either both methods or neither of them.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>obj</td>
+          <td>the object to compare this instance with.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li><code>true</code> if the specified object is equal to this <code>Object</code>; <code>false</code> otherwise.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="feedbackTypeToString(int)"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">feedbackTypeToString</span>
+      <span class="normal">(int feedbackType)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the string representation of a feedback type. For example,
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#FEEDBACK_SPOKEN">FEEDBACK_SPOKEN</a></code> is represented by the string FEEDBACK_SPOKEN.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>feedbackType</td>
+          <td>The feedback type.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The string representation.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="flagToString(int)"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">flagToString</span>
+      <span class="normal">(int flag)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the string representation of a flag. For example,
+ <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#DEFAULT">DEFAULT</a></code> is represented by the string DEFAULT.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>flag</td>
+          <td>The flag.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The string representation.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getCanRetrieveWindowContent()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">getCanRetrieveWindowContent</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      <p>
+  <p class="caution"><strong>
+      This method was deprecated
+      in API level 18.</strong><br/>
+    Use <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#getCapabilities()">getCapabilities()</a></code>.
+
+  </p>
+  <div class="jd-tagdata jd-tagdescr"><p>Whether this service can retrieve the current window's content.
+ <p>
+    <strong>Statically set from
+    <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#SERVICE_META_DATA">meta-data</a></code>.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>True if window content can be retrieved.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getCapabilities()"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getCapabilities</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the bit mask of capabilities this accessibility service has such as
+ being able to retrieve the active window content, etc.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The capability bit mask.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT">CAPABILITY_CAN_RETRIEVE_WINDOW_CONTENT</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION">CAPABILITY_CAN_REQUEST_TOUCH_EXPLORATION</a></code></li><li><code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY">CAPABILITY_CAN_REQUEST_ENHANCED_WEB_ACCESSIBILITY</a></code></li><li><code><a href="../../../">ERROR(/#CAPABILITY_FILTER_KEY_EVENTS)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getDescription()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getDescription</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      <p>
+  <p class="caution"><strong>
+      This method was deprecated
+      in API level 16.</strong><br/>
+    Use <code><a href="../../../reference/android/accessibilityservice/AccessibilityServiceInfo.html#loadDescription(android.content.pm.PackageManager)">loadDescription(PackageManager)</a></code>.
+
+  </p>
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the non-localized description of the accessibility service.
+ <p>
+    <strong>Statically set from
+    <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#SERVICE_META_DATA">meta-data</a></code>.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The description.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getId()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getId</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The accessibility service id.
+ <p>
+   <strong>Generated by the system.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The id.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getResolveInfo()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/content/pm/ResolveInfo.html">ResolveInfo</a>
+      </span>
+      <span class="sympad">getResolveInfo</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The service <code><a href="../../../reference/android/content/pm/ResolveInfo.html">ResolveInfo</a></code>.
+ <p>
+   <strong>Generated by the system.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The info.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getSettingsActivityName()"></A>
+
+<div class="jd-details api apilevel-14"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getSettingsActivityName</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 14</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The settings activity name.
+ <p>
+    <strong>Statically set from
+    <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#SERVICE_META_DATA">meta-data</a></code>.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The settings activity name.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="hashCode()"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">hashCode</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns an integer hash code for this object. By contract, any two
+ objects for which <code><a href="../../../reference/java/lang/Object.html#equals(java.lang.Object)">equals(Object)</a></code> returns <code>true</code> must return
+ the same hash code value. This means that subclasses of <code>Object</code>
+ usually override both methods or neither method.
+
+ <p>Note that hash values must not change over time unless information used in equals
+ comparisons also changes.
+
+ <p>See <a href="../../../reference/java/lang/Object.html#writing_hashCode">Writing a correct
+ <code>hashCode</code> method</a>
+ if you intend implementing your own <code>hashCode</code> method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>this object's hash code.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="loadDescription(android.content.pm.PackageManager)"></A>
+
+<div class="jd-details api apilevel-16"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">loadDescription</span>
+      <span class="normal">(<a href="../../../reference/android/content/pm/PackageManager.html">PackageManager</a> packageManager)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 16</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>The localized description of the accessibility service.
+ <p>
+    <strong>Statically set from
+    <code><a href="../../../reference/android/accessibilityservice/AccessibilityService.html#SERVICE_META_DATA">meta-data</a></code>.</strong>
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The localized description.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="toString()"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">toString</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a string containing a concise, human-readable description of this
+ object. Subclasses are encouraged to override this method and provide an
+ implementation that takes into account the object's type and data. The
+ default implementation is equivalent to the following expression:
+ <pre>
+   getClass().getName() + '@' + Integer.toHexString(hashCode())</pre>
+ <p>See <a href="../../../reference/java/lang/Object.html#writing_toString">Writing a useful
+ <code>toString</code> method</a>
+ if you intend implementing your own <code>toString</code> method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>a printable representation of this object.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="writeToParcel(android.os.Parcel, int)"></A>
+
+<div class="jd-details api apilevel-4"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">writeToParcel</span>
+      <span class="normal">(<a href="../../../reference/android/os/Parcel.html">Parcel</a> parcel, int flagz)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 4</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Flatten this object in to a Parcel.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>parcel</td>
+          <td>The Parcel in which the object should be written.</td>
+        </tr>
+        <tr>
+          <th>flagz</td>
+          <td>Additional flags about how the object should be written.
+ May be 0 or <code><a href="../../../reference/android/os/Parcelable.html#PARCELABLE_WRITE_RETURN_VALUE">PARCELABLE_WRITE_RETURN_VALUE</a></code>.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

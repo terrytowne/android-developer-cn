@@ -1,0 +1,2403 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>App Widgets | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >App Widgets</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+    
+    <h2>In this document</h2>
+    <ol>
+      <li><a href="#Basics">The Basics</a></li>
+      <li><a href="#Manifest">Declaring an App Widget in the Manifest</a></li>
+      <li><a href="#MetaData">Adding the AppWidgetProviderInfo Metadata</a></li>
+      <li><a href="#CreatingLayout">Creating the App Widget Layout</a></li>
+      <li><a href="#AppWidgetProvider">Using the AppWidgetProvider Class</a>
+        <ol>
+          <li><a href="#ProviderBroadcasts">Receiving App Widget broadcast
+Intents</a></li>
+        </ol>
+      </li>
+      <li><a href="#Configuring">Creating an App Widget Configuration
+Activity</a>
+        <ol>
+          <li><a href="#UpdatingFromTheConfiguration">Updating the App Widget
+from 
+            the Configuration Activity</a></li>
+        </ol>
+      </li>
+      <li><a href="#preview">Setting a Preview Image</a></li>
+      <li><a href="#lockscreen">Enabling App Widgets on the Lockscreen</a>
+        <ol>
+          <li><a href="#lockscreen-sizing">Sizing guidelines</a></li>
+        </ol>
+      </li>
+
+      <li><a href="#collections">Using App Widgets with Collections</a>
+        <ol>
+          <li><a href="#collection_sample">Sample application</a></li>
+          <li><a href="#implementing_collections">Implementing app widgets with
+collections
+</a></li>
+          <li><a href="#fresh">Keeping Collection Data Fresh</a></li>
+        </ol>   
+      </li>
+    </ol>
+
+    <h2>Key classes</h2>
+    <ol>
+      <li><code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code></li>
+      <li><code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code></li>
+      <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html">AppWidgetManager</a></code></li>
+    </ol>
+  </div>
+</div>
+
+
+<p>App Widgets are miniature application views that can be embedded in other
+applications
+(such as the Home screen) and receive periodic updates. These views are
+referred 
+to as Widgets in the user interface,
+and you can publish one with an App Widget provider. An application component
+that is 
+able to hold other App Widgets is called an App Widget host. The screenshot
+below shows
+the Music App Widget.</p>
+
+<img src="../../../images/appwidgets/appwidget.png" alt="" />
+
+<p>This document describes how to publish an App Widget using an App Widget
+provider. For a discussion of creating your own <code><a href="../../../reference/android/appwidget/AppWidgetHost.html">AppWidgetHost</a></code>
+to host app widgets, see <a href="../../../guide/topics/appwidgets/host.html">
+App Widget Host</a>.</p>
+
+<div class="note design">
+<p><strong>Widget Design</strong></p>
+  <p>For information about how to design your app widget, read the <a
+href="../../../design/patterns/widgets.html">Widgets</a> design guide.</p>
+</div>
+
+
+<h2 id="Basics">The Basics</h2>
+
+<p>To create an App Widget, you need the following:</p>
+
+<dl>
+  <dt><code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code> object</dt>
+  <dd>Describes the metadata for an App Widget, such as the App Widget's layout,
+update frequency,
+    and the AppWidgetProvider class. This should be defined in XML.</dd>
+  <dt><code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> class implementation</dt>
+  <dd>Defines the basic methods that allow you to programmatically interface
+with the App Widget,
+    based on broadcast events. Through it, you will receive broadcasts when the
+App Widget is updated, 
+    enabled, disabled and deleted.</dd>
+  <dt>View layout</dt>
+  <dd>Defines the initial layout for the App Widget, defined in XML.</dd>
+</dl>
+
+<p>Additionally, you can implement an App Widget configuration Activity. This is
+an optional 
+<code><a href="../../../reference/android/app/Activity.html">Activity</a></code> that launches when the user adds your App Widget
+and allows him or her
+to modify App Widget settings at create-time.</p>
+
+<p>The following sections describe how to set up each of these components.</p>
+
+
+<h2 id="Manifest">Declaring an App Widget in the Manifest</h2>
+
+<p>First, declare the <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> class in your
+application's
+<code>AndroidManifest.xml</code> file. For example:</p>
+
+<pre style="clear:right">
+&lt;receiver android:name="ExampleAppWidgetProvider" >
+    &lt;intent-filter>
+        &lt;action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+    &lt;/intent-filter>
+    &lt;meta-data android:name="android.appwidget.provider"
+               android:resource="@xml/example_appwidget_info" />
+&lt;/receiver>
+</pre>
+
+<p>The <code>&lt;receiver&gt;</code> element requires the
+<code>android:name</code> 
+attribute, which specifies the <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> used
+by the App Widget.</p>
+
+<p>The <code>&lt;intent-filter&gt;</code> element must include an
+<code>&lt;action></code>
+element with the <code>android:name</code> attribute. This attribute specifies
+that the <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> accepts the <code><a href="../../../reference/android/appwidget/AppWidgetManager.html#ACTION_APPWIDGET_UPDATE">ACTION_APPWIDGET_UPDATE</a></code> broadcast.
+This is the only broadcast that you must explicitly declare. The <code><a href="../../../reference/android/appwidget/AppWidgetManager.html">AppWidgetManager</a></code>
+automatically sends all other App Widget broadcasts to the AppWidgetProvider as
+necessary.</p>
+
+<p>The <code>&lt;meta-data&gt;</code> element specifies the
+<code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code> resource and requires the 
+following attributes:</p>
+<ul>
+  <li><code>android:name</code> - Specifies the metadata name. Use
+<code>android.appwidget.provider</code>
+    to identify the data as the <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code>
+descriptor.</li>
+  <li><code>android:resource</code> - Specifies the <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code> 
+    resource location.</li>
+</ul>
+
+
+<h2 id="MetaData">Adding the AppWidgetProviderInfo Metadata</h2>
+
+<p>The <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code> defines the essential 
+qualities of an App Widget, such as its minimum layout dimensions, its initial
+layout resource,
+how often to update the App Widget, and (optionally) a configuration Activity to
+launch at create-time.
+Define the AppWidgetProviderInfo object in an XML resource using a single
+<code>&lt;appwidget-provider></code> element and save it in the project's
+<code>res/xml/</code> 
+folder.</p>
+
+<p>For example:</p>
+
+<pre>
+&lt;appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
+    android:updatePeriodMillis="86400000"
+    android:previewImage="@drawable/preview"
+    android:initialLayout="@layout/example_appwidget"
+    android:configure="com.example.android.ExampleAppWidgetConfigure" 
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen|keyguard"
+    android:initialKeyguardLayout="@layout/example_keyguard">
+&lt;/appwidget-provider>
+</pre>
+
+<p>Here's a summary of the <code>&lt;appwidget-provider></code> attributes:</p>
+<ul>
+  <li>The values for the <code>minWidth</code> and <code>minHeight</code>
+    attributes specify the minimum amount of space the App Widget consumes
+    <em>by default</em>. The default Home screen positions App Widgets in its
+    window based on a grid of cells that have a defined height and width. If
+    the values for an App Widget's minimum width or height don't match the
+    dimensions of the cells, then the App Widget dimensions round
+    <em>up</em> to the nearest cell size.
+    <p>See the <a href="../../../guide/practices/ui_guidelines/widget_design.html#anatomy_determining_size">
+    App Widget Design Guidelines</a> for more information on sizing your App
+    Widgets.</p>
+
+    <p class="note"><strong>Note:</strong> To make your app widget portable
+    across devices, your app widget's minimum size should never be larger
+    than 4 x 4 cells.</p>
+  </li>
+
+  <li>The <code>minResizeWidth</code> and <code>minResizeHeight</code> attributes
+    specify the App Widget's absolute minimum size. These values should specify
+    the size below which the App Widget would be illegible or otherwise unusable.
+    Using these attributes allows the user to resize the widget to a size that
+    may be smaller than the default widget size defined by the
+    <code>minWidth</code> and <code>minHeight</code> attributes.
+    Introduced in Android 3.1.
+
+    <p>See the <a href="../../../guide/practices/ui_guidelines/widget_design.html#anatomy_determining_size">
+    App Widget Design Guidelines</a> for more information on sizing your App
+    Widgets.</p>
+  </li>
+
+  <li>The <code>updatePeriodMillis</code> attribute defines how often the App
+Widget framework should request an update from the <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> by calling the 
+<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> 
+callback method. The actual update
+is not guaranteed to occur exactly on time with this value and we suggest
+updating as infrequently as possible&mdash;perhaps no more than once an hour to
+conserve the battery. You might also allow the user to adjust the frequency in a
+configuration&mdash;some people might want a stock ticker to update every 15
+minutes, or maybe only four times a day. 
+    	<p class="note"><strong>Note:</strong> If the device is asleep when it
+is time for an update 
+    	(as defined by <code>updatePeriodMillis</code>), then the device will
+wake up in order 
+    	to perform the update. If you don't update more than once per hour, this
+probably won't 
+    	cause significant problems for the battery life. If, however, you need
+to update more 
+    	frequently and/or you do not need to update while the device is asleep,
+then you can instead 
+    	perform updates based on an alarm that will not wake the device. To do
+so, set an alarm with 
+    	an Intent that your AppWidgetProvider receives, using the	<code><a href="../../../reference/android/app/AlarmManager.html">AlarmManager</a></code>. 
+    	Set the alarm type to either <code><a href="../../../reference/android/app/AlarmManager.html#ELAPSED_REALTIME">ELAPSED_REALTIME</a></code> or 
+    	<code><a href="../../../reference/android/app/AlarmManager.html#RTC">RTC</a></code>, which will only
+    	deliver the alarm when the device is awake. Then set
+<code>updatePeriodMillis</code> to 
+    	zero (<code>"0"</code>).</p>
+  </li>
+  <li>The <code>initialLayout</code> attribute points to the layout resource
+that defines the
+    App Widget layout.</li>
+  <li>The <code>configure</code> attribute defines the <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> to launch when
+    the user adds the App Widget, in order for him or her to configure App
+Widget properties. This is optional
+    (read <a href="#Configuring">Creating an App Widget Configuration
+Activity</a> below).</li>
+    
+   <li>The <code>previewImage</code> attribute specifies a preview of what the
+app widget will look like after it's configured, which the user sees when
+selecting the app widget. If not supplied, the user instead sees your
+application's launcher icon. This field corresponds to the
+<code>android:previewImage</code> attribute in the <code>&lt;receiver&gt;</code>
+element in the <code>AndroidManifest.xml</code> file. For more discussion of
+using <code>previewImage</code>, see <a href="#preview">Setting a Preview
+Image</a>. Introduced in Android 3.0.</li>
+
+   <li>The <code>autoAdvanceViewId</code> attribute specifies the view ID of the
+app widget subview that should be auto-advanced by the widget's host. Introduced in Android 3.0.</li> 
+
+<li>The <code>resizeMode</code> attribute specifies the rules by which a widget
+can be resized. You use this attribute to make homescreen widgets
+resizeable&mdash;horizontally, vertically, or on both axes. Users touch-hold a
+widget to show its resize handles, then drag the horizontal and/or vertical
+handles to change the size on the layout grid. Values for the
+<code>resizeMode</code> attribute include "horizontal", "vertical", and "none".
+To declare a widget as resizeable horizontally and vertically, supply the value
+"horizontal|vertical". Introduced in Android 3.1.</li> 
+
+<li>The <code>minResizeHeight</code> attribute specifies the minimum height (in dps) to which
+the widget can be resized. This field has no effect if it is greater than <code>minHeight</code> or if
+vertical resizing isn't enabled (see <code>resizeMode</code>). Introduced in Android 4.0.</li>
+
+<li>The <code> minResizeWidth </code> attribute specifies the minimum width (in dps) to which
+the widget can be resized. This field has no effect if it is greater than <code>minWidth</code> or if
+horizontal resizing isn't enabled (see <code>resizeMode</code>). Introduced in Android 4.0.</li>
+
+<li>The <code>widgetCategory</code> attribute declares whether your App Widget can be displayed on the home screen, 
+the lock screen (keyguard), or both. Values for this attribute include "home_screen" and "keyguard".  A widget that 
+is displayed on both needs to ensure that it follows the design guidelines for both widget classes. For more
+information, see <a href="#lockscreen">Enabling App Widgets on the Lockscreen</a>. The default value is "home_screen". Introduced in Android 4.2.
+</li>
+
+<li>The <code>initialKeyguardLayout</code> attribute points to the layout resource
+that defines the lock screen App Widget layout. This works the same way as the 
+<code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#initialLayout">android:initialLayout</a></code>, 
+in that it provides a layout that can appear immediately until your app widget is initialized and able to update 
+the layout. Introduced in Android 4.2.</li>
+
+</ul>
+
+<p>See the <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code> class for more
+information on the
+attributes accepted by the <code>&lt;appwidget-provider></code> element.</p>
+
+
+<h2 id="CreatingLayout">Creating the App Widget Layout</h2>
+
+<p>You must define an initial layout for your App Widget in XML and save it in
+the project's
+<code>res/layout/</code> directory. You can design your App Widget using the
+View objects listed
+below, but before you begin designing your App Widget, please read and
+understand the
+<a href="../../../guide/practices/ui_guidelines/widget_design.html">App Widget
+Design 
+Guidelines</a>.</p>
+
+<p>Creating the App Widget layout is simple if you're
+familiar with <a
+href="../../../guide/topics/ui/declaring-layout.html">Layouts</a>.
+However, you must be aware that App Widget layouts are based on <code><a href="../../../reference/android/widget/RemoteViews.html">RemoteViews</a></code>,
+which do not support every kind of layout or view widget.</p>
+
+<p>A RemoteViews object (and, consequently, an App Widget) can support the 
+following layout classes:</p>
+
+<ul class="nolist">
+  <li><code><a href="../../../reference/android/widget/FrameLayout.html">FrameLayout</a></code></li>
+  <li><code><a href="../../../reference/android/widget/LinearLayout.html">LinearLayout</a></code></li>
+  <li><code><a href="../../../reference/android/widget/RelativeLayout.html">RelativeLayout</a></code></li>
+  <li><code><a href="../../../reference/android/widget/GridLayout.html">GridLayout</a></code></li>
+</ul>
+
+<p>And the following widget classes:</p>
+<ul class="nolist">
+  <li><code><a href="../../../reference/android/widget/AnalogClock.html">AnalogClock</a></code></li>
+  <li><code><a href="../../../reference/android/widget/Button.html">Button</a></code></li>
+  <li><code><a href="../../../reference/android/widget/Chronometer.html">Chronometer</a></code></li>
+  <li><code><a href="../../../reference/android/widget/ImageButton.html">ImageButton</a></code></li>
+  <li><code><a href="../../../reference/android/widget/ImageView.html">ImageView</a></code></li>
+  <li><code><a href="../../../reference/android/widget/ProgressBar.html">ProgressBar</a></code></li>
+  <li><code><a href="../../../reference/android/widget/TextView.html">TextView</a></code></li>
+  <li><code><a href="../../../reference/android/widget/ViewFlipper.html">ViewFlipper</a></code></li>
+  <li><code><a href="../../../reference/android/widget/ListView.html">ListView</a></code></li>
+  <li><code><a href="../../../reference/android/widget/GridView.html">GridView</a></code></li>
+  <li><code><a href="../../../reference/android/widget/StackView.html">StackView</a></code></li>
+  <li><code><a href="../../../reference/android/widget/AdapterViewFlipper.html">AdapterViewFlipper</a></code></li>
+</ul>
+
+<p>Descendants of these classes are not supported.</p>
+
+<p>RemoteViews also supports <code><a href="../../../reference/android/view/ViewStub.html">ViewStub</a></code>, which is an invisible, zero-sized View you can use 
+to lazily inflate layout resources at runtime.</p>
+
+
+<h3 id="AddingMargins">Adding margins to App Widgets</h3>
+
+<p>Widgets should not generally extend to screen edges and should not visually be flush with other widgets, so you should add margins on all sides around your widget frame.</p>
+
+<p>As of Android 4.0, app widgets are automatically given padding between the widget frame and the app widget's bounding box to provide better alignment with other widgets and icons on the user's home screen. To take advantage of this strongly recommended behavior, set your application's <a href="../../../guide/topics/manifest/uses-sdk-element.html">targetSdkVersion</a> to 14 or greater.</p>
+
+<p>It's easy to write a single layout that has custom margins applied for earlier versions of the platform, and has no extra margins for Android 4.0 and greater:</p>
+
+<ol>
+  <li>Set your application's <code>targetSdkVersion</code> to 14 or greater.</li>
+  <li>Create a layout such as the one below, that references a <a href="../../../guide/topics/resources/more-resources.html#Dimension">dimension resource</a> for its margins:
+
+<pre>
+&lt;FrameLayout
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  <strong>android:padding="@dimen/widget_margin"&gt;</strong>
+
+  &lt;LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/my_widget_background"&gt;
+    &hellip;
+  &lt;/LinearLayout&gt;
+
+&lt;/FrameLayout&gt;
+</pre>
+
+  </li>
+  <li>Create two dimensions resources, one in <code>res/values/</code> to provide the pre-Android 4.0 custom margins, and one in <code>res/values-v14/</code> to provide no extra padding for Android 4.0 widgets:
+
+    <p><strong>res/values/dimens.xml</strong>:<br>
+    <pre>&lt;dimen name="widget_margin"&gt;8dp&lt;/dimen&gt;</pre></p>
+
+    <p><strong>res/values-v14/dimens.xml</strong>:<br>
+    <pre>&lt;dimen name="widget_margin"&gt;0dp&lt;/dimen&gt;</pre></p>
+  </li>
+</ol>
+
+<p>Another option is to simply build extra margins into your <a href="../../../guide/topics/graphics/2d-graphics.html#nine-patch">nine-patch</a> background assets by default, and provide different nine-patches with no margins for API level 14 or later.</p>
+
+
+<h2 id="AppWidgetProvider">Using the AppWidgetProvider Class</h2>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+    <p>You must declare your AppWidgetProvider class implementation as a
+broadcast receiver 
+    using the <code>&lt;receiver></code> element in the AndroidManifest (see
+    <a href="#Manifest">Declaring an App Widget in the Manifest</a> above).</p>
+  </div>
+</div>
+
+<p>The <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> class extends
+BroadcastReceiver as a convenience
+class to handle the App Widget broadcasts. The AppWidgetProvider receives only
+the event broadcasts that
+are relevant to the App Widget, such as when the App Widget is updated, deleted,
+enabled, and disabled.
+When these broadcast events occur, the AppWidgetProvider receives the following
+method calls:</p>
+
+<dl>
+  <dt>
+  <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> 
+</dt>
+    <dd>This is called to update the App Widget at intervals defined by the
+<code>updatePeriodMillis</code>
+    attribute in the AppWidgetProviderInfo (see <a href="#MetaData">Adding the 
+    AppWidgetProviderInfo Metadata</a> above). This method is also called
+    when the user adds the App Widget, so it should perform the essential setup,
+    such as define event handlers for Views and start a temporary
+    <code><a href="../../../reference/android/app/Service.html">Service</a></code>, if necessary. However, if you have declared a
+configuration
+    Activity, <strong>this method is not called</strong> when the user adds the
+App Widget,
+    but is called for the subsequent updates. It is the responsibility of the 
+    configuration Activity to perform the first update when configuration is
+done.
+    (See <a href="#Configuring">Creating an App Widget Configuration
+Activity</a> below.)</dd> 
+
+<dt>
+  <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onAppWidgetOptionsChanged(android.content.Context, android.appwidget.AppWidgetManager, int, android.os.Bundle)">onAppWidgetOptionsChanged()</a></code> 
+</dt>
+<dd>
+This is called when the widget is first placed and any time the widget is resized. You can use this callback to show or hide content based on the widget's size ranges. You get the size ranges by calling <code><a href="../../../reference/android/appwidget/AppWidgetManager.html#getAppWidgetOptions(int)">getAppWidgetOptions()</a></code>, which returns a  <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> that includes the following:<br /><br />
+<ul>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#OPTION_APPWIDGET_MIN_WIDTH">OPTION_APPWIDGET_MIN_WIDTH</a></code>&mdash;Contains 
+the lower bound on the current width, in dp units, of a widget instance.</li>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#OPTION_APPWIDGET_MIN_HEIGHT">OPTION_APPWIDGET_MIN_HEIGHT</a></code>&mdash;Contains 
+the lower bound on the current height, in dp units, of a widget instance.</li>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#OPTION_APPWIDGET_MAX_WIDTH">OPTION_APPWIDGET_MAX_WIDTH</a></code>&mdash;Contains
+ the upper bound on the current width, in dp units, of a widget instance.</li>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#OPTION_APPWIDGET_MAX_HEIGHT">OPTION_APPWIDGET_MAX_HEIGHT</a></code>&mdash;Contains 
+the upper bound on the current width, in dp units, of a widget instance.</li>
+</ul>
+
+This callback was introduced in API Level 16 (Android 4.1). If you implement this callback, make sure that your app doesn't depend on it since it won't be called on older devices.
+</dd>
+  <dt><code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onDeleted(android.content.Context, int[])">onDeleted(Context, int[])</a></code></dt>
+    <dd>This is called every time an App Widget is deleted from the App Widget
+host.</dd>
+  <dt><code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onEnabled(android.content.Context)">onEnabled(Context)</a></code></dt>
+    <dd>This is called when an instance the App Widget is created for the first
+time. For example, if the user 
+    adds two instances of your App Widget, this is only called the first time.
+    If you need to open a new database or perform other setup that only needs to
+occur once 
+    for all App Widget instances, then this is a good place to do it.</dd> 
+  <dt><code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onDisabled(android.content.Context)">onDisabled(Context)</a></code></dt>
+    <dd>This is called when the last instance of your App Widget is deleted from
+the App Widget host. 
+    This is where you should clean up any work done in 
+    <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onEnabled(android.content.Context)">onEnabled(Context)</a></code>, 
+    such as delete a temporary database.</dd> 
+  <dt><code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onReceive(android.content.Context, android.content.Intent)">onReceive(Context, Intent)</a></code></dt>
+    <dd>This is called for every broadcast and before each of the above callback
+methods.
+    You normally don't need to implement this method because the default
+AppWidgetProvider 
+    implementation filters all App Widget broadcasts and calls the above 
+    methods as appropriate.</dd> 
+</dl>
+
+<p>The most important AppWidgetProvider callback is 
+<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> 
+because it is called when
+each App Widget is added to a host (unless you use a configuration Activity). If
+your App Widget accepts any user interaction events, then you need to register
+the event handlers in this callback. If your App Widget doesn't create temporary
+files or databases, or perform other work that requires clean-up, then 
+<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> 
+may be the only callback
+method you need to define. For example, if you want an App Widget with a button
+that launches an Activity when clicked, you could use the following
+implementation of AppWidgetProvider:</p>
+
+<pre>
+public class ExampleAppWidgetProvider extends AppWidgetProvider {
+
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        final int N = appWidgetIds.length;
+
+        // Perform this loop procedure for each App Widget that belongs to this provider
+        for (int i=0; i&lt;N; i++) {
+            int appWidgetId = appWidgetIds[i];
+
+            // Create an Intent to launch ExampleActivity
+            Intent intent = new Intent(context, ExampleActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+
+            // Get the layout for the App Widget and attach an on-click listener
+            // to the button
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.appwidget_provider_layout);
+            views.setOnClickPendingIntent(R.id.button, pendingIntent);
+
+            // Tell the AppWidgetManager to perform an update on the current app widget
+            appWidgetManager.updateAppWidget(appWidgetId, views);
+        }
+    }
+}
+</pre>
+
+<p>This AppWidgetProvider defines only the 
+<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> 
+method for the purpose of
+defining a <code><a href="../../../reference/android/app/PendingIntent.html">PendingIntent</a></code> that launches an <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> and attaching it to the App Widget's button with <code><a href="../../../reference/android/widget/RemoteViews.html#setOnClickPendingIntent(int, android.app.PendingIntent)">setOnClickPendingIntent(int, PendingIntent)</a></code>. Notice
+that it includes a loop that iterates through each entry in
+<code>appWidgetIds</code>, which is an array of IDs that identify each App
+Widget created by this provider. In this way, if the user creates more than one
+instance of the App Widget, then they are all updated simultaneously. However,
+only one <code>updatePeriodMillis</code> schedule will be managed for all
+instances of the App Widget. For example, if the update schedule is defined to
+be every two hours, and a second instance of the App Widget is added one hour
+after the first one, then they will both be updated on the period defined by the
+first one and the second update period will be ignored (they'll both be updated
+every two hours, not every hour).</p>
+
+<p class="note"><strong>Note:</strong> Because <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> is an extension of <code><a href="../../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code>, your process is not guaranteed to keep
+running after the callback methods return (see <code><a href="../../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> for information about the broadcast
+lifecycle). If your App Widget setup process can take several seconds (perhaps
+while performing web requests) and you require that your process continues,
+consider starting a <code><a href="../../../reference/android/app/Service.html">Service</a></code> in the 
+<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> 
+method. From within the Service, you can perform your own updates
+to the App Widget without worrying about the AppWidgetProvider closing down due
+to an <a href="../../../guide/practices/responsiveness.html">Application
+Not Responding</a> (ANR) error. See the <a
+href="http://code.google.com/p/wiktionary-android/source/browse/trunk/Wiktionary/src/com/example/android/wiktionary/WordWidget.java">Wiktionary sample's AppWidgetProvider</a> for an example of an App Widget running a <code><a href="../../../reference/android/app/Service.html">Service</a></code>.</p>
+
+<p>Also see the <a 
+href="../../../resources/samples/ApiDemos/src/com/example/android/apis/appwidget/ExampleAppWidgetProvider.html">ExampleAppWidgetProvider.java</a>
+sample class.</p>
+
+
+<h3 id="ProviderBroadcasts">Receiving App Widget broadcast Intents</h3>
+
+<p><code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> is just a convenience class.  If
+you would like
+to receive the App Widget broadcasts directly, you can implement your own 
+<code><a href="../../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> or override the 
+<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onReceive(android.content.Context, android.content.Intent)">onReceive(Context, Intent)</a></code> callback. 
+The Intents you need to care about are as follows:</p>
+<ul>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#ACTION_APPWIDGET_UPDATE">ACTION_APPWIDGET_UPDATE</a></code></li>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#ACTION_APPWIDGET_DELETED">ACTION_APPWIDGET_DELETED</a></code></li>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#ACTION_APPWIDGET_ENABLED">ACTION_APPWIDGET_ENABLED</a></code></li>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#ACTION_APPWIDGET_DISABLED">ACTION_APPWIDGET_DISABLED</a></code></li>
+  <li><code><a href="../../../reference/android/appwidget/AppWidgetManager.html#ACTION_APPWIDGET_OPTIONS_CHANGED">ACTION_APPWIDGET_OPTIONS_CHANGED</a></code></li>
+</ul>
+
+
+
+<h2 id="Configuring">Creating an App Widget Configuration Activity</h2>
+
+<p>If you would like the user to configure settings when he or she adds a new
+App Widget,
+you can create an App Widget configuration Activity. This <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> 
+will be automatically launched by the App Widget host and allows the user to
+configure
+available settings for the App Widget at create-time, such as the App Widget
+color, size, 
+update period or other functionality settings.</p>
+
+<p>The configuration Activity should be declared as a normal Activity in the
+Android manifest file.
+However, it will be launched by the App Widget host with the <code><a href="../../../reference/android/appwidget/AppWidgetManager.html#ACTION_APPWIDGET_CONFIGURE">ACTION_APPWIDGET_CONFIGURE</a></code> action,
+so the Activity needs to accept this Intent. For example:</p>
+
+<pre>
+&lt;activity android:name=".ExampleAppWidgetConfigure">
+    &lt;intent-filter>
+        &lt;action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+    &lt;/intent-filter>
+&lt;/activity>
+</pre>
+
+<p>Also, the Activity must be declared in the AppWidgetProviderInfo XML file,
+with the 
+<code>android:configure</code> attribute (see <a href="#MetaData">Adding 
+the AppWidgetProviderInfo Metadata</a> above). For example, the configuration
+Activity
+can be declared like this:</p>
+
+<pre>
+&lt;appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    ...
+    android:configure="com.example.android.ExampleAppWidgetConfigure" 
+    ... >
+&lt;/appwidget-provider>
+</pre>
+
+<p>Notice that the Activity is declared with a fully-qualified namespace,
+because 
+it will be referenced from outside your package scope.</p>
+
+<p>That's all you need to get started with a configuration Activity. Now all you
+need is the actual
+Activity. There are, however, two important things to remember when you
+implement the Activity:</p>
+<ul>
+  <li>The App Widget host calls the configuration Activity and the configuration
+Activity should always 
+    return a result. The result should include the App Widget ID
+    passed by the Intent that launched the Activity (saved in the Intent extras
+as
+    <code><a href="../../../reference/android/appwidget/AppWidgetManager.html#EXTRA_APPWIDGET_ID">EXTRA_APPWIDGET_ID</a></code>).</li>
+  <li>The 
+  <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> 
+    method <strong>will not be called</strong> when the App Widget
+is created
+    (the system will not send the ACTION_APPWIDGET_UPDATE broadcast when a
+configuration Activity
+    is launched). It is the responsibility of the configuration Activity to
+request an update from the 
+    AppWidgetManager when the App Widget is first created. However, 
+<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> 
+    will be called for subsequent updates&mdash;it is only skipped
+the first time.</li>
+</ul>
+
+<p>See the code snippets in the following section for an example of how to
+return a result
+from the configuration and update the App Widget.</p>
+
+
+<h3 id="UpdatingFromTheConfiguration">Updating the App Widget from the
+configuration Activity</h3>
+
+<p>When an App Widget uses a configuration Activity, it is the responsibility of
+the Activity
+to update the App Widget when configuration is complete. 
+You can do so by requesting an update directly from the 
+<code><a href="../../../reference/android/appwidget/AppWidgetManager.html">AppWidgetManager</a></code>.</p>
+
+<p>Here's a summary of the procedure to properly update the App Widget and close
+the configuration Activity:</p>
+
+<ol>
+  <li>First, get the App Widget ID from the Intent that launched the Activity:
+<pre>
+Intent intent = getIntent();
+Bundle extras = intent.getExtras();
+if (extras != null) {
+    mAppWidgetId = extras.getInt(
+            AppWidgetManager.EXTRA_APPWIDGET_ID, 
+            AppWidgetManager.INVALID_APPWIDGET_ID);
+}
+</pre>
+  </li>
+  <li>Perform your App Widget configuration.</li>
+  <li>When the configuration is complete, get an instance of the
+AppWidgetManager by calling
+    <code><a href="../../../reference/android/appwidget/AppWidgetManager.html#getInstance(android.content.Context)">getInstance(Context)</a></code>:
+<pre>
+AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+</pre>
+  </li>
+  <li>Update the App Widget with a <code><a href="../../../reference/android/widget/RemoteViews.html">RemoteViews</a></code> layout by
+calling
+    <code><a href="../../../reference/android/appwidget/AppWidgetManager.html#updateAppWidget(int, android.widget.RemoteViews)">updateAppWidget(int, RemoteViews)</a></code>:
+<pre>
+RemoteViews views = new RemoteViews(context.getPackageName(),
+R.layout.example_appwidget);
+appWidgetManager.updateAppWidget(mAppWidgetId, views);
+</pre>
+  </li>
+  <li>Finally, create the return Intent, set it with the Activity result, and
+finish the Activity:</li>
+<pre>
+Intent resultValue = new Intent();
+resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
+setResult(RESULT_OK, resultValue);
+finish();
+</pre>
+  </li>
+</ol>
+
+<p class="note"><strong>Tip:</strong> When your configuration Activity first
+opens, set
+the Activity result to RESULT_CANCELED. This way, if the user backs-out of the
+Activity before
+reaching the end, the App Widget host is notified that the configuration was
+cancelled and the
+App Widget will not be added.</p>
+
+<p>See the <a 
+href="../../../resources/samples/ApiDemos/src/com/example/android/apis/appwidget/ExampleAppWidgetConfigure.html">ExampleAppWidgetConfigure.java</a>
+sample class in ApiDemos for an example.</p>
+
+<h2 id="preview">Setting a Preview Image</h2>
+
+<p>Android 3.0 introduces the <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#previewImage">previewImage</a></code> field, which specifies a
+preview of what the app widget looks like. This preview is shown to the user from the
+widget picker. If this field is not supplied, the app widget's icon is used for
+the preview.</p> 
+
+<p>This is how you specify this setting in XML:</p>
+
+<pre>&lt;appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+  ...
+  android:previewImage="@drawable/preview">
+&lt;/appwidget-provider></pre>
+
+<p>To help create a preview image for your app widget (to specify in the <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#previewImage">previewImage</a></code> field), the Android
+emulator includes an application called &quot;Widget Preview.&quot; To create a
+preview image, launch this application, select the app widget for your
+application and set it up how you'd like your preview image to appear, then save
+it and place it in your application's drawable resources.</p>
+
+<h2 id="lockscreen">Enabling App Widgets on the Lockscreen</h2>
+
+<p>Android 4.2 introduces the ability for users to add widgets to the lock screen. To indicate that your app widget is available for use on the lock screen, declare the <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#widgetCategory">android:widgetCategory</a></code> attribute in the XML file that specifies your <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code>. This attribute supports two values: "home_screen" and "keyguard". An app widget can declare support for one or both.</p>
+
+<p>By default, every app widget supports placement on the Home screen, so "home_screen" is the default value for the 
+<code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#widgetCategory">android:widgetCategory</a></code> attribute. If you want your app widget to be available for the lock screen, add the "keyguard" value:</p>
+<pre>
+&lt;appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+   ...
+   android:widgetCategory="keyguard|home_screen">
+&lt;/appwidget-provider>
+</pre>
+
+<p>If you declare a widget to be displayable on both keyguard (lockscreen) and home, it's likely that you'll want to customize the widget depending on where it is displayed. For example, you might create a separate layout file for keyguard vs. home. The next step is to detect the widget category at runtime and respond accordingly. 
+
+You can detect whether your widget is on the lockscreen or home screen by calling 
+<code><a href="../../../reference/android/appwidget/AppWidgetManager.html#getAppWidgetOptions(int)">getAppWidgetOptions()</a></code> 
+to get the widget's options as a <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code>. The returned bundle will include the key 
+<code><a href="../../../reference/android/appwidget/AppWidgetManager.html#OPTION_APPWIDGET_HOST_CATEGORY">OPTION_APPWIDGET_HOST_CATEGORY</a></code>, whose value will be one of <code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#WIDGET_CATEGORY_HOME_SCREEN">WIDGET_CATEGORY_HOME_SCREEN</a></code> or 
+<code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#WIDGET_CATEGORY_KEYGUARD">WIDGET_CATEGORY_KEYGUARD</a></code>. This value is determined by the host into which the widget is bound. In the <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code>, you can then check the widget's category, for example:</p>
+
+<pre>
+AppWidgetManager appWidgetManager;
+int widgetId;
+Bundle myOptions = appWidgetManager.getAppWidgetOptions (widgetId);
+
+// Get the value of OPTION_APPWIDGET_HOST_CATEGORY
+int category = myOptions.getInt(AppWidgetManager.OPTION_APPWIDGET_HOST_CATEGORY, -1);
+
+// If the value is WIDGET_CATEGORY_KEYGUARD, it's a lockscreen widget
+boolean isKeyguard = category == AppWidgetProviderInfo.WIDGET_CATEGORY_KEYGUARD;
+</pre>
+
+<p>Once you know the widget's category, you can optionally load a different base layout, set different properties, and so on. For example:</p>
+
+<pre>
+int baseLayout = isKeyguard ? R.layout.keyguard_widget_layout : R.layout.widget_layout;
+</pre>
+
+
+<p>You should also specify an initial layout for your app widget when on the lock screen with the 
+<code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#initialKeyguardLayout">android:initialKeyguardLayout</a></code> attribute. This works the same way as the 
+<code><a href="../../../reference/android/appwidget/AppWidgetProviderInfo.html#initialLayout">android:initialLayout</a></code>, in that it provides a layout that can appear immediately until your app widget is initialized and able to update the layout.</p>
+
+<h3 id="lockscreen-sizing">Sizing guidelines</h3>
+
+<p>When a widget is hosted on the lockscreen, the framework ignores the <code>minWidth</code>, <code>minHeight</code>, <code>minResizeWidth</code>, and <code>minResizeHeight</code> fields. If a widget is also a home screen widget, these parameters are still needed as they're still used on home, but they will be ignored for purposes of the lockscreen.</p>
+
+<p>The width of a lockscreen widget always fills the provided space. For the height of a lockscreen widget, you have the following options:</p>
+
+<ul>
+    <li>If the widget does not mark itself as vertically resizable (<code>android:resizeMode="vertical"</code>), then the widget height will always be "small":
+      <ul>
+        <li>On a phone in portrait mode, "small" is defined as the space remaining when an unlock UI is being displayed.</li>
+        <li>On tablets and landscape phones, "small" is set on a per-device basis.</li>    
+      </ul>
+    </li>
+    <li>If the widget marks itself as vertically resizable, then the widget height shows up as "small" on portrait phones displaying an unlock UI. In all other cases, the widget sizes to fill the available height.</li>
+</ul>
+
+<h2 id="collections">Using App Widgets with Collections</h2>
+
+<p>Android 3.0 introduces app widgets with collections. These kinds of App
+Widgets use the <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> to display collections
+that are backed by remote data, such as from a <a
+href="../../../guide/topics/providers/content-providers.html">content
+provider</a>. The data provided by the <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code>
+is presented in the app widget using one of the following view types, which
+we’ll refer to as “collection views:”</p>
+
+<dl>
+  <dt><code><a href="../../../reference/android/widget/ListView.html">ListView</a></code></dt>
+  <dd>A view that shows items in a
+vertically scrolling
+list. For an example, see the Gmail app widget. </dd>
+<dt><code><a href="../../../reference/android/widget/GridView.html">GridView</a></code></dt>
+<dd>A view that shows items in
+two-dimensional scrolling grid. For an example, see the Bookmarks app
+widget.</dd> 
+<dt><code><a href="../../../reference/android/widget/StackView.html">StackView</a></code></dt>
+<dd>A
+stacked card view (kind of like a rolodex), where the user can flick the  front
+card up/down to see the previous/next card, respectively.  Examples include
+the YouTube and Books app widgets. </dd> 
+<dt><code><a href="../../../reference/android/widget/AdapterViewFlipper.html">AdapterViewFlipper</a></code></dt>
+<dd>An adapter-backed simple
+<code><a href="../../../reference/android/widget/ViewAnimator.html">ViewAnimator</a></code> that  animates between two or more views. Only one
+child is shown at a time.  </dd>
+</dl>
+
+<p>As stated above, these collection views display collections backed by remote
+data. This means that they use an <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> to bind their
+user interface to their data. An <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> binds individual
+items from a set of data into individual <code><a href="../../../reference/android/view/View.html">View</a></code> objects.
+Because these collection views are backed by adapters, the Android framework
+must include extra architecture to support their use in app widgets. In the
+context of an app widget, the <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> is replaced by a
+<code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>,
+which is simply a thin wrapper around  the <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code>
+interface. 
+ When
+requested for a specific item in the collection, the <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code> creates
+and returns the item for the collection as a <code><a href="../../../reference/android/widget/RemoteViews.html">RemoteViews</a></code>
+object.
+In order to include a collection view in your app widget, you
+must implement <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> and <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>.</p>
+
+<p> <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> is a service that allows a remote
+adapter to request <code><a href="../../../reference/android/widget/RemoteViews.html">RemoteViews</a></code> objects. <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code> is an
+interface for an adapter between a collection view (such as <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>, <code><a href="../../../reference/android/widget/GridView.html">GridView</a></code>, and so on) and the
+underlying data for that view. From the  <a
+href="../../../resources/samples/StackWidget/index.html">StackView Widget
+sample</a>, here is an example of the boilerplate code you use to implement 
+this service and interface:
+</p>
+
+<pre>
+public class StackWidgetService extends RemoteViewsService {
+    &#64;Override
+    public RemoteViewsFactory onGetViewFactory(Intent intent) {
+        return new StackRemoteViewsFactory(this.getApplicationContext(), intent);
+    }
+}
+
+class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
+
+//... include adapter-like methods here. See the StackView Widget sample.
+
+}
+</pre>
+
+<h3 id="collection_sample">Sample application</h3>
+
+<p>The code excerpts in this section are drawn from the <a
+href="../../../resources/samples/StackWidget/index.html">StackView Widget
+sample</a>:</p>
+
+<p>
+<img src="../../../images/appwidgets/StackWidget.png" alt="" />
+</p>
+
+<p>This sample consists of a stack of 10 views, which  display the values
+<code>&quot;0!&quot;</code> through <code>&quot;9!&quot;</code> The sample
+app widget has these primary behaviors:</p> 
+
+<ul>
+
+  <li>The user can vertically fling the top view in the
+app widget to display the next or previous view. This is a built-in StackView
+behavior.</li> 
+
+  <li>Without any user interaction, the app widget automatically advances
+through
+its views in sequence, like a slide show. This is due to the setting
+<code>android:autoAdvanceViewId=&quot;@id/stack_view&quot;</code> in the
+<code>res/xml/stackwidgetinfo.xml</code> file. This setting applies to the view
+ID,
+which in this case is the view ID of the stack view.</li>
+  
+  <li>If the user touches the top view, the app widget displays the <code><a href="../../../reference/android/widget/Toast.html">Toast</a></code> message &quot;Touched view <em>n</em>,&quot; where
+<em>n</em> is the index (position) of the touched view. For more discussion of
+how this is implemented, see  
+<a href="#behavior">Adding behavior to individual items</a>.</li>
+
+</ul>
+<h3 id="implementing_collections">Implementing app widgets with collections</h3>
+
+<p>To implement an app widget with collections, you follow the same basic steps 
+you would use to implement any app widget. The following sections  describe the
+additional steps you need to perform to implement an app widget with
+collections.</p>
+
+<h4>Manifest for app widgets with collections</h4>
+
+<p> In addition to the requirements listed in <a href="#Manifest">Declaring an
+app widget in the Manifest</a>, to make it possible for app widgets with
+collections to bind to your <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code>, you must
+declare the service in your manifest file with the permission <code><a href="../../../reference/android/Manifest.permission.html#BIND_REMOTEVIEWS">BIND_REMOTEVIEWS</a></code>. This prevents other applications
+from freely accessing your app widget's data. For example, when creating an App
+Widget that uses <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> to populate a
+collection view, the manifest entry may look like this:</p>
+
+<pre>&lt;service android:name=&quot;MyWidgetService&quot;
+...
+android:permission=&quot;android.permission.BIND_REMOTEVIEWS&quot; /&gt;</pre>
+
+<p>The line <code>android:name=&quot;MyWidgetService&quot;</code>
+refers to your subclass of <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code>. </p>
+
+<h4>Layout for app widgets with collections</h4>
+
+<p>The main requirement for your app widget layout XML file is that it
+include one of the collection views: <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>,
+<code><a href="../../../reference/android/widget/GridView.html">GridView</a></code>, <code><a href="../../../reference/android/widget/StackView.html">StackView</a></code>, or
+<code><a href="../../../reference/android/widget/AdapterViewFlipper.html">AdapterViewFlipper</a></code>. Here is the
+<code>widget_layout.xml</code> for
+the <a href="../../../resources/samples/StackWidget/index.html">StackView
+Widget sample</a>:</p>
+
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+
+&lt;FrameLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+    &lt;StackView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+        android:id=&quot;&#64;+id/stack_view&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:gravity=&quot;center&quot;
+        android:loopViews=&quot;true&quot; /&gt;
+    &lt;TextView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+        android:id=&quot;&#64;+id/empty_view&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:gravity=&quot;center&quot;
+        android:background=&quot;&#64;drawable/widget_item_background&quot;
+        android:textColor=&quot;#ffffff&quot;
+        android:textStyle=&quot;bold&quot;
+        android:text=&quot;&#64;string/empty_view_text&quot;
+        android:textSize=&quot;20sp&quot; /&gt;
+&lt;/FrameLayout&gt;</pre>
+
+<p> Note that empty views must be siblings of the collection view for which the
+empty view represents empty state. </p>
+
+<p>In addition to the layout file for your entire app widget, you must create
+another layout file that defines the layout for each item in the collection (for
+example, a layout for each book in a collection of books). For example, the <a
+href="../../../resources/samples/StackWidget/index.html">StackView Widget
+sample</a> only has one layout file, <code>widget_item.xml</code>, since all
+items use the same layout. But the <a
+href="../../../resources/samples/WeatherListWidget/index.html">
+WeatherListWidget sample</a> has two layout files:
+<code>dark_widget_item.xml</code> and <code>light_widget_item.xml</code>.</p>
+
+
+
+<h4 id="AppWidgetProvider-collections">AppWidgetProvider class for app widgets with collections</h4>
+
+<p>As with a regular app widget, the bulk of your code in your <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> subclass typically goes in <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code>. The major difference in
+your implementation for <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> when creating an app
+widget with collections is that you must call <code><a href="../../../reference/android/widget/RemoteViews.html#setRemoteAdapter(int, android.content.Intent)">setRemoteAdapter()</a></code>. This tells the
+collection view where to get its data. The <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> can then return your implementation of <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>, and
+the widget can serve up the appropriate data. When you call this method, you
+must pass an intent that  points to your implementation of <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> and the app widget ID that specifies the app
+widget to update.</p>
+
+
+<p>For example, here's how the StackView Widget sample implements the <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onUpdate(android.content.Context, android.appwidget.AppWidgetManager, int[])">onUpdate()</a></code> callback method to set
+the <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> as the remote adapter for the app widget
+collection:</p>
+
+<pre>public void onUpdate(Context context, AppWidgetManager appWidgetManager,
+int[] appWidgetIds) {
+    // update each of the app widgets with the remote adapter
+    for (int i = 0; i &lt; appWidgetIds.length; ++i) {
+        
+        // Set up the intent that starts the StackViewService, which will
+        // provide the views for this collection.
+        Intent intent = new Intent(context, StackWidgetService.class);
+        // Add the app widget ID to the intent extras.
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
+        intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
+        // Instantiate the RemoteViews object for the app widget layout.
+        RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
+        // Set up the RemoteViews object to use a RemoteViews adapter. 
+        // This adapter connects
+        // to a RemoteViewsService  through the specified intent.
+        // This is how you populate the data.
+        rv.setRemoteAdapter(appWidgetIds[i], R.id.stack_view, intent);
+        
+        // The empty view is displayed when the collection has no items. 
+        // It should be in the same layout used to instantiate the RemoteViews
+        // object above.
+        rv.setEmptyView(R.id.stack_view, R.id.empty_view);
+
+        //
+        // Do additional processing specific to this app widget...
+        //
+        
+        appWidgetManager.updateAppWidget(appWidgetIds[i], rv);   
+    }
+    super.onUpdate(context, appWidgetManager, appWidgetIds);
+}</pre>
+            
+<h4>RemoteViewsService class</h4>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+<h3>Persisting data</h3>
+   <p>You can’t rely on a single instance of your service, or any data it
+contains, to persist. You should therefore not store any data in your <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> (unless it is static). If you want your
+app widget’s data to persist, the best approach is to use a <code><a href="../../../reference/android/content/ContentProvider.html">ContentProvider</a></code> whose data persists beyond the process
+lifecycle.</p> </div>
+</div>
+
+<p>As described above, your <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> subclass
+provides the <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code> used to  populate the remote collection view.</p> 
+
+<p>Specifically, you need to
+perform these steps:</p>
+
+<ol>
+  <li>Subclass <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code>. <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> is the service through which
+a remote adapter can request <code><a href="../../../reference/android/widget/RemoteViews.html">RemoteViews</a></code>.  </li>
+  
+  <li>In your <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code> subclass, include a
+class that implements the <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>
+interface. <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code> is an interface for an adapter between a remote collection
+view (such as <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>, <code><a href="../../../reference/android/widget/GridView.html">GridView</a></code>,
+and so on) and  the underlying data for that view.  Your implementation is
+responsible for making a <code><a href="../../../reference/android/widget/RemoteViews.html">RemoteViews</a></code> object  for each
+item in the data set. This interface is a thin wrapper around <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code>.</li>
+</ol>
+
+<p>The primary contents of the <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code>
+implementation is its <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>,
+described below.</p>
+
+<h4>RemoteViewsFactory interface</h4>
+
+<p>Your custom class that implements the <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>
+interface provides the app widget with the data for the items in its collection.
+To
+do this, it combines your app widget item XML layout file with a source of data.
+This source of data could be anything from a database to a simple array. In the
+<a href="../../../resources/samples/StackWidget/index.html">StackView Widget
+sample</a>, the data source is an array of <code>WidgetItems</code>. The <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>
+functions as an adapter to glue the data to the remote collection view.</p>
+
+<p>The two most important methods you need to implement for your
+
+<code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>
+subclass are 
+<code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#onCreate()">onCreate()</a></code> and
+<code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#getViewAt(int)">getViewAt()</a></code>
+.</p> 
+
+<p>The system calls <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#onCreate()">onCreate()</a></code> when
+creating your factory for the first time. This is where you set up any
+connections and/or cursors to your data source. For example, the <a
+href="../../../resources/samples/StackWidget/index.html">StackView Widget
+sample</a> uses <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#onCreate()">onCreate()</a></code> to
+initialize an array of <code>WidgetItem</code> objects. When your app widget is
+active, the system accesses these objects using their index position in the
+array and the text they contain is displayed  </p>
+
+<p>Here is an excerpt from the <a
+href="../../../resources/samples/StackWidget/index.html">StackView Widget</a>
+sample's 
+<code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code> implementation that shows portions of the <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#onCreate()">onCreate()</a></code>
+method:</p>
+
+<pre>class StackRemoteViewsFactory implements
+RemoteViewsService.RemoteViewsFactory {
+    private static final int mCount = 10;
+    private List&lt;WidgetItem&gt; mWidgetItems = new ArrayList&lt;WidgetItem&gt;();
+    private Context mContext;
+    private int mAppWidgetId;
+
+    public StackRemoteViewsFactory(Context context, Intent intent) {
+        mContext = context;
+        mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
+                AppWidgetManager.INVALID_APPWIDGET_ID);
+    }
+
+    public void onCreate() {
+        // In onCreate() you setup any connections / cursors to your data source. Heavy lifting,
+        // for example downloading or creating content etc, should be deferred to onDataSetChanged()
+        // or getViewAt(). Taking more than 20 seconds in this call will result in an ANR.
+        for (int i = 0; i &lt; mCount; i++) {
+            mWidgetItems.add(new WidgetItem(i + &quot;!&quot;));
+        }
+        ...
+    }
+...</pre>
+
+<p>The <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code> method <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#getViewAt(int)">getViewAt()</a></code>
+returns a <code><a href="../../../reference/android/widget/RemoteViews.html">RemoteViews</a></code> object corresponding to the data at
+the specified <code>position</code> in the data set. Here is an excerpt from 
+the <a
+href="http://developer.android.com/resources/samples/StackWidget/index.html">
+StackView Widget</a> sample's <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>
+implementation:</p>
+
+<pre>public RemoteViews getViewAt(int position) {
+   
+    // Construct a remote views item based on the app widget item XML file, 
+    // and set the text based on the position.
+    RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.widget_item);
+    rv.setTextViewText(R.id.widget_item, mWidgetItems.get(position).text);
+
+    ...
+    // Return the remote views object.
+    return rv;
+}</pre>
+
+<h4 id="behavior">Adding behavior to individual items</h4>
+
+<p>The above sections show you how to bind your data to your app widget
+collection. But what if you want to add dynamic behavior to the individual items
+in your collection view?</p> 
+
+<p> As described in <a href="#AppWidgetProvider">Using the AppWidgetProvider
+Class</a>, you  normally use <code><a href="../../../reference/android/widget/RemoteViews.html#setOnClickPendingIntent(int, android.app.PendingIntent)">setOnClickPendingIntent()</a></code> to set an object's click
+behavior&mdash;such as to cause a button to launch an <code><a href="../../../reference/android/app/Activity.html">Activity</a></code>. But this approach is not allowed for child views in an
+individual collection item (to clarify, you could use <code><a href="../../../reference/android/widget/RemoteViews.html#setOnClickPendingIntent(int, android.app.PendingIntent)">setOnClickPendingIntent()</a></code> to set up a global button
+in the Gmail app widget that launches the app, for example, but not on the
+individual list items). Instead, to add click behavior to individual items in a
+collection, you  use <code><a href="../../../reference/android/widget/RemoteViews.html#setOnClickFillInIntent(int, android.content.Intent)">setOnClickFillInIntent()</a></code>. This entails setting up up a pending intent template
+for your collection view, and then setting a fill-in intent on each item in the
+collection via your <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>.</p> 
+<p>This section uses the <a
+href="../../../resources/samples/StackWidget/index.html">StackView Widget
+sample</a> to describe how to add behavior to individual items. In the <a
+href="../../../resources/samples/StackWidget/index.html">StackView Widget
+sample</a>, if the user touches the top view, the app widget displays the <code><a href="../../../reference/android/widget/Toast.html">Toast</a></code> message &quot;Touched view <em>n</em>,&quot; where
+<em>n</em> is the index (position) of the touched view. This is how it
+works:</p>
+
+<ul>
+  <li>The <code>StackWidgetProvider</code> (an <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> subclass) creates a pending intent that has
+a custom action called <code>TOAST_ACTION</code>.</li>
+  <li>When the user touches a view, the intent is fired and it broadcasts
+<code>TOAST_ACTION</code>.</li>
+  
+  <li>This broadcast is intercepted by the <code>StackWidgetProvider</code>'s
+<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onReceive(android.content.Context, android.content.Intent)">onReceive()</a></code> method, and the app widget displays the
+<code><a href="../../../reference/android/widget/Toast.html">Toast</a></code> message for the touched view. The data for the collection
+items is provided by the <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>, via
+the <code><a href="../../../reference/android/widget/RemoteViewsService.html">RemoteViewsService</a></code>.</li>
+</ul>
+
+<p class="note"><strong>Note:</strong> The <a
+href="../../../resources/samples/StackWidget/index.html">StackView Widget
+sample</a> uses a broadcast, but typically an app widget would simply launch an
+activity in a scenario like this one.</p>
+
+<h5>Setting up the pending intent template</h5> 
+
+<p>The <code>StackWidgetProvider</code> (<code><a href="../../../reference/android/appwidget/AppWidgetProvider.html">AppWidgetProvider</a></code> subclass) sets up a pending intent.
+Individuals items of a collection cannot set up their own pending intents.
+Instead, the collection as a whole sets up a pending intent template, and the
+individual items set a fill-in intent to create unique behavior on an
+item-by-item
+basis.</p> 
+
+<p>This class  also receives the broadcast that is sent when the user touches a
+view. It processes this event in its <code><a href="../../../reference/android/appwidget/AppWidgetProvider.html#onReceive(android.content.Context, android.content.Intent)">onReceive()</a></code> method. If the intent's action is
+<code>TOAST_ACTION</code>, the app widget displays a <code><a href="../../../reference/android/widget/Toast.html">Toast</a></code>
+message for the current view.</p>
+
+<pre>public class StackWidgetProvider extends AppWidgetProvider {
+    public static final String TOAST_ACTION = &quot;com.example.android.stackwidget.TOAST_ACTION&quot;;
+    public static final String EXTRA_ITEM = &quot;com.example.android.stackwidget.EXTRA_ITEM&quot;;
+
+    ...
+
+    // Called when the BroadcastReceiver receives an Intent broadcast.
+    // Checks to see whether the intent's action is TOAST_ACTION. If it is, the app widget 
+    // displays a Toast message for the current item.
+    &#64;Override
+    public void onReceive(Context context, Intent intent) {
+        AppWidgetManager mgr = AppWidgetManager.getInstance(context);
+        if (intent.getAction().equals(TOAST_ACTION)) {
+            int appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
+                AppWidgetManager.INVALID_APPWIDGET_ID);
+            int viewIndex = intent.getIntExtra(EXTRA_ITEM, 0);
+            Toast.makeText(context, &quot;Touched view &quot; + viewIndex, Toast.LENGTH_SHORT).show();
+        }
+        super.onReceive(context, intent);
+    }
+    
+    &#64;Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        // update each of the app widgets with the remote adapter
+        for (int i = 0; i &lt; appWidgetIds.length; ++i) {
+    
+            // Sets up the intent that points to the StackViewService that will
+            // provide the views for this collection.
+            Intent intent = new Intent(context, StackWidgetService.class);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
+            // When intents are compared, the extras are ignored, so we need to embed the extras
+            // into the data so that the extras will not be ignored.
+            intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
+            RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
+            rv.setRemoteAdapter(appWidgetIds[i], R.id.stack_view, intent);
+    
+            // The empty view is displayed when the collection has no items. It should be a sibling
+            // of the collection view.
+            rv.setEmptyView(R.id.stack_view, R.id.empty_view);
+
+            // This section makes it possible for items to have individualized behavior.
+            // It does this by setting up a pending intent template. Individuals items of a collection
+            // cannot set up their own pending intents. Instead, the collection as a whole sets
+            // up a pending intent template, and the individual items set a fillInIntent
+            // to create unique behavior on an item-by-item basis.
+            Intent toastIntent = new Intent(context, StackWidgetProvider.class);
+            // Set the action for the intent.
+            // When the user touches a particular view, it will have the effect of
+            // broadcasting TOAST_ACTION.
+            toastIntent.setAction(StackWidgetProvider.TOAST_ACTION);
+            toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
+            intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
+            PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+            rv.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent);
+            
+            appWidgetManager.updateAppWidget(appWidgetIds[i], rv);
+        }
+    super.onUpdate(context, appWidgetManager, appWidgetIds);
+    }
+}</pre>
+            
+<h5><strong>Setting the fill-in Intent</strong></h5>
+
+<p>Your <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code> must set a fill-in intent on each item in the collection.
+This makes it possible to distinguish the individual on-click action of a given
+item. The fill-in intent is then combined with the <code><a href="../../../reference/android/app/PendingIntent.html">PendingIntent</a></code> template in order to determine the final intent that
+will be executed when the item is clicked. </p>
+
+<pre>
+public class StackWidgetService extends RemoteViewsService {
+    &#64;Override
+    public RemoteViewsFactory onGetViewFactory(Intent intent) {
+        return new StackRemoteViewsFactory(this.getApplicationContext(), intent);
+    }
+}
+
+class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFactory {
+    private static final int mCount = 10;
+    private List&lt;WidgetItem&gt; mWidgetItems = new ArrayList&lt;WidgetItem&gt;();
+    private Context mContext;
+    private int mAppWidgetId;
+
+    public StackRemoteViewsFactory(Context context, Intent intent) {
+        mContext = context;
+        mAppWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
+                AppWidgetManager.INVALID_APPWIDGET_ID);
+    }
+
+    // Initialize the data set.
+        public void onCreate() {
+            // In onCreate() you set up any connections / cursors to your data source. Heavy lifting,
+            // for example downloading or creating content etc, should be deferred to onDataSetChanged()
+            // or getViewAt(). Taking more than 20 seconds in this call will result in an ANR.
+            for (int i = 0; i &lt; mCount; i++) {
+                mWidgetItems.add(new WidgetItem(i + &quot;!&quot;));
+            }
+           ...
+        }
+        ...
+    
+        // Given the position (index) of a WidgetItem in the array, use the item's text value in 
+        // combination with the app widget item XML file to construct a RemoteViews object.
+        public RemoteViews getViewAt(int position) {
+            // position will always range from 0 to getCount() - 1.
+    
+            // Construct a RemoteViews item based on the app widget item XML file, and set the
+            // text based on the position.
+            RemoteViews rv = new RemoteViews(mContext.getPackageName(), R.layout.widget_item);
+            rv.setTextViewText(R.id.widget_item, mWidgetItems.get(position).text);
+    
+            // Next, set a fill-intent, which will be used to fill in the pending intent template
+            // that is set on the collection view in StackWidgetProvider.
+            Bundle extras = new Bundle();
+            extras.putInt(StackWidgetProvider.EXTRA_ITEM, position);
+            Intent fillInIntent = new Intent();
+            fillInIntent.putExtras(extras);
+            // Make it possible to distinguish the individual on-click
+            // action of a given item
+            rv.setOnClickFillInIntent(R.id.widget_item, fillInIntent);
+        
+            ...
+        
+            // Return the RemoteViews object.
+            return rv;
+        }
+    ...
+    }</pre>
+
+<h3 id="fresh">Keeping Collection Data Fresh</h3>
+
+<p>The following figure illustrates the flow that occurs in an app widget that
+uses
+collections when updates occur. It shows how the app widget code interacts with
+the  <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>, and how you can trigger updates:</p>
+
+<img src="../../../images/appwidgets/appwidget_collections.png" alt="" />
+
+<p>One feature of app widgets that use collections is the ability to provide
+users with up-to-date content. For example, consider the Android 3.0 Gmail
+app widget, which provides users with a snapshot of their inbox. To make this
+possible, you need to be able to trigger your <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code> and
+collection view to fetch and display new data. You achieve this with the <code><a href="../../../reference/android/appwidget/AppWidgetManager.html">AppWidgetManager</a></code> call <code><a href="../../../reference/android/appwidget/AppWidgetManager.html#notifyAppWidgetViewDataChanged(int, int)">notifyAppWidgetViewDataChanged()</a></code>. This call results in a callback to your
+<code>RemoteViewsFactory</code>’s <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#onDataSetChanged()">onDataSetChanged()</a></code> method, which gives you the opportunity to fetch any new
+data. Note that you can perform
+processing-intensive operations synchronously within the  <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#onDataSetChanged()">onDataSetChanged()</a></code> callback. You are guaranteed that this call will be
+completed before the metadata or view data is fetched from the <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html">RemoteViewsFactory</a></code>. In
+addition, you can perform processing-intensive operations within the <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#getViewAt(int)">getViewAt()</a></code>
+method. If this call takes a long time, the loading view (specified by the
+<code>RemoteViewsFactory</code>’s  <code><a href="../../../reference/android/widget/RemoteViewsService.RemoteViewsFactory.html#getLoadingView()">getLoadingView()</a></code> method)
+will be displayed in the corresponding position of the collection view until it
+returns.</p>
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Supporting Multiple Screens | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Supporting Multiple Screens</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+  <h2>Quickview</h2>
+  <ul>
+    <li>Android runs on devices that have different screen sizes and densities.</li>
+    <li>The screen on which your application is displayed can affect its user interface.</li>
+    <li>The system handles most of the work of adapting your app to the current screen.</li>
+    <li>You should create screen-specific resources for precise control of your UI. </li>
+  </ul>
+
+  <h2>In this document</h2>
+  <ol>
+    <li><a href="#overview">Overview of Screen Support</a>
+      <ol>
+        <li><a href="#terms">Terms and concepts</a></li>
+        <li><a href="#range">Range of screens supported</a></li>
+        <li><a href="#density-independence">Density independence</a></li>
+      </ol></li>
+    <li><a href="#support">How to Support Multiple Screens</a>
+      <ol>
+        <li><a href="#qualifiers">Using configuration qualifiers</a></li>
+        <li><a href="#DesigningResources">Designing alternative layouts and drawables</a></li>
+      </ol></li>
+    <li><a href="#DeclaringTabletLayouts">Declaring Tablet Layouts for Android 3.2</a> <span
+class="new">new!</span>
+      <ol>
+        <li><a href="#NewQualifiers">Using new size qualifiers</a></li>
+        <li><a href="#ConfigurationExamples">Configuration examples</a></li>
+        <li><a href="#DeclaringScreenSizeSupport">Declaring screen size support</a></li>
+      </ol></li>
+    <li><a href="#screen-independence">Best Practices</a></li>
+    <li><a href="#DensityConsiderations">Additional Density Considerations</a>
+      <ol>
+        <li><a href="#scaling">Scaling Bitmap objects created at runtime</a></li>
+        <li><a href="#dips-pels">Converting dp units to pixel units</a></li>
+      </ol></li>
+    <li><a href="#testing">How to Test Your Application on Multiple Screens</a></li>
+  </ol>
+
+  <h2>Related samples</h2>
+  <ol>
+    <li><a href="../../resources/samples/MultiResolution/index.html">Multiple
+Resolutions</a></li>
+  </ol>
+
+  <h2>See also</h2>
+  <ol>
+    <li><a
+href="http://android-developers.blogspot.com/2011/09/thinking-like-web-designer.html">Thinking
+Like a Web Designer</a></li>
+    <li><a
+href="../../guide/topics/resources/providing-resources.html#AlternativeResources">
+Providing Alternative Resources</a></li>
+    <li><a href="../../guide/practices/ui_guidelines/icon_design.html">Icon Design
+Guidelines</a></li>
+    <li><a href="../../tools/devices/index.html">Managing Virtual Devices</a></li>
+  </ol>
+
+</div>
+</div>
+
+<p>Android runs on a variety of devices that offer different screen sizes and densities. For
+applications, the Android system provides a consistent development environment across devices and
+handles most of the work to adjust each application's user interface to the screen on which it is
+displayed. At the same time, the system provides APIs that allow you to control your
+application's UI for specific screen sizes and densities, in order to optimize your UI
+design for different screen configurations. For example, you might want a UI for tablets
+that's different from the UI for handsets.</p>
+
+<p>Although the system performs scaling and resizing to make your application work on
+different screens, you should make the effort to optimize your application for different screen
+sizes and densities. In doing so, you maximize the user experience for all devices and your users
+believe that your application was actually designed for <em>their</em> devices&mdash;rather than
+simply stretched to fit the screen on their devices.</p>
+
+<p>By following the practices described in this document, you can create an application that
+displays properly and provides an optimized user experience on all supported screen configurations,
+using a single <code>.apk</code> file.</p>
+
+<p class="note"><strong>Note:</strong> The information in this document assumes that your
+application is designed for Android 1.6 (API Level 4) or higher. If your application supports
+Android 1.5 or lower, please first read <a
+href="../../guide/practices/screens-support-1.5.html">Strategies for Android 1.5</a>.
+<br/><br/>
+Also, be aware that <strong>Android 3.2 has introduced new APIs</strong> that allow you to more
+precisely control the layout resources your application uses for different screen sizes. These new
+features are especially important if you're developing an application that's optimized for tablets.
+For details, see the section about <a href="#DeclaringTabletLayouts">Declaring Tablet Layouts for
+Android 3.2</a>.
+</p>
+
+
+
+<h2 id="overview">Overview of Screens Support</h2>
+
+<p>This section provides an overview of Android's support for multiple screens, including: an
+introduction to the terms and concepts used in this document and in the API, a summary of the screen
+configurations that the system supports, and an overview of the API and underlying
+screen-compatibility features.</p>
+
+<h3 id="terms">Terms and concepts</h3>
+
+<dl>
+<dt><em>Screen size</em></dt>
+  <dd>Actual physical size, measured as the screen's diagonal.
+
+  <p>For simplicity, Android groups all actual screen sizes into four generalized sizes: small,
+normal, large, and extra large.</p></dd>
+
+<dt><em>Screen density</em></dt>
+  <dd>The quantity of pixels within a physical area of the screen; usually referred to as dpi (dots
+per inch). For example, a "low" density screen has fewer pixels within a given physical area,
+compared to a "normal" or "high" density screen.</p>
+
+  <p>For simplicity, Android groups all actual screen densities into four generalized densities:
+low, medium, high, and extra high.</p></dd>
+
+<dt><em>Orientation</em></dt>
+  <dd>The orientation of the screen from the user's point of view. This is either landscape or
+portrait, meaning that the screen's aspect ratio is either wide or tall, respectively. Be aware
+that not only do different devices operate in different orientations by default, but the
+orientation can change at runtime when the user rotates the device.
+</dd>
+
+<dt><em>Resolution</em></dt>
+  <dd>The total number of physical pixels on a screen. When adding support for multiple screens,
+applications do not work directly with resolution; applications should be concerned only with screen
+size and density, as specified by the generalized size and density groups.</dd>
+
+<dt><em>Density-independent pixel (dp)</em></dt>
+  <dd>A virtual pixel unit that you should use when defining UI layout, to express layout dimensions
+or position in a density-independent way.
+  <p>The density-independent pixel is equivalent to one physical pixel on a 160 dpi screen, which is
+the baseline density assumed by the system for a "medium" density screen. At runtime, the system
+transparently handles any scaling of the dp units, as necessary, based on the actual density of the
+screen in use. The conversion of dp units to screen pixels is simple: 
+<nobr><code>px = dp * (dpi / 160)</code></nobr>.
+For example, on a 240 dpi screen, 1 dp equals 1.5 physical pixels. You should always use dp units
+when defining your application's UI, to ensure proper display of your UI on screens with different
+densities. </p></dd>
+</dl>
+
+
+<h3 id="range">Range of screens supported</h3>
+
+<p>Starting with Android 1.6 (API Level 4), Android provides support for multiple screen sizes and
+densities, reflecting the many different screen configurations that a device may have. You can use
+features of the Android system to optimize your application's user interface for each screen
+configuration and ensure that your application not only renders properly, but provides the best
+user experience possible on each screen.</p>
+
+<p>To simplify the way that you design your user interfaces for multiple screens, Android divides
+the range of actual screen sizes and densities into:</p>
+
+<ul>
+<li>A set of four generalized <strong>sizes</strong>: <em>small</em>, <em>normal</em>,
+<em>large</em>,
+and <em>xlarge</em></em>
+<p class="note"><strong>Note:</strong> Beginning with Android 3.2 (API level 13), these size groups
+are deprecated in favor of a new technique for managing screen sizes based on the available screen
+width. If you're developing for Android 3.2 and greater, see <a
+href="#DeclaringTabletLayouts">Declaring Tablet Layouts for Android 3.2</a> for more
+information.</p>
+</li>
+<li>A set of four generalized <strong>densities</strong>: <em>ldpi</em> (low), <em>mdpi</em>
+(medium),
+<em>hdpi</em> (high), and <em>xhdpi</em> (extra high)
+</li>
+</ul>
+
+<p>The generalized sizes and densities are arranged around a
+baseline configuration that is a <em>normal</em> size and <em>mdpi</em> (medium) density. This
+baseline is based upon the screen configuration for the first Android-powered device, the T-Mobile
+G1, which has an HVGA screen (until Android 1.6, this was the only screen configuration that Android
+supported).</p>
+
+<p>Each generalized size and density spans a range of actual screen sizes and densities. For example,
+two devices that both report a screen size of <em>normal</em> might have actual screen sizes and
+aspect ratios that are slightly different when measured by hand. Similarly, two devices that report
+a screen density of <em>hdpi</em> might have real pixel densities that are slightly different.
+Android makes these differences abstract to applications, so you can provide UI designed for the
+generalized sizes and densities and let the system handle any final adjustments as necessary. Figure
+1 illustrates how different sizes and densities are roughly categorized into the different size
+and density groups.</p>
+
+<img src="../../images/screens_support/screens-ranges.png" style="padding:1em 0 0" alt="" />
+<p class="img-caption"><strong>Figure 1.</strong>
+Illustration of how Android roughly maps actual sizes and densities
+to generalized sizes and densities (figures are not exact).</p>
+
+<p>As you design your UI for different screen sizes, you'll discover that each design requires a
+minimum amount of space. So, each generalized screen size above has an associated minimum
+resolution that's defined by the system. These minimum sizes are in "dp" units&mdash;the same units
+you should use when defining your layouts&mdash;which allows the system to avoid worrying about
+changes in screen density.</p>
+
+<ul>
+  <li><em>xlarge</em> screens are at least 960dp x 720dp</li>
+  <li><em>large</em> screens are at least 640dp x 480dp</li>
+  <li><em>normal</em> screens are at least 470dp x 320dp</li>
+  <li><em>small</em> screens are at least 426dp x 320dp</li>
+</ul>
+
+<p class="note"><strong>Note:</strong> These minimum screen sizes were not as well defined prior to
+Android 3.0, so you may encounter some devices that are mis-classified between normal and large. 
+These are also based on the physical resolution of the screen, so may vary across devices&mdash;for
+example a 1024x720 tablet with a system bar actually has a bit less space available to the
+application due to it being used by the system bar.</p>
+
+<p>To optimize your application's UI for the different screen sizes and densities, you can provide
+<a href="../../guide/topics/resources/providing-resources.html#AlternativeResources">alternative
+resources</a> for any of the generalized sizes and densities. Typically, you should
+provide alternative layouts for some of the different screen sizes and alternative bitmap images for
+different screen densities. At runtime, the system uses the appropriate resources
+for your application, based on the generalized size or density of the current device screen.</p>
+
+<p>You do not need to provide alternative resources for every combination of screen size and
+density. The system provides robust compatibility features that can handle most of the work of
+rendering your application on any device screen, provided that you've implemented your UI using
+techniques that allow it to gracefully resize (as described in the <a
+href="#screen-independence">Best Practices</a>, below).</p>
+
+<p class="note"><strong>Note:</strong> The characteristics that define a device's generalized screen
+size and density are independent from each other. For example, a WVGA high-density screen is
+considered a normal size screen because its physical size is about the same as the T-Mobile G1
+(Android's first device and baseline screen configuration). On the other hand, a WVGA medium-density
+screen is considered a large size screen. Although it offers the same resolution (the same number of
+pixels), the WVGA medium-density screen has a lower screen density, meaning that each pixel is
+physically larger and, thus, the entire screen is larger than the baseline (normal size) screen.</p>
+
+
+
+<h3 id="density-independence">Density independence</h3>
+
+<p>Your application achieves "density independence" when it preserves the physical size (from
+the user's point of view) of user interface elements when displayed on screens with different
+densities.</p>
+
+<p>Maintaining density independence is important because, without it, a UI element (such as a
+button) appears physically larger on a low density screen and smaller on a high density screen. Such
+density-related size changes can cause problems in your application layout and usability. Figures 2
+and 3 show the difference between an application when it does not provide density independence and
+when it does, respectively.</p>
+
+<img src="../../images/screens_support/density-test-bad.png" alt=""  />
+<p class="img-caption"><strong>Figure 2.</strong> Example application without support for
+different densities, as shown on low, medium, and high density screens.</p>
+
+<img src="../../images/screens_support/density-test-good.png" alt="" />
+<p class="img-caption"><strong>Figure 3.</strong> Example application with good support for
+different densities (it's density independent), as shown on low, medium, and high
+density screens.</p>
+
+<p>The Android system helps your application achieve density independence in two ways: </p>
+
+<ul>
+<li>The system scales dp units as appropriate for the current screen density</li>
+<li>The system scales drawable resources to the appropriate size, based on the current screen
+density, if necessary</li>
+</ul>
+
+<p>In figure 2, the text view and bitmap drawable have dimensions specified in pixels (<code>px</code>
+units), so the views are physically larger on a low density screen and smaller on a high density
+screen. This is because although the actual screen sizes may be the same, the high density screen
+has more pixels per inch (the same amount of pixels fit in a smaller area). In figure 3, the layout
+dimensions are specified in density-independent pixels (<code>dp</code> units). Because the baseline for
+density-independent pixels is a medium-density screen, the device with a medium-density screen looks
+the same as it does in figure 2. For the low-density and high-density screens, however, the system
+scales the density-independent pixel values down and up, respectively, to fit the screen as
+appropriate.</p>
+
+<p>In most cases, you can ensure density independence in your application simply by specifying all
+layout dimension values in density-independent pixels (<code>dp</code> units) or with <code>"wrap_content"</code>, as appropriate. The system then scales bitmap drawables as appropriate in order to
+display at the appropriate size, based on the appropriate scaling factor for the current screen's
+density.</p>
+
+<p>However, bitmap scaling can result in blurry or pixelated bitmaps, which you might notice in the
+above screenshots. To avoid these artifacts, you should provide alternative bitmap resources for
+different densities. For example, you should provide higher-resolution bitmaps for high-density
+screens and the system will use those instead of resizing the bitmap designed for medium-density
+screens. The following section describes more about how to supply alternative resources for
+different screen configurations.</p>
+
+
+
+<h2 id="support">How to Support Multiple Screens</h2>
+
+<p>The foundation of Android's support for multiple screens is its ability to manage the rendering
+of an application's layout and bitmap drawables in an appropriate way for the current screen
+configuration. The system handles most of the work to render your application properly on each
+screen configuration by scaling layouts to fit the screen size/density and scaling bitmap drawables
+for the screen density, as appropriate. To more gracefully handle different screen configurations,
+however, you should also:</p>
+
+<ul>
+  <li><strong>Explicitly declare in the manifest which screen sizes your application
+supports</strong>
+    <p>By declaring which screen sizes your application supports, you can ensure that only
+devices with the screens you support can download your application. Declaring support for
+different screen sizes can also affect how the system draws your application on larger
+screens&mdash;specifically, whether your application runs in <a
+href="../../guide/practices/screen-compat-mode.html">screen compatibility mode</a>.</p>
+    <p>To declare the screen sizes your application supports, you should include the
+<a href="../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> element in your manifest file.</p>
+  </li>
+  
+  <li><strong>Provide different layouts for different screen sizes</strong>
+    <p>By default, Android resizes your application layout to fit the current device screen. In most
+cases, this works fine. In other cases, your UI might not look as good and might need adjustments
+for different screen sizes. For example, on a larger screen, you might want to adjust the position
+and size of some elements to take advantage of the additional screen space, or on a smaller screen,
+you might need to adjust sizes so that everything can fit on the screen.</p>
+    <p>The configuration qualifiers you can use to provide size-specific resources are
+<code>small</code>, <code>normal</code>, <code>large</code>, and <code>xlarge</code>. For
+example, layouts for an extra large screen should go in <code>layout-xlarge/</code>.</p>
+    <p>Beginning with Android 3.2 (API level 13), the above size groups are deprecated and you
+should instead use the <code>sw&lt;N&gt;dp</code> configuration qualifier to define the smallest
+available width required by your layout resources. For example, if your multi-pane tablet layout
+requires at least 600dp of screen width, you should place it in <code>layout-sw600dp/</code>. Using the
+new techniques for declaring layout resources is discussed further in the section about <a
+href="#DeclaringTabletLayouts">Declaring Tablet Layouts for Android 3.2</a>.</p>
+  </li>
+  
+  <li><strong>Provide different bitmap drawables for different screen densities</strong>
+    <p>By default, Android scales your bitmap drawables (<code>.png</code>, <code>.jpg</code>, and <code>.gif</code> files) and Nine-Patch drawables (<code>.9.png</code> files) so that they render at the appropriate
+physical size on each device. For example, if your application provides bitmap drawables only for
+the baseline, medium screen density (mdpi), then the system scales them up when on a high-density
+screen, and scales them down when on a low-density screen. This scaling can cause artifacts in the
+bitmaps. To ensure your bitmaps look their best, you should include alternative versions at
+different resolutions for different screen densities.</p>
+    <p>The configuration qualifiers you can use for density-specific resources are
+<code>ldpi</code> (low), <code>mdpi</code> (medium), <code>hdpi</code> (high), and
+<code>xhdpi</code> (extra high). For example, bitmaps for high-density screens should go in
+<code>drawable-hdpi/</code>.</p>
+  </li>
+</ul>
+
+<p>The size and density configuration qualifiers correspond to the generalized sizes and densities
+described in <a href="#range">Range of screens supported</a>, above.</p>
+
+<p class="note"><strong>Note:</strong> If you're not familiar with configuration qualifiers and how
+the system uses them to apply alternative resources, read <a
+href="../../guide/topics/resources/providing-resources.html#AlternativeResources">Providing
+Alternative Resources</a> for more information.</p>
+
+<p>At runtime, the system ensures the best possible display on the current screen with
+the following procedure for any given resource:</p>
+
+<ol>
+<li>The system uses the appropriate alternative resource
+  <p>Based on the size and density of the current screen, the system uses any size- and
+density-specific resource provided in your application. For example, if the device has a
+high-density screen and the application requests a drawable resource, the system looks for a
+drawable resource directory that best matches the device configuration. Depending on the other
+alternative resources available, a resource directory with the <code>hdpi</code> qualifier (such as
+<code>drawable-hdpi/</code>) might be the best match, so the system uses the drawable resource from this
+directory.</p>
+</li>
+
+<li>If no matching resource is available, the system uses the default resource and scales it up
+or down as needed to match the current screen size and density
+  <p>The "default" resources are those that are not tagged with a configuration qualifier. For
+example, the resources in <code>drawable/</code> are the default drawable resources. The system
+assumes that default resources are designed for the baseline screen size and density, which is a
+normal screen size and a medium density. As such, the system scales default density
+resources up for high-density screens and down for low-density screens, as appropriate.</p>
+  <p>However, when the system is looking for a density-specific resource and does not find it in
+the density-specific directory, it won't always use the default resources. The system may
+instead use one of the other density-specific resources in order to provide better results
+when scaling. For example, when looking for a low-density resource and it is not available, the
+system prefers to scale-down the high-density version of the resource, because the
+system can easily scale a high-density resource down to low-density by a factor of 0.5, with 
+fewer artifacts, compared to scaling a medium-density resource by a factor of 0.75.</p>
+</li>
+</ol>
+
+  <p>For more information about how Android selects alternative resources by matching configuration
+qualifiers to the device configuration, read
+<a href="../../guide/topics/resources/providing-resources.html#BestMatch">How Android
+Finds the Best-matching Resource</a>.</p>
+
+
+
+
+<h3 id="qualifiers">Using configuration qualifiers</h3>
+
+<p>Android supports several configuration qualifiers that allow you to control how the system
+selects your alternative resources based on the characteristics of the current device screen. A
+configuration qualifier is a string that you can append to a resource directory in your Android
+project and specifies the configuration for which the resources inside are designed.</p>
+
+<p>To use a configuration qualifier:</p>
+<ol>
+  <li>Create a new directory in your project's <code>res/</code> directory and name it using the
+format: <nobr><code>&lt;resources_name&gt;-&lt;qualifier&gt;</code></nobr>
+    <ul>
+      <li><code>&lt;resources_name&gt;</code> is the standard resource name (such as <code>drawable</code> or
+<code>layout</code>).</li>
+      <li><code>&lt;qualifier&gt;</code> is a configuration qualifier from table 1, below, specifying the
+screen configuration for which these resources are to be used (such as <code>hdpi</code> or <code>xlarge</code>).</li>
+    </ul>
+    <p>You can use more than one <code>&lt;qualifier&gt;</code> at a time&mdash;simply separate each
+qualifier with a dash.</p>
+  </li>
+  <li>Save the appropriate configuration-specific resources in this new directory. The resource
+files must be named exactly the same as the default resource files.</li>
+</ol>
+
+<p>For example, <code>xlarge</code> is a configuration qualifier for extra large screens. When you append
+this string to a resource directory name (such as <code>layout-xlarge</code>), it indicates to the
+system that these resources are to be used on devices that have an extra large screen.</p>
+
+<p class="table-caption"><strong>Table 1.</strong> Configuration qualifiers that allow you to
+provide special resources for different screen configurations.</p>
+
+<table>
+<tr>
+<th>Screen characteristic</th>
+<th>Qualifier</th>
+<th>Description</th>
+</tr>
+
+<tr>
+  <td rowspan="4">Size</td>
+  <td><code>small</code></td>
+  <td>Resources for <em>small</em> size screens.</td>
+</tr>
+<tr>
+  <td><code>normal</code></td>
+  <td>Resources for <em>normal</em> size screens. (This is the baseline size.)</td>
+</tr>
+<tr>
+<td><code>large</code></td>
+<td>Resources for <em>large</em> size screens.</td>
+</tr>
+<tr>
+<td><code>xlarge</code></td>
+<td>Resources for <em>extra large</em> size screens.</td>
+</tr>
+
+<tr>
+<td rowspan="6">Density</td>
+<td><code>ldpi</code></td>
+<td>Resources for low-density (<em>ldpi</em>) screens (~120dpi).</td>
+</tr>
+<tr>
+<td><code>mdpi</code></td>
+<td>Resources for medium-density (<em>mdpi</em>) screens (~160dpi). (This is the baseline
+density.)</td>
+</tr>
+<tr>
+<td><code>hdpi</code></td>
+<td>Resources for high-density (<em>hdpi</em>) screens (~240dpi).</td>
+</tr>
+<tr>
+<td><code>xhdpi</code></td>
+<td>Resources for extra high-density (<em>xhdpi</em>) screens (~320dpi).</td>
+</tr>
+<tr>
+<td><code>nodpi</code></td>
+<td>Resources for all densities. These are density-independent resources. The system does not
+scale resources tagged with this qualifier, regardless of the current screen's density.</td>
+</tr>
+<tr>
+<td><code>tvdpi</code></td>
+<td>Resources for screens somewhere between mdpi and hdpi; approximately 213dpi. This is not
+considered a "primary" density group. It is mostly intended for televisions and most apps shouldn't
+need it&mdash;providing mdpi and hdpi resources is sufficient for most apps and the system will
+scale them as appropriate. If you find it necessary to provide tvdpi resources, you should size them
+at a factor of 1.33*mdpi. For example, a 100px x 100px image for mdpi screens should be 133px x
+133px for tvdpi.</td>
+</tr>
+<tr>
+<td rowspan="2">Orientation</td>
+<td><code>land</code></td>
+<td>Resources for screens in the landscape orientation (wide aspect ratio).</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>Resources for screens in the portrait orientation (tall aspect ratio).</td>
+</tr>
+
+<tr>
+<td rowspan="2">Aspect ratio</td>
+<td><code>long</code></td>
+<td>Resources for screens that have a significantly taller or wider aspect ratio (when in portrait
+or landscape orientation, respectively) than the baseline screen configuration.</td>
+</tr>
+<tr>
+<td><code>notlong</code></td>
+<td>Resources for use screens that have an aspect ratio that is similar to the baseline screen
+configuration.</td>
+</tr>
+</table>
+
+<p class="note"><strong>Note:</strong> If you're developing your application for Android 3.2 and
+higher, see the section about <a
+href="#DeclaringTabletLayouts">Declaring Tablet Layouts for Android 3.2</a> for information about
+new configuration qualifiers that you should use when declaring layout resources for specific
+screen sizes (instead of using the size qualifiers in table 1).</p></p>
+
+<p>For more information about how these qualifiers roughly correspond to real screen
+sizes and densities, see <a href="#range">Range of Screens Supported</a>, earlier in this
+document.</p>
+
+<p>For example, the following is a list of resource directories in an application that
+provides different layout designs for different screen sizes and different bitmap drawables
+for medium, high, and extra high density screens.</p>
+
+<pre class="classic">
+res/layout/my_layout.xml             // layout for normal screen size ("default")
+res/layout-small/my_layout.xml       // layout for small screen size
+res/layout-large/my_layout.xml       // layout for large screen size
+res/layout-xlarge/my_layout.xml      // layout for extra large screen size
+res/layout-xlarge-land/my_layout.xml // layout for extra large in landscape orientation
+
+res/drawable-mdpi/my_icon.png        // bitmap for medium density
+res/drawable-hdpi/my_icon.png        // bitmap for high density
+res/drawable-xhdpi/my_icon.png       // bitmap for extra high density
+</pre>
+
+<p>For more information about how to use alternative resources and a complete list of
+configuration qualifiers (not just for screen configurations), see
+<a href="../../guide/topics/resources/providing-resources.html#AlternativeResources">
+Providing Alternative Resources</a>.</p>
+
+<p>Be aware that, when the Android system picks which resources to use at runtime, it uses
+certain logic to determing the "best matching" resources. That is, the qualifiers you use don't
+have to exactly match the current screen configuration in all cases in order for the system to
+use them. Specifically, when selecting resources based on the size qualifiers, the system will
+use resources designed for a screen smaller than the current screen if there are no resources
+that better match (for example, a large-size screen will use normal-size screen resources if
+necessary). However, if the only available resources are <em>larger</em> than the current screen,
+the system will not use them and your application will crash if no other resources match the device
+configuration (for example, if all layout resources are tagged with the <code>xlarge</code> qualifier,
+but the device is a normal-size screen). For more information about how the system selects
+resources, read <a
+href="../../guide/topics/resources/providing-resources.html#BestMatch">How Android Finds the
+Best-matching Resource</a>.</p>
+
+  <p class="note"><strong>Tip:</strong> If you have some drawable resources that the system
+should never scale (perhaps because you perform some adjustments to the image yourself at
+runtime), you should place them in a directory with the <code>nodpi</code> configuration qualifier.
+Resources with this qualifier are considered density-agnostic and the system will not scale
+them.</p>
+
+
+<h3 id="DesigningResources">Designing alternative layouts and drawables</h3>
+
+<p>The types of alternative resources you should create depends on your application's needs.
+Usually, you should use the size and orientation qualifiers to provide alternative layout resources
+and use the density qualifiers to provide alternative bitmap drawable resources.</p>
+
+<p>The following sections summarize how you might want to use the size and density qualifiers to
+provide alternative layouts and drawables, respectively.</p>
+
+
+<h4>Alternative layouts</h4>
+
+<p>Generally, you'll know whether you need alternative layouts for different screen sizes once
+you test your application on different screen configurations. For example:</p>
+
+<ul>
+  <li>When testing on a small screen, you might discover that your layout doesn't quite fit on the
+screen. For example, a row of buttons might not fit within the width of the screen on a small screen
+device. In this case you should provide an alternative layout for small screens that adjusts the
+size or position of the buttons.</li>
+  <li>When testing on an extra large screen, you might realize that your layout doesn't make
+efficient use of the big screen and is obviously stretched to fill it.
+In this case, you should provide an alternative layout for extra large screens that provides a
+redesigned UI that is optimized for bigger screens such as tablets. 
+    <p>Although your application should work fine without an alternative layout on big screens, it's
+quite important to users that your application looks as though it's designed specifically for their
+devices. If the UI is obviously stretched, users are more likely to be unsatisfied with the
+application experience.</p></li>
+  <li>And, when testing in the landscape orientation compared to the portrait orientation, you
+might notice that UI elements placed at the bottom of the screen for the portrait orientation
+should instead be on the right side of the screen in landscape orientation.</li>
+</ul>
+
+<p>To summarize, you should be sure that your application layout:</p>
+<ul>
+  <li>Fits on small screens (so users can actually use your application)</li>
+  <li>Is optimized for bigger screens to take advantage of the additional screen space</li>
+  <li>Is optimized for both landscape and portrait orientations</li>
+</ul>
+
+<p>If your UI uses bitmaps that need to fit the size of a view even after the system scales
+the layout (such as the background image for a button), you should use <a
+href="../../guide/topics/graphics/2d-graphics.html#nine-patch">Nine-Patch</a> bitmap files. A
+Nine-Patch file is basically a PNG file in which you specific two-dimensional regions that are
+stretchable. When the system needs to scale the view in which the bitmap is used, the system
+stretches the Nine-Patch bitmap, but stretches only the specified regions. As such, you don't
+need to provide different drawables for different screen sizes, because the Nine-Patch bitmap can
+adjust to any size. You should, however, provide alternate versions of your Nine-Patch files for
+different screen densities.</p>
+
+
+<h4>Alternative drawables</h4>
+
+<div class="figure" style="width:223px;margin:0">
+<img src="../../images/screens_support/screens-densities.png" alt="" />
+<p class="img-caption"><strong>Figure 4.</strong> Relative sizes for bitmap drawables
+that support each density.</p>
+</div>
+
+<p>Almost every application should have alternative drawable resources for different screen
+densities, because almost every application has a launcher icon and that icon should look good on
+all screen densities. Likewise, if you include other bitmap drawables in your application (such
+as for menu icons or other graphics in your application), you should provide alternative versions or
+each one, for different densities.</p>
+
+<p class="note"><strong>Note:</strong> You only need to provide density-specific drawables for
+bitmap files (<code>.png</code>, <code>.jpg</code>, or <code>.gif</code>) and Nine-Path files (<code>.9.png</code>). If you use XML files to define shapes, colors, or other <a
+href="../../guide/topics/resources/drawable-resource.html">drawable resources</a>, you should
+put one copy in the default drawable directory (<code>drawable/</code>).</p>
+
+<p>To create alternative bitmap drawables for different densities, you should follow the
+<b>3:4:6:8 scaling ratio</b> between the four generalized densities. For example, if you have
+a bitmap drawable that's 48x48 pixels for medium-density screen (the size for a launcher icon),
+all the different sizes should be:</p>
+
+<ul>
+  <li>36x36 for low-density</li>
+  <li>48x48 for medium-density</li>
+  <li>72x72 for high-density</li>
+  <li>96x96 for extra high-density</li>
+</ul>
+
+<p>For more information about designing icons, see the <a
+href="../../guide/practices/ui_guidelines/icon_design.html">Icon Design Guidelines</a>,
+which includes size information for various bitmap drawables, such as launcher icons, menu
+icons, status bar icons, tab icons, and more.</p>
+
+
+
+
+<h2 id="DeclaringTabletLayouts">Declaring Tablet Layouts for Android 3.2</h2>
+
+<p>For the first generation of tablets running Android 3.0, the proper way to declare tablet
+layouts was to put them in a directory with the <code>xlarge</code> configuration qualifier (for example,
+ <code>res/layout-xlarge/</code>). In order to accommodate other types of tablets and screen
+sizes&mdash;in particular, 7" tablets&mdash;Android 3.2 introduces a new way to specify resources
+for more discrete screen sizes. The new technique is based on the amount of space your layout needs
+(such as 600dp of width), rather than trying to make your layout fit the generalized size groups
+(such as <em>large</em> or <em>xlarge</em>).</p>
+
+<p>The reason designing for 7" tablets is tricky when using the generalized size groups is
+that a 7" tablet is technically in the same group as a 5" handset (the <em>large</em> group). While
+these two devices are seemingly close to each other in size, the amount of space for an
+application's UI is significantly different, as is the style of user interaction. Thus, a 7" and 5"
+screen should not always use the same layout. To make it possible for you to provide different
+layouts for these two kinds of screens, Android now allows you to specify your layout resources
+based on the width and/or height that's actually available for your application's layout, specified
+in dp units.</p>
+
+<p>For example, after you've designed the layout you want to use for tablet-style devices, you might
+determine that the layout stops working well when the screen is less than 600dp wide. This threshold
+thus becomes the minimum size that you require for your tablet layout. As
+such, you can now specify that these layout resources should be used only when there is at least
+600dp of width available for your application's UI.</p>
+
+<p>You should either pick a width and design to it as your minimum size, or test what is the
+smallest width your layout supports once it's complete.</p>
+
+<p class="note"><strong>Note:</strong> Remember that all the figures used with these new size APIs
+are density-indpendent pixel (dp) values and your layout dimensions should also always be defined
+using dp units, because what you care about is the amount of screen space available after the system
+accounts for screen density (as opposed to using raw pixel resolution). For more information about
+density-indpendent pixels, read <a href="#terms">Terms and concepts</a>, earlier in this
+document.</p>
+
+
+<h3 id="NewQualifiers">Using new size qualifiers</h3>
+
+<p>The different resource configurations that you can specify based on the space available for your
+layout are summarized in table 2. These new qualifiers offer you more control over the specific
+screen sizes your application supports, compared to the traditional screen size groups (small,
+normal, large, and xlarge).</p>
+
+<p class="note"><strong>Note:</strong> The sizes that you specify using these qualifiers are
+<strong>not the actual screen sizes</strong>. Rather, the sizes are for the width or height in dp
+units that are <strong>available to your activity's window</strong>. The Android system
+might use some of the screen for system UI (such as the system bar at the bottom of the screen or
+the status bar at the top), so some of the screen might not be available for your layout. Thus, the
+sizes you declare should be specifically about the sizes needed by your activity&mdash;the system
+accounts for any space used by system UI when declaring how much space it provides for your layout.
+Also beware that the <a href="../../guide/topics/ui/actionbar.html">Action Bar</a> is considered
+a part of your application's window space, although your layout does not declare it, so it reduces
+the space available for your layout and you must account for it in your design.</p>
+
+<p class="table-caption"><strong>Table 2.</strong> New configuration qualifers for screen size
+(introduced in Android 3.2).</p>
+<table>
+  <tr><th>Screen configuration</th><th>Qualifier values</th><th>Description</th></tr>
+  <tr><td>smallestWidth</td>
+      <td><code>sw&lt;N&gt;dp</code><br/><br/>
+        Examples:<br/>
+        <code>sw600dp</code><br/>
+        <code>sw720dp</code><br/>
+      </td>
+      <td>
+        <p>The fundamental size of a screen, as indicated by the shortest dimension of the available
+screen area. Specifically, the device's smallestWidth is the shortest of the screen's available
+height and width (you may also think of it as the "smallest possible width" for the screen). You can
+use this qualifier to ensure that, regardless of the screen's current orientation, your
+application's has at least <code>&lt;N&gt;</code> dps of width available for it UI.</p>
+        <p>For example, if your layout requires that its smallest dimension of screen area be at
+least 600 dp at all times, then you can use this qualifer to create the layout resources, <code>res/layout-sw600dp/</code>. The system will use these resources only when the smallest dimension of
+available screen is at least 600dp, regardless of whether the 600dp side is the user-perceived
+height or width. The smallestWidth is a fixed screen size characteristic of the device; <strong>the
+device's smallestWidth does not change when the screen's orientation changes</strong>.</p>
+  <p>The smallestWidth of a device takes into account screen decorations and system UI. For
+example, if the device has some persistent UI elements on the screen that account for space along
+the axis of the smallestWidth, the system declares the smallestWidth to be smaller than the actual
+screen size, because those are screen pixels not available for your UI.</p>
+  <p>This is an alternative to the generalized screen size qualifiers (small, normal, large, xlarge)
+that allows you to define a discrete number for the effective size available for your UI.
+Using smallestWidth to determine the general screen size is useful because width is
+often the driving factor in designing a layout. A UI will often scroll vertically, but have fairly
+hard constraints on the minimum space it needs horizontally. The available width is also the key
+factor in determining whether to use a one-pane layout for handsets or multi-pane layout for
+tablets. Thus, you likely care most about what the smallest possible width will be on each
+device.</p>
+    </td>
+  </tr>
+    <tr>
+      <td>Available screen width</td>
+      <td><code>w&lt;N&gt;dp</code><br/><br/>
+        Examples:<br/>
+        <code>w720dp</code><br/>
+        <code>w1024dp</code><br/>
+      </td>
+      <td>
+        <p>Specifies a minimum available width in dp units at which the resources should be
+used&mdash;defined by the <code>&lt;N&gt;</code> value. The system's corresponding value for the
+width changes when the screen's orientation switches between landscape and portrait to
+reflect the current actual width that's available for your UI.</p>
+        <p>This is often useful to determine whether to use a multi-pane layout, because even on a
+tablet device, you often won't want the same multi-pane layout for portrait orientation as you do
+for landscape. Thus, you can use this to specify the minimum width required for the layout, instead
+of using both the screen size and orientation qualifiers together.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>Available screen height</td>
+      <td><code>h&lt;N&gt;dp</code><br/><br/>
+        Examples:<br/>
+        <code>h720dp</code><br/>
+        <code>h1024dp</code><br/>
+        etc.
+      </td>
+      <td>
+        <p>Specifies a minimum screen height in dp units at which the resources should be
+used&mdash;defined by the <code>&lt;N&gt;</code> value. The system's corresponding value for
+the height changes when the screen's orientation switches between landscape and portrait to
+reflect the current actual height that's available for your UI.</p>
+        <p>Using this to define the
+height required by your layout is useful in the same way as <code>w&lt;N&gt;dp</code> is for
+defining the required width, instead of using both the screen size and orientation qualifiers.
+However, most apps won't need this qualifier, considering that UIs often scroll vertically and are
+thus more flexible with how much height is available, whereas the width is more rigid.</p>
+      </td>
+    </tr>
+</table>
+
+<p>While using these qualifiers might seem more complicated than using screen size groups, it should
+actually be simpler once you determine the requirements for your UI.  When you design your UI,
+the main thing you probably care about is the actual size at which your application switches between
+a handset-style UI and a tablet-style UI that uses multiple panes. The exact point of this switch
+will depend on your particular design&mdash;maybe you need a 720dp width for your tablet layout,
+maybe 600dp is enough, or 480dp, or some number between these. Using these qualifiers in table 2,
+you are in control of the precise size at which your layout changes.</p>
+
+<p>For more discussion about these size configuration qualifiers, see the <a
+href="../../guide/topics/resources/providing-resources.html#SmallestScreenWidthQualifier">
+Providing Resources</a> document.</p>
+
+
+<h3 id="ConfigurationExamples">Configuration examples</h3>
+
+<p>To help you target some of your designs for different types of devices, here are some
+numbers for typical screen widths:</p>
+
+<ul>
+  <li>320dp: a typical phone screen (240x320 ldpi, 320x480 mdpi, 480x800 hdpi, etc).</li>
+  <li>480dp: a tweener tablet like the Streak (480x800 mdpi).</li>
+  <li>600dp: a 7” tablet (600x1024 mdpi).</li>
+  <li>720dp: a 10” tablet (720x1280 mdpi, 800x1280 mdpi, etc).</li>
+</ul>
+
+<p>Using the size qualifiers from table 2, your application can switch between your different layout
+resources for handsets and tablets using any number you want for width and/or height.  For example,
+if 600dp is the smallest available width supported by your tablet layout, you can provide these two
+sets of layouts:</p>
+
+<pre class="classic">
+res/layout/main_activity.xml           # For handsets
+res/layout-sw600dp/main_activity.xml   # For tablets
+</pre>
+
+<p>In this case, the smallest width of the available screen space must be 600dp in order for the
+tablet layout to be applied.</p>
+
+<p>For other cases in which you want to further customize your UI to differentiate between sizes
+such as 7” and 10” tablets, you can define additional smallest width layouts:</p>
+
+<pre class="classic">
+res/layout/main_activity.xml           # For handsets (smaller than 600dp available width)
+res/layout-sw600dp/main_activity.xml   # For 7” tablets (600dp wide and bigger)
+res/layout-sw720dp/main_activity.xml   # For 10” tablets (720dp wide and bigger)
+</pre>
+
+<p>Notice that the previous two sets of example resources use the "smallest width" qualifer, <code>sw&lt;N&gt;dp</code>, which specifies the smallest of the screen's two sides, regardless of the
+device's current orientation. Thus, using <code>sw&lt;N&gt;dp</code> is a simple way to specify the
+overall screen size available for your layout by ignoring the screen's orientation.</p>
+
+<p>However, in some cases, what might be
+important for your layout is exactly how much width or height is <em>currently</em> available. For
+example, if you have a two-pane layout with two fragments side by side, you might want to use it
+whenever the screen provides at least 600dp of width, whether the device is in landscape or
+portrait orientation. In this case, your resources might look like this:</p>
+
+<pre class="classic">
+res/layout/main_activity.xml         # For handsets (smaller than 600dp available width)
+res/layout-w600dp/main_activity.xml  # Multi-pane (any screen with 600dp available width or more)
+</pre>
+
+<p>Notice that the second set is using the "available width" qualifier, <code>w&lt;N&gt;dp</code>. This
+way, one device may actually use both layouts, depending on the orientation of the screen (if
+the available width is at least 600dp in one orientation and less than 600dp in the other
+orientation).</p>
+
+<p>If the available height is a concern for you, then you can do the same using the <code>h&lt;N&gt;dp</code> qualifier. Or, even combine the <code>w&lt;N&gt;dp</code> and <code>h&lt;N&gt;dp</code>
+qualifiers if you need to be really specific.</p>
+
+
+<h3 id="DeclaringScreenSizeSupport">Declaring screen size support</h3>
+
+<p>Once you've implemented your layouts for different screen sizes, it's equally important that you
+declare in your manifest file which screens your application supports.</p>
+
+<p>Along with the new configuration qualifiers for screen size, Android 3.2 introduces new
+attributes for the <a
+href="../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a>
+manifest element:</p>
+
+<dl>
+  
+  <dt><a
+href="../../guide/topics/manifest/supports-screens-element.html#requiresSmallest">
+<code>android:requiresSmallestWidthDp</code></a></dt>
+  <dd>Specifies the minimum smallestWidth required. The smallestWidth is the shortest dimension of
+the screen space (in <code>dp</code> units) that must be available to your application UI&mdash;that is,
+the shortest of the available screen's two dimensions. So, in order for a device to be considered
+compatible with your application, the device's smallestWidth must be equal to or greater than this
+value. (Usually, the value you supply for this is the "smallest width" that your layout supports,
+regardless of the screen's current orientation.)
+  <p>For example, if your application is only for tablet-style devices with a 600dp
+smallest available width:</p>
+<pre>
+&lt;manifest ... &gt;
+    &lt;supports-screens android:requiresSmallestWidthDp="600" /&gt;
+    ...
+&lt;/manifest&gt;
+</pre>
+  <p>However, if your application supports all screen sizes supported by Android (as small as
+426dp x 320dp), then you don't need to declare this attribute, because the smallest width your
+application requires is the smallest possible on any device.</p>
+
+  <p class="caution"><strong>Caution:</strong> The Android system does not pay attention to this
+attribute, so it does not affect how your application behaves at runtime. Instead, it is used
+to enable filtering for your application on services such as Google Play. However,
+<strong>Google Play currently does not support this attribute for filtering</strong> (on Android
+3.2), so you should continue using the other size attributes if your application does not support
+small screens.</p>
+</dd>
+
+  <dt><a
+href="../../guide/topics/manifest/supports-screens-element.html#compatibleWidth">
+<code>android:compatibleWidthLimitDp</code></a></dt>
+  <dd>This attribute allows you to enable <a
+href="../../guide/practices/screen-compat-mode.html">screen compatibility mode</a> as a
+user-optional feature by specifying the maximum "smallest width" that your application
+supports. If the smallest side of a device's available screen is greater than your value here,
+users can still install your application, but are offered to run it in screen compatibility mode. By
+default, screen compatibility mode is disabled and your layout is resized to fit the screen as
+usual, but a button is available in the system bar that allows users to toggle screen compatibility
+mode on and off.
+  <p class="note"><strong>Note:</strong> If your application's layout properly resizes for large
+screens, you do not need to use this attribute. We recommend that you avoid using this
+attribute and instead ensure your layout resizes for larger screens by following the
+recommendations in this document.</p></dd>
+
+  <dt><a
+href="../../guide/topics/manifest/supports-screens-element.html#largestWidth">
+<code>android:largestWidthLimitDp</code></a></dt>
+  <dd>This attribute allows you to force-enable <a
+href="../../guide/practices/screen-compat-mode.html">screen compatibility mode</a> by specifying
+the maximum "smallest width" that your application supports. If the smallest
+side of a device's available screen is greater than your value here, the application runs in screen
+compatibility mode with no way for the user to disable it.
+  <p class="note"><strong>Note:</strong> If your application's layout properly resizes for large
+screens, you do not need to use this attribute.  We recommend that you avoid using this
+attribute and instead ensure your layout resizes for larger screens by following the
+recommendations in this document.</p></dd>
+</dl>
+
+<p class="caution"><strong>Caution:</strong> When developing for Android 3.2 and higher, you
+should not use the older screen size attributes in combination with the attributes
+listed above. Using both the new attributes and the older size attributes might cause
+unexpected behavior.</p>
+
+<p>For more information about each of these attributes, follow the respective links above.</p>
+
+
+
+
+<h2 id="screen-independence">Best Practices</h2>
+
+<p>The objective of supporting multiple screens is to create an application that can function
+properly and look good on any of the generalized screen configurations supported by Android. The
+previous sections of this document provide information about how Android adapts your
+application to screen configurations and how you can customize the look of your application on
+different screen configurations. This section provides some additional tips and an overview of
+techniques that help ensure that your application scales properly for different screen
+configurations.</p>
+
+<p>Here is a quick checklist about how you can ensure that your application displays properly
+on different screens:</p>
+
+<ol>
+  <li>Use <code>wrap_content</code>, <code>fill_parent</code>, or <code>dp</code> units when specifying
+dimensions in an XML layout file</li>
+  <li>Do not use hard coded pixel values in your application code</li>
+  <li>Do not use <code>AbsoluteLayout</code> (it's deprecated)</li>
+  <li>Supply alternative bitmap drawables for different screen densities</li>
+</ol>
+
+<p>The following sections provide more details.</p>
+
+
+<h3 id="use-relative">1. Use wrap_content, fill_parent, or the dp unit for layout dimensions</h3>
+
+<p>When defining the <a
+href="../../reference/android/view/ViewGroup.LayoutParams.html#attr_android:layout_width"
+><code>android:layout_width</code></a> and <a
+href="../../reference/android/view/ViewGroup.LayoutParams.html#attr_android:layout_height"
+><code>android:layout_height</code></a> for
+views in an XML layout file, using <code>"wrap_content"</code>,
+<code>"fill_parent"</code> or <code>dp</code> units guarantees that the view is
+given an appropriate size on the current device screen.</p>
+
+<p>For instance, a view with a <code>layout_width="100dp"</code> measures 100 pixels wide on
+medium-density screen and the system scales it up to 150 pixels wide on high-density screen, so
+that the view occupies approximately the same physical space on the screen.</p>
+
+<p>Similarly, you should prefer the <code>sp</code> (scale-independent pixel) to define text
+sizes. The <code>sp</code> scale factor depends on a user setting and the system scales the
+size the same as it does for <code>dp</code>.</p>
+
+
+<h3>2. Do not use hard-coded pixel values in your application code</h3>
+
+<p>For performance reasons and to keep the code simpler, the Android system uses pixels as the
+standard unit for expressing dimension or coordinate values. That means that the dimensions of a
+view are always expressed in the code using pixels, but always based on the current screen density.
+For instance, if <code>myView.getWidth()</code> returns 10, the view is 10 pixels wide on the
+current screen, but on a device with a higher density screen, the value returned might be 15. If you
+use pixel values in your application code to work with bitmaps that are not pre-scaled for the
+current screen density, you might need to scale the pixel values that you use in your code to match
+the un-scaled bitmap source.</p>
+
+<p>If your application manipulates bitmaps or deals with pixel values at runtime, see the section
+below about <a href="#DensityConsiderations">Additional Density Considerations</a>.</p>
+
+
+<h3 id="avoid-absolute">3. Do not use AbsoluteLayout </h3>
+
+<p>Unlike the other layouts widgets, <code><a href="../../reference/android/widget/AbsoluteLayout.html">AbsoluteLayout</a></code> enforces
+the use of fixed positions to lay out its child views, which can easily lead to user interfaces that
+do not work well on different displays. Because of this, <code><a href="../../reference/android/widget/AbsoluteLayout.html">AbsoluteLayout</a></code> was
+deprecated in Android 1.5 (API Level 3).</p>
+
+<p>You should instead use <code><a href="../../reference/android/widget/RelativeLayout.html">RelativeLayout</a></code>, which uses relative positioning
+to lay out its child views. For instance, you can specify that a button widget should appear "to
+the right of" a text widget.</p>
+
+
+<h3>4. Use size and density-specific resources</h3>
+
+<p>Although the system scales your layout and drawable resources based on the current screen
+configuration, you may want to make adjustments to the UI on different screen sizes and provide
+bitmap drawables that are optimized for different densities. This essentially reiterates the
+information from earlier in this document.</p>
+
+<p>If you need to control exactly how your application will look on various
+screen configurations, adjust your layouts and bitmap drawables in configuration-specific
+resource directories. For example, consider an icon that you want to display on
+medium and high density screens. Simply create your icon at two different sizes
+(for instance 100x100 for medium density and 150x150 for high density) and put
+the two variations in the appropriate directories, using the proper
+qualifiers:</p>
+
+<pre class="classic">
+res/drawable-mdpi/icon.png&nbsp;&nbsp;&nbsp;//for medium-density screens
+res/drawable-hdpi/icon.png&nbsp;&nbsp;&nbsp;//for high-density screens
+</pre>
+
+<p class="note"><strong>Note:</strong> If a density qualifier is not defined in a directory name,
+the system assumes that the resources in that directory are designed for the baseline medium
+density and will scale for other densities as appropriate.</p>
+
+<p>For more information about valid configuration qualifiers, see <a href="#qualifiers">Using
+configuration qualifiers</a>, earlier in this document.</p>
+
+
+
+
+
+<h2 id="DensityConsiderations">Additional Density Considerations</h2>
+
+<p>This section describes more about how Android performs scaling for bitmap drawables on different
+screen densities and how you can further control how bitmaps are drawn on different densities. The
+information in this section shouldn't be important to most applications, unless you have encountered
+problems in your application when running on different screen densities or your application
+manipulates graphics.</p>
+
+<p>To better understand how you can support multiple densities when manipulating graphics at
+runtime, you should understand that the system helps ensure the proper scale for bitmaps in the
+following ways:</p>
+
+<ol>
+<li><em>Pre-scaling of resources (such as bitmap drawables)</em>
+
+  <p>Based on the density of the current screen, the system uses any size- or density-specific
+resources from your application and displays them without scaling. If resources are not available in
+the correct density, the system loads the default resources and scales them up or down as needed to
+match the current screen's density. The system assumes that default resources (those from a
+directory without configuration qualifiers) are designed for the baseline screen density (mdpi),
+unless they are loaded from a density-specific resource directory. Pre-scaling is, thus, what the
+system does when resizing a bitmap to the appropriate size for the current screen
+density.</p>
+
+  <p>If you request the dimensions of a pre-scaled resource, the system returns values
+representing the dimensions <em>after</em> scaling. For example, a bitmap designed at 50x50 pixels
+for an mdpi screen is scaled to 75x75 pixels on an hdpi screen (if there is no alternative resource
+for hdpi) and the system reports the size as such.</p>
+
+<p>There are some situations in which you might not want Android to pre-scale
+a resource. The easiest way to avoid pre-scaling is to put the resource in a resource directory
+with the <code>nodpi</code> configuration qualifier. For example:</p>
+
+<pre class="classic">res/drawable-nodpi/icon.png</pre>
+
+<p>When the system uses the <code>icon.png</code> bitmap from this folder, it does not scale it
+based on the current device density.</p>
+</li>
+
+<li><em>Auto-scaling of pixel dimensions and coordinates</em>
+
+  <p>An application can disable pre-scaling by setting <a
+href="../../guide/topics/manifest/supports-screens-element.html#any"><code>android:anyDensity</code></a> to <code>"false"</code> in the manifest or programmatically for a <code><a href="../../reference/android/graphics/Bitmap.html">Bitmap</a></code> by setting <code><a href="../../reference/android/graphics/BitmapFactory.Options.html#inScaled">inScaled</a></code> to
+<code>"false"</code>. In this case, the system auto-scales any absolute pixel coordinates and pixel
+dimension values at draw time. It does this to ensure that pixel-defined screen elements are still
+displayed at approximately the same physical size as they would be at the baseline screen density
+(mdpi). The system handles this scaling transparently to the application and reports the scaled
+pixel dimensions to the application, rather than physical pixel dimensions.</p>
+
+  <p>For instance, suppose a device has a WVGA high-density screen, which is 480x800 and about the
+same size as a traditional HVGA screen, but it's running an application that has disabled
+pre-scaling. In this case, the system will "lie" to the application when it queries for screen
+dimensions, and report 320x533 (the approximate mdpi translation for the screen density). Then, when
+the application does drawing operations, such as invalidating the rectangle from (10,10) to (100,
+100), the system transforms the coordinates by scaling them the appropriate amount, and actually
+invalidate the region (15,15) to (150, 150). This discrepancy may cause unexpected behavior if
+your application directly manipulates the scaled bitmap, but this is considered a reasonable
+trade-off to keep the performance of applications as good as possible. If you encounter this
+situation, read the following section about <a href="#dips-pels">Converting dp units to pixel
+units</a>.</p>
+
+  <p>Usually, <strong>you should not disable pre-scaling</strong>. The best way to support multiple
+screens is to follow the basic techniques described above in <a href="#support">How to Support
+Multiple Screens</a>.<p>
+</li>
+
+</ol>
+
+
+<p>If your application manipulates bitmaps or directly interacts with pixels on the screen in some
+other way, you might need to take additional steps to support different screen densities. For
+example, if you respond to touch gestures by counting the number of pixels that a finger
+crosses, you need to use the appropriate density-independent pixel values, instead of actual
+pixels.</p>
+
+
+<h3 id="scaling">Scaling Bitmap objects created at runtime</h3>
+
+<div class="figure" style="width:300px">
+<img src="../../images/screens_support/scale-test.png" alt="" />
+<p class="img-caption"><strong>Figure 5.</strong> Comparison of pre-scaled and auto-scaled
+bitmaps, from <a
+href="../../resources/samples/ApiDemos/src/com/example/android/apis/graphics/DensityActivity.html">
+ApiDemos</a>.
+</p>
+</div>
+
+<p>If your application creates an in-memory bitmap (a <code><a href="../../reference/android/graphics/Bitmap.html">Bitmap</a></code> object), the
+system assumes that the bitmap is designed for the baseline medium-density screen, by default, and
+auto-scales the bitmap at draw time. The system applies "auto-scaling" to a <code><a href="../../reference/android/graphics/Bitmap.html">Bitmap</a></code> when the bitmap has unspecified density properties. If you don't properly
+account for the current device's screen density and specify the bitmap's density properties, the
+auto-scaling can result in scaling artifacts the same as when you don't provide alternative
+resources.</p>
+
+<p>To control whether a <code><a href="../../reference/android/graphics/Bitmap.html">Bitmap</a></code> created at runtime is scaled or not, you can
+specify the density of the bitmap with <code><a href="../../reference/android/graphics/Bitmap.html#setDensity(int)">setDensity()</a></code>,
+passing a density constant from <code><a href="../../reference/android/util/DisplayMetrics.html">DisplayMetrics</a></code>, such as <code><a href="../../reference/android/util/DisplayMetrics.html#DENSITY_HIGH">DENSITY_HIGH</a></code> or <code><a href="../../reference/android/util/DisplayMetrics.html#DENSITY_LOW">DENSITY_LOW</a></code>.</p>
+
+<p>If you're creating a <code><a href="../../reference/android/graphics/Bitmap.html">Bitmap</a></code> using <code><a href="../../reference/android/graphics/BitmapFactory.html">BitmapFactory</a></code>, such as from a file or a stream, you can use <code><a href="../../reference/android/graphics/BitmapFactory.Options.html">BitmapFactory.Options</a></code> to define properties of the bitmap as
+it already exists, which determine if or how the system will scale it. For example, you can use the
+<code><a href="../../reference/android/graphics/BitmapFactory.Options.html#inDensity">inDensity</a></code> field to define the density for which the
+bitmap is designed and the <code><a href="../../reference/android/graphics/BitmapFactory.Options.html#inScaled">inScaled</a></code> field to specify whether the bitmap should scale to
+match the current device's screen density.</p>
+
+<p>If you set the <code><a href="../../reference/android/graphics/BitmapFactory.Options.html#inScaled">inScaled</a></code> field to <code>false</code>, then you disable any
+pre-scaling that the system may apply to the bitmap and the system will then auto-scale it at draw
+time. Using auto-scaling instead of pre-scaling can be more CPU expensive, but uses
+less memory.</p>
+
+<p>Figure 5 demonstrates the results of the pre-scale and auto-scale mechanisms when loading low
+(120), medium (160) and high (240) density bitmaps on a high-density screen. The differences are
+subtle, because all of the bitmaps are being scaled to match the current screen density, however the
+scaled bitmaps have slightly different appearances depending on whether they are pre-scaled or
+auto-scaled at draw time. You can find the source code for this sample application, which
+demonstrates using pre-scaled and auto-scaled bitmaps, in <a
+href="../../resources/samples/ApiDemos/src/com/example/android/apis/graphics/DensityActivity.html">
+ApiDemos</a>.</p>
+
+<p class="note"><strong>Note:</strong> In Android 3.0 and above, there should be no perceivable
+difference between pre-scaled and auto-scaled bitmaps, due to improvements in the graphics
+framework.</p>
+
+
+
+
+
+<h3 id="dips-pels">Converting dp units to pixel units</h3>
+
+<p>In some cases, you will need to express dimensions in <code>dp</code> and then convert them to
+pixels. Imagine an application in which a scroll or fling gesture is recognized after the user's
+finger has moved by at least 16 pixels. On a baseline screen, a user's must move by <code>16 pixels
+/ 160 dpi</code>, which equals 1/10th of an inch (or 2.5 mm) before the gesture is recognized. On a device
+with a high density display (240dpi), the user's must move by <code>16 pixels / 240 dpi</code>, which
+equals 1/15th of an inch (or 1.7 mm). The distance is much shorter and the application thus appears
+more sensitive to the user.</p> 
+
+<p>To fix this issue, the gesture threshold must be expressed in code in <code>dp</code> and then
+converted to actual pixels. For example:</p>
+
+<pre>// The gesture threshold expressed in dp
+private static final float GESTURE_THRESHOLD_DP = 16.0f;
+
+// Get the screen's density scale
+final float scale = <code><a href="../../reference/android/content/ContextWrapper.html#getResources()">getResources()</a></code>.<code><a href="../../reference/android/content/res/Resources.html#getDisplayMetrics()">getDisplayMetrics()</a></code>.density;
+// Convert the dps to pixels, based on density scale
+mGestureThreshold = (int) (GESTURE_THRESHOLD_DP * scale + 0.5f);</span>
+
+// Use mGestureThreshold as a distance in pixels...
+</pre>
+
+<p>The <code><a href="../../reference/android/util/DisplayMetrics.html#density">DisplayMetrics.density</a></code> field specifies the scale
+factor you must use to convert <code>dp</code> units to pixels, according to the current screen density.
+On a medium-density screen, <code><a href="../../reference/android/util/DisplayMetrics.html#density">DisplayMetrics.density</a></code>
+equals 1.0; on a high-density screen it equals 1.5; on an extra high-density screen, it equals 2.0;
+and on a low-density screen, it equals 0.75. This figure is the factor by which you should multiply
+the <code>dp</code> units on order to get the actual pixel count for the current screen. (Then add <code>0.5f</code> to round the figure up to the nearest whole number, when converting to an integer.) For more
+information, refer to the <code><a href="../../reference/android/util/DisplayMetrics.html">DisplayMetrics</a></code> class.</p>
+
+<p>However, instead of defining an arbitrary threshold for this kind of event, you should
+use pre-scaled configuration values that are available from <code><a href="../../reference/android/view/ViewConfiguration.html">ViewConfiguration</a></code>.</p>
+
+
+<h4 id="pre-scaled-values">Using pre-scaled configuration values</h4>
+
+<p>You can use the <code><a href="../../reference/android/view/ViewConfiguration.html">ViewConfiguration</a></code> class to access common distances,
+speeds, and times used by the Android system. For instance, the
+distance in pixels used by the framework as the scroll threshold can be obtained with <code><a href="../../reference/android/view/ViewConfiguration.html#getScaledTouchSlop()">getScaledTouchSlop()</a></code>:</p>
+
+<pre>
+private static final int GESTURE_THRESHOLD_DP = ViewConfiguration.get(myContext).getScaledTouchSlop();
+</pre>
+
+<p>Methods in <code><a href="../../reference/android/view/ViewConfiguration.html">ViewConfiguration</a></code> starting with the <code>getScaled</code> prefix
+are guaranteed to return a value in pixels that will display properly regardless of the current
+screen density.</p>
+
+
+
+
+
+
+<h2 id="testing">How to Test Your Application on Multiple Screens</h2>
+
+<div class="figure" style="width:500px;margin:0">
+  <img src="../../images/screens_support/avds-config.png" alt="" />
+  <p class="img-caption"><strong>Figure 6.</strong>
+  A set of AVDs for testing screens support.</p>
+</div>
+
+<p>Before publishing your application, you should thoroughly test it in all of the supported screen
+sizes and densities. The Android SDK includes emulator skins you can use, which
+replicate the sizes and densities of common screen configurations on which your application is
+likely to run. You can also modify the default size, density, and resolution of the emulator skins
+to replicate the characteristics of any specific screen. Using the emulator skins and additional
+custom configurations allows you to test any possible screen configuration, so you don't
+have to buy various devices just to test your application's screen support.</p>
+
+<p>To set up an environment for testing your application's screen support, you should create a
+series of AVDs (Android Virtual Devices), using emulator skins and screen configurations that
+emulate the screen sizes and densities you want your application to support. To do so, you can use
+the AVD Manager to create the AVDs and launch them with a graphical interface.</p>
+
+<p>To launch the Android SDK Manager, execute the <code>SDK Manager.exe</code> from your Android SDK directory (on Windows only) or execute <code>android</code> from
+the <code>&lt;sdk&gt;/tools/</code> directory (on all platforms). Figure 6 shows the AVD
+Manager with a selection of AVDs, for testing various screen configurations.</p>
+
+<p>Table 3 shows the various emulator skins that are available in the Android SDK, which you can use
+to emulate some of the most common screen configurations.</p>
+
+<p>For more information about creating and using AVDs to test your application, see <a
+href="../../tools/devices/managing-avds.html">Managing AVDs with AVD
+Manager</a>.</p>
+
+
+<p class="table-caption" id="screens-table"><strong>Table 3.</strong> Various screen
+configurations available from emulator skins in the Android SDK (indicated in bold) and other
+representative resolutions.</p>
+
+  <table class="normal-headers">
+    <tbody>
+    <tr>
+      <th></th>
+      <th>
+        <nobr>Low density (120), <em>ldpi</em></nobr>
+      </th>
+      <th>
+        <nobr>Medium density (160), <em>mdpi</em></nobr>
+      </th>
+      <th>
+        <nobr>High density (240), <em>hdpi</em><nobr>
+      </th>
+      <th>
+        <nobr>Extra high density (320), <em>xhdpi</em><nobr>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <em>Small</em> screen
+      </th>
+      <td><strong>QVGA (240x320)</strong></td>
+      <td></td>
+      <td>480x640</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>
+        <em>Normal</em> screen
+      </th>
+      <td><strong>WQVGA400 (240x400)</strong>
+        <br><strong>WQVGA432 (240x432)</strong></td>
+      <td><strong>HVGA (320x480)</strong></td>
+      <td><strong>WVGA800 (480x800)</strong>
+        <br><strong>WVGA854 (480x854)</strong>
+        <br>600x1024</td>
+      <td>640x960</td>
+    </tr>
+    <tr>
+      <th>
+        <em>Large</em> screen
+      </th>
+      <td><strong>WVGA800** (480x800)</strong>
+        <br><strong>WVGA854** (480x854)</strong></td>
+      <td><strong>WVGA800* (480x800)</strong>
+        <br><strong>WVGA854* (480x854)</strong>
+        <br>600x1024</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>
+        <em>Extra Large</em> screen
+      </th>
+      <td>1024x600</td>
+      <td><strong>WXGA (1280x800)</strong><sup>&dagger;</sup><br>
+          1024x768<br>1280x768</td>
+      <td>1536x1152<br>1920x1152
+        <br>1920x1200</td>
+      <td>2048x1536<br>2560x1536
+        <br>2560x1600</td>
+    </tr>
+    <tr>
+      <td colspan="5" style="border:none;font-size:85%;">* To emulate this configuration, specify a
+custom density of 160 when creating an AVD that uses a WVGA800 or WVGA854 skin.<br/>
+        ** To emulate this configuration, specify a custom density of 120 when creating an AVD that
+uses a WVGA800 or WVGA854 skin.<br/>
+        &dagger; This skin is available with the Android 3.0 platform
+      </td>
+    </tr>
+</table>
+
+<p>To see the relative numbers of active devices that support any given screen configuration, see
+the <a href="../../resources/dashboard/screens.html">Screen Sizes and Densities</a>
+dashboard.</p>
+
+<div class="figure" style="width:204px">
+  <img src="../../images/screens_support/avd-start.png" alt="" />
+  <p class="img-caption"><strong>Figure 7.</strong>
+  Size and density options you can set, when starting an AVD from the AVD
+Manager.</p>
+</div>
+
+<p>We also recommend that you test your application in an emulator that is set
+up to run at a physical size that closely matches an actual device. This makes
+it a lot easier to compare the results at various sizes and densities. To
+do so you need to know the approximate density, in dpi, of your computer
+monitor (for instance, a 30" Dell monitor has a density of about 96 dpi). When you launch an AVD
+from the AVD Manager, you can specify the screen size for the emulator and your
+monitor dpi in the Launch Options, as shown in figure 7.</p>
+
+<p>If you would like to test your application on a screen that uses a resolution
+or density not supported by the built-in skins, you can create an AVD that uses a custom resolution
+or density. When creating the AVD from the AVD Manager, specify the Resolution,
+instead of selecting a Built-in Skin.</p>
+
+<p>If you are launching your AVD from the command line, you can specify the scale for
+the emulator with the <code>-scale</code> option. For example:</p>
+
+<pre>emulator -avd &lt;avd_name&gt; -scale 96dpi</pre>
+
+<p>To refine the size of the emulator, you can instead pass the <code>-scale</code> option a number
+between 0.1 and 3 that represents the desired scaling factor.</p>
+
+<p>For more information about creating AVDs from the command line, see <a
+href="../../tools/devices/managing-avds-cmdline.html">Managing AVDs from the
+Command Line</a></p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

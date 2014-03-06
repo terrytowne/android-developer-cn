@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Android 4.3 APIs | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  about" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+<ul id="nav">
+  
+<li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/index.html">Welcome</a></div>
+    <ul>
+      <li><a href="../../about/start.html">Get Started</a></li>
+    </ul>
+  </li> 
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/kitkat.html">
+      <span class="en">KitKat</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.4.html">Android 4.4 APIs</a></li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/jelly-bean.html">
+      <span class="en">Jelly Bean</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.3.html">Android 4.3 APIs</a></li>
+        <li><a href="../../about/versions/android-4.2.html">Android 4.2 APIs</a></li>
+        <li><a href="../../about/versions/android-4.1.html">Android 4.1 APIs</a></li>
+      </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-4.0-highlights.html">
+      <span class="en">Ice Cream Sandwich</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-4.0.3.html">Android 4.0.3 APIs</a></li>
+        <li><a href="../../about/versions/android-4.0.html">Android 4.0 APIs</a> </li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-3.0-highlights.html">
+      <span class="en">Honeycomb</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-3.2.html">Android 3.2 APIs</a></li>
+        <li><a href="../../about/versions/android-3.1.html">Android 3.1 APIs</a></li>
+        <li><a href="../../about/versions/android-3.0.html">Android 3.0 APIs</a> </li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../about/versions/android-2.3-highlights.html">
+      <span class="en">Gingerbread</span></a></div>
+      <ul>
+        <li><a href="../../about/versions/android-2.3.4.html">Android 2.3.4 APIs</a></li>
+        <li><a href="../../about/versions/android-2.3.3.html">Android 2.3.3 APIs</a></li>
+      </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../about/dashboards/index.html">Dashboards</a></div>
+  </li>
+
+</ul>
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Android 4.3 APIs</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+<h2>In this document
+    <a href="#" onclick="hideNestedItems('#toc43',this);return false;" class="header-toggle">
+        <span class="more">show more</span>
+        <span class="less" style="display:none">show less</span></a></h2>
+
+<ol id="toc43" class="hide-nested">
+  <li><a href="#ApiLevel">Update your target API level</a></li>
+  <li><a href="#Behaviors">Important Behavior Changes</a>
+    <ol>
+      <li><a href="#BehaviorsIntents">If your app uses implicit intents...</a></li>
+      <li><a href="#BehaviorsAccounts">If your app depends on accounts...</a></li>
+      <li><a href="#BehaviorsVideoView">If your app uses VideoView...</a></li>
+    </ol>
+  </li>
+  <li><a href="#RestrictedProfiles">Restricted Profiles</a>
+    <ol>
+      <li><a href="#AccountsInProfile">Supporting accounts in a restricted profile</a></li>
+    </ol>
+  </li>
+  <li><a href="#Wireless">Wireless and Connectivity</a>
+    <ol>
+      <li><a href="#BTLE">Bluetooth Low Energy (Smart Ready)</a></li>
+      <li><a href="#WiFiScan">Wi-Fi scan-only mode</a></li>
+      <li><a href="#WiFiConfig">Wi-Fi configuration</a></li>
+      <li><a href="#QuickResponse">Quick response for incoming calls</a></li>
+    </ol>
+  </li>
+  <li><a href="#Multimedia">Multimedia</a>
+    <ol>
+      <li><a href="#MediaExtractor">MediaExtractor and MediaCodec enhancements</a></li>
+      <li><a href="#DRM">Media DRM</a></li>
+      <li><a href="#EncodingSurface">Video encoding from a Surface</a></li>
+      <li><a href="#MediaMuxing">Media muxing</a></li>
+      <li><a href="#ProgressAndScrubbing">Playback progress and scrubbing for RemoteControlClient</a></li>
+    </ol>
+  </li>
+  <li><a href="#Graphics">Graphics</a>
+    <ol>
+      <li><a href="#OpenGL">Support for OpenGL ES 3.0</a></li>
+      <li><a href="#MipMap">Mipmapping for drawables</a></li>
+    </ol>
+  </li>
+  <li><a href="#UI">User Interface</a>
+    <ol>
+      <li><a href="#ViewOverlay">View overlays</a></li>
+      <li><a href="#OpticalBounds">Optical bounds layout</a></li>
+      <li><a href="#AnimationRect">Animation for Rect values</a></li>
+      <li><a href="#AttachFocus">Window attach and focus listener</a></li>
+      <li><a href="#Overscan">TV overscan support</a></li>
+      <li><a href="#Orientation">Screen orientation</a></li>
+      <li><a href="#RotationAnimation">Rotation animations</a></li>
+    </ol>
+  </li>
+  <li><a href="#UserInput">User Input</a>
+    <ol>
+      <li><a href="#Sensors">New sensor types</a></li>
+    </ol>
+  </li>
+  <li><a href="#NotificationListener">Notification Listener</a></li>
+  <li><a href="#Contacts">Contacts Provider</a>
+    <ol>
+      <li><a href="#Contactables">Query for "contactables"</a></li>
+      <li><a href="#ContactsDelta">Query for contacts deltas</a></li>
+    </ol>
+  </li>
+  <li><a href="#Localization">Localization</a>
+    <ol>
+      <li><a href="#BiDi">Improved support for bi-directional text</a></li>
+    </ol>
+  </li>
+  <li><a href="#A11yService">Accessibility Services</a>
+    <ol>
+      <li><a href="#A11yKeyEvents">Handle key events</a></li>
+      <li><a href="#A11yText">Select text and copy/paste</a></li>
+      <li><a href="#A11yFeatures">Declare accessibility features</a></li>
+    </ol>
+  </li>
+  <li><a href="#Testing">Testing and Debugging</a>
+    <ol>
+      <li><a href="#UiAutomation">Automated UI testing</a></li>
+      <li><a href="#Systrace">Systrace events for apps</a></li>
+    </ol>
+  </li>
+  <li><a href="#Security">Security</a>
+    <ol>
+      <li><a href="#KeyStore">Android key store for app-private keys</a></li>
+      <li><a href="#HardwareKeyChain">Hardware credential storage</a></li>
+    </ol>
+  </li>
+  <li><a href="#Manifest">Manifest Declarations</a>
+    <ol>
+      <li><a href="#ManifestFeatures">Declarable required features</a></li>
+      <li><a href="#ManifestPermissions">User permissions</a></li>
+    </ol>
+  </li>
+</ol>
+
+<h2>See also</h2>
+<ol>
+<li><a href="../../sdk/api_diff/18/changes.html">API
+Differences Report &raquo;</a> </li>
+<li><a
+href="../../tools/support-library/index.html">Support Library</a></li>
+</ol>
+
+</div>
+</div>
+
+
+
+<p>API Level: 18</p>
+
+<p>Android 4.3 (<code><a href="../../reference/android/os/Build.VERSION_CODES.html#JELLY_BEAN_MR2">JELLY_BEAN_MR2</a></code>)
+is an update to the Jelly Bean release that offers new features for users and app
+developers. This document provides an introduction to the most notable
+new APIs.</p>
+
+<p>As an app developer, you should download the Android 4.3 system image
+and SDK platform from the <a href="../../tools/help/sdk-manager.html">SDK Manager</a> as
+soon as possible. If you don't have a device running Android 4.3 on which to
+test your app, use the Android 4.3 system
+image to test your app on the <a href="../../tools/devices/emulator.html">Android emulator</a>.
+Then build your apps against the Android 4.3 platform to begin using the
+latest APIs.</p>
+
+
+<h3 id="ApiLevel">Update your target API level</h3>
+
+<p>To better optimize your app for devices running Android 4.3,
+  you should set your <a
+href="../../guide/topics/manifest/uses-sdk-element.html#target"><code>targetSdkVersion</code></a> to
+<code>"18"</code>, install it on an Android 4.3 system image,
+test it, then publish an update with this change.</p>
+
+<p>You can use APIs in Android 4.3 while also supporting older versions by adding
+conditions to your code that check for the system API level before executing
+APIs not supported by your <a
+href="../../guide/topics/manifest/uses-sdk-element.html#min"><code>minSdkVersion</code></a>.
+To learn more about maintaining backward compatibility, read <a
+href="../../training/basics/supporting-devices/platforms.html">Supporting Different
+Platform Versions</a>.</p>
+
+<p>Various APIs are also available in the Android <a
+href="../../tools/support-library/index.html">Support Library</a> that allow you to implement
+new features on older versions of the platform.</p>
+
+<p>For more information about how API levels work, read <a
+href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">What is API
+Level?</a></p>
+
+
+
+
+
+<h2 id="Behaviors">Important Behavior Changes</h2>
+
+<p>If you have previously published an app for Android, be aware that your app might
+be affected by changes in Android 4.3.</p>
+
+
+<h3 id="BehaviorsIntents">If your app uses implicit intents...</h3>
+
+<p>Your app might misbehave in a restricted profile environment.</p>
+
+<p>Users in a <a href="#RestrictedProfiles">restricted profile</a> environment might not
+have all the standard Android apps available. For example, a restricted profile might have the
+web browser and camera app disabled. So your app should not make assumptions about which apps are
+available, because if you call <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code> without
+verifying whether an app is available to handle the <code><a href="../../reference/android/content/Intent.html">Intent</a></code>,
+your app might crash in a restricted profile.</p>
+
+<p>When using an implicit intent, you should always verify that an app is available to handle the intent by calling <code><a href="../../reference/android/content/Intent.html#resolveActivity(android.content.pm.PackageManager)">resolveActivity()</a></code> or <code><a href="../../reference/android/content/pm/PackageManager.html#queryIntentActivities(android.content.Intent, int)">queryIntentActivities()</a></code>. For example:</p>
+
+<pre>
+Intent intent = new Intent(Intent.ACTION_SEND);
+...
+if (intent.resolveActivity(getPackageManager()) != null) {
+    startActivity(intent);
+} else {
+    Toast.makeText(context, R.string.app_not_available, Toast.LENGTH_LONG).show();
+}
+</pre>
+
+
+<h3 id="BehaviorsAccounts">If your app depends on accounts...</h3>
+
+<p>Your app might misbehave in a restricted profile environment.</p>
+
+<p>Users within a restricted profile environment do not have access to user accounts by default.
+If your app depends on an <code><a href="../../reference/android/accounts/Account.html">Account</a></code>, then your app might crash or behave
+unexpectedly when used in a restricted profile.</p>
+
+<p>If you'd like to prevent restricted profiles from using your app entirely because your
+app depends on account information that's sensitive, specify the <a
+href="../../guide/topics/manifest/application-element.html#requiredAccountType"><code>android:requiredAccountType</code></a> attribute in your manifest's <a
+href="../../guide/topics/manifest/application-element.html"><code>&lt;application></code></a>
+element.</p>
+
+<p>If you’d like to allow restricted profiles to continue using your app even though they can’t
+create their own accounts, then you can either disable your app features that require an account
+or allow restricted profiles to access the accounts created by the primary user. For more
+information, see the section
+below about <a href="#AccountsInProfile">Supporting accounts in a restricted profile</a>.</p>
+
+
+<h3 id="BehaviorsVideoView">If your app uses VideoView...</h3>
+
+<p>Your video might appear smaller on Android 4.3.</p>
+
+<p>On previous versions of Android, the <code><a href="../../reference/android/widget/VideoView.html">VideoView</a></code> widget incorrectly
+calculated the <code>"wrap_content"</code> value for <code><a href="../../reference/android/R.attr.html#layout_height">layout_height</a></code> and <code><a href="../../reference/android/R.attr.html#layout_width">layout_width</a></code> to be the same as <code>"match_parent"</code>. So while using <code>"wrap_content"</code> for the height or width may have previously provided your desired video layout,
+doing so may result in a much smaller video on Android 4.3 and higher. To fix the issue, replace
+<code>"wrap_content"</code> with <code>"match_parent"</code> and verify your video appears as expected on
+Android 4.3 as well as on older versions.</p>
+
+
+
+
+
+
+<h2 id="RestrictedProfiles">Restricted Profiles</h2>
+
+<p>On Android tablets, users can now create restricted profiles based on the primary user.
+When users create a restricted profile, they can enable restrictions such as which apps are
+available to the profile. A new set of APIs in Android 4.3 also allow you to build fine-grain
+restriction settings for the apps you develop. For example, by using the new APIs, you can
+allow users to control what type of content is available within your app when running in a
+restricted profile environment.</p>
+
+<p>The UI for users to control the restrictions you've built is managed by the system's
+Settings application. To make your app's restriction settings appear to the user,
+you must declare the restrictions your app provides by creating a <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> that receives the <code><a href="../../reference/android/content/Intent.html#ACTION_GET_RESTRICTION_ENTRIES">ACTION_GET_RESTRICTION_ENTRIES</a></code> intent. The system invokes this intent to query
+all apps for available restrictions, then builds the UI to allow the primary user to
+manage restrictions for each restricted profile. </p>
+
+<p>In the <code><a href="../../reference/android/content/BroadcastReceiver.html#onReceive(android.content.Context, android.content.Intent)">onReceive()</a></code> method of
+your <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code>, you must create a <code><a href="../../reference/android/content/RestrictionEntry.html">RestrictionEntry</a></code> for each restriction your app provides. Each <code><a href="../../reference/android/content/RestrictionEntry.html">RestrictionEntry</a></code> defines a restriction title, description, and one of the
+following data types:</p>
+
+<ul>
+  <li><code><a href="../../reference/android/content/RestrictionEntry.html#TYPE_BOOLEAN">TYPE_BOOLEAN</a></code> for a restriction that is
+  either true or false.
+  <li><code><a href="../../reference/android/content/RestrictionEntry.html#TYPE_CHOICE">TYPE_CHOICE</a></code> for a restriction that has
+  multiple choices that are mutually exclusive (radio button choices).
+  <li><code><a href="../../reference/android/content/RestrictionEntry.html#TYPE_MULTI_SELECT">TYPE_MULTI_SELECT</a></code> for a restriction that
+  has multiple choices that are <em>not</em> mutually exclusive (checkbox choices).
+</ul>
+
+<p>You then put all the <code><a href="../../reference/android/content/RestrictionEntry.html">RestrictionEntry</a></code> objects into an <code><a href="../../reference/java/util/ArrayList.html">ArrayList</a></code> and put it into the broadcast receiver's result as the value for the
+<code><a href="../../reference/android/content/Intent.html#EXTRA_RESTRICTIONS_LIST">EXTRA_RESTRICTIONS_LIST</a></code> extra.</p>
+
+<p>The system creates the UI for your app's restrictions in the Settings app and saves each
+restriction with the unique key you provided for each <code><a href="../../reference/android/content/RestrictionEntry.html">RestrictionEntry</a></code>
+object. When the user opens your app, you can query for any current restrictions by
+calling <code><a href="../../reference/android/os/UserManager.html#getApplicationRestrictions(java.lang.String)">getApplicationRestrictions()</a></code>.
+This returns a <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> containing the key-value pairs for each restriction
+you defined with the <code><a href="../../reference/android/content/RestrictionEntry.html">RestrictionEntry</a></code> objects.</p>
+
+<p>If you want to provide more specific restrictions that can't be handled by boolean, single
+choice, and multi-choice values, then you can create an activity where the user can specify the
+restrictions and allow users to open that activity from the restriction settings. In your
+broadcast receiver, include the <code><a href="../../reference/android/content/Intent.html#EXTRA_RESTRICTIONS_INTENT">EXTRA_RESTRICTIONS_INTENT</a></code> extra
+in the result <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code>. This extra must specify an <code><a href="../../reference/android/content/Intent.html">Intent</a></code>
+indicating the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> class to launch (use the
+<code><a href="../../reference/android/os/Bundle.html#putParcelable(java.lang.String, android.os.Parcelable)">putParcelable()</a></code> method to pass <code><a href="../../reference/android/content/Intent.html#EXTRA_RESTRICTIONS_INTENT">EXTRA_RESTRICTIONS_INTENT</a></code> with the intent).
+When the primary user enters your activity to set custom restrictions, your
+activity must then return a result containing the restriction values in an extra using either
+the <code><a href="../../reference/android/content/Intent.html#EXTRA_RESTRICTIONS_LIST">EXTRA_RESTRICTIONS_LIST</a></code> or <code><a href="../../reference/android/content/Intent.html#EXTRA_RESTRICTIONS_BUNDLE">EXTRA_RESTRICTIONS_BUNDLE</a></code> key, depending on whether you specify
+<code><a href="../../reference/android/content/RestrictionEntry.html">RestrictionEntry</a></code> objects or key-value pairs, respectively.</p>
+
+
+<h3 id="AccountsInProfile">Supporting accounts in a restricted profile</h3>
+
+<p>Any accounts added to the primary user are available to a restricted profile, but the
+accounts are not accessible from the <code><a href="../../reference/android/accounts/AccountManager.html">AccountManager</a></code> APIs by default.
+If you attempt to add an account with <code><a href="../../reference/android/accounts/AccountManager.html">AccountManager</a></code> while in a restricted
+profile, you will get a failure result. Due to these restrictions, you have the following
+three options:</p>
+
+<li><strong>Allow access to the owner’s accounts from a restricted profile.</strong>
+<p>To get access to an account from a restricted profile, you must add the <a href="../../guide/topics/manifest/application-element.html#restrictedAccountType"><code>android:restrictedAccountType</code></a> attribute to the <a
+href="../../guide/topics/manifest/application-element.html">&lt;application></a> tag:</p>
+<pre>
+&lt;application ...
+    android:restrictedAccountType="com.example.account.type" >
+</pre>
+
+<p class="caution"><strong>Caution:</strong> Enabling this attribute provides your
+app access to the primary user's accounts from restricted profiles. So you should allow this
+only if the information displayed by your app does not reveal personally identifiable
+information (PII) that’s considered sensitive. The system settings will inform the primary
+user that your app grants restricted profiles to their accounts, so it should be clear to the user
+that account access is important for your app's functionality. If possible, you should also
+provide adequate restriction controls for the primary user that define how much account access
+is allowed in your app.</p>
+</li>
+
+
+<li><strong>Disable certain functionality when unable to modify accounts.</strong>
+<p>If you want to use accounts, but don’t actually require them for your app’s primary
+functionality, you can check for account availability and disable features when not available.
+You should first check if there is an existing account available. If not, then query whether
+it’s possible to create a new account by calling <code><a href="../../reference/android/os/UserManager.html#getUserRestrictions()">getUserRestrictions()</a></code> and check the <code><a href="../../reference/android/os/UserManager.html#DISALLOW_MODIFY_ACCOUNTS">DISALLOW_MODIFY_ACCOUNTS</a></code> extra in the result. If it is <code>true</code>,
+then you should disable whatever functionality of your app requires access to accounts.
+For example:</p>
+<pre>
+UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
+Bundle restrictions = um.getUserRestrictions();
+if (restrictions.getBoolean(UserManager.DISALLOW_MODIFY_ACCOUNTS, false)) {
+   // cannot add accounts, disable some functionality
+}
+</pre>
+<p class="note"><strong>Note:</strong> In this scenario, you should <em>not</em> declare
+any new attributes in your manifest file.</p>
+</li>
+
+<li><strong>Disable your app when unable to access private accounts.</strong>
+<p>If it’s instead important that your app not be available to restricted profiles because
+your app depends on sensitive personal information in an account (and because restricted profiles
+currently cannot add new accounts), add
+the <a href="../../guide/topics/manifest/application-element.html#requiredAccountType"><code>android:requiredAccountType</code></a> attribute to the <a
+href="../../guide/topics/manifest/application-element.html">&lt;application></a> tag:</p>
+<pre>
+&lt;application ...
+    android:requiredAccountType="com.example.account.type" >
+</pre>
+<p>For example, the Gmail app uses this attribute to disable itself for restricted profiles,
+because the owner's personal email should not be available to restricted profiles.</p>
+</li>
+
+
+
+<h2 id="Wireless">Wireless and Connectivity</h2>
+
+
+<h3 id="BTLE">Bluetooth Low Energy (Smart Ready)</h3>
+
+<p>Android now supports Bluetooth Low Energy (LE) with new APIs in <code><a href="../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></code>.
+With the new APIs, you can build Android apps that communicate with Bluetooth Low Energy
+peripherals such as heart rate monitors and pedometers.</p>
+
+<p>Because Bluetooth LE is a hardware feature that is not available on all
+Android-powered devices, you must declare in your manifest file a <a
+href="../../guide/topics/manifest/uses-feature-element.html"><code>&lt;uses-feature></code></a>
+element for <code>"android.hardware.bluetooth_le"</code>:</p>
+<pre>
+&lt;uses-feature android:name="android.hardware.bluetooth_le" android:required="true" />
+</pre>
+
+<p>If you're already familiar with Android's Classic Bluetooth APIs, notice that using the
+Bluetooth LE APIs has some differences. Most importantly is that there's now a <code><a href="../../reference/android/bluetooth/BluetoothManager.html">BluetoothManager</a></code> class that you should use for some high level operations
+such as acquiring a <code><a href="../../reference/android/bluetooth/BluetoothAdapter.html">BluetoothAdapter</a></code>, getting a list of connected
+devices, and checking the state of a device. For example, here's how you should now get the
+<code><a href="../../reference/android/bluetooth/BluetoothAdapter.html">BluetoothAdapter</a></code>:</p>
+<pre>
+final BluetoothManager bluetoothManager =
+        (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+mBluetoothAdapter = bluetoothManager.getAdapter();
+</pre>
+
+<p>To discover Bluetooth LE peripherals, call <code><a href="../../reference/android/bluetooth/BluetoothAdapter.html#startLeScan(android.bluetooth.BluetoothAdapter.LeScanCallback)">startLeScan()</a></code> on the <code><a href="../../reference/android/bluetooth/BluetoothAdapter.html">BluetoothAdapter</a></code>, passing it an implementation
+of the <code><a href="../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a></code> interface. When the Bluetooth
+adapter detects a Bluetooth LE peripheral, your <code><a href="../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html">BluetoothAdapter.LeScanCallback</a></code> implementation receives a call to the
+<code><a href="../../reference/android/bluetooth/BluetoothAdapter.LeScanCallback.html#onLeScan(android.bluetooth.BluetoothDevice, int, byte[])">onLeScan()</a></code> method. This
+method provides you with a <code><a href="../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> object representing the
+detected device, the RSSI value for the device, and a byte array containing the device's
+advertisement record.</p>
+
+<p>If you want to scan for only specific types of peripherals, you can instead call <code><a href="../../reference/android/bluetooth/BluetoothAdapter.html#startLeScan(android.bluetooth.BluetoothAdapter.LeScanCallback)">startLeScan()</a></code> and include an array of <code><a href="../../reference/java/util/UUID.html">UUID</a></code> objects that specify the GATT services your app supports.</p>
+
+<p class="note"><strong>Note:</strong> You can only scan for Bluetooth LE devices <em>or</em>
+scan for Classic Bluetooth devices using previous APIs. You cannot scan for both LE and Classic
+Bluetooth devices at once.</p>
+
+<p>To then connect to a Bluetooth LE peripheral, call <code><a href="../../reference/android/bluetooth/BluetoothDevice.html#connectGatt(android.content.Context, boolean, android.bluetooth.BluetoothGattCallback)">connectGatt()</a></code> on the corresponding
+<code><a href="../../reference/android/bluetooth/BluetoothDevice.html">BluetoothDevice</a></code> object, passing it an implementation of
+<code><a href="../../reference/android/bluetooth/BluetoothGattCallback.html">BluetoothGattCallback</a></code>. Your implementation of <code><a href="../../reference/android/bluetooth/BluetoothGattCallback.html">BluetoothGattCallback</a></code> receives callbacks regarding the connectivity
+state with the device and other events. It's during the <code><a href="../../reference/android/bluetooth/BluetoothGattCallback.html#onConnectionStateChange(android.bluetooth.BluetoothGatt, int, int)">onConnectionStateChange()</a></code>
+callback that you can begin communicating with the device if the method passes <code><a href="../../reference/android/bluetooth/BluetoothProfile.html#STATE_CONNECTED">STATE_CONNECTED</a></code> as the new state.</p>
+
+<p>Accessing Bluetooth features on a device also requires that your app request certain
+Bluetooth user permissions. For more information, see the <a
+href="../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a> API guide.</p>
+
+
+<h3 id="WiFiScan">Wi-Fi scan-only mode</h3>
+
+<p>When attempting to identify the user's location, Android may use Wi-Fi to help determine
+the location by scanning nearby access points. However, users often keep Wi-Fi turned off to
+conserve battery, resulting in location data that's less accurate. Android now includes a
+scan-only mode that allows the device Wi-Fi to scan access points to help obtain the location
+without connecting to an access point, thus greatly reducing battery usage.</p>
+
+<p>If you want to acquire the user's location but Wi-Fi is currently off, you can request the
+user to enable Wi-Fi scan-only mode by calling <code><a href="../../reference/android/content/Context.html#startActivity(android.content.Intent)">startActivity()</a></code> with the action <code><a href="../../reference/android/net/wifi/WifiManager.html#ACTION_REQUEST_SCAN_ALWAYS_AVAILABLE">ACTION_REQUEST_SCAN_ALWAYS_AVAILABLE</a></code>.</p>
+
+
+<h3 id="WiFiConfig">Wi-Fi configuration</h3>
+
+<p>New <code><a href="../../reference/android/net/wifi/WifiEnterpriseConfig.html">WifiEnterpriseConfig</a></code> APIs allow enterprise-oriented services to
+automate Wi-Fi configuration for managed devices.</p>
+
+
+<h3 id="QuickResponse">Quick response for incoming calls</h3>
+
+<p>Since Android 4.0, a feature called "Quick response" allows users to respond to incoming
+calls with an immediate text message without needing to pick up the call or unlock the device.
+Until now, these quick messages were always handled by the default Messaging app. Now any app
+can declare its capability to handle these messages by creating a <code><a href="../../reference/android/app/Service.html">Service</a></code>
+with an intent filter for <code><a href="../../reference/android/telephony/TelephonyManager.html#ACTION_RESPOND_VIA_MESSAGE">ACTION_RESPOND_VIA_MESSAGE</a></code>.</p>
+
+<p>When the user responds to an incoming call with a quick response, the Phone app sends
+the <code><a href="../../reference/android/telephony/TelephonyManager.html#ACTION_RESPOND_VIA_MESSAGE">ACTION_RESPOND_VIA_MESSAGE</a></code> intent with a URI
+describing the recipient (the caller) and the <code><a href="../../reference/android/content/Intent.html#EXTRA_TEXT">EXTRA_TEXT</a></code> extra
+with the message the user wants to send. When your service receives the intent, it should deliver
+the message and immediately stop itself (your app should not show an activity).</p>
+
+<p>In order to receive this intent, you must declare the <code><a href="../../reference/android/Manifest.permission.html#SEND_RESPOND_VIA_MESSAGE">SEND_RESPOND_VIA_MESSAGE</a></code> permission.</p>
+
+
+
+<h2 id="Multimedia">Multimedia</h2>
+
+<h3 id="MediaExtractor">MediaExtractor and MediaCodec enhancements</h3>
+
+<p>Android now makes it easier for you to write your own Dynamic Adaptive
+Streaming over HTTP (DASH) players in accordance with the ISO/IEC 23009-1 standard,
+using existing APIs in <code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code> and <code><a href="../../reference/android/media/MediaExtractor.html">MediaExtractor</a></code>. The framework underlying these APIs has been updated to support
+parsing of fragmented MP4 files, but your app is still responsible for parsing the MPD metadata
+and passing the individual streams to <code><a href="../../reference/android/media/MediaExtractor.html">MediaExtractor</a></code>.</p>
+
+<p>If you want to use DASH with encrypted content, notice that the <code><a href="../../reference/android/media/MediaExtractor.html#getSampleCryptoInfo(android.media.MediaCodec.CryptoInfo)">getSampleCryptoInfo()</a></code> method returns the <code><a href="../../reference/android/media/MediaCodec.CryptoInfo.html">MediaCodec.CryptoInfo</a></code> metadata describing the structure of each encrypted media
+sample. Also, the <code><a href="../../reference/android/media/MediaExtractor.html#getPsshInfo()">getPsshInfo()</a></code> method has been added to
+<code><a href="../../reference/android/media/MediaExtractor.html">MediaExtractor</a></code> so you can access the PSSH metadata for your DASH media.
+This method returns a map of <code><a href="../../reference/java/util/UUID.html">UUID</a></code> objects to bytes, with the
+<code><a href="../../reference/java/util/UUID.html">UUID</a></code> specifying the crypto scheme, and the bytes being the data specific
+to that scheme.</p>
+
+
+<h3 id="DRM">Media DRM</h3>
+
+<p>The new <code><a href="../../reference/android/media/MediaDrm.html">MediaDrm</a></code> class provides a modular solution for digital rights
+management (DRM) with your media content by separating DRM concerns from media playback. For
+instance, this API separation allows you to play back Widevine-encrypted content without having
+to use the Widevine media format. This DRM solution also supports DASH Common Encryption so you
+can use a variety of DRM schemes with your streaming content.</p>
+
+<p>You can use <code><a href="../../reference/android/media/MediaDrm.html">MediaDrm</a></code> to obtain opaque key-request messages and process
+key-response messages from the server for license acquisition and provisioning. Your app is
+responsible for handling the network communication with the servers; the <code><a href="../../reference/android/media/MediaDrm.html">MediaDrm</a></code> class provides only the ability to generate and process the messages.</p>
+
+<p>The <code><a href="../../reference/android/media/MediaDrm.html">MediaDrm</a></code> APIs are  intended to be used in conjunction with the
+<code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code> APIs that were introduced in Android 4.1 (API level 16),
+including <code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code> for encoding and decoding your content, <code><a href="../../reference/android/media/MediaCrypto.html">MediaCrypto</a></code> for handling encrypted content, and <code><a href="../../reference/android/media/MediaExtractor.html">MediaExtractor</a></code>
+for extracting and demuxing your content.</p>
+
+<p>You must first construct <code><a href="../../reference/android/media/MediaExtractor.html">MediaExtractor</a></code> and
+<code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code> objects. You can then access the DRM-scheme-identifying
+<code><a href="../../reference/java/util/UUID.html">UUID</a></code>, typically from metadata in the content, and use it to construct an
+instance of a <code><a href="../../reference/android/media/MediaDrm.html">MediaDrm</a></code> object with its constructor.</p>
+
+
+<h3 id="EncodingSurface">Video encoding from a Surface</h3>
+
+<p>Android 4.1 (API level 16) added the <code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code> class for low-level
+encoding and decoding of media content. When encoding video, Android 4.1 required that you provide
+the media with a <code><a href="../../reference/java/nio/ByteBuffer.html">ByteBuffer</a></code> array, but Android 4.3 now allows you to use a <code><a href="../../reference/android/view/Surface.html">Surface</a></code> as the input to an encoder. For instance, this allows you to encode input
+from an existing video file or using frames generated from OpenGL ES.</p>
+
+<p>To use a <code><a href="../../reference/android/view/Surface.html">Surface</a></code> as the input to your encoder, first call <code><a href="../../reference/android/media/MediaCodec.html#configure(android.media.MediaFormat, android.view.Surface, android.media.MediaCrypto, int)">configure()</a></code> for your <code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code>.
+Then call <code><a href="../../reference/android/media/MediaCodec.html#createInputSurface()">createInputSurface()</a></code> to receive the <code><a href="../../reference/android/view/Surface.html">Surface</a></code> upon which you can stream your media.</p>
+
+<p>For example, you can use the given <code><a href="../../reference/android/view/Surface.html">Surface</a></code> as the window for an OpenGL
+context by passing it to <code><a href="../../reference/android/opengl/EGL14.html#eglCreateWindowSurface(android.opengl.EGLDisplay, android.opengl.EGLConfig, java.lang.Object, int[], int)">eglCreateWindowSurface()</a></code>. Then while rendering the surface, call <code><a href="../../reference/android/opengl/EGL14.html#eglSwapBuffers(android.opengl.EGLDisplay, android.opengl.EGLSurface)">eglSwapBuffers()</a></code> to pass the frame to the <code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code>.</p>
+
+<p>To begin encoding, call <code><a href="../../reference/android/media/MediaCodec.html#start()">start()</a></code> on the <code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code>. When done, call <code><a href="../../reference/android/media/MediaCodec.html#signalEndOfInputStream()">signalEndOfInputStream()</a></code>
+to terminate encoding, and call <code><a href="../../reference/android/view/Surface.html#release()">release()</a></code> on the
+<code><a href="../../reference/android/view/Surface.html">Surface</a></code>.</p>
+
+
+<h3 id="MediaMuxing">Media muxing</h3>
+
+<p>The new <code><a href="../../reference/android/media/MediaMuxer.html">MediaMuxer</a></code> class enables multiplexing between one audio stream
+and one video stream. These APIs serve as a counterpart to the <code><a href="../../reference/android/media/MediaExtractor.html">MediaExtractor</a></code>
+class added in Android 4.2 for de-multiplexing (demuxing) media.</p>
+
+<p>Supported output formats are defined in <code><a href="../../reference/android/media/MediaMuxer.OutputFormat.html">MediaMuxer.OutputFormat</a></code>. Currently,
+MP4 is the only supported output format and <code><a href="../../reference/android/media/MediaMuxer.html">MediaMuxer</a></code> currently supports
+only one audio stream and/or one video stream at a time.</p>
+
+<p><code><a href="../../reference/android/media/MediaMuxer.html">MediaMuxer</a></code> is mostly designed to work with <code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code>
+so you can perform video processing through <code><a href="../../reference/android/media/MediaCodec.html">MediaCodec</a></code> then save the
+output to an MP4 file through <code><a href="../../reference/android/media/MediaMuxer.html">MediaMuxer</a></code>. You can also use <code><a href="../../reference/android/media/MediaMuxer.html">MediaMuxer</a></code> in combination with <code><a href="../../reference/android/media/MediaExtractor.html">MediaExtractor</a></code> to perform
+media editing without the need to encode or decode.</p>
+
+
+<h3 id="ProgressAndScrubbing">Playback progress and scrubbing for RemoteControlClient</h3>
+
+<p>In Android 4.0 (API level 14), the <code><a href="../../reference/android/media/RemoteControlClient.html">RemoteControlClient</a></code> was added to
+enable media playback controls from remote control clients such as the controls available on the
+lock screen. Android 4.3 now provides the ability for such controllers to display the playback
+position and controls for scrubbing the playback. If you've enabled remote control for your
+media app with the <code><a href="../../reference/android/media/RemoteControlClient.html">RemoteControlClient</a></code> APIs, then you can allow playback
+scrubbing by implementing two new interfaces.</p>
+
+<p>First, you must enable the <code><a href="../../reference/android/media/RemoteControlClient.html#FLAG_KEY_MEDIA_POSITION_UPDATE">FLAG_KEY_MEDIA_POSITION_UPDATE</a></code> flag by passing it to
+<code><a href="../../reference/android/media/RemoteControlClient.html#setTransportControlFlags(int)">setTransportControlsFlags()</a></code>.</p>
+
+<p>Then implement the following two new interfaces:</p>
+<dl>
+  <dt><code><a href="../../reference/android/media/RemoteControlClient.OnGetPlaybackPositionListener.html">RemoteControlClient.OnGetPlaybackPositionListener</a></code></dt>
+  <dd>This includes the callback <code><a href="../../reference/android/media/RemoteControlClient.OnGetPlaybackPositionListener.html#onGetPlaybackPosition()">onGetPlaybackPosition()</a></code>, which requests the current position
+  of your media when the remote control needs to update the progress in its UI.</dd>
+
+  <dt><code><a href="../../reference/android/media/RemoteControlClient.OnPlaybackPositionUpdateListener.html">RemoteControlClient.OnPlaybackPositionUpdateListener</a></code></dt>
+  <dd>This includes the callback <code><a href="../../reference/android/media/RemoteControlClient.OnPlaybackPositionUpdateListener.html#onPlaybackPositionUpdate(long)">onPlaybackPositionUpdate()</a></code>, which
+  tells your app the new time code for your media when the user scrubs the playback with the
+  remote control UI.
+    <p>Once you update your playback with the new position, call <code><a href="../../reference/android/media/RemoteControlClient.html#setPlaybackState(int)">setPlaybackState()</a></code> to indicate the
+    new playback state, position, and speed.</p>
+  </dd>
+</dl>
+
+<p>With these interfaces defined, you can set them for your <code><a href="../../reference/android/media/RemoteControlClient.html">RemoteControlClient</a></code> by calling <code><a href="../../reference/android/media/RemoteControlClient.html#setOnGetPlaybackPositionListener(android.media.RemoteControlClient.OnGetPlaybackPositionListener)">setOnGetPlaybackPositionListener()</a></code> and
+<code><a href="../../reference/android/media/RemoteControlClient.html#setPlaybackPositionUpdateListener(android.media.RemoteControlClient.OnPlaybackPositionUpdateListener)">setPlaybackPositionUpdateListener()</a></code>, respectively.</p>
+
+
+
+<h2 id="Graphics">Graphics</h2>
+
+<h3 id="OpenGL">Support for OpenGL ES 3.0</h3>
+
+<p>Android 4.3 adds Java interfaces and native support for OpenGL ES 3.0. Key new functionality
+provided in OpenGL ES 3.0 includes:</p>
+<ul>
+  <li>Acceleration of advanced visual effects</li>
+  <li>High quality ETC2/EAC texture compression as a standard feature</li>
+  <li>A new version of the GLSL ES shading language with integer and 32-bit floating point support</li>
+  <li>Advanced texture rendering</li>
+  <li>Broader standardization of texture size and render-buffer formats</li>
+</ul>
+
+<p>The Java interface for OpenGL ES 3.0 on Android is provided with <code><a href="../../reference/android/opengl/GLES30.html">GLES30</a></code>.
+When using OpenGL ES 3.0, be sure that you declare it in your manifest file with the
+<a href="../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature></a>
+tag and the <code>android:glEsVersion</code> attribute. For example:</p>
+<pre>
+&lt;manifest>
+    &lt;uses-feature android:glEsVersion="0x00030000" />
+    ...
+&lt;/manifest>
+</pre>
+
+<p>And remember to specify the OpenGL ES context by calling <code><a href="../../reference/android/opengl/GLSurfaceView.html#setEGLContextClientVersion(int)">setEGLContextClientVersion()</a></code>,
+passing <code>3</code> as the version.</p>
+
+<p>For more information about using OpenGL ES, including how to check the device's supported
+OpenGL ES version at runtime, see the <a href="../../guide/topics/graphics/opengl.html"
+>OpenGL ES</a> API guide.</p>
+
+
+<h3 id="MipMap">Mipmapping for drawables</h3>
+
+<p>Using a mipmap as the source for your bitmap or drawable is a simple way to provide a
+quality image and various image scales, which can be particularly useful if you expect your
+image to be scaled during an animation.</p>
+
+<p>Android 4.2 (API level 17) added support for mipmaps in the <code><a href="../../reference/android/graphics/Bitmap.html">Bitmap</a></code>
+class&mdash;Android swaps the mip images in your <code><a href="../../reference/android/graphics/Bitmap.html">Bitmap</a></code> when you've
+supplied a mipmap source and have enabled <code><a href="../../reference/android/graphics/Bitmap.html#setHasMipMap(boolean)">setHasMipMap()</a></code>. Now in Android 4.3, you can enable mipmaps for a <code><a href="../../reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a></code> object as well, by providing a mipmap asset and
+setting the <code>android:mipMap</code> attribute in a bitmap resource file or by calling <code><a href="../../reference/android/graphics/drawable/BitmapDrawable.html#hasMipMap()">hasMipMap()</a></code>.
+</p>
+
+
+
+<h2 id="UI">User Interface</h2>
+
+<h3 id="ViewOverlay">View overlays</h3>
+
+<p>The new <code><a href="../../reference/android/view/ViewOverlay.html">ViewOverlay</a></code> class provides a transparent layer on top of
+a <code><a href="../../reference/android/view/View.html">View</a></code> on which you can add visual content and which does not affect
+the layout hierarchy. You can get a <code><a href="../../reference/android/view/ViewOverlay.html">ViewOverlay</a></code> for any <code><a href="../../reference/android/view/View.html">View</a></code> by calling <code><a href="../../reference/android/view/View.html#getOverlay()">getOverlay()</a></code>. The overlay
+always has the same size and position as its host view (the view from which it was created),
+allowing you to add content that appears in front of the host view, but which cannot extend
+the bounds of that host view.
+</p>
+
+<p>Using a <code><a href="../../reference/android/view/ViewOverlay.html">ViewOverlay</a></code> is particularly useful when you want to create
+animations such as sliding a view outside of its container or moving items around the screen
+without affecting the view hierarchy. However, because the usable area of an overlay is
+restricted to the same area as its host view, if you want to animate a view moving outside
+its position in the layout, you must use an overlay from a parent view that has the desired
+layout bounds.</p>
+
+<p>When you create an overlay for a widget view such as a <code><a href="../../reference/android/widget/Button.html">Button</a></code>, you
+can add <code><a href="../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> objects to the overlay by calling
+<code><a href="../../reference/android/view/ViewOverlay.html#add(android.graphics.drawable.Drawable)">add(Drawable)</a></code>. If you call <code><a href="../../reference/android/view/ViewGroup.html#getOverlay()">getOverlay()</a></code> for a layout view, such as <code><a href="../../reference/android/widget/RelativeLayout.html">RelativeLayout</a></code>,
+the object returned is a <code><a href="../../reference/android/view/ViewGroupOverlay.html">ViewGroupOverlay</a></code>. The
+<code><a href="../../reference/android/view/ViewGroupOverlay.html">ViewGroupOverlay</a></code> class is a subclass
+of <code><a href="../../reference/android/view/ViewOverlay.html">ViewOverlay</a></code> that  also allows you to add <code><a href="../../reference/android/view/View.html">View</a></code>
+objects by calling <code><a href="../../reference/android/view/ViewGroupOverlay.html#add(android.view.View)">add(View)</a></code>.
+</p>
+
+<p class="note"><strong>Note:</strong> All drawables and views that you add to an overlay
+are visual only. They cannot receive focus or input events.</p>
+
+<p>For example, the following code animates a view sliding to the right by placing the view
+in the parent view's overlay, then performing a translation animation on that view:</p>
+<pre>
+View view = findViewById(R.id.view_to_remove);
+ViewGroup container = (ViewGroup) view.getParent();
+container.getOverlay().add(view);
+ObjectAnimator anim = ObjectAnimator.ofFloat(view, "translationX", container.getRight());
+anim.start();
+</pre>
+
+
+<h3 id="OpticalBounds">Optical bounds layout</h3>
+
+<p>For views that contain nine-patch background images, you can now specify that they should
+be aligned with neighboring views based on the "optical" bounds of the background image rather
+than the "clip" bounds of the view.</p>
+
+<p>For example, figures 1 and 2 each show the same layout, but the version in figure 1 is
+using clip bounds (the default behavior), while figure 2 is using optical bounds. Because the
+nine-patch images used for the button and the photo frame include padding around the edges,
+they don’t appear to align with each other or the text when using clip bounds.</p>
+
+<p class="note"><strong>Note:</strong> The screenshot in figures 1 and 2 have the "Show
+layout bounds" developer setting enabled. For each view, red lines indicate the optical
+bounds, blue lines indicate the clip bounds, and pink indicates margins.</p>
+
+<script type="text/javascript">
+function toggleOpticalImages(mouseover) {
+
+  $("img.optical-img").each(function() {
+    $img = $(this);
+    var index = $img.attr('src').lastIndexOf("/") + 1;
+    var path = $img.attr('src').substr(0,index);
+    var name = $img.attr('src').substr(index);
+    var splitname;
+    var highres = false;
+    if (name.indexOf("@2x") != -1) {
+      splitname = name.split("@2x.");
+      highres = true;
+    } else {
+      splitname = name.split(".");
+    }
+
+    var newname;
+    if (mouseover) {
+      if (highres) {
+        newname = splitname[0] + "-normal@2x.png";
+      } else {
+        newname = splitname[0] + "-normal.png";
+      }
+    } else {
+      if (highres) {
+        newname = splitname[0].split("-normal")[0] + "@2x.png";
+      } else {
+        newname = splitname[0].split("-normal")[0] + ".png";
+      }
+    }
+
+    $img.attr('src', path + newname);
+
+  });
+}
+</script>
+
+<p class="table-caption"><em>Mouse over to hide the layout bounds.</em></p>
+<div style="float:left;width:296px">
+<img src="../../images/tools/clipbounds@2x.png" width="296" alt="" class="optical-img"
+    onmouseover="toggleOpticalImages(true)" onmouseout="toggleOpticalImages(false)" />
+<p class="img-caption"><strong>Figure 1.</strong> Layout using clip bounds (default).</p>
+</div>
+<div style="float:left;width:296px;margin-left:60px">
+<img src="../../images/tools/opticalbounds@2x.png" width="296" alt="" class="optical-img"
+    onmouseover="toggleOpticalImages(true)" onmouseout="toggleOpticalImages(false)" />
+<p class="img-caption"><strong>Figure 2.</strong> Layout using optical bounds.</p>
+</div>
+
+
+<p style="clear:left">To align the views based on their optical bounds, set the <code>android:layoutMode</code> attribute to <code>"opticalBounds"</code> in one of the parent layouts. For example:</p>
+
+<pre>
+&lt;LinearLayout android:layoutMode="opticalBounds" ... >
+</pre>
+
+
+<div class="figure" style="width:155px">
+<img src="../../images/tools/ninepatch_opticalbounds@2x.png" width="121" alt="" />
+<p class="img-caption"><strong>Figure 3.</strong> Zoomed view of the Holo button nine-patch with
+optical bounds.
+</p>
+</div>
+
+<p>For this to work, the nine-patch images applied to the background of your views must specify
+the optical bounds using red lines along the bottom and right-side of the nine-patch file (as
+shown in figure 3). The red lines indicate the region that should be subtracted from
+the clip bounds, leaving the optical bounds of the image.</p>
+
+<p>When you enable optical bounds for a <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code> in your layout, all
+descendant views inherit the optical bounds layout mode unless you override it for a group by
+setting <code>android:layoutMode</code> to <code>"clipBounds"</code>. All layout elements also honor the
+optical bounds of their child views, adapting their own bounds based on the optical bounds of
+the views within them. However, layout elements (subclasses of <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code>)
+currently do not support optical bounds for nine-patch images applied to their own background.</p>
+
+<p>If you create a custom view by subclassing <code><a href="../../reference/android/view/View.html">View</a></code>, <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code>, or any subclasses thereof, your view will inherit these optical bound behaviors.</p>
+
+<p class="note"><strong>Note:</strong> All widgets supported by the Holo theme have been updated
+with optical bounds, including <code><a href="../../reference/android/widget/Button.html">Button</a></code>,  <code><a href="../../reference/android/widget/Spinner.html">Spinner</a></code>,
+<code><a href="../../reference/android/widget/EditText.html">EditText</a></code>, and others. So you can immediately benefit by setting the
+<code>android:layoutMode</code> attribute to <code>"opticalBounds"</code> if your app applies a Holo theme
+(<code><a href="../../reference/android/R.style.html#Theme_Holo">Theme.Holo</a></code>, <code><a href="../../reference/android/R.style.html#Theme_Holo_Light">Theme.Holo.Light</a></code>, etc.).
+</p>
+
+<p>To specify optical bounds for your own nine-patch images with the <a
+href="../../tools/help/draw9patch.html">Draw 9-patch</a> tool, hold CTRL when clicking on
+the border pixels.</p>
+
+
+
+
+<h3 id="AnimationRect">Animation for Rect values</h3>
+
+<p>You can now animate between two <code><a href="../../reference/android/graphics/Rect.html">Rect</a></code> values with the new <code><a href="../../reference/android/animation/RectEvaluator.html">RectEvaluator</a></code>. This new class is an implementation of <code><a href="../../reference/android/animation/TypeEvaluator.html">TypeEvaluator</a></code> that you can pass to <code><a href="../../reference/android/animation/ValueAnimator.html#setEvaluator(android.animation.TypeEvaluator)">ValueAnimator.setEvaluator()</a></code>.
+</p>
+
+<h3 id="AttachFocus">Window attach and focus listener</h3>
+
+<p>Previously, if you wanted to listen for when your view attached/detached to the window or
+when its focus changed, you needed to override the <code><a href="../../reference/android/view/View.html">View</a></code> class to
+implement <code><a href="../../reference/android/view/View.html#onAttachedToWindow()">onAttachedToWindow()</a></code> and <code><a href="../../reference/android/view/View.html#onDetachedFromWindow()">onDetachedFromWindow()</a></code>, or  <code><a href="../../reference/android/view/View.html#onWindowFocusChanged(boolean)">onWindowFocusChanged()</a></code>, respectively.
+</p>
+
+<p>Now, to receive attach and detach events you can instead implement <code><a href="../../reference/android/view/ViewTreeObserver.OnWindowAttachListener.html">ViewTreeObserver.OnWindowAttachListener</a></code> and set it on a view with
+<code><a href="../../reference/android/view/ViewTreeObserver.html#addOnWindowAttachListener(android.view.ViewTreeObserver.OnWindowAttachListener)">addOnWindowAttachListener()</a></code>.
+And to receive focus events, you can implement <code><a href="../../reference/android/view/ViewTreeObserver.OnWindowFocusChangeListener.html">ViewTreeObserver.OnWindowFocusChangeListener</a></code> and set it on a view with
+<code><a href="../../reference/android/view/ViewTreeObserver.html#addOnWindowFocusChangeListener(android.view.ViewTreeObserver.OnWindowFocusChangeListener)">addOnWindowFocusChangeListener()</a></code>.
+</p>
+
+
+<h3 id="Overscan">TV overscan support</h3>
+
+<p>To be sure your app fills the entire screen on every television, you can now enable overscan
+for you app layout. Overscan mode is determined by the <code><a href="../../reference/android/view/WindowManager.LayoutParams.html#FLAG_LAYOUT_IN_OVERSCAN">FLAG_LAYOUT_IN_OVERSCAN</a></code> flag, which you can enable with platform themes such as
+<code><a href="../../reference/android/R.style.html#Theme_DeviceDefault_NoActionBar_Overscan">Theme_DeviceDefault_NoActionBar_Overscan</a></code> or by enabling the
+<code><a href="../../reference/android/R.attr.html#windowOverscan">windowOverscan</a></code> style in a custom theme.</p>
+
+
+<h3 id="Orientation">Screen orientation</h3>
+
+<p>The <a
+href="../../guide/topics/manifest/activity-element.html"><code>&lt;activity></code></a>
+tag's <a
+href="../../guide/topics/manifest/activity-element.html#screen"><code>screenOrientation</code></a>
+attribute now supports additional values to honor the user's preference for auto-rotation:</p>
+<dl>
+<dt><code>"userLandscape"</code></dt>
+<dd>Behaves the same as <code>"sensorLandscape"</code>, except if the user disables auto-rotate
+then it locks in the normal landscape orientation and will not flip.
+</dd>
+
+<dt><code>"userPortrait"</code></dt>
+<dd>Behaves the same as <code>"sensorPortrait"</code>, except if the user disables auto-rotate then
+it locks in the normal portrait orientation and will not flip.
+</dd>
+
+<dt><code>"fullUser"</code></dt>
+<dd>Behaves the same as <code>"fullSensor"</code> and allows rotation in all four directions, except
+if the user disables auto-rotate then it locks in the user's preferred orientation.
+</dd></dl>
+
+<p>Additionally, you can now also declare <code>"locked"</code> to lock your app's orientation into
+the screen's current orientation.</p>
+
+
+<h3 id="RotationAnimation">Rotation animations</h3>
+
+<p>The new <code><a href="../../reference/android/view/WindowManager.LayoutParams.html#rotationAnimation">rotationAnimation</a></code> field in
+<code><a href="../../reference/android/view/WindowManager.html">WindowManager</a></code> allows you to select between one of three animations you
+want to use when the system switches screen orientations. The three animations are:</p>
+<ul>
+  <li><code><a href="../../reference/android/view/WindowManager.LayoutParams.html#ROTATION_ANIMATION_CROSSFADE">ROTATION_ANIMATION_CROSSFADE</a></code></li>
+  <li><code><a href="../../reference/android/view/WindowManager.LayoutParams.html#ROTATION_ANIMATION_JUMPCUT">ROTATION_ANIMATION_JUMPCUT</a></code></li>
+  <li><code><a href="../../reference/android/view/WindowManager.LayoutParams.html#ROTATION_ANIMATION_ROTATE">ROTATION_ANIMATION_ROTATE</a></code></li>
+</ul>
+
+<p class="note"><strong>Note:</strong> These animations are available only if you've set your activity to use "fullscreen" mode, which you can enable with themes such as <code><a href="../../reference/android/R.style.html#Theme_Holo_NoActionBar_Fullscreen">Theme.Holo.NoActionBar.Fullscreen</a></code>.</p>
+
+<p>For example, here's how you can enable the "crossfade" animation:</p>
+<pre>
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    WindowManager.LayoutParams params = getWindow().getAttributes();
+    params.rotationAnimation = WindowManager.LayoutParams.ROTATION_ANIMATION_CROSSFADE;
+    getWindow().setAttributes(params);
+    ...
+}
+</pre>
+
+
+<h2 id="UserInput">User Input</h2>
+
+<h3 id="Sensors">New sensor types</h3>
+<p>The new <code><a href="../../reference/android/hardware/Sensor.html#TYPE_GAME_ROTATION_VECTOR">TYPE_GAME_ROTATION_VECTOR</a></code> sensor allows you to detect the device's rotations without worrying about magnetic interferences. Unlike the <code><a href="../../reference/android/hardware/Sensor.html#TYPE_ROTATION_VECTOR">TYPE_ROTATION_VECTOR</a></code> sensor, the <code><a href="../../reference/android/hardware/Sensor.html#TYPE_GAME_ROTATION_VECTOR">TYPE_GAME_ROTATION_VECTOR</a></code> is not based on magnetic north.</p>
+
+<p>The new <code><a href="../../reference/android/hardware/Sensor.html#TYPE_GYROSCOPE_UNCALIBRATED">TYPE_GYROSCOPE_UNCALIBRATED</a></code> and <code><a href="../../reference/android/hardware/Sensor.html#TYPE_MAGNETIC_FIELD_UNCALIBRATED">TYPE_MAGNETIC_FIELD_UNCALIBRATED</a></code> sensors provide raw sensor data without
+consideration for bias estimations. That is, the existing <code><a href="../../reference/android/hardware/Sensor.html#TYPE_GYROSCOPE">TYPE_GYROSCOPE</a></code> and <code><a href="../../reference/android/hardware/Sensor.html#TYPE_MAGNETIC_FIELD">TYPE_MAGNETIC_FIELD</a></code>
+sensors provide sensor data that takes into account estimated bias from gyro-drift and hard iron
+in the device, respectively. Whereas the new "uncalibrated" versions of these sensors instead provide
+the raw sensor data and offer the estimated bias values separately. These sensors allow you to
+provide your own custom calibration for the sensor data by enhancing the estimated bias with
+external data.</p>
+
+
+
+<h2 id="NotificationListener">Notification Listener</h2>
+
+<p>Android 4.3 adds a new service class, <code><a href="../../reference/android/service/notification/NotificationListenerService.html">NotificationListenerService</a></code>, that allows your app to receive information about new notifications as they are posted by the system. </p>
+
+<p>If your app currently uses the accessibility service APIs to access system notifications, you should update your app to use these APIs instead.</p>
+
+
+
+
+<h2 id="Contacts">Contacts Provider</h2>
+
+<h3 id="Contactables">Query for "contactables"</h3>
+
+<p>The new Contacts Provider query, <code><a href="../../reference/android/provider/ContactsContract.CommonDataKinds.Contactables.html#CONTENT_URI">Contactables.CONTENT_URI</a></code>, provides an efficient way to get one <code><a href="../../reference/android/database/Cursor.html">Cursor</a></code> that contains all email addresses and phone numbers belonging to all contacts matching the specified query.</p>
+
+
+<h3 id="ContactsDelta">Query for contacts deltas</h3>
+
+<p>New APIs have been added to Contacts Provider that allow you to efficiently query recent changes to the contacts data. Previously, your app could be notified when something in the contacts data changed, but you would not know exactly what changed and would need to retrieve all contacts then iterate through them to discover the change.</p>
+
+<p>To track changes to inserts and updates, you can now include the <code><a href="../../reference/android/provider/ContactsContract.ContactsColumns.html#CONTACT_LAST_UPDATED_TIMESTAMP">CONTACT_LAST_UPDATED_TIMESTAMP</a></code> parameter with your selection to query only the contacts that have changed since the last time you queried the provider.</p>
+
+<p>To track which contacts have been deleted, the new table <code><a href="../../reference/android/provider/ContactsContract.DeletedContacts.html">ContactsContract.DeletedContacts</a></code> provides a log of contacts that have been deleted (but each contact deleted is held in this table for a limited time). Similar to <code><a href="../../reference/android/provider/ContactsContract.ContactsColumns.html#CONTACT_LAST_UPDATED_TIMESTAMP">CONTACT_LAST_UPDATED_TIMESTAMP</a></code>, you can use the new selection parameter, <code><a href="../../reference/android/provider/ContactsContract.DeletedContactsColumns.html#CONTACT_DELETED_TIMESTAMP">CONTACT_DELETED_TIMESTAMP</a></code> to check which contacts have been deleted since the last time you queried the provider. The table also contains the constant <code><a href="../../reference/android/provider/ContactsContract.DeletedContacts.html#DAYS_KEPT_MILLISECONDS">DAYS_KEPT_MILLISECONDS</a></code> containing the number of days (in milliseconds) that the log will be kept.</p>
+
+<p>Additionally, the Contacts Provider now broadcasts the <code><a href="../../reference/android/provider/ContactsContract.Intents.html#CONTACTS_DATABASE_CREATED">CONTACTS_DATABASE_CREATED</a></code> action when the user
+clears the contacts storage through the system settings menu, effectively recreating the
+Contacts Provider database. It’s intended to signal apps that they need to drop all the contact
+information they’ve stored and reload it with a new query.</p>
+
+<p>For sample code using these APIs to check for changes to the contacts, look in the ApiDemos
+sample available in the <a href="../../tools/samples/index.html">SDK Samples</a> download.</p>
+
+
+<h2 id="Localization">Localization</h2>
+
+<h3 id="BiDi">Improved support for bi-directional text</h3>
+
+<p>Previous versions of Android support right-to-left (RTL) languages and layout,
+but sometimes don't properly handle mixed-direction text. So Android 4.3 adds the <code><a href="../../reference/android/text/BidiFormatter.html">BidiFormatter</a></code> APIs that help you properly format text with opposite-direction
+content without garbling any parts of it.</p>
+
+<p>For example, when you want to create a sentence with a string variable, such as "Did you mean
+15 Bay Street, Laurel, CA?", you normally pass a localized string resource and the variable to
+<code><a href="../../reference/java/lang/String.html#format(java.lang.String, java.lang.Object...)">String.format()</a></code>:</p>
+<pre>
+Resources res = getResources();
+String suggestion = String.format(res.getString(R.string.did_you_mean), address);
+</pre>
+
+<p>However, if the locale is Hebrew, then the formatted string comes out like this:</p>
+
+<p dir="rtl">האם התכוונת ל 15 Bay Street, Laurel, CA?</p>
+
+<p>That's wrong because the "15" should be left of "Bay Street." The solution is to use <code><a href="../../reference/android/text/BidiFormatter.html">BidiFormatter</a></code> and its <code><a href="../../reference/android/text/BidiFormatter.html#unicodeWrap(java.lang.String)">unicodeWrap()</a></code> method. For example, the code above becomes:</p>
+<pre>
+Resources res = getResources();
+BidiFormatter bidiFormatter = BidiFormatter.getInstance();
+String suggestion = String.format(res.getString(R.string.did_you_mean),
+        bidiFormatter.unicodeWrap(address));
+</pre>
+
+<p>
+By default, <code><a href="../../reference/android/text/BidiFormatter.html#unicodeWrap(java.lang.String)">unicodeWrap()</a></code> uses the
+first-strong directionality estimation heuristic, which can get things wrong if the first
+signal for text direction does not represent the appropriate direction for the content as a whole.
+If necessary, you can specify a different heuristic by passing one of the <code><a href="../../reference/android/text/TextDirectionHeuristic.html">TextDirectionHeuristic</a></code> constants from <code><a href="../../reference/android/text/TextDirectionHeuristics.html">TextDirectionHeuristics</a></code>
+to <code><a href="../../reference/android/text/BidiFormatter.html#unicodeWrap(java.lang.String, android.text.TextDirectionHeuristic)">unicodeWrap()</a></code>.</p>
+
+<p class="note"><strong>Note:</strong> These new APIs are also available for previous versions
+of Android through the Android <a href="../../tools/support-library/index.html">Support
+Library</a>, with the <code><a href="../../reference/android/support/v4/text/BidiFormatter.html">BidiFormatter</a></code> class and related APIs.</p>
+
+
+
+<h2 id="A11yService">Accessibility Services</h2>
+
+<h3 id="A11yKeyEvents">Handle key events</h3>
+
+<p>An <code><a href="../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> can now receive a callback for
+key input events with the <code><a href="../../reference/android/accessibilityservice/AccessibilityService.html#onKeyEvent(android.view.KeyEvent)">onKeyEvent()</a></code> callback method. This allows your accessibility service to handle input for
+key-based input devices such as a keyboard and translate those events to special actions that
+previously may have been possible only with touch input or the device's directional pad.</p>
+
+
+<h3 id="A11yText">Select text and copy/paste</h3>
+
+<p>The <code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html">AccessibilityNodeInfo</a></code> now provides APIs that allow
+an <code><a href="../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> to select, cut, copy, and paste
+text in a node.</p>
+
+<p>To specify the selection of text to cut or copy, your accessibility service can use the new
+action, <code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html#ACTION_SET_SELECTION">ACTION_SET_SELECTION</a></code>, passing
+with it the selection start and end position with <code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html#ACTION_ARGUMENT_SELECTION_START_INT">ACTION_ARGUMENT_SELECTION_START_INT</a></code> and <code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html#ACTION_ARGUMENT_SELECTION_END_INT">ACTION_ARGUMENT_SELECTION_END_INT</a></code>.
+Alternatively you can select text by manipulating the cursor position using the existing
+action, <code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html#ACTION_NEXT_AT_MOVEMENT_GRANULARITY">ACTION_NEXT_AT_MOVEMENT_GRANULARITY</a></code>
+(previously only for moving the cursor position), and adding the argument <code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html#ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN">ACTION_ARGUMENT_EXTEND_SELECTION_BOOLEAN</a></code>.</p>
+
+<p>You can then cut or copy with <code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html#ACTION_CUT">ACTION_CUT</a></code>,
+<code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html#ACTION_COPY">ACTION_COPY</a></code>, then later paste with
+<code><a href="../../reference/android/view/accessibility/AccessibilityNodeInfo.html#ACTION_PASTE">ACTION_PASTE</a></code>.</p>
+
+
+<p class="note"><strong>Note:</strong> These new APIs are also available for previous versions
+of Android through the Android <a href="../../tools/support-library/index.html">Support
+Library</a>, with the <code><a href="../../reference/android/support/v4/view/accessibility/AccessibilityNodeInfoCompat.html">AccessibilityNodeInfoCompat</a></code>
+class.</p>
+
+
+
+<h3 id="A11yFeatures">Declare accessibility features</h3>
+
+<p>Beginning with Android 4.3, an accessibility service must declare accessibility capabilities
+in its metadata file in order to use certain accessibility features. If the capability is not
+requested in the metadata file, then the feature will be a no-op. To declare your service's
+accessibility capabilities, you must use XML attributes that correspond to the various
+"capability" constants in the <code><a href="../../reference/android/accessibilityservice/AccessibilityServiceInfo.html">AccessibilityServiceInfo</a></code>
+class.</p>
+
+<p>For example, if a service does not request the <code><a href="../../reference/android/R.styleable.html#AccessibilityService_canRequestFilterKeyEvents">flagRequestFilterKeyEvents</a></code> capability,
+then it will not receive key events.</p>
+
+
+<h2 id="Testing">Testing and Debugging</h2>
+
+<h3 id="UiAutomation">Automated UI testing</h3>
+
+<p>The new <code><a href="../../reference/android/app/UiAutomation.html">UiAutomation</a></code> class provides APIs that allow you to simulate user
+actions for test automation. By using the platform's <code><a href="../../reference/android/accessibilityservice/AccessibilityService.html">AccessibilityService</a></code> APIs, the <code><a href="../../reference/android/app/UiAutomation.html">UiAutomation</a></code>
+APIs allow you to inspect the screen content and inject arbitrary keyboard and touch events.</p>
+
+<p>To get an instance of <code><a href="../../reference/android/app/UiAutomation.html">UiAutomation</a></code>, call <code><a href="../../reference/android/app/Instrumentation.html#getUiAutomation()">Instrumentation.getUiAutomation()</a></code>. In order
+for this to work, you must supply the <code>-w</code> option with the <code>instrument</code> command
+when running your <code><a href="../../reference/android/test/InstrumentationTestCase.html">InstrumentationTestCase</a></code> from <a
+href="../../tools/help/adb.html#am"><code>adb shell</code></a>.</p>
+
+<p>With the <code><a href="../../reference/android/app/UiAutomation.html">UiAutomation</a></code> instance, you can execute arbitrary events to test
+your app by calling <code><a href="../../reference/android/app/UiAutomation.html#executeAndWaitForEvent(java.lang.Runnable, android.app.UiAutomation.AccessibilityEventFilter, long)">executeAndWaitForEvent()</a></code>, passing it a <code><a href="../../reference/java/lang/Runnable.html">Runnable</a></code> to perform, a timeout
+period for the operation, and an implementation of the <code><a href="../../reference/android/app/UiAutomation.AccessibilityEventFilter.html">UiAutomation.AccessibilityEventFilter</a></code> interface. It's within your <code><a href="../../reference/android/app/UiAutomation.AccessibilityEventFilter.html">UiAutomation.AccessibilityEventFilter</a></code> implementation that you'll receive a call
+that allows you to filter the events that you're interested in and determine the success or
+failure of a given test case.</p>
+
+<p>To observe all the events during a test, create an implementation of <code><a href="../../reference/android/app/UiAutomation.OnAccessibilityEventListener.html">UiAutomation.OnAccessibilityEventListener</a></code> and pass it to <code><a href="../../reference/android/app/UiAutomation.html#setOnAccessibilityEventListener(android.app.UiAutomation.OnAccessibilityEventListener)">setOnAccessibilityEventListener()</a></code>.
+Your listener interface then receives a call to <code><a href="../../reference/android/app/UiAutomation.OnAccessibilityEventListener.html#onAccessibilityEvent(android.view.accessibility.AccessibilityEvent)">onAccessibilityEvent()</a></code>
+each time an event occurs, receiving an <code><a href="../../reference/android/view/accessibility/AccessibilityEvent.html">AccessibilityEvent</a></code> object
+that describes the event.</p>
+
+<p>There is a variety of other operations that the <code><a href="../../reference/android/app/UiAutomation.html">UiAutomation</a></code> APIs expose
+at a very low level to encourage the development of UI test tools such as <a href="../../tools/help/uiautomator/index.html">uiautomator</a>. For instance,
+<code><a href="../../reference/android/app/UiAutomation.html">UiAutomation</a></code> can also:</p>
+<ul>
+  <li>Inject input events
+  <li>Change the orientation of the screen
+  <li>Take screenshots
+</ul>
+
+<p>And most importantly for UI test tools, the <code><a href="../../reference/android/app/UiAutomation.html">UiAutomation</a></code> APIs work
+across application boundaries, unlike those in <code><a href="../../reference/android/app/Instrumentation.html">Instrumentation</a></code>.</p>
+
+
+<h3 id="Systrace">Systrace events for apps</h3>
+
+<p>Android 4.3 adds the <code><a href="../../reference/android/os/Trace.html">Trace</a></code> class with two static methods,
+<code><a href="../../reference/android/os/Trace.html#beginSection(java.lang.String)">beginSection()</a></code> and <code><a href="../../reference/android/os/Trace.html#endSection()">endSection()</a></code>,
+which allow you to define blocks of code to include with the systrace report. By creating
+sections of traceable code in your app, the systrace logs provide you a much more detailed
+analysis of where slowdown occurs within your app.</p>
+
+<p>For information about using the Systrace tool, read <a href="../../tools/debugging/systrace.html">Analyzing Display and Performance with Systrace</a>.</p>
+
+
+<h2 id="Security">Security</h2>
+
+<h3 id="KeyStore">Android key store for app-private keys</h3>
+
+<p>Android now offers a custom Java Security Provider in the <code><a href="../../reference/java/security/KeyStore.html">KeyStore</a></code>
+facility, called Android Key Store, which allows you to generate and save private keys that
+may be seen and used by only your app. To load the Android Key Store, pass
+<code>"AndroidKeyStore"</code> to <code><a href="../../reference/java/security/KeyStore.html#getInstance(java.lang.String)">KeyStore.getInstance()</a></code>.</p>
+
+<p>To manage your app's private credentials in the Android Key Store, generate a new key with
+<code><a href="../../reference/java/security/KeyPairGenerator.html">KeyPairGenerator</a></code> with <code><a href="../../reference/android/security/KeyPairGeneratorSpec.html">KeyPairGeneratorSpec</a></code>. First
+get an instance of <code><a href="../../reference/java/security/KeyPairGenerator.html">KeyPairGenerator</a></code> by calling <code><a href="../../reference/java/security/KeyPairGenerator.html#getInstance(java.lang.String)">getInstance()</a></code>. Then call
+<code><a href="../../reference/java/security/KeyPairGenerator.html#initialize(int)">initialize()</a></code>, passing it an instance of
+<code><a href="../../reference/android/security/KeyPairGeneratorSpec.html">KeyPairGeneratorSpec</a></code>, which you can get using
+<code><a href="../../reference/android/security/KeyPairGeneratorSpec.Builder.html">KeyPairGeneratorSpec.Builder</a></code>.
+Finally, get your <code><a href="../../reference/java/security/KeyPair.html">KeyPair</a></code> by calling <code><a href="../../reference/java/security/KeyPairGenerator.html#generateKeyPair()">generateKeyPair()</a></code>.</p>
+
+
+<h3 id="HardwareKeyChain">Hardware credential storage</h3>
+
+<p>Android also now supports hardware-backed storage for your <code><a href="../../reference/android/security/KeyChain.html">KeyChain</a></code>
+credentials, providing more security by making the keys unavailable for extraction. That is, once
+keys are in a hardware-backed key store (Secure Element, TPM, or TrustZone), they can be used for
+cryptographic operations but the private key material cannot be exported. Even the OS kernel
+cannot access this key material. While not all Android-powered devices support storage on
+hardware, you can check at runtime if hardware-backed storage is available by calling
+<code><a href="../../reference/android/security/KeyChain.html#isBoundKeyAlgorithm(java.lang.String)">KeyChain.IsBoundKeyAlgorithm()</a></code>.</p>
+
+
+
+<h2 id="Manifest">Manifest Declarations</h2>
+
+<h3 id="ManifestFeatures">Declarable required features</h3>
+
+<p>The following values are now supported in the <a
+href="../../guide/topics/manifest/uses-feature-element.html"><code>&lt;uses-feature></code></a>
+element so you can ensure that your app is installed only on devices that provide the features
+your app needs.</p>
+
+<dl>
+<dt><code><a href="../../reference/android/content/pm/PackageManager.html#FEATURE_APP_WIDGETS">FEATURE_APP_WIDGETS</a></code></dt>
+<dd>Declares that your app provides an app widget and should be installed only on devices that
+include a Home screen or similar location where users can embed app widgets.
+Example:
+<pre>
+&lt;uses-feature android:name="android.software.app_widgets" android:required="true" />
+</pre>
+</dd>
+
+<dt><code><a href="../../reference/android/content/pm/PackageManager.html#FEATURE_HOME_SCREEN">FEATURE_HOME_SCREEN</a></code></dt>
+<dd>Declares that your app behaves as a Home screen replacement and should be installed only on
+devices that support third-party Home screen apps.
+Example:
+<pre>
+&lt;uses-feature android:name="android.software.home_screen" android:required="true" />
+</pre>
+</dd>
+
+<dt><code><a href="../../reference/android/content/pm/PackageManager.html#FEATURE_INPUT_METHODS">FEATURE_INPUT_METHODS</a></code></dt>
+<dd>Declares that your app provides a custom input method (a keyboard built with <code><a href="../../reference/android/inputmethodservice/InputMethodService.html">InputMethodService</a></code>) and should be installed only on devices that
+support third-party input methods.
+Example:
+<pre>
+&lt;uses-feature android:name="android.software.input_methods" android:required="true" />
+</pre>
+</dd>
+
+<dt><code><a href="../../reference/android/content/pm/PackageManager.html#FEATURE_BLUETOOTH_LE">FEATURE_BLUETOOTH_LE</a></code></dt>
+<dd>Declares that your app uses Bluetooth Low Energy APIs and should be installed only on devices
+that are capable of communicating with other devices via Bluetooth Low Energy.
+Example:
+<pre>
+&lt;uses-feature android:name="android.software.bluetooth_le" android:required="true" />
+</pre>
+</dd>
+</dl>
+
+
+<h3 id="ManifestPermissions">User permissions</h3>
+<p>The following values are now supported in the <a
+href="../../guide/topics/manifest/uses-permission-element.html"><code>&lt;uses-permission></code></a>
+to declare the
+permissions your app requires in order to access certain APIs.</p>
+
+<dl>
+<dt><code><a href="../../reference/android/Manifest.permission.html#BIND_NOTIFICATION_LISTENER_SERVICE">BIND_NOTIFICATION_LISTENER_SERVICE</a></code>
+</dt>
+<dd>Required to use the new <code><a href="../../reference/android/service/notification/NotificationListenerService.html">NotificationListenerService</a></code> APIs.
+</dd>
+
+<dt><code><a href="../../reference/android/Manifest.permission.html#SEND_RESPOND_VIA_MESSAGE">SEND_RESPOND_VIA_MESSAGE</a></code></dt>
+<dd>Required to receive the <code><a href="../../reference/android/telephony/TelephonyManager.html#ACTION_RESPOND_VIA_MESSAGE">ACTION_RESPOND_VIA_MESSAGE</a></code>
+intent.</dd>
+</dl>
+
+
+
+
+<p class="note">For a detailed view of all API changes in Android 4.3, see the
+<a href="../../sdk/api_diff/18/changes.html">API Differences Report</a>.</p>
+
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

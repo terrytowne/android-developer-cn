@@ -1,0 +1,5373 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Instrumentation - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+  <div id="doc-api-level" class="1" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/package-summary.html">android</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="selected api apilevel-1">
+  <a href="../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/ActionBar.OnMenuVisibilityListener.html">ActionBar.OnMenuVisibilityListener</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/ActionBar.OnNavigationListener.html">ActionBar.OnNavigationListener</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/ActionBar.TabListener.html">ActionBar.TabListener</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/app/Application.ActivityLifecycleCallbacks.html">Application.ActivityLifecycleCallbacks</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/app/Application.OnProvideAssistDataListener.html">Application.OnProvideAssistDataListener</a></li>
+          <li class="api apilevel-19"><a href="../../../reference/android/app/AppOpsManager.OnOpChangedListener.html">AppOpsManager.OnOpChangedListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/DatePickerDialog.OnDateSetListener.html">DatePickerDialog.OnDateSetListener</a></li>
+          <li class="api apilevel-12"><a href="../../../reference/android/app/FragmentBreadCrumbs.OnBreadCrumbClickListener.html">FragmentBreadCrumbs.OnBreadCrumbClickListener</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/FragmentManager.BackStackEntry.html">FragmentManager.BackStackEntry</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/FragmentManager.OnBackStackChangedListener.html">FragmentManager.OnBackStackChangedListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/KeyguardManager.OnKeyguardExitResult.html">KeyguardManager.OnKeyguardExitResult</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/PendingIntent.OnFinished.html">PendingIntent.OnFinished</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/SearchManager.OnCancelListener.html">SearchManager.OnCancelListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/SearchManager.OnDismissListener.html">SearchManager.OnDismissListener</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/TimePickerDialog.OnTimeSetListener.html">TimePickerDialog.OnTimeSetListener</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/app/UiAutomation.AccessibilityEventFilter.html">UiAutomation.AccessibilityEventFilter</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/app/UiAutomation.OnAccessibilityEventListener.html">UiAutomation.OnAccessibilityEventListener</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/ActionBar.html">ActionBar</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/ActionBar.LayoutParams.html">ActionBar.LayoutParams</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/ActionBar.Tab.html">ActionBar.Tab</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/Activity.html">Activity</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ActivityGroup.html">ActivityGroup</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ActivityManager.html">ActivityManager</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ActivityManager.MemoryInfo.html">ActivityManager.MemoryInfo</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ActivityManager.ProcessErrorStateInfo.html">ActivityManager.ProcessErrorStateInfo</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ActivityManager.RecentTaskInfo.html">ActivityManager.RecentTaskInfo</a></li>
+          <li class="api apilevel-3"><a href="../../../reference/android/app/ActivityManager.RunningAppProcessInfo.html">ActivityManager.RunningAppProcessInfo</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ActivityManager.RunningServiceInfo.html">ActivityManager.RunningServiceInfo</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ActivityManager.RunningTaskInfo.html">ActivityManager.RunningTaskInfo</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/app/ActivityOptions.html">ActivityOptions</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/AlarmManager.html">AlarmManager</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/AliasActivity.html">AliasActivity</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/Application.html">Application</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/app/ApplicationErrorReport.html">ApplicationErrorReport</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/app/ApplicationErrorReport.AnrInfo.html">ApplicationErrorReport.AnrInfo</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/app/ApplicationErrorReport.BatteryInfo.html">ApplicationErrorReport.BatteryInfo</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/app/ApplicationErrorReport.CrashInfo.html">ApplicationErrorReport.CrashInfo</a></li>
+          <li class="api apilevel-14"><a href="../../../reference/android/app/ApplicationErrorReport.RunningServiceInfo.html">ApplicationErrorReport.RunningServiceInfo</a></li>
+          <li class="api apilevel-19"><a href="../../../reference/android/app/AppOpsManager.html">AppOpsManager</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/DatePickerDialog.html">DatePickerDialog</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/Dialog.html">Dialog</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/DialogFragment.html">DialogFragment</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/app/DownloadManager.html">DownloadManager</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/app/DownloadManager.Query.html">DownloadManager.Query</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/app/DownloadManager.Request.html">DownloadManager.Request</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ExpandableListActivity.html">ExpandableListActivity</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/Fragment.html">Fragment</a></li>
+          <li class="api apilevel-13"><a href="../../../reference/android/app/Fragment.SavedState.html">Fragment.SavedState</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/FragmentBreadCrumbs.html">FragmentBreadCrumbs</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/FragmentManager.html">FragmentManager</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></li>
+          <li class="selected api apilevel-1"><a href="../../../reference/android/app/Instrumentation.html">Instrumentation</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/Instrumentation.ActivityResult.html">Instrumentation.ActivityResult</a></li>
+          <li class="api apilevel-3"><a href="../../../reference/android/app/IntentService.html">IntentService</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/KeyguardManager.html">KeyguardManager</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/KeyguardManager.KeyguardLock.html">KeyguardManager.KeyguardLock</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/LauncherActivity.html">LauncherActivity</a></li>
+          <li class="api apilevel-3"><a href="../../../reference/android/app/LauncherActivity.IconResizer.html">LauncherActivity.IconResizer</a></li>
+          <li class="api apilevel-3"><a href="../../../reference/android/app/LauncherActivity.ListItem.html">LauncherActivity.ListItem</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ListActivity.html">ListActivity</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/ListFragment.html">ListFragment</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/LoaderManager.html">LoaderManager</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/LocalActivityManager.html">LocalActivityManager</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/app/MediaRouteActionProvider.html">MediaRouteActionProvider</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/app/MediaRouteButton.html">MediaRouteButton</a></li>
+          <li class="api apilevel-9"><a href="../../../reference/android/app/NativeActivity.html">NativeActivity</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/Notification.html">Notification</a></li>
+          <li class="api apilevel-19"><a href="../../../reference/android/app/Notification.Action.html">Notification.Action</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/app/Notification.BigPictureStyle.html">Notification.BigPictureStyle</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/app/Notification.BigTextStyle.html">Notification.BigTextStyle</a></li>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/Notification.Builder.html">Notification.Builder</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/app/Notification.InboxStyle.html">Notification.InboxStyle</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/app/Notification.Style.html">Notification.Style</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/NotificationManager.html">NotificationManager</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/PendingIntent.html">PendingIntent</a></li>
+          <li class="api apilevel-17"><a href="../../../reference/android/app/Presentation.html">Presentation</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/ProgressDialog.html">ProgressDialog</a></li>
+          <li class="api apilevel-8"><a href="../../../reference/android/app/SearchableInfo.html">SearchableInfo</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/SearchManager.html">SearchManager</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/Service.html">Service</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/TabActivity.html">TabActivity</a></li>
+          <li class="api apilevel-16"><a href="../../../reference/android/app/TaskStackBuilder.html">TaskStackBuilder</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/TimePickerDialog.html">TimePickerDialog</a></li>
+          <li class="api apilevel-18"><a href="../../../reference/android/app/UiAutomation.html">UiAutomation</a></li>
+          <li class="api apilevel-8"><a href="../../../reference/android/app/UiModeManager.html">UiModeManager</a></li>
+          <li class="api apilevel-7"><a href="../../../reference/android/app/WallpaperInfo.html">WallpaperInfo</a></li>
+          <li class="api apilevel-5"><a href="../../../reference/android/app/WallpaperManager.html">WallpaperManager</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-11"><a href="../../../reference/android/app/Fragment.InstantiationException.html">Fragment.InstantiationException</a></li>
+          <li class="api apilevel-1"><a href="../../../reference/android/app/PendingIntent.CanceledException.html">PendingIntent.CanceledException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12"  id="doc-col">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+Summary:
+
+  <a href="#nestedclasses">Nested Classes</a>
+  
+
+
+
+
+
+  &#124; <a href="#constants">Constants</a>
+  
+
+
+
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1 itemprop="name">Instrumentation</h1>
+
+
+
+  
+    extends <a href="../../../reference/java/lang/Object.html">Object</a><br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-1">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../reference/java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">android.app.Instrumentation</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../reference/android/test/InstrumentationTestRunner.html">InstrumentationTestRunner</a></td>
+              <td class="jd-descrcol" width="100%">An <code><a href="../../../reference/android/app/Instrumentation.html">Instrumentation</a></code> that runs various types of <code><a href="../../../reference/junit/framework/TestCase.html">TestCase</a></code>s against
+ an Android package (application).&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p itemprop="articleBody">Base class for implementing application instrumentation code.  When running
+ with instrumentation turned on, this class will be instantiated for you
+ before any of the application code, allowing you to monitor all of the
+ interaction the system has with the application.  An Instrumentation
+ implementation is described to the system through an AndroidManifest.xml's
+ &lt;instrumentation&gt; tag.
+</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<table id="nestedclasses" class="jd-sumtable"><tr><th colspan="12">Nested Classes</th></tr>
+
+
+  
+    <tr class="alt-color api apilevel-1" >
+      <td class="jd-typecol"><nobr>
+        
+         
+         
+        
+        class</nobr></td>
+      <td class="jd-linkcol"><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></td>
+      <td class="jd-descrcol" width="100%">Information about a particular kind of Intent that is being monitored.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+      <td class="jd-typecol"><nobr>
+        
+         
+         
+        
+        class</nobr></td>
+      <td class="jd-linkcol"><a href="../../../reference/android/app/Instrumentation.ActivityResult.html">Instrumentation.ActivityResult</a></td>
+      <td class="jd-descrcol" width="100%">Description of a Activity execution result to return to the original
+ activity.&nbsp;</td>
+    </tr>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="jd-sumtable"><tr><th colspan="12">Constants</th></tr>
+
+
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/app/Instrumentation.html#REPORT_KEY_IDENTIFIER">REPORT_KEY_IDENTIFIER</a></td>
+        <td class="jd-descrcol" width="100%">If included in the status or final bundle sent to an IInstrumentationWatcher, this key 
+ identifies the class that is writing the report.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><a href="../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../reference/android/app/Instrumentation.html#REPORT_KEY_STREAMRESULT">REPORT_KEY_STREAMRESULT</a></td>
+        <td class="jd-descrcol" width="100%">If included in the status or final bundle sent to an IInstrumentationWatcher, this key 
+ identifies a string which can simply be printed to the output stream.</td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#Instrumentation()">Instrumentation</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.content.IntentFilter, android.app.Instrumentation.ActivityResult, boolean)">addMonitor</a></span>(<a href="../../../reference/android/content/IntentFilter.html">IntentFilter</a> filter, <a href="../../../reference/android/app/Instrumentation.ActivityResult.html">Instrumentation.ActivityResult</a> result, boolean block)</nobr>
+        
+        <div class="jd-descrdiv">A convenience wrapper for <code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(ActivityMonitor)</a></code> that 
+ creates an intent filter matching <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> for you and 
+ returns it.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor</a></span>(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor)</nobr>
+        
+        <div class="jd-descrdiv">Add a new <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> that will be checked whenever an 
+ activity is started.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#addMonitor(java.lang.String, android.app.Instrumentation.ActivityResult, boolean)">addMonitor</a></span>(<a href="../../../reference/java/lang/String.html">String</a> cls, <a href="../../../reference/android/app/Instrumentation.ActivityResult.html">Instrumentation.ActivityResult</a> result, boolean block)</nobr>
+        
+        <div class="jd-descrdiv">A convenience wrapper for <code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(ActivityMonitor)</a></code> that 
+ creates a class matching <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> for you and returns it.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnCreate(android.app.Activity, android.os.Bundle)">callActivityOnCreate</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/os/Bundle.html">Bundle</a> icicle)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></code>
+ method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnDestroy(android.app.Activity)">callActivityOnDestroy</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnNewIntent(android.app.Activity, android.content.Intent)">callActivityOnNewIntent</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/content/Intent.html">Intent</a> intent)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onNewIntent(android.content.Intent)">onNewIntent(Intent)</a></code>
+ method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnPause(android.app.Activity)">callActivityOnPause</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onPause()">onPause()</a></code> method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnPostCreate(android.app.Activity, android.os.Bundle)">callActivityOnPostCreate</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/os/Bundle.html">Bundle</a> icicle)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onPostCreate(android.os.Bundle)">onPostCreate(Bundle)</a></code> method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnRestart(android.app.Activity)">callActivityOnRestart</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onRestart()">onRestart()</a></code>
+ method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnRestoreInstanceState(android.app.Activity, android.os.Bundle)">callActivityOnRestoreInstanceState</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/os/Bundle.html">Bundle</a> savedInstanceState)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onRestoreInstanceState(android.os.Bundle)">onRestoreInstanceState(Bundle)</a></code>
+ method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnResume(android.app.Activity)">callActivityOnResume</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onResume()">onResume()</a></code> method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnSaveInstanceState(android.app.Activity, android.os.Bundle)">callActivityOnSaveInstanceState</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/os/Bundle.html">Bundle</a> outState)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onPause()">onPause()</a></code> method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnStart(android.app.Activity)">callActivityOnStart</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onStart()">onStart()</a></code>
+ method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnStop(android.app.Activity)">callActivityOnStop</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onStop()">onStop()</a></code>
+ method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-3" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callActivityOnUserLeaving(android.app.Activity)">callActivityOnUserLeaving</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onUserLeaveHint()">onUserLeaveHint()</a></code> method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#callApplicationOnCreate(android.app.Application)">callApplicationOnCreate</a></span>(<a href="../../../reference/android/app/Application.html">Application</a> app)</nobr>
+        
+        <div class="jd-descrdiv">Perform calling of the application's <code><a href="../../../reference/android/app/Application.html#onCreate()">onCreate()</a></code>
+ method.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#checkMonitorHit(android.app.Instrumentation.ActivityMonitor, int)">checkMonitorHit</a></span>(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor, int minHits)</nobr>
+        
+        <div class="jd-descrdiv">Test whether an existing <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> has been hit.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#endPerformanceSnapshot()">endPerformanceSnapshot</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#finish(int, android.os.Bundle)">finish</a></span>(int resultCode, <a href="../../../reference/android/os/Bundle.html">Bundle</a> results)</nobr>
+        
+        <div class="jd-descrdiv">Terminate instrumentation of the application.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/os/Bundle.html">Bundle</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#getAllocCounts()">getAllocCounts</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a bundle with the current results from the allocation counting.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/os/Bundle.html">Bundle</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#getBinderCounts()">getBinderCounts</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a bundle with the counts for various binder counts for this process.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/content/ComponentName.html">ComponentName</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#getComponentName()">getComponentName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns complete component name of this instrumentation.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/content/Context.html">Context</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#getContext()">getContext</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the Context of this instrumentation's package.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/content/Context.html">Context</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#getTargetContext()">getTargetContext</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return a Context for the target application being instrumented.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-18" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/UiAutomation.html">UiAutomation</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#getUiAutomation()">getUiAutomation</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the <code><a href="../../../reference/android/app/UiAutomation.html">UiAutomation</a></code> instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#invokeContextMenuAction(android.app.Activity, int, int)">invokeContextMenuAction</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> targetActivity, int id, int flag)</nobr>
+        
+        <div class="jd-descrdiv">Show the context menu for the currently focused view and executes a
+ particular context menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#invokeMenuActionSync(android.app.Activity, int, int)">invokeMenuActionSync</a></span>(<a href="../../../reference/android/app/Activity.html">Activity</a> targetActivity, int id, int flag)</nobr>
+        
+        <div class="jd-descrdiv">Execute a particular menu item.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#isProfiling()">isProfiling</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Check whether this instrumentation was started with profiling enabled.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/Activity.html">Activity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#newActivity(java.lang.ClassLoader, java.lang.String, android.content.Intent)">newActivity</a></span>(<a href="../../../reference/java/lang/ClassLoader.html">ClassLoader</a> cl, <a href="../../../reference/java/lang/String.html">String</a> className, <a href="../../../reference/android/content/Intent.html">Intent</a> intent)</nobr>
+        
+        <div class="jd-descrdiv">Perform instantiation of the process's <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/Activity.html">Activity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#newActivity(java.lang.Class<?>, android.content.Context, android.os.IBinder, android.app.Application, android.content.Intent, android.content.pm.ActivityInfo, java.lang.CharSequence, android.app.Activity, java.lang.String, java.lang.Object)">newActivity</a></span>(<a href="../../../reference/java/lang/Class.html">Class</a>&lt;?&gt; clazz, <a href="../../../reference/android/content/Context.html">Context</a> context, <a href="../../../reference/android/os/IBinder.html">IBinder</a> token, <a href="../../../reference/android/app/Application.html">Application</a> application, <a href="../../../reference/android/content/Intent.html">Intent</a> intent, <a href="../../../reference/android/content/pm/ActivityInfo.html">ActivityInfo</a> info, <a href="../../../reference/java/lang/CharSequence.html">CharSequence</a> title, <a href="../../../reference/android/app/Activity.html">Activity</a> parent, <a href="../../../reference/java/lang/String.html">String</a> id, <a href="../../../reference/java/lang/Object.html">Object</a> lastNonConfigurationInstance)</nobr>
+        
+        <div class="jd-descrdiv">Perform instantiation of an <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/Application.html">Application</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#newApplication(java.lang.ClassLoader, java.lang.String, android.content.Context)">newApplication</a></span>(<a href="../../../reference/java/lang/ClassLoader.html">ClassLoader</a> cl, <a href="../../../reference/java/lang/String.html">String</a> className, <a href="../../../reference/android/content/Context.html">Context</a> context)</nobr>
+        
+        <div class="jd-descrdiv">Perform instantiation of the process's <code><a href="../../../reference/android/app/Application.html">Application</a></code> object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../reference/android/app/Application.html">Application</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#newApplication(java.lang.Class<?>, android.content.Context)">newApplication</a></span>(<a href="../../../reference/java/lang/Class.html">Class</a>&lt;?&gt; clazz, <a href="../../../reference/android/content/Context.html">Context</a> context)</nobr>
+        
+        <div class="jd-descrdiv">Perform instantiation of the process's <code><a href="../../../reference/android/app/Application.html">Application</a></code> object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#onCreate(android.os.Bundle)">onCreate</a></span>(<a href="../../../reference/android/os/Bundle.html">Bundle</a> arguments)</nobr>
+        
+        <div class="jd-descrdiv">Called when the instrumentation is starting, before any application code
+ has been loaded.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#onDestroy()">onDestroy</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Called when the instrumented application is stopping, after all of the
+ normal application cleanup has occurred.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#onException(java.lang.Object, java.lang.Throwable)">onException</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> obj, <a href="../../../reference/java/lang/Throwable.html">Throwable</a> e)</nobr>
+        
+        <div class="jd-descrdiv">This is called whenever the system captures an unhandled exception that
+ was thrown by the application.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#onStart()">onStart</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Method where the instrumentation thread enters execution.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#removeMonitor(android.app.Instrumentation.ActivityMonitor)">removeMonitor</a></span>(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor)</nobr>
+        
+        <div class="jd-descrdiv">Remove an <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> that was previously added with 
+ <code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(Instrumentation.ActivityMonitor)</a></code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#runOnMainSync(java.lang.Runnable)">runOnMainSync</a></span>(<a href="../../../reference/java/lang/Runnable.html">Runnable</a> runner)</nobr>
+        
+        <div class="jd-descrdiv">Execute a call on the application's main thread, blocking until it is
+ complete.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#sendCharacterSync(int)">sendCharacterSync</a></span>(int keyCode)</nobr>
+        
+        <div class="jd-descrdiv">Higher-level method for sending both the down and up key events for a
+ particular character key code.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#sendKeyDownUpSync(int)">sendKeyDownUpSync</a></span>(int key)</nobr>
+        
+        <div class="jd-descrdiv">Sends an up and down key event sync to the currently focused window.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#sendKeySync(android.view.KeyEvent)">sendKeySync</a></span>(<a href="../../../reference/android/view/KeyEvent.html">KeyEvent</a> event)</nobr>
+        
+        <div class="jd-descrdiv">Send a key event to the currently focused window/view and wait for it to
+ be processed.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#sendPointerSync(android.view.MotionEvent)">sendPointerSync</a></span>(<a href="../../../reference/android/view/MotionEvent.html">MotionEvent</a> event)</nobr>
+        
+        <div class="jd-descrdiv">Dispatch a pointer event.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#sendStatus(int, android.os.Bundle)">sendStatus</a></span>(int resultCode, <a href="../../../reference/android/os/Bundle.html">Bundle</a> results)</nobr>
+        
+        <div class="jd-descrdiv">Provide a status report about the application.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#sendStringSync(java.lang.String)">sendStringSync</a></span>(<a href="../../../reference/java/lang/String.html">String</a> text)</nobr>
+        
+        <div class="jd-descrdiv">Sends the key events corresponding to the text to the app being
+ instrumented.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#sendTrackballEventSync(android.view.MotionEvent)">sendTrackballEventSync</a></span>(<a href="../../../reference/android/view/MotionEvent.html">MotionEvent</a> event)</nobr>
+        
+        <div class="jd-descrdiv">Dispatch a trackball event.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#setAutomaticPerformanceSnapshots()">setAutomaticPerformanceSnapshots</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#setInTouchMode(boolean)">setInTouchMode</a></span>(boolean inTouch)</nobr>
+        
+        <div class="jd-descrdiv">Force the global system in or out of touch mode.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#start()">start</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Create and start a new thread in which to run instrumentation.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/Activity.html">Activity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#startActivitySync(android.content.Intent)">startActivitySync</a></span>(<a href="../../../reference/android/content/Intent.html">Intent</a> intent)</nobr>
+        
+        <div class="jd-descrdiv">Start a new activity and wait for it to begin running before returning.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#startAllocCounting()">startAllocCounting</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#startPerformanceSnapshot()">startPerformanceSnapshot</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#startProfiling()">startProfiling</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">This method will start profiling if isProfiling() returns true.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#stopAllocCounting()">stopAllocCounting</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#stopProfiling()">stopProfiling</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Stops profiling if isProfiling() returns true.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#waitForIdle(java.lang.Runnable)">waitForIdle</a></span>(<a href="../../../reference/java/lang/Runnable.html">Runnable</a> recipient)</nobr>
+        
+        <div class="jd-descrdiv">Schedule a callback for when the application's main thread goes idle
+ (has no more events to process).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#waitForIdleSync()">waitForIdleSync</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Synchronously wait for the application to be idle.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/Activity.html">Activity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#waitForMonitor(android.app.Instrumentation.ActivityMonitor)">waitForMonitor</a></span>(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor)</nobr>
+        
+        <div class="jd-descrdiv">Wait for an existing <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> to be hit.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/android/app/Activity.html">Activity</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/android/app/Instrumentation.html#waitForMonitorWithTimeout(android.app.Instrumentation.ActivityMonitor, long)">waitForMonitorWithTimeout</a></span>(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor, long timeOut)</nobr>
+        
+        <div class="jd-descrdiv">Wait for an existing <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> to be hit till the timeout
+ expires.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../reference/java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Creates and returns a copy of this <code>Object</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../reference/java/lang/Object.html">Object</a> o)</nobr>
+        
+        <div class="jd-descrdiv">Compares this instance with the specified object and indicates if they
+ are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#finalize()">finalize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Invoked when the garbage collector has detected that this instance is no longer reachable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../reference/java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#getClass()">getClass</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the unique instance of <code><a href="../../../reference/java/lang/Class.html">Class</a></code> that represents this
+ object's class.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#notify()">notify</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes a thread which is waiting on this object's monitor (by means of
+ calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#notifyAll()">notifyAll</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes all threads which are waiting on this object's monitor (by means
+ of calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a string containing a concise, human-readable description of this
+ object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait()">wait</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait(long, int)">wait</a></span>(long millis, int nanos)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../reference/java/lang/Object.html#wait(long)">wait</a></span>(long millis)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2>Constants</h2>
+
+
+
+
+<A NAME="REPORT_KEY_IDENTIFIER"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        REPORT_KEY_IDENTIFIER
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>If included in the status or final bundle sent to an IInstrumentationWatcher, this key 
+ identifies the class that is writing the report.  This can be used to provide more structured
+ logging or reporting capabilities in the IInstrumentationWatcher.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "id"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="REPORT_KEY_STREAMRESULT"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../reference/java/lang/String.html">String</a>
+      </span>
+        REPORT_KEY_STREAMRESULT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>If included in the status or final bundle sent to an IInstrumentationWatcher, this key 
+ identifies a string which can simply be printed to the output stream.  Using these streams
+ provides a "pretty printer" version of the status & final packets.  Any bundles including 
+ this key should also include the complete set of raw key/value pairs, so that the
+ instrumentation can also be launched, and results collected, by an automated system.
+</p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "stream"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="Instrumentation()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">Instrumentation</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="addMonitor(android.content.IntentFilter, android.app.Instrumentation.ActivityResult, boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a>
+      </span>
+      <span class="sympad">addMonitor</span>
+      <span class="normal">(<a href="../../../reference/android/content/IntentFilter.html">IntentFilter</a> filter, <a href="../../../reference/android/app/Instrumentation.ActivityResult.html">Instrumentation.ActivityResult</a> result, boolean block)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>A convenience wrapper for <code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(ActivityMonitor)</a></code> that 
+ creates an intent filter matching <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> for you and 
+ returns it.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>filter</td>
+          <td>The set of intents this monitor is responsible for.</td>
+        </tr>
+        <tr>
+          <th>result</td>
+          <td>A canned result to return if the monitor is hit; can 
+               be null.</td>
+        </tr>
+        <tr>
+          <th>block</td>
+          <td>Controls whether the monitor should block the activity 
+              start (returning its canned result) or let the call
+              proceed.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The newly created and added activity monitor.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(ActivityMonitor)</a></code></li><li><code><a href="../../../reference/android/app/Instrumentation.html#checkMonitorHit(android.app.Instrumentation.ActivityMonitor, int)">checkMonitorHit(Instrumentation.ActivityMonitor, int)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="addMonitor(android.app.Instrumentation.ActivityMonitor)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">addMonitor</span>
+      <span class="normal">(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Add a new <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> that will be checked whenever an 
+ activity is started.  The monitor is added 
+ after any existing ones; the monitor will be hit only if none of the 
+ existing monitors can themselves handle the Intent.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>monitor</td>
+          <td>The new ActivityMonitor to see.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.content.IntentFilter, android.app.Instrumentation.ActivityResult, boolean)">addMonitor(IntentFilter, ActivityResult, boolean)</a></code></li><li><code><a href="../../../reference/android/app/Instrumentation.html#checkMonitorHit(android.app.Instrumentation.ActivityMonitor, int)">checkMonitorHit(Instrumentation.ActivityMonitor, int)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="addMonitor(java.lang.String, android.app.Instrumentation.ActivityResult, boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a>
+      </span>
+      <span class="sympad">addMonitor</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> cls, <a href="../../../reference/android/app/Instrumentation.ActivityResult.html">Instrumentation.ActivityResult</a> result, boolean block)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>A convenience wrapper for <code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(ActivityMonitor)</a></code> that 
+ creates a class matching <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> for you and returns it.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>cls</td>
+          <td>The activity class this monitor is responsible for.</td>
+        </tr>
+        <tr>
+          <th>result</td>
+          <td>A canned result to return if the monitor is hit; can 
+               be null.</td>
+        </tr>
+        <tr>
+          <th>block</td>
+          <td>Controls whether the monitor should block the activity 
+              start (returning its canned result) or let the call
+              proceed.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The newly created and added activity monitor.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(ActivityMonitor)</a></code></li><li><code><a href="../../../reference/android/app/Instrumentation.html#checkMonitorHit(android.app.Instrumentation.ActivityMonitor, int)">checkMonitorHit(Instrumentation.ActivityMonitor, int)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnCreate(android.app.Activity, android.os.Bundle)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnCreate</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/os/Bundle.html">Bundle</a> icicle)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></code>
+ method.  The default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being created.</td>
+        </tr>
+        <tr>
+          <th>icicle</td>
+          <td>The previously frozen state (or null) to pass through to
+               onCreate().
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnDestroy(android.app.Activity)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnDestroy</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnNewIntent(android.app.Activity, android.content.Intent)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnNewIntent</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/content/Intent.html">Intent</a> intent)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onNewIntent(android.content.Intent)">onNewIntent(Intent)</a></code>
+ method.  The default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity receiving a new Intent.</td>
+        </tr>
+        <tr>
+          <th>intent</td>
+          <td>The new intent being received.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnPause(android.app.Activity)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnPause</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onPause()">onPause()</a></code> method.  The
+ default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being paused.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnPostCreate(android.app.Activity, android.os.Bundle)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnPostCreate</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/os/Bundle.html">Bundle</a> icicle)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onPostCreate(android.os.Bundle)">onPostCreate(Bundle)</a></code> method.
+ The default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being created.</td>
+        </tr>
+        <tr>
+          <th>icicle</td>
+          <td>The previously frozen state (or null) to pass through to
+               onPostCreate().
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnRestart(android.app.Activity)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnRestart</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onRestart()">onRestart()</a></code>
+ method.  The default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being restarted.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnRestoreInstanceState(android.app.Activity, android.os.Bundle)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnRestoreInstanceState</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/os/Bundle.html">Bundle</a> savedInstanceState)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onRestoreInstanceState(android.os.Bundle)">onRestoreInstanceState(Bundle)</a></code>
+ method.  The default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being restored.</td>
+        </tr>
+        <tr>
+          <th>savedInstanceState</td>
+          <td>The previously saved state being restored.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnResume(android.app.Activity)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnResume</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onResume()">onResume()</a></code> method.  The
+ default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being resumed.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnSaveInstanceState(android.app.Activity, android.os.Bundle)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnSaveInstanceState</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity, <a href="../../../reference/android/os/Bundle.html">Bundle</a> outState)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onPause()">onPause()</a></code> method.  The
+ default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being saved.</td>
+        </tr>
+        <tr>
+          <th>outState</td>
+          <td>The bundle to pass to the call.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnStart(android.app.Activity)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnStart</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onStart()">onStart()</a></code>
+ method.  The default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being started.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnStop(android.app.Activity)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnStop</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onStop()">onStop()</a></code>
+ method.  The default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being stopped.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callActivityOnUserLeaving(android.app.Activity)"></A>
+
+<div class="jd-details api apilevel-3"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callActivityOnUserLeaving</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> activity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 3</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of an activity's <code><a href="../../../reference/android/app/Activity.html#onUserLeaveHint()">onUserLeaveHint()</a></code> method.
+ The default implementation simply calls through to that method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>activity</td>
+          <td>The activity being notified that the user has navigated away
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="callApplicationOnCreate(android.app.Application)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">callApplicationOnCreate</span>
+      <span class="normal">(<a href="../../../reference/android/app/Application.html">Application</a> app)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform calling of the application's <code><a href="../../../reference/android/app/Application.html#onCreate()">onCreate()</a></code>
+ method.  The default implementation simply calls through to that method.
+
+ <p>Note: This method will be called immediately after <code><a href="../../../reference/android/app/Instrumentation.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></code>.
+ Often instrumentation tests start their test thread in onCreate(); you
+ need to be careful of races between these.  (Well between it and
+ everything else, but let's start here.)</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>app</td>
+          <td>The application being created.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="checkMonitorHit(android.app.Instrumentation.ActivityMonitor, int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">checkMonitorHit</span>
+      <span class="normal">(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor, int minHits)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Test whether an existing <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> has been hit.  If the 
+ monitor has been hit at least <var>minHits</var> times, then it will be 
+ removed from the activity monitor list and true returned.  Otherwise it 
+ is left as-is and false is returned.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>monitor</td>
+          <td>The ActivityMonitor to check.</td>
+        </tr>
+        <tr>
+          <th>minHits</td>
+          <td>The minimum number of hits required.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>True if the hit count has been reached, else false.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(Instrumentation.ActivityMonitor)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="endPerformanceSnapshot()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">endPerformanceSnapshot</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="finish(int, android.os.Bundle)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">finish</span>
+      <span class="normal">(int resultCode, <a href="../../../reference/android/os/Bundle.html">Bundle</a> results)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Terminate instrumentation of the application.  This will cause the
+ application process to exit, removing this instrumentation from the next
+ time the application is started.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>resultCode</td>
+          <td>Overall success/failure of instrumentation.</td>
+        </tr>
+        <tr>
+          <th>results</td>
+          <td>Any results to send back to the code that started the 
+                instrumentation.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAllocCounts()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/os/Bundle.html">Bundle</a>
+      </span>
+      <span class="sympad">getAllocCounts</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a bundle with the current results from the allocation counting.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getBinderCounts()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/os/Bundle.html">Bundle</a>
+      </span>
+      <span class="sympad">getBinderCounts</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a bundle with the counts for various binder counts for this process. Currently the only two that are
+ reported are the number of send and the number of received transactions.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getComponentName()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/content/ComponentName.html">ComponentName</a>
+      </span>
+      <span class="sympad">getComponentName</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns complete component name of this instrumentation.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the complete component name for this instrumentation.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getContext()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/content/Context.html">Context</a>
+      </span>
+      <span class="sympad">getContext</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the Context of this instrumentation's package.  Note that this is
+ often different than the Context of the application being
+ instrumentated, since the instrumentation code often lives is a
+ different package than that of the application it is running against.
+ See <code><a href="../../../reference/android/app/Instrumentation.html#getTargetContext()">getTargetContext()</a></code> to retrieve a Context for the target
+ application.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The instrumentation's package context.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/Instrumentation.html#getTargetContext()">getTargetContext()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTargetContext()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/content/Context.html">Context</a>
+      </span>
+      <span class="sympad">getTargetContext</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return a Context for the target application being instrumented.  Note
+ that this is often different than the Context of the instrumentation
+ code, since the instrumentation code often lives is a different package
+ than that of the application it is running against. See
+ <code><a href="../../../reference/android/app/Instrumentation.html#getContext()">getContext()</a></code> to retrieve a Context for the instrumentation code.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A Context in the target application.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/Instrumentation.html#getContext()">getContext()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getUiAutomation()"></A>
+
+<div class="jd-details api apilevel-18"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/UiAutomation.html">UiAutomation</a>
+      </span>
+      <span class="sympad">getUiAutomation</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 18</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the <code><a href="../../../reference/android/app/UiAutomation.html">UiAutomation</a></code> instance.
+ <p>
+ <strong>Note:</strong> The APIs exposed via the returned <code><a href="../../../reference/android/app/UiAutomation.html">UiAutomation</a></code>
+ work across application boundaries while the APIs exposed by the instrumentation
+ do not. For example, <code><a href="../../../reference/android/app/Instrumentation.html#sendPointerSync(android.view.MotionEvent)">sendPointerSync(MotionEvent)</a></code> will
+ not allow you to inject the event in an app different from the instrumentation
+ target, while <code><a href="../../../reference/android/app/UiAutomation.html#injectInputEvent(android.view.InputEvent, boolean)">injectInputEvent(android.view.InputEvent, boolean)</a></code>
+ will work regardless of the current application.
+ </p>
+ <p>
+ A typical test case should be using either the <code><a href="../../../reference/android/app/UiAutomation.html">UiAutomation</a></code> or
+ <code><a href="../../../reference/android/app/Instrumentation.html">Instrumentation</a></code> APIs. Using both APIs at the same time is not
+ a mistake by itself but a client has to be aware of the APIs limitations.
+ </p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The UI automation instance.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/UiAutomation.html">UiAutomation</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="invokeContextMenuAction(android.app.Activity, int, int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">invokeContextMenuAction</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> targetActivity, int id, int flag)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Show the context menu for the currently focused view and executes a
+ particular context menu item.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>targetActivity</td>
+          <td>The activity in question.</td>
+        </tr>
+        <tr>
+          <th>id</td>
+          <td>The identifier associated with the context menu item.</td>
+        </tr>
+        <tr>
+          <th>flag</td>
+          <td>Additional flags, if any.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Whether the invocation was successful (for example, it could be
+         false if item is disabled).
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="invokeMenuActionSync(android.app.Activity, int, int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">invokeMenuActionSync</span>
+      <span class="normal">(<a href="../../../reference/android/app/Activity.html">Activity</a> targetActivity, int id, int flag)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Execute a particular menu item.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>targetActivity</td>
+          <td>The activity in question.</td>
+        </tr>
+        <tr>
+          <th>id</td>
+          <td>The identifier associated with the menu item.</td>
+        </tr>
+        <tr>
+          <th>flag</td>
+          <td>Additional flags, if any.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Whether the invocation was successful (for example, it could be
+         false if item is disabled).
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isProfiling()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isProfiling</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Check whether this instrumentation was started with profiling enabled.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns true if profiling was enabled when starting, else false.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="newActivity(java.lang.ClassLoader, java.lang.String, android.content.Intent)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/Activity.html">Activity</a>
+      </span>
+      <span class="sympad">newActivity</span>
+      <span class="normal">(<a href="../../../reference/java/lang/ClassLoader.html">ClassLoader</a> cl, <a href="../../../reference/java/lang/String.html">String</a> className, <a href="../../../reference/android/content/Intent.html">Intent</a> intent)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform instantiation of the process's <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> object.  The
+ default implementation provides the normal system behavior.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>cl</td>
+          <td>The ClassLoader with which to instantiate the object.</td>
+        </tr>
+        <tr>
+          <th>className</td>
+          <td>The name of the class implementing the Activity
+                  object.</td>
+        </tr>
+        <tr>
+          <th>intent</td>
+          <td>The Intent object that specified the activity class being
+               instantiated.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The newly instantiated Activity object.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/InstantiationException.html">InstantiationException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalAccessException.html">IllegalAccessException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/ClassNotFoundException.html">ClassNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="newActivity(java.lang.Class<?>, android.content.Context, android.os.IBinder, android.app.Application, android.content.Intent, android.content.pm.ActivityInfo, java.lang.CharSequence, android.app.Activity, java.lang.String, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/Activity.html">Activity</a>
+      </span>
+      <span class="sympad">newActivity</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Class.html">Class</a>&lt;?&gt; clazz, <a href="../../../reference/android/content/Context.html">Context</a> context, <a href="../../../reference/android/os/IBinder.html">IBinder</a> token, <a href="../../../reference/android/app/Application.html">Application</a> application, <a href="../../../reference/android/content/Intent.html">Intent</a> intent, <a href="../../../reference/android/content/pm/ActivityInfo.html">ActivityInfo</a> info, <a href="../../../reference/java/lang/CharSequence.html">CharSequence</a> title, <a href="../../../reference/android/app/Activity.html">Activity</a> parent, <a href="../../../reference/java/lang/String.html">String</a> id, <a href="../../../reference/java/lang/Object.html">Object</a> lastNonConfigurationInstance)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform instantiation of an <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> object.  This method is intended for use with
+ unit tests, such as android.test.ActivityUnitTestCase.  The activity will be useable
+ locally but will be missing some of the linkages necessary for use within the sytem.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>clazz</td>
+          <td>The Class of the desired Activity</td>
+        </tr>
+        <tr>
+          <th>context</td>
+          <td>The base context for the activity to use</td>
+        </tr>
+        <tr>
+          <th>token</td>
+          <td>The token for this activity to communicate with</td>
+        </tr>
+        <tr>
+          <th>application</td>
+          <td>The application object (if any)</td>
+        </tr>
+        <tr>
+          <th>intent</td>
+          <td>The intent that started this Activity</td>
+        </tr>
+        <tr>
+          <th>info</td>
+          <td>ActivityInfo from the manifest</td>
+        </tr>
+        <tr>
+          <th>title</td>
+          <td>The title, typically retrieved from the ActivityInfo record</td>
+        </tr>
+        <tr>
+          <th>parent</td>
+          <td>The parent Activity (if any)</td>
+        </tr>
+        <tr>
+          <th>id</td>
+          <td>The embedded Id (if any)</td>
+        </tr>
+        <tr>
+          <th>lastNonConfigurationInstance</td>
+          <td>Arbitrary object that will be
+ available via <code><a href="../../../reference/android/app/Activity.html#getLastNonConfigurationInstance()">Activity.getLastNonConfigurationInstance()</a></code>.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the instantiated activity</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th></td>
+            <td>InstantiationException</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalAccessException.html">IllegalAccessException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/InstantiationException.html">InstantiationException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="newApplication(java.lang.ClassLoader, java.lang.String, android.content.Context)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/Application.html">Application</a>
+      </span>
+      <span class="sympad">newApplication</span>
+      <span class="normal">(<a href="../../../reference/java/lang/ClassLoader.html">ClassLoader</a> cl, <a href="../../../reference/java/lang/String.html">String</a> className, <a href="../../../reference/android/content/Context.html">Context</a> context)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform instantiation of the process's <code><a href="../../../reference/android/app/Application.html">Application</a></code> object.  The
+ default implementation provides the normal system behavior.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>cl</td>
+          <td>The ClassLoader with which to instantiate the object.</td>
+        </tr>
+        <tr>
+          <th>className</td>
+          <td>The name of the class implementing the Application
+                  object.</td>
+        </tr>
+        <tr>
+          <th>context</td>
+          <td>The context to initialize the application with</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The newly instantiated Application object.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/InstantiationException.html">InstantiationException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalAccessException.html">IllegalAccessException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/ClassNotFoundException.html">ClassNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="newApplication(java.lang.Class<?>, android.content.Context)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+         
+         
+         
+        <a href="../../../reference/android/app/Application.html">Application</a>
+      </span>
+      <span class="sympad">newApplication</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Class.html">Class</a>&lt;?&gt; clazz, <a href="../../../reference/android/content/Context.html">Context</a> context)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Perform instantiation of the process's <code><a href="../../../reference/android/app/Application.html">Application</a></code> object.  The
+ default implementation provides the normal system behavior.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>clazz</td>
+          <td>The class used to create an Application object from.</td>
+        </tr>
+        <tr>
+          <th>context</td>
+          <td>The context to initialize the application with</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The newly instantiated Application object.
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../reference/java/lang/InstantiationException.html">InstantiationException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/IllegalAccessException.html">IllegalAccessException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../reference/java/lang/ClassNotFoundException.html">ClassNotFoundException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="onCreate(android.os.Bundle)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">onCreate</span>
+      <span class="normal">(<a href="../../../reference/android/os/Bundle.html">Bundle</a> arguments)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called when the instrumentation is starting, before any application code
+ has been loaded.  Usually this will be implemented to simply call
+ <code><a href="../../../reference/android/app/Instrumentation.html#start()">start()</a></code> to begin the instrumentation thread, which will then
+ continue execution in <code><a href="../../../reference/android/app/Instrumentation.html#onStart()">onStart()</a></code>.
+ 
+ <p>If you do not need your own thread -- that is you are writing your
+ instrumentation to be completely asynchronous (returning to the event
+ loop so that the application can run), you can simply begin your
+ instrumentation here, for example call <code><a href="../../../reference/android/content/Context.html#startActivity(android.content.Intent)">startActivity(Intent)</a></code> to
+ begin the appropriate first activity of the application.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>arguments</td>
+          <td>Any additional arguments that were supplied when the 
+                  instrumentation was started.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="onDestroy()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">onDestroy</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called when the instrumented application is stopping, after all of the
+ normal application cleanup has occurred.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="onException(java.lang.Object, java.lang.Throwable)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">onException</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Object.html">Object</a> obj, <a href="../../../reference/java/lang/Throwable.html">Throwable</a> e)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This is called whenever the system captures an unhandled exception that
+ was thrown by the application.  The default implementation simply
+ returns false, allowing normal system handling of the exception to take
+ place.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>obj</td>
+          <td>The client object that generated the exception.  May be an
+            Application, Activity, BroadcastReceiver, Service, or null.</td>
+        </tr>
+        <tr>
+          <th>e</td>
+          <td>The exception that was thrown.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>To allow normal system exception process to occur, return false.
+         If true is returned, the system will proceed as if the exception
+         didn't happen.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="onStart()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">onStart</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Method where the instrumentation thread enters execution.  This allows
+ you to run your instrumentation code in a separate thread than the
+ application, so that it can perform blocking operation such as
+ <code><a href="../../../reference/android/app/Instrumentation.html#sendKeySync(android.view.KeyEvent)">sendKeySync(KeyEvent)</a></code> or <code><a href="../../../reference/android/app/Instrumentation.html#startActivitySync(android.content.Intent)">startActivitySync(Intent)</a></code>.
+ 
+ <p>You will typically want to call finish() when this function is done,
+ to end your instrumentation.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="removeMonitor(android.app.Instrumentation.ActivityMonitor)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">removeMonitor</span>
+      <span class="normal">(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Remove an <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> that was previously added with 
+ <code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(Instrumentation.ActivityMonitor)</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>monitor</td>
+          <td>The monitor to remove.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/app/Instrumentation.html#addMonitor(android.app.Instrumentation.ActivityMonitor)">addMonitor(Instrumentation.ActivityMonitor)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="runOnMainSync(java.lang.Runnable)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">runOnMainSync</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Runnable.html">Runnable</a> runner)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Execute a call on the application's main thread, blocking until it is
+ complete.  Useful for doing things that are not thread-safe, such as
+ looking at or modifying the view hierarchy.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>runner</td>
+          <td>The code to run on the main thread.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendCharacterSync(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">sendCharacterSync</span>
+      <span class="normal">(int keyCode)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Higher-level method for sending both the down and up key events for a
+ particular character key code.  Equivalent to creating both KeyEvent
+ objects by hand and calling <code><a href="../../../reference/android/app/Instrumentation.html#sendKeySync(android.view.KeyEvent)">sendKeySync(KeyEvent)</a></code>.  The event appears
+ as if it came from keyboard 0, the built in one.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>keyCode</td>
+          <td>The key code of the character to send.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendKeyDownUpSync(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">sendKeyDownUpSync</span>
+      <span class="normal">(int key)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sends an up and down key event sync to the currently focused window.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>key</td>
+          <td>The integer keycode for the event.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendKeySync(android.view.KeyEvent)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">sendKeySync</span>
+      <span class="normal">(<a href="../../../reference/android/view/KeyEvent.html">KeyEvent</a> event)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Send a key event to the currently focused window/view and wait for it to
+ be processed.  Finished at some point after the recipient has returned
+ from its event processing, though it may <em>not</em> have completely
+ finished reacting from the event -- for example, if it needs to update
+ its display as a result, it may still be in the process of doing that.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>event</td>
+          <td>The event to send to the current focus.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendPointerSync(android.view.MotionEvent)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">sendPointerSync</span>
+      <span class="normal">(<a href="../../../reference/android/view/MotionEvent.html">MotionEvent</a> event)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Dispatch a pointer event. Finished at some point after the recipient has
+ returned from its event processing, though it may <em>not</em> have
+ completely finished reacting from the event -- for example, if it needs
+ to update its display as a result, it may still be in the process of
+ doing that.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>event</td>
+          <td>A motion event describing the pointer action.  (As noted in 
+ <code><a href="../../../reference/android/view/MotionEvent.html#obtain(long, long, int, float, float, int)">obtain(long, long, int, float, float, int)</a></code>, be sure to use 
+ <code><a href="../../../reference/android/os/SystemClock.html#uptimeMillis()">uptimeMillis()</a></code> as the timebase.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendStatus(int, android.os.Bundle)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">sendStatus</span>
+      <span class="normal">(int resultCode, <a href="../../../reference/android/os/Bundle.html">Bundle</a> results)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Provide a status report about the application.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>resultCode</td>
+          <td>Current success/failure of instrumentation.</td>
+        </tr>
+        <tr>
+          <th>results</td>
+          <td>Any results to send back to the code that started the instrumentation.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendStringSync(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">sendStringSync</span>
+      <span class="normal">(<a href="../../../reference/java/lang/String.html">String</a> text)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sends the key events corresponding to the text to the app being
+ instrumented.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>text</td>
+          <td>The text to be sent. 
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="sendTrackballEventSync(android.view.MotionEvent)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">sendTrackballEventSync</span>
+      <span class="normal">(<a href="../../../reference/android/view/MotionEvent.html">MotionEvent</a> event)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Dispatch a trackball event. Finished at some point after the recipient has
+ returned from its event processing, though it may <em>not</em> have
+ completely finished reacting from the event -- for example, if it needs
+ to update its display as a result, it may still be in the process of
+ doing that.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>event</td>
+          <td>A motion event describing the trackball action.  (As noted in 
+ <code><a href="../../../reference/android/view/MotionEvent.html#obtain(long, long, int, float, float, int)">obtain(long, long, int, float, float, int)</a></code>, be sure to use 
+ <code><a href="../../../reference/android/os/SystemClock.html#uptimeMillis()">uptimeMillis()</a></code> as the timebase.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setAutomaticPerformanceSnapshots()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setAutomaticPerformanceSnapshots</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setInTouchMode(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setInTouchMode</span>
+      <span class="normal">(boolean inTouch)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Force the global system in or out of touch mode.  This can be used if
+ your instrumentation relies on the UI being in one more or the other
+ when it starts.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>inTouch</td>
+          <td>Set to true to be in touch mode, false to be in
+ focus mode.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="start()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">start</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create and start a new thread in which to run instrumentation.  This new
+ thread will call to <code><a href="../../../reference/android/app/Instrumentation.html#onStart()">onStart()</a></code> where you can implement the
+ instrumentation.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="startActivitySync(android.content.Intent)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/Activity.html">Activity</a>
+      </span>
+      <span class="sympad">startActivitySync</span>
+      <span class="normal">(<a href="../../../reference/android/content/Intent.html">Intent</a> intent)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Start a new activity and wait for it to begin running before returning.
+ In addition to being synchronous, this method as some semantic
+ differences from the standard <code><a href="../../../reference/android/content/Context.html#startActivity(android.content.Intent)">startActivity(Intent)</a></code> call: the
+ activity component is resolved before talking with the activity manager
+ (its class name is specified in the Intent that this method ultimately
+ starts), and it does not allow you to start activities that run in a
+ different process.  In addition, if the given Intent resolves to
+ multiple activities, instead of displaying a dialog for the user to
+ select an activity, an exception will be thrown.
+ 
+ <p>The function returns as soon as the activity goes idle following the
+ call to its <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></code>.  Generally this means it has gone
+ through the full initialization including <code><a href="../../../reference/android/app/Activity.html#onResume()">onResume()</a></code> and
+ drawn and displayed its initial window.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>intent</td>
+          <td>Description of the activity to start.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../reference/android/content/Context.html#startActivity(android.content.Intent)">startActivity(Intent)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="startAllocCounting()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">startAllocCounting</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="startPerformanceSnapshot()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">startPerformanceSnapshot</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="startProfiling()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">startProfiling</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This method will start profiling if isProfiling() returns true. You should
+ only call this method if you set the handleProfiling attribute in the 
+ manifest file for this Instrumentation to true.  
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="stopAllocCounting()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">stopAllocCounting</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="stopProfiling()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">stopProfiling</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Stops profiling if isProfiling() returns true.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="waitForIdle(java.lang.Runnable)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">waitForIdle</span>
+      <span class="normal">(<a href="../../../reference/java/lang/Runnable.html">Runnable</a> recipient)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Schedule a callback for when the application's main thread goes idle
+ (has no more events to process).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>recipient</td>
+          <td>Called the next time the thread's message queue is
+                  idle.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="waitForIdleSync()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">waitForIdleSync</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Synchronously wait for the application to be idle.  Can not be called
+ from the main application thread -- use <code><a href="../../../reference/android/app/Instrumentation.html#start()">start()</a></code> to execute
+ instrumentation in its own thread.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="waitForMonitor(android.app.Instrumentation.ActivityMonitor)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/Activity.html">Activity</a>
+      </span>
+      <span class="sympad">waitForMonitor</span>
+      <span class="normal">(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Wait for an existing <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> to be hit.  Once the 
+ monitor has been hit, it is removed from the activity monitor list and 
+ the first created Activity object that matched it is returned.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>monitor</td>
+          <td>The ActivityMonitor to wait for.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The Activity object that matched the monitor.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="waitForMonitorWithTimeout(android.app.Instrumentation.ActivityMonitor, long)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../reference/android/app/Activity.html">Activity</a>
+      </span>
+      <span class="sympad">waitForMonitorWithTimeout</span>
+      <span class="normal">(<a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a> monitor, long timeOut)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Wait for an existing <code><a href="../../../reference/android/app/Instrumentation.ActivityMonitor.html">Instrumentation.ActivityMonitor</a></code> to be hit till the timeout
+ expires.  Once the monitor has been hit, it is removed from the activity 
+ monitor list and the first created Activity object that matched it is 
+ returned.  If the timeout expires, a null object is returned.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>monitor</td>
+          <td>The ActivityMonitor to wait for.</td>
+        </tr>
+        <tr>
+          <th>timeOut</td>
+          <td>The timeout value in secs.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The Activity object that matched the monitor.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

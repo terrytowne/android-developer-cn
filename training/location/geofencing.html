@@ -1,0 +1,3373 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Creating and Monitoring Geofences | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+<ul id="nav">
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/index.html">
+        Getting Started
+      </a>
+    </div>
+
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/basics/firstapp/index.html"
+             description=
+             "After you've installed the Android SDK, start with this class
+             to learn the basics about Android app development."
+            >Building Your First App</a>
+        </div>
+        <ul>
+          <li><a href="../../training/basics/firstapp/creating-project.html">
+            Creating an Android Project
+          </a>
+          </li>
+          <li><a href="../../training/basics/firstapp/running-app.html">
+            Running Your Application
+          </a>
+          </li>
+          <li><a href="../../training/basics/firstapp/building-ui.html">
+            Building a Simple User Interface
+          </a>
+          </li>
+          <li><a href="../../training/basics/firstapp/starting-activity.html">
+            Starting Another Activity
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/basics/actionbar/index.html"
+             description=
+             "The action bar is one of the most important design elements you can implement for your
+app's activities. Although first introduced with API level 11, you can use the Support Library to
+include the action bar on devices running Android 2.1 or higher."
+            >Adding the Action Bar</a>
+        </div>
+        <ul>
+          <li><a href="../../training/basics/actionbar/setting-up.html">
+            Setting Up the Action Bar
+          </a>
+          </li>
+          <li><a href="../../training/basics/actionbar/adding-buttons.html">
+            Adding Action Buttons
+          </a>
+          </li>
+          <li><a href="../../training/basics/actionbar/styling.html">
+            Styling the Action Bar
+          </a>
+          </li>
+          <li><a href="../../training/basics/actionbar/overlaying.html">
+            Overlaying the Action Bar
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/basics/supporting-devices/index.html"
+             description=
+             "How to build your app with alternative resources that provide an
+             optimized user experience on multiple device form factors using a single APK."
+            >Supporting Different Devices</a>
+        </div>
+        <ul>
+          <li><a href="../../training/basics/supporting-devices/languages.html">
+            Supporting Different Languages
+          </a>
+          </li>
+          <li><a href="../../training/basics/supporting-devices/screens.html">
+            Supporting Different Screens
+          </a>
+          </li>
+          <li><a href="../../training/basics/supporting-devices/platforms.html">
+            Supporting Different Platform Versions
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/basics/activity-lifecycle/index.html"
+             description=
+             "How Android activities live and die and how to create
+             a seamless user experience by implementing lifecycle callback methods."
+            >Managing the Activity Lifecycle</a>
+        </div>
+        <ul>
+          <li><a href="../../training/basics/activity-lifecycle/starting.html">
+            Starting an Activity
+          </a>
+          </li>
+          <li><a href="../../training/basics/activity-lifecycle/pausing.html">
+            Pausing and Resuming an Activity
+          </a>
+          </li>
+          <li><a href="../../training/basics/activity-lifecycle/stopping.html">
+            Stopping and Restarting an Activity
+          </a>
+          </li>
+          <li><a href="../../training/basics/activity-lifecycle/recreating.html">
+            Recreating an Activity
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/basics/fragments/index.html"
+             description=
+             "How to build a user interface for your app that is flexible enough
+             to present multiple UI components on large screens and a more constrained set of
+             UI components on smaller screens&mdash;essential for building a single APK for both
+             phones and tablets."
+            >Building a Dynamic UI with Fragments</a>
+        </div>
+        <ul>
+          <li><a href="../../training/basics/fragments/creating.html">
+            Creating a Fragment
+          </a>
+          </li>
+          <li><a href="../../training/basics/fragments/fragment-ui.html">
+            Building a Flexible UI
+          </a>
+          </li>
+          <li><a href="../../training/basics/fragments/communicating.html">
+            Communicating with Other Fragments
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../training/basics/data-storage/index.html"
+             description=
+             "How to save data on the device, whether it's temporary files, downloaded
+             app assets, user media, structured data, or something else."
+            >Saving Data</a>
+        </div>
+        <ul>
+          <li><a href="../../training/basics/data-storage/shared-preferences.html">
+            Saving Key-Value Sets
+          </a>
+          </li>
+          <li><a href="../../training/basics/data-storage/files.html">
+            Saving Files
+          </a>
+          </li>
+          <li><a href="../../training/basics/data-storage/databases.html">
+            Saving Data in SQL Databases
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/basics/intents/index.html"
+             description=
+             "How to build a user experience that leverages other apps available
+             on the device to perform advanced user tasks, such as capture a photo or view
+             an address on a map."
+            >Interacting with Other Apps</a>
+        </div>
+        <ul>
+          <li><a href="../../training/basics/intents/sending.html">
+            Sending the User to Another App
+          </a>
+          </li>
+          <li><a href="../../training/basics/intents/result.html">
+            Getting a Result from the Activity
+          </a>
+          </li>
+          <li><a href="../../training/basics/intents/filters.html">
+            Allowing Other Apps to Start Your Activity
+          </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </li><!-- end getting started -->
+    <li class="nav-section">
+        <div class="nav-section-header">
+            <a href="../../training/building-content-sharing.html">
+            <span class="small">Building Apps with</span><br/>Content Sharing
+            </a>
+        </div>
+        <ul>
+            <li class="nav-section">
+                <div class="nav-section-header">
+                    <a href="../../training/sharing/index.html"
+                    description=
+                    "How to take your app interaction to the next level by sharing
+                    information with other apps, receive information back, and provide a simple and
+                    scalable way to perform Share actions with user content."
+                    >Sharing Simple Data</a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="../../training/sharing/send.html">
+                        Sending Simple Data to Other Apps
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../training/sharing/receive.html">
+                        Receiving Simple Data from Other Apps
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../training/sharing/shareaction.html">
+                        Adding an Easy Share Action
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-section">
+                <div class="nav-section-header">
+                    <a href="../../training/secure-file-sharing/index.html"
+                    description=
+                    "How to provide secure access to a file associated with your app using a content
+                    URI and temporary access permissions."
+                    >Sharing Files</a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="../../training/secure-file-sharing/setup-sharing.html">
+                        Setting Up File Sharing
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../training/secure-file-sharing/share-file.html">
+                        Sharing a File
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../training/secure-file-sharing/request-file.html">
+                        Requesting a Shared File
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../training/secure-file-sharing/retrieve-info.html">
+                        Retrieving File Information
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-section">
+                <div class="nav-section-header">
+                    <a href="../../training/beam-files/index.html"
+                    description=
+                    "How to transfer files between devices using the NFC Android Beam feature."
+                    >Sharing Files with NFC</a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="../../training/beam-files/send-files.html"
+                        >Sending Files to Another Device</a>
+                    </li>
+                    <li><a href="../../training/beam-files/receive-files.html"
+                    >Receiving Files from Another Device</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/building-multimedia.html">
+      <span class="small">Building Apps with</span><br/>Multimedia
+      </a>
+    </div>
+    <ul>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/managing-audio/index.html"
+             description=
+             "How to respond to hardware audio key presses, request audio focus
+             when playing audio, and respond appropriately to changes in audio focus."
+            >Managing Audio Playback</a>
+        </div>
+        <ul>
+          <li><a href="../../training/managing-audio/volume-playback.html">
+            Controlling Your App's Volume and Playback
+          </a>
+          </li>
+          <li><a href="../../training/managing-audio/audio-focus.html">
+            Managing Audio Focus
+          </a>
+          </li>
+          <li><a href="../../training/managing-audio/audio-output.html">
+            Dealing with Audio Output Hardware
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/camera/index.html"
+             description=
+             "How to leverage existing camera apps on the user's device to capture
+             photos or control the camera hardware directly and build your own camera app."
+            >Capturing Photos</a>
+        </div>
+        <ul>
+          <li><a href="../../training/camera/photobasics.html">
+            Taking Photos Simply
+          </a>
+          </li>
+          <li><a href="../../training/camera/videobasics.html">
+            Recording Videos Simply
+          </a>
+          </li>
+          <li><a href="../../training/camera/cameradirect.html">
+            Controlling the Camera
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/printing/index.html"
+             description=
+             "How to print photos, HTML documents, and custom documents from your app."
+            >Printing Content</a>
+        </div>
+        <ul>
+          <li><a href="../../training/printing/photos.html">
+            Photos
+          </a>
+          </li>
+          <li><a href="../../training/printing/html-docs.html">
+            HTML Documents
+          </a>
+          </li>
+          <li><a href="../../training/printing/custom-docs.html">
+            Custom Documents
+          </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </li>
+  <!-- End multimedia -->
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/building-graphics.html">
+      <span class="small">Building Apps with</span><br/>Graphics &amp; Animation
+      </a>
+    </div>
+    <ul>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/displaying-bitmaps/index.html"
+             description=
+             "How to load and process bitmaps while keeping your user interface
+             responsive and avoid exceeding memory limits."
+            >Displaying Bitmaps Efficiently</a>
+        </div>
+        <ul>
+          <li><a href="../../training/displaying-bitmaps/load-bitmap.html">
+            Loading Large Bitmaps Efficiently
+          </a>
+          </li>
+          <li><a href="../../training/displaying-bitmaps/process-bitmap.html">
+            Processing Bitmaps Off the UI Thread
+          </a>
+          </li>
+          <li><a href="../../training/displaying-bitmaps/cache-bitmap.html">
+            Caching Bitmaps
+          </a>
+          </li>
+          <li><a href="../../training/displaying-bitmaps/manage-memory.html">
+            Managing Bitmap Memory
+          </a>
+          </li>
+          <li><a href="../../training/displaying-bitmaps/display-bitmap.html">
+            Displaying Bitmaps in Your UI
+          </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/graphics/opengl/index.html"
+             description=
+             "How to create OpenGL graphics within the Android app framework
+             and respond to touch input."
+            >Displaying Graphics with OpenGL ES</a>
+        </div>
+        <ul>
+          <li><a href="../../training/graphics/opengl/environment.html">
+            Building an OpenGL ES Environment
+          </a>
+          </li>
+          <li><a href="../../training/graphics/opengl/shapes.html">
+            Defining Shapes
+          </a>
+          </li>
+          <li><a href="../../training/graphics/opengl/draw.html">
+            Drawing Shapes
+          </a>
+          </li>
+          <li><a href="../../training/graphics/opengl/projection.html">
+            Applying Projection and Camera Views
+          </a>
+          </li>
+          <li><a href="../../training/graphics/opengl/motion.html">
+            Adding Motion
+          </a>
+          </li>
+          <li><a href="../../training/graphics/opengl/touch.html">
+            Responding to Touch Events
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../training/animation/index.html"
+             description=
+             "How to add transitional animations to your user interface.">
+            Adding Animations
+          </a></div>
+        <ul>
+          <li><a href="../../training/animation/crossfade.html">
+            Crossfading Two Views
+          </a>
+          </li>
+          <li><a href="../../training/animation/screen-slide.html">
+            Using ViewPager for Screen Slide
+          </a>
+          </li>
+          <li><a href="../../training/animation/cardflip.html">
+            Displaying Card Flip Animations
+          </a>
+          </li>
+          <li><a href="../../training/animation/zoom.html">
+            Zooming a View
+          </a>
+          </li>
+          <li><a href="../../training/animation/layout.html">
+            Animating Layout Changes
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End graphics and animation -->
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/building-connectivity.html">
+      <span class="small">Building Apps with</span><br/>
+              Connectivity &amp; the Cloud
+      </a>
+    </div>
+    <ul>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/connect-devices-wirelessly/index.html"
+             description=
+             "How to find and connect to local devices using Network Service
+             Discovery and how to create peer-to-peer connections with Wi-Fi."
+             >Connecting Devices Wirelessly</a>
+        </div>
+        <ul>
+          <li><a href="../../training/connect-devices-wirelessly/nsd.html">
+            Using Network Service Discovery
+          </a>
+          </li>
+          <li><a href="../../training/connect-devices-wirelessly/wifi-direct.html">
+            Creating P2P Connections with Wi-Fi
+          </a>
+          </li>
+          <li><a href="../../training/connect-devices-wirelessly/nsd-wifi-direct.html">
+            Using Wi-Fi P2P for Service Discovery
+          </a>
+          </li>
+        </ul>
+      </li>
+       <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/basics/network-ops/index.html"
+             description=
+             "How to create a network connection, monitor the connection for changes
+             in connectivity, and perform transactions with XML data."
+            >Performing Network Operations</a>
+        </div>
+        <ul>
+          <li><a href="../../training/basics/network-ops/connecting.html">
+            Connecting to the Network
+          </a>
+          </li>
+          <li><a href="../../training/basics/network-ops/managing.html">
+            Managing Network Usage
+          </a>
+          </li>
+          <li><a href="../../training/basics/network-ops/xml.html">
+            Parsing XML Data
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/efficient-downloads/index.html"
+             description=
+             "How to minimize your app's impact on the battery when performing downloads
+             and other network transactions."
+            >Transferring Data Without Draining the Battery</a>
+        </div>
+        <ul>
+          <li><a href="../../training/efficient-downloads/efficient-network-access.html">
+            Optimizing Downloads for Efficient Network Access
+          </a>
+          </li>
+          <li><a href="../../training/efficient-downloads/regular_updates.html">
+            Minimizing the Effect of Regular Updates
+          </a>
+          </li>
+          <li><a href="../../training/efficient-downloads/redundant_redundant.html">
+            Redundant Downloads are Redundant
+          </a>
+          </li>
+          <li><a href="../../training/efficient-downloads/connectivity_patterns.html">
+            Modifying Patterns Based on the Connectivity Type
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/cloudsync/index.html"
+             description=
+             "How to sync and back up app and user data to remote web services in the
+              cloud and how to restore the data back to multiple devices."
+            >Syncing to the Cloud</a>
+        </div>
+        <ul>
+          <li><a href="../../training/cloudsync/backupapi.html">
+            Using the Backup API
+          </a>
+          </li>
+          <li><a href="../../training/cloudsync/gcm.html">
+            Making the Most of Google Cloud Messaging
+          </a>
+          </li>
+        </ul>
+        <li><a href="../../training/cloudsave/conflict-res.html"
+           description=
+           "How to design a robust conflict resolution strategy for apps that save data to the cloud."
+           >Resolving Cloud Save Conflicts
+          </a>
+        </li>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/sync-adapters/index.html"
+             description="How to transfer data between the cloud and the device using the Android
+             sync adapter framework"
+             >Transferring Data Using Sync Adapters</a>
+        </div>
+        <ul>
+            <li>
+                <a href="../../training/sync-adapters/creating-authenticator.html">
+                Creating a Stub Authenticator
+                </a>
+            </li>
+            <li>
+                <a href="../../training/sync-adapters/creating-stub-provider.html">
+                Creating a Stub Content Provider
+                </a>
+            </li>
+            <li>
+                <a href="../../training/sync-adapters/creating-sync-adapter.html">
+                Creating a Sync Adapter
+                </a>
+            </li>
+            <li>
+                <a href="../../training/sync-adapters/running-sync-adapter.html">
+                Running a Sync Adapter
+                </a>
+            </li>
+        </ul>
+      </li>
+
+    </ul>
+  </li>
+  <!-- End connectivity and cloud -->
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/building-userinfo.html">
+      <span class="small">Building Apps with</span><br/>
+              User Info &amp; Location
+      </a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/contacts-provider/index.html"
+             description=
+             "How to use Android's central address book, the Contacts Provider, to
+             display contacts and their details and modify contact information.">
+          Accessing Contacts Data</a>
+        </div>
+        <ul>
+          <li>
+                <a href="../../training/contacts-provider/retrieve-names.html">
+                Retrieving a List of Contacts
+                </a>
+          </li>
+          <li>
+                <a href="../../training/contacts-provider/retrieve-details.html">
+                Retrieving Details for a Contact
+                </a>
+          </li>
+          <li>
+                <a href="../../training/contacts-provider/modify-data.html">
+                Modifying Contacts Using Intents
+                </a>
+          </li>
+          <li>
+                <a href="../../training/contacts-provider/display-contact-badge.html">
+                Displaying the Quick Contact Badge
+                </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/location/index.html"
+             description="How to add location-aware features to your app by getting the user's current location.">
+             Making Your App Location-Aware
+          </a>
+        </div>
+        <ul>
+          <li>
+            <a href="../../training/location/retrieve-current.html">
+            Retrieving the Current Location
+            </a>
+          </li>
+          <li>
+            <a href="../../training/location/receive-location-updates.html">
+            Receiving Location Updates
+            </a>
+          </li>
+          <li>
+            <a href="../../training/location/display-address.html">
+            Displaying a Location Address
+          </a>
+          </li>
+          <li><a href="../../training/location/geofencing.html">
+            Creating and Monitoring Geofences
+          </a>
+          </li>
+          <li><a href="../../training/location/activity-recognition.html">
+          Recognizing the User's Current Activity
+          </a>
+          </li>
+          <li><a href="../../training/location/location-testing.html">
+          Testing Using Mock Locations
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End privacy and location -->
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/best-ux.html">
+      <span class="small">Best Practices for</span><br/>
+              User Experience &amp; UI
+      </a>
+    </div>
+    <ul>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/design-navigation/index.html"
+             description=
+             "How to plan your app's screen hierarchy and forms of navigation so users can
+             effectively and intuitively traverse your app content using various navigation
+             patterns."
+            >Designing Effective Navigation</a>
+        </div>
+        <ul>
+          <li><a href="../../training/design-navigation/screen-planning.html">
+            Planning Screens and Their Relationships
+          </a>
+          </li>
+          <li><a href="../../training/design-navigation/multiple-sizes.html">
+            Planning for Multiple Touchscreen Sizes
+          </a>
+          </li>
+          <li><a href="../../training/design-navigation/descendant-lateral.html">
+            Providing Descendant and Lateral Navigation
+          </a>
+          </li>
+          <li><a href="../../training/design-navigation/ancestral-temporal.html">
+            Providing Ancestral and Temporal Navigation
+          </a>
+          </li>
+          <li><a href="../../training/design-navigation/wireframing.html">
+            Putting it All Together: Wireframing the Example App
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/implementing-navigation/index.html"
+             description=
+             "How to implement various navigation patterns such as swipe views,
+             a navigation drawer, and up navigation."
+            >Implementing Effective Navigation</a>
+        </div>
+        <ul>
+          <li><a href="../../training/implementing-navigation/lateral.html">
+            Creating Swipe Views with Tabs
+          </a>
+          </li>
+          <li><a href="../../training/implementing-navigation/nav-drawer.html">
+            Creating a Navigation Drawer
+          </a>
+          </li>
+          <li><a href="../../training/implementing-navigation/ancestral.html">
+            Providing Up Navigation
+          </a>
+          </li>
+          <li><a href="../../training/implementing-navigation/temporal.html">
+            Providing Proper Back Navigation
+          </a>
+          </li>
+          <li><a href="../../training/implementing-navigation/descendant.html">
+            Implementing Descendant Navigation
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+          <div class="nav-section-header">
+              <a href="../../training/notify-user/index.html"
+                 description=
+                 "How to display messages called notifications outside of
+                 your application's UI."
+               >Notifying the User</a>
+          </div>
+          <ul>
+              <li>
+                  <a href="../../training/notify-user/build-notification.html">
+                  Building a Notification
+                  </a>
+              </li>
+              <li>
+                  <a href="../../training/notify-user/navigation.html">
+                  Preserving Navigation when Starting an Activity
+                  </a>
+              </li>
+              <li>
+                  <a href="../../training/notify-user/managing.html">
+                  Updating Notifications
+                  </a>
+              </li>
+              <li>
+                  <a href="../../training/notify-user/expanded.html">
+                  Using Big View Styles
+                  </a>
+              </li>
+              <li>
+                  <a href="../../training/notify-user/display-progress.html">
+                  Displaying Progress in a Notification
+                  </a>
+              </li>
+          </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/search/index.html"
+             description=
+             "How to properly add a search interface to your app and create a searchable database."
+            >Adding Search Functionality</a>
+        </div>
+        <ul>
+          <li><a href="../../training/search/setup.html">
+            Setting up the Search Interface
+          </a>
+          </li>
+          <li><a href="../../training/search/search.html">
+            Storing and Searching for Data
+          </a>
+          </li>
+          <li><a href="../../training/search/backward-compat.html">
+            Remaining Backward Compatible
+          </a>
+          </li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="/training/multiscreen/index.html"
+             zh-cn-lang="针对多种屏幕进行设计"
+             ja-lang="複数画面のデザイン"
+             es-lang="Cómo diseñar aplicaciones para varias pantallas"
+             description=
+             "How to build a user interface that's flexible enough to
+             fit perfectly on any screen and how to create different interaction
+             patterns that are optimized for different screen sizes."
+            >Designing for Multiple Screens</a>
+        </div>
+        <ul>
+          <li><a href="/training/multiscreen/screensizes.html"
+            zh-cn-lang="支持各种屏幕尺寸"
+            ko-lang="다양한 화면 크기 지원"
+            ja-lang="さまざまな画面サイズのサポート"
+            es-lang="Cómo admitir varios tamaños de pantalla"
+            >Supporting Different Screen Sizes</a>
+          </li>
+          <li><a href="/training/multiscreen/screendensities.html"
+            zh-cn-lang="支持各种屏幕密度"
+            ja-lang="さまざまな画面密度のサポート"
+            es-lang="Cómo admitir varias densidades de pantalla"
+            >Supporting Different Screen Densities</a>
+          </li>
+          <li><a href="/training/multiscreen/adaptui.html"
+            zh-cn-lang="实施自适应用户界面流程"
+            ja-lang="順応性のある UI フローの実装"
+            es-lang="Cómo implementar interfaces de usuario adaptables"
+            >Implementing Adaptive UI Flows</a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../training/tv/index.html"
+             description=
+             "How to optimize your app's user interface and user input for
+             the &quot;ten foot experience&quot; of a TV screen."
+            >Designing for TV</a>
+        </div>
+        <ul>
+          <li><a href="../../training/tv/optimizing-layouts-tv.html">
+            Optimizing Layouts for TV
+          </a>
+          </li>
+          <li><a href="../../training/tv/optimizing-navigation-tv.html">
+            Optimizing Navigation for TV
+          </a>
+          </li>
+          <li><a href="../../training/tv/unsupported-features-tv.html">
+            Handling Features Not Supported on TV
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/custom-views/index.html"
+             description=
+             "How to build custom UI widgets that are interactive and smooth."
+            >Creating Custom Views</a>
+        </div>
+        <ul>
+          <li><a href="../../training/custom-views/create-view.html">
+            Creating a Custom View Class
+          </a>
+          </li>
+          <li><a href="../../training/custom-views/custom-drawing.html">
+            Implementing Custom Drawing
+          </a>
+          </li>
+          <li><a href="../../training/custom-views/making-interactive.html">
+            Making the View Interactive
+          </a>
+          </li>
+          <li><a href="../../training/custom-views/optimizing-view.html">
+            Optimizing the View
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/backward-compatible-ui/index.html"
+             description=
+             "How to use UI components and other APIs from the more recent versions of Android
+             while remaining compatible with older versions of the platform."
+            >Creating Backward-Compatible UIs</a>
+        </div>
+        <ul>
+          <li><a href="../../training/backward-compatible-ui/abstracting.html">
+            Abstracting the New APIs
+          </a>
+          </li>
+          <li><a href="../../training/backward-compatible-ui/new-implementation.html">
+            Proxying to the New APIs
+          </a>
+          </li>
+          <li><a href="../../training/backward-compatible-ui/older-implementation.html">
+            Creating an Implementation with Older APIs
+          </a>
+          </li>
+          <li><a href="../../training/backward-compatible-ui/using-component.html">
+            Using the Version-Aware Component
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/accessibility/index.html"
+             description=
+             "How to make your app accessible to users with vision
+             impairment or other physical disabilities."
+            >Implementing Accessibility</a>
+        </div>
+        <ul>
+          <li><a href="../../training/accessibility/accessible-app.html">
+            Developing Accessible Applications
+          </a>
+          </li>
+          <li><a href="../../training/accessibility/service.html">
+            Developing Accessibility Services
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/system-ui/index.html"
+             description=
+             "How to hide and show status and navigation bars across different versions of Android,
+              while managing the display of other screen components."
+            >Managing the System UI</a>
+        </div>
+        <ul>
+          <li><a href="../../training/system-ui/dim.html">
+            Dimming the System Bars
+          </a>
+          </li>
+          <li><a href="../../training/system-ui/status.html">
+            Hiding the Status Bar
+          </a>
+          </li>
+          <li><a href="../../training/system-ui/navigation.html">
+            Hiding the Navigation Bar
+          </a>
+          </li>
+          <li><a href="../../training/system-ui/visibility.html">
+            Responding to UI Visibility Changes
+          </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </li>
+  <!-- End best UX and UI -->
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/best-user-input.html">
+      <span class="small">Best Practices for</span><br/>
+              User Input
+      </a>
+    </div>
+    <ul>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/gestures/index.html"
+             description=
+             "How to write apps that allow users to interact with the touch screen via touch gestures."
+            >Using Touch Gestures</a>
+        </div>
+        <ul>
+          <li><a href="../../training/gestures/detector.html">
+            Detecting Common Gestures
+          </a>
+          </li>
+          <li><a href="../../training/gestures/movement.html">
+            Tracking Movement
+          </a>
+          </li>
+          <li><a href="../../training/gestures/scroll.html">
+            Animating a Scroll Gesture
+          </a>
+          </li>
+          <li><a href="../../training/gestures/multi.html">
+            Handling Multi-Touch Gestures
+          </a>
+          </li>
+          <li><a href="../../training/gestures/scale.html">
+            Dragging and Scaling
+          </a>
+          </li>
+          <li><a href="../../training/gestures/viewgroup.html">
+            Managing Touch Events in a ViewGroup
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/keyboard-input/index.html"
+             description=
+             "How to specify the appearance and behaviors of soft input methods (such
+             as on-screen keyboards) and how to optimize the experience with
+             hardware keyboards."
+            >Handling Keyboard Input</a>
+        </div>
+        <ul>
+          <li><a href="../../training/keyboard-input/style.html">
+            Specifying the Input Method Type
+          </a>
+          </li>
+          <li><a href="../../training/keyboard-input/visibility.html">
+            Handling Input Method Visibility
+          </a>
+          </li>
+          <li><a href="../../training/keyboard-input/navigation.html">
+            Supporting Keyboard Navigation
+          </a>
+          </li>
+          <li><a href="../../training/keyboard-input/commands.html">
+            Handling Keyboard Actions
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li> <!-- end of User Input -->
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/best-background.html">
+      <span class="small">Best Practices for</span><br/>
+              Background Jobs
+      </a>
+    </div>
+    <ul>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/run-background-service/index.html"
+             description=
+             "How to improve UI performance and responsiveness by sending work to a
+             Service running in the background"
+            >Running in a Background Service</a>
+        </div>
+        <ul>
+          <li><a href="../../training/run-background-service/create-service.html">
+            Creating a Background Service
+          </a>
+          </li>
+          <li><a href="../../training/run-background-service/send-request.html">
+            Sending Work Requests to the Background Service
+          </a>
+          </li>
+          <li><a href="../../training/run-background-service/report-status.html">
+            Reporting Work Status
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/load-data-background/index.html"
+             description="How to use CursorLoader to query data without
+             affecting UI responsiveness."
+            >Loading Data in the Background</a>
+        </div>
+        <ul>
+          <li><a href="../../training/load-data-background/setup-loader.html">
+            Running a Query with a CursorLoader</a>
+          </li>
+          <li><a href="../../training/load-data-background/handle-results.html">
+            Handling the Results</a>
+          </li>
+        </ul>
+      </li>
+
+       <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/scheduling/index.html"
+             description="How to use repeating alarms and wake locks
+             to run background jobs."
+            >Managing Device Awake State</a>
+        </div>
+        <ul>
+          <li><a href="../../training/scheduling/wakelock.html">
+            Keeping the Device Awake</a>
+          </li>
+          <li><a href="../../training/scheduling/alarms.html">
+            Scheduling Repeating Alarms</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li> <!-- end of Background Jobs -->
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/best-performance.html">
+      <span class="small">Best Practices for</span><br/>
+              Performance
+      </a>
+    </div>
+    <ul>
+
+      <li>
+        <a href="../../training/articles/memory.html"
+           description=
+           "How to keep your app's memory footprint small in order to improve performance
+           on a variety of mobile devices."
+          >Managing Your App's Memory</a>
+      </li>
+
+      <li>
+        <a href="../../training/articles/perf-tips.html"
+           description=
+           "How to optimize your app's performance in various ways to improve its
+           responsiveness and battery efficiency."
+          >Performance Tips</a>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/improving-layouts/index.html"
+             description=
+             "How to identify problems in your app's layout performance and improve the UI
+             responsiveness."
+            >Improving Layout Performance</a>
+        </div>
+        <ul>
+          <li><a href="../../training/improving-layouts/optimizing-layout.html">
+            Optimizing Layout Hierarchies
+          </a>
+          </li>
+          <li><a href="../../training/improving-layouts/reusing-layouts.html">
+            Re-using Layouts with &lt;include/&gt;
+          </a>
+          </li>
+          <li><a href="../../training/improving-layouts/loading-ondemand.html">
+            Loading Views On Demand
+          </a>
+          </li>
+          <li><a href="../../training/improving-layouts/smooth-scrolling.html">
+            Making ListView Scrolling Smooth
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="/training/monitoring-device-state/index.html"
+             zh-cn-lang="优化电池使用时间"
+             ja-lang="電池消費量の最適化"
+             es-lang="Cómo optimizar la duración de la batería"
+             description=
+             "How to minimize the amount of power your app requires by adapting to current
+             power conditions and performing power-hungry tasks at proper intervals."
+            >Optimizing Battery Life</a>
+        </div>
+        <ul>
+          <li><a href="/training/monitoring-device-state/battery-monitoring.html"
+            zh-cn-lang="监控电池电量和充电状态"
+            ja-lang="電池残量と充電状態の監視"
+            es-lang="Cómo controlar el nivel de batería y el estado de carga"
+            >Monitoring the Battery Level and Charging State</a>
+          </li>
+          <li><a href="/training/monitoring-device-state/docking-monitoring.html"
+            zh-cn-lang="确定和监控基座对接状态和类型"
+            ja-lang="ホルダーの装着状態とタイプの特定と監視"
+            es-lang="Cómo determinar y controlar el tipo de conector y el estado de la conexión"
+            >Determining and Monitoring the Docking State and Type</a>
+          </li>
+          <li><a href="/training/monitoring-device-state/connectivity-monitoring.html"
+            zh-cn-lang="确定和监控网络连接状态"
+            ja-lang="接続状態の特定と監視"
+            es-lang="Cómo determinar y controlar el estado de la conectividad"
+            >Determining and Monitoring the Connectivity Status</a>
+          </li>
+          <li><a href="/training/monitoring-device-state/manifest-receivers.html"
+            zh-cn-lang="根据需要操作广播接收器"
+            ja-lang="オンデマンドでのブロードキャスト レシーバ操作"
+            es-lang="Cómo manipular los receptores de emisión bajo demanda"
+            >Manipulating Broadcast Receivers On Demand</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/multiple-threads/index.html"
+             description=
+             "How to improve the performance and scalability of long-running operations by
+              dispatching work to multiple threads.">
+             Sending Operations to Multiple Threads</a>
+        </div>
+        <ul>
+          <li><a href="../../training/multiple-threads/define-runnable.html">
+            Specifying the Code to Run on a Thread
+          </a>
+          </li>
+          <li><a href="../../training/multiple-threads/create-threadpool.html">
+            Creating a Manager for Multiple Threads
+          </a>
+          </li>
+          <li><a href="../../training/multiple-threads/run-code.html">
+            Running Code on a Thread Pool Thread
+          </a>
+          </li>
+          <li><a href="../../training/multiple-threads/communicate-ui.html">
+            Communicating with the UI Thread
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="../../training/articles/perf-anr.html"
+           description=
+           "How to keep your app responsive to user interaction so the UI does not lock-up and
+           display an &quot;Application Not Responding&quot; dialog."
+          >Keeping Your App Responsive</a>
+      </li>
+
+      <li>
+        <a href="../../training/articles/perf-jni.html"
+           description=
+           "How to efficiently use the Java Native Interface with the Android NDK."
+          >JNI Tips</a>
+      </li>
+      <li>
+        <a href="../../training/articles/smp.html"
+           description=
+           "Tips for coding Android apps on symmetric multiprocessor systems."
+          >SMP Primer for Android</a>
+      </li>
+    </ul>
+  </li> <!-- end of Performance -->
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/best-security.html">
+      <span class="small">Best Practices for</span><br/>
+              Security &amp; Privacy
+      </a>
+    </div>
+    <ul>
+      <li>
+        <a href="../../training/articles/security-tips.html"
+           description=
+           "How to perform various tasks and keep your app's data and your user's data secure."
+          >Security Tips</a>
+      </li>
+
+      <li>
+        <a href="../../training/articles/security-ssl.html"
+           description=
+           "How to ensure that your app is secure when performing network transactions."
+          >Security with HTTPS and SSL</a>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/enterprise/index.html"
+             description=
+             "How to implement device management policies for enterprise-oriented apps."
+            >Developing for Enterprise</a>
+        </div>
+        <ul>
+          <li><a href="../../training/enterprise/device-management-policy.html">
+            Enhancing Security with Device Management Policies
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End security and user info -->
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/testing.html">
+      <span class="small">Best Practices for</span><br/>
+              Testing
+      </a>
+    </div>
+    <ul>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../training/activity-testing/index.html"
+         description="How to test Activities in your Android applications.">
+            Testing Your Activity
+          </a></div>
+        <ul>
+          <li><a href="../../training/activity-testing/preparing-activity-testing.html">
+            <span class="en">Setting Up Your Test Environment</span>
+          </a>
+          </li>
+          <li><a href="../../training/activity-testing/activity-basic-testing.html">
+            <span class="en">Creating and Running a Test Case</span>
+          </a>
+          </li>
+          <li><a href="../../training/activity-testing/activity-ui-testing.html">
+            <span class="en">Testing UI Components</span>
+          </a>
+          </li>
+          <li><a href="../../training/activity-testing/activity-unit-testing.html">
+            <span class="en">Creating Unit Tests</span>
+          </a>
+          </li>
+          <li><a href="../../training/activity-testing/activity-functional-testing.html">
+            <span class="en">Creating Functional Tests</span>
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End best Testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+      <a href="../../training/distribute.html">
+      <span class="small">Using Google Play to</span><br/>
+              Distribute &amp; Monetize
+      </a>
+    </div>
+    <ul>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../training/in-app-billing/index.html"
+         description="How to sell in-app products from your application using In-app Billing.">
+            Selling In-app Products
+          </a></div>
+        <ul>
+          <li><a href="../../training/in-app-billing/preparing-iab-app.html">
+            <span class="en">Preparing Your App</span>
+          </a>
+          </li>
+          <li><a href="../../training/in-app-billing/list-iab-products.html">
+            <span class="en">Establishing Products for Sale</span>
+          </a>
+          </li>
+          <li><a href="../../training/in-app-billing/purchase-iab-products.html">
+            <span class="en">Purchasing Products</span>
+          </a>
+          </li>
+          <li><a href="../../training/in-app-billing/test-iab-app.html">
+            <span class="en">Testing Your App</span>
+          </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/multiple-apks/index.html"
+             description=
+             "How to publish your app on Google Play with separate APKs that target
+             different devices, while using a single app listing."
+            >Maintaining Multiple APKs</a>
+        </div>
+        <ul>
+          <li><a href="../../training/multiple-apks/api.html">
+            Creating Multiple APKs for Different API Levels
+          </a>
+          </li>
+          <li><a href="../../training/multiple-apks/screensize.html">
+            Creating Multiple APKs for Different Screen Sizes
+          </a>
+          </li>
+          <li><a href="../../training/multiple-apks/texture.html">
+            Creating Multiple APKs for Different GL Textures
+          </a>
+          </li>
+          <li><a href="../../training/multiple-apks/multiple.html">
+            Creating Multiple APKs with 2+ Dimensions
+          </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../training/monetization/index.html"
+             description=
+             "How to implement monetization strategies for your app without compromising
+             the user experience."
+            >Monetizing Your App</a>
+        </div>
+        <ul>
+          <li><a href="../../training/monetization/ads-and-ux.html">
+            Advertising without Compromising User Experience
+          </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <!-- End best Publishing -->
+
+</ul><!-- nav -->
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+  <div class="layout-content-row content-header ">
+    <div class="layout-content-col span-7">
+      <h1 itemprop="name">Creating and Monitoring Geofences</h1>
+      
+    </div>
+    
+      <div class="training-nav-top layout-content-col span-5" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <a href="#" class="prev-page-link hide"
+            zh-tw-lang="上一堂課"
+            zh-cn-lang="上一课"
+            ru-lang="Предыдущий"
+            ko-lang="이전"
+            ja-lang="前へ"
+            es-lang="Anterior"               
+            >Previous</a>
+        <a href="#" class="next-page-link hide"
+            zh-tw-lang="下一堂課"
+            zh-cn-lang="下一课"
+            ru-lang="Следующий"
+            ko-lang="다음"
+            ja-lang="次へ"
+            es-lang="Siguiente"               
+            >Next</a>
+        <a href="#" class="start-class-link hide"
+            zh-tw-lang="開始上課"
+            zh-cn-lang="开始"
+            ru-lang="Начало работы"
+            ko-lang="시작하기"
+            ja-lang="開始する"
+            es-lang="Empezar"               
+            >Get started</a>
+      </div>
+    
+  </div>
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="tb-wrapper">
+<div id="tb">
+
+<h2>This lesson teaches you to</h2>
+<ol>
+    <li><a href="#RequestGeofences">Request Geofence Monitoring</a></li>
+    <li><a href="#HandleGeofenceTransitions">Handle Geofence Transitions</a></li>
+    <li><a href="#StopGeofenceMonitoring">Stop Geofence Monitoring</a></li>
+</ol>
+
+<h2>You should also read</h2>
+<ul>
+    <li>
+        <a href="../../google/play-services/setup.html">Setup Google Play Services SDK</a>
+    </li>
+</ul>
+
+<h2>Try it out</h2>
+
+<div class="download-box">
+  <a href="http://developer.android.com/shareables/training/GeofenceDetection.zip" class="button">Download the sample</a>
+  <p class="filename">GeofenceDetection.zip</p>
+</div>
+
+</div>
+</div>
+<p>
+    Geofencing combines awareness of the user's current location with awareness of nearby
+    features, defined as the user's proximity to locations that may be of interest. To mark a
+    location of interest, you specify its latitude and longitude. To adjust the proximity for the
+    location, you add a radius. The latitude, longitude, and radius define a geofence.
+    You can have multiple active geofences at one time.
+</p>
+<p>
+    Location Services treats a geofences as an area rather than as a points and proximity. This
+    allows it to detect when the user enters or exits a geofence. For each geofence, you can ask
+    Location Services to send you entrance events or exit events or both. You can also limit the
+    duration of a geofence by specifying an expiration duration in milliseconds. After the geofence
+    expires, Location Services automatically removes it.
+</p>
+<!--
+    Send geofences to Location Services
+ -->
+<h2 id="RequestGeofences">Request Geofence Monitoring</h2>
+<p>
+    The first step in requesting geofence monitoring is to request the necessary permission.
+    To use geofencing, your app must request
+    <code><a href="../../reference/android/Manifest.permission.html#ACCESS_FINE_LOCATION">ACCESS_FINE_LOCATION</a></code>. To request this
+    permission, add the following element as a child element of the
+<code><a href="../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></code>
+    element:
+</p>
+<pre>
+&lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/&gt;
+</pre>
+<!-- Check for Google Play services -->
+<h3>Check for Google Play Services</h3>
+<p>
+    Location Services is part of the Google Play services APK. Since it's hard to anticipate the
+    state of the user's device, you should always check that the APK is installed before you attempt
+    to connect to Location Services. To check that the APK is installed, call
+<code><a href="../../reference/com/google/android/gms/common/GooglePlayServicesUtil.html#isGooglePlayServicesAvailable(android.content.Context)">GooglePlayServicesUtil.isGooglePlayServicesAvailable()</a></code>,
+    which returns one of the
+    integer result codes listed in the API reference documentation. If you encounter an error,
+    call
+<code><a href="../../reference/com/google/android/gms/common/GooglePlayServicesUtil.html#getErrorDialog(int, android.app.Activity, int)">GooglePlayServicesUtil.getErrorDialog()</a></code>
+    to retrieve localized dialog that prompts users to take the correct action, then display
+    the dialog in a <code><a href="../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code>. The dialog may allow the
+    user to correct the problem, in which case Google Play services may send a result back to your
+    activity. To handle this result, override the method
+    <code><a href="../../reference/android/support/v4/app/FragmentActivity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code>
+
+</p>
+<p class="note">
+    <strong>Note:</strong> To make your app compatible with
+    platform version 1.6 and later, the activity that displays the
+    <code><a href="../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> must subclass
+    <code><a href="../../reference/android/support/v4/app/FragmentActivity.html">FragmentActivity</a></code> instead of <code><a href="../../reference/android/app/Activity.html">Activity</a></code>. Using
+    <code><a href="../../reference/android/support/v4/app/FragmentActivity.html">FragmentActivity</a></code> also allows you to call
+    <code><a href="../../reference/android/support/v4/app/FragmentActivity.html#getSupportFragmentManager()">getSupportFragmentManager()</a></code> to display the <code><a href="../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code>.
+</p>
+<p>
+    Since you usually need to check for Google Play services in more than one place in your code,
+    define a method that encapsulates the check, then call the method before each connection
+    attempt. The following snippet contains all of the code required to check for Google
+    Play services:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity {
+    ...
+    // Global constants
+    /*
+     * Define a request code to send to Google Play services
+     * This code is returned in Activity.onActivityResult
+     */
+    private final static int
+            CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+    ...
+    // Define a DialogFragment that displays the error dialog
+    public static class ErrorDialogFragment extends DialogFragment {
+        // Global field to contain the error dialog
+        private Dialog mDialog;
+        ...
+        // Default constructor. Sets the dialog field to null
+        public ErrorDialogFragment() {
+            super();
+            mDialog = null;
+        }
+        ...
+        // Set the dialog to display
+        public void setDialog(Dialog dialog) {
+            mDialog = dialog;
+        }
+        ...
+        // Return a Dialog to the DialogFragment.
+        &#64;Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            return mDialog;
+        }
+        ...
+    }
+    ...
+    /*
+     * Handle results returned to the FragmentActivity
+     * by Google Play services
+     */
+     &#64;Override
+    protected void onActivityResult(
+            int requestCode, int resultCode, Intent data) {
+        // Decide what to do based on the original request code
+        switch (requestCode) {
+            ...
+            case CONNECTION_FAILURE_RESOLUTION_REQUEST :
+            /*
+             * If the result code is Activity.RESULT_OK, try
+             * to connect again
+             */
+                switch (resultCode) {
+                    ...
+                    case Activity.RESULT_OK :
+                    /*
+                     * Try the request again
+                     */
+                    ...
+                    break;
+                }
+            ...
+        }
+        ...
+    }
+    ...
+    private boolean servicesConnected() {
+        // Check that Google Play services is available
+        int resultCode =
+                GooglePlayServicesUtil.
+                        isGooglePlayServicesAvailable(this);
+        // If Google Play services is available
+        if (ConnectionResult.SUCCESS == resultCode) {
+            // In debug mode, log the status
+            Log.d("Geofence Detection",
+                    "Google Play services is available.");
+            // Continue
+            return true;
+        // Google Play services was not available for some reason
+        } else {
+            // Get the error code
+            int errorCode = connectionResult.getErrorCode();
+            // Get the error dialog from Google Play services
+            Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(
+                    errorCode,
+                    this,
+                    CONNECTION_FAILURE_RESOLUTION_REQUEST);
+
+            // If Google Play services can provide an error dialog
+            if (errorDialog != null) {
+                // Create a new DialogFragment for the error dialog
+                ErrorDialogFragment errorFragment =
+                        new ErrorDialogFragment();
+                // Set the dialog in the DialogFragment
+                errorFragment.setDialog(errorDialog);
+                // Show the error dialog in the DialogFragment
+                errorFragment.show(
+                        getSupportFragmentManager(),
+                        "Geofence Detection");
+            }
+        }
+    }
+    ...
+}
+</pre>
+<p>
+    Snippets in the following sections call this method to verify that Google Play services is
+    available.
+</p>
+<p>
+    To use geofencing, start by defining the geofences you want to monitor. Although you usually
+    store geofence data in a local database or download it from the network, you need to send
+    a geofence to Location Services as an instance of
+<code><a href="../../reference/com/google/android/gms/location/Geofence.html">Geofence</a></code>,
+    which you create with
+<code><a href="../../reference/com/google/android/gms/location/Geofence.Builder.html">Geofence.Builder</a></code>.
+    Each
+<code><a href="../../reference/com/google/android/gms/location/Geofence.html">Geofence</a></code>
+    object contains the following information:
+</p>
+<dl>
+    <dt>Latitude, longitude, and radius</dt>
+    <dd>
+        Define a circular area for the geofence. Use the latitude and longitude to mark a location
+        of interest, and then use the radius to adjust how close the user needs to approach the
+        location before the geofence is detected. The larger the radius, the more likely the
+        user will trigger a geofence transition alert by approaching the geofence. For example,
+        providing a large radius for a geofencing app that turns on lights in the user's house as
+        the user returns home might cause the lights to go on even if the user is simply passing by.
+    </dd>
+    <dt>Expiration time</dt>
+    <dd>
+        How long the geofence should remain active. Once the expiration time is reached, Location
+        Services deletes the geofence. Most of the time, you should specify an expiration time, but
+        you may want to keep permanent geofences for the user's home or place of work.
+    </dd>
+    <dt>Transition type</dt>
+    <dd>
+        Location Services can detect when the user steps within the radius of the geofence ("entry")
+        and when the user steps outside the radius of the geofence ("exit"), or both.
+    </dd>
+    <dt>Geofence ID</dt>
+    <dd>
+        A string that is stored with the geofence. You should make this unique, so that you can
+        use it to remove a geofence from Location Services tracking.
+    </dd>
+</dl>
+<h3>Define geofence storage</h3>
+<p>
+    A geofencing app needs to read and write geofence data to persistent storage. You shouldn't use
+<code><a href="../../reference/com/google/android/gms/location/Geofence.html">Geofence</a></code>
+    objects to do this; instead, use storage techniques such as databases that can store groups of
+    related data.
+</p>
+<p>
+    As an example of storing geofence data, the following snippet defines two classes that use
+    the app's <code><a href="../../reference/android/content/SharedPreferences.html">SharedPreferences</a></code> instance for persistent storage. The class
+    <code>SimpleGeofence</code>, analogous to a database record, stores the
+    data for a single
+<code><a href="../../reference/com/google/android/gms/location/Geofence.html">Geofence</a></code>
+    object in a "flattened" form. The class <code>SimpleGeofenceStore</code>, analogous to a database,
+    reads and writes <code>SimpleGeofence</code> data to the
+    <code><a href="../../reference/android/content/SharedPreferences.html">SharedPreferences</a></code> instance.
+</p>
+<pre>
+public class MainActivity extends FragmentActivity {
+    ...
+    /**
+     * A single Geofence object, defined by its center and radius.
+     */
+    public class SimpleGeofence {
+            // Instance variables
+            private final String mId;
+            private final double mLatitude;
+            private final double mLongitude;
+            private final float mRadius;
+            private long mExpirationDuration;
+            private int mTransitionType;
+
+        /**
+         * @param geofenceId The Geofence's request ID
+         * @param latitude Latitude of the Geofence's center.
+         * @param longitude Longitude of the Geofence's center.
+         * @param radius Radius of the geofence circle.
+         * @param expiration Geofence expiration duration
+         * @param transition Type of Geofence transition.
+         */
+        public SimpleGeofence(
+                String geofenceId,
+                double latitude,
+                double longitude,
+                float radius,
+                long expiration,
+                int transition) {
+            // Set the instance fields from the constructor
+            this.mId = geofenceId;
+            this.mLatitude = latitude;
+            this.mLongitude = longitude;
+            this.mRadius = radius;
+            this.mExpirationDuration = expiration;
+            this.mTransitionType = transition;
+        }
+        // Instance field getters
+        public String getId() {
+            return mId;
+        }
+        public double getLatitude() {
+            return mLatitude;
+        }
+        public double getLongitude() {
+            return mLongitude;
+        }
+        public float getRadius() {
+            return mRadius;
+        }
+        public long getExpirationDuration() {
+            return mExpirationDuration;
+        }
+        public int getTransitionType() {
+            return mTransitionType;
+        }
+        /**
+         * Creates a Location Services Geofence object from a
+         * SimpleGeofence.
+         *
+         * @return A Geofence object
+         */
+        public Geofence toGeofence() {
+            // Build a new Geofence object
+            return new Geofence.Builder()
+                    .setRequestId(getId())
+                    .setTransitionTypes(mTransitionType)
+                    .setCircularRegion(
+                            getLatitude(), getLongitude(), getRadius())
+                    .setExpirationDuration(mExpirationDuration)
+                    .build();
+        }
+    }
+    ...
+    /**
+     * Storage for geofence values, implemented in SharedPreferences.
+     */
+    public class SimpleGeofenceStore {
+        // Keys for flattened geofences stored in SharedPreferences
+        public static final String KEY_LATITUDE =
+                "com.example.android.geofence.KEY_LATITUDE";
+        public static final String KEY_LONGITUDE =
+                "com.example.android.geofence.KEY_LONGITUDE";
+        public static final String KEY_RADIUS =
+                "com.example.android.geofence.KEY_RADIUS";
+        public static final String KEY_EXPIRATION_DURATION =
+                "com.example.android.geofence.KEY_EXPIRATION_DURATION";
+        public static final String KEY_TRANSITION_TYPE =
+                "com.example.android.geofence.KEY_TRANSITION_TYPE";
+        // The prefix for flattened geofence keys
+        public static final String KEY_PREFIX =
+                "com.example.android.geofence.KEY";
+        /*
+         * Invalid values, used to test geofence storage when
+         * retrieving geofences
+         */
+        public static final long INVALID_LONG_VALUE = -999l;
+        public static final float INVALID_FLOAT_VALUE = -999.0f;
+        public static final int INVALID_INT_VALUE = -999;
+        // The SharedPreferences object in which geofences are stored
+        private final SharedPreferences mPrefs;
+        // The name of the SharedPreferences
+        private static final String SHARED_PREFERENCES =
+                "SharedPreferences";
+        // Create the SharedPreferences storage with private access only
+        public SimpleGeofenceStore(Context context) {
+            mPrefs =
+                    context.getSharedPreferences(
+                            SHARED_PREFERENCES,
+                            Context.MODE_PRIVATE);
+        }
+        /**
+         * Returns a stored geofence by its id, or returns <code>null</code>
+         * if it's not found.
+         *
+         * @param id The ID of a stored geofence
+         * @return A geofence defined by its center and radius. See
+         */
+        public SimpleGeofence getGeofence(String id) {
+            /*
+             * Get the latitude for the geofence identified by id, or
+             * INVALID_FLOAT_VALUE if it doesn't exist
+             */
+            double lat = mPrefs.getFloat(
+                    getGeofenceFieldKey(id, KEY_LATITUDE),
+                    INVALID_FLOAT_VALUE);
+            /*
+             * Get the longitude for the geofence identified by id, or
+             * INVALID_FLOAT_VALUE if it doesn't exist
+             */
+            double lng = mPrefs.getFloat(
+                    getGeofenceFieldKey(id, KEY_LONGITUDE),
+                    INVALID_FLOAT_VALUE);
+            /*
+             * Get the radius for the geofence identified by id, or
+             * INVALID_FLOAT_VALUE if it doesn't exist
+             */
+            float radius = mPrefs.getFloat(
+                    getGeofenceFieldKey(id, KEY_RADIUS),
+                    INVALID_FLOAT_VALUE);
+            /*
+             * Get the expiration duration for the geofence identified
+             * by id, or INVALID_LONG_VALUE if it doesn't exist
+             */
+            long expirationDuration = mPrefs.getLong(
+                    getGeofenceFieldKey(id, KEY_EXPIRATION_DURATION),
+                    INVALID_LONG_VALUE);
+            /*
+             * Get the transition type for the geofence identified by
+             * id, or INVALID_INT_VALUE if it doesn't exist
+             */
+            int transitionType = mPrefs.getInt(
+                    getGeofenceFieldKey(id, KEY_TRANSITION_TYPE),
+                    INVALID_INT_VALUE);
+            // If none of the values is incorrect, return the object
+            if (
+                lat != GeofenceUtils.INVALID_FLOAT_VALUE &amp;&amp;
+                lng != GeofenceUtils.INVALID_FLOAT_VALUE &amp;&amp;
+                radius != GeofenceUtils.INVALID_FLOAT_VALUE &amp;&amp;
+                expirationDuration !=
+                        GeofenceUtils.INVALID_LONG_VALUE &amp;&amp;
+                transitionType != GeofenceUtils.INVALID_INT_VALUE) {
+
+                // Return a true Geofence object
+                return new SimpleGeofence(
+                        id, lat, lng, radius, expirationDuration,
+                        transitionType);
+            // Otherwise, return null.
+            } else {
+                return null;
+            }
+        }
+        /**
+         * Save a geofence.
+         * @param geofence The SimpleGeofence containing the
+         * values you want to save in SharedPreferences
+         */
+        public void setGeofence(String id, SimpleGeofence geofence) {
+            /*
+             * Get a SharedPreferences editor instance. Among other
+             * things, SharedPreferences ensures that updates are atomic
+             * and non-concurrent
+             */
+            Editor editor = mPrefs.edit();
+            // Write the Geofence values to SharedPreferences
+            editor.putFloat(
+                    getGeofenceFieldKey(id, KEY_LATITUDE),
+                    (float) geofence.getLatitude());
+            editor.putFloat(
+                    getGeofenceFieldKey(id, KEY_LONGITUDE),
+                    (float) geofence.getLongitude());
+            editor.putFloat(
+                    getGeofenceFieldKey(id, KEY_RADIUS),
+                    geofence.getRadius());
+            editor.putLong(
+                    getGeofenceFieldKey(id, KEY_EXPIRATION_DURATION),
+                    geofence.getExpirationDuration());
+            editor.putInt(
+                    getGeofenceFieldKey(id, KEY_TRANSITION_TYPE),
+                    geofence.getTransitionType());
+            // Commit the changes
+            editor.commit();
+        }
+        public void clearGeofence(String id) {
+            /*
+             * Remove a flattened geofence object from storage by
+             * removing all of its keys
+             */
+            Editor editor = mPrefs.edit();
+            editor.remove(getGeofenceFieldKey(id, KEY_LATITUDE));
+            editor.remove(getGeofenceFieldKey(id, KEY_LONGITUDE));
+            editor.remove(getGeofenceFieldKey(id, KEY_RADIUS));
+            editor.remove(getGeofenceFieldKey(id,
+                    KEY_EXPIRATION_DURATION));
+            editor.remove(getGeofenceFieldKey(id, KEY_TRANSITION_TYPE));
+            editor.commit();
+        }
+        /**
+         * Given a Geofence object's ID and the name of a field
+         * (for example, KEY_LATITUDE), return the key name of the
+         * object's values in SharedPreferences.
+         *
+         * @param id The ID of a Geofence object
+         * @param fieldName The field represented by the key
+         * @return The full key name of a value in SharedPreferences
+         */
+        private String getGeofenceFieldKey(String id,
+                String fieldName) {
+            return KEY_PREFIX + "_" + id + "_" + fieldName;
+        }
+    }
+    ...
+}
+</pre>
+<h3>Create Geofence objects</h3>
+<p>
+    The following snippet uses the <code>SimpleGeofence</code> and <code>SimpleGeofenceStore</code> classes
+    gets geofence data from the UI, stores it in <code>SimpleGeofence</code> objects, stores these
+    objects in a <code>SimpleGeofenceStore</code> object, and then creates
+<code><a href="../../reference/com/google/android/gms/location/Geofence.html">Geofence</a></code>
+    objects:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity {
+    ...
+    /*
+     * Use to set an expiration time for a geofence. After this amount
+     * of time Location Services will stop tracking the geofence.
+     */
+    private static final long SECONDS_PER_HOUR = 60;
+    private static final long MILLISECONDS_PER_SECOND = 1000;
+    private static final long GEOFENCE_EXPIRATION_IN_HOURS = 12;
+    private static final long GEOFENCE_EXPIRATION_TIME =
+            GEOFENCE_EXPIRATION_IN_HOURS *
+            SECONDS_PER_HOUR *
+            MILLISECONDS_PER_SECOND;
+    ...
+    /*
+     * Handles to UI views containing geofence data
+     */
+    // Handle to geofence 1 latitude in the UI
+    private EditText mLatitude1;
+    // Handle to geofence 1 longitude in the UI
+    private EditText mLongitude1;
+    // Handle to geofence 1 radius in the UI
+    private EditText mRadius1;
+    // Handle to geofence 2 latitude in the UI
+    private EditText mLatitude2;
+    // Handle to geofence 2 longitude in the UI
+    private EditText mLongitude2;
+    // Handle to geofence 2 radius in the UI
+    private EditText mRadius2;
+    /*
+     * Internal geofence objects for geofence 1 and 2
+     */
+    private SimpleGeofence mUIGeofence1;
+    private SimpleGeofence mUIGeofence2;
+    ...
+    // Internal List of Geofence objects
+    List&lt;Geofence&gt; mGeofenceList;
+    // Persistent storage for geofences
+    private SimpleGeofenceStore mGeofenceStorage;
+    ...
+    &#64;Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ...
+        // Instantiate a new geofence storage area
+        mGeofenceStorage = new SimpleGeofenceStore(this);
+
+        // Instantiate the current List of geofences
+        mCurrentGeofences = new ArrayList&lt;Geofence&gt;();
+    }
+    ...
+    /**
+     * Get the geofence parameters for each geofence from the UI
+     * and add them to a List.
+     */
+    public void createGeofences() {
+        /*
+         * Create an internal object to store the data. Set its
+         * ID to "1". This is a "flattened" object that contains
+         * a set of strings
+         */
+        mUIGeofence1 = new SimpleGeofence(
+                "1",
+                Double.valueOf(mLatitude1.getText().toString()),
+                Double.valueOf(mLongitude1.getText().toString()),
+                Float.valueOf(mRadius1.getText().toString()),
+                GEOFENCE_EXPIRATION_TIME,
+                // This geofence records only entry transitions
+                Geofence.GEOFENCE_TRANSITION_ENTER);
+        // Store this flat version
+        mGeofenceStorage.setGeofence("1", mUIGeofence1);
+        // Create another internal object. Set its ID to "2"
+        mUIGeofence2 = new SimpleGeofence(
+                "2",
+                Double.valueOf(mLatitude2.getText().toString()),
+                Double.valueOf(mLongitude2.getText().toString()),
+                Float.valueOf(mRadius2.getText().toString()),
+                GEOFENCE_EXPIRATION_TIME,
+                // This geofence records both entry and exit transitions
+                Geofence.GEOFENCE_TRANSITION_ENTER |
+                Geofence.GEOFENCE_TRANSITION_EXIT);
+        // Store this flat version
+        mGeofenceStorage.setGeofence(2, mUIGeofence2);
+        mGeofenceList.add(mUIGeofence1.toGeofence());
+        mGeofenceList.add(mUIGeofence2.toGeofence());
+    }
+    ...
+}
+</pre>
+<p>
+    In addition to the <code><a href="../../reference/java/util/List.html">List</a></code> of
+<code><a href="../../reference/com/google/android/gms/location/Geofence.html">Geofence</a></code>
+    objects you want to monitor, you need to provide Location Services with the
+    <code><a href="../../reference/android/content/Intent.html">Intent</a></code> that it sends to your app when it detects geofence
+    transitions.
+<h4>Define a Intent for geofence transitions</h4>
+<p>
+    The <code><a href="../../reference/android/content/Intent.html">Intent</a></code> sent from Location Services can trigger various actions in
+    your app, but you should <i>not</i> have it start an activity or fragment, because components
+    should only become visible in response to a user action. In many cases, an
+    <code><a href="../../reference/android/app/IntentService.html">IntentService</a></code> is a good way to handle the intent. An
+    <code><a href="../../reference/android/app/IntentService.html">IntentService</a></code> can post a notification, do long-running background work,
+    send intents to other services, or send a broadcast intent. The following snippet shows how
+    how to define a <code><a href="../../reference/android/app/PendingIntent.html">PendingIntent</a></code> that starts an
+    <code><a href="../../reference/android/app/IntentService.html">IntentService</a></code>:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity {
+    ...
+    /*
+     * Create a PendingIntent that triggers an IntentService in your
+     * app when a geofence transition occurs.
+     */
+    private PendingIntent getTransitionPendingIntent() {
+        // Create an explicit Intent
+        Intent intent = new Intent(this,
+                ReceiveTransitionsIntentService.class);
+        /*
+         * Return the PendingIntent
+         */
+        return PendingIntent.getService(
+                this,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+    ...
+}
+</pre>
+<p>
+    Now you have all the code you need to send a request to monitor geofences to Location
+    Services.
+</p>
+<!-- Send the monitoring request -->
+<h3 id="requestmonitoring">Send the monitoring request</h3>
+<p>
+    Sending the monitoring request requires two asynchronous operations. The first operation gets a
+    location client for the request, and the second makes the request using the client. In both
+    cases, Location Services invokes a callback method when it finishes the operation. The best way
+    to handle these operations is to chain together the method calls. The following snippets
+    demonstrate how to set up an activity, define the methods, and call them in the proper order.
+</p>
+<p>
+     First, modify the activity's class definition to implement the necessary callback interfaces.
+     Add the following interfaces:
+</p>
+<dl>
+    <dt>
+<code><a href="../../reference/com/google/android/gms/common/GooglePlayServicesClient.ConnectionCallbacks.html">ConnectionCallbacks</a></code>
+    </dt>
+    <dd>
+        Specifies methods that Location Services calls when a location client is connected or
+        disconnected.
+    </dd>
+    <dt>
+<code><a href="../../reference/com/google/android/gms/common/GooglePlayServicesClient.OnConnectionFailedListener.html">OnConnectionFailedListener</a></code>
+    </dt>
+    <dd>
+        Specifies a method that Location Services calls if an error occurs while attempting to
+        connect the location client.
+    </dd>
+    <dt>
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.OnAddGeofencesResultListener.html">OnAddGeofencesResultListener</a></code>
+    </dt>
+    <dd>
+        Specifies a method that Location Services calls once it has added the geofences.
+    </dd>
+</dl>
+<p>
+    For example:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+}
+</pre>
+<h4>Start the request process</h4>
+<p>
+    Next, define a method that starts the request process by connecting to Location Services.
+    Mark this as a request to add a geofence by setting a global variable. This allows you to
+    use the callback
+<code><a href="../../reference/com/google/android/gms/common/GooglePlayServicesClient.ConnectionCallbacks.html#onConnected(android.os.Bundle)">ConnectionCallbacks.onConnected()</a></code>
+    to add geofences and to remove them, as described in succeeding sections.
+</p>
+<p>
+<p>
+    To guard against race conditions that might arise if your app tries to start another request
+    before the first one finishes, define a boolean flag that tracks the state of the current
+    request:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    // Holds the location client
+    private LocationClient mLocationClient;
+    // Stores the PendingIntent used to request geofence monitoring
+    private PendingIntent mGeofenceRequestIntent;
+    // Defines the allowable request types.
+    public enum REQUEST_TYPE = {ADD}
+    private REQUEST_TYPE mRequestType;
+    // Flag that indicates if a request is underway.
+    private boolean mInProgress;
+    ...
+    &#64;Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+        // Start with the request flag set to false
+        mInProgress = false;
+        ...
+    }
+    ...
+    /**
+     * Start a request for geofence monitoring by calling
+     * LocationClient.connect().
+     */
+    public void addGeofences() {
+        // Start a request to add geofences
+        mRequestType = ADD;
+        /*
+         * Test for Google Play services after setting the request type.
+         * If Google Play services isn't present, the proper request
+         * can be restarted.
+         */
+        if (!servicesConnected()) {
+            return;
+        }
+        /*
+         * Create a new location client object. Since the current
+         * activity class implements ConnectionCallbacks and
+         * OnConnectionFailedListener, pass the current activity object
+         * as the listener for both parameters
+         */
+        mLocationClient = new LocationClient(this, this, this)
+        // If a request is not already underway
+        if (!mInProgress) {
+            // Indicate that a request is underway
+            mInProgress = true;
+            // Request a connection from the client to Location Services
+            mLocationClient.connect();
+        } else {
+            /*
+             * A request is already underway. You can handle
+             * this situation by disconnecting the client,
+             * re-setting the flag, and then re-trying the
+             * request.
+             */
+        }
+    }
+    ...
+}
+</pre>
+<h4>Send a request to add the geofences</h4>
+<p>
+    In your implementation of
+<code><a href="../../reference/com/google/android/gms/common/GooglePlayServicesClient.ConnectionCallbacks.html#onConnected(android.os.Bundle)">ConnectionCallbacks.onConnected()</a></code>,
+    call
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.html#addGeofences(java.util.List<com.google.android.gms.location.Geofence>, android.app.PendingIntent, com.google.android.gms.location.LocationClient.OnAddGeofencesResultListener)">LocationClient.addGeofences()</a></code>.
+    Notice that if the connection fails,
+<code><a href="../../reference/com/google/android/gms/common/GooglePlayServicesClient.ConnectionCallbacks.html#onConnected(android.os.Bundle)">onConnected()</a></code>
+    isn't called, and the request stops.
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    /*
+     * Provide the implementation of ConnectionCallbacks.onConnected()
+     * Once the connection is available, send a request to add the
+     * Geofences
+     */
+    &#64;Override
+    private void onConnected(Bundle dataBundle) {
+        ...
+        switch (mRequestType) {
+            case ADD :
+                // Get the PendingIntent for the request
+                mTransitionPendingIntent =
+                        getTransitionPendingIntent();
+                // Send a request to add the current geofences
+                mLocationClient.addGeofences(
+                        mCurrentGeofences, pendingIntent, this);
+            ...
+        }
+    }
+    ...
+}
+</pre>
+<p>
+    Notice that
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.html#addGeofences(java.util.List<com.google.android.gms.location.Geofence>, android.app.PendingIntent, com.google.android.gms.location.LocationClient.OnAddGeofencesResultListener)">addGeofences()</a></code>
+    returns immediately, but the status of the request is indeterminate until Location Services
+    calls
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.OnAddGeofencesResultListener.html#onAddGeofencesResult(int, java.lang.String[])">onAddGeofencesResult()</a></code>
+    Once this method is called, you can determine if the request was successful or not.
+</p>
+<h4>Check the result returned by Location Services</h4>
+<p>
+    When Location Services invokes your implementation of the callback method
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.OnAddGeofencesResultListener.html#onAddGeofencesResult(int, java.lang.String[])">onAddGeofencesResult()</a></code>,
+    indicating that the request is complete, examine the incoming status code. If the request
+    was successful, the geofences you requested are active. If the request was unsuccessful,
+    the geofences aren't active, and you need to re-try the request or report an error. For example:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+        ...
+    /*
+     * Provide the implementation of
+     * OnAddGeofencesResultListener.onAddGeofencesResult.
+     * Handle the result of adding the geofences
+     *
+     */
+    &#64;Override
+    public void onAddGeofencesResult(
+            int statusCode, String[] geofenceRequestIds) {
+        // If adding the geofences was successful
+        if (LocationStatusCodes.SUCCESS == statusCode) {
+            /*
+             * Handle successful addition of geofences here.
+             * You can send out a broadcast intent or update the UI.
+             * geofences into the Intent's extended data.
+             */
+        } else {
+        // If adding the geofences failed
+            /*
+             * Report errors here.
+             * You can log the error using Log.e() or update
+             * the UI.
+             */
+        }
+        // Turn off the in progress flag and disconnect the client
+        mInProgress = false;
+        mLocationClient.disconnect();
+    }
+    ...
+}
+</pre>
+<!-- Handle disconnections -->
+<h3>Handle disconnections</h3>
+<p>
+    In some cases, Location Services may disconnect from the activity recognition client before
+    you call
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.html#disconnect()">disconnect()</a></code>.
+    To handle this situation, implement <code>
+<a href="../../reference/com/google/android/gms/common/GooglePlayServicesClient.ConnectionCallbacks.html#onDisconnected()">onDisconnected()</a></code>.
+    In this method, set the request flag to indicate that a request is not in progress, and
+    delete the client:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    /*
+     * Implement ConnectionCallbacks.onDisconnected()
+     * Called by Location Services once the location client is
+     * disconnected.
+     */
+    &#64;Override
+    public void onDisconnected() {
+        // Turn off the request flag
+        mInProgress = false;
+        // Destroy the current location client
+        mLocationClient = null;
+    }
+    ...
+}
+</pre>
+<!-- Handle connection errors -->
+<h3>Handle connection errors</h3>
+<p>
+    Besides handling the normal callbacks from Location Services, you have to provide a callback
+    method that Location Services calls if a connection error occurs. This callback method
+    can re-use the <code><a href="../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> class that you defined to
+    handle the check for Google Play services. It can also re-use the override you defined
+    for <code><a href="../../reference/android/support/v4/app/FragmentActivity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> that
+    receives any Google Play services results that occur when the user interacts with the
+    error dialog. The following snippet shows you a sample implementation of the callback method:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    // Implementation of OnConnectionFailedListener.onConnectionFailed
+    &#64;Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        // Turn off the request flag
+        mInProgress = false;
+        /*
+         * If the error has a resolution, start a Google Play services
+         * activity to resolve it.
+         */
+        if (connectionResult.hasResolution()) {
+            try {
+                connectionResult.startResolutionForResult(
+                        this,
+                        CONNECTION_FAILURE_RESOLUTION_REQUEST);
+            } catch (SendIntentException e) {
+                // Log the error
+                e.printStackTrace();
+            }
+        // If no resolution is available, display an error dialog
+        } else {
+            // Get the error code
+            int errorCode = connectionResult.getErrorCode();
+            // Get the error dialog from Google Play services
+            Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(
+                    errorCode,
+                    this,
+                    CONNECTION_FAILURE_RESOLUTION_REQUEST);
+            // If Google Play services can provide an error dialog
+            if (errorDialog != null) {
+                // Create a new DialogFragment for the error dialog
+                ErrorDialogFragment errorFragment =
+                        new ErrorDialogFragment();
+                // Set the dialog in the DialogFragment
+                errorFragment.setDialog(errorDialog);
+                // Show the error dialog in the DialogFragment
+                errorFragment.show(
+                        getSupportFragmentManager(),
+                        "Geofence Detection");
+            }
+        }
+    }
+    ...
+}
+</pre>
+<!--
+    Handle Geofence Transitions
+ -->
+<h2 id="HandleGeofenceTransitions">Handle Geofence Transitions</h2>
+<p>
+    When Location Services detects that the user has entered or exited a geofence, it
+    sends out the <code><a href="../../reference/android/content/Intent.html">Intent</a></code> contained in the <code><a href="../../reference/android/app/PendingIntent.html">PendingIntent</a></code>
+    you included in the request to add geofences. This <code><a href="../../reference/android/content/Intent.html">Intent</a></code> is
+</p>
+<h3>Define an IntentService</h3>
+<p>
+    The following snippet shows how to define an <code><a href="../../reference/android/app/IntentService.html">IntentService</a></code> that posts a
+    notification when a geofence transition occurs. When the user clicks the notification, the
+    app's main activity appears:
+</p>
+<pre>
+public class ReceiveTransitionsIntentService extends IntentService {
+    ...
+    /**
+     * Sets an identifier for the service
+     */
+    public ReceiveTransitionsIntentService() {
+        super("ReceiveTransitionsIntentService");
+    }
+    /**
+     * Handles incoming intents
+     *&#64;param intent The Intent sent by Location Services. This
+     * Intent is provided
+     * to Location Services (inside a PendingIntent) when you call
+     * addGeofences()
+     */
+    &#64;Override
+    protected void onHandleIntent(Intent intent) {
+        // First check for errors
+        if (LocationClient.hasError(intent)) {
+            // Get the error code with a static method
+            int errorCode = LocationClient.getErrorCode(intent);
+            // Log the error
+            Log.e("ReceiveTransitionsIntentService",
+                    "Location Services error: " +
+                    Integer.toString(errorCode));
+            /*
+             * You can also send the error code to an Activity or
+             * Fragment with a broadcast Intent
+             */
+        /*
+         * If there's no error, get the transition type and the IDs
+         * of the geofence or geofences that triggered the transition
+         */
+        } else {
+            // Get the type of transition (entry or exit)
+            int transitionType =
+                    LocationClient.getGeofenceTransition(intent);
+            // Test that a valid transition was reported
+            if (
+                (transitionType == Geofence.GEOFENCE_TRANSITION_ENTER)
+                 ||
+                (transitionType == Geofence.GEOFENCE_TRANSITION_EXIT)
+               ) {
+                List &lt;Geofence&gt; triggerList =
+                        getTriggeringGeofences(intent);
+
+                String[] triggerIds = new String[geofenceList.size()];
+
+                for (int i = 0; i &lt; triggerIds.length; i++) {
+                    // Store the Id of each geofence
+                    triggerIds[i] = triggerList.get(i).getRequestId();
+                }
+                /*
+                 * At this point, you can store the IDs for further use
+                 * display them, or display the details associated with
+                 * them.
+                 */
+            }
+        // An invalid transition was reported
+        } else {
+            Log.e("ReceiveTransitionsIntentService",
+                    "Geofence transition error: " +
+                    Integer.toString()transitionType));
+        }
+    }
+    ...
+}
+</pre>
+<!-- Specify the IntentService in the manifest -->
+<h3>Specify the IntentService in the manifest</h3>
+<p>
+    To identify the <code><a href="../../reference/android/app/IntentService.html">IntentService</a></code> to the system, add a
+    <code><a href="../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></code>
+    element to the app manifest. For example:
+</p>
+<pre>
+&lt;service
+    android:name="com.example.android.location.ReceiveTransitionsIntentService"
+    android:label="&#64;string/app_name"
+    android:exported="false"&gt;
+&lt;/service&gt;
+</pre>
+<p>
+    Notice that you don't have to specify intent filters for the service, because it only receives
+    explicit intents. How the incoming geofence transition intents are created is described in the
+    section <a href="#requestmonitoring">Send the monitoring request</a>.
+</p>
+<!--
+    Remove Geofences
+ -->
+<h2 id="StopGeofenceMonitoring">Stop Geofence Monitoring</h2>
+<p>
+    To stop geofence monitoring, you remove the geofences themselves. You can remove a specific
+    set of geofences or all the geofences associated with a <code><a href="../../reference/android/app/PendingIntent.html">PendingIntent</a></code>. The
+    procedure is similar to adding geofences. The first operation gets a location
+    client for the removal request, and the second makes the request using the client.
+</p>
+<p>
+    The callback methods that Location Services invokes when it has finished removing geofences
+    are defined in the interface
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.OnRemoveGeofencesResultListener.html">LocationClient.OnRemoveGeofencesResultListener</a></code>. Declare
+    this interface as part of your class definition, and then add definitions for its two methods:
+</p>
+<dl>
+    <dt>
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.OnRemoveGeofencesResultListener.html#onRemoveGeofencesByPendingIntentResult(int, android.app.PendingIntent)">onRemoveGeofencesByPendingIntentResult()</a></code>
+    </dt>
+    <dd>
+        Callback invoked when Location Services finishes a request to remove all geofences made
+        by the method
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.html#removeGeofences(android.app.PendingIntent, com.google.android.gms.location.LocationClient.OnRemoveGeofencesResultListener)">removeGeofences(PendingIntent, LocationClient.OnRemoveGeofencesResultListener)</a></code>.
+    </dd>
+    <dt>
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.OnRemoveGeofencesResultListener.html#onRemoveGeofencesByRequestIdsResult(int, java.lang.String[])">onRemoveGeofencesByRequestIdsResult(List&lt;String&gt;, LocationClient.OnRemoveGeofencesResultListener)</a></code>
+    </dt>
+    <dd>
+        Callback invoked when Location Services finished a request to remove a set of geofences,
+        specified by their geofence IDs, by the method
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.html#removeGeofences(java.util.List<java.lang.String>, com.google.android.gms.location.LocationClient.OnRemoveGeofencesResultListener)">removeGeofences(List&lt;String&gt;, LocationClient.OnRemoveGeofencesResultListener)</a></code>.
+    </dd>
+</dl>
+<p>
+    Examples of implementing these methods are shown in the next snippets.
+</p>
+<h3>Remove all geofences</h3>
+<p>
+    Since removing geofences uses some of the methods you use to add geofences, start by defining
+    another request type:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    // Enum type for controlling the type of removal requested
+    public enum REQUEST_TYPE = {ADD, REMOVE_INTENT}
+    ...
+}
+</pre>
+<p>
+    Start the removal request by getting a connection to Location Services. If the connection fails,
+<code><a href="../../reference/com/google/android/gms/common/GooglePlayServicesClient.ConnectionCallbacks.html#onConnected(android.os.Bundle)">onConnected()</a></code> isn't called,
+    and the request stops. The following snippet shows how to start the request:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    /**
+     * Start a request to remove geofences by calling
+     * LocationClient.connect()
+     */
+    public void removeGeofences(PendingIntent requestIntent) {
+        // Record the type of removal request
+        mRequestType = REMOVE_INTENT;
+        /*
+         * Test for Google Play services after setting the request type.
+         * If Google Play services isn't present, the request can be
+         * restarted.
+         */
+        if (!servicesConnected()) {
+            return;
+        }
+        // Store the PendingIntent
+        mGeofenceRequestIntent = requestIntent;
+        /*
+         * Create a new location client object. Since the current
+         * activity class implements ConnectionCallbacks and
+         * OnConnectionFailedListener, pass the current activity object
+         * as the listener for both parameters
+         */
+        mLocationClient = new LocationClient(this, this, this);
+        // If a request is not already underway
+        if (!mInProgress) {
+            // Indicate that a request is underway
+            mInProgress = true;
+            // Request a connection from the client to Location Services
+            mLocationClient.connect();
+        } else {
+            /*
+             * A request is already underway. You can handle
+             * this situation by disconnecting the client,
+             * re-setting the flag, and then re-trying the
+             * request.
+             */
+        }
+    }
+    ...
+}
+</pre>
+<p>
+   When Location Services invokes the callback method indicating that the connection is open,
+   make the request to remove all geofences. Disconnect the client after making the request.
+   For example:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    /**
+     * Once the connection is available, send a request to remove the
+     * Geofences. The method signature used depends on which type of
+     * remove request was originally received.
+     */
+    private void onConnected(Bundle dataBundle) {
+        /*
+         * Choose what to do based on the request type set in
+         * removeGeofences
+         */
+        switch (mRequestType) {
+            ...
+            case REMOVE_INTENT :
+                mLocationClient.removeGeofences(
+                        mGeofenceRequestIntent, this);
+                break;
+            ...
+        }
+    }
+    ...
+}
+</pre>
+<p>
+    Although the call to
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.html#removeGeofences(android.app.PendingIntent, com.google.android.gms.location.LocationClient.OnRemoveGeofencesResultListener)">removeGeofences(PendingIntent, LocationClient.OnRemoveGeofencesResultListener)</a></code>    Services calls
+    returns immediately, the result of the removal request is indeterminate until Location Services
+    calls
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.OnRemoveGeofencesResultListener.html#onRemoveGeofencesByPendingIntentResult(int, android.app.PendingIntent)">onRemoveGeofencesByPendingIntentResult()</a></code>.
+    The following snippet shows how to define this method:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    /**
+     * When the request to remove geofences by PendingIntent returns,
+     * handle the result.
+     *
+     *&#64;param statusCode the code returned by Location Services
+     *&#64;param requestIntent The Intent used to request the removal.
+     */
+    &#64;Override
+    public void onRemoveGeofencesByPendingIntentResult(int statusCode,
+            PendingIntent requestIntent) {
+        // If removing the geofences was successful
+        if (statusCode == LocationStatusCodes.SUCCESS) {
+            /*
+             * Handle successful removal of geofences here.
+             * You can send out a broadcast intent or update the UI.
+             * geofences into the Intent's extended data.
+             */
+        } else {
+        // If adding the geocodes failed
+            /*
+             * Report errors here.
+             * You can log the error using Log.e() or update
+             * the UI.
+             */
+        }
+        /*
+         * Disconnect the location client regardless of the
+         * request status, and indicate that a request is no
+         * longer in progress
+         */
+        mInProgress = false;
+        mLocationClient.disconnect();
+    }
+    ...
+}
+</pre>
+<h3>Remove individual geofences</h3>
+<p>
+    The procedure for removing an individual geofence or set of geofences is similar to the
+    removal of all geofences. To specify the geofences you want remove, add their geofence ID
+    values to a <code><a href="../../reference/java/util/List.html">List</a></code> of String objects. Pass this <code><a href="../../reference/java/util/List.html">List</a></code> to a
+    different definition of <code>removeGeofences</code> with the appropriate signature. This method
+    then starts the removal process.
+</p>
+<p>
+    Start by adding a request type for removing geofences by a list, and also add a global variable
+    for storing the list of geofences:
+</p>
+<pre>
+    ...
+    // Enum type for controlling the type of removal requested
+    public enum REQUEST_TYPE = {ADD, REMOVE_INTENT, REMOVE_LIST}
+    // Store the list of geofence Ids to remove
+    String&lt;List&gt; mGeofencesToRemove;
+</pre>
+<p>
+    Next, define a list of geofences you want to remove. For example, this snippet removes the
+<code><a href="../../reference/com/google/android/gms/location/Geofence.html">Geofence</a></code>
+    defined by the geofence ID "1":
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+        List&lt;String&gt; listOfGeofences =
+                Collections.singletonList("1");
+        removeGeofences(listOfGeofences);
+    ...
+}
+</pre>
+<p>
+    The following snippet defines the <code>removeGeofences()</code> method:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    /**
+     * Start a request to remove monitoring by
+     * calling LocationClient.connect()
+     *
+     */
+    public void removeGeofences(List&lt;String&gt; geofenceIds) {
+        // If Google Play services is unavailable, exit
+        // Record the type of removal request
+        mRequestType = REMOVE_LIST;
+        /*
+         * Test for Google Play services after setting the request type.
+         * If Google Play services isn't present, the request can be
+         * restarted.
+         */
+        if (!servicesConnected()) {
+            return;
+        }
+        // Store the list of geofences to remove
+        mGeofencesToRemove = geofenceIds;
+        /*
+         * Create a new location client object. Since the current
+         * activity class implements ConnectionCallbacks and
+         * OnConnectionFailedListener, pass the current activity object
+         * as the listener for both parameters
+         */
+        mLocationClient = new LocationClient(this, this, this);
+        // If a request is not already underway
+        if (!mInProgress) {
+            // Indicate that a request is underway
+            mInProgress = true;
+            // Request a connection from the client to Location Services
+            mLocationClient.connect();
+        } else {
+            /*
+             * A request is already underway. You can handle
+             * this situation by disconnecting the client,
+             * re-setting the flag, and then re-trying the
+             * request.
+             */
+        }
+    }
+    ...
+}
+</pre>
+<p>
+   When Location Services invokes the callback method indicating that the connection is open,
+   make the request to remove the list of geofences. Disconnect the client after making the request.
+   For example:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    private void onConnected(Bundle dataBundle) {
+        ...
+        switch (mRequestType) {
+        ...
+        // If removeGeofencesById was called
+            case REMOVE_LIST :
+                mLocationClient.removeGeofences(
+                        mGeofencesToRemove, this);
+                break;
+        ...
+        }
+        ...
+    }
+    ...
+}
+</pre>
+<p>
+    Define an implementation of
+<code><a href="../../reference/com/google/android/gms/location/LocationClient.OnRemoveGeofencesResultListener.html#onRemoveGeofencesByRequestIdsResult(int, java.lang.String[])">onRemoveGeofencesByRequestIdsResult()</a></code>.
+    Location Services invokes this callback method to indicate that the request to remove a list of
+    geofences is complete. In this method, examine the incoming status code and take the
+    appropriate action:
+</p>
+<pre>
+public class MainActivity extends FragmentActivity implements
+        ConnectionCallbacks,
+        OnConnectionFailedListener,
+        OnAddGeofencesResultListener {
+    ...
+    /**
+     * When the request to remove geofences by IDs returns, handle the
+     * result.
+     *
+     * &#64;param statusCode The code returned by Location Services
+     * &#64;param geofenceRequestIds The IDs removed
+     */
+    &#64;Override
+    public void onRemoveGeofencesByRequestIdsResult(
+            int statusCode, String[] geofenceRequestIds) {
+        // If removing the geocodes was successful
+        if (LocationStatusCodes.SUCCESS == statusCode) {
+            /*
+             * Handle successful removal of geofences here.
+             * You can send out a broadcast intent or update the UI.
+             * geofences into the Intent's extended data.
+             */
+        } else {
+        // If removing the geofences failed
+            /*
+             * Report errors here.
+             * You can log the error using Log.e() or update
+             * the UI.
+             */
+        }
+        // Indicate that a request is no longer in progress
+        mInProgress = false;
+        // Disconnect the location client
+        mLocationClient.disconnect();
+    }
+    ...
+}
+</pre>
+<p>
+    You can combine geofencing with other location-aware features, such as periodic location updates
+    or activity recognition, which are described in other lessons in this class.
+</p>
+<p>
+    The next lesson,
+    <a href="activity-recognition.html">Recognizing the User's Current Activity</a>, shows you how
+    to request and receive activity updates. At regular intervals, Location Services can send you
+    information about the user's current physical activity. Based on this information, you can
+    change your app's behavior; for example, you can switch to a longer update interval if you
+    detect that the user is walking instead of driving.
+</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+            <a href="#" class="prev-page-link hide"
+                zh-tw-lang="上一堂課"
+                zh-cn-lang="上一课"
+                ru-lang="Предыдущий"
+                ko-lang="이전"
+                ja-lang="前へ"
+                es-lang="Anterior"               
+                >Previous</a>
+            <a href="#" class="next-page-link hide"
+                zh-tw-lang="下一堂課"
+                zh-cn-lang="下一课"
+                ru-lang="Следующий"
+                ko-lang="다음"
+                ja-lang="次へ"
+                es-lang="Siguiente"               
+                >Next</a>
+          
+        </div>
+        
+      </div>
+      
+      
+      
+      <div class="layout-content-row content-footer next-class" style="display:none" itemscope itemtype="http://schema.org/SiteNavigationElement">
+          <a href="#" class="next-class-link hide">Next class: </a>
+      </div>
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

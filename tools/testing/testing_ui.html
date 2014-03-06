@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>UI Testing | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >UI Testing</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+     <h2>In this document</h2>
+  <ol>
+     <li><a href="#overview">Overview</a></li>
+        <ul>
+        <li><a href="#workflow">Workflow</a></li>
+        </ul>
+     <li><a href="#uianalysis">Analyzing Your UI</a></li>
+     <li><a href="#prepare">Preparing to Test</a>
+        <ul>
+        <LI><a href="#loading">Load the App</a></LI>
+        <LI><a href="#identifyUI">Identify UI Components</a></LI>
+        <LI><a href="#accessibility">Ensure Accessibility</a></LI>
+        <LI><a href="#configure">Configure Development Environment</a></LI>
+        </ul>
+     </li>
+     <li><a href="#creating">Creating Tests</a>
+       <ul>
+       <LI><a href="#classes">uiautomator API</a></LI>
+        <li><a href="#sample">Sample Test Case</a>
+       </ul>
+     </li>
+     <li><a href="#builddeploy">Building and Deploying Tests</a></li>
+     <li><a href="#running">Running Tests</a></li>
+     <li><a href="#bestpractices">Best Practices</a></li>
+  </ol>
+     <h2>Key classes</h2>
+    <ol>
+      <li><a href="../../tools/help/uiautomator/IAutomationSupport.html">IAutomationSupport</a></li>
+      <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html">UiAutomatorTestCase</a></li>
+      <li><a href="../../tools/help/uiautomator/UiCollection.html">UiCollection</a></li>
+      <li><a href="../../tools/help/uiautomator/UiDevice.html">UiDevice</a></li>
+      <li><a href="../../tools/help/uiautomator/UiObject.html">UiObject</a></li>
+      <li><a href="../../tools/help/uiautomator/UiScrollable.html">UiScrollable</a></li>
+      <li><a href="../../tools/help/uiautomator/UiSelector.html">UiSelector</a></li>
+    </ol>
+    <h2>See Also</h2>
+      <ol>
+        <li>
+            <a href="../../tools/help/uiautomator/index.html">uiautomator (reference)</a>
+        </li>
+      </ol>
+  </div>
+</div>
+
+<p>
+In addition to unit testing the individual components that make up your Android application (such as activities, services, and content providers), it is also important that you test the behavior of your application’s user interface (UI) when it is running on a device. UI testing ensures that your application returns the correct UI output in response to a sequence of user actions on a device, such as entering keyboard input or pressing toolbars, menus, dialogs, images, and other UI controls.
+</p>
+<p>
+Functional or black-box UI testing does not require testers to know the internal implementation details of the app, only its expected output when a user performs a specific action or enters a specific input. This approach allows for better separation of development and testing roles in your organization.
+</p>
+<p>One common approach to UI testing is to run tests manually and verify that the app is behaving as expected. However, this approach can be time-consuming, tedious, and error-prone. A more efficient and reliable approach is to automate the UI testing with a software testing framework. Automated testing involves creating programs to perform testing tasks (test cases) to cover specific usage scenarios, and then using the testing framework to run the test cases automatically and in a repeatable manner.</p>
+
+<h2 id="overview">Overview</h2>
+<p>The Android SDK provides the following tools to support automated, functional UI testing on your application:
+<ul>
+<LI><code>uiautomatorviewer</code> - A GUI tool to scan and analyze the UI components of an Android application.</LI>
+<LI><code>uiautomator</code> - A Java library containing APIs to create customized functional UI tests, and an execution engine to automate and run the tests.</LI>
+</ul></p>
+
+<p>To use these tools, you must have the following versions of the Android development tools installed:
+<ul>
+<LI>Android SDK Tools, Revision 21 or higher</LI>
+<LI>Android SDK Platform, API 16 or higher</LI>
+</ul>
+</p>
+
+<h3 id="workflow">Workflow for the the uiautomator testing framework</h3>
+<p>Here's a short overview of the steps required to automate UI testing:
+<ol>
+<LI>Prepare to test by installing the app on a test device, analyzing the app’s UI components, and ensuring that your application is accessible by the test automation framework.</LI>
+<li>Create automated tests to simulate specific user interactions on your application.</li>
+<li>Compile your test cases into a JAR file and install it on your test device along with your app.</li>
+<li>Run the tests and view the test results.</li>
+<li>Correct any bugs or defects discovered in testing.</li>
+</ol>
+</p>
+
+<h2 id="uianalysis">Analyzing Your Application's UI</h2>
+<p>Before you start writing your test cases, it's helpful to familiarize yourself with the UI components (including the views and controls) of the targeted application. You can use the <code>uiautomatorviewer</code> tool to take a snapshot of the foreground UI screen on any Android device that is connected to your development machine.  The <code>uiautomatorviewer</code> tool provides a convenient visual interface to inspect the layout hierarchy and view the properties of the individual UI components that are displayed on the test device.  Using this information, you can later create <code>uiautomator</code> tests with selector objects that target specific UI components to test.</p>
+
+<a href="../../images/testing/UIAutomatorViewer.png">
+    <img src="../../images/testing/UIAutomatorViewer.png"
+         alt="User interface of uiautomatorviewer tool" height="327px" id="figure1"/>
+</a>
+<p class="img-caption">
+    <strong>Figure 1.</strong> The <code>uiautomatorviewer</code> showing the captured interface of a test deviice.
+</p>
+
+<p>To analyze the UI components of the application that you want to test:</p>
+<ol>
+<li>Connect your Android device to your development machine.</li>
+<li>Open a terminal window and navigate to <code>&lt;android-sdk&gt;/tools/</code>.</li>
+<LI>Run the tool with this command:<pre>$ uiautomatorviewer</pre></LI>
+<li><p>To capture a screen for analysis, click the <strong>Device Screenshot</strong> button in the GUI of the <code>uiautomatorviewer</code> tool.</p>
+<p class="note"><strong>Note: </strong>If you have more than one device connected, specify the device for screen capture by setting the <code>ANDROID_SERIAL</code> environment variable:  
+   <ol type="a">
+   <li>Find the serial numbers for your connected devices by running this command:<pre>$ adb devices</pre> </li>
+   <li>Set the <code>ANDROID_SERIAL</code>  environment variable to select the device to test:
+      <ul>
+      <li>In Windows: <pre>set ANDROID_SERIAL=&lt;device serial number&gt;</pre></li>
+      <li>In UNIX: <pre>export ANDROID_SERIAL=&lt;device serial number&gt;</pre></li>
+      </ul>
+   </li>
+   </ol>
+If you are connected to only a single device, you do not need to set the ANDROID_SERIAL environment variable.</p>
+</li>
+<li>View the UI properties for your application:
+  <ul>
+  <LI>Hover over the snapshot in the left-hand panel to see the UI components identified by the <code>uiautomatorviewer</code> tool. You can view the component’s properties listed in the lower right-hand panel, and the layout hierarchy in the upper right-hand panel.</LI>
+  <li>Optionally, click on the <strong>Toggle NAF Nodes</strong> button to see UI components that are not accessible to the <code>uiautomator</code> testing framework. Only limited information may be available for these components.</li>
+  </ul>
+</li>
+</ol>
+
+<h2 id="prepare">Preparing to Test</h2>
+<p>Before using the <code>uiautomator</code> testing framework, complete these pre-flight tasks:
+</p>
+<h3 id="loading">Load the application to a device</h3>
+<p>If you are reading this document, chances are that the Android application that you want to test has not been published yet. If you have a copy of the APK file, you can install the APK onto a test device by using the <code>adb</code> tool. To learn how to install an APK file using the <code>adb</code> tool, see the <a href="../../tools/help/adb.html#move"><code>adb</code></a> documentation. </p>
+
+<h3 id="identifyUI">Identify the application’s UI components</h3>
+<p>Before writing your <code>uiautomator</code> tests, first identify the UI components in the application that you want to test. Typically, good candidates for testing are UI components that are visible and that users can interact with. The UI components should also have visible text labels, <a href="../../reference/android/view/View.html#attr_android:contentDescription"><code>android:contentDescription</code></a> values, or both. 
+
+<p>You can inspect the visible screen objects in an application conveniently by using the <code>uiautomatorviewer</code> tool. For more information about how to analyze an application screen with this tool, see the section <a href="#uianalaysis">Analyzing Your Application’s UI</a>.  For more information about the common types of UI components provided by Android, see <a href="../../guide/topics/ui/index.html">User Interface</a>.</p>
+
+<h3 id="accessibility">Ensure that the application is accessible</h3>
+<p>This step is required because the <code>uiautomator</code> tool depends on the accessibility features of the Android framework to execute your functional UI tests. You should include these minimum optimizations to support the <code>uiautomator</code> tool:
+<ul>
+<LI>Use the <a href="../../reference/android/view/View.html#attr_android:contentDescription"><code>android:contentDescription</code></a> attribute to label the <code><a href="../../reference/android/widget/ImageButton.html">ImageButton</a></code>, <code><a href="../../reference/android/widget/ImageView.html">ImageView</a></code>, <code><a href="../../reference/android/widget/CheckBox.html">CheckBox</a></code> and other user interface controls.</LI>
+<li>Provide an <a href="../../reference/android/widget/TextView.html#attr_android:hint"><code>android:hint</code></a>  attribute <em>instead</em> of a content description for <code><a href="../../reference/android/widget/EditText.html">EditText</a></code> fields</li>
+<li>Associate an <a href="../../reference/android/widget/TextView.html#attr_android:hint"><code>android:hint</code></a> attribute with any graphical icons used by controls that provide feedback to the user (for example, status or state information).</li>
+<li>Make sure that all the user interface elements are accessible with a directional controller, such as a trackball or D-pad.</li>
+<li>Use the <code>uiautomatorviewer</code> tool to ensure that the UI component is accessible to the testing framework. You can also test the application by turning on accessibility services like TalkBack and Explore by Touch, and try using your application using only directional controls. </li>
+</ul>
+</p>
+
+<p>For more information about implementing and testing accessibility, see <a href="../../guide/topics/ui/accessibility/apps.html">Making Applications Accessible</a>.</p>
+
+<p class="note"><strong>Note: </strong>To identify the non-accessible components in the UI, click on the <strong>Toggle NAF Nodes</strong> option in the <code>uiautomatorviewer</code> tool.</p>
+
+<p>Generally, Android application developers get accessibility support for free, courtesy of the <code><a href="../../reference/android/view/View.html">View</a></code> and <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code> classes. However, some applications use custom view components to provide a richer user experience. Such custom components won't get the accessibility support that is provided by the standard Android UI components. If this applies to your application, ensure that the application developer exposes the custom drawn UI components to Android accessibility services, by implementing the <code><a href="../../reference/android/view/accessibility/AccessibilityNodeProvider.html">AccessibilityNodeProvider</a></code> class. For more information about making custom view components accessible, see <a href="../../guide/topics/ui/accessibility/apps.html#custom-views">Making Applications Accessible</a>.</p>
+
+<h3 id="configure">Configure your development environment</h3>
+<p>If you're developing in Eclipse, the Android SDK provides additional tools that help you write test cases using <code>uiautomator</code> and buiild your JAR file. In order to set up Eclipse to assist you, you need to create a project that includes the <code>uiautomator</code> client library, along with the Android SDK library. To configure Eclipse:</p>
+<ol>
+<li>Create a new Java project in Eclipse, and give your project a name that is relevant to the tests you’re about to create (for example, "MyAppNameTests"). In the project, you will create the test cases that are specific to the application that you want to test.</li>
+<li>From the <strong>Project Explorer</strong>, right-click on the new project that you created, then select <strong>Properties > Java Build Path</strong>, and do the following:
+  <ol type="a">
+  <LI>Click <strong>Add Library > JUnit</strong> then select <strong>JUnit3</strong> to add JUnit support.</LI>
+  <li>Click <strong>Add External JARs...</strong> and navigate to the SDK directory. Under the platforms directory, select the latest SDK version and add both the <code>uiautomator.jar</code> and <code>android.jar</code> files.</li>
+  </ol>
+</li>
+</ol>
+<p>If you did not configure Eclipse as your development environment, make sure that the <code>uiautomator.jar</code> and <code>android.jar</code> files from the <code>&lt;android-sdk&gt;/platforms/&lt;sdk&gt;</code> directory are in your Java class path.</p>
+<p>Once you have completed these prerequisite tasks, you're almost ready to start creating your <code>uiautomator</code> tests. </li>
+
+<h2 id="creating">Creating uiautomator Tests</h2>
+<p>To build a test that runs in the <code>uiautomator</code> framework, create a test case that extends the <a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><code>UiAutomatorTestCase</code></a> class. In Eclipse, the test case file goes under the <code>src</code> directory in your project.  Later, you will build the test case as a JAR file, then copy this file to the test device. The test JAR file is not an APK file and resides separately from the application that you want to test on the device.</p>
+
+<p>Because the <a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><code>UiAutomatorTestCase</code></a> class extends <code>junit.framework.TestCase</code>, you can use the JUnit <code>Assert</code> class to test that UI components in the app return the expected results. To learn more about JUnit, you can read the documentation on the <a href="http://www.junit.org/">junit.org</a> home page.</p>
+
+<p>The first thing your test case should do is access the device that contains the target app. It’s also good practice to start the test from the Home screen of the device. From the Home screen (or some other starting location you’ve chosen in the target app), you can use the classes provided by the <code>uiautomator</code> API to simulate user actions and to test specific UI components. For an example of how to put together a <code>uiautomator</code> test case, see the <a href="#sample">sample test case</a>.</p>
+
+<h3 id="classes">uiautomator API</h3>
+<p>The <code>uiautomator</code> API is bundled in the <code>uiautomator.jar</code> file under the <code>&lt;android-sdk&gt;/platforms/</code> directory.  The API includes these key classes that allow you to capture and manipulate UI components on the target app:</p>
+<dl>
+<DT><a href="../../tools/help/uiautomator/UiDevice.html"><code>UiDevice</code></a></DT>
+<dd><p>Represents the device state.  In your tests, you can call methods on the <a href="../../tools/help/uiautomator/UiDevice.html"><code>UiDevice</code></a> instance to check for the state of various properties, such as current orientation or display size. Your tests also can use the <a href="../../tools/help/uiautomator/UiDevice.html"><code>UiDevice</code></a> instance to perform device level actions, such as forcing the device into a specific rotation, pressing the d-pad hardware button, or pressing the Home and Menu buttons.</p>
+<p>To get an instance of <a href="../../tools/help/uiautomator/UiDevice.html"><code>UiDevice</code></a> and simulate a Home button press:
+<pre>
+getUiDevice().pressHome();
+</pre></p></dd>
+
+<dt><a href="../../tools/help/uiautomator/UiSelector.html"><code>UiSelector</code></a></dt>
+<dd>Represents a search criteria to query and get a handle on specific elements in the currently displayed UI. 	
+If more than one matching element is found, the first matching element in the layout hierarchy is returned as the target <code>UiObject</code>.  When constructing a <a href="../../tools/help/uiautomator/UiSelector.html"><code>UiSelector</code></a>, you can chain together multiple properties to refine your search. If no matching UI element is found, a <a href="../../tools/help/uiautomator/UiAutomatorObjectNotFoundException.html"><code>UiAutomatorObjectNotFoundException</code></a> is thrown. You can use the <a href="../../tools/help/uiautomator/UiSelector.html#childSelector(com.android.uiautomator.core.UiSelector)"><code>childSelector()</code></a> method to nest multiple <a href="../../tools/help/uiautomator/UiSelector.html"><code>UiSelector</code></a> instances. For example, the following code example shows how to specify a search to find the first <code><a href="../../reference/android/widget/ListView.html">ListView</a></code> in the currently displayed UI, then search within that <code><a href="../../reference/android/widget/ListView.html">ListView</a></code> to find a UI element with the text property <code>Apps</code>.
+<pre>
+UiObject appItem = new UiObject(new UiSelector()
+   .className("android.widget.ListView").instance(1)
+   .childSelector(new UiSelector().text("Apps")));
+</pre>
+</dd>
+
+<dt><a href="../../tools/help/uiautomator/UiObject.html"><code>UiObject</code></a></dt>
+<dd>Represents a UI element. To create a <a href="../../tools/help/uiautomator/UiObject.html"><code>UiObject</code></a> instance, use a <code>UiSelector</code> that describes how to search for, or select, the UI element.
+<p>The following code example shows how to construct <a href="../../tools/help/uiautomator/UiObject.html"><code>UiObject</code></a> instances that represent a <strong>Cancel</strong> button and a <strong>OK</strong> button in your application.</p>
+<pre>
+UiObject cancelButton = new UiObject(new UiSelector().text("Cancel"));
+UiObject okButton = new UiObject(new UiSelector().text("OK"));
+</pre>
+<p>You can reuse the <a href="../../tools/help/uiautomator/UiObject.html"><code>UiObject</code></a> instances that you have created in other parts of your app testing, as needed.  Note that the <code>uiautomator</code> test framework searches the current display for a match every time your test uses a <a href="../../tools/help/uiautomator/UiObject.html"><code>UiObject</code></a> instance to click on a UI element or query a property.</p>
+<p>In the following code example, the <code>uiautomator</code> test framework searches for a UI element with the text property <code>OK</code>. If a match is found and if the element is enabled, the framework simulates a user click action on the element.</p>
+<pre>
+if(okButton.exists() && okButton.isEnabled()) 
+{
+  okButton.click();
+}
+</pre>
+<p>You can also restrict the search to find only elements of a specific class. For example, to find matches of the <code><a href="../../reference/android/widget/Button.html">Button</a></code> class:</p>
+<pre>
+UiObject cancelButton = new UiObject(new UiSelector().text("Cancel")
+   .className("android.widget.Button"));
+UiObject okButton = new UiObject(new UiSelector().text("OK")
+   .className("android.widget.Button"));
+</pre>
+</dd>
+
+<dt><a href="../../tools/help/uiautomator/UiCollection.html"><code>UiCollection</code></a></dt>
+<dd>Represents a collection of items, for example songs in a music album or a list of emails in an inbox. Similar to a <a href="../../tools/help/uiautomator/UiObject.html"><code>UiObject</code></a>, you construct a <a href="../../tools/help/uiautomator/UiCollection.html"><code>UiCollection</code></a> instance by specifying a <a href="../../tools/help/uiautomator/UiSelector.html"><code>UiSelector</code></a>. The <a href="../../tools/help/uiautomator/UiSelector.html"><code>UiSelector</code></a> for a <a href="../../tools/help/uiautomator/UiCollection.html"><code>UiCollection</code></a> should search for a UI element that is a container or wrapper of other child UI elements (such as  a layout view that contains child UI elements).  For example, the following code snippet  shows how to construct a <a href="../../tools/help/uiautomator/UiCollection.html"><code>UiCollection</code></a> to represent a video album that is displayed within a <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code>:
+<pre>
+UiCollection videos = new UiCollection(new UiSelector()
+   .className("android.widget.FrameLayout"));
+</pre>
+<p>If the videos are listed within a <code><a href="../../reference/android/widget/LinearLayout.html">LinearLayout</a></code> view, and you want to to retrieve the number of videos in this collection:</p>
+<pre>
+int count = videos.getChildCount(new UiSelector()
+   .className("android.widget.LinearLayout"));
+</pre>
+<p>If you want to find a specific video that is labeled with the text element <code>Cute Baby Laughing</code> from the collection and simulate a user-click on the video:</p>
+<pre>
+UiObject video = videos.getChildByText(new UiSelector()
+   .className("android.widget.LinearLayout"), "Cute Baby Laughing");
+video.click();
+</pre>
+<p>Similarly, you can simulate other user actions on the UI object.  For example, if you want 
+to simulate selecting a checkbox that is associated with the video:</p>
+<pre>
+UiObject checkBox = video.getChild(new UiSelector()
+   .className("android.widget.Checkbox"));
+if(!checkBox.isSelected()) checkbox.click();
+</pre>
+</dd>
+
+<dt><a href="../../tools/help/uiautomator/UiScrollable.html"><code>UiScrollable</code></a></dt>
+<dd>Represents a scrollable collection of UI elements.  You can use the <a href="../../tools/help/uiautomator/UiScrollable.html"><code>UiScrollable</code></a> class to simulate vertical or horizontal scrolling across a display. This technique is helpful when a UI element is positioned off-screen and you need to scroll to bring it into view.
+<p>For example, the following code shows how to simulate scrolling down the Settings menu and clicking on an <strong>About tablet</strong> option:</p>
+<pre>
+UiScrollable settingsItem = new UiScrollable(new UiSelector()
+   .className("android.widget.ListView"));
+UiObject about = settingsItem.getChildByText(new UiSelector()
+   .className("android.widget.LinearLayout"), "About  tablet");
+about.click()
+</pre>
+</dd>
+</dl>
+<p>For more information about these APIs, see the <a href="../../tools/help/uiautomator/index.html"><code>uiautomator</code></a> reference.</p>
+
+<h3 id="sample">A sample uiautomator test case</h3>
+<p>The following code example shows a simple test case which simulates a user bringing up the Settings app in a stock Android device.  The test case mimics all the steps that a user would typically take to perform this task, including opening the Home screen, launching the <strong>All Apps</strong> screen, scrolling to the <strong>Settings</strong> app icon, and clicking on the icon to enter the Settings app.</p>
+<pre>
+package com.uia.example.my;
+
+// Import the uiautomator libraries
+import com.android.uiautomator.core.UiObject;
+import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiScrollable;
+import com.android.uiautomator.core.UiSelector;
+import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+
+public class LaunchSettings extends UiAutomatorTestCase {   
+
+   public void testDemo() throws UiObjectNotFoundException {   
+      
+      // Simulate a short press on the HOME button.
+      getUiDevice().pressHome();
+      
+      // We’re now in the home screen. Next, we want to simulate 
+      // a user bringing up the All Apps screen.
+      // If you use the uiautomatorviewer tool to capture a snapshot 
+      // of the Home screen, notice that the All Apps button’s 
+      // content-description property has the value “Apps”.  We can 
+      // use this property to create a UiSelector to find the button. 
+      UiObject allAppsButton = new UiObject(new UiSelector()
+         .description("Apps"));
+      
+      // Simulate a click to bring up the All Apps screen.
+      allAppsButton.clickAndWaitForNewWindow();
+      
+      // In the All Apps screen, the Settings app is located in 
+      // the Apps tab. To simulate the user bringing up the Apps tab,
+      // we create a UiSelector to find a tab with the text 
+      // label “Apps”.
+      UiObject appsTab = new UiObject(new UiSelector()
+         .text("Apps"));
+      
+      // Simulate a click to enter the Apps tab.
+      appsTab.click();
+
+      // Next, in the apps tabs, we can simulate a user swiping until
+      // they come to the Settings app icon.  Since the container view 
+      // is scrollable, we can use a UiScrollable object.
+      UiScrollable appViews = new UiScrollable(new UiSelector()
+         .scrollable(true));
+      
+      // Set the swiping mode to horizontal (the default is vertical)
+      appViews.setAsHorizontalList();
+      
+      // Create a UiSelector to find the Settings app and simulate      
+      // a user click to launch the app. 
+      UiObject settingsApp = appViews.getChildByText(new UiSelector()
+         .className(android.widget.TextView.class.getName()), 
+         "Settings");
+      settingsApp.clickAndWaitForNewWindow();
+      
+      // Validate that the package name is the expected one
+      UiObject settingsValidation = new UiObject(new UiSelector()
+         .packageName("com.android.settings"));
+      assertTrue("Unable to detect Settings", 
+         settingsValidation.exists());   
+  }   
+}
+</pre>
+
+<h2 id="builddeploy">Building and Deploying Your uiautomator Tests</h2>
+<p>Once you have coded your test, follow these steps to build and deploy your test JAR to your target Android test device:</p>
+<ol>
+<li>Create the required build configuration files to build the output JAR. To generate the build configuration files, open a terminal and run the following command:
+<pre>&lt;android-sdk&gt;/tools/android create uitest-project -n &lt;name&gt; -t 1 -p &lt;path&gt;</pre>
+The <code>&lt;name&gt;</code> is the name of the project that contains your <code>uiautomator</code> test source files, and the <code>&lt;path&gt;</code> is the path to the corresponding project directory. 
+</li>
+<LI>From the command line, set the <code>ANDROID_HOME</code> variable: 
+<ul>
+<li>In Windows: 
+<pre>set ANDROID_HOME=&lt;path_to_your_sdk&gt;</pre>
+</li>
+<li>In UNIX: 
+<pre>export ANDROID_HOME=&lt;path_to_your_sdk&gt;</pre>
+</li>
+</ul>
+</LI>
+<li>Go to the project directory where your <code>build.xml</code> file is located and build your test JAR. <pre>ant build</pre></li>
+<li>Deploy your generated test JAR file to the test device by using the <code>adb push</code> command: <pre>adb push &lt;path_to_output_jar&gt; /data/local/tmp/</pre>
+<p>Here’s an example: <pre>adb push ~/dev/workspace/LaunchSettings/bin/LaunchSettings.jar /data/local/tmp/</pre></p>
+</li>
+</ol>
+
+<h2 id="running">Running uiautomator Tests</h2>
+<p>Here’s an example of how to run a test that is implemented in the <code>LaunchSettings.jar</code> file. The tests are bundled in the <code>com.uia.example.my</code> package:</p>
+<pre>adb shell uiautomator runtest LaunchSettings.jar -c com.uia.example.my.LaunchSettings</pre>
+<p>To learn more about the syntax, subcommands, and options for <code>uiautomator</code>, see the <a href="../../tools/help/uiautomator/index.html"><code>uiautomator</code></a> reference.</p>
+
+
+<h2 id="bestpractices">Best Practices</h2>
+<p>Here are some best practices for functional UI testing with the <code>uiautomator</code> framework: </p>
+<ul>
+<LI>Ensure that you validate the same UI functions on your application across the various types of devices that your application might run on (for example, devices with different screen densities).</LI>
+<li>You should also test your UI against common scenarios such as in-coming phone calls, network interruptions, and user-initiated switching to other applications on the device.</li>
+</ul>
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

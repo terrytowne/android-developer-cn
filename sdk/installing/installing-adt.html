@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Installing the Eclipse Plugin | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Installing the Eclipse Plugin</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <p>Android offers a custom plugin for the Eclipse IDE, called Android
+Development Tools (ADT). This plugin provides a powerful, integrated
+environment in which to develop Android apps. It extends the capabilities
+of Eclipse to let you quickly set up new Android projects, build an app
+UI, debug your app, and export signed (or unsigned) app packages (APKs) for distribution.
+</p>
+
+<p>If you need to install Eclipse, you can download it from <a href=
+"http://www.eclipse.org/downloads/">eclipse.org/downloads/</a>.</p>
+
+
+<p class="note"><strong>Note:</strong> If you prefer to work in a different IDE, you do not need to
+install Eclipse or ADT. Instead, you can directly use the SDK tools to build and
+debug your application.</p>
+
+
+
+<h2 id="Download">Download the ADT Plugin</h2>
+
+
+<ol>
+    <li>Start Eclipse, then select <strong>Help</strong> &gt; <strong>Install New
+Software</strong>.</li>
+    <li>Click <strong>Add</strong>, in the top-right corner.</li>
+    <li>In the Add Repository dialog that appears, enter "ADT Plugin" for the <em>Name</em> and the
+following URL for the <em>Location</em>:
+      <pre>https://dl-ssl.google.com/android/eclipse/</pre>
+    </li>
+    <li>Click <strong>OK</strong>.
+      <p>If you have trouble acquiring the plugin, try using "http" in the Location URL,
+instead of "https" (https is preferred for security reasons).</p></li>
+    <li>In the Available Software dialog, select the checkbox next to Developer Tools and click
+<strong>Next</strong>.</li>
+    <li>In the next window, you'll see a list of the tools to be downloaded. Click
+<strong>Next</strong>. </li>
+    <li>Read and accept the license agreements, then click <strong>Finish</strong>.
+      <p>If you get a security warning saying that the authenticity or validity of
+the software can't be established, click <strong>OK</strong>.</p></li>
+    <li>When the installation completes, restart Eclipse. </li>
+</ol>
+
+
+
+<h2 id="Configure">Configure the ADT Plugin</h2>
+
+<p>Once Eclipse restarts, you
+  must specify the location of your Android SDK directory:</p>
+
+<ol>
+    <li>In the "Welcome to Android Development" window that appears, select <strong>Use
+existing SDKs</strong>.</li>
+    <li>Browse and select the location of the Android SDK directory you recently
+downloaded and unpacked.</li>
+    <li>Click <strong>Next</strong>.</li>
+</ol>
+
+<p>Your Eclipse IDE is now set up to develop Android apps, but you need to add
+the latest SDK platform tools and an Android platform to your environment.
+To get these packages for your SDK, continue to
+<a href="../../sdk/installing/adding-packages.html">Adding Platforms and Packages</a>.</p>
+
+
+<h2 id="tmgr">Download the ADT Translation Manager Plugin</h2>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+<h2>Join the translation pilot</h2>
+<p>Google Play is offering <a
+href="../../distribute/googleplay/publish/localizing.html#gp-trans">
+translation services</a> as part of a pilot program. If you are interested,
+sign up for the pilot program on the APK page in your Developer Console.</p>
+</div></div>
+
+<p>ADT Translation Manager Plugin is an Android SDK Tools plugin that helps
+you work with strings that you are localizing. It's designed to work
+with the translation services built into the Google Play Developer
+Console that let you quickly find and purchase translations of
+your app from a list of pre-qualified vendors. </p>
+
+<p>The plugin simplifies the management of strings
+during translation. It lets you easily export your default strings
+and upload them directly to the Developer Console, from which you
+can get estimates or purchase translations. When your translations
+are ready, the plugin lets you quickly download and import them
+back into your project. During import, it moves all of the translated resources into
+the correct locations under <code>res/values</code>, so that
+localization works instantly.</p>
+
+<p>For more information about translation services in Google Play, see <a
+href="../../distribute/googleplay/publish/localizing.html#gp-trans">Purchase professional translations through the Developer Console</a>.</p>
+
+<p>To install the ADT Translation Manager Plugin follow these steps:</p>
+
+<ol>
+    <li>Install the ADT Plugin, as described above. </li>
+    <li>In Eclipse, select <strong>Help</strong> &gt; <strong>Install New
+Software</strong>.</li>
+    <li>Click <strong>Add</strong>, in the top-right corner.</li>
+    <li>In the Add Repository dialog that appears, enter a repository name for the <em>Name</em>
+      and the following URL for the <em>Location</em>:
+      <pre>https://dl.google.com/alt/</pre>
+    </li>
+    <li>Click <strong>OK</strong>.
+    <li>In the Available Software dialog, select the checkbox next to <strong>Android Developer Tools
+       - Translation Manager</strong> and click <strong>Next</strong>.</li>
+    <li>In the next window, you'll see a list of the tools to be downloaded. Click
+<strong>Next</strong>. </li>
+    <li>Read and accept the license agreements, then click <strong>Finish</strong>.
+      <p>If you get a security warning saying that the authenticity or validity of
+the software can't be established, click <strong>OK</strong>.</p></li>
+    <li>When the installation completes, restart Eclipse. </li>
+</ol>
+
+<h4 id="translation-manager-notes">Installation notes</h4>
+
+<ul>
+<li>The full ADT Plugin must be installed in your Eclipse environment before you install the ADT Translation Manager Plugin.</li>
+<li>ADT Translation Manager Plugin is designed for use with the translation services offered through the Google Play Developer Console. It is not designed for general purpose import/export of strings. </li>
+<li>To use the plugin, you must <a href="../../distribute/googleplay/publish/register.html">set up a Developer Console account</a>. </li>
+<li>Currently, translation services are available through the Developer Console only as part of a pilot program. To use the plugin, you must first sign up for the pilot program by visiting the Developer Console.</li>
+<li>If you downloaded ADT as part of the SDK ADT bundle, you may encounter an error when attempting to download the ADT Translation Manager Plugin from the remote repository. In that case, open the <strong>Install New
+Software</strong>, uncheck "Contact all update sites during install to find required software" at the bottom and try again. </li>
+</ul>
+
+
+
+<h2 id="Troubleshooting">Troubleshooting ADT Installation</h2>
+
+<p> If you are having trouble downloading the ADT plugin after following the
+steps above, here are some suggestions: </p>
+
+<ul>
+  <li>If Eclipse can not find the remote update site containing the ADT plugin,
+try changing the remote site URL to use http, rather than https. That is, set
+the Location for the remote site to:
+<pre>http://dl-ssl.google.com/android/eclipse/</pre></li>
+<li>If you are behind a firewall (such as a corporate firewall), make sure that
+you have properly configured your proxy settings in Eclipse. In Eclipse,
+you can configure proxy information from the main Eclipse menu in
+<strong>Window</strong> (on Mac OS X, <strong>Eclipse</strong>) &gt;
+<strong>Preferences</strong> &gt; <strong>General</strong> &gt; <strong>Network
+Connections</strong>.</li>
+</ul>
+
+<p> If you are still unable to use Eclipse to download the ADT plugin as a
+remote update site, you can download the ADT zip file to your local machine and
+manually install it:</p>
+
+<ol>
+  <li>Download the ADT Plugin zip file (do not unpack it):
+
+  <table class="download">
+    <tr>
+      <th>Package</th>
+      <th>Size</th>
+      <th>MD5 Checksum</th>
+  </tr>
+  <tr>
+    <td>
+      <a href="http://dl.google.com/android/ADT-22.3.0.zip">ADT-22.3.0.zip</a>
+    </td>
+    <td>14493723 bytes</td>
+    <td>0189080b23dfa0f866adafaaafcc34ab</td>
+  </tr>
+</table>
+</li>
+
+</li>
+  <li>Start Eclipse, then select <strong>Help</strong> &gt; <strong>Install New
+Software</strong>.</li>
+  <li>Click <strong>Add</strong>, in the top-right corner.</li>
+  <li>In the Add Repository dialog, click <strong>Archive</strong>.</li>
+  <li>Select the downloaded ADT-22.3.0.zip file and click <strong>OK</strong>.</li>
+  <li>Enter "ADT Plugin" for the name and click <strong>OK</strong>.
+  <li>In the Available Software dialog, select the checkbox next to Developer Tools and click
+<strong>Next</strong>.</li>
+  <li>In the next window, you'll see a list of the tools to be downloaded. Click
+<strong>Next</strong>. </li>
+  <li>Read and accept the license agreements, then click <strong>Finish</strong>.
+    <p>If you get a security warning saying that the authenticity or validity of
+the software can't be established, click <strong>OK</strong>.</p></li>
+  <li>When the installation completes, restart Eclipse. </li>
+</ol>
+
+<p>To update your plugin once you've installed using the zip file, you will have
+to follow these steps again instead of the default update instructions.</p>
+
+<h4>Other install errors</h4>
+
+<p>Note that there are features of ADT that require some optional
+Eclipse packages (for example, WST). If you encounter an error when
+installing ADT, your Eclipse installion might not include these packages.
+For information about how to quickly add the necessary packages to your
+Eclipse installation, see the troubleshooting topic
+<a href="../../resources/faq/troubleshooting.html#installeclipsecomponents">ADT
+Installation Error: "requires plug-in org.eclipse.wst.sse.ui"</a>.</p>
+
+<h4>For Linux users</h4>
+<p>If you encounter this error when installing the ADT Plugin for Eclipse:
+<pre>
+An error occurred during provisioning.
+Cannot connect to keystore.
+JKS</pre>
+<p>
+...then your development machine lacks a suitable Java VM. Installing Sun
+Java 6 will resolve this issue and you can then reinstall the ADT
+Plugin.</p>
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

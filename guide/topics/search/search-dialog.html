@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Creating a Search Interface | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Creating a Search Interface</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+
+<h2>In this document</h2>
+<ol>
+  <li><a href="#TheBasics">The Basics</a></li>
+  <li><a href="#SearchableConfiguration">Creating a Searchable Configuration</a></li>
+  <li><a href="#SearchableActivity">Creating a Searchable Activity</a>
+    <ol>
+      <li><a href="#DeclaringSearchableActivity">Declaring a searchable activity</a></li>
+      <li><a href="#PerformingSearch">Performing a search</a></li>
+    </ol>
+  </li>
+  <li><a href="#SearchDialog">Using the Search Dialog</a>
+    <ol>
+      <li><a href="#InvokingTheSearchDialog">Invoking the search dialog</a></li>
+      <li><a href="#LifeCycle">The impact of the search dialog on your activity lifecycle</a></li>
+      <li><a href="#SearchContextData">Passing search context data</a></li>
+    </ol>
+  </li>
+  <li><a href="#UsingSearchWidget">Using the Search Widget</a>
+    <ol>
+      <li><a href="#ConfiguringWidget">Configuring the search widget</a></li>
+      <li><a href="#WidgetFeatures">Other search widget features</a></li>
+      <li><a href="#UsingBoth">Using both the widget and the dialog</a></li>
+    </ol>
+  </li>
+  <li><a href="#VoiceSearch">Adding Voice Search</a></li>
+  <li><a href="#SearchSuggestions">Adding Search Suggestions</a></li>
+</ol>
+
+<h2>Key classes</h2>
+<ol>
+<li><code><a href="../../../reference/android/app/SearchManager.html">SearchManager</a></code></li>
+<li><code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code></li>
+</ol>
+
+<h2>Related samples</h2>
+<ol>
+<li><a href="../../../resources/samples/SearchableDictionary/index.html">Searchable
+Dictionary</a></li>
+<li><a href="../../../resources/samples/ApiDemos/src/com/example/android/apis/view/SearchViewActionBar.html">SearchView
+    in the Action Bar</a></li>
+<li><a href="../../../resources/samples/ApiDemos/src/com/example/android/apis/view/SearchViewFilterMode.html">SearchView
+    filter mode</a></li>
+</ol>
+
+<h2>Downloads</h2>
+<ol>
+<li><a href="../../../design/downloads/index.html#action-bar-icon-pack">Action Bar
+Icon Pack</a></li>
+</ol>
+
+</div>
+</div>
+
+<p>When you're ready to add search functionality to your application, Android helps you implement
+the user interface with either a search dialog that appears at the top of the activity window or a
+search widget that you can insert in your layout. Both the search dialog and the widget can deliver
+the user's search query to a specific activity in your application. This way, the user can initiate
+a search from any activity where the search dialog or widget is available, and the system starts the
+appropriate activity to perform the search and present results.</p>
+
+<p>Other features available for the search dialog and widget include:</p>
+
+<ul>
+  <li>Voice search</li>
+  <li>Search suggestions based on recent queries</li>
+  <li>Search suggestions that match actual results in your application data</li>
+</ul>
+
+<p>This guide shows you how to set up your application to provide a search interface
+that's assisted by the Android system to deliver search queries, using either the
+search dialog or the search widget.</p>
+
+
+<h2 id="TheBasics">The Basics</h2>
+
+<div class="figure" style="width:250px">
+<img src="../../../images/search/search-ui.png" alt="" height="417" />
+<p class="img-caption"><strong>Figure 1.</strong> Screenshot of an application's search dialog.</p>
+</div>
+
+<p>Before you begin, you should decide whether you'll implement your search interface using the
+search dialog or the search widget. Both provide the same search features, but in slightly different
+ways:</p>
+
+<ul>
+  <li>The <strong>search dialog</strong> is a UI component that's controlled by the Android system.
+When activated by the user, the search dialog appears at the top of the activity, as shown in figure
+1.
+    <p>The Android system controls all events in the search dialog. When the user
+submits a query, the system delivers the query to the activity that you specify to
+handle searches. The dialog can also provide search suggestions while the user types.</p></li>
+
+  <li>The <strong>search widget</strong> is an instance of <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> that
+you can place anywhere in your layout. By default, the search widget behaves like a standard <code><a href="../../../reference/android/widget/EditText.html">EditText</a></code> widget and doesn't do anything, but you can configure it so that the
+Android system handles all input events, delivers queries to the appropriate activity, and provides
+search suggestions (just like the search dialog). However, the search widget is available only in
+Android 3.0 (API Level 11) and higher.
+
+<p class="note"><strong>Note:</strong> If you want, you can handle all user input into the
+search widget yourself, using various callback methods and listeners. This document, however,
+focuses on how to integrate the search widget with the system for an assisted search
+implementation. If you want to handle all user input yourself, read the reference documentation for
+<code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> and its nested interfaces. </p></li>
+</ul>
+
+<p>When the user executes a search from the search dialog or a search widget, the system creates an
+<code><a href="../../../reference/android/content/Intent.html">Intent</a></code> and stores the user query in it. The system then starts the activity
+that you've declared to handle searches (the "searchable activity") and delivers it the intent. To
+set up your application for this kind of assisted search, you need the following:</p>
+
+<ul>
+  <li>A searchable configuration
+  <p>An XML file that configures some settings for the search dialog or widget. It includes settings
+for features such as voice search, search suggestion, and hint text for the search box.</p></li>
+  <li>A searchable activity
+  <p>The <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> that receives the search query, searches your
+data, and displays the search results.</p></li>
+  <li>A search interface, provided by either:
+    <ul>
+      <li>The search dialog
+        <p>By default, the search dialog is hidden, but appears at the top of the screen when
+          you call <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code> (when the user presses your
+          Search button).</p>
+      </li>
+      <li>Or, a <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> widget
+        <p>Using the search widget allows you to put the search box anywhere in your activity.
+Instead of putting it in your activity layout, you should usually use
+<code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> as an 
+<a href="../../../guide/topics/ui/actionbar.html#ActionView">action view in the Action Bar</a>.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>The rest of this document shows you how to create the searchable configuration, searchable
+activity, and implement a search interface with either the search dialog or search widget.</p>
+
+
+<h2 id="SearchableConfiguration">Creating a Searchable Configuration</h2>
+
+<p>The first thing you need is an XML file called the searchable configuration. It configures
+certain UI aspects of the search dialog or widget and defines how features such as suggestions and
+voice search behave. This file is traditionally named <code>searchable.xml</code> and must be saved in
+the <code>res/xml/</code> project directory.</p>
+
+<p class="note"><strong>Note:</strong> The system uses this file to instantiate a <code><a href="../../../reference/android/app/SearchableInfo.html">SearchableInfo</a></code> object, but you cannot create this object yourself at
+runtime&mdash;you must declare the searchable configuration in XML.</p>
+
+<p>The searchable configuration file must include the <a
+href="../../../guide/topics/search/searchable-config.html#searchable-element"><code>&lt;searchable&gt;</code></a> element as the root node and specify one
+or more attributes. For example:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_label"
+    android:hint="@string/search_hint" >
+&lt;/searchable>
+</pre>
+
+<p>The <code>android:label</code> attribute is the only required attribute. It points to a string
+resource, which should be the application name. This label isn't actually visible to the
+user until you enable search suggestions for Quick Search Box. At that point, this label is visible
+in the list of Searchable items in the system Settings.</p>
+
+<p>Though it's not required, we recommend that you always include the <code>android:hint</code>
+attribute, which provides a hint string in the search box before users
+enters a query. The hint is important because it provides important clues to users about what
+they can search.</p>
+
+<p class="note"><strong>Tip:</strong> For consistency among other
+Android applications, you should format the string for <code>android:hint</code> as "Search
+&lt;content-or-product&gt;". For example, "Search songs and artists" or "Search
+YouTube".</p>
+
+<p>The <a
+href="../../../guide/topics/search/searchable-config.html#searchable-element"><code>&lt;searchable&gt;</code></a> element accepts several other attributes. However, you don't need
+most attributes until you add features such as <a href="#SearchSuggestions">search suggestions</a>
+and <a href="#VoiceSearch">voice search</a>. For detailed information about the searchable
+configuration file, see the <a
+href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a> reference
+document.</p>
+
+
+
+<h2 id="SearchableActivity">Creating a Searchable Activity</h2>
+
+<p>A searchable activity is the <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> in your application that performs
+searches based on a query string and presents the search results.</p>
+
+<p>When the user executes a search in the search dialog or widget, the system starts your
+searchable activity and delivers it the search query in an <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> with the  <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> action. Your
+searchable activity retrieves the query from the intent's <code><a href="../../../reference/android/app/SearchManager.html#QUERY">QUERY</a></code> extra, then searches your data and presents the results.</p>
+
+<p>Because you may include the search dialog or widget in any other activity in your application,
+the system must know which activity is your searchable activity, so it can properly deliver the
+search query. So, you must first declare your searchable activity in the Android manifest file.</p>
+
+
+<h3 id="DeclaringSearchableActivity">Declaring a searchable activity</h3>
+
+<p>If you don't have one already, create an <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> that will perform
+searches and present results. You don't need to implement the search functionality yet&mdash;just
+create an activity that you can declare in the manifest. Inside the manifest's <a
+href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a>
+element:</p>
+<ol>
+  <li>Declare the activity to accept the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent, in an
+<a href="../../../guide/topics/manifest/intent-filter-element.html"><code>&lt;intent-filter&gt;</code></a>
+element.</li>
+  <li>Specify the searchable configuration to use, in a <a
+href="../../../guide/topics/manifest/meta-data-element.html"><code>&lt;meta-data&gt;</code></a>
+element.</li>
+</ol>
+
+<p>For example:</p>
+
+<pre>
+&lt;application ... >
+    &lt;activity android:name=".SearchableActivity" >
+        &lt;intent-filter>
+            &lt;action android:name="android.intent.action.SEARCH" />
+        &lt;/intent-filter>
+        &lt;meta-data android:name="android.app.searchable"
+                   android:resource="@xml/searchable"/>
+    &lt;/activity>
+    ...
+&lt;/application>
+</pre>
+
+<p>The <code>&lt;meta-data&gt;</code> element must include the <code>android:name</code> attribute with a
+value of <code>"android.app.searchable"</code> and the <code>android:resource</code> attribute with a
+reference to the searchable configuration file (in this example, it
+refers to the <code>res/xml/searchable.xml</code> file).</p>
+
+<p class="note"><strong>Note:</strong> The <a
+href="../../../guide/topics/manifest/intent-filter-element.html"><code>&lt;intent-filter&gt;</code></a> does not need a <a
+href="../../../guide/topics/manifest/category-element.html"><code>&lt;category&gt;</code></a> with the
+<code>DEFAULT</code> value (which you usually see in <a
+href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a> elements),
+because the system delivers the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent explicitly to
+your searchable activity, using its component name.</p>
+
+
+
+<h3 id="PerformingSearch">Performing a search</h3>
+
+<p>Once you have declared your searchable activity in the manifest, performing a search in your
+searchable activity involves three steps:</p>
+
+<ol>
+  <li><a href="#ReceivingTheQuery">Receiving the query</a></li>
+  <li><a href="#SearchingYourData">Searching your data</a></li>
+  <li><a href="#PresentingTheResults">Presenting the results</a></li>
+</ol>
+
+<p>Traditionally, your search results should be presented in a <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>, so
+you might want your searchable activity to extend <code><a href="../../../reference/android/app/ListActivity.html">ListActivity</a></code>. It includes
+a default layout with a single <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code> and provides several
+convenience methods for working with the <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>.</p>
+
+
+<h4 id="ReceivingTheQuery">Receiving the query</h4>
+
+<p>When a user executes a search from the search dialog or widget, the system starts your
+searchable activity and sends it a <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent. This intent
+carries the search query in the
+<code><a href="../../../reference/android/app/SearchManager.html#QUERY">QUERY</a></code> string extra. You must check for
+this intent when the activity starts and extract the string. For example, here's how you can get the
+search query when your searchable activity starts:</p>
+
+<pre>
+&#64;Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.search);
+
+    // Get the intent, verify the action and get the query
+    Intent intent = getIntent();
+    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+      String query = intent.getStringExtra(SearchManager.QUERY);
+      doMySearch(query);
+    }
+}
+</pre>
+
+<p>The <code><a href="../../../reference/android/app/SearchManager.html#QUERY">QUERY</a></code> string is always included with
+the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent. In this example, the query is
+retrieved and passed to a local <code>doMySearch()</code> method where the actual search operation
+is done.</p>
+
+
+<h4 id="SearchingYourData">Searching your data</h4>
+
+<p>The process of storing and searching your data is unique to your application.
+You can store and search your data in many ways, but this guide does not show you how to store your
+data and search it. Storing and searching your data is something you should carefully consider in
+terms of your needs and your data format. However, here are some tips you might be able to
+apply:</p>
+
+  <ul>
+    <li>If your data is stored in a SQLite database on the device, performing a full-text search
+(using FTS3, rather than a <code>LIKE</code> query) can provide a more robust search across text data and
+can produce results significantly faster. See <a href="http://sqlite.org/fts3.html">sqlite.org</a>
+for information about FTS3 and the <code><a href="../../../reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a></code> class for
+information about SQLite on Android. Also look at the <a
+href="../../../resources/samples/SearchableDictionary/index.html">Searchable Dictionary</a> sample
+application to see a complete SQLite implementation that performs searches with FTS3.</li>
+    <li>If your data is stored online, then the perceived search performance might be
+inhibited by the user's data connection. You might want to display a spinning progress wheel until
+your search returns. See <code><a href="../../../reference/android/net/package-summary.html">android.net</a></code> for a reference of network APIs and <a
+href="../../../guide/topics/ui/dialogs.html#ProgressDialog">Creating a Progress Dialog</a>
+for information about how to display a progress wheel.</li>
+  </ul>
+
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+<h2>About Adapters</h2>
+<p>An <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> binds each item from a set of data into a
+<code><a href="../../../reference/android/view/View.html">View</a></code> object. When the <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code>
+is applied to a <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>, each piece of data is inserted as an individual
+view into the list. <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> is just an interface, so implementations such as <code><a href="../../../reference/android/widget/CursorAdapter.html">CursorAdapter</a></code> (for binding data from a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code>) are needed.
+If none of the existing implementations work for your data, then you can implement your own from
+<code><a href="../../../reference/android/widget/BaseAdapter.html">BaseAdapter</a></code>. Install the SDK Samples package for API Level 4 to see the
+original version of the Searchable Dictionary, which creates a custom adapter to read data from
+a file.</p>
+</div>
+</div>
+
+<p>Regardless of where your data lives and how you search it, we recommend that you return search
+results to your searchable activity with an <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code>. This way, you can easily
+present all the search results in a <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>. If your data comes from a
+SQLite database query, you can apply your results to a <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>
+using a <code><a href="../../../reference/android/widget/CursorAdapter.html">CursorAdapter</a></code>. If your data comes in some other type of format, then
+you can create an extension of <code><a href="../../../reference/android/widget/BaseAdapter.html">BaseAdapter</a></code>.</p>
+
+
+<h4 id="PresentingTheResults">Presenting the results</h4>
+
+<p>As discussed above, the recommended UI for your search results is a <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>, so you might want your searchable activity to extend <code><a href="../../../reference/android/app/ListActivity.html">ListActivity</a></code>. You can then call <code><a href="../../../reference/android/app/ListActivity.html#setListAdapter(android.widget.ListAdapter)">setListAdapter()</a></code>, passing it an <code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> that is bound to your data. This injects all the
+search results into the activity <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>.</p>
+
+<p>For more help presenting your results in a list, see the <code><a href="../../../reference/android/app/ListActivity.html">ListActivity</a></code>
+documentation.</p>
+
+<p>Also see the <a
+href="../../../resources/samples/SearchableDictionary/index.html">Searchable Dictionary</a> sample
+for an a complete demonstration of how to search an SQLite database and use an
+<code><a href="../../../reference/android/widget/Adapter.html">Adapter</a></code> to provide results in a <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>.</p>
+
+
+
+
+
+<h2 id="SearchDialog">Using the Search Dialog</h2>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+  <h2>Should I use the search dialog or the widget?</h2>
+  <p>The answer depends mostly on whether you are developing for Android 3.0 (API Level 11 or
+higher), because the <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> widget was introduced in Android 3.0. So,
+if you are developing your application for a version of Android lower than 3.0, the search widget is
+not an option and you should use the search dialog to implement your search interface.</p>
+  <p>If you <em>are</em> developing for Android 3.0 or higher, then the decision depends more on
+your needs. In most cases, we recommend that you use the search widget as an "action view" in the
+Action Bar. However, it might not be an option for you to put the search
+widget in the Action Bar for some reason (perhaps there's not enough space or you don't use the
+Action Bar). So, you might instead want to put the search widget somewhere in your activity layout.
+And if all else fails, you can still use the search dialog if you prefer to keep the search box
+hidden. In fact, you might want to offer both the dialog and the widget in some cases. For more
+information about the widget, skip to <a href="#UsingSearchWidget">Using the Search Widget</a>.</p>
+</div>
+</div>
+
+<p>The search dialog provides a floating search box at the top of the screen, with the application
+icon on the left. The search dialog can provide search suggestions as the user types and, when
+the user executes a search, the system sends the search query to a
+searchable activity that performs the search. However, if you are developing
+your application for devices running Android 3.0, you should consider using the search widget
+instead (see the side box).</p>
+
+<p>The search dialog is always hidden by default, until the user activates it. Your application
+can activate the search dialog by calling <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code>. However, this method doesn't work
+until you enable the search dialog for the activity.</p>
+
+<p>To enable the search dialog, you must indicate to the system which searchable activity should
+receive search queries from the search dialog, in order to perform searches. For example, in the
+previous section about <a href="#SearchableActivity">Creating a Searchable Activity</a>, a
+searchable activity named <code>SearchableActivity</code> was created. If you want a separate activity,
+named <code>OtherActivity</code>, to show the search dialog and deliver searches to <code>SearchableActivity</code>, you must declare in the manifest that <code>SearchableActivity</code> is the
+searchable activity to use for the search dialog in <code>OtherActivity</code>.</p>
+
+<p>To declare the searchable activity for an activity's search dialog,
+add a <a href="../../../guide/topics/manifest/meta-data-element.html"><code>&lt;meta-data&gt;</code></a>
+element inside the respective activity's <a
+href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a> element.
+The <a href="../../../guide/topics/manifest/meta-data-element.html"><code>&lt;meta-data&gt;</code></a>
+element must include the <code>android:value</code> attribute that specifies the searchable activity's
+class name and the <code>android:name</code> attribute with a value of <code>"android.app.default_searchable"</code>.</p>
+
+<p>For example, here is the declaration for
+both a searchable activity, <code>SearchableActivity</code>, and another activity, <code>OtherActivity</code>, which uses <code>SearchableActivity</code> to perform searches executed from its
+search dialog:</p>
+
+<pre>
+&lt;application ... >
+    &lt;!-- this is the searchable activity; it performs searches --&gt;
+    &lt;activity android:name=".SearchableActivity" >
+        &lt;intent-filter>
+            &lt;action android:name="android.intent.action.SEARCH" />
+        &lt;/intent-filter>
+        &lt;meta-data android:name="android.app.searchable"
+                   android:resource="@xml/searchable"/>
+    &lt;/activity>
+
+    &lt;!-- this activity enables the search dialog to initiate searches
+         in the SearchableActivity --&gt;
+    &lt;activity android:name=".OtherActivity" ... >
+        &lt;!-- enable the search dialog to send searches to SearchableActivity -->
+        <b>&lt;meta-data android:name="android.app.default_searchable"
+                   android:value=".SearchableActivity" /&gt;</b>
+    &lt;/activity>
+    ...
+&lt;/application>
+</pre>
+
+<p>Because the <code>OtherActivity</code> now includes a <a
+href="../../../guide/topics/manifest/meta-data-element.html"><code>&lt;meta-data&gt;</code></a>
+element to declare which searchable activity to use for searches, the activity has enabled the
+search dialog.
+While the user is in this activity, the <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code> method activates the search dialog.
+When the user executes the search, the system starts <code>SearchableActivity</code> and delivers it
+the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent.</p>
+
+<p class="note"><strong>Note:</strong> The searchable activity itself provides the search dialog
+by default, so you don't need to add this declaration to <code>SearchableActivity</code>.</p>
+
+<p>If you want every activity in your application to provide the search dialog, insert the above <a
+href="../../../guide/topics/manifest/meta-data-element.html"><code>&lt;meta-data&gt;</code></a>
+element as a child of the <a
+href="../../../guide/topics/manifest/application-element.html"><code>&lt;application&gt;</code></a>
+element, instead of each <a
+href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a>. This
+way, every activity inherits the value, provides the search dialog, and delivers searches to
+the same searchable activity. (If you have multiple searchable activities, you can override the
+default searchable activity by placing a different <a
+href="../../../guide/topics/manifest/meta-data-element.html"><code>&lt;meta-data&gt;</code></a>
+declaration inside individual activities.)</p>
+
+<p>With the search dialog now enabled for your activities, your application is ready to perform
+searches.</p>
+
+
+<h3 id="InvokingTheSearchDialog">Invoking the search dialog</h3>
+
+<p>Although some devices provide a dedicated Search button, the behavior of the button may vary
+between devices and many devices do not provide a Search button at all. So when using the search
+dialog, you <strong>must provide a search button in your UI</strong> that activates the search
+dialog by calling <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code>.</p>
+
+<p>For instance, you should add a Search button in your <a
+href="../../../guide/topics/ui/menus.html#options-menu">Options Menu</a> or UI
+layout that calls <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code>. For consistency with
+the Android system and other apps, you should label your button with the Android Search icon that's
+available from the <a href="../../../design/downloads/index.html#action-bar-icon-pack">Action Bar
+Icon Pack</a>.</p>
+
+<p class="note"><strong>Note:</strong> If your app uses the <a
+href="../../../guide/topics/ui/actionbar.html">action bar</a>, then you should not use
+the search dialog for your search interface. Instead, use the <a href="#UsingSearchWidget">search
+widget</a> as a collapsible view in the action bar.</p>
+
+<p>You can also enable "type-to-search" functionality, which activates the search dialog when the
+user starts typing on the keyboard&mdash;the keystrokes are inserted into the search dialog. You can
+enable type-to-search in your activity by calling
+<code><a href="../../../reference/android/app/Activity.html#setDefaultKeyMode(int)">setDefaultKeyMode</a></code>(<code><a href="../../../reference/android/app/Activity.html#DEFAULT_KEYS_SEARCH_LOCAL">DEFAULT_KEYS_SEARCH_LOCAL</a></code>) during your activity's
+<code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> method.</p>
+
+
+<h3 id="LifeCycle">The impact of the search dialog on your activity lifecycle</h3>
+
+<p>The search dialog is a <code><a href="../../../reference/android/app/Dialog.html">Dialog</a></code> that floats at the top of the
+screen. It does not cause any change in the activity stack, so when the search dialog appears, no
+lifecycle methods (such as <code><a href="../../../reference/android/app/Activity.html#onPause()">onPause()</a></code>) are called. Your activity just
+loses input focus, as input focus is given to the search dialog.
+</p>
+
+<p>If you want to be notified when the search dialog is activated, override the <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code> method. When the system calls this method, it is an
+indication that your activity has lost input focus to the search dialog, so you can do any
+work appropriate for the event (such as pause
+a game). Unless you are <a
+href="#SearchContextData">passing search context data</a>
+(discussed below), you should end the method by calling the super class implementation. For
+example:</p>
+
+<pre>
+&#64;Override
+public boolean onSearchRequested() {
+    pauseSomeStuff();
+    return super.onSearchRequested();
+}
+</pre>
+
+<p>If the user cancels search by pressing the <em>Back</em> button, the search dialog closes and the
+activity
+regains input focus. You can register to be notified when the search dialog is
+closed with <code><a href="../../../reference/android/app/SearchManager.html#setOnDismissListener(android.app.SearchManager.OnDismissListener)">setOnDismissListener()</a></code>
+and/or <code><a href="../../../reference/android/app/SearchManager.html#setOnCancelListener(android.app.SearchManager.OnCancelListener)">setOnCancelListener()</a></code>. You
+should need to register only the <code><a href="../../../reference/android/app/SearchManager.OnDismissListener.html">OnDismissListener</a></code>, because it is called every time the search dialog closes. The <code><a href="../../../reference/android/app/SearchManager.OnCancelListener.html">OnCancelListener</a></code> only pertains to events in which the
+user explicitly exited the search dialog, so it is not called when a search is executed (in which
+case, the search dialog naturally disappears).</p>
+
+<p>If the current activity is not the searchable activity, then the normal activity lifecycle
+events are triggered once the user executes a search (the current activity receives <code><a href="../../../reference/android/app/Activity.html#onPause()">onPause()</a></code> and so forth, as
+described in the <a
+href="../../../guide/components/activities.html#Lifecycle">Activities</a>
+document). If, however, the current activity is the searchable activity, then one of two
+things happens:</p>
+
+<ol type="a">
+  <li>By default, the searchable activity receives the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent with a call to <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> and a new instance of the
+activity is brought to the top of the activity stack. There are now two instances of your
+searchable activity in the activity stack (so pressing the <em>Back</em> button goes back to the
+previous
+instance of the searchable activity, rather than exiting the searchable activity).</li>
+  <li>If you set <code>android:launchMode</code> to <code>"singleTop"</code>, then the
+searchable activity receives the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent with a call
+to <code><a href="../../../reference/android/app/Activity.html#onNewIntent(android.content.Intent)">onNewIntent(Intent)</a></code>, passing the new <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent here. For example, here's how you might handle
+this case, in which the searchable activity's launch mode is <code>"singleTop"</code>:
+<pre>
+&#64;Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.search);
+    handleIntent(getIntent());
+}
+
+&#64;Override
+protected void onNewIntent(Intent intent) {
+    setIntent(intent);
+    handleIntent(intent);
+}
+
+private void handleIntent(Intent intent) {
+    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+      String query = intent.getStringExtra(SearchManager.QUERY);
+      doMySearch(query);
+    }
+}
+</pre>
+
+<p>Compared to the example code in the section about <a href="#PerformingSearch">Performing a
+Search</a>, all the code to handle the
+search intent is now in the <code>handleIntent()</code> method, so that both <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> and <code><a href="../../../reference/android/app/Activity.html#onNewIntent(android.content.Intent)">onNewIntent()</a></code> can execute it.</p>
+
+<p>When the system calls <code><a href="../../../reference/android/app/Activity.html#onNewIntent(android.content.Intent)">onNewIntent(Intent)</a></code>, the activity has
+not been restarted, so the <code><a href="../../../reference/android/app/Activity.html#getIntent()">getIntent()</a></code> method
+returns the same intent that was received with <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code>. This is why you should call <code><a href="../../../reference/android/app/Activity.html#setIntent(android.content.Intent)">setIntent(Intent)</a></code> inside <code><a href="../../../reference/android/app/Activity.html#onNewIntent(android.content.Intent)">onNewIntent(Intent)</a></code> (so that the intent saved by the activity is updated in
+case you call <code><a href="../../../reference/android/app/Activity.html#getIntent()">getIntent()</a></code> in the future).</p>
+
+</li>
+</ol>
+
+<p>The second scenario using <code>"singleTop"</code> launch mode is usually ideal, because chances
+are good that once a search is done, the user will perform additional searches and it's a bad
+experience if your application creates multiple instances of the searchable activity. So, we
+recommend that you set your searchable activity to <code>"singleTop"</code> launch mode in the
+application manifest. For example:</p>
+
+<pre>
+&lt;activity android:name=".SearchableActivity"
+          <b>android:launchMode="singleTop"</b> >
+    &lt;intent-filter>
+        &lt;action android:name="android.intent.action.SEARCH" />
+    &lt;/intent-filter>
+    &lt;meta-data android:name="android.app.searchable"
+                      android:resource="@xml/searchable"/>
+  &lt;/activity>
+</pre>
+
+
+
+<h3 id="SearchContextData">Passing search context data</h3>
+
+<p>In some cases, you can make necessary refinements to the search query inside the searchable
+activity, for every search made. However, if you want to refine your search criteria based on the
+activity from which the user is performing a search, you can provide additional data in the intent
+that the system sends to your searchable activity. You can pass the additional data in the <code><a href="../../../reference/android/app/SearchManager.html#APP_DATA">APP_DATA</a></code> <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code>, which is included in the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent.</p>
+
+<p>To pass this kind of data to your searchable activity, override the <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code> method for the activity from which the user can perform a
+search, create a <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> with the additional data, and call <code><a href="../../../reference/android/app/Activity.html#startSearch(java.lang.String, boolean, android.os.Bundle, boolean)">startSearch()</a></code> to activate the search dialog.
+For example:</p>
+
+<pre>
+&#64;Override
+public boolean onSearchRequested() {
+     Bundle appData = new Bundle();
+     appData.putBoolean(SearchableActivity.JARGON, true);
+     startSearch(null, false, appData, false);
+     return true;
+ }
+</pre>
+
+<p>Returning "true" indicates that you have successfully handled this callback event and
+called <code><a href="../../../reference/android/app/Activity.html#startSearch(java.lang.String, boolean, android.os.Bundle, boolean)">startSearch()</a></code> to activate
+the search dialog. Once the user submits a query, it's delivered to your
+searchable activity along with the data you've added. You can extract the extra data from the <code><a href="../../../reference/android/app/SearchManager.html#APP_DATA">APP_DATA</a></code> <code><a href="../../../reference/android/os/Bundle.html">Bundle</a></code> to refine the search. For example:</p>
+
+<pre>
+Bundle appData = getIntent().getBundleExtra(SearchManager.APP_DATA);
+if (appData != null) {
+    boolean jargon = appData.getBoolean(SearchableActivity.JARGON);
+}
+</pre>
+
+<p class="caution"><strong>Caution:</strong> Never call the <code><a href="../../../reference/android/app/Activity.html#startSearch(java.lang.String, boolean, android.os.Bundle, boolean)">startSearch()</a></code> method from outside
+the <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code> callback method. To activate the search dialog
+in your activity, always call <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code>. Otherwise, <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code> is not called and customizations (such as the addition of
+<code>appData</code> in the above example) are missed.</p>
+
+
+
+<h2 id="UsingSearchWidget">Using the Search Widget</h2>
+
+<div class="figure" style="width:429px;margin:0">
+  <img src="../../../images/ui/actionbar-actionview.png" alt="" />
+  <p class="img-caption"><strong>Figure 2.</strong> The <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> widget as an "action view" in the Action Bar.</p>
+</div>
+
+<p>The <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> widget is available in Android 3.0 and higher. If
+you're developing your application for Android 3.0 and have decided to use the search widget, we
+recommend that you insert the search widget as an <a
+href="../../../guide/topics/ui/actionbar.html#ActionView">action view in the Action Bar</a>,
+instead of using the search dialog (and instead of placing the search widget in your activity
+layout). For example, figure 2 shows the search widget in the Action Bar.</p>
+
+<p>The search widget provides the same functionality as the search dialog. It starts the appropriate
+activity when the user executes a search, and it can provide search suggestions and perform voice
+search.</p>
+
+<p class="note"><strong>Note:</strong> When you use the search widget as an action view, you
+still might need to support using the search dialog, for cases in which the search widget does
+not fit in the Action Bar. See the following section about <a href="#UsingBoth">Using both
+the widget and the dialog</a>.</p>
+
+
+<h3 id="ConfiguringWidget">Configuring the search widget</h3>
+
+<p>After you've created a  <a href="#SearchableConfiguration">searchable configuration</a> and a <a
+href="#SearchableActivity">searchable activity</a>, as discussed above, you need to enable assisted
+search for each <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code>. You can do so by calling <code><a href="../../../reference/android/widget/SearchView.html#setSearchableInfo(android.app.SearchableInfo)">setSearchableInfo()</a></code> and passing it the <code><a href="../../../reference/android/app/SearchableInfo.html">SearchableInfo</a></code> object that represents your searchable configuration.</p>
+
+<p>You can get a reference to the <code><a href="../../../reference/android/app/SearchableInfo.html">SearchableInfo</a></code> by calling <code><a href="../../../reference/android/app/SearchManager.html#getSearchableInfo(android.content.ComponentName)">getSearchableInfo()</a></code> on <code><a href="../../../reference/android/app/SearchManager.html">SearchManager</a></code>.</p>
+
+<p>For example, if you're using a <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> as an action view in the <a
+href="../../../guide/topics/ui/actionbar.html">Action Bar</a>, you should enable the widget
+during the <code><a href="../../../reference/android/app/Activity.html#onCreateOptionsMenu(android.view.Menu)">onCreateOptionsMenu()</a></code> callback:</p>
+
+<pre>
+&#64;Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    // Inflate the options menu from XML
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.options_menu, menu);
+
+    // Get the SearchView and set the searchable configuration
+    SearchManager searchManager = (SearchManager) <code><a href="../../../reference/android/app/Activity.html#getSystemService(java.lang.String)">getSystemService</a></code>(Context.SEARCH_SERVICE);
+    SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+    // Assumes current activity is the searchable activity
+    searchView.setSearchableInfo(searchManager.getSearchableInfo(<code><a href="../../../reference/android/app/Activity.html#getComponentName()">getComponentName()</a></code>));
+    searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
+
+    return true;
+}
+</pre>
+
+<p>That's all you need. The search widget is now configured and the system will deliver search
+queries to your searchable activity. You can also enable <a href="#SearchSuggestions">search
+suggestions</a> for the search widget.</p>
+
+<p class="note"><strong>Note:</strong> If you want to handle all user input yourself, you can do so
+with some callback methods and event listeners. For more information, see the reference
+documentation for <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> and its nested interfaces for the
+appropriate event listeners.</p>
+
+<p>For more information about action views in the Action Bar, read the <a
+href="../../../guide/topics/ui/actionbar.html#ActionView">Action Bar</a> developer guide (which
+includes sample code for adding a search widget as an action view).</p>
+
+
+<h3 id="WidgetFeatures">Other search widget features</h3>
+
+<p>The <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> widget allows for a few additional features you might
+want:</p>
+
+<dl>
+  <dt>A submit button</dt>
+  <dd>By default, there's no button to submit a search query, so the user must press the
+"Return" key on the keyboard to initiate a search. You can add a "submit" button by calling
+<code><a href="../../../reference/android/widget/SearchView.html#setSubmitButtonEnabled(boolean)">setSubmitButtonEnabled(true)</a></code>.</dd>
+  <dt>Query refinement for search suggestions</dt>
+  <dd>When you've enabled search suggestions, you usually expect users to simply select a
+suggestion, but they might also want to refine the suggested search query. You can add a button
+alongside each suggestion that inserts the suggestion in the search box for refinement by the
+user, by calling <code><a href="../../../reference/android/widget/SearchView.html#setQueryRefinementEnabled(boolean)">setQueryRefinementEnabled(true)</a></code>.</dd>
+  <dt>The ability to toggle the search box visibility</dt>
+  <dd>By default, the search widget is "iconified," meaning that it is represented only by a
+search icon (a magnifying glass), and expands to show the search box when the user touches it.
+As shown above, you can show the search box by default, by calling <code><a href="../../../reference/android/widget/SearchView.html#setIconifiedByDefault(boolean)">setIconifiedByDefault(false)</a></code>. You can also
+toggle the search widget appearance by calling <code><a href="../../../reference/android/widget/SearchView.html#setIconified(boolean)">setIconified()</a></code>.</dd>
+</dl>
+
+<p>There are several other APIs in the <code><a href="../../../reference/android/widget/SearchView.html">SearchView</a></code> class that allow you to
+customize the search widget. However, most of them are used only when you handle all
+user input yourself, instead of using the Android system to deliver search queries and display
+search suggestions.</p>
+
+
+<h3 id="UsingBoth">Using both the widget and the dialog</h3>
+
+<p>If you insert the search widget in the Action Bar as an <a
+href="../../../guide/topics/ui/actionbar.html#ActionView">action view</a>, and you enable it to
+appear in the Action Bar "if there is room" (by setting <code>android:showAsAction="ifRoom"</code>), then there is a chance that the search widget will not appear
+as an action view, but the menu item will appear in the overflow menu. For example, when your
+application runs on a smaller screen, there might not be enough room in the Action Bar to display
+the search widget along with other action items or navigation elements, so the menu item will
+instead appear in the overflow menu. When placed in the overflow menu, the item works like an
+ordinary menu item and does not display the action view (the search widget).</p>
+
+<p>To handle this situation, the menu item to which you've attached the search widget should
+activate the search dialog when the user selects it from the overflow menu. In order for it to do
+so, you must implement <code><a href="../../../reference/android/app/Activity.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> to
+handle the "Search" menu item and open the search dialog by calling <code><a href="../../../reference/android/app/Activity.html#onSearchRequested()">onSearchRequested()</a></code>.</p>
+
+<p>For more information about how items in the Action Bar work and how to handle this situation, see
+the <a href="../../../guide/topics/ui/actionbar.html">Action
+Bar</a> developer guide.</p>
+
+<p>Also see the <a
+href="../../../resources/samples/SearchableDictionary/src/com/example/android/searchabledict/SearchableDictionary.html"
+>Searchable Dictionary</a> for an example implementation using
+both the dialog and the widget.</p>
+
+
+
+<h2 id="VoiceSearch">Adding Voice Search</h2>
+
+<p>You can add voice search functionality to your search dialog or widget by adding the <code>android:voiceSearchMode</code> attribute to your searchable configuration. This adds a voice search
+button that launches a voice prompt. When the user
+has finished speaking, the transcribed search query is sent to your searchable
+activity.</p>
+
+<p>For example:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/search_label"
+    android:hint="@string/search_hint"
+    <b>android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"</b> >
+&lt;/searchable>
+</pre>
+
+<p>The value <code>showVoiceSearchButton</code> is required to enable voice
+search, while the second value, <code>launchRecognizer</code>, specifies that the voice search button
+should launch a recognizer that returns the transcribed text to the searchable activity.</p>
+
+<p>You can provide additional attributes to specify the voice search behavior, such
+as the language to be expected and the maximum number of results to return. See the <a
+href="searchable-config.html">Searchable Configuration</a> reference for more information about the
+available attributes.</p>
+
+<p class="note"><strong>Note:</strong> Carefully consider whether voice search is appropriate for
+your application. All searches performed with the voice search button are immediately sent to
+your searchable activity without a chance for the user to review the transcribed query. Sufficiently
+test the voice recognition and ensure that it understands the types of queries that
+the user might submit inside your application.</p>
+
+
+
+<h2 id="SearchSuggestions">Adding Search Suggestions</h2>
+
+<div class="figure" style="width:250px;margin:0">
+<img src="../../../images/search/search-suggest-custom.png" alt="" height="417" />
+<p class="img-caption"><strong>Figure 3.</strong> Screenshot of a search dialog with custom
+search suggestions.</p>
+</div>
+
+<p>Both the search dialog and the search widget can provide search suggestions as the user
+types, with assistance from the Android system. The system manages the list of suggestions and
+handles the event when the user selects a suggestion.</p>
+
+<p>You can provide two kinds of search suggestions:</p>
+
+<dl>
+  <dt>Recent query search suggestions</dt>
+  <dd>These suggestions are simply words that the user previously used as search queries in
+your application.
+  <p>See <a href="adding-recent-query-suggestions.html">Adding Recent Query
+Suggestions</a>.</p></dd>
+  <dt>Custom search suggestions</dt>
+  <dd>These are search suggestions that you provide from your own data source, to help users
+immediately select the correct spelling or item they are searching for. Figure 3 shows an
+example of custom suggestions for a dictionary application&mdash;the user can select a suggestion
+to instantly go to the definition.
+  <p>See <a href="adding-custom-suggestions.html">Adding Custom
+Suggestions</a></p></dd>
+</dl>
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

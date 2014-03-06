@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Managing Projects | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Managing Projects</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+    <div id="qv">
+      <h2>In this document</h2>
+
+      <ol>
+        <li><a href="#ApplicationProjects">Android Projects</a></li>
+
+        <li><a href="#LibraryProjects">Library Projects</a>
+          <ol>
+            <li><a href="#considerations">Development considerations</a></li>
+          </ol>
+        </li>
+
+        <li><a href="#TestProjects">Test Projects</a></li>
+
+        <li><a href="#testing">Testing a Library Project</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <p>Projects act as containers for storing things such as code and resource files. The SDK tools
+  expect your projects to follow a specific structure so it can compile and package your
+  application correctly, so it is highly recommended that you create them with Eclipse and ADT or
+  with the <code>android</code> tool on the command line. There are three types of projects, and
+  they all share the same general structure but differ in function:</p>
+
+  <dl>
+    <dt><strong>Android Projects</strong></dt>
+
+    <dd>An Android project is the container for your application's source code, resource files, and
+    files such as the Ant build and Android Manifest file. An application project is the main type
+    of project and the contents are eventually built into an <code>.apk</code> file that you install on a
+    device.</dd>
+
+    <dt><strong>Test Projects</strong></dt>
+
+    <dd>These projects contain code to test your application projects and are built into
+    applications that run on a device.</dd>
+
+    <dt><strong>Library Projects</strong></dt>
+
+    <dd>These projects contain shareable Android source code and resources that you can reference
+    in Android projects. This is useful when you have common code that you want to reuse.
+    Library projects cannot be installed onto a device, however, they are
+    pulled into the <code>.apk</code> file at build time.</dd>
+  </dl>
+
+  <p>When you use the Android development tools to create a new project, the essential files and
+  folders will be created for you. There are only a handful of files and folders generated for you,
+  and some of them depend on whether you use the Eclipse plugin or the <code>android</code> tool to
+  generate your project. As your application grows in complexity, you might require new kinds of
+  resources, directories, and files.</p>
+
+  <h2 id="ApplicationProjects">Android Projects</h2>
+
+  <p>Android projects are the projects that eventually get built into an <code>.apk</code> file that you install
+  onto a device. They contain things such as application source code and resource files.
+  Some are generated for you by default, while others should be created if
+  required. The following directories and files comprise an Android project:</p>
+
+  <dl>
+    <dt><code>src/</code></dt>
+
+    <dd>Contains your stub Activity file, which is stored at
+    <code>src<em>/your/package/namespace/ActivityName</em>.java</code>. All other source code
+     files (such as <code>.java</code> or <code>.aidl</code> files) go here as well.</dd>
+
+    <dt><code>bin/</code></dt>
+
+    <dd>Output directory of the build. This is where you can find the final <code>.apk</code> file and other
+    compiled resources.</dd>
+
+    <dt><code>jni/</code></dt>
+
+    <dd>Contains native code sources developed using the Android NDK. For more information, see the
+    <a href="../../tools/sdk/ndk/index.html">Android NDK documentation</a>.</dd>
+
+    <dt><code>gen/</code></dt>
+
+    <dd>Contains the Java files generated by ADT, such as your <code>R.java</code> file and
+    interfaces created from AIDL files.</dd>
+
+    <dt><code>assets/</code></dt>
+
+    <dd>This is empty. You can use it to store raw asset files. Files that you save here are
+    compiled into an <code>.apk</code> file as-is, and the original filename is preserved. You can navigate this
+    directory in the same way as a typical file system using URIs and read files as a stream of
+    bytes using the <code><a href="../../reference/android/content/res/AssetManager.html">AssetManager</a></code>. For example, this is a good
+    location for textures and game data.</dd>
+
+    <dt><code>res/</code></dt>
+
+    <dd>
+      Contains application resources, such as drawable files, layout files, and string values. See
+      <a href="../../guide/topics/resources/index.html">Application Resources</a> for more
+      information.
+
+      <dl>
+        <dt><code>anim/</code></dt>
+
+        <dd>For XML files that are compiled into animation objects. See the <a href=
+        "../../guide/topics/resources/animation-resource.html">Animation</a> resource
+        type.</dd>
+
+        <dt><code>color/</code></dt>
+
+        <dd>For XML files that describe colors. See the <a href=
+        "../../guide/topics/resources/color-list-resource.html">Color Values</a> resource
+        type.</dd>
+
+        <dt><code>drawable/</code></dt>
+
+        <dd>For bitmap files (PNG, JPEG, or GIF), 9-Patch image files, and XML files that describe
+        Drawable shapes or Drawable objects that contain multiple states (normal, pressed, or
+        focused). See the <a href=
+        "../../guide/topics/resources/drawable-resource.html">Drawable</a> resource type.</dd>
+
+        <dt><code>layout/</code></dt>
+
+        <dd>XML files that are compiled into screen layouts (or part of a screen). See the <a href=
+        "../../guide/topics/resources/layout-resource.html">Layout</a> resource type.</dd>
+
+        <dt><code>menu/</code></dt>
+
+        <dd>For XML files that define application menus.
+        See the <a href="../../guide/topics/resources/menu-resource.html">Menus</a>
+        resource type.</dd>
+
+        <dt><code>raw/</code></dt>
+
+        <dd>For arbitrary raw asset files. Saving asset files here instead of in the
+        <code>assets/</code> directory only differs in the way that you access them. These files
+        are processed by aapt and must be referenced from the application using a resource
+        identifier in the <code>R</code> class. For example, this is a good place for media, such as MP3
+        or Ogg files.</dd>
+
+        <dt><code>values/</code></dt>
+
+        <dd>For XML files that are compiled into many kinds of resource. Unlike other resources in
+        the <code>res/</code> directory, resources written to XML files in this folder are not
+        referenced by the file name. Instead, the XML element type controls how the resources is
+        defined within them are placed into the <code>R</code> class.</dd>
+
+        <dt><code>xml/</code></dt>
+
+        <dd>For miscellaneous XML files that configure application components. For example, an XML
+        file that defines a <code><a href="../../reference/android/preference/PreferenceScreen.html">PreferenceScreen</a></code>, <code><a href="../../reference/android/appwidget/AppWidgetProviderInfo.html">AppWidgetProviderInfo</a></code>, or <a href=
+        "../../reference/android/app/SearchManager.html#SearchabilityMetadata">Searchability
+        Metadata</a>. See <a href="../../guide/topics/resources/index.html">Application Resources</a>
+        for more information about configuring these application components.</dd>
+      </dl>
+    </dd>
+
+    <dt><code>libs/</code></dt>
+
+    <dd>Contains private libraries.</dd>
+
+    <dt><code>AndroidManifest.xml</code></dt>
+
+    <dd>The control file that describes the nature of the application and each of its components.
+    For instance, it describes: certain qualities about the activities, services, intent receivers,
+    and content providers; what permissions are requested; what external libraries are needed; what
+    device features are required, what API Levels are supported or required; and others. See the
+    <a href="../../guide/topics/manifest/manifest-intro.html">AndroidManifest.xml</a>
+    documentation for more information</dd>
+
+    <dt><code>project.properties</code></dt>
+
+    <dd>This file contains project settings, such as the build target. This file is integral to
+    the project, so maintain it in a source revision control system. To edit project
+    properties in Eclipse, right-click the project folder and select
+    <strong>Properties</strong>.</dd>
+
+    <dt><code>local.properties</code></dt>
+
+    <dd>Customizable computer-specific properties for the build system. If you use Ant to build
+    the project, this contains the path to the SDK installation. Because the content of the file
+    is specific to the local installation of the SDK, the <code>local.properties</code> should not
+be maintained in a source revision control system. If you use Eclipse, this file is not
+used.</dd>
+
+    <dt><code>ant.properties</code></dt>
+
+    <dd>Customizable properties for the build system. You can edit this file to override default
+    build settings used by Ant and also provide the location of your keystore and key alias so that
+    the build tools can sign your application when building in release mode. This file is integral
+    to the project, so maintain it in a source revision control system. If you use Eclipse, this
+    file is not used.</dd>
+
+    <dt><code>build.xml</code></dt>
+
+    <dd>The Ant build file for your project. This is only applicable for projects that
+    you build with Ant.</dd>
+
+  </dl>
+
+  <h2 id="LibraryProjects">Library Projects</h2>
+
+  <div class="sidebox-wrapper">
+    <div class="sidebox">
+      <h2>Library project example code</h2>
+
+      <p>The SDK includes an example application called <code>TicTacToeMain</code> that shows how a dependent
+      application can use code and resources from an Android Library project. The TicTacToeMain
+      application uses code and resources from an example library project called TicTacToeLib.</p>
+
+      <p>To download the sample applications and run them as projects in
+      your environment, use the <em>Android SDK Manager</em> to download the "Samples for
+      SDK API 8" (or later) package into your SDK.</p>
+
+      <p>For more information and to browse the code of the samples, see
+      the <a href="../../resources/samples/TicTacToeMain/index.html">TicTacToeMain
+      application</a>.</p>
+    </div>
+  </div>
+
+    <p>An Android <em>library project</em> is a development project that holds shared Android
+    source code and resources. Other Android application projects can reference the library project
+    and, at build time, include its compiled sources in their <code>.apk</code> files. Multiple
+    application projects can reference the same library project and any single application project
+    can reference multiple library projects.</p>
+
+    <p class="note"><strong>Note:</strong> You need SDK Tools r14 or newer to use the new library
+    project feature that generates each library project into its own JAR file.
+    You can download the tools and platforms using the
+    <em>Android SDK Manager</em>, as described in
+    <a href="../../sdk/exploring.html">Exploring the SDK</a>.</p>
+
+    <p>If you have source code and resources that are common to multiple Android projects, you
+    can move them to a library project so that it is easier to maintain across applications and
+    versions. Here are some common scenarios in which you could make use of library projects:</p>
+
+    <ul>
+      <li>If you are developing multiple related applications that use some of the same components,
+      you move the redundant components out of their respective application projects and create a
+      single, reuseable set of the same components in a library project.</li>
+
+      <li>If you are creating an application that exists in both free and paid versions. You move
+      the part of the application that is common to both versions into a library project. The two
+      dependent projects, with their different package names, will reference the library project
+      and provide only the difference between the two application versions.</li>
+    </ul>
+
+    <p>Structurally, a library project is similar to a standard Android application project. For
+    example, it includes a manifest file at the project root, as well as <code>src/</code>,
+    <code>res/</code> and similar directories. The project can contain the same types of source
+    code and resources as a standard Android project, stored in the same way. For example, source
+    code in the library project can access its own resources through its <code>R</code> class.</p>
+
+    <p>However, a library project differs from a standard Android application project in that you
+    cannot compile it directly to its own <code>.apk</code> and run it on an Android device.
+    Similarly, you cannot export the library project to a self-contained JAR file, as you would do
+    for a true library. Instead, you must compile the library indirectly, by referencing the
+    library in the dependent application and building that application.</p>
+
+    <p>When you build an application that depends on a library project, the SDK tools compile the
+    library into a temporary JAR file and uses it in the main project, then uses the
+    result to generate the <code>.apk</code>. In cases where a resource ID is defined in both the
+    application and the library, the tools ensure that the resource declared in the application gets
+    priority and that the resource in the library project is not compiled into the application
+    <code>.apk</code>. This gives your application the flexibility to either use or redefine any
+    resource behaviors or values that are defined in any library.</p>
+
+    <p>To organize your code further, your application can add references to multiple library
+    projects, then specify the relative priority of the resources in each library. This lets you
+    build up the resources actually used in your application in a cumulative manner. When two
+    libraries referenced from an application define the same resource ID, the tools select the
+    resource from the library with higher priority and discard the other.</p>
+
+    <p>Once you have added references to library projects to your Android project,
+    you can set their relative priority. At build time, the
+    libraries are merged with the application one at a time, starting from the lowest priority to
+    the highest.</p>
+
+    <p>Library projects can reference other library projects and can import an external library
+    (JAR) in the  normal way.</p>
+
+  <h3 id="considerations">Development considerations</h3>
+
+  <p>As you develop your library project and dependent applications, keep the points listed below
+  in mind:</p>
+
+  <ul>
+  <li><p><strong>Resource conflicts</strong></p>
+  <p>Since the tools merge the resources of a library project with those of a dependent application
+  project, a given resource ID might be defined in both projects. In this case, the tools select
+  the resource from the application, or the library with highest priority, and discard the other
+  resource. As you develop your applications, be aware that common resource IDs are likely to be
+  defined in more than one project and will be merged, with the resource from the application or
+  highest-priority library taking precedence.</p>
+  </li>
+
+  <li><p><strong>Use prefixes to avoid resource conflicts</strong></p>
+
+  <p>To avoid resource conflicts for common resource IDs, consider using a prefix or other
+  consistent naming scheme that is unique to the project (or is unique across all projects).</p></li>
+
+  <li><p><strong>You cannot export a library project to a JAR file</strong></p>
+
+  <p>A library cannot be distributed as a binary file (such as a JAR file). This will
+be added in a future
+  version of the SDK Tools.</p></li>
+
+  <li><p><strong>A library project can include a JAR library</strong></p>
+
+  <p>You can develop a library project that itself includes a JAR library, however you need to
+  manually edit the dependent application project's build path and add a path to the JAR file.</p></li>
+
+  <li><p><strong>A library project can depend on an external JAR library</strong></p>
+
+  <p>You can develop a library project that depends on an external library (for example, the Maps
+  external library). In this case, the dependent application must build against a target that
+  includes the external library (for example, the Google APIs Add-On). Note also that both the
+  library project and the dependent application must declare the external library in their manifest
+  files, in a <a href=
+  "../../guide/topics/manifest/uses-library-element.html"><code>&lt;uses-library&gt;</code></a>
+  element.</p></li>
+
+  <li> <p><strong>Library projects cannot include raw assets</strong></p>
+
+  <p>The tools do not support the use of raw asset files (saved in the <code>assets/</code> directory)
+  in a library project. Any asset resources
+  used by an application must be stored in the <code>assets/</code> directory of the application
+  project itself. However, resource files saved in the
+  <code>res/</code> directory are supported.</p></li>
+
+  <li><p><strong>Platform version must be lower than or equal to the Android project</strong></p>
+
+  <p>A library is compiled as part of the dependent application project, so the API used in the
+  library project must be compatible with the version of the Android library used to compile the
+  application project. In general, the library project should use an <a href=
+  "../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level</a> that is the same as &mdash; or lower
+  than &mdash; that used by the application. If the library project uses an API level that is
+  higher than that of the application, the application project will not compile. It is
+  perfectly acceptable to have a library that uses the Android 1.5 API (API level 3) and that is
+  used in an Android 1.6 (API level 4) or Android 2.1 (API level 7) project, for instance.</p></li>
+
+  <li> <p><strong>No restriction on library package names</strong></p>
+
+  <p>There is no requirement for the package name of a library to be the same as that of
+  applications that use it.</p></li>
+
+  <li><p><strong>Each library project creates its own R class </strong></p>
+
+  <p>When you build the dependent application project, library projects are compiled and
+  merged with the application project. Each library has its own <code>R</code> class, named according
+  to the library's package name. The <code>R</code> class generated from main
+  project and the library project is created in all the packages that are needed including the main
+  project's package and the libraries' packages.</p></li>
+
+  <li><p><strong>Library project storage location</strong></p>
+
+  <p>There are no specific requirements on where you should store a library project, relative to a
+  dependent application project, as long as the application project can reference the library
+  project by a relative link. What is important is that the main
+  project can reference the library project through a relative link.</p></li>
+  </ul>
+
+  <h2 id="TestProjects">Test Projects</h2>
+
+  <p>Test projects contain Android applications that you write using the
+  <a href="../../tools/testing/index.html">Testing and
+  Instrumentation framework</a>. The framework is an extension of the JUnit test framework and adds
+  access to Android system objects. The file structure of a test project is the same as an
+  Android project.</p>
+
+  <dl>
+    <dt><code>src/</code></dt>
+
+    <dd>Includes your test source files. Test projects do not require an Activity <code>.java</code>
+    file, but can include one.</dd>
+
+    <dt><code>gen/</code></dt>
+
+    <dd>This contains the Java files generated by ADT, such as your <code>R.java</code> file and
+    interfaces created from AIDL files.</dd>
+
+    <dt><code>assets/</code></dt>
+
+    <dd>This is empty. You can use it to store raw asset files.</dd>
+
+    <dt><code>res/</code></dt>
+
+    <dd>A folder for your application resources, such as drawable files, layout files, string
+    values, etc. See <a href="../../guide/topics/resources/index.html">Application
+    Resources</a>.</dd>
+
+    <dt><code>AndroidManifest.xml</code></dt>
+
+    <dd>The Android Manifest for your project. See <a href=
+    "../../guide/topics/manifest/manifest-intro.html">The AndroidManifest.xml File</a>. Test
+    Projects have a special <a href=
+    "../../guide/topics/manifest/instrumentation-element.html">
+    <code>&lt;instrumentation&gt;</code></a>
+    element that connects the test project with the application project.</dd>
+
+    <dt><code>project.properties</code></dt>
+
+    <dd>This file contains project settings, such as the build target and links to the project being
+tested. This file is integral to the project, so maintain it in a source
+revision control system. To edit project properties in Eclipse, right-click the project folder
+and select <strong>Properties</strong>.</dd>
+
+    <dt><code>local.properties</code></dt>
+
+    <dd>Customizable computer-specific properties for the build system. If you use Ant to build
+    the project, this contains the path to the SDK installation. Because the content of the file
+    is specific to the local installation of the SDK, it should not be maintained in a Source
+    Revision Control system. If you use Eclipse, this file is not used.</dd>
+
+    <dt><code>ant.properties</code></dt>
+
+    <dd>Customizable properties for the build system. You can edit this file to override default
+    build settings used by Ant and provide the location to your keystore and key alias, so that the
+    build tools can sign your application when building in release mode. This file is integral to
+    the project, so maintain it in a source revision control system.
+    If you use Eclipse, this file is not used.</dd>
+
+    <dt><code>build.xml</code></dt>
+
+    <dd>The Ant build file for your project. This is only applicable for projects that
+    you build with Ant.</dd>
+  </dl>
+
+  <p>For more information, see the <a href=
+  "../../tools/testing/index.html">Testing</a> section.</p>
+
+
+  <h2 id="testing">Testing a Library Project</h2>
+
+  <p>There are two recommended ways of setting up testing on code and resources in a library
+  project:</p>
+
+  <ul>
+    <li>You can set up a <a href="../../tools/testing/testing_otheride.html">test
+    project</a> that instruments an application project that depends on the library project. You
+    can then add tests to the project for library-specific features.</li>
+
+    <li>You can set up a standard application project that depends on the library and put
+    the instrumentation in that project. This lets you create a self-contained project that
+    contains both the tests/instrumentations and the code to test.</li>
+  </ul>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+
