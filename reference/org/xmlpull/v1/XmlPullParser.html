@@ -1,0 +1,4885 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>XmlPullParser - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../../";
+  var devsite = false;
+</script>
+<script src="../../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+  <div id="doc-api-level" class="1" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../../index.html">
+            <img src="../../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../../')" 
+onkeyup="return search_changed(event, false, '../../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/package-summary.html">android</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="selected api apilevel-1">
+  <a href="../../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="selected api apilevel-1"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html">XmlPullParser</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/org/xmlpull/v1/XmlSerializer.html">XmlSerializer</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../../reference/org/xmlpull/v1/XmlPullParserFactory.html">XmlPullParserFactory</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Exceptions</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></li>
+      </ul>
+    </li>
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12"  id="doc-col">
+
+<div id="api-info-block">
+
+
+
+
+<div class="sum-details-links">
+
+Summary:
+
+
+
+
+
+  <a href="#constants">Constants</a>
+  
+
+
+
+  &#124; <a href="#lfields">Fields</a>
+  
+
+
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    interface
+<h1 itemprop="name">XmlPullParser</h1>
+
+
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-1">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">org.xmlpull.v1.XmlPullParser</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../reference/android/content/res/XmlResourceParser.html">XmlResourceParser</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/android/content/res/XmlResourceParser.html">XmlResourceParser</a></td>
+              <td class="jd-descrcol" width="100%">The XML parsing interface returned for an XML resource.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p itemprop="articleBody">XML Pull Parser is an interface that defines parsing functionality provided
+ in <a href="http://www.xmlpull.org/">XMLPULL V1 API</a> (visit this website to
+ learn more about API and its implementations).
+
+ <p>There are following different
+ kinds of parser depending on which features are set:<ul>
+ <li><b>non-validating</b> parser as defined in XML 1.0 spec when
+   FEATURE_PROCESS_DOCDECL is set to true
+ <li><b>validating parser</b> as defined in XML 1.0 spec when
+   FEATURE_VALIDATION is true (and that implies that FEATURE_PROCESS_DOCDECL is true)
+ <li>when FEATURE_PROCESS_DOCDECL is false (this is default and
+   if different value is required necessary must be changed before parsing is started)
+   then parser behaves like XML 1.0 compliant non-validating parser under condition that
+  <em>no DOCDECL is present</em> in XML documents
+   (internal entites can still be defined with defineEntityReplacementText()).
+   This mode of operation is intended <b>for operation in constrained environments</b> such as J2ME.
+ </ul>
+
+
+ <p>There are two key methods: next() and nextToken(). While next() provides
+ access to high level parsing events, nextToken() allows access to lower
+ level tokens.
+
+ <p>The current event state of the parser
+ can be determined by calling the
+ <a href="#getEventType()">getEventType()</a> method.
+ Initially, the parser is in the <a href="#START_DOCUMENT">START_DOCUMENT</a>
+ state.
+
+ <p>The method <a href="#next()">next()</a> advances the parser to the
+ next event. The int value returned from next determines the current parser
+ state and is identical to the value returned from following calls to
+ getEventType ().
+
+ <p>Th following event types are seen by next()<dl>
+ <dt><a href="#START_TAG">START_TAG</a><dd> An XML start tag was read.
+ <dt><a href="#TEXT">TEXT</a><dd> Text content was read;
+ the text content can be retrieved using the getText() method.
+  (when in validating mode next() will not report ignorable whitespace, use nextToken() instead)
+ <dt><a href="#END_TAG">END_TAG</a><dd> An end tag was read
+ <dt><a href="#END_DOCUMENT">END_DOCUMENT</a><dd> No more events are available
+ </dl>
+
+ <p>after first next() or nextToken() (or any other next*() method)
+ is called user application can obtain
+ XML version, standalone and encoding from XML declaration
+ in following ways:<ul>
+ <li><b>version</b>:
+  getProperty(&quot;<a href="http://xmlpull.org/v1/doc/properties.html#xmldecl-version">http://xmlpull.org/v1/doc/properties.html#xmldecl-version</a>&quot;)
+       returns String ("1.0") or null if XMLDecl was not read or if property is not supported
+ <li><b>standalone</b>:
+  getProperty(&quot;<a href="http://xmlpull.org/v1/doc/properties.html#xmldecl-standalone">http://xmlpull.org/v1/doc/properties.html#xmldecl-standalone</a>&quot;)
+       returns Boolean: null if there was no standalone declaration
+  or if property is not supported
+         otherwise returns Boolean(true) if standalone="yes" and Boolean(false) when standalone="no"
+ <li><b>encoding</b>: obtained from getInputEncoding()
+       null if stream had unknown encoding (not set in setInputStream)
+           and it was not declared in XMLDecl
+ </ul>
+
+ A minimal example for using this API may look as follows:
+ <pre>
+ import java.io.IOException;
+ import java.io.StringReader;
+
+ import org.xmlpull.v1.XmlPullParser;
+ import org.xmlpull.v1.<a href="XmlPullParserException.html">XmlPullParserException</a>;
+ import org.xmlpull.v1.<a href="XmlPullParserFactory.html">XmlPullParserFactory</a>;
+
+ public class SimpleXmlPullApp
+ {
+
+     public static void main (String args[])
+         throws XmlPullParserException, IOException
+     {
+         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+         factory.setNamespaceAware(true);
+         XmlPullParser xpp = factory.newPullParser();
+
+         xpp.<a href="#setInput">setInput</a>( new StringReader ( "&lt;foo>Hello World!&lt;/foo>" ) );
+         int eventType = xpp.getEventType();
+         while (eventType != XmlPullParser.END_DOCUMENT) {
+          if(eventType == XmlPullParser.START_DOCUMENT) {
+              System.out.println("Start document");
+          } else if(eventType == XmlPullParser.START_TAG) {
+              System.out.println("Start tag "+xpp.<a href="#getName()">getName()</a>);
+          } else if(eventType == XmlPullParser.END_TAG) {
+              System.out.println("End tag "+xpp.getName());
+          } else if(eventType == XmlPullParser.TEXT) {
+              System.out.println("Text "+xpp.<a href="#getText()">getText()</a>);
+          }
+          eventType = xpp.next();
+         }
+         System.out.println("End document");
+     }
+ }
+ </pre>
+
+ <p>The above example will generate the following output:
+ <pre>
+ Start document
+ Start tag foo
+ Text Hello World!
+ End tag foo
+ End document
+ </pre>
+
+ <p>For more details on API usage, please refer to the
+ quick Introduction available at <a href="http://www.xmlpull.org">http://www.xmlpull.org</a></p>
+
+
+
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParserFactory.html">XmlPullParserFactory</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#defineEntityReplacementText(java.lang.String, java.lang.String)">defineEntityReplacementText(String, String)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getName()">getName()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespace()">getNamespace()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setInput(java.io.InputStream, java.lang.String)">setInput(InputStream, String)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_PROCESS_DOCDECL">FEATURE_PROCESS_DOCDECL</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_VALIDATION">FEATURE_VALIDATION</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#START_DOCUMENT">START_DOCUMENT</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#START_TAG">START_TAG</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#TEXT">TEXT</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#END_TAG">END_TAG</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#END_DOCUMENT">END_DOCUMENT</a></code></li>
+      </ul>
+  </div>
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="constants" class="jd-sumtable"><tr><th colspan="12">Constants</th></tr>
+
+
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#CDSECT">CDSECT</a></td>
+        <td class="jd-descrcol" width="100%">A CDATA sections was just read;
+ this token is available only from calls to <a href="#nextToken()">nextToken()</a>.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#COMMENT">COMMENT</a></td>
+        <td class="jd-descrcol" width="100%">An XML comment was just read.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#DOCDECL">DOCDECL</a></td>
+        <td class="jd-descrcol" width="100%">An XML document type declaration was just read.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#END_DOCUMENT">END_DOCUMENT</a></td>
+        <td class="jd-descrcol" width="100%">Logical end of the xml document.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#END_TAG">END_TAG</a></td>
+        <td class="jd-descrcol" width="100%">Returned from getEventType(), <a href="#next()">next()</a>, or
+ <a href="#nextToken()">nextToken()</a> when an end tag was read.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#ENTITY_REF">ENTITY_REF</a></td>
+        <td class="jd-descrcol" width="100%">An entity reference was just read;
+ this token is available from <a href="#nextToken()">nextToken()</a>
+ only.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><a href="../../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_PROCESS_DOCDECL">FEATURE_PROCESS_DOCDECL</a></td>
+        <td class="jd-descrcol" width="100%">This feature determines whether the document declaration
+ is processed.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><a href="../../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_PROCESS_NAMESPACES">FEATURE_PROCESS_NAMESPACES</a></td>
+        <td class="jd-descrcol" width="100%">This feature determines whether the parser processes
+ namespaces.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><a href="../../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_REPORT_NAMESPACE_ATTRIBUTES">FEATURE_REPORT_NAMESPACE_ATTRIBUTES</a></td>
+        <td class="jd-descrcol" width="100%">This feature determines whether namespace attributes are
+ exposed via the attribute access methods.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><a href="../../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_VALIDATION">FEATURE_VALIDATION</a></td>
+        <td class="jd-descrcol" width="100%">If this feature is activated, all validation errors as
+ defined in the XML 1.0 specification are reported.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#IGNORABLE_WHITESPACE">IGNORABLE_WHITESPACE</a></td>
+        <td class="jd-descrcol" width="100%">Ignorable whitespace was just read.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><a href="../../../../reference/java/lang/String.html">String</a></td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#NO_NAMESPACE">NO_NAMESPACE</a></td>
+        <td class="jd-descrcol" width="100%">This constant represents the default namespace (empty string "") </td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#PROCESSING_INSTRUCTION">PROCESSING_INSTRUCTION</a></td>
+        <td class="jd-descrcol" width="100%">An XML processing instruction declaration was just read.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#START_DOCUMENT">START_DOCUMENT</a></td>
+        <td class="jd-descrcol" width="100%">Signalize that parser is at the very beginning of the document
+ and nothing was read yet.</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#START_TAG">START_TAG</a></td>
+        <td class="jd-descrcol" width="100%">Returned from getEventType(),
+ <a href="#next()">next()</a>, <a href="#nextToken()">nextToken()</a> when
+ a start tag was read.</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol">int</td>
+        <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#TEXT">TEXT</a></td>
+        <td class="jd-descrcol" width="100%">Character data was read and will is available by calling getText().</td>
+    </tr>
+    
+    
+
+</table>
+
+
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
+
+
+    
+      <tr class="alt-color api apilevel-1" >
+          <td class="jd-typecol"><nobr>
+          public
+          static
+          final
+          <a href="../../../../reference/java/lang/String.html">String[]</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#TYPES">TYPES</a></td>
+          <td class="jd-descrcol" width="100%">This array can be used to convert the event type integer constants
+ such as START_TAG or TEXT to
+ to a string.</td>
+      </tr>
+      
+    
+
+</table>
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#defineEntityReplacementText(java.lang.String, java.lang.String)">defineEntityReplacementText</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> entityName, <a href="../../../../reference/java/lang/String.html">String</a> replacementText)</nobr>
+        
+        <div class="jd-descrdiv">Set new value for entity replacement text as defined in
+ <a href="http://www.w3.org/TR/REC-xml#intern-replacement">XML 1.0 Section 4.5
+ Construction of Internal Entity Replacement Text</a>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeCount()">getAttributeCount</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the number of attributes of the current start tag, or
+ -1 if the current event type is not START_TAG</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeName(int)">getAttributeName</a></span>(int index)</nobr>
+        
+        <div class="jd-descrdiv">Returns the local name of the specified attribute
+ if namespaces are enabled or just attribute name if namespaces are disabled.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeNamespace(int)">getAttributeNamespace</a></span>(int index)</nobr>
+        
+        <div class="jd-descrdiv">Returns the namespace URI of the attribute
+ with the given index (starts from 0).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributePrefix(int)">getAttributePrefix</a></span>(int index)</nobr>
+        
+        <div class="jd-descrdiv">Returns the prefix of the specified attribute
+ Returns null if the element has no prefix.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeType(int)">getAttributeType</a></span>(int index)</nobr>
+        
+        <div class="jd-descrdiv">Returns the type of the specified attribute
+ If parser is non-validating it MUST return CDATA.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeValue(int)">getAttributeValue</a></span>(int index)</nobr>
+        
+        <div class="jd-descrdiv">Returns the given attributes value.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeValue(java.lang.String, java.lang.String)">getAttributeValue</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> namespace, <a href="../../../../reference/java/lang/String.html">String</a> name)</nobr>
+        
+        <div class="jd-descrdiv">Returns the attributes value identified by namespace URI and namespace localName.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getColumnNumber()">getColumnNumber</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the current column number, starting from 0.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getDepth()">getDepth</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the current depth of the element.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getEventType()">getEventType</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the type of the current event (START_TAG, END_TAG, TEXT, etc.)</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getFeature(java.lang.String)">getFeature</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> name)</nobr>
+        
+        <div class="jd-descrdiv">Returns the current value of the given feature.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getInputEncoding()">getInputEncoding</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the input encoding if known, null otherwise.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getLineNumber()">getLineNumber</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the current line number, starting from 1.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getName()">getName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">For START_TAG or END_TAG events, the (local) name of the current
+ element is returned when namespaces are enabled.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespace()">getNamespace</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the namespace URI of the current element.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespace(java.lang.String)">getNamespace</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> prefix)</nobr>
+        
+        <div class="jd-descrdiv">Returns the URI corresponding to the given prefix,
+ depending on current state of the parser.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespaceCount(int)">getNamespaceCount</a></span>(int depth)</nobr>
+        
+        <div class="jd-descrdiv">Returns the numbers of elements in the namespace stack for the given
+ depth.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespacePrefix(int)">getNamespacePrefix</a></span>(int pos)</nobr>
+        
+        <div class="jd-descrdiv">Returns the namespace prefix for the given position
+ in the namespace stack.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespaceUri(int)">getNamespaceUri</a></span>(int pos)</nobr>
+        
+        <div class="jd-descrdiv">Returns the namespace URI for the given position in the
+ namespace stack
+ If the position is out of range, an exception is thrown.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getPositionDescription()">getPositionDescription</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a short text describing the current parser state, including
+ the position, a
+ description of the current event and the data source if known.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getPrefix()">getPrefix</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the prefix of the current element.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getProperty(java.lang.String)">getProperty</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> name)</nobr>
+        
+        <div class="jd-descrdiv">Look up the value of a property.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the text content of the current event as String.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            char[]</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getTextCharacters(int[])">getTextCharacters</a></span>(int[] holderForStartAndLength)</nobr>
+        
+        <div class="jd-descrdiv">Returns the buffer that contains the text of the current event,
+ as well as the start offset and length relevant for the current
+ event.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#isAttributeDefault(int)">isAttributeDefault</a></span>(int index)</nobr>
+        
+        <div class="jd-descrdiv">Returns if the specified attribute was not in input was declared in XML.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#isEmptyElementTag()">isEmptyElementTag</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns true if the current event is START_TAG and the tag
+ is degenerated
+ (e.g.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#isWhitespace()">isWhitespace</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Checks whether the current TEXT event contains only whitespace
+ characters.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get next parsing event - element content wil be coalesced and only one
+ TEXT event must be returned for whole element content
+ (comments and processing instructions will be ignored and entity references
+ must be expanded or exception mus be thrown if entity reference can not be expanded).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextTag()">nextTag</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Call next() and return event if it is START_TAG or END_TAG
+ otherwise throw an exception.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextText()">nextText</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">If current event is START_TAG then if next element is TEXT then element content is returned
+ or if next event is END_TAG then empty string is returned, otherwise exception is thrown.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">This method works similarly to next() but will expose
+ additional event types (COMMENT, CDSECT, DOCDECL, ENTITY_REF, PROCESSING_INSTRUCTION, or
+ IGNORABLE_WHITESPACE) if they are available in input.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#require(int, java.lang.String, java.lang.String)">require</a></span>(int type, <a href="../../../../reference/java/lang/String.html">String</a> namespace, <a href="../../../../reference/java/lang/String.html">String</a> name)</nobr>
+        
+        <div class="jd-descrdiv">Test if the current event is of the given type and if the
+ namespace and name do match.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setFeature(java.lang.String, boolean)">setFeature</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> name, boolean state)</nobr>
+        
+        <div class="jd-descrdiv">Use this call to change the general behaviour of the parser,
+ such as namespace processing or doctype declaration handling.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setInput(java.io.Reader)">setInput</a></span>(<a href="../../../../reference/java/io/Reader.html">Reader</a> in)</nobr>
+        
+        <div class="jd-descrdiv">Set the input source for parser to the given reader and
+ resets the parser.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setInput(java.io.InputStream, java.lang.String)">setInput</a></span>(<a href="../../../../reference/java/io/InputStream.html">InputStream</a> inputStream, <a href="../../../../reference/java/lang/String.html">String</a> inputEncoding)</nobr>
+        
+        <div class="jd-descrdiv">Sets the input stream the parser is going to process.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setProperty(java.lang.String, java.lang.Object)">setProperty</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> name, <a href="../../../../reference/java/lang/Object.html">Object</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Set the value of a property.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- ========= ENUM CONSTANTS DETAIL ======== -->
+<h2>Constants</h2>
+
+
+
+
+<A NAME="CDSECT"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        CDSECT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>A CDATA sections was just read;
+ this token is available only from calls to <a href="#nextToken()">nextToken()</a>.
+ A call to next() will accumulate various text events into a single event
+ of type TEXT. The text contained in the CDATA section is available
+ by calling getText().</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                5
+                (0x00000005)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="COMMENT"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        COMMENT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>An XML comment was just read. This event type is this token is
+ available via <a href="#nextToken()">nextToken()</a> only;
+ calls to next() will skip comments automatically.
+ The content of the comment can be accessed using the getText()
+ method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                9
+                (0x00000009)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="DOCDECL"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        DOCDECL
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>An XML document type declaration was just read. This token is
+ available from <a href="#nextToken()">nextToken()</a> only.
+ The unparsed text inside the doctype is available via
+ the getText() method.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                10
+                (0x0000000a)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="END_DOCUMENT"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        END_DOCUMENT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Logical end of the xml document. Returned from getEventType, next()
+ and nextToken()
+ when the end of the input document has been reached.
+ <p><strong>NOTE:</strong> subsequent calls to
+ <a href="#next()">next()</a> or <a href="#nextToken()">nextToken()</a>
+ may result in exception being thrown.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                1
+                (0x00000001)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="END_TAG"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        END_TAG
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returned from getEventType(), <a href="#next()">next()</a>, or
+ <a href="#nextToken()">nextToken()</a> when an end tag was read.
+ The name of start tag is available from getName(), its
+ namespace and prefix are
+ available from getNamespace() and getPrefix().</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getName()">getName()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getPrefix()">getPrefix()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespace()">getNamespace()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_PROCESS_NAMESPACES">FEATURE_PROCESS_NAMESPACES</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                3
+                (0x00000003)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="ENTITY_REF"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        ENTITY_REF
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>An entity reference was just read;
+ this token is available from <a href="#nextToken()">nextToken()</a>
+ only. The entity name is available by calling getName(). If available,
+ the replacement text can be obtained by calling getText(); otherwise,
+ the user is responsible for resolving the entity reference.
+ This event type is never returned from next(); next() will
+ accumulate the replacement text and other text
+ events to a single TEXT event.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                6
+                (0x00000006)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEATURE_PROCESS_DOCDECL"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+        FEATURE_PROCESS_DOCDECL
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This feature determines whether the document declaration
+ is processed. If set to false,
+ the DOCDECL event type is reported by nextToken()
+ and ignored by next().
+
+ If this feature is activated, then the document declaration
+ must be processed by the parser.
+
+ <p><strong>Please note:</strong> If the document type declaration
+ was ignored, entity references may cause exceptions
+ later in the parsing process.
+ The default value of this feature is false. It cannot be changed
+ during parsing.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getFeature(java.lang.String)">getFeature(String)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setFeature(java.lang.String, boolean)">setFeature(String, boolean)</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "http://xmlpull.org/v1/doc/features.html#process-docdecl"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEATURE_PROCESS_NAMESPACES"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+        FEATURE_PROCESS_NAMESPACES
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This feature determines whether the parser processes
+ namespaces. As for all features, the default value is false.
+ <p><strong>NOTE:</strong> The value can not be changed during
+ parsing an must be set before parsing.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getFeature(java.lang.String)">getFeature(String)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setFeature(java.lang.String, boolean)">setFeature(String, boolean)</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "http://xmlpull.org/v1/doc/features.html#process-namespaces"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEATURE_REPORT_NAMESPACE_ATTRIBUTES"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+        FEATURE_REPORT_NAMESPACE_ATTRIBUTES
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This feature determines whether namespace attributes are
+ exposed via the attribute access methods. Like all features,
+ the default value is false. This feature cannot be changed
+ during parsing.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getFeature(java.lang.String)">getFeature(String)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setFeature(java.lang.String, boolean)">setFeature(String, boolean)</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "http://xmlpull.org/v1/doc/features.html#report-namespace-prefixes"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="FEATURE_VALIDATION"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+        FEATURE_VALIDATION
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>If this feature is activated, all validation errors as
+ defined in the XML 1.0 specification are reported.
+ This implies that FEATURE_PROCESS_DOCDECL is true and both, the
+ internal and external document type declaration will be processed.
+ <p><strong>Please Note:</strong> This feature can not be changed
+ during parsing. The default value is false.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getFeature(java.lang.String)">getFeature(String)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setFeature(java.lang.String, boolean)">setFeature(String, boolean)</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                "http://xmlpull.org/v1/doc/features.html#validation"
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="IGNORABLE_WHITESPACE"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        IGNORABLE_WHITESPACE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Ignorable whitespace was just read.
+ This token is available only from <a href="#nextToken()">nextToken()</a>).
+ For non-validating
+ parsers, this event is only reported by nextToken() when outside
+ the root element.
+ Validating parsers may be able to detect ignorable whitespace at
+ other locations.
+ The ignorable whitespace string is available by calling getText()
+
+ <p><strong>NOTE:</strong> this is different from calling the
+  isWhitespace() method, since text content
+  may be whitespace but not ignorable.
+
+ Ignorable whitespace is skipped by next() automatically; this event
+ type is never returned from next().</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                7
+                (0x00000007)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="NO_NAMESPACE"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+        NO_NAMESPACE
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This constant represents the default namespace (empty string "") </p></div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                ""
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="PROCESSING_INSTRUCTION"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        PROCESSING_INSTRUCTION
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>An XML processing instruction declaration was just read. This
+ event type is available only via <a href="#nextToken()">nextToken()</a>.
+ getText() will return text that is inside the processing instruction.
+ Calls to next() will skip processing instructions automatically.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                8
+                (0x00000008)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="START_DOCUMENT"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        START_DOCUMENT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Signalize that parser is at the very beginning of the document
+ and nothing was read yet.
+ This event type can only be observed by calling getEvent()
+ before the first call to next(), nextToken, or nextTag()</a>).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                0
+                (0x00000000)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="START_TAG"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        START_TAG
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returned from getEventType(),
+ <a href="#next()">next()</a>, <a href="#nextToken()">nextToken()</a> when
+ a start tag was read.
+ The name of start tag is available from getName(), its namespace and prefix are
+ available from getNamespace() and getPrefix()
+ if <a href='#FEATURE_PROCESS_NAMESPACES'>namespaces are enabled</a>.
+ See getAttribute* methods to retrieve element attributes.
+ See getNamespace* methods to retrieve newly declared namespaces.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getName()">getName()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getPrefix()">getPrefix()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespace()">getNamespace()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeCount()">getAttributeCount()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getDepth()">getDepth()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespaceCount(int)">getNamespaceCount(int)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespace()">getNamespace()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_PROCESS_NAMESPACES">FEATURE_PROCESS_NAMESPACES</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                2
+                (0x00000002)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+<A NAME="TEXT"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        int
+      </span>
+        TEXT
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Character data was read and will is available by calling getText().
+ <p><strong>Please note:</strong> <a href="#next()">next()</a> will
+ accumulate multiple
+ events into one TEXT event, skipping IGNORABLE_WHITESPACE,
+ PROCESSING_INSTRUCTION and COMMENT events,
+ In contrast, <a href="#nextToken()">nextToken()</a> will stop reading
+ text when any other event is observed.
+ Also, when the state was reached by calling next(), the text value will
+ be normalized, whereas getText() will
+ return unnormalized content in the case of nextToken(). This allows
+ an exact roundtrip without changing line ends when examining low
+ level events, whereas for high level applications the text is
+ normalized appropriately.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li>
+      </ul>
+  </div>
+
+    
+        <div class="jd-tagdata">
+        <span class="jd-tagtitle">Constant Value: </span>
+        <span>
+            
+                4
+                (0x00000004)
+            
+        </span>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+<!-- Fields -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="TYPES"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+        static 
+        final 
+        <a href="../../../../reference/java/lang/String.html">String[]</a>
+      </span>
+        TYPES
+    </h4>
+      <div class="api-level">
+        
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This array can be used to convert the event type integer constants
+ such as START_TAG or TEXT to
+ to a string. For example, the value of TYPES[START_TAG] is
+ the string "START_TAG".
+
+ This array is intended for diagnostic output only. Relying
+ on the contents of the array may be dangerous since malicious
+ applications may alter the array, although it is final, due
+ to limitations of the Java language.
+</p></div>
+
+    
+    </div>
+</div>
+
+
+
+
+<!-- Public ctors -->
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="defineEntityReplacementText(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">defineEntityReplacementText</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> entityName, <a href="../../../../reference/java/lang/String.html">String</a> replacementText)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set new value for entity replacement text as defined in
+ <a href="http://www.w3.org/TR/REC-xml#intern-replacement">XML 1.0 Section 4.5
+ Construction of Internal Entity Replacement Text</a>.
+ If FEATURE_PROCESS_DOCDECL or FEATURE_VALIDATION are set, calling this
+ function will result in an exception -- when processing of DOCDECL is
+ enabled, there is no need to the entity replacement text manually.
+
+ <p>The motivation for this function is to allow very small
+ implementations of XMLPULL that will work in J2ME environments.
+ Though these implementations may not be able to process the document type
+ declaration, they still can work with known DTDs by using this function.
+
+ <p><b>Please notes:</b> The given value is used literally as replacement text
+ and it corresponds to declaring entity in DTD that has all special characters
+ escaped: left angle bracket is replaced with &amp;lt;, ampersand with &amp;amp;
+ and so on.
+
+ <p><b>Note:</b> The given value is the literal replacement text and must not
+ contain any other entity reference (if it contains any entity reference
+ there will be no further replacement).
+
+ <p><b>Note:</b> The list of pre-defined entity names will
+ always contain standard XML entities such as
+ amp (&amp;amp;), lt (&amp;lt;), gt (&amp;gt;), quot (&amp;quot;), and apos (&amp;apos;).
+ Those cannot be redefined by this method!</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#setInput(java.io.InputStream, java.lang.String)">setInput(InputStream, String)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_PROCESS_DOCDECL">FEATURE_PROCESS_DOCDECL</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#FEATURE_VALIDATION">FEATURE_VALIDATION</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAttributeCount()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getAttributeCount</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the number of attributes of the current start tag, or
+ -1 if the current event type is not START_TAG</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeNamespace(int)">getAttributeNamespace(int)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeName(int)">getAttributeName(int)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributePrefix(int)">getAttributePrefix(int)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getAttributeValue(int)">getAttributeValue(int)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAttributeName(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getAttributeName</span>
+      <span class="normal">(int index)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the local name of the specified attribute
+ if namespaces are enabled or just attribute name if namespaces are disabled.
+ Throws an IndexOutOfBoundsException if the index is out of range
+ or current event type is not START_TAG.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>zero-based index of attribute</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>attribute name (null is never returned)
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAttributeNamespace(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getAttributeNamespace</span>
+      <span class="normal">(int index)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the namespace URI of the attribute
+ with the given index (starts from 0).
+ Returns an empty string ("") if namespaces are not enabled
+ or the attribute has no namespace.
+ Throws an IndexOutOfBoundsException if the index is out of range
+ or the current event type is not START_TAG.
+
+ <p><strong>NOTE:</strong> if FEATURE_REPORT_NAMESPACE_ATTRIBUTES is set
+ then namespace attributes (xmlns:ns='...') must be reported
+ with namespace
+ <a href="http://www.w3.org/2000/xmlns/">http://www.w3.org/2000/xmlns/</a>
+ (visit this URL for description!).
+ The default namespace attribute (xmlns="...") will be reported with empty namespace.
+ <p><strong>NOTE:</strong>The xml prefix is bound as defined in
+ <a href="http://www.w3.org/TR/REC-xml-names/#ns-using">Namespaces in XML</a>
+ specification to "http://www.w3.org/XML/1998/namespace".</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>zero-based index of attribute</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>attribute namespace,
+   empty string ("") is returned  if namespaces processing is not enabled or
+   namespaces processing is enabled but attribute has no namespace (it has no prefix).
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAttributePrefix(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getAttributePrefix</span>
+      <span class="normal">(int index)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the prefix of the specified attribute
+ Returns null if the element has no prefix.
+ If namespaces are disabled it will always return null.
+ Throws an IndexOutOfBoundsException if the index is out of range
+ or current event type is not START_TAG.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>zero-based index of attribute</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>attribute prefix or null if namespaces processing is not enabled.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAttributeType(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getAttributeType</span>
+      <span class="normal">(int index)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the type of the specified attribute
+ If parser is non-validating it MUST return CDATA.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>zero-based index of attribute</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>attribute type (null is never returned)
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAttributeValue(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getAttributeValue</span>
+      <span class="normal">(int index)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the given attributes value.
+ Throws an IndexOutOfBoundsException if the index is out of range
+ or current event type is not START_TAG.
+
+ <p><strong>NOTE:</strong> attribute value must be normalized
+ (including entity replacement text if PROCESS_DOCDECL is false) as described in
+ <a href="http://www.w3.org/TR/REC-xml#AVNormalize">XML 1.0 section
+ 3.3.3 Attribute-Value Normalization</a></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>zero-based index of attribute</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>value of attribute (null is never returned)
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#defineEntityReplacementText(java.lang.String, java.lang.String)">defineEntityReplacementText(String, String)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAttributeValue(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getAttributeValue</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> namespace, <a href="../../../../reference/java/lang/String.html">String</a> name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the attributes value identified by namespace URI and namespace localName.
+ If namespaces are disabled namespace must be null.
+ If current event type is not START_TAG then IndexOutOfBoundsException will be thrown.
+
+ <p><strong>NOTE:</strong> attribute value must be normalized
+ (including entity replacement text if PROCESS_DOCDECL is false) as described in
+ <a href="http://www.w3.org/TR/REC-xml#AVNormalize">XML 1.0 section
+ 3.3.3 Attribute-Value Normalization</a></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>namespace</td>
+          <td>Namespace of the attribute if namespaces are enabled otherwise must be null</td>
+        </tr>
+        <tr>
+          <th>name</td>
+          <td>If namespaces enabled local name of attribute otherwise just attribute name</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>value of attribute or null if attribute with given name does not exist
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#defineEntityReplacementText(java.lang.String, java.lang.String)">defineEntityReplacementText(String, String)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getColumnNumber()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getColumnNumber</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the current column number, starting from 0.
+ When the parser does not know the current column number
+ or can not determine it,  -1 is returned (e.g. for WBXML).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>current column number or -1 if unknown.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getDepth()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getDepth</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the current depth of the element.
+ Outside the root element, the depth is 0. The
+ depth is incremented by 1 when a start tag is reached.
+ The depth is decremented AFTER the end tag
+ event was observed.
+
+ <pre>
+ &lt;!-- outside --&gt;     0
+ &lt;root>                  1
+   sometext                 1
+     &lt;foobar&gt;         2
+     &lt;/foobar&gt;        2
+ &lt;/root&gt;              1
+ &lt;!-- outside --&gt;     0
+ </pre>
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getEventType()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getEventType</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the type of the current event (START_TAG, END_TAG, TEXT, etc.)</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getFeature(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">getFeature</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the current value of the given feature.
+ <p><strong>Please note:</strong> unknown features are
+ <strong>always</strong> returned as false.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>The name of feature to be retrieved.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The value of the feature.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>if string the feature name is null
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getInputEncoding()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getInputEncoding</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the input encoding if known, null otherwise.
+ If setInput(InputStream, inputEncoding) was called with an inputEncoding
+ value other than null, this value must be returned
+ from this method. Otherwise, if inputEncoding is null and
+ the parser supports the encoding detection feature
+ (http://xmlpull.org/v1/doc/features.html#detect-encoding),
+ it must return the detected encoding.
+ If setInput(Reader) was called, null is returned.
+ After first call to next if XML declaration was present this method
+ will return encoding declared.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getLineNumber()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getLineNumber</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the current line number, starting from 1.
+ When the parser does not know the current line number
+ or can not determine it,  -1 is returned (e.g. for WBXML).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>current line number or -1 if unknown.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getName()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getName</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>For START_TAG or END_TAG events, the (local) name of the current
+ element is returned when namespaces are enabled. When namespace
+ processing is disabled, the raw name is returned.
+ For ENTITY_REF events, the entity name is returned.
+ If the current event is not START_TAG, END_TAG, or ENTITY_REF,
+ null is returned.
+ <p><b>Please note:</b> To reconstruct the raw element name
+  when namespaces are enabled and the prefix is not null,
+ you will need to  add the prefix and a colon to localName..
+
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getNamespace()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getNamespace</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the namespace URI of the current element.
+ The default namespace is represented
+ as empty string.
+ If namespaces are not enabled, an empty String ("") is always returned.
+ The current event must be START_TAG or END_TAG; otherwise,
+ null is returned.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getNamespace(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getNamespace</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> prefix)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the URI corresponding to the given prefix,
+ depending on current state of the parser.
+
+ <p>If the prefix was not declared in the current scope,
+ null is returned. The default namespace is included
+ in the namespace table and is available via
+ getNamespace (null).
+
+ <p>This method is a convenience method for
+
+ <pre>
+  for (int i = getNamespaceCount(getDepth ())-1; i >= 0; i--) {
+   if (getNamespacePrefix(i).equals( prefix )) {
+     return getNamespaceUri(i);
+   }
+  }
+  return null;
+ </pre>
+
+ <p><strong>Please note:</strong> parser implementations
+ may provide more efficient lookup, e.g. using a Hashtable.
+ The 'xml' prefix is bound to "http://www.w3.org/XML/1998/namespace", as
+ defined in the
+ <a href="http://www.w3.org/TR/REC-xml-names/#ns-using">Namespaces in XML</a>
+ specification. Analogous, the 'xmlns' prefix is resolved to
+ <a href="http://www.w3.org/2000/xmlns/">http://www.w3.org/2000/xmlns/</a></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespaceCount(int)">getNamespaceCount(int)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespacePrefix(int)">getNamespacePrefix(int)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespaceUri(int)">getNamespaceUri(int)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getNamespaceCount(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">getNamespaceCount</span>
+      <span class="normal">(int depth)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the numbers of elements in the namespace stack for the given
+ depth.
+ If namespaces are not enabled, 0 is returned.
+
+ <p><b>NOTE:</b> when parser is on END_TAG then it is allowed to call
+  this function with getDepth()+1 argument to retrieve position of namespace
+  prefixes and URIs that were declared on corresponding START_TAG.
+ <p><b>NOTE:</b> to retrieve list of namespaces declared in current element:<pre>
+       XmlPullParser pp = ...
+       int nsStart = pp.getNamespaceCount(pp.getDepth()-1);
+       int nsEnd = pp.getNamespaceCount(pp.getDepth());
+       for (int i = nsStart; i < nsEnd; i++) {
+          String prefix = pp.getNamespacePrefix(i);
+          String ns = pp.getNamespaceUri(i);
+           // ...
+      }
+ </pre></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespacePrefix(int)">getNamespacePrefix(int)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespaceUri(int)">getNamespaceUri(int)</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespace()">getNamespace()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getNamespace(java.lang.String)">getNamespace(String)</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getNamespacePrefix(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getNamespacePrefix</span>
+      <span class="normal">(int pos)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the namespace prefix for the given position
+ in the namespace stack.
+ Default namespace declaration (xmlns='...') will have null as prefix.
+ If the given index is out of range, an exception is thrown.
+ <p><b>Please note:</b> when the parser is on an END_TAG,
+ namespace prefixes that were declared
+ in the corresponding START_TAG are still accessible
+ although they are no longer in scope.
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getNamespaceUri(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getNamespaceUri</span>
+      <span class="normal">(int pos)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the namespace URI for the given position in the
+ namespace stack
+ If the position is out of range, an exception is thrown.
+ <p><b>NOTE:</b> when parser is on END_TAG then namespace prefixes that were declared
+  in corresponding START_TAG are still accessible even though they are not in scope
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getPositionDescription()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getPositionDescription</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns a short text describing the current parser state, including
+ the position, a
+ description of the current event and the data source if known.
+ This method is especially useful to provide meaningful
+ error messages and for debugging purposes.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getPrefix()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getPrefix</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the prefix of the current element.
+ If the element is in the default namespace (has no prefix),
+ null is returned.
+ If namespaces are not enabled, or the current event
+ is not  START_TAG or END_TAG, null is returned.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getProperty(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/Object.html">Object</a>
+      </span>
+      <span class="sympad">getProperty</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Look up the value of a property.
+
+ The property name is any fully-qualified URI.
+ <p><strong>NOTE:</strong> unknown properties are <strong>always</strong>
+ returned as null.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>name</td>
+          <td>The name of property to be retrieved.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The value of named property.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getText()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">getText</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the text content of the current event as String.
+ The value returned depends on current event type,
+ for example for TEXT event it is element content
+ (this is typical case when next() is used).
+
+ See description of nextToken() for detailed description of
+ possible returned values for different types of events.
+
+ <p><strong>NOTE:</strong> in case of ENTITY_REF, this method returns
+ the entity replacement text (or null if not available). This is
+ the only case where
+ getText() and getTextCharacters() return different values.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getEventType()">getEventType()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getTextCharacters(int[])"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        char[]
+      </span>
+      <span class="sympad">getTextCharacters</span>
+      <span class="normal">(int[] holderForStartAndLength)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the buffer that contains the text of the current event,
+ as well as the start offset and length relevant for the current
+ event. See getText(), next() and nextToken() for description of possible returned values.
+
+ <p><strong>Please note:</strong> this buffer must not
+ be modified and its content MAY change after a call to
+ next() or nextToken(). This method will always return the
+ same value as getText(), except for ENTITY_REF. In the case
+ of ENTITY ref, getText() returns the replacement text and
+ this method returns the actual input buffer containing the
+ entity name.
+ If getText() returns null, this method returns null as well and
+ the values returned in the holder array MUST be -1 (both start
+ and length).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>holderForStartAndLength</td>
+          <td>Must hold an 2-element int array
+ into which the start offset and length values will be written.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>char buffer that contains the text of the current event
+  (null if the current event has no text associated).
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#getText()">getText()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#nextToken()">nextToken()</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isAttributeDefault(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isAttributeDefault</span>
+      <span class="normal">(int index)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns if the specified attribute was not in input was declared in XML.
+ If parser is non-validating it MUST always return false.
+ This information is part of XML infoset:</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>zero-based index of attribute</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>false if attribute was in input
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isEmptyElementTag()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isEmptyElementTag</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns true if the current event is START_TAG and the tag
+ is degenerated
+ (e.g. &lt;foobar/&gt;).
+ <p><b>NOTE:</b> if the parser is not on START_TAG, an exception
+ will be thrown.
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isWhitespace()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        boolean
+      </span>
+      <span class="sympad">isWhitespace</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Checks whether the current TEXT event contains only whitespace
+ characters.
+ For IGNORABLE_WHITESPACE, this is always true.
+ For TEXT and CDSECT, false is returned when the current event text
+ contains at least one non-white space character. For any other
+ event type an exception is thrown.
+
+ <p><b>Please note:</b> non-validating parsers are not
+ able to distinguish whitespace and ignorable whitespace,
+ except from whitespace outside the root element. Ignorable
+ whitespace is reported as separate event, which is exposed
+ via nextToken only.
+
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="next()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">next</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get next parsing event - element content wil be coalesced and only one
+ TEXT event must be returned for whole element content
+ (comments and processing instructions will be ignored and entity references
+ must be expanded or exception mus be thrown if entity reference can not be expanded).
+ If element content is empty (content is "") then no TEXT event will be reported.
+
+ <p><b>NOTE:</b> empty element (such as &lt;tag/>) will be reported
+  with  two separate events: START_TAG, END_TAG - it must be so to preserve
+   parsing equivalency of empty element to &lt;tag>&lt;/tag>.
+  (see isEmptyElementTag ())</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../reference/java/io/IOException.html">IOException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#isEmptyElementTag()">isEmptyElementTag()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#START_TAG">START_TAG</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#TEXT">TEXT</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#END_TAG">END_TAG</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#END_DOCUMENT">END_DOCUMENT</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="nextTag()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">nextTag</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Call next() and return event if it is START_TAG or END_TAG
+ otherwise throw an exception.
+ It will skip whitespace TEXT before actual tag if any.
+
+ <p>essentially it does this
+ <pre>
+   int eventType = next();
+   if(eventType == TEXT &amp;&amp;  isWhitespace()) {   // skip whitespace
+      eventType = next();
+   }
+   if (eventType != START_TAG &amp;&amp;  eventType != END_TAG) {
+      throw new XmlPullParserException("expected start or end tag", this, null);
+   }
+   return eventType;
+ </pre>
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../reference/java/io/IOException.html">IOException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="nextText()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        <a href="../../../../reference/java/lang/String.html">String</a>
+      </span>
+      <span class="sympad">nextText</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>If current event is START_TAG then if next element is TEXT then element content is returned
+ or if next event is END_TAG then empty string is returned, otherwise exception is thrown.
+ After calling this function successfully parser will be positioned on END_TAG.
+ 
+ <p>The motivation for this function is to allow to parse consistently both
+ empty elements and elements that has non empty content, for example for input: <ol>
+ <li>&lt;tag&gt;foo&lt;/tag&gt;
+ <li>&lt;tag&gt;&lt;/tag&gt; (which is equivalent to &lt;tag/&gt;
+ both input can be parsed with the same code:
+ <pre>
+   p.nextTag()
+   p.requireEvent(p.START_TAG, "", "tag");
+   String content = p.nextText();
+   p.requireEvent(p.END_TAG, "", "tag");
+ </pre>
+ This function together with nextTag make it very easy to parse XML that has
+ no mixed content.
+
+
+ <p>Essentially it does this
+ <pre>
+  if(getEventType() != START_TAG) {
+     throw new XmlPullParserException(
+       "parser must be on START_TAG to read next text", this, null);
+  }
+  int eventType = next();
+  if(eventType == TEXT) {
+     String result = getText();
+     eventType = next();
+     if(eventType != END_TAG) {
+       throw new XmlPullParserException(
+          "event TEXT it must be immediately followed by END_TAG", this, null);
+      }
+      return result;
+  } else if(eventType == END_TAG) {
+     return "";
+  } else {
+     throw new XmlPullParserException(
+       "parser must be on START_TAG or TEXT to read text", this, null);
+  }
+ </pre>
+
+ <p><strong>Warning:</strong> Prior to API level 14, the pull parser returned by <code>android.util.Xml</code> did not always advance to the END_TAG event when this method was called.
+ Work around by using manually advancing after calls to nextText(): <pre>
+  String text = xpp.nextText();
+  if (xpp.getEventType() != XmlPullParser.END_TAG) {
+      xpp.next();
+  }
+ </pre>
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../reference/java/io/IOException.html">IOException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="nextToken()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        int
+      </span>
+      <span class="sympad">nextToken</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>This method works similarly to next() but will expose
+ additional event types (COMMENT, CDSECT, DOCDECL, ENTITY_REF, PROCESSING_INSTRUCTION, or
+ IGNORABLE_WHITESPACE) if they are available in input.
+
+ <p>If special feature
+ <a href="http://xmlpull.org/v1/doc/features.html#xml-roundtrip">FEATURE_XML_ROUNDTRIP</a>
+ (identified by URI: http://xmlpull.org/v1/doc/features.html#xml-roundtrip)
+ is enabled it is possible to do XML document round trip ie. reproduce
+ exectly on output the XML input using getText():
+ returned content is always unnormalized (exactly as in input).
+ Otherwise returned content is end-of-line normalized as described
+ <a href="http://www.w3.org/TR/REC-xml#sec-line-ends">XML 1.0 End-of-Line Handling</a>
+ and. Also when this feature is enabled exact content of START_TAG, END_TAG,
+ DOCDECL and PROCESSING_INSTRUCTION is available.
+
+ <p>Here is the list of tokens that can be  returned from nextToken()
+ and what getText() and getTextCharacters() returns:<dl>
+ <dt>START_DOCUMENT<dd>null
+ <dt>END_DOCUMENT<dd>null
+ <dt>START_TAG<dd>null unless FEATURE_XML_ROUNDTRIP
+   enabled and then returns XML tag, ex: &lt;tag attr='val'>
+ <dt>END_TAG<dd>null unless FEATURE_XML_ROUNDTRIP
+  id enabled and then returns XML tag, ex: &lt;/tag>
+ <dt>TEXT<dd>return element content.
+  <br>Note: that element content may be delivered in multiple consecutive TEXT events.
+ <dt>IGNORABLE_WHITESPACE<dd>return characters that are determined to be ignorable white
+ space. If the FEATURE_XML_ROUNDTRIP is enabled all whitespace content outside root
+ element will always reported as IGNORABLE_WHITESPACE otherwise reporting is optional.
+  <br>Note: that element content may be delivered in multiple consecutive IGNORABLE_WHITESPACE events.
+ <dt>CDSECT<dd>
+ return text <em>inside</em> CDATA
+  (ex. 'fo&lt;o' from &lt;!CDATA[fo&lt;o]]>)
+ <dt>PROCESSING_INSTRUCTION<dd>
+  if FEATURE_XML_ROUNDTRIP is true
+  return exact PI content ex: 'pi foo' from &lt;?pi foo?>
+  otherwise it may be exact PI content or concatenation of PI target,
+ space and data so for example for
+   &lt;?target    data?> string &quot;target data&quot; may
+       be returned if FEATURE_XML_ROUNDTRIP is false.
+ <dt>COMMENT<dd>return comment content ex. 'foo bar' from &lt;!--foo bar-->
+ <dt>ENTITY_REF<dd>getText() MUST return entity replacement text if PROCESS_DOCDECL is false
+ otherwise getText() MAY return null,
+ additionally getTextCharacters() MUST return entity name
+ (for example 'entity_name' for &amp;entity_name;).
+ <br><b>NOTE:</b> this is the only place where value returned from getText() and
+   getTextCharacters() <b>are different</b>
+ <br><b>NOTE:</b> it is user responsibility to resolve entity reference
+    if PROCESS_DOCDECL is false and there is no entity replacement text set in
+    defineEntityReplacementText() method (getText() will be null)
+ <br><b>NOTE:</b> character entities (ex. &amp;#32;) and standard entities such as
+  &amp;amp; &amp;lt; &amp;gt; &amp;quot; &amp;apos; are reported as well
+  and are <b>not</b> reported as TEXT tokens but as ENTITY_REF tokens!
+  This requirement is added to allow to do roundtrip of XML documents!
+ <dt>DOCDECL<dd>
+ if FEATURE_XML_ROUNDTRIP is true or PROCESS_DOCDECL is false
+ then return what is inside of DOCDECL for example it returns:<pre>
+ &quot; titlepage SYSTEM "http://www.foo.bar/dtds/typo.dtd"
+ [&lt;!ENTITY % active.links "INCLUDE">]&quot;</pre>
+ <p>for input document that contained:<pre>
+ &lt;!DOCTYPE titlepage SYSTEM "http://www.foo.bar/dtds/typo.dtd"
+ [&lt;!ENTITY % active.links "INCLUDE">]></pre>
+ otherwise if FEATURE_XML_ROUNDTRIP is false and PROCESS_DOCDECL is true
+    then what is returned is undefined (it may be even null)
+ </dd>
+ </dl>
+
+ <p><strong>NOTE:</strong> there is no guarantee that there will only one TEXT or
+ IGNORABLE_WHITESPACE event from nextToken() as parser may chose to deliver element content in
+ multiple tokens (dividing element content into chunks)
+
+ <p><strong>NOTE:</strong> whether returned text of token is end-of-line normalized
+  is depending on FEATURE_XML_ROUNDTRIP.
+
+ <p><strong>NOTE:</strong> XMLDecl (&lt;?xml ...?&gt;) is not reported but its content
+ is available through optional properties (see class description above).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../reference/java/io/IOException.html">IOException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#next()">next()</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#START_TAG">START_TAG</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#TEXT">TEXT</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#END_TAG">END_TAG</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#END_DOCUMENT">END_DOCUMENT</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#COMMENT">COMMENT</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#DOCDECL">DOCDECL</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#PROCESSING_INSTRUCTION">PROCESSING_INSTRUCTION</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#ENTITY_REF">ENTITY_REF</a></code></li><li><code><a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html#IGNORABLE_WHITESPACE">IGNORABLE_WHITESPACE</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="require(int, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">require</span>
+      <span class="normal">(int type, <a href="../../../../reference/java/lang/String.html">String</a> namespace, <a href="../../../../reference/java/lang/String.html">String</a> name)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Test if the current event is of the given type and if the
+ namespace and name do match. null will match any namespace
+ and any name. If the test is not passed, an exception is
+ thrown. The exception text indicates the parser position,
+ the expected event and the current event that is not meeting the
+ requirement.
+
+ <p>Essentially it does this
+ <pre>
+  if (type != getEventType()
+  || (namespace != null &amp;&amp;  !namespace.equals( getNamespace () ) )
+  || (name != null &amp;&amp;  !name.equals( getName() ) ) )
+     throw new XmlPullParserException( "expected "+ TYPES[ type ]+getPositionDescription());
+ </pre>
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../reference/java/io/IOException.html">IOException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setFeature(java.lang.String, boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setFeature</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> name, boolean state)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Use this call to change the general behaviour of the parser,
+ such as namespace processing or doctype declaration handling.
+ This method must be called before the first call to next or
+ nextToken. Otherwise, an exception is thrown.
+ <p>Example: call setFeature(FEATURE_PROCESS_NAMESPACES, true) in order
+ to switch on namespace processing. The initial settings correspond
+ to the properties requested from the XML Pull Parser factory.
+ If none were requested, all features are deactivated by default.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td>If the feature is not supported or can not be set</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>If string with the feature name is null
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setInput(java.io.Reader)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setInput</span>
+      <span class="normal">(<a href="../../../../reference/java/io/Reader.html">Reader</a> in)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set the input source for parser to the given reader and
+ resets the parser. The event type is set to the initial value
+ START_DOCUMENT.
+ Setting the reader to null will just stop parsing and
+ reset parser state,
+ allowing the parser to free internal resources
+ such as parsing buffers.
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setInput(java.io.InputStream, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setInput</span>
+      <span class="normal">(<a href="../../../../reference/java/io/InputStream.html">InputStream</a> inputStream, <a href="../../../../reference/java/lang/String.html">String</a> inputEncoding)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the input stream the parser is going to process.
+ This call resets the parser state and sets the event type
+ to the initial value START_DOCUMENT.
+
+ <p><strong>NOTE:</strong> If an input encoding string is passed,
+  it MUST be used. Otherwise,
+  if inputEncoding is null, the parser SHOULD try to determine
+  input encoding following XML 1.0 specification (see below).
+  If encoding detection is supported then following feature
+  <a href="http://xmlpull.org/v1/doc/features.html#detect-encoding">http://xmlpull.org/v1/doc/features.html#detect-encoding</a>
+  MUST be true amd otherwise it must be false</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>inputStream</td>
+          <td>contains a raw byte input stream of possibly
+     unknown encoding (when inputEncoding is null).</td>
+        </tr>
+        <tr>
+          <th>inputEncoding</td>
+          <td>if not null it MUST be used as encoding for inputStream
+</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setProperty(java.lang.String, java.lang.Object)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        abstract 
+         
+        void
+      </span>
+      <span class="sympad">setProperty</span>
+      <span class="normal">(<a href="../../../../reference/java/lang/String.html">String</a> name, <a href="../../../../reference/java/lang/Object.html">Object</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set the value of a property.
+
+ The property name is any fully-qualified URI.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td>If the property is not supported or can not be set</td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></td>
+            <td>If string with the property name is null
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Dialogs | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Dialogs</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+    <h2>In this document</h2>
+<ol>
+  <li><a href="#DialogFragment">Creating a Dialog Fragment</a></li>
+  <li><a href="#AlertDialog">Building an Alert Dialog</a>
+    <ol>
+      <li><a href="#AddingButtons">Adding buttons</a></li>
+      <li><a href="#AddingAList">Adding a list</a></li>
+      <li><a href="#CustomLayout">Creating a Custom Layout</a></li>
+    </ol>
+  </li>
+  <li><a href="#PassingEvents">Passing Events Back to the Dialog's Host</a></li>
+  <li><a href="#ShowingADialog">Showing a Dialog</a></li>
+  <li><a href="#FullscreenDialog">Showing a Dialog Fullscreen or as an Embedded Fragment</a>
+    <ol>
+      <li><a href="#ActivityAsDialog">Showing an activity as a dialog on large screens</a></li>
+    </ol>
+  </li>
+  <li><a href="#DismissingADialog">Dismissing a Dialog</a></li>
+</ol>
+
+    <h2>Key classes</h2>
+    <ol>
+      <li><code><a href="../../../reference/android/app/DialogFragment.html">DialogFragment</a></code></li>
+      <li><code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code></li>
+    </ol>
+    
+    <h2>See also</h2>
+    <ol>
+      <li><a href="../../../design/building-blocks/dialogs.html">Dialogs design guide</a></li>
+      <li><a href="../../../guide/topics/ui/controls/pickers.html">Pickers</a> (Date/Time dialogs)</li>
+    </ol>
+  </div>
+</div>
+
+<p>A dialog is a small window that prompts the user to
+make a decision or enter additional information. A dialog does not fill the screen and is
+normally used for modal events that require users to take an action before they can proceed.</p>
+
+<div class="note design">
+<p><strong>Dialog Design</strong></p>
+  <p>For information about how to design your dialogs, including recommendations
+  for language, read the <a
+href="../../../design/building-blocks/dialogs.html">Dialogs</a> design guide.</p>
+</div>
+
+<img src="../../../images/ui/dialogs.png" />
+
+<p>The <code><a href="../../../reference/android/app/Dialog.html">Dialog</a></code> class is the base class for dialogs, but you
+should avoid instantiating <code><a href="../../../reference/android/app/Dialog.html">Dialog</a></code> directly.
+Instead, use one of the following subclasses:</p>
+<dl>
+  <dt><code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code></dt>
+  <dd>A dialog that can show a title, up to three buttons, a list of
+    selectable items, or a custom layout.</dd>
+  <dt><code><a href="../../../reference/android/app/DatePickerDialog.html">DatePickerDialog</a></code> or <code><a href="../../../reference/android/app/TimePickerDialog.html">TimePickerDialog</a></code></dt>
+  <dd>A dialog with a pre-defined UI that allows the user to select a date or time.</dd>
+</dl>
+
+<div class="sidebox">
+<h2>Avoid ProgressDialog</h2>
+<p>Android includes another dialog class called
+<code><a href="../../../reference/android/app/ProgressDialog.html">ProgressDialog</a></code> that shows a dialog with a progress bar. However, if you
+need to indicate loading or indeterminate progress, you should instead follow the design
+guidelines for <a href="../../../design/building-blocks/progress.html">Progress &amp;
+Activity</a> and use a <code><a href="../../../reference/android/widget/ProgressBar.html">ProgressBar</a></code> in your layout.</p>
+</div>
+
+<p>These classes define the style and structure for your dialog, but you should
+use a <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> as a container for your dialog.
+The <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> class provides all the controls you
+need to create your dialog and manage its appearance, instead of calling methods
+on the <code><a href="../../../reference/android/app/Dialog.html">Dialog</a></code> object.</p>
+
+<p>Using <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> to manage the dialog
+ensures that it correctly handles lifecycle events
+such as when the user presses the <em>Back</em> button or rotates the screen. The <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> class also allows you to reuse the dialog's UI as an
+embeddable component in a larger UI, just like a traditional <code><a href="../../../reference/android/support/v4/app/Fragment.html">Fragment</a></code> (such as when you want the dialog UI to appear differently
+on large and small screens).</p>
+
+<p>The following sections in this guide describe how to use a <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> in combination with an <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code>
+object. If you'd like to create a date or time picker, you should instead read the
+<a href="../../../guide/topics/ui/controls/pickers.html">Pickers</a> guide.</p>
+
+<p class="note"><strong>Note:</strong>
+Because the <code><a href="../../../reference/android/app/DialogFragment.html">DialogFragment</a></code> class was originally added with
+Android 3.0 (API level 11), this document describes how to use the <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> class that's provided with the <a
+href="../../../tools/support-library/index.html">Support Library</a>. By adding this library
+to your app, you can use <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> and a variety of other
+APIs on devices running Android 1.6 or higher. If the minimum version your app supports
+is API level 11 or higher, then you can use the framework version of <code><a href="../../../reference/android/app/DialogFragment.html">DialogFragment</a></code>, but be aware that the links in this document are for the support
+library APIs. When using the support library,
+be sure that you import <code>android.support.v4.app.DialogFragment</code>
+class and <em>not</em> <code>android.app.DialogFragment</code>.</p>
+
+
+<h2 id="DialogFragment">Creating a Dialog Fragment</h2>
+
+<p>You can accomplish a wide variety of dialog designs&mdash;including
+custom layouts and those described in the <a
+href="../../../design/building-blocks/dialogs.html">Dialogs</a>
+design guide&mdash;by extending
+<code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> and creating a <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code>
+in the <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#onCreateDialog(android.os.Bundle)">onCreateDialog()</a></code> callback method.</p>
+
+<p>For example, here's a basic <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code> that's managed within
+a <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code>:</p>
+
+<pre>
+public class FireMissilesDialogFragment extends DialogFragment {
+    &#64;Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // Use the Builder class for convenient dialog construction
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.dialog_fire_missiles)
+               .setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       // FIRE ZE MISSILES!
+                   }
+               })
+               .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       // User cancelled the dialog
+                   }
+               });
+        // Create the AlertDialog object and return it
+        return builder.create();
+    }
+}
+</pre>
+
+<div class="figure" style="width:290px;margin:0 0 0 20px">
+<img src="../../../images/ui/dialog_buttons.png" alt="" />
+<p class="img-caption"><strong>Figure 1.</strong>
+A dialog with a message and two action buttons.</p>
+</div>
+
+<p>Now, when you create an instance of this class and call <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#show(android.support.v4.app.FragmentManager, java.lang.String)">show()</a></code> on that object, the dialog appears as
+shown in figure 1.</p>
+
+<p>The next section describes more about using the <code><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code>
+APIs to create the dialog.</p>
+
+<p>Depending on how complex your dialog is, you can implement a variety of other callback
+methods in the <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code>, including all the basic
+<a href="../../../guide/components/fragments.html#Lifecycle">fragment lifecycle methods</a>.
+
+
+
+
+
+<h2 id="AlertDialog">Building an Alert Dialog</h2>
+
+
+<p>The <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code> class allows you to build a variety of dialog designs and
+is often the only dialog class you'll need.
+As shown in figure 2, there are three regions of an alert dialog:</p>
+
+<div class="figure" style="width:311px;margin-top:0">
+<img src="../../../images/ui/dialogs_regions.png" alt="" style="margin-bottom:0"/>
+<p class="img-caption"><strong>Figure 2.</strong> The layout of a dialog.</p>
+</div>
+
+<ol>
+<li><b>Title</b>
+  <p>This is optional and should be used only when the content area
+  is occupied by a detailed message, a list, or custom layout. If you need to state
+  a simple message or question (such as the dialog in figure 1), you don't need a title.</li>
+<li><b>Content area</b>
+  <p>This can display a message, a list, or other custom layout.</p></li>
+<li><b>Action buttons</b>
+  <p>There should be no more than three action buttons in a dialog.</p></li>
+</ol>
+
+<p>The <code><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code>
+class provides APIs that allow you to create an <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code>
+with these kinds of content, including a custom layout.</p>
+
+<p>To build an <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code>:</p>
+
+<pre>
+<b>// 1. Instantiate an <code><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> with its constructor</b>
+AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+<b>// 2. Chain together various setter methods to set the dialog characteristics</b>
+builder.setMessage(R.string.dialog_message)
+       .setTitle(R.string.dialog_title);
+
+<b>// 3. Get the <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code> from <code><a href="../../../reference/android/app/AlertDialog.Builder.html#create()">create()</a></code></b>
+AlertDialog dialog = builder.create();
+</pre>
+
+<p>The following topics show how to define various dialog attributes using the
+<code><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> class.</p>
+
+
+
+
+<h3 id="AddingButtons">Adding buttons</h3>
+
+<p>To add action buttons like those in figure 2,
+call the <code><a href="../../../reference/android/app/AlertDialog.Builder.html#setPositiveButton(int, android.content.DialogInterface.OnClickListener)">setPositiveButton()</a></code> and
+<code><a href="../../../reference/android/app/AlertDialog.Builder.html#setNegativeButton(int, android.content.DialogInterface.OnClickListener)">setNegativeButton()</a></code> methods:</p>
+
+<pre style="clear:right">
+AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+// Add the buttons
+builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+               // User clicked OK button
+           }
+       });
+builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+               // User cancelled the dialog
+           }
+       });
+// Set other dialog properties
+...
+
+// Create the AlertDialog
+AlertDialog dialog = builder.create();
+</pre>
+
+<p>The <code>set...Button()</code> methods require a title for the button (supplied
+by a <a href="../../../guide/topics/resources/string-resource.html">string resource</a>) and a 
+<code><a href="../../../reference/android/content/DialogInterface.OnClickListener.html">DialogInterface.OnClickListener</a></code> that defines the action to take 
+when the user presses the button.</p>
+
+<p>There are three different action buttons you can add:</p>
+<dl>
+  <dt>Positive</dt>
+  <dd>You should use this to accept and continue with the action (the "OK" action).</dd>
+  <dt>Negative</dt>
+  <dd>You should use this to cancel the action.</dd>
+  <dt>Neutral</dt>
+  <dd>You should use this when the user may not want to proceed with the action,
+  but doesn't necessarily want to cancel. It appears between the positive and negative
+  buttons. For example, the action might be "Remind me later."</dd> 
+</dl>
+
+<p>You can add only one of each button type to an <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code>. That is, you cannot have more than one "positive" button.</p>
+
+
+
+<div class="figure" style="width:290px;margin:0 0 0 40px">
+<img src="../../../images/ui/dialog_list.png" alt="" />
+<p class="img-caption"><strong>Figure 3.</strong>
+A dialog with a title and list.</p>
+</div>
+
+<h3 id="AddingAList">Adding a list</h3>
+
+<p>There are three kinds of lists available with the <code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code> APIs:</p>
+<ul>
+<li>A traditional single-choice list</li>
+<li>A persistent single-choice list (radio buttons)</li>
+<li>A persistent multiple-choice list (checkboxes)</li>
+</ul>
+
+<p>To create a single-choice list like the one in figure 3, 
+use the <code><a href="../../../reference/android/app/AlertDialog.Builder.html#setItems(int, android.content.DialogInterface.OnClickListener)">setItems()</a></code> method:</p>
+
+<pre style="clear:right">
+&#64;Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    builder.setTitle(R.string.pick_color);
+           .setItems(R.array.colors_array, new DialogInterface.OnClickListener() {
+               public void onClick(DialogInterface dialog, int which) {
+               // The 'which' argument contains the index position
+               // of the selected item
+           }
+    });
+    return builder.create();
+}
+</pre>
+
+<p>Because the list appears in the dialog's content area,
+the dialog cannot show both a message and a list and you should set a title for the
+dialog with <code><a href="../../../reference/android/app/AlertDialog.Builder.html#setTitle(int)">setTitle()</a></code>. 
+To specify the items for the list, call <code><a href="../../../reference/android/app/AlertDialog.Builder.html#setItems(int, android.content.DialogInterface.OnClickListener)">setItems()</a></code>, passing an array.
+Alternatively, you can specify a list using <code><a href="../../../reference/android/app/AlertDialog.Builder.html#setAdapter(android.widget.ListAdapter, android.content.DialogInterface.OnClickListener)">setAdapter()</a></code>. This allows you to back the list
+with dynamic data (such as from a database) using a <code><a href="../../../reference/android/widget/ListAdapter.html">ListAdapter</a></code>.</p>
+
+<p>If you choose to back your list with a <code><a href="../../../reference/android/widget/ListAdapter.html">ListAdapter</a></code>,
+always use a <code><a href="../../../reference/android/support/v4/content/Loader.html">Loader</a></code> so that the content loads
+asynchronously. This is described further in
+<a href="../../../guide/topics/ui/declaring-layout.html#AdapterViews">Building Layouts
+with an Adapter</a> and the <a href="../../../guide/components/loaders.html">Loaders</a>
+guide.</p>
+
+<p class="note"><strong>Note:</strong> By default, touching a list item dismisses the dialog,
+unless you're using one of the following persistent choice lists.</p>
+
+<div class="figure" style="width:290px;margin:-30px 0 0 40px">
+<img src="../../../images/ui/dialog_checkboxes.png" />
+<p class="img-caption"><strong>Figure 4.</strong>
+A list of multiple-choice items.</p>
+</div>
+
+
+<h4 id="Checkboxes">Adding a persistent multiple-choice or single-choice list</h4>
+
+<p>To add a list of multiple-choice items (checkboxes) or 
+single-choice items (radio buttons), use the
+<code><a href="../../../reference/android/app/AlertDialog.Builder.html#setMultiChoiceItems(android.database.Cursor, java.lang.String, java.lang.String, android.content.DialogInterface.OnMultiChoiceClickListener)">setMultiChoiceItems()</a></code> or 
+<code><a href="../../../reference/android/app/AlertDialog.Builder.html#setSingleChoiceItems(int, int, android.content.DialogInterface.OnClickListener)">setSingleChoiceItems()</a></code> methods, respectively.</p>
+
+<p>For example, here's how you can create a multiple-choice list like the
+one shown in figure 4 that saves the selected
+items in an <code><a href="../../../reference/java/util/ArrayList.html">ArrayList</a></code>:</p>
+
+<pre style="clear:right">
+&#64;Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+    mSelectedItems = new ArrayList();  // Where we track the selected items
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    // Set the dialog title
+    builder.setTitle(R.string.pick_toppings)
+    // Specify the list array, the items to be selected by default (null for none),
+    // and the listener through which to receive callbacks when items are selected
+           .setMultiChoiceItems(R.array.toppings, null,
+                      new DialogInterface.OnMultiChoiceClickListener() {
+               &#64;Override
+               public void onClick(DialogInterface dialog, int which,
+                       boolean isChecked) {
+                   if (isChecked) {
+                       // If the user checked the item, add it to the selected items
+                       mSelectedItems.add(which);
+                   } else if (mSelectedItems.contains(which)) {
+                       // Else, if the item is already in the array, remove it 
+                       mSelectedItems.remove(Integer.valueOf(which));
+                   }
+               }
+           })
+    // Set the action buttons
+           .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+               &#64;Override
+               public void onClick(DialogInterface dialog, int id) {
+                   // User clicked OK, so save the mSelectedItems results somewhere
+                   // or return them to the component that opened the dialog
+                   ...
+               }
+           })
+           .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+               &#64;Override
+               public void onClick(DialogInterface dialog, int id) {
+                   ...
+               }
+           });
+
+    return builder.create();
+}
+</pre>
+
+<p>Although both a traditional list and a list with radio buttons
+provide a "single choice" action, you should use <code><a href="../../../reference/android/app/AlertDialog.Builder.html#setSingleChoiceItems(int, int, android.content.DialogInterface.OnClickListener)">setSingleChoiceItems()</a></code> if you want to persist the user's choice.
+That is, if opening the dialog again later should indicate what the user's current choice is,
+then you create a list with radio buttons.</p>
+
+
+
+
+
+<h3 id="CustomLayout">Creating a Custom Layout</h3>
+
+<div class="figure" style="width:290px;margin:-30px 0 0 40px">
+<img src="../../../images/ui/dialog_custom.png" alt="" />
+<p class="img-caption"><strong>Figure 5.</strong> A custom dialog layout.</p>
+</div>
+
+<p>If you want a custom layout in a dialog, create a layout and add it to an
+<code><a href="../../../reference/android/app/AlertDialog.html">AlertDialog</a></code> by calling <code><a href="../../../reference/android/app/AlertDialog.Builder.html#setView(android.view.View)">setView()</a></code> on your <code><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> object.</p>
+
+<p>By default, the custom layout fills the dialog window, but you can still
+use <code><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> methods to add buttons and a title.</p>
+
+<p>For example, here's the layout file for the dialog in Figure 5:</p>
+
+<p style="clear:right" class="code-caption">res/layout/dialog_signin.xml</p>
+<pre>
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    &lt;ImageView
+        android:src="@drawable/header_logo"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:scaleType="center"
+        android:background="#FFFFBB33"
+        android:contentDescription="@string/app_name" />
+    &lt;EditText
+        android:id="@+id/username"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:hint="@string/username" />
+    &lt;EditText
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif"
+        android:hint="@string/password"/>
+&lt;/LinearLayout>
+</pre>
+
+<p class="note"><strong>Tip:</strong> By default, when you set an <code><a href="../../../reference/android/widget/EditText.html">EditText</a></code>
+element to use the <code>"textPassword"</code> input type, the font family is set to monospace, so
+you should change its font family to <code>"sans-serif"</code> so that both text fields use
+a matching font style.</p>
+
+<p>To inflate the layout in your <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code>,
+get a <code><a href="../../../reference/android/view/LayoutInflater.html">LayoutInflater</a></code> with 
+<code><a href="../../../reference/android/app/Activity.html#getLayoutInflater()">getLayoutInflater()</a></code> and call
+<code><a href="../../../reference/android/view/LayoutInflater.html#inflate(int, android.view.ViewGroup)">inflate()</a></code>, where the first parameter
+is the layout resource ID and the second parameter is a parent view for the layout.
+You can then call <code><a href="../../../reference/android/app/AlertDialog.html#setView(android.view.View)">setView()</a></code>
+to place the layout in the dialog.</p>
+
+<pre>
+&#64;Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    // Get the layout inflater
+    LayoutInflater inflater = getActivity().getLayoutInflater();
+
+    // Inflate and set the layout for the dialog
+    // Pass null as the parent view because its going in the dialog layout
+    builder.setView(inflater.inflate(R.layout.dialog_signin, null))
+    // Add action buttons
+           .setPositiveButton(R.string.signin, new DialogInterface.OnClickListener() {
+               &#64;Override
+               public void onClick(DialogInterface dialog, int id) {
+                   // sign in the user ...
+               }
+           })
+           .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+               public void onClick(DialogInterface dialog, int id) {
+                   LoginDialogFragment.this.getDialog().cancel();
+               }
+           });      
+    return builder.create();
+}
+</pre>
+
+<div class="note">
+<p><strong>Tip:</strong> If you want a custom dialog,
+you can instead display an <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> as a dialog
+instead of using the <code><a href="../../../reference/android/app/Dialog.html">Dialog</a></code> APIs. Simply create an activity and set its theme to
+<code><a href="../../../reference/android/R.style.html#Theme_Holo_Dialog">Theme.Holo.Dialog</a></code>
+in the <a href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a> manifest element:</p>
+
+<pre>
+&lt;activity android:theme="&#64;android:style/Theme.Holo.Dialog" >
+</pre>
+<p>That's it. The activity now displays in a dialog window instead of fullscreen.</p>
+</div>
+
+
+
+<h2 id="PassingEvents">Passing Events Back to the Dialog's Host</h2>
+
+<p>When the user touches one of the dialog's action buttons or selects an item from its list,
+your <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> might perform the necessary
+action itself, but often you'll want to deliver the event to the activity or fragment that
+opened the dialog. To do this, define an interface with a method for each type of click event.
+Then implement that interface in the host component that will
+receive the action events from the dialog.</p>
+
+<p>For example, here's a <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> that defines an
+interface through which it delivers the events back to the host activity:</p>
+
+<pre>
+public class NoticeDialogFragment extends DialogFragment {
+    
+    /* The activity that creates an instance of this dialog fragment must
+     * implement this interface in order to receive event callbacks.
+     * Each method passes the DialogFragment in case the host needs to query it. */
+    public interface NoticeDialogListener {
+        public void onDialogPositiveClick(DialogFragment dialog);
+        public void onDialogNegativeClick(DialogFragment dialog);
+    }
+    
+    // Use this instance of the interface to deliver action events
+    NoticeDialogListener mListener;
+    
+    // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
+    &#64;Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // Verify that the host activity implements the callback interface
+        try {
+            // Instantiate the NoticeDialogListener so we can send events to the host
+            mListener = (NoticeDialogListener) activity;
+        } catch (ClassCastException e) {
+            // The activity doesn't implement the interface, throw exception
+            throw new ClassCastException(activity.toString()
+                    + " must implement NoticeDialogListener");
+        }
+    }
+    ...
+}
+</pre>
+
+<p>The activity hosting the dialog creates an instance of the dialog
+with the dialog fragment's constructor and receives the dialog's
+events through an implementation of the <code>NoticeDialogListener</code> interface:</p>
+
+<pre>
+public class MainActivity extends FragmentActivity
+                          implements NoticeDialogFragment.NoticeDialogListener{
+    ...
+    
+    public void showNoticeDialog() {
+        // Create an instance of the dialog fragment and show it
+        DialogFragment dialog = new NoticeDialogFragment();
+        dialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+    }
+
+    // The dialog fragment receives a reference to this Activity through the
+    // Fragment.onAttach() callback, which it uses to call the following methods
+    // defined by the NoticeDialogFragment.NoticeDialogListener interface
+    &#64;Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        // User touched the dialog's positive button
+        ...
+    }
+
+    &#64;Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        // User touched the dialog's negative button
+        ...
+    }
+}
+</pre>
+
+<p>Because the host activity implements the <code>NoticeDialogListener</code>&mdash;which is
+enforced by the <code><a href="../../../reference/android/support/v4/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code>
+callback method shown above&mdash;the dialog fragment can use the
+interface callback methods to deliver click events to the activity:</p>
+
+<pre>
+public class NoticeDialogFragment extends DialogFragment {
+    ...
+
+    &#64;Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // Build the dialog and set up the button click handlers
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.dialog_fire_missiles)
+               .setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       // Send the positive button event back to the host activity
+                       mListener.onDialogPositiveClick(NoticeDialogFragment.this);
+                   }
+               })
+               .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       // Send the negative button event back to the host activity
+                       mListener.onDialogNegativeClick(NoticeDialogFragment.this);
+                   }
+               });
+        return builder.create();
+    }
+}
+</pre>
+
+
+
+<h2 id="ShowingADialog">Showing a Dialog</h2>
+
+<p>When you want to show your dialog, create an instance of your <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> and call <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#show(android.support.v4.app.FragmentManager, java.lang.String)">show()</a></code>, passing the <code><a href="../../../reference/android/support/v4/app/FragmentManager.html">FragmentManager</a></code> and a tag name
+for the dialog fragment.</p>
+
+<p>You can get the <code><a href="../../../reference/android/support/v4/app/FragmentManager.html">FragmentManager</a></code> by calling
+<code><a href="../../../reference/android/support/v4/app/FragmentActivity.html#getSupportFragmentManager()">getSupportFragmentManager()</a></code> from
+the <code><a href="../../../reference/android/support/v4/app/FragmentActivity.html">FragmentActivity</a></code> or <code><a href="../../../reference/android/support/v4/app/Fragment.html#getFragmentManager()">getFragmentManager()</a></code> from a <code><a href="../../../reference/android/support/v4/app/Fragment.html">Fragment</a></code>. For example:</p>
+
+<pre>
+public void confirmFireMissiles() {
+    DialogFragment newFragment = new FireMissilesDialogFragment();
+    newFragment.show(getSupportFragmentManager(), "missiles");
+}
+</pre>
+
+<p>The second argument, <code>"missiles"</code>, is a unique tag name that the system uses to save
+and restore the fragment state when necessary. The tag also allows you to get a handle to
+the fragment by calling <code><a href="../../../reference/android/support/v4/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code>.</p>
+
+
+
+
+<h2 id="FullscreenDialog">Showing a Dialog Fullscreen or as an Embedded Fragment</h2>
+
+<p>You might have a UI design in which you want a piece of the UI to appear as a dialog in some
+situations, but as a full screen or embedded fragment in others (perhaps depending on whether
+the device is a large screen or small screen). The <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code>
+class offers you this flexibility because it can still behave as an embeddable <code><a href="../../../reference/android/support/v4/app/Fragment.html">Fragment</a></code>.</p>
+
+<p>However, you cannot use <code><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code>
+or other <code><a href="../../../reference/android/app/Dialog.html">Dialog</a></code> objects to build the dialog in this case. If
+you want the <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> to be
+embeddable, you must define the dialog's UI in a layout, then load the layout in the
+<code><a href="../../../reference/android/support/v4/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code> callback.</p>
+
+<p>Here's an example <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> that can appear as either a
+dialog or an embeddable fragment (using a layout named <code>purchase_items.xml</code>):</p>
+
+<pre>
+public class CustomDialogFragment extends DialogFragment {
+    /** The system calls this to get the DialogFragment's layout, regardless
+        of whether it's being displayed as a dialog or an embedded fragment. */
+    &#64;Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        // Inflate the layout to use as dialog or embedded fragment
+        return inflater.inflate(R.layout.purchase_items, container, false);
+    }
+  
+    /** The system calls this only when creating the layout in a dialog. */
+    &#64;Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // The only reason you might override this method when using onCreateView() is
+        // to modify any dialog characteristics. For example, the dialog includes a
+        // title by default, but your custom layout might not need it. So here you can
+        // remove the dialog title, but you must call the superclass to get the Dialog.
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        return dialog;
+    }
+}
+</pre>
+
+<p>And here's some code that decides whether to show the fragment as a dialog
+or a fullscreen UI, based on the screen size:</p>
+
+<pre>
+public void showDialog() {
+    FragmentManager fragmentManager = getSupportFragmentManager();
+    CustomDialogFragment newFragment = new CustomDialogFragment();
+    
+    if (mIsLargeLayout) {
+        // The device is using a large layout, so show the fragment as a dialog
+        newFragment.show(fragmentManager, "dialog");
+    } else {
+        // The device is smaller, so show the fragment fullscreen
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        // For a little polish, specify a transition animation
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        // To make it fullscreen, use the 'content' root view as the container
+        // for the fragment, which is always the root view for the activity
+        transaction.add(android.R.id.content, newFragment)
+                   .addToBackStack(null).commit();
+    }
+}
+</pre>
+
+<p>For more information about performing fragment transactions, see the
+<a href="../../../guide/components/fragments.html">Fragments</a> guide.</p>
+
+<p>In this example, the <code>mIsLargeLayout</code> boolean specifies whether the current device
+should use the app's large layout design (and thus show this fragment as a dialog, rather
+than fullscreen). The best way to set this kind of boolean is to declare a
+<a href="../../../guide/topics/resources/more-resources.html#Bool">bool resource value</a>
+with an <a href="../../../guide/topics/resources/providing-resources.html#AlternativeResources"
+>alternative resource</a> value for different screen sizes. For example, here are two
+versions of the bool resource for different screen sizes:</p>
+
+<p class="code-caption">res/values/bools.xml</p>
+<pre>
+&lt;!-- Default boolean values -->
+&lt;resources>
+    &lt;bool name="large_layout">false&lt;/bool>
+&lt;/resources>
+</pre>
+
+<p class="code-caption">res/values-large/bools.xml</p>
+<pre>
+&lt;!-- Large screen boolean values -->
+&lt;resources>
+    &lt;bool name="large_layout">true&lt;/bool>
+&lt;/resources>
+</pre>
+
+<p>Then you can initialize the <code>mIsLargeLayout</code> value during the activity's
+<code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> method:</p>
+
+<pre>
+boolean mIsLargeLayout;
+
+&#64;Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    mIsLargeLayout = getResources().getBoolean(R.bool.large_layout);
+}
+</pre>
+
+
+
+<h3 id="ActivityAsDialog">Showing an activity as a dialog on large screens</h3>
+
+<p>Instead of showing a dialog as a fullscreen UI when on small screens, you can accomplish
+the same result by showing an <code><a href="../../../reference/android/app/Activity.html">Activity</a></code> as a dialog when on
+large screens. Which approach you choose depends on your app design, but
+showing an activity as a dialog is often useful when your app is already designed for small
+screens and you'd like to improve the experience on tablets by showing a short-lived activity
+as a dialog.</p>
+
+<p>To show an activity as a dialog only when on large screens,
+apply the <code><a href="../../../reference/android/R.style.html#Theme_Holo_DialogWhenLarge">Theme.Holo.DialogWhenLarge</a></code>
+theme to the <a href="../../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;</code></a> manifest element:</p>
+
+<pre>
+&lt;activity android:theme="&#64;android:style/Theme.Holo.DialogWhenLarge" >
+</pre>
+
+<p>For more information about styling your activities with themes, see the <a
+href="../../../guide/topics/ui/themes.html">Styles and Themes</a> guide.</p>
+
+
+
+<h2 id="DismissingADialog">Dismissing a Dialog</h2>
+
+<p>When the user touches any of the action buttons created with an
+<code><a href="../../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code>, the system dismisses the dialog for you.</p>
+
+<p>The system also dismisses the dialog when the user touches an item in a dialog list, except
+when the list uses radio buttons or checkboxes. Otherwise, you can manually dismiss your dialog
+by calling <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#dismiss()">dismiss()</a></code> on your <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code>.</p>
+
+<p>In case you need to perform certain
+actions when the dialog goes away, you can implement the <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#onDismiss(android.content.DialogInterface)">onDismiss()</a></code> method in your <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code>.</p>
+
+<p>You can also <em>cancel</em> a dialog. This is a special event that indicates the user
+explicitly left the dialog without completing the task. This occurs if the user presses the 
+<em>Back</em> button, touches the screen outside the dialog area,
+or if you explicitly call <code><a href="../../../reference/android/app/Dialog.html#cancel()">cancel()</a></code> on the <code><a href="../../../reference/android/app/Dialog.html">Dialog</a></code> (such as in response to a "Cancel" button in the dialog).</p>
+
+<p>As shown in the example above, you can respond to the cancel event by implementing
+<code><a href="../../../reference/android/support/v4/app/DialogFragment.html#onCancel(android.content.DialogInterface)">onCancel()</a></code> in your <code><a href="../../../reference/android/support/v4/app/DialogFragment.html">DialogFragment</a></code> class.</p>
+
+<p class="note"><strong>Note:</strong> The system calls
+<code><a href="../../../reference/android/support/v4/app/DialogFragment.html#onDismiss(android.content.DialogInterface)">onDismiss()</a></code> upon each event that
+invokes the <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#onCancel(android.content.DialogInterface)">onCancel()</a></code> callback. However,
+if you call <code><a href="../../../reference/android/app/Dialog.html#dismiss()">Dialog.dismiss()</a></code> or <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#dismiss()">DialogFragment.dismiss()</a></code>,
+the system calls <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#onDismiss(android.content.DialogInterface)">onDismiss()</a></code> <em>but
+not</em> <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#onCancel(android.content.DialogInterface)">onCancel()</a></code>. So you should generally
+call <code><a href="../../../reference/android/support/v4/app/DialogFragment.html#dismiss()">dismiss()</a></code> when the user presses the
+<em>positive</em> button in your dialog in order to remove the dialog from view.</p>
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

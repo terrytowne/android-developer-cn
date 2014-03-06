@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>Common Tasks and How to Do Them in Android | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Common Tasks and How to Do Them in Android</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <ul>
+    <li><a href="#neweclipseandroidproject">Creating an Android Application using
+    the Eclipse plugin</a></li>
+    <li><a href="#newandroidprojectnoeclipse">Creating an Android Application without
+    the Eclipse plugin</a></li>
+    <li><a href="#addexternallibrary">Adding an External Library (.jar) using Eclipse</a></li>
+    <li><a href="#implementcallbacks">Implementing Activity callbacks</a> (Android
+        calls your activity at various key moments in its life cycle. You must know
+        how to handle each of these to draw your screen, initialize class members,
+        and acquire data.)</li>
+    <li><a href="#opennewscreen">Opening a new screen</a></li>
+    <li><a href="#listening">Listening for button clicks </a></li>
+    <li><a href="#configurewindowproperties">Configuring general window properties </a></li>
+    <li><a href="#localhostalias">Referring to localhost from the emulated environment</a></li>
+    <li><a href="#appstate">Storing and retrieving state</a></li>
+    <li><a href="../../guide/topics/data/data-storage.html#preferences">Storing and retrieving preferences</a></li>
+    <li><a href="#storingandretrieving">Storing and retrieving larger or more complex
+            persistent data</a> (files and data) </li>
+    <li><a href="#playback">Playing audio, video, still, or other media files</a></li>
+    <li><a href="#broadcastreceivers">Listening for and broadcasting global messages
+        and setting alarms</a></li>
+    <li><a href="#alerts">Displaying alerts </a></li>
+    <li><a href="#progressbar">Displaying a progress bar</a> </li>
+    <li><a href="#addmenuitems">Adding items to the screen menu</a> </li>
+    <li><a href="#webpage">Display a web page</a> </li>
+    <li><a href="#binding">Binding to data</a></li>
+    <li><a href="#handle">Getting a Handle to a Screen Element</a></li>
+    <li><a href="#captureimages">Capture images from the phone camera </a></li>
+    <li><a href="#threading">Handling expensive operations in the UI thread</a></li>
+    <li><a href="#selectingtext">Selecting, highlighting, or styling portions of
+            text</a></li>
+    <li><a href="#querymap">Utilizing attributes in a Map query</a></li>
+    <li><a href="#filelist">List of files for an Android application</a></li>
+    <li><a href="#logging">Print messages to a log file</a></li>
+</ul>
+<p>The ApiDemos sample application includes many, many examples of common
+tasks and UI features. See the code inside
+<code>&lt;sdk&gt;samples/ApiDemos</code> and the other sample applications
+under the <code>samples/</code> folder in the SDK.</p>
+
+
+<h2 id="neweclipseandroidproject">Creating an Android Application using the Eclipse Plugin</h2>
+
+<p>Using the Android Eclipse plugin is the fastest and easiest way
+to start creating a new Android application. The plugin automatically generates
+the correct project structure for your application, and keeps the resources
+compiled for you automatically.</p>
+
+<p>It is still a good idea to know what is going on though. Take a look at <a
+href="../../guide/topics/fundamentals.html">Application Fundamentals</a> 
+to understand the basics of how an Android application works.</p> 
+
+<p>You should also take a look at the ApiDemos application and the other sample
+applications included in the SDK, in the <code>&lt;sdk&gt;/samples/</code>
+folder in the SDK.</p>
+
+<p>Finally, a great way to started with Android development in Eclipse is to
+follow both the <a href="../../resources/tutorials/hello-world.html">Hello,
+World</a> and <a
+href="../../training/notepad/index.html">Notepad</a> code
+tutorials. In particular, the start of the Hello Android tutorial is an
+excellent introduction to creating a new Android application in Eclipse.</p>
+
+<h2 id="newandroidprojectnoeclipse">Creating an Android Application without the Eclipse Plugin</h2>
+
+<p>This topic describes the manual steps in creating an Android application.
+Before reading this, you should read <a
+href="../../guide/topics/fundamentals.html">Application Fundamentals</a> 
+to understand the basics of how an Android application works. You might also 
+want to look at the sample code included with the Android SDK, in the 
+<code>&lt;sdk&gt;/samples/</code> directory. </p>
+
+<p>Here is a list of the basic steps in building an application.</p>
+<ol>
+    <li><strong>Create your required resource files</strong> &nbsp;&nbsp;This includes
+        the AndroidManifest.xml global description file, string files that your application
+        needs, and layout files describing your user interface. A full list of optional
+        and required files and syntax details for each is given in <a href="#filelist">File
+        List for an Android Application</a>. </li>
+    <li><strong>Design your user interface</strong> &nbsp;&nbsp;See <a
+    href="../../guide/topics/ui/index.html">User Interface</a> for
+    details on elements of the Android screen. </li>
+    <li><strong>Implement your Activity </strong>(this page)<strong>&nbsp;&nbsp; </strong> You
+        will create one class/file for each screen in your application. Screens will
+        inherit from an <code><a href="../../reference/android/app/package-summary.html">android.app</a></code> class, typically <code><a href="../../reference/android/app/Activity.html">android.app.Activity</a></code> for basic screens, <code><a href="../../reference/android/app/ListActivity.html">android.app.ListActivity</a></code> for list screens, or <code><a href="../../reference/android/app/Dialog.html">android.app.Dialog</a></code> for dialog boxes. You will implement the required callbacks
+        that let you draw your screen, query data, and commit changes, and also perform
+        any required tasks such as opening additional screens or reading data from
+        the device. Common tasks, such as opening a new screen or reading data from
+        the device, are described below.
+        The list of files you'll need for your application are described in <a href="#filelist">List
+        of Files for an Android Application</a>. </li>
+    <li><strong><a href="../../guide/developing/building/building-cmdline.html">Build and install your
+                package</a>.</strong> The Android SDK has some nice tools for generating
+                projects and debugging code. </li>
+</ol>
+
+<h2 id="addexternallibrary">Adding an External Library (.jar) using Eclipse</h2>
+<p>
+You can use a third party JAR in your application by adding it to your Eclipse project as follows:
+</p>
+<ol>
+<li>
+In the <strong>Package Explorer</strong> panel, right-click on your project and select <strong>Properties</strong>.
+<li>
+Select <strong>Java Build Path</strong>, then the tab <strong>Libraries</strong>.
+<li>
+Press the <strong>Add External JARs...</strong> button and select the JAR file.
+</ol>
+<p>
+Alternatively, if you want to include third party JARs with your package, create a new directory for them within your project and select <strong>Add Library...</strong> instead.</p>
+<p>
+It is not necessary to put external JARs in the assets folder.
+</p>
+
+<a name="implementcallbacks" id="implementcallbacks"></a>
+<h2>Implementing Activity Callbacks</h2>
+<p>Android calls a number of callbacks to let you draw your screen, store data before
+    pausing, and refresh data after closing. You must implement at least some of
+    these methods. Read the <a
+href="../../guide/topics/fundamentals/activities.html#Lifecycle">Activities</a>
+    document to learn when and in what order these methods 
+    are called. Here are some of the standard types of screen classes that Android provides:</p>
+<ul>
+    <li><code><a href="../../reference/android/app/Activity.html">android.app.Activity</a></code> - This is a standard screen,
+        with no specialization.</li>
+    <li><code><a href="../../reference/android/app/ListActivity.html">android.app.ListActivity</a></code> - This is a screen
+        that is used to display a list of something. It hosts a ListView object,
+        and exposes methods to let you identify the selected item, receive callbacks
+        when the selected item changes, and perform other list-related actions. </li>
+    <li><code><a href="../../reference/android/app/Dialog.html">android.app.Dialog</a></code> - This is a small, popup dialog-style
+        window that isn't intended to remain in the history stack. (It is not resizeable
+        or moveable by the user.)</li>
+</ul>
+
+<a name="opennewscreen" id="opennewscreen"></a><h2>Opening a New Screen</h2>
+<p>Your Activity will often need to open another Activity screen as it progresses.
+    This new screen can be part of the same application or part of another application,
+    the new screen can be floating or full screen, it can return a result, and you
+    can decide whether to close this screen and remove it from the history stack
+    when you are done with it, or to keep the screen open in history. These next
+    sections describe all these options. </p>
+<h3>Floating or full?<a name="floatingorfull" id="floatingorfull"></a></h3>
+<p>When you open a new screen you can decide whether to make it transparent or floating,
+    or full-screen. The choice of new screen affects the event sequence of events
+    in the old screen (if the new screen obscures the old screen, a different
+    series of events is called in the old screen). See the <a
+    href="../../guide/topics/fundamentals/activities.html#Lifecycle">Activities</a> document for
+details. </p> 
+<p>Transparent or floating windows are implemented in three
+    standard ways: </p>
+<ul>
+    <li>Create an <code><a href="../../reference/android/app/Dialog.html">app.Dialog</a></code> class </li>
+    <li>Create an <code><a href="../../reference/android/app/AlertDialog.html">app.AlertDialog</a></code> class </li>
+    <li>Set the <code><a href="../../reference/android/R.style.html#Theme_Dialog">Theme_Dialog</a></code> <em>theme</em> attribute to <code>&#64;android:style/Theme.Dialog</code>
+        in your AndroidManifest.xml file. For example:    
+    <pre>&lt;activity class=&quot;AddRssItem&quot; android:label=&quot;Add an item&quot; android:theme=&quot;&#064;android:style/Theme.Dialog&quot;/&gt;</pre></li>
+</ul>
+
+<p>Calling startActivity() or startActivityForResult() will open a new screen in whatever
+    way it defines itself (if it uses a floating theme it will be floating,
+    otherwise it will be full screen). </p>
+<h3>Opening a Screen </h3>
+<p>When you want to open a new screen, you can either explicitly specify the activity
+    class to open, or you can let the operating system decide which screen to open,
+    based upon the data and various parameters you pass in. A screen is opened by
+    calling <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity</a></code>
+    and passing in an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> object, which specifies
+    the criteria for the handling screen. To specify a specific screen, call Intent.setClass
+    or setClassName with the exact activity class to open. Otherwise, set a variety
+    of values and data, and let Android decide which screen is appropriate to open.
+    Android will find one or zero Activities that match the specified requirements;
+    it will never open multiple activities for a single request. More information
+    on Intents and how Android resolves them to a specific class is given in the
+    <code><a href="../../reference/android/content/Intent.html">Intent</a></code> topic. </p>
+<a name="intentexamples" id="intentexamples"></a><h3>Some Intent examples </h3>
+<p>The following snippet loads the com.android.samples.Animation1 class, and
+    passes it some arbitrary data.:</p>
+<pre>Intent myIntent = new Intent();
+myIntent.setClassName(&quot;com.android.samples&quot;, &quot;com.android.samples.Animation1&quot;);
+myIntent.putExtra(&quot;com.android.samples.SpecialValue&quot;, &quot;Hello, Joe!&quot;); // key/value pair, where key needs current package prefix.
+startActivity(myIntent);    </pre>
+<p>The next snippet requests that a Web page be opened by specifying the VIEW action,
+    and a URI data string starting with &quot;http://&quot; schema:</p>
+<pre>Intent myIntent = new Intent(Intent.VIEW_ACTION, Uri.parse(&quot;http://www.google.com&quot;));</pre>
+<p>Here is the intent filter from the AndroidManifest.xml file for com.android.browser:</p>
+<pre>&lt;intent-filter&gt;
+    &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+    &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+    &lt;scheme android:name=&quot;http&quot; /&gt;
+    &lt;scheme android:name=&quot;https&quot; /&gt;
+    &lt;scheme android:name=&quot;file&quot; /&gt;
+&lt;/intent-filter&gt; </pre>
+<p>Android defines a number of standard values, for instance the action constants
+    defined by <code><a href="../../reference/android/content/Intent.html">Intent</a></code>. You can define custom values, but
+    both the caller and handler must use them. See the &lt;intent-filter&gt;
+    tag description in <a href="../../guide/topics/manifest/manifest-intro.html">The AndroidManifest.xml
+    File</a> for more information on the manifest syntax for the handling
+    application. </p>
+<a name="returningaresult" id="returningaresult"></a><h3>Returning a Result from a Screen</h3>
+<p>A window can return a result after it closes. This result will be passed back
+    into the calling Activity's <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> method, which can supply an Intent containing arbitrary data, along with
+    the request code passed to startActivityForResult(). Note that you must call the <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code>
+    method that accepts a request code parameter to get this callback. The following
+    code demonstrates opening a new screen and retrieving a result. </p>
+<pre>// Open the new screen.
+public void onClick(View v){
+    // Start the activity whose result we want to retrieve.  The
+    // result will come back with request code GET_CODE.
+    Intent intent = new Intent(this, com.example.app.ChooseYourBoxer.class);
+    startActivityForResult(intent, CHOOSE_FIGHTER);
+}
+
+// Listen for results.
+protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    // See which child activity is calling us back.
+    switch (requestCode) {
+        case CHOOSE_FIGHTER:
+            // This is the standard resultCode that is sent back if the
+            // activity crashed or didn't doesn't supply an explicit result.
+            if (resultCode == RESULT_CANCELED){
+                myMessageboxFunction("Fight cancelled");
+            } 
+            else {
+                myFightFunction(data);
+            }
+        default:
+            break;
+    }
+}
+
+// Class SentResult
+// Temporary screen to let the user choose something.
+    private OnClickListener mLincolnListener = new OnClickListener(){
+        public void onClick(View v) {
+            Bundle stats = new Bundle();
+            stats.putString("height","6\'4\""); 
+            stats.putString("weight", "190 lbs");
+            stats.putString("reach", "74\"");
+            setResult(RESULT_OK, "Lincoln", stats);
+            finish();
+        }
+    };
+
+    private OnClickListener mWashingtonListener = new OnClickListener() {
+        public void onClick(View v){
+            Bundle stats = new Bundle();
+            stats.putString("height","6\'2\""); 
+            stats.putString("weight", "190 lbs");
+            stats.putString("reach", "73\"");
+            setResult(RESULT_OK, "Washington", stats);
+            finish();
+        }
+    };
+	</pre>
+<h3>Lifetime of the new screen </h3>
+<p>An activity can remove itself from the history stack by calling <code><a href="../../reference/android/app/Activity.html#finish()">Activity.finish()</a></code> on itself, or the activity that opened the screen can call
+    <code><a href="../../reference/android/app/Activity.html#finishActivity(int)">Activity.finishActivity()</a></code>
+    on any screens that it opens to close them. </p>
+<a name="listening" id="listening"></a><h2>Listening for Button Clicks</h2>
+<p>Button click and other UI event capturing are covered in <a
+href="../../guide/topics/ui/ui-events.html">Input Events</a>.</p>
+<a name="configurewindowproperties" id="configurewindowproperties"></a><h2>Configuring General Window Properties</h2>
+<p>You can set a number of general window properties, such as whether to display
+    a title, whether the window is floating, and whether it displays an icon, by
+    calling methods on the <code><a href="../../reference/android/view/Window.html">Window</a></code> member
+    of the underlying View object for the window. Examples include calling <code><a href="../../reference/android/app/Activity.html#getWindow()">getWindow().requestFeature()</a></code> (or the convenience
+    method <code><a href="../../reference/android/app/Activity.html#requestWindowFeature(int)">requestWindowFeature(<em>some_feature</em>)</a></code>)
+    to hide the title. Here is an example of hiding the title bar:</p>
+<pre>//Hide the title bar
+requestWindowFeature(Window.FEATURE_NO_TITLE);
+</pre>
+<p>A better way to achieve the same end is to specify a theme in your Android
+Manifest file:</p>
+<pre>&lt;application android:icon="@drawable/icon" android:theme="@android:style/Theme.NoTitleBar"&gt;
+</pre>
+<p>This is preferable because it tells the system not to show a title bar while
+your application is starting up. With the explicit method call, your application
+will have a title bar visible to the user until <code>onCreate</code> runs.</p>
+<p>(Note that this can be applied to either the <code>&lt;application&gt;</code>
+tag or to individual <code>&lt;activity&gt;</code> tags.)</p>
+<p class="caution"><strong>Caution:</strong> This theme will also hide the Action Bar on Android
+3.0 and higher. If you want to keep the Action Bar, but hide the title bar, see how you can <a
+href="../../guide/topics/ui/themes.html#SelectATheme">select a theme based on platform
+version</a>.</p>
+<a name="localhostalias" id="localhostalias"></a><h2>Referring to localhost from the emulated
+environment</h2>
+<p>
+If you need to refer to your host computer's <em>localhost</em>, such as when you 
+want the emulator client to contact a server running on the same host, use the alias 
+<code>10.0.2.2</code> to refer to the host computer's loopback interface. 
+From the emulator's perspective, localhost (<code>127.0.0.1</code>) refers to its own 
+loopback interface.
+</p>
+<a name="appstate" id="appstate"></a><h2>Storing and Retrieving State</h2>
+<p>If your application is dumped from memory because of space concerns, it will lose
+    all user interface state information such as checkbox state and text box values
+    as well as class member values. Android calls <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">Activity.onSaveInstanceState</a></code> before it pauses the application. This method hands in a <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> that can be used to store name/value pairs that will
+    persist and be handed back to the application even if it is dropped from memory.
+    Android will pass this Bundle back to you when it calls <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code>. This Bundle only exists while the application is still in the history
+    stack (whether or not it has been removed from memory) and will be lost when
+    the application is finalized. See the topics for <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState(Bundle)</a></code> and
+    <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate(Bundle)</a></code> for
+    examples of storing and retrieving state.</p>
+<p>Read more about the lifecycle of an activity in <a
+href="../../guide/topics/fundamentals/activities.html">Activities</a> document.</p>
+<h3>Storing and Retrieving Larger or More Complex Persistent Data<a name="storingandretrieving" id="storingandretrieving"></a></h3>
+<p>Your application can store files or complex collection objects, and reserve them
+    for private use by itself or other activities in the application, or it can expose
+    its data to all other applications on the device. See <a href="../../guide/topics/data/data-storage.html">Storing,
+    Retrieving, and Exposing Data</a> to learn how to store and retrieve private data,
+    how to store and retrieve common data from the device, and how to expose your
+    private data to other applications.</p>
+<a name="playback" id="playback"></a><h2>Playing Media Files</h2>
+<p>Please see the document <a href="../../guide/topics/media/index.html">Audio and Video</a> for more details.</p>
+<a name="broadcastreceivers" id="broadcastreceivers"></a><h2>Listening For and Broadcasting Global Messages, and Setting Alarms</h2>
+<p>You can create a listening class that can be notified or even instantiated whenever
+    a specific type of system message is sent. 
+</p>
+<p>The listening classes, called broadcast receivers, extend <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code>. If you want Android to instantiate the object whenever an appropriate
+    intent notification is sent, define the receiver with a <code>&lt;receiver&gt;</code> element
+    in the AndroidManifext.xml file. If the caller is expected to instantiate the
+    object in preparation to receive a message, this is not required. The receiver
+    will get a call to their <code><a href="../../reference/android/content/BroadcastReceiver.html#onReceive(android.content.Context, android.content.Intent)">BroadcastReceiver.onReceive()</a></code> method. A receiver can define an <code>&lt;intent-filter&gt;</code> tag
+    that describes the types of messages it will receive. Just as Android's IntentResolver
+    will look for appropriate Activity matches for a startActivity() call, it will
+    look for any matching Receivers (but it will send the message to all matching
+    receivers, not to the &quot;best&quot; match). </p>
+<p>To send a notification, the caller creates an <code><a href="../../reference/android/content/Intent.html">Intent</a></code>
+    object and calls <code><a href="../../reference/android/content/ContextWrapper.html#sendBroadcast(android.content.Intent)">Context.sendBroadcast()</a></code> with that Intent. Multiple recipients can receive
+    the same message. You can broadcast an Intent message to an intent receiver in
+    any application, not only your own. If the receiving class is not registered
+    using <code>&lt;receiver&gt;</code> in its manifest, you can dynamically instantiate
+    and register a receiver by calling <code><a href="../../reference/android/content/Context.html#registerReceiver(android.content.BroadcastReceiver, android.content.IntentFilter)">Context.registerReceiver()</a></code>. </p>
+<p>Receivers can include intent filters to specify what kinds of intents they are
+    listening for. Alternatively, if you expect a single known caller to contact
+    a single known receiver, the receiver does not specify an intent filter, and
+    the caller specifies the receiver's class name in the Intent by calling <code><a href="../../reference/android/content/Intent.html#setClassName(java.lang.String, java.lang.String)">Intent.setClassName()</a></code>
+    with the recipient's class name. The recipient receives a <code><a href="../../reference/android/content/Context.html">Context</a></code> object that refers to its own package, not to the package of the sender.</p>
+<p><em><strong>Note:</strong></em>&nbsp;&nbsp;&nbsp;If a receiver or broadcaster
+    enforces permissions, your application might need to request permission
+    to send or receive messages from that object. You can request permission by using
+    the &lt;uses-permission&gt; tag in the manifest. </p>
+<p>Here is a code snippet of a sender and receiver. This example does not demonstrate
+    registering receivers dynamically. For a full code example, see the AlarmService
+    class in the ApiDemos project.</p>
+<h3>Sending the message</h3>
+<pre>// We are sending this to a specific recipient, so we will
+// only specify the recipient class name. 
+Intent intent = new Intent(this, AlarmReceiver.class);
+intent.putExtra(&quot;message&quot;,&quot;Wake up.&quot;);
+sendBroadcast(intent);
+</pre>
+<h3>Receiving the message</h3>
+<p><strong>Receiver AndroidManifest.xml </strong>(because there is no intent filter
+    child, this class will only receive a broadcast when the receiver class is specified
+    by name, as is done in this example):</p>
+<pre>
+&lt;receiver class=".AlarmReceiver" /&gt;</pre>
+<p><strong>Receiver Java code: </strong></p>
+<pre>
+public class AlarmReceiver extends BroadcastReceiver{
+    // Display an alert that we've received a message.    
+    &#064;Override 
+    public void onReceive(Context context, Intent intent){
+	    // Send a text notification to the screen.
+        NotificationManager nm = (NotificationManager)
+        context.getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.notifyWithText(R.id.alarm,
+                          &quot;Alarm!!!&quot;,
+                          NotificationManager.LENGTH_SHORT,
+                          null);
+   }
+}   </pre>
+<h3>Other system messages</h3>
+<p>You can listen for other system messages sent by Android as well, such as USB
+    connection/removal messages, SMS arrival messages, and timezone changes. See
+    <code><a href="../../reference/android/content/Intent.html">Intent</a></code> for a list of broadcast messages to listen for.
+    Messages are marked &quot;Broadcast Action&quot; in the documentation. </p>
+<h3>Listening for phone events<a name="phoneevents" id="phoneevents"></a></h3>
+<p>The <code><a href="../../reference/android/telephony/package-summary.html">android.telephony</a></code> package overview page describes how to
+    register to listen for phone events. </p>
+<a name="alarms" id="alarms"></a><h3>Setting Alarms </h3>
+<p>Android provides an <code><a href="../../reference/android/app/AlarmManager.html">AlarmManager</a></code> service that
+    will let you specify an Intent to send at a designated time. This intent is typically
+    used to start an application at a preset time. (Note: If you want to send
+    a notification to a sleeping or running application, use <code><a href="../../reference/android/os/Handler.html">Handler</a></code> instead.)</p>
+<a name="alerts" id="alerts"></a><h2>Displaying Alerts</h2>
+<p>There are two major kinds of alerts that you may display to the user:
+(1) Normal alerts are displayed in response to a user action, such as
+trying to perform an action that is not allowed.  (2) Out-of-band alerts,
+called notifications, are
+displayed as a result of something happening in the background, such as the
+user receiving new e-mail.</p>
+
+<a name="dialogsandalerts" id="dialogsandalerts"></a><h3>Normal Alerts</h3>
+
+<p>Android provides a number of ways for you to show popup notifications to your
+    user as they interact with your application. </p>
+<table width="100%" border="1">
+    <tr>
+        <th scope="col">Class</th>
+        <th scope="col">Description</th>
+    </tr>
+    <tr>
+        <td><code><a href="../../reference/android/app/Dialog.html">app.Dialog</a></code></td>
+        <td>A generic floating dialog box with a layout that you design. </td>
+    </tr>
+    <tr>
+        <td><p><code><a href="../../reference/android/app/AlertDialog.html">app.AlertDialog</a></code></p></td>
+        <td>A popup alert dialog with two buttons (typically OK and Cancel) that
+            take callback handlers. See the section after this table for more details. </td>
+    </tr>
+    <tr>
+        <td><code><a href="../../reference/android/app/ProgressDialog.html">ProgressDialog</a></code> </td>
+        <td>A dialog box used to indicate progress of an operation with a known progress
+            value or an indeterminate length (setProgress(bool)). See <strong>Views</strong> &gt; <strong>Progress Bar</strong> in
+            ApiDemos for examples. </td>
+    </tr>
+    <tr>
+        <td>Activity</td>
+        <td>By setting the theme of an activity to
+            <code><a href="../../reference/android/R.style.html#Theme_Dialog">android:theme=&quot;&#064;android:style/Theme.Dialog&quot;</a></code>, 
+            your activity will take on
+            the appearance of a normal dialog, floating on top of whatever was
+            underneath it.  You usually set the theme through the
+            <code><a href="../../reference/android/R.attr.html#theme">android:theme</a></code> attribute in your AndroidManifest.xml.
+            The advantage of this
+            over Dialog and AlertDialog is that Application has a much better managed
+            life cycle than dialogs: if a dialog goes to the background and is killed,
+            you cannot recapture state, whereas Application exposes a <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> of saved values in <code>onCreate()</code> to help you maintain state.</td>
+    </tr>
+</table>
+<h3>AlertDialog</h3>
+<p>This is a basic warning dialog box that lets you configure a message, button text,
+    and callback. You can create one by calling using the <code><a href="../../reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> class, as shown here. </p>
+<pre>private Handler mHandler = new Handler() {
+    public void handleMessage(Message msg) {
+        switch (msg.what) {
+            case ACCEPT_CALL:
+            answer(msg.obj);
+            break;
+    
+            case BOUNCE_TO_VOICEMAIL:
+            voicemail(msg.obj);
+            break;
+    
+        }
+    }
+};
+
+
+private void IncomingMotherInlawCall(Connection c) {
+    String Text;
+    
+    // &quot;Answer&quot; callback.
+    Message acceptMsg = Message.obtain();
+    acceptMsg.target = mHandler;
+    acceptMsg.what = ACCEPT_CALL;
+    acceptMsg.obj = c.getCall();
+    
+    // &quot;Cancel&quot; callback.
+    final Message rejectMsg = Message.obtain();
+    rejectMsg.target = mHandler;
+    rejectMsg.what = BOUNCE_TO_VOICEMAIL;
+    rejectMsg.obj = c.getCall();
+
+    new AlertDialog.Builder(this)
+      .setMessage("Phyllis is calling")
+      .setPositiveButton("Answer", acceptMsg)
+      .setOnCanceListener(new OnCancelListener() {
+        public void onCancel(DialogInterface dialog) {
+          rejectMsg.sendToTarget();
+        }});
+      .show();
+}    </pre>
+
+<h3>Notifications</h3>
+
+<p>Out-of-band alerts should always be displayed using the
+<code><a href="../../reference/android/app/NotificationManager.html">NotificationManager</a></code>, which allows you to tell the user
+about something they may be interested in without disrupting what they are
+currently doing.  A notification can be anything from a brief pop-up box
+informing the user of the new information, through displaying a persistent
+icon in the status bar, to vibrating, playing sounds, or flashing lights to
+get the user's attention.  In all cases, the user must explicitly shift their
+focus to the notification before they can interact with it.</p>
+
+<p>The following code demonstrates using NotificationManager to display a basic text
+    popup when a new SMS message arrives in a listening service, and provides the
+    current message count. You can see several more examples in the ApiDemos application,
+    under app/ (named <em>notification</em>*.java).</p>
+<pre>static void setNewMessageIndicator(Context context, int messageCount){
+   // Get the static global NotificationManager object.
+   NotificationManager nm = NotificationManager.getDefault();</p>
+
+   // If we're being called because a new message has been received, 
+   // then display an icon and a count. Otherwise, delete the persistent
+   // message.
+   if (messageCount &gt; 0) {
+      nm.notifyWithText(myApp.NOTIFICATION_GUID,      // ID for this notification.
+                messageCount + &quot; new message&quot; + messageCount &gt; 1 ? &quot;s&quot;:&quot;&quot;, // Text to display.
+                NotificationManager.LENGTH_SHORT); // Show it for a short time only.
+   }
+}</pre>
+<p>To display a notification in the status bar and have it launch an intent when
+    the user selects it (such as the new text message notification does), call <code><a href="../../reference/android/app/NotificationManager.html#notify(int, android.app.Notification)">NotificationManager.notify()</a></code>,
+    and pass in vibration patterns, status bar icons, or Intents to associate with
+    the notification. </p>
+<a name="progressbar" id="progressbar"></a><h2>Displaying a Progress Bar</h2>
+<p>An activity can display a progress bar to notify the user that something is happening.
+    To display a progress bar in a screen, call <code><a href="../../reference/android/app/Activity.html#requestWindowFeature(int)">Activity.requestWindowFeature(Window.FEATURE_PROGRESS)</a></code>. To set the value
+    of the progress bar, call <code><a href="../../reference/android/view/Window.html#setFeatureInt(int, int)">Activity.getWindow().setFeatureInt(Window.FEATURE_PROGRESS, <em>level</em>)</a></code>.
+    Progress bar values are from 0 to 9,999, or set the value to 10,000 to make the
+    progress bar invisible. </p>
+<p>You can also use the <code><a href="../../reference/android/app/ProgressDialog.html">ProgressDialog</a></code> class,
+    which enables a  dialog box with an embedded progress bar to send a &quot;I'm working
+    on it&quot; notification to the user. </p>
+<a name="addmenuitems" id="addmenuitems"></a><h2>Adding Items to the Screen Menu</h2>
+<p>See <a href="../../guide/topics/ui/menus.html">Menus</a>.</p>
+
+<a name="webpage" id="webpage"></a><h2>Display a Web Page</h2>
+<p>Use the <code><a href="../../reference/android/webkit/WebView.html">webkit.WebView</a></code> object. </p>
+<a name="binding" id="binding"></a><h2>Binding to Data</h2>
+<p>You can bind a ListView to a set of underlying data by using a shim class called
+    <code><a href="../../reference/android/widget/ListAdapter.html">ListAdapter</a></code> (or a subclass). ListAdapter subclasses
+    bind to a variety of data sources, and expose a common set of methods such as
+    getItem() and getView(), and uses them to pick View items to display in its list.
+    You can extend ListAdapter and override getView() to create your own custom list
+    items. There are essentially only two steps you need to perform to bind to data: </p>
+<ol>
+    <li>Create a ListAdapter object and specify its data source</li>
+    <li>Give the ListAdapter to your ListView object.</li>
+</ol>
+<p>That's it!</p>
+<p>Here's an example of binding a ListActivity screen to the results from a cursor
+    query. (Note that the setListAdapter() method shown is a convenience method that
+    gets the page's ListView object and calls setAdapter() on it.)</p>
+<pre>// Run a query and get a Cursor pointing to the results.
+Cursor c = People.query(this.getContentResolver(), null);
+startManagingCursor(c);
+
+// Create the ListAdapter. A SimpleCursorAdapter lets you specify two interesting things:
+// an XML template for your list item, and
+// The column to map to a specific item, by ID, in your template.
+ListAdapter adapter = new SimpleCursorAdapter(this,  
+                android.R.layout.simple_list_item_1,  // Use a template that displays a text view
+                c,                                    // Give the cursor to the list adapter
+                new String[] {People.NAME} ,          // Map the NAME column in the people database to...
+                new String[] {"text1"});              // The "text1" view defined in the XML template
+setListAdapter(adapter);</pre>
+<p>See view/List4 in the ApiDemos project for an example of extending ListAdapter
+    for a new data type. </p>
+
+<a name="handle"></a>
+
+<h2>Getting a Handle to a Screen Element</h2>
+<p>You can get a handle to a screen element by calling <code><a href="../../reference/android/app/Activity.html#findViewById(int)">Activity.findViewById</a></code>. You can then use
+the handle to set or retrieve any values exposed by the object. </p>
+<a name="captureimages" id="captureimages"></a><h2>Capture Images from the Phone Camera</h2>
+<p>You can hook into the device's camera onto your own Canvas object by using the
+    <code><a href="../../reference/android/hardware/Camera.html">Camera</a></code> class. See that class's documentation,
+    and the ApiDemos project's Camera Preview application (Graphics/Camera Preview)
+    for example code. </p>
+
+
+<a name="threading" id="threading"></a><h2>Handling Expensive Operations in the UI Thread</h2>
+<p>Avoid performing long-running operations (such as network I/O) directly in the UI thread &mdash; 
+the main thread of an application where the UI is run &mdash; or your application may be blocked 
+and become unresponsive. Here is a brief summary of the recommended approach for handling expensive operations:</p>
+<ol>
+<li>Create a Handler object in your UI thread</li>
+<li>Spawn off worker threads to perform any required expensive operations</li>
+<li>Post results from a worker thread back to the UI thread's handler either through a Runnable or a <code><a href="../../reference/android/os/Message.html">Message</a></code></li>
+<li>Update the views on the UI thread as needed</li>
+</ol>
+
+<p>The following outline illustrates a typical implementation:</p>
+
+<pre>
+public class MyActivity extends Activity {
+
+    [ . . . ]
+    // Need handler for callbacks to the UI thread
+    final Handler mHandler = new Handler();
+
+    // Create runnable for posting
+    final Runnable mUpdateResults = new Runnable() {
+        public void run() {
+            updateResultsInUi();
+        }
+    };
+
+    &#64;Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        [ . . . ]
+    }
+
+    protected void startLongRunningOperation() {
+
+        // Fire off a thread to do some work that we shouldn't do directly in the UI thread
+        Thread t = new Thread() {
+            public void run() {
+                mResults = doSomethingExpensive();
+                mHandler.post(mUpdateResults);
+            }
+        };
+        t.start();
+    }
+
+    private void updateResultsInUi() {
+
+        // Back in the UI thread -- update our UI elements based on the data in mResults
+        [ . . . ]
+    }
+}
+</pre>
+
+<p>For further discussions on this topic, see 
+<a href="../../guide/practices/design/responsiveness.html">Designing for Responsiveness</a> 
+and the <code><a href="../../reference/android/os/Handler.html">Handler</a></code> documentation.</p>
+
+<a name="selectingtext" id="selectingtext"></a><h2>Selecting, Highlighting, or Styling Portions of Text</h2>
+<p>You can highlight or style the formatting of strings or substrings of text in
+    a TextView object. There are two ways to do this:</p>
+<ul>
+    <li>If you use a <a href="../../guide/topics/resources/available-resources.html#stringresources">string resource</a>,
+        you can add some simple styling, such as bold or italic using HTML notation.
+        The currently supported tags are: <code>B</code> (bold),
+        <code>I</code> (italic), <code>U</code> (underline),
+        <code>TT</code> (monospace), <code>BIG</code>, <code>SMALL</code>,
+        <code>SUP</code> (superscript), <code>SUB</code> (subscript),
+        and <code>STRIKE</code> (strikethrough).
+        So, for example, in res/values/strings.xml you could declare this:<br />
+        <code>&lt;resource&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;string&nbsp;id=&quot;@+id/styled_welcome_message&quot;&gt;We
+        are &lt;b&gt;&lt;i&gt;so&lt;/i&gt;&lt;/b&gt; glad to see you.&lt;/string&gt;<br />
+        &lt;/resources&gt;</code></li>
+    <li>To style text on the fly, or to add highlighting or more complex styling,
+        you must use the Spannable object as described next. </li>
+</ul>
+<p>To style text on the fly, you must make sure the TextView is using <code><a href="../../reference/android/text/Spannable.html">Spannable</a></code>
+    storage for the text (this will always be true if the TextView is an EditText),
+    retrieve its text with <code><a href="../../reference/android/widget/TextView.html#getText()">getText()</a></code>, and call <code><a href="../../reference/android/text/Spannable.html#setSpan(java.lang.Object, int, int, int)">setSpan(Object, int, int, int)</a></code>, passing in a new style class from the <code><a href="../../reference/android/text/style/package-summary.html">android.text.style</a></code> package and the selection range. </p>
+<p>The following code snippet demonstrates creating a string with a highlighted section,
+    italic section, and bold section, and adding it to an EditText object. </p>
+<pre>// Get our EditText object.
+EditText vw = (EditText)findViewById(R.id.text);
+
+// Set the EditText's text.
+vw.setText("Italic, highlighted, bold.");
+
+// If this were just a TextView, we could do:
+// vw.setText("Italic, highlighted, bold.", TextView.BufferType.SPANNABLE);
+// to force it to use Spannable storage so styles can be attached.
+// Or we could specify that in the XML.
+
+// Get the EditText's internal text storage
+Spannable str = vw.getText();
+
+// Create our span sections, and assign a format to each.
+str.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC), 0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+str.setSpan(new BackgroundColorSpan(0xFFFFFF00), 8, 19, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+str.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 21, str.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+</pre>
+
+<a name="querymap" id="querymap"></a><h2>Utilizing attributes in a Map query</h2>
+<p>
+When using a search intent to ask the Maps activity to search for something, the Maps activity responds to the following attributes in the optional context bundle:
+</p>
+<pre>
+               float "centerLatitude" default 0.0f
+               float "centerLongitude" default 0.0f
+               float "latitudeSpan" default 0.0f
+               float "longitudeSpan" default 0.0f
+               int "zoomLevel" default 10
+</pre>
+<p>
+This context information is used to center the search result in a particular area, and is equivalent to adjusting the Map activity to the described location and zoom level before issuing the query.
+</p>
+<p>
+If the latitudeSpan, longitudeSpan, and zoomLevel attributes are not consistent, then it is undefined which one takes precedence.
+</p>
+
+<a name="filelist" id="filelist"></a><h2>List of Files for an Android Application</h2>
+<p>The following list describes the structure and files of an Android application.
+    Many of these files can be built for you (or stubbed out) by the android tool
+    shipped in the tools/ menu of the SDK. </p>
+<table width="100%" border="0">
+    <tr>
+        <td width="28%" valign="top">MyApp/<br /></td>
+        <td width="72%" valign="top">&nbsp;</td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;AndroidManifest.xml</td>
+        <td valign="top">(<em>required</em>) Advertises the screens that this application provides,
+            where they can be launched (from the main program menu or elsewhere),
+            any content providers it implements and what kind of data they handle,
+            where the implementation classes are, and other application-wide
+            information. Syntax details for this file are described in <a href="../../guide/topics/manifest/manifest-intro.html">The AndroidManifest.xml File</a>.</td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;src/<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<em>myPackagePath</em>/.../<em>MyClass</em>.java</td>
+        <td valign="top">(<em>required</em>) This folder holds all the source code files for your
+            application, inside the appropriate package subfolders. </td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;res/</td>
+        <td valign="top">(<em>required</em>) This folder holds all the <em>resources</em> for
+            your application. Resources are external data files or description files
+            that are compiled into your code at build time. Files in different folders
+            are compiled differently, so you must put the proper resource into the
+            proper folder. (See <a href="../../guide/topics/resources/resources-i18n.html">Resources</a> for details.)</td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anim/<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>animation1</em>.xml<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>...</em></td>
+        <td valign="top">(<em>optional</em>) Holds any animation XML description files that the
+            application uses. The format of these files is described in <a href="../../guide/topics/resources/resources-i18n.html">Resources</a>. </td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drawable/<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>some_picture</em>.png<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>some_stretchable</em>.9.png<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>some_background</em>.xml<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</td>
+        <td valign="top">(<em>optional</em>) Zero or more files that will be compiled to <code><a href="../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></code> resources. Files
+            can be image files (png, gif, or other) or XML files describing other
+            graphics such as bitmaps, stretchable bitmaps, or gradients. Supported
+            bitmap file formats are PNG (preferred), JPG, and GIF (discouraged),
+            as well as the custom 9-patch stretchable bitmap format. These formats
+            are described in <a href="../../guide/topics/resources/resources-i18n.html">Resources</a>. </td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layout/<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>screen_1_layout</em>.xml<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br /></td>
+        <td valign="top">(<em>optional</em>) Holds all the XML files describing screens or parts
+            of screens. Although you could create a screen in Java, defining them
+            in XML files is typically easier. A layout file is similar in concept
+            to an HTML file that describes the screen layout and components. See <a href="../../guide/topics/ui/index.html">User Interface</a> for more information about designing screens, and <a href="../../guide/topics/resources/available-resources.html#layoutresources">Available Resource Types</a> for the syntax of these files.</td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values/<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrays<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          &nbsp;classes.xml<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors.xml<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dimens.xml<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            strings.xml<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;styles.xml<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values.xml<br /></td>
+        <td valign="top"><p>(<em>optional</em>) XML files describing additional resources
+                such as strings, colors, and styles. The naming, quantity, and number
+                of these files are not enforced--any XML file is compiled, but these
+                are the standard names given to these files. However, the syntax
+                of these files is prescribed by Android, and described in <a href="../../guide/topics/resources/resources-i18n.html">Resources</a>. </p>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xml/</td>
+        <td valign="top">(<em>optional</em>) XML files that can be read at run time on the device. </td>
+    </tr>
+    <tr>
+        <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raw/</td>
+        <td valign="top">(<em>optional</em>) Any files to be copied directly to the device. </td>
+    </tr>
+</table>
+
+
+<a name="logging" ></a>
+<h2>Print Messages to a Log File</h2>
+
+<p>To write log messages from your application:</p>
+<ol><li>Import <code>android.util.Log</code>.</li>
+    <li>Use <code>Log.v()</code>, <code>Log.d()</code>, <code>Log.i()</code>,
+    <code>Log.w()</code>, or <code>Log.e()</code> to log messages.
+    (See the <code><a href="../../reference/android/util/Log.html">Log</a></code> class.)<br/> E.g., 
+    <code>Log.e(this.toString(), "error: " + err.toString())</code></li>
+    <li>Launch <a href="../../guide/developing/tools/ddms.html">DDMS</a> from a terminal
+    by executing <code>ddms</code> in your Android SDK <code>/tools</code> path.</li>
+    <li>Run your application in the Android emulator.</li>
+    <li>From the DDMS application, select the emulator 
+    (e.g., "emulator-5554") and click <b>Device > Run logcat...</b>
+    to view all the log data.</li>
+</ol>
+<p class="note"><strong>Note:</strong> If you are running Eclipse and 
+encounter a warning about the VM debug port when opening DDMS, you can ignore it
+if you're only interested in logs. However, if you want to further inspect and
+control your processes from DDMS, then you should close Eclipse before launching DDMS so that 
+it may use the VM debugging port.</p>
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

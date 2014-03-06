@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Media Playback | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Media Playback</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+    <div id="qv">
+
+<h2>In this document</h2>
+<ol>
+<li><a href="#basics">The Basics</a>
+<li><a href="#manifest">Manifest Declarations</a></li>
+<li><a href="#mediaplayer">Using MediaPlayer</a>
+   <ol>
+      <li><a href='#preparingasync'>Asynchronous Preparation</a></li>
+      <li><a href='#managestate'>Managing State</a></li>
+      <li><a href='#releaseplayer'>Releasing the MediaPlayer</a></li>
+   </ol>
+</li>
+<li><a href="#mpandservices">Using a Service with MediaPlayer</a>
+   <ol>
+      <li><a href="#asyncprepare">Running asynchronously</a></li>
+      <li><a href="#asyncerror">Handling asynchronous errors</a></li>
+      <li><a href="#wakelocks">Using wake locks</a></li>
+      <li><a href="#foregroundserv">Running as a foreground service</a></li>
+      <li><a href="#audiofocus">Handling audio focus</a></li>
+      <li><a href="#cleanup">Performing cleanup</a></li>
+   </ol>
+</li>
+<li><a href="#noisyintent">Handling the AUDIO_BECOMING_NOISY Intent</a>
+<li><a href="#viacontentresolver">Retrieving Media from a Content Resolver</a>
+</ol>
+
+<h2>Key classes</h2>
+<ol>
+<li><code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code></li>
+<li><code><a href="../../../reference/android/media/AudioManager.html">AudioManager</a></code></li>
+<li><code><a href="../../../reference/android/media/SoundPool.html">SoundPool</a></code></li>
+</ol>
+
+<h2>See also</h2>
+<ol>
+<li><a href="../../../guide/topics/media/jetplayer.html">JetPlayer</a></li>
+<li><a href="../../../guide/topics/media/audio-capture.html">Audio Capture</a></li>
+<li><a href="../../../guide/appendix/media-formats.html">Android Supported Media Formats</a></li>
+<li><a href="../../../guide/topics/data/data-storage.html">Data Storage</a></li>
+</ol>
+
+</div>
+</div>
+
+<p>The Android multimedia framework includes support for playing variety of common media types, so
+that you can easily integrate audio, video and images into your applications. You can play audio or
+video from media files stored in your application's resources (raw resources), from standalone files
+in the filesystem, or from a data stream arriving over a network connection, all using <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> APIs.</p>
+
+<p>This document shows you how to write a media-playing application that interacts with the user and
+the system in order to obtain good performance and a pleasant user experience.</p>
+
+<p class="note"><strong>Note:</strong> You can play back the audio data only to the standard output
+device. Currently, that is the mobile device speaker or a Bluetooth headset. You cannot play sound
+files in the conversation audio during a call.</p>
+
+<h2 id="basics">The Basics</h2>
+<p>The following classes are used to play sound and video in the Android framework:</p>
+
+<dl>
+  <dt><code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code></dt>
+  <dd>This class is the primary API for playing sound and video.</dd>
+  <dt><code><a href="../../../reference/android/media/AudioManager.html">AudioManager</a></code></dt>
+  <dd>This class manages audio sources and audio output on a device.</dd>
+</dl>
+
+<h2 id="manifest">Manifest Declarations</h2>
+<p>Before starting development on your application using MediaPlayer, make sure your manifest has
+the appropriate declarations to allow use of related features.</p>
+
+<ul>
+  <li><strong>Internet Permission</strong> - If you are using MediaPlayer to stream network-based
+content, your application must request network access.
+<pre>
+&lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+</pre>
+  </li>
+  <li><strong>Wake Lock Permission</strong> - If your player application needs to keep the screen
+from dimming or the processor from sleeping, or uses the <code><a href="../../../reference/android/media/MediaPlayer.html#setScreenOnWhilePlaying(boolean)">MediaPlayer.setScreenOnWhilePlaying()</a></code> or
+<code><a href="../../../reference/android/media/MediaPlayer.html#setWakeMode(android.content.Context, int)">MediaPlayer.setWakeMode()</a></code> methods, you must request this permission.
+<pre>
+&lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
+</pre>
+  </li>
+</ul>
+
+<h2 id="mediaplayer">Using MediaPlayer</h2>
+<p>One of the most important components of the media framework is the
+<code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>
+class. An object of this class can fetch, decode, and play both audio and video
+with minimal setup. It supports several different media sources such as:
+<ul>
+   <li>Local resources</li>
+   <li>Internal URIs, such as one you might obtain from a Content Resolver</li>
+   <li>External URLs (streaming)</li>
+</ul>
+</p>
+
+<p>For a list of media formats that Android supports,
+see the <a href="../../../guide/appendix/media-formats.html">Android Supported Media
+Formats</a> document. </p>
+
+<p>Here is an example
+of how to play audio that's available as a local raw resource (saved in your application's
+<code>res/raw/</code> directory):</p>
+
+<pre>MediaPlayer mediaPlayer = MediaPlayer.create(context, R.raw.sound_file_1);
+mediaPlayer.start(); // no need to call prepare(); create() does that for you
+</pre>
+
+<p>In this case, a "raw" resource is a file that the system does not
+try to parse in any particular way. However, the content of this resource should not
+be raw audio. It should be a properly encoded and formatted media file in one 
+of the supported formats.</p>
+
+<p>And here is how you might play from a URI available locally in the system
+(that you obtained through a Content Resolver, for instance):</p>
+
+<pre>Uri myUri = ....; // initialize Uri here
+MediaPlayer mediaPlayer = new MediaPlayer();
+mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+mediaPlayer.setDataSource(getApplicationContext(), myUri);
+mediaPlayer.prepare();
+mediaPlayer.start();</pre>
+
+<p>Playing from a remote URL via HTTP streaming looks like this:</p>
+
+<pre>String url = "http://........"; // your URL here
+MediaPlayer mediaPlayer = new MediaPlayer();
+mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+mediaPlayer.setDataSource(url);
+mediaPlayer.prepare(); // might take long! (for buffering, etc)
+mediaPlayer.start();</pre>
+
+<p class="note"><strong>Note:</strong>
+If you're passing a URL to stream an online media file, the file must be capable of
+progressive download.</p>
+
+<p class="caution"><strong>Caution:</strong> You must either catch or pass
+<code><a href="../../../reference/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></code> and <code><a href="../../../reference/java/io/IOException.html">IOException</a></code> when using
+<code><a href="../../../reference/android/media/MediaPlayer.html#setDataSource(android.content.Context, android.net.Uri)">setDataSource()</a></code>, because
+the file you are referencing might not exist.</p>
+
+<h3 id='preparingasync'>Asynchronous Preparation</h3>
+
+<p>Using <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> can be straightforward in
+principle. However, it's important to keep in mind that a few more things are
+necessary to integrate it correctly with a typical Android application. For
+example, the call to <code><a href="../../../reference/android/media/MediaPlayer.html#prepare()">prepare()</a></code> can
+take a long time to execute, because
+it might involve fetching and decoding media data. So, as is the case with any
+method that may take long to execute, you should <strong>never call it from your
+application's UI thread</strong>. Doing that will cause the UI to hang until the method returns,
+which is a very bad user experience and can cause an ANR (Application Not Responding) error. Even if
+you expect your resource to load quickly, remember that anything that takes more than a tenth
+of a second to respond in the UI will cause a noticeable pause and will give
+the user the impression that your application is slow.</p>
+
+<p>To avoid hanging your UI thread, spawn another thread to
+prepare the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> and notify the main thread when done. However, while
+you could write the threading logic
+yourself, this pattern is so common when using <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> that the framework
+supplies a convenient way to accomplish this task by using the
+<code><a href="../../../reference/android/media/MediaPlayer.html#prepareAsync()">prepareAsync()</a></code> method. This method
+starts preparing the media in the background and returns immediately. When the media
+is done preparing, the <code><a href="../../../reference/android/media/MediaPlayer.OnPreparedListener.html#onPrepared(android.media.MediaPlayer)">onPrepared()</a></code>
+method of the <code><a href="../../../reference/android/media/MediaPlayer.OnPreparedListener.html">MediaPlayer.OnPreparedListener</a></code>, configured through
+<code><a href="../../../reference/android/media/MediaPlayer.html#setOnPreparedListener(android.media.MediaPlayer.OnPreparedListener)">setOnPreparedListener()</a></code> is called.</p>
+
+<h3 id='managestate'>Managing State</h3>
+
+<p>Another aspect of a <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> that you should keep in mind is
+that it's state-based. That is, the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> has an internal state
+that you must always be aware of when writing your code, because certain operations
+are only valid when then player is in specific states. If you perform an operation while in the
+wrong state, the system may throw an exception or cause other undesireable behaviors.</p>
+
+<p>The documentation in the
+<code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> class shows a complete state diagram,
+that clarifies which methods move the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> from one state to another.
+For example, when you create a new <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>, it is in the <em>Idle</em>
+state. At that point, you should initialize it by calling
+<code><a href="../../../reference/android/media/MediaPlayer.html#setDataSource(android.content.Context, android.net.Uri)">setDataSource()</a></code>, bringing it
+to the <em>Initialized</em> state. After that, you have to prepare it using either the
+<code><a href="../../../reference/android/media/MediaPlayer.html#prepare()">prepare()</a></code> or
+<code><a href="../../../reference/android/media/MediaPlayer.html#prepareAsync()">prepareAsync()</a></code> method. When
+the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> is done preparing, it will then enter the <em>Prepared</em>
+state, which means you can call <code><a href="../../../reference/android/media/MediaPlayer.html#start()">start()</a></code>
+to make it play the media. At that point, as the diagram illustrates,
+you can move between the <em>Started</em>, <em>Paused</em> and <em>PlaybackCompleted</em> states by
+calling such methods as
+<code><a href="../../../reference/android/media/MediaPlayer.html#start()">start()</a></code>,
+<code><a href="../../../reference/android/media/MediaPlayer.html#pause()">pause()</a></code>, and
+<code><a href="../../../reference/android/media/MediaPlayer.html#seekTo(int)">seekTo()</a></code>,
+amongst others. When you
+call <code><a href="../../../reference/android/media/MediaPlayer.html#stop()">stop()</a></code>, however, notice that you
+cannot call <code><a href="../../../reference/android/media/MediaPlayer.html#start()">start()</a></code> again until you
+prepare the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> again.</p>
+
+<p>Always keep <a href='../../../images/mediaplayer_state_diagram.gif'>the state diagram</a> 
+in mind when writing code that interacts with a
+<code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> object, because calling its methods from the wrong state is a
+common cause of bugs.</p>
+
+<h3 id='releaseplayer'>Releasing the MediaPlayer</h3>
+
+<p>A <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> can consume valuable
+system resources.
+Therefore, you should always take extra precautions to make sure you are not
+hanging on to a <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> instance longer than necessary. When you
+are done with it, you should always call
+<code><a href="../../../reference/android/media/MediaPlayer.html#release()">release()</a></code> to make sure any
+system resources allocated to it are properly released. For example, if you are
+using a <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> and your activity receives a call to <code><a href="../../../reference/android/app/Activity.html#onStop()">onStop()</a></code>, you must release the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>,
+because it
+makes little sense to hold on to it while your activity is not interacting with
+the user (unless you are playing media in the background, which is discussed in the next section).
+When your activity is resumed or restarted, of course, you need to
+create a new <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> and prepare it again before resuming playback.</p>
+
+<p>Here's how you should release and then nullify your <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>:</p>
+<pre>
+mediaPlayer.release();
+mediaPlayer = null;
+</pre>
+
+<p>As an example, consider the problems that could happen if you
+forgot to release the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> when your activity is stopped, but create a
+new one when the activity starts again. As you may know, when the user changes the
+screen orientation (or changes the device configuration in another way), 
+the system handles that by restarting the activity (by default), so you might quickly
+consume all of the system resources as the user
+rotates the device back and forth between portrait and landscape, because at each
+orientation change, you create a new <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> that you never
+release. (For more information about runtime restarts, see <a
+href="../../../guide/topics/resources/runtime-changes.html">Handling Runtime Changes</a>.)</p>
+
+<p>You may be wondering what happens if you want to continue playing
+"background media" even when the user leaves your activity, much in the same
+way that the built-in Music application behaves. In this case, what you need is
+a <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> controlled by a <code><a href="../../../reference/android/app/Service.html">Service</a></code>, as
+discussed in <a href="#mpandservices">Using a Service with MediaPlayer</a>.</p>
+
+<h2 id="mpandservices">Using a Service with MediaPlayer</h2>
+
+<p>If you want your media to play in the background even when your application
+is not onscreen&mdash;that is, you want it to continue playing while the user is
+interacting with other applications&mdash;then you must start a
+<code><a href="../../../reference/android/app/Service.html">Service</a></code> and control the
+<code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> instance from there.
+You should be careful about this setup, because the user and the system have expectations
+about how an application running a background service should interact with the rest of the
+system. If your application does not fulfil those expectations, the user may
+have a bad experience. This section describes the main issues that you should be
+aware of and offers suggestions about how to approach them.</p>
+
+
+<h3 id="asyncprepare">Running asynchronously</h3>
+
+<p>First of all, like an <code><a href="../../../reference/android/app/Activity.html">Activity</a></code>, all work in a
+<code><a href="../../../reference/android/app/Service.html">Service</a></code> is done in a single thread by
+default&mdash;in fact, if you're running an activity and a service from the same application, they
+use the same thread (the "main thread") by default. Therefore, services need to
+process incoming intents quickly
+and never perform lengthy computations when responding to them. If any heavy
+work or blocking calls are expected, you must do those tasks asynchronously: either from
+another thread you implement yourself, or using the framework's many facilities
+for asynchronous processing.</p>
+
+<p>For instance, when using a <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> from your main thread,
+you should call <code><a href="../../../reference/android/media/MediaPlayer.html#prepareAsync()">prepareAsync()</a></code> rather than
+<code><a href="../../../reference/android/media/MediaPlayer.html#prepare()">prepare()</a></code>, and implement
+a <code><a href="../../../reference/android/media/MediaPlayer.OnPreparedListener.html">MediaPlayer.OnPreparedListener</a></code>
+in order to be notified when the preparation is complete and you can start playing.
+For example:</p>
+
+<pre>
+public class MyService extends Service implements MediaPlayer.OnPreparedListener {
+    private static final ACTION_PLAY = "com.example.action.PLAY";
+    MediaPlayer mMediaPlayer = null;
+
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        ...
+        if (intent.getAction().equals(ACTION_PLAY)) {
+            mMediaPlayer = ... // initialize it here
+            mMediaPlayer.setOnPreparedListener(this);
+            mMediaPlayer.prepareAsync(); // prepare async to not block main thread
+        }
+    }
+
+    /** Called when MediaPlayer is ready */
+    public void onPrepared(MediaPlayer player) {
+        player.start();
+    }
+}
+</pre>
+
+
+<h3 id="asyncerror">Handling asynchronous errors</h3>
+
+<p>On synchronous operations, errors would normally
+be signaled with an exception or an error code, but whenever you use asynchronous
+resources, you should make sure your application is notified
+of errors appropriately. In the case of a <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>,
+you can accomplish this by implementing a
+<code><a href="../../../reference/android/media/MediaPlayer.OnErrorListener.html">MediaPlayer.OnErrorListener</a></code> and
+setting it in your <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> instance:</p>
+
+<pre>
+public class MyService extends Service implements MediaPlayer.OnErrorListener {
+    MediaPlayer mMediaPlayer;
+
+    public void initMediaPlayer() {
+        // ...initialize the MediaPlayer here...
+
+        mMediaPlayer.setOnErrorListener(this);
+    }
+
+    &#64;Override
+    public boolean onError(MediaPlayer mp, int what, int extra) {
+        // ... react appropriately ...
+        // The MediaPlayer has moved to the Error state, must be reset!
+    }
+}
+</pre>
+
+<p>It's important to remember that when an error occurs, the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>
+moves to the <em>Error</em> state (see the documentation for the
+<code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> class for the full state diagram)
+and you must reset it before you can use it again.
+
+
+<h3 id="wakelocks">Using wake locks</h3>
+
+<p>When designing applications that play media
+in the background, the device may go to sleep
+while your service is running. Because the Android system tries to conserve
+battery while the device is sleeping, the system tries to shut off any 
+of the phone's features that are
+not necessary, including the CPU and the WiFi hardware.
+However, if your service is playing or streaming music, you want to prevent
+the system from interfering with your playback.</p>
+
+<p>In order to ensure that your service continues to run under
+those conditions, you have to use "wake locks." A wake lock is a way to signal to
+the system that your application is using some feature that should
+stay available even if the phone is idle.</p>
+
+<p class="caution"><strong>Notice:</strong> You should always use wake locks sparingly and hold them
+only for as long as truly necessary, because they significantly reduce the battery life of the
+device.</p>
+
+<p>To ensure that the CPU continues running while your <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> is
+playing, call the <code><a href="../../../reference/android/media/MediaPlayer.html#setWakeMode(android.content.Context, int)">setWakeMode()</a></code> method when initializing your <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>. Once you do,
+the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> holds the specified lock while playing and releases the lock
+when paused or stopped:</p>
+
+<pre>
+mMediaPlayer = new MediaPlayer();
+// ... other initialization here ...
+mMediaPlayer.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
+</pre>
+
+<p>However, the wake lock acquired in this example guarantees only that the CPU remains awake. If
+you are streaming media over the
+network and you are using Wi-Fi, you probably want to hold a
+<code><a href="../../../reference/android/net/wifi/WifiManager.WifiLock.html">WifiLock</a></code> as
+well, which you must acquire and release manually. So, when you start preparing the
+<code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> with the remote URL, you should create and acquire the Wi-Fi lock.
+For example:</p>
+
+<pre>
+WifiLock wifiLock = ((WifiManager) getSystemService(Context.WIFI_SERVICE))
+    .createWifiLock(WifiManager.WIFI_MODE_FULL, "mylock");
+
+wifiLock.acquire();
+</pre>
+
+<p>When you pause or stop your media, or when you no longer need the
+network, you should release the lock:</p>
+
+<pre>
+wifiLock.release();
+</pre>
+
+
+<h3 id="foregroundserv">Running as a foreground service</h3>
+
+<p>Services are often used for performing background tasks, such as fetching emails,
+synchronizing data, downloading content, amongst other possibilities. In these
+cases, the user is not actively aware of the service's execution, and probably
+wouldn't even notice if some of these services were interrupted and later restarted.</p>
+
+<p>But consider the case of a service that is playing music. Clearly this is a service that the user
+is actively aware of and the experience would be severely affected by any interruptions.
+Additionally, it's a service that the user will likely wish to interact with during its execution.
+In this case, the service should run as a "foreground service." A
+foreground service holds a higher level of importance within the system&mdash;the system will
+almost never kill the service, because it is of immediate importance to the user. When running
+in the foreground, the service also must provide a status bar notification to ensure that users are
+aware of the running service and allow them to open an activity that can interact with the
+service.</p>
+
+<p>In order to turn your service into a foreground service, you must create a
+<code><a href="../../../reference/android/app/Notification.html">Notification</a></code> for the status bar and call
+<code><a href="../../../reference/android/app/Service.html#startForeground(int, android.app.Notification)">startForeground()</a></code> from the <code><a href="../../../reference/android/app/Service.html">Service</a></code>. For example:</p>
+
+<pre>String songName;
+// assign the song name to songName
+PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0,
+                new Intent(getApplicationContext(), MainActivity.class),
+                PendingIntent.FLAG_UPDATE_CURRENT);
+Notification notification = new Notification();
+notification.tickerText = text;
+notification.icon = R.drawable.play0;
+notification.flags |= Notification.FLAG_ONGOING_EVENT;
+notification.setLatestEventInfo(getApplicationContext(), "MusicPlayerSample",
+                "Playing: " + songName, pi);
+startForeground(NOTIFICATION_ID, notification);
+</pre>
+
+<p>While your service is running in the foreground, the notification you
+configured is visible in the notification area of the device. If the user
+selects the notification, the system invokes the <code><a href="../../../reference/android/app/PendingIntent.html">PendingIntent</a></code> you supplied. In
+the example above, it opens an activity (<code>MainActivity</code>).</p>
+
+<p>Figure 1 shows how your notification appears to the user:</p>
+
+<img src='images/notification1.png' />
+&nbsp;&nbsp;
+<img src='images/notification2.png' />
+<p class="img-caption"><strong>Figure 1.</strong> Screenshots of a foreground service's
+notification, showing the notification icon in the status bar (left) and the expanded view
+(right).</p>
+
+<p>You should only hold on to the "foreground service" status while your
+service is actually performing something the user is actively aware of. Once
+that is no longer true, you should release it by calling
+<code><a href="../../../reference/android/app/Service.html#stopForeground(boolean)">stopForeground()</a></code>:</p>
+
+<pre>
+stopForeground(true);
+</pre>
+
+<p>For more information, see the documentation about <a
+href="../../../guide/components/services.html#Foreground">Services</a> and
+<a href="../../../guide/topics/ui/notifiers/notifications.html">Status Bar Notifications</a>.</p>
+
+
+<h3 id="audiofocus">Handling audio focus</h3>
+
+<p>Even though only one activity can run at any given time, Android is a
+multi-tasking environment. This poses a particular challenge to applications
+that use audio, because there is only one audio output and there may be several
+media services competing for its use. Before Android 2.2, there was no built-in
+mechanism to address this issue, which could in some cases lead to a bad user
+experience. For example, when a user is listening to
+music and another application needs to notify the user of something very important,
+the user might not hear the notification tone due to the loud music. Starting with
+Android 2.2, the platform offers a way for applications to negotiate their
+use of the device's audio output. This mechanism is called Audio Focus.</p>
+
+<p>When your application needs to output audio such as music or a notification, 
+you should always request audio focus. Once it has focus, it can use the sound output freely, but it
+should
+always listen for focus changes. If it is notified that it has lost the audio
+focus, it should immediately either kill the audio or lower it to a quiet level
+(known as "ducking"&mdash;there is a flag that indicates which one is appropriate) and only resume
+loud playback after it receives focus again.</p>
+
+<p>Audio Focus is cooperative in nature. That is, applications are expected
+(and highly encouraged) to comply with the audio focus guidelines, but the
+rules are not enforced by the system. If an application wants to play loud
+music even after losing audio focus, nothing in the system will prevent that.
+However, the user is more likely to have a bad experience and will be more
+likely to uninstall the misbehaving application.</p>
+
+<p>To request audio focus, you must call
+<code><a href="../../../reference/android/media/AudioManager.html#requestAudioFocus(android.media.AudioManager.OnAudioFocusChangeListener, int, int)">requestAudioFocus()</a></code> from the <code><a href="../../../reference/android/media/AudioManager.html">AudioManager</a></code>, as the example below demonstrates:</p>
+
+<pre>
+AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+int result = audioManager.requestAudioFocus(this, AudioManager.STREAM_MUSIC,
+    AudioManager.AUDIOFOCUS_GAIN);
+
+if (result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+    // could not get audio focus.
+}
+</pre>
+
+<p>The first parameter to <code><a href="../../../reference/android/media/AudioManager.html#requestAudioFocus(android.media.AudioManager.OnAudioFocusChangeListener, int, int)">requestAudioFocus()</a></code>
+is an <code><a href="../../../reference/android/media/AudioManager.OnAudioFocusChangeListener.html">AudioManager.OnAudioFocusChangeListener</a></code>,
+whose <code><a href="../../../reference/android/media/AudioManager.OnAudioFocusChangeListener.html#onAudioFocusChange(int)">onAudioFocusChange()</a></code> method is called whenever there is a change in audio focus. Therefore, you
+should also implement this interface on your service and activities. For example:</p>
+
+<pre>
+class MyService extends Service
+                implements AudioManager.OnAudioFocusChangeListener {
+    // ....
+    public void onAudioFocusChange(int focusChange) {
+        // Do something based on focus change...
+    }
+}
+</pre>
+
+<p>The <code>focusChange</code> parameter tells you how the audio focus has changed, and
+can be one of the following values (they are all constants defined in
+<code><a href="../../../reference/android/media/AudioManager.html">AudioManager</a></code>):</p>
+
+<ul>
+<li><code><a href="../../../reference/android/media/AudioManager.html#AUDIOFOCUS_GAIN">AUDIOFOCUS_GAIN</a></code>: You have gained the audio focus.</li>
+
+<li><code><a href="../../../reference/android/media/AudioManager.html#AUDIOFOCUS_LOSS">AUDIOFOCUS_LOSS</a></code>: You have lost the audio focus for a
+presumably long time.
+You must stop all audio playback. Because you should expect not to have focus back
+for a long time, this would be a good place to clean up your resources as much
+as possible. For example, you should release the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>.</li>
+
+<li><code><a href="../../../reference/android/media/AudioManager.html#AUDIOFOCUS_LOSS_TRANSIENT">AUDIOFOCUS_LOSS_TRANSIENT</a></code>: You have
+temporarily lost audio focus, but should receive it back shortly. You must stop
+all audio playback, but you can keep your resources because you will probably get
+focus back shortly.</li>
+
+<li><code><a href="../../../reference/android/media/AudioManager.html#AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK">AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK</a></code>: You have temporarily
+lost audio focus,
+but you are allowed to continue to play audio quietly (at a low volume) instead
+of killing audio completely.</li>
+</ul>
+
+<p>Here is an example implementation:</p>
+
+<pre>
+public void onAudioFocusChange(int focusChange) {
+    switch (focusChange) {
+        case AudioManager.AUDIOFOCUS_GAIN:
+            // resume playback
+            if (mMediaPlayer == null) initMediaPlayer();
+            else if (!mMediaPlayer.isPlaying()) mMediaPlayer.start();
+            mMediaPlayer.setVolume(1.0f, 1.0f);
+            break;
+
+        case AudioManager.AUDIOFOCUS_LOSS:
+            // Lost focus for an unbounded amount of time: stop playback and release media player
+            if (mMediaPlayer.isPlaying()) mMediaPlayer.stop();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+            break;
+
+        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+            // Lost focus for a short time, but we have to stop
+            // playback. We don't release the media player because playback
+            // is likely to resume
+            if (mMediaPlayer.isPlaying()) mMediaPlayer.pause();
+            break;
+
+        case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+            // Lost focus for a short time, but it's ok to keep playing
+            // at an attenuated level
+            if (mMediaPlayer.isPlaying()) mMediaPlayer.setVolume(0.1f, 0.1f);
+            break;
+    }
+}
+</pre>
+
+<p>Keep in mind that the audio focus APIs are available only with API level 8 (Android 2.2)
+and above, so if you want to support previous
+versions of Android, you should adopt a backward compatibility strategy that
+allows you to use this feature if available, and fall back seamlessly if not.</p>
+
+<p>You can achieve backward compatibility either by calling the audio focus methods by reflection
+or by implementing all the audio focus features in a separate class (say,
+<code>AudioFocusHelper</code>). Here is an example of such a class:</p>
+
+<pre>
+public class AudioFocusHelper implements AudioManager.OnAudioFocusChangeListener {
+    AudioManager mAudioManager;
+
+    // other fields here, you'll probably hold a reference to an interface
+    // that you can use to communicate the focus changes to your Service
+
+    public AudioFocusHelper(Context ctx, /* other arguments here */) {
+        mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+        // ...
+    }
+
+    public boolean requestFocus() {
+        return AudioManager.AUDIOFOCUS_REQUEST_GRANTED ==
+            mAudioManager.requestAudioFocus(mContext, AudioManager.STREAM_MUSIC,
+            AudioManager.AUDIOFOCUS_GAIN);
+    }
+
+    public boolean abandonFocus() {
+        return AudioManager.AUDIOFOCUS_REQUEST_GRANTED ==
+            mAudioManager.abandonAudioFocus(this);
+    }
+
+    &#64;Override
+    public void onAudioFocusChange(int focusChange) {
+        // let your service know about the focus change
+    }
+}
+</pre>
+
+
+<p>You can create an instance of <code>AudioFocusHelper</code> class only if you detect that
+the system is running API level 8 or above. For example:</p>
+
+<pre>
+if (android.os.Build.VERSION.SDK_INT &gt;= 8) {
+    mAudioFocusHelper = new AudioFocusHelper(getApplicationContext(), this);
+} else {
+    mAudioFocusHelper = null;
+}
+</pre>
+
+
+<h3 id="cleanup">Performing cleanup</h3>
+
+<p>As mentioned earlier, a <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> object can consume a significant
+amount of system resources, so you should keep it only for as long as you need and call
+<code><a href="../../../reference/android/media/MediaPlayer.html#release()">release()</a></code> when you are done with it. It's important
+to call this cleanup method explicitly rather than rely on system garbage collection because
+it might take some time before the garbage collector reclaims the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>,
+as it's only sensitive to memory needs and not to shortage of other media-related resources.
+So, in the case when you're using a service, you should always override the
+<code><a href="../../../reference/android/app/Service.html#onDestroy()">onDestroy()</a></code> method to make sure you are releasing
+the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>:</p>
+
+<pre>
+public class MyService extends Service {
+   MediaPlayer mMediaPlayer;
+   // ...
+
+   &#64;Override
+   public void onDestroy() {
+       if (mMediaPlayer != null) mMediaPlayer.release();
+   }
+}
+</pre>
+
+<p>You should always look for other opportunities to release your <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>
+as well, apart from releasing it when being shut down. For example, if you expect not
+to be able to play media for an extended period of time (after losing audio focus, for example),
+you should definitely release your existing <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> and create it again
+later. On the
+other hand, if you only expect to stop playback for a very short time, you should probably
+hold on to your <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code> to avoid the overhead of creating and preparing it
+again.</p>
+
+
+
+<h2 id="noisyintent">Handling the AUDIO_BECOMING_NOISY Intent</h2>
+
+<p>Many well-written applications that play audio automatically stop playback when an event
+occurs that causes the audio to become noisy (ouput through external speakers). For instance,
+this might happen when a user is listening to music through headphones and accidentally
+disconnects the headphones from the device. However, this behavior does not happen automatically.
+If you don't implement this feature, audio plays out of the device's external speakers, which
+might not be what the user wants.</p>
+
+<p>You can ensure your app stops playing music in these situations by handling
+the <code><a href="../../../reference/android/media/AudioManager.html#ACTION_AUDIO_BECOMING_NOISY">ACTION_AUDIO_BECOMING_NOISY</a></code> intent, for which you can
+register a receiver by
+adding the following to your manifest:</p>
+
+<pre>
+&lt;receiver android:name=".MusicIntentReceiver"&gt;
+   &lt;intent-filter&gt;
+      &lt;action android:name="android.media.AUDIO_BECOMING_NOISY" /&gt;
+   &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</pre>
+
+<p>This registers the <code>MusicIntentReceiver</code> class as a broadcast receiver for that
+intent. You should then implement this class:</p>
+
+<pre>
+public class MusicIntentReceiver implements android.content.BroadcastReceiver {
+   &#64;Override
+   public void onReceive(Context ctx, Intent intent) {
+      if (intent.getAction().equals(
+                    android.media.AudioManager.ACTION_AUDIO_BECOMING_NOISY)) {
+          // signal your service to stop playback
+          // (via an Intent, for instance)
+      }
+   }
+}
+</pre>
+
+
+
+
+<h2 id="viacontentresolver">Retrieving Media from a Content Resolver</h2>
+
+<p>Another feature that may be useful in a media player application is the ability to
+retrieve music that the user has on the device. You can do that by querying the <code><a href="../../../reference/android/content/ContentResolver.html">ContentResolver</a></code> for external media:</p>
+
+<pre>
+ContentResolver contentResolver = getContentResolver();
+Uri uri = android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+Cursor cursor = contentResolver.query(uri, null, null, null, null);
+if (cursor == null) {
+    // query failed, handle error.
+} else if (!cursor.moveToFirst()) {
+    // no media on the device
+} else {
+    int titleColumn = cursor.getColumnIndex(android.provider.MediaStore.Audio.Media.TITLE);
+    int idColumn = cursor.getColumnIndex(android.provider.MediaStore.Audio.Media._ID);
+    do {
+       long thisId = cursor.getLong(idColumn);
+       String thisTitle = cursor.getString(titleColumn);
+       // ...process entry...
+    } while (cursor.moveToNext());
+}
+</pre>
+
+<p>To use this with the <code><a href="../../../reference/android/media/MediaPlayer.html">MediaPlayer</a></code>, you can do this:</p>
+
+<pre>
+long id = /* retrieve it from somewhere */;
+Uri contentUri = ContentUris.withAppendedId(
+        android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id);
+
+mMediaPlayer = new MediaPlayer();
+mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+mMediaPlayer.setDataSource(getApplicationContext(), contentUri);
+
+// ...prepare and start...
+</pre>
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

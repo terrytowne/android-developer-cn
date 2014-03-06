@@ -1,0 +1,4672 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>LayerDrawable - Android SDK | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+<!-- FULLSCREEN STYLESHEET -->
+<link href="../../../../assets/css/fullscreen.css" rel="stylesheet" class="fullscreen"
+type="text/css">
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../../";
+  var devsite = false;
+</script>
+<script src="../../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+  <div id="doc-api-level" class="1" style="display:none"></div>
+  <a name="top"></a>
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../../index.html">
+            <img src="../../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../../')" 
+onkeyup="return search_changed(event, false, '../../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav">
+
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+      <div id="api-nav-header">
+        <div id="api-level-toggle">
+          <label for="apiLevelCheckbox" class="disabled">API level: </label>
+          <div class="select-wrapper">
+            <select id="apiLevelSelector">
+              <!-- option elements added by buildApiLevelSelector() -->
+            </select>
+          </div>
+        </div><!-- end toggle -->
+        <div id="api-nav-title">Android APIs</div>
+        </div><!-- end nav header -->
+      <script>
+        var SINCE_DATA = [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19' ];
+        buildApiLevelSelector();
+      </script>
+                  
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav" class="scroll-pane">
+
+              <ul>
+              	
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/package-summary.html">android</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/accessibilityservice/package-summary.html">android.accessibilityservice</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/accounts/package-summary.html">android.accounts</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/animation/package-summary.html">android.animation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/app/package-summary.html">android.app</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/android/app/admin/package-summary.html">android.app.admin</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/android/app/backup/package-summary.html">android.app.backup</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/appwidget/package-summary.html">android.appwidget</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/bluetooth/package-summary.html">android.bluetooth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/package-summary.html">android.content</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/pm/package-summary.html">android.content.pm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/content/res/package-summary.html">android.content.res</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/database/package-summary.html">android.database</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/database/sqlite/package-summary.html">android.database.sqlite</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/drm/package-summary.html">android.drm</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/gesture/package-summary.html">android.gesture</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/package-summary.html">android.graphics</a></li>
+    <li class="selected api apilevel-1">
+  <a href="../../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/graphics/drawable/shapes/package-summary.html">android.graphics.drawable.shapes</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/graphics/pdf/package-summary.html">android.graphics.pdf</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/hardware/package-summary.html">android.hardware</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../../reference/android/hardware/display/package-summary.html">android.hardware.display</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/hardware/input/package-summary.html">android.hardware.input</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../../reference/android/hardware/location/package-summary.html">android.hardware.location</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/inputmethodservice/package-summary.html">android.inputmethodservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/location/package-summary.html">android.location</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/media/package-summary.html">android.media</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/media/audiofx/package-summary.html">android.media.audiofx</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/media/effect/package-summary.html">android.media.effect</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/mtp/package-summary.html">android.mtp</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/package-summary.html">android.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/http/package-summary.html">android.net.http</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/net/nsd/package-summary.html">android.net.nsd</a></li>
+    <li class="api apilevel-12">
+  <a href="../../../../reference/android/net/rtp/package-summary.html">android.net.rtp</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/net/sip/package-summary.html">android.net.sip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/net/wifi/package-summary.html">android.net.wifi</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/net/wifi/p2p/package-summary.html">android.net.wifi.p2p</a></li>
+    <li class="api apilevel-16">
+  <a href="../../../../reference/android/net/wifi/p2p/nsd/package-summary.html">android.net.wifi.p2p.nsd</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/nfc/package-summary.html">android.nfc</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/nfc/cardemulation/package-summary.html">android.nfc.cardemulation</a></li>
+    <li class="api apilevel-10">
+  <a href="../../../../reference/android/nfc/tech/package-summary.html">android.nfc.tech</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/opengl/package-summary.html">android.opengl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/os/package-summary.html">android.os</a></li>
+    <li class="api apilevel-9">
+  <a href="../../../../reference/android/os/storage/package-summary.html">android.os.storage</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/preference/package-summary.html">android.preference</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/print/package-summary.html">android.print</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/print/pdf/package-summary.html">android.print.pdf</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/printservice/package-summary.html">android.printservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/provider/package-summary.html">android.provider</a></li>
+    <li class="api apilevel-11">
+  <a href="../../../../reference/android/renderscript/package-summary.html">android.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/sax/package-summary.html">android.sax</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/security/package-summary.html">android.security</a></li>
+    <li class="api apilevel-17">
+  <a href="../../../../reference/android/service/dreams/package-summary.html">android.service.dreams</a></li>
+    <li class="api apilevel-18">
+  <a href="../../../../reference/android/service/notification/package-summary.html">android.service.notification</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/service/textservice/package-summary.html">android.service.textservice</a></li>
+    <li class="api apilevel-7">
+  <a href="../../../../reference/android/service/wallpaper/package-summary.html">android.service.wallpaper</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/speech/package-summary.html">android.speech</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/speech/tts/package-summary.html">android.speech.tts</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v13/app/package-summary.html">android.support.v13.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/accessibilityservice/package-summary.html">android.support.v4.accessibilityservice</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/app/package-summary.html">android.support.v4.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/content/package-summary.html">android.support.v4.content</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/content/pm/package-summary.html">android.support.v4.content.pm</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/database/package-summary.html">android.support.v4.database</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/graphics/drawable/package-summary.html">android.support.v4.graphics.drawable</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/hardware/display/package-summary.html">android.support.v4.hardware.display</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/media/package-summary.html">android.support.v4.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/net/package-summary.html">android.support.v4.net</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/os/package-summary.html">android.support.v4.os</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/print/package-summary.html">android.support.v4.print</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/text/package-summary.html">android.support.v4.text</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/util/package-summary.html">android.support.v4.util</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/view/package-summary.html">android.support.v4.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/view/accessibility/package-summary.html">android.support.v4.view.accessibility</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v4/widget/package-summary.html">android.support.v4.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/app/package-summary.html">android.support.v7.app</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/appcompat/package-summary.html">android.support.v7.appcompat</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/gridlayout/package-summary.html">android.support.v7.gridlayout</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/media/package-summary.html">android.support.v7.media</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/mediarouter/package-summary.html">android.support.v7.mediarouter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/view/package-summary.html">android.support.v7.view</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v7/widget/package-summary.html">android.support.v7.widget</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../reference/android/support/v8/renderscript/package-summary.html">android.support.v8.renderscript</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/telephony/package-summary.html">android.telephony</a></li>
+    <li class="api apilevel-5">
+  <a href="../../../../reference/android/telephony/cdma/package-summary.html">android.telephony.cdma</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/telephony/gsm/package-summary.html">android.telephony.gsm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/package-summary.html">android.test</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/mock/package-summary.html">android.test.mock</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/test/suitebuilder/package-summary.html">android.test.suitebuilder</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/package-summary.html">android.text</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/text/format/package-summary.html">android.text.format</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/method/package-summary.html">android.text.method</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/style/package-summary.html">android.text.style</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/text/util/package-summary.html">android.text.util</a></li>
+    <li class="api apilevel-19">
+  <a href="../../../../reference/android/transition/package-summary.html">android.transition</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/util/package-summary.html">android.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/view/package-summary.html">android.view</a></li>
+    <li class="api apilevel-4">
+  <a href="../../../../reference/android/view/accessibility/package-summary.html">android.view.accessibility</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/view/animation/package-summary.html">android.view.animation</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/android/view/inputmethod/package-summary.html">android.view.inputmethod</a></li>
+    <li class="api apilevel-14">
+  <a href="../../../../reference/android/view/textservice/package-summary.html">android.view.textservice</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/webkit/package-summary.html">android.webkit</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/android/widget/package-summary.html">android.widget</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/dalvik/bytecode/package-summary.html">dalvik.bytecode</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/dalvik/system/package-summary.html">dalvik.system</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/awt/font/package-summary.html">java.awt.font</a></li>
+    <li class="api apilevel-3">
+  <a href="../../../../reference/java/beans/package-summary.html">java.beans</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/io/package-summary.html">java.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/package-summary.html">java.lang</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/annotation/package-summary.html">java.lang.annotation</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/ref/package-summary.html">java.lang.ref</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/lang/reflect/package-summary.html">java.lang.reflect</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/math/package-summary.html">java.math</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/net/package-summary.html">java.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/package-summary.html">java.nio</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/channels/package-summary.html">java.nio.channels</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/channels/spi/package-summary.html">java.nio.channels.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/charset/package-summary.html">java.nio.charset</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/nio/charset/spi/package-summary.html">java.nio.charset.spi</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/package-summary.html">java.security</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/acl/package-summary.html">java.security.acl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/cert/package-summary.html">java.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/interfaces/package-summary.html">java.security.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/security/spec/package-summary.html">java.security.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/sql/package-summary.html">java.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/text/package-summary.html">java.text</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/package-summary.html">java.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/package-summary.html">java.util.concurrent</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/atomic/package-summary.html">java.util.concurrent.atomic</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/concurrent/locks/package-summary.html">java.util.concurrent.locks</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/jar/package-summary.html">java.util.jar</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/logging/package-summary.html">java.util.logging</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/prefs/package-summary.html">java.util.prefs</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/regex/package-summary.html">java.util.regex</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/java/util/zip/package-summary.html">java.util.zip</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/package-summary.html">javax.crypto</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/interfaces/package-summary.html">javax.crypto.interfaces</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/crypto/spec/package-summary.html">javax.crypto.spec</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/microedition/khronos/egl/package-summary.html">javax.microedition.khronos.egl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/microedition/khronos/opengles/package-summary.html">javax.microedition.khronos.opengles</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/net/package-summary.html">javax.net</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/net/ssl/package-summary.html">javax.net.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/package-summary.html">javax.security.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/callback/package-summary.html">javax.security.auth.callback</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/login/package-summary.html">javax.security.auth.login</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/auth/x500/package-summary.html">javax.security.auth.x500</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/security/cert/package-summary.html">javax.security.cert</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/sql/package-summary.html">javax.sql</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/xml/package-summary.html">javax.xml</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/datatype/package-summary.html">javax.xml.datatype</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/namespace/package-summary.html">javax.xml.namespace</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/javax/xml/parsers/package-summary.html">javax.xml.parsers</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/package-summary.html">javax.xml.transform</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/dom/package-summary.html">javax.xml.transform.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/sax/package-summary.html">javax.xml.transform.sax</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/transform/stream/package-summary.html">javax.xml.transform.stream</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/validation/package-summary.html">javax.xml.validation</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/javax/xml/xpath/package-summary.html">javax.xml.xpath</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/junit/framework/package-summary.html">junit.framework</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/junit/runner/package-summary.html">junit.runner</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/package-summary.html">org.apache.http</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/auth/package-summary.html">org.apache.http.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/auth/params/package-summary.html">org.apache.http.auth.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/package-summary.html">org.apache.http.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/entity/package-summary.html">org.apache.http.client.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/methods/package-summary.html">org.apache.http.client.methods</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/params/package-summary.html">org.apache.http.client.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/protocol/package-summary.html">org.apache.http.client.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/client/utils/package-summary.html">org.apache.http.client.utils</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/package-summary.html">org.apache.http.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/params/package-summary.html">org.apache.http.conn.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/routing/package-summary.html">org.apache.http.conn.routing</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/scheme/package-summary.html">org.apache.http.conn.scheme</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/ssl/package-summary.html">org.apache.http.conn.ssl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/conn/util/package-summary.html">org.apache.http.conn.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/cookie/package-summary.html">org.apache.http.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/cookie/params/package-summary.html">org.apache.http.cookie.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/entity/package-summary.html">org.apache.http.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/package-summary.html">org.apache.http.impl</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/auth/package-summary.html">org.apache.http.impl.auth</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/client/package-summary.html">org.apache.http.impl.client</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/conn/package-summary.html">org.apache.http.impl.conn</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/conn/tsccm/package-summary.html">org.apache.http.impl.conn.tsccm</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/cookie/package-summary.html">org.apache.http.impl.cookie</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/entity/package-summary.html">org.apache.http.impl.entity</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/impl/io/package-summary.html">org.apache.http.impl.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/io/package-summary.html">org.apache.http.io</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/message/package-summary.html">org.apache.http.message</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/params/package-summary.html">org.apache.http.params</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/protocol/package-summary.html">org.apache.http.protocol</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/apache/http/util/package-summary.html">org.apache.http.util</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/json/package-summary.html">org.json</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/w3c/dom/package-summary.html">org.w3c.dom</a></li>
+    <li class="api apilevel-8">
+  <a href="../../../../reference/org/w3c/dom/ls/package-summary.html">org.w3c.dom.ls</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/package-summary.html">org.xml.sax</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/ext/package-summary.html">org.xml.sax.ext</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xml/sax/helpers/package-summary.html">org.xml.sax.helpers</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xmlpull/v1/package-summary.html">org.xmlpull.v1</a></li>
+    <li class="api apilevel-1">
+  <a href="../../../../reference/org/xmlpull/v1/sax2/package-summary.html">org.xmlpull.v1.sax2</a></li>
+              </ul><br/>
+
+            </div> <!-- end packages-nav -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav" class="scroll-pane">
+
+
+
+            <ul>
+              
+    <li><h2>Interfaces</h2>
+      <ul>
+          <li class="api apilevel-4"><a href="../../../../reference/android/graphics/drawable/Animatable.html">Animatable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/AnimationDrawable.html">AnimationDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/ClipDrawable.html">ClipDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/ColorDrawable.html">ColorDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/Drawable.ConstantState.html">Drawable.ConstantState</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/DrawableContainer.html">DrawableContainer</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/DrawableContainer.DrawableContainerState.html">DrawableContainer.DrawableContainerState</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/GradientDrawable.html">GradientDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/InsetDrawable.html">InsetDrawable</a></li>
+          <li class="selected api apilevel-1"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html">LayerDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/LevelListDrawable.html">LevelListDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/NinePatchDrawable.html">NinePatchDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/PaintDrawable.html">PaintDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/PictureDrawable.html">PictureDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/RotateDrawable.html">RotateDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/ScaleDrawable.html">ScaleDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/ShapeDrawable.html">ShapeDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/ShapeDrawable.ShaderFactory.html">ShapeDrawable.ShaderFactory</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/StateListDrawable.html">StateListDrawable</a></li>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/TransitionDrawable.html">TransitionDrawable</a></li>
+      </ul>
+    </li>
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-1"><a href="../../../../reference/android/graphics/drawable/GradientDrawable.Orientation.html">GradientDrawable.Orientation</a></li>
+      </ul>
+    </li>
+              
+              
+            </ul><br/>
+        
+
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none" class="scroll-pane">
+          <div id="tree-list"></div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+      <div id="nav-swap">
+      <a class="fullscreen">fullscreen</a>
+      <a href='#' onclick='swapNav();return false;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>
+      </div>
+    </div> <!-- end devdoc-nav -->
+    </div> <!-- end side-nav -->
+    <script type="text/javascript">
+      // init fullscreen based on user pref
+      var fullscreen = readCookie("fullscreen");
+      if (fullscreen != 0) {
+        if (fullscreen == "false") {
+          toggleFullscreen(false);
+        } else {
+          toggleFullscreen(true);
+        }
+      }
+      // init nav version for mobile
+      if (isMobile) {
+        swapNav(); // tree view should be used on mobile
+        $('#nav-swap').hide();
+      } else {
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../");
+        }
+      }
+      // scroll the selected page into view
+      $(document).ready(function() {
+        scrollIntoView("packages-nav");
+        scrollIntoView("classes-nav");
+        });
+    </script>
+
+     
+
+
+
+<div class="col-12"  id="doc-col">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+Summary:
+
+
+  <a href="#lattrs">XML Attrs</a>
+  
+
+
+
+
+
+
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+  &#124; <a href="#promethods">Protected Methods</a>
+  
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a>
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1 itemprop="name">LayerDrawable</h1>
+
+
+
+  
+  
+  
+
+  
+    extends <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a><br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        <a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a> 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-1">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+         	
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../reference/java/lang/Object.html">java.lang.Object</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../reference/android/graphics/drawable/Drawable.html">android.graphics.drawable.Drawable</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+         	
+        <td colspan="1" class="jd-inheritance-class-cell">android.graphics.drawable.LayerDrawable</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../reference/android/graphics/drawable/TransitionDrawable.html">TransitionDrawable</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-1" >
+              <td class="jd-linkcol"><a href="../../../../reference/android/graphics/drawable/TransitionDrawable.html">TransitionDrawable</a></td>
+              <td class="jd-descrcol" width="100%">An extension of LayerDrawables that is intended to cross-fade between
+ the first and second layer.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p itemprop="articleBody">A Drawable that manages an array of other Drawables. These are drawn in array
+ order, so the element with the largest index will be drawn on top.
+ <p>
+ It can be defined in an XML file with the <code>&lt;layer-list></code> element.
+ Each Drawable in the layer is defined in a nested <code>&lt;item></code>. For more
+ information, see the guide to <a
+ href="../../../../guide/topics/resources/drawable-resource.html">Drawable Resources</a>.</p></p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lattrs" class="jd-sumtable"><tr><th colspan="12">XML Attributes</th></tr>
+
+
+    <tr>
+        <td><nobr><em>Attribute Name</em></nobr></td>
+        <td><nobr><em>Related Method</em></nobr></td>
+        <td><nobr><em>Description</em></nobr></td>
+    </tr>
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#attr_android:bottom">android:bottom</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Bottom coordinate of the layer.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#attr_android:drawable">android:drawable</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Drawable used to render the layer.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#attr_android:id">android:id</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Identifier of the layer.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#attr_android:left">android:left</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Left coordinate of the layer.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#attr_android:right">android:right</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Right coordinate of the layer.&nbsp;</td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-linkcol"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#attr_android:top">android:top</a></td>
+        <td class="jd-linkcol">
+        </td>
+        <td class="jd-descrcol" width="100%">Top coordinate of the layer.&nbsp;</td>
+    </tr>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#LayerDrawable(android.graphics.drawable.Drawable[])">LayerDrawable</a></span>(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable[]</a> layers)</nobr>
+        
+        <div class="jd-descrdiv">Create a new layer drawable with the list of specified layers.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#draw(android.graphics.Canvas)">draw</a></span>(<a href="../../../../reference/android/graphics/Canvas.html">Canvas</a> canvas)</nobr>
+        
+        <div class="jd-descrdiv">Draw in its bounds (set via setBounds) respecting optional effects such
+ as alpha (set via setAlpha) and color filter (set via setColorFilter).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#findDrawableByLayerId(int)">findDrawableByLayerId</a></span>(int id)</nobr>
+        
+        <div class="jd-descrdiv">Look for a layer with the given id, and returns its <code><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-19" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getAlpha()">getAlpha</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the current alpha value for the drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getChangingConfigurations()">getChangingConfigurations</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return a mask of the configuration parameters for which this drawable
+ may change, requiring that it be re-created.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.ConstantState.html">Drawable.ConstantState</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getConstantState()">getConstantState</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return a <code><a href="../../../../reference/android/graphics/drawable/Drawable.ConstantState.html">Drawable.ConstantState</a></code> instance that holds the shared state of this Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getDrawable(int)">getDrawable</a></span>(int index)</nobr>
+        
+        <div class="jd-descrdiv">Returns the drawable at the specified layer index.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getId(int)">getId</a></span>(int index)</nobr>
+        
+        <div class="jd-descrdiv">Returns the id of the specified layer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getIntrinsicHeight()">getIntrinsicHeight</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the intrinsic height of the underlying drawable object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getIntrinsicWidth()">getIntrinsicWidth</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the intrinsic width of the underlying drawable object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getNumberOfLayers()">getNumberOfLayers</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the number of layers contained within this.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getOpacity()">getOpacity</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the opacity/transparency of this Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#getPadding(android.graphics.Rect)">getPadding</a></span>(<a href="../../../../reference/android/graphics/Rect.html">Rect</a> padding)</nobr>
+        
+        <div class="jd-descrdiv">Return in padding the insets suggested by this Drawable for placing
+ content inside the drawable's bounds.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#inflate(android.content.res.Resources, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet)">inflate</a></span>(<a href="../../../../reference/android/content/res/Resources.html">Resources</a> r, <a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html">XmlPullParser</a> parser, <a href="../../../../reference/android/util/AttributeSet.html">AttributeSet</a> attrs)</nobr>
+        
+        <div class="jd-descrdiv">Inflate this Drawable from an XML resource.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#invalidateDrawable(android.graphics.drawable.Drawable)">invalidateDrawable</a></span>(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who)</nobr>
+        
+        <div class="jd-descrdiv">Called when the drawable needs to be redrawn.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-19" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#isAutoMirrored()">isAutoMirrored</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Tells if this Drawable will be automatically mirrored  when its layout direction is RTL
+ right-to-left.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#isStateful()">isStateful</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Indicates whether this view will change its appearance based on state.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-3" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#mutate()">mutate</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Make this drawable mutable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)">scheduleDrawable</a></span>(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who, <a href="../../../../reference/java/lang/Runnable.html">Runnable</a> what, long when)</nobr>
+        
+        <div class="jd-descrdiv">A Drawable can call this to schedule the next frame of its
+ animation.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setAlpha(int)">setAlpha</a></span>(int alpha)</nobr>
+        
+        <div class="jd-descrdiv">Specify an alpha value for the drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-19" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setAutoMirrored(boolean)">setAutoMirrored</a></span>(boolean mirrored)</nobr>
+        
+        <div class="jd-descrdiv">Set whether this Drawable is automatically mirrored when its layout direction is RTL
+ (right-to left).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setColorFilter(android.graphics.ColorFilter)">setColorFilter</a></span>(<a href="../../../../reference/android/graphics/ColorFilter.html">ColorFilter</a> cf)</nobr>
+        
+        <div class="jd-descrdiv">Specify an optional colorFilter for the drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setDither(boolean)">setDither</a></span>(boolean dither)</nobr>
+        
+        <div class="jd-descrdiv">Set to true to have the drawable dither its colors when drawn to a device
+ with fewer than 8-bits per color component.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setDrawableByLayerId(int, android.graphics.drawable.Drawable)">setDrawableByLayerId</a></span>(int id, <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> drawable)</nobr>
+        
+        <div class="jd-descrdiv">Sets (or replaces) the <code><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> for the layer with the given id.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setId(int, int)">setId</a></span>(int index, int id)</nobr>
+        
+        <div class="jd-descrdiv">Sets the ID of a layer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setLayerInset(int, int, int, int, int)">setLayerInset</a></span>(int index, int l, int t, int r, int b)</nobr>
+        
+        <div class="jd-descrdiv">Specify modifiers to the bounds for the drawable[index].</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setOpacity(int)">setOpacity</a></span>(int opacity)</nobr>
+        
+        <div class="jd-descrdiv">Sets the opacity of this drawable directly, instead of collecting the states from
+ the layers</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#setVisible(boolean, boolean)">setVisible</a></span>(boolean visible, boolean restart)</nobr>
+        
+        <div class="jd-descrdiv">Set whether this Drawable is visible.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#unscheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable)">unscheduleDrawable</a></span>(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who, <a href="../../../../reference/java/lang/Runnable.html">Runnable</a> what)</nobr>
+        
+        <div class="jd-descrdiv">A Drawable can call this to unschedule an action previously
+ scheduled with <code><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html#scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)">scheduleDrawable(Drawable, Runnable, long)</a></code>.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#onBoundsChange(android.graphics.Rect)">onBoundsChange</a></span>(<a href="../../../../reference/android/graphics/Rect.html">Rect</a> bounds)</nobr>
+        
+        <div class="jd-descrdiv">Override this in your subclass to change appearance if you recognize the
+ specified state.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#onLevelChange(int)">onLevelChange</a></span>(int level)</nobr>
+        
+        <div class="jd-descrdiv">Override this in your subclass to change appearance if you vary based
+  on level.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/LayerDrawable.html#onStateChange(int[])">onStateChange</a></span>(int[] state)</nobr>
+        
+        <div class="jd-descrdiv">Override this in your subclass to change appearance if you recognize the
+ specified state.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-android.graphics.drawable.Drawable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-android.graphics.drawable.Drawable-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../reference/android/graphics/drawable/Drawable.html">android.graphics.drawable.Drawable</a>
+
+<div id="inherited-methods-android.graphics.drawable.Drawable">
+  <div id="inherited-methods-android.graphics.drawable.Drawable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-android.graphics.drawable.Drawable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#clearColorFilter()">clearColorFilter</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../../reference/android/graphics/Rect.html">Rect</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#copyBounds()">copyBounds</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return a copy of the drawable's bounds in a new Rect.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#copyBounds(android.graphics.Rect)">copyBounds</a></span>(<a href="../../../../reference/android/graphics/Rect.html">Rect</a> bounds)</nobr>
+        
+        <div class="jd-descrdiv">Return a copy of the drawable's bounds in the specified Rect (allocated
+ by the caller).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#createFromPath(java.lang.String)">createFromPath</a></span>(<a href="../../../../reference/java/lang/String.html">String</a> pathName)</nobr>
+        
+        <div class="jd-descrdiv">Create a drawable from file path name.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-5" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#createFromResourceStream(android.content.res.Resources, android.util.TypedValue, java.io.InputStream, java.lang.String, android.graphics.BitmapFactory.Options)">createFromResourceStream</a></span>(<a href="../../../../reference/android/content/res/Resources.html">Resources</a> res, <a href="../../../../reference/android/util/TypedValue.html">TypedValue</a> value, <a href="../../../../reference/java/io/InputStream.html">InputStream</a> is, <a href="../../../../reference/java/lang/String.html">String</a> srcName, <a href="../../../../reference/android/graphics/BitmapFactory.Options.html">BitmapFactory.Options</a> opts)</nobr>
+        
+        <div class="jd-descrdiv">Create a drawable from an inputstream, using the given resources and
+ value to determine density information.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-4" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#createFromResourceStream(android.content.res.Resources, android.util.TypedValue, java.io.InputStream, java.lang.String)">createFromResourceStream</a></span>(<a href="../../../../reference/android/content/res/Resources.html">Resources</a> res, <a href="../../../../reference/android/util/TypedValue.html">TypedValue</a> value, <a href="../../../../reference/java/io/InputStream.html">InputStream</a> is, <a href="../../../../reference/java/lang/String.html">String</a> srcName)</nobr>
+        
+        <div class="jd-descrdiv">Create a drawable from an inputstream, using the given resources and
+ value to determine density information.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#createFromStream(java.io.InputStream, java.lang.String)">createFromStream</a></span>(<a href="../../../../reference/java/io/InputStream.html">InputStream</a> is, <a href="../../../../reference/java/lang/String.html">String</a> srcName)</nobr>
+        
+        <div class="jd-descrdiv">Create a drawable from an inputstream
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#createFromXml(android.content.res.Resources, org.xmlpull.v1.XmlPullParser)">createFromXml</a></span>(<a href="../../../../reference/android/content/res/Resources.html">Resources</a> r, <a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html">XmlPullParser</a> parser)</nobr>
+        
+        <div class="jd-descrdiv">Create a drawable from an XML document.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#createFromXmlInner(android.content.res.Resources, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet)">createFromXmlInner</a></span>(<a href="../../../../reference/android/content/res/Resources.html">Resources</a> r, <a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html">XmlPullParser</a> parser, <a href="../../../../reference/android/util/AttributeSet.html">AttributeSet</a> attrs)</nobr>
+        
+        <div class="jd-descrdiv">Create from inside an XML document.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#draw(android.graphics.Canvas)">draw</a></span>(<a href="../../../../reference/android/graphics/Canvas.html">Canvas</a> canvas)</nobr>
+        
+        <div class="jd-descrdiv">Draw in its bounds (set via setBounds) respecting optional effects such
+ as alpha (set via setAlpha) and color filter (set via setColorFilter).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-19" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getAlpha()">getAlpha</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Gets the current alpha value for the drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../../reference/android/graphics/Rect.html">Rect</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getBounds()">getBounds</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the drawable's bounds Rect.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getCallback()">getCallback</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the current <code><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a></code> implementation attached to this
+ Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getChangingConfigurations()">getChangingConfigurations</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return a mask of the configuration parameters for which this drawable
+ may change, requiring that it be re-created.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.ConstantState.html">Drawable.ConstantState</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getConstantState()">getConstantState</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return a <code><a href="../../../../reference/android/graphics/drawable/Drawable.ConstantState.html">Drawable.ConstantState</a></code> instance that holds the shared state of this Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getCurrent()">getCurrent</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getIntrinsicHeight()">getIntrinsicHeight</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the intrinsic height of the underlying drawable object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getIntrinsicWidth()">getIntrinsicWidth</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the intrinsic width of the underlying drawable object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getLevel()">getLevel</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieve the current level.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getMinimumHeight()">getMinimumHeight</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the minimum height suggested by this Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getMinimumWidth()">getMinimumWidth</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the minimum width suggested by this Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getOpacity()">getOpacity</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Return the opacity/transparency of this Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getPadding(android.graphics.Rect)">getPadding</a></span>(<a href="../../../../reference/android/graphics/Rect.html">Rect</a> padding)</nobr>
+        
+        <div class="jd-descrdiv">Return in padding the insets suggested by this Drawable for placing
+ content inside the drawable's bounds.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int[]</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getState()">getState</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Describes the current state, as a union of primitve states, such as
+ <code><a href="../../../../reference/android/R.attr.html#state_focused">state_focused</a></code>,
+ <code><a href="../../../../reference/android/R.attr.html#state_selected">state_selected</a></code>, etc.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/Region.html">Region</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#getTransparentRegion()">getTransparentRegion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a Region representing the part of the Drawable that is completely
+ transparent.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#inflate(android.content.res.Resources, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet)">inflate</a></span>(<a href="../../../../reference/android/content/res/Resources.html">Resources</a> r, <a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html">XmlPullParser</a> parser, <a href="../../../../reference/android/util/AttributeSet.html">AttributeSet</a> attrs)</nobr>
+        
+        <div class="jd-descrdiv">Inflate this Drawable from an XML resource.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#invalidateSelf()">invalidateSelf</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Use the current <code><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a></code> implementation to have this Drawable
+ redrawn.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-19" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#isAutoMirrored()">isAutoMirrored</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Tells if this Drawable will be automatically mirrored  when its layout direction is RTL
+ right-to-left.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#isStateful()">isStateful</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Indicates whether this view will change its appearance based on state.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#isVisible()">isVisible</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-11" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#jumpToCurrentState()">jumpToCurrentState</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">If this Drawable does transition animations between states, ask that
+ it immediately jump to the current state and skip any active animations.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-3" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#mutate()">mutate</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Make this drawable mutable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#onBoundsChange(android.graphics.Rect)">onBoundsChange</a></span>(<a href="../../../../reference/android/graphics/Rect.html">Rect</a> bounds)</nobr>
+        
+        <div class="jd-descrdiv">Override this in your subclass to change appearance if you recognize the
+ specified state.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#onLevelChange(int)">onLevelChange</a></span>(int level)</nobr>
+        
+        <div class="jd-descrdiv">Override this in your subclass to change appearance if you vary based
+  on level.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#onStateChange(int[])">onStateChange</a></span>(int[] state)</nobr>
+        
+        <div class="jd-descrdiv">Override this in your subclass to change appearance if you recognize the
+ specified state.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            static
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#resolveOpacity(int, int)">resolveOpacity</a></span>(int op1, int op2)</nobr>
+        
+        <div class="jd-descrdiv">Return the appropriate opacity value for two source opacities.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#scheduleSelf(java.lang.Runnable, long)">scheduleSelf</a></span>(<a href="../../../../reference/java/lang/Runnable.html">Runnable</a> what, long when)</nobr>
+        
+        <div class="jd-descrdiv">Use the current <code><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a></code> implementation to have this Drawable
+ scheduled.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setAlpha(int)">setAlpha</a></span>(int alpha)</nobr>
+        
+        <div class="jd-descrdiv">Specify an alpha value for the drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-19" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setAutoMirrored(boolean)">setAutoMirrored</a></span>(boolean mirrored)</nobr>
+        
+        <div class="jd-descrdiv">Set whether this Drawable is automatically mirrored when its layout direction is RTL
+ (right-to left).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setBounds(android.graphics.Rect)">setBounds</a></span>(<a href="../../../../reference/android/graphics/Rect.html">Rect</a> bounds)</nobr>
+        
+        <div class="jd-descrdiv">Specify a bounding rectangle for the Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setBounds(int, int, int, int)">setBounds</a></span>(int left, int top, int right, int bottom)</nobr>
+        
+        <div class="jd-descrdiv">Specify a bounding rectangle for the Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setCallback(android.graphics.drawable.Drawable.Callback)">setCallback</a></span>(<a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a> cb)</nobr>
+        
+        <div class="jd-descrdiv">Bind a <code><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a></code> object to this Drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setChangingConfigurations(int)">setChangingConfigurations</a></span>(int configs)</nobr>
+        
+        <div class="jd-descrdiv">Set a mask of the configuration parameters for which this drawable
+ may change, requiring that it be re-created.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setColorFilter(android.graphics.ColorFilter)">setColorFilter</a></span>(<a href="../../../../reference/android/graphics/ColorFilter.html">ColorFilter</a> cf)</nobr>
+        
+        <div class="jd-descrdiv">Specify an optional colorFilter for the drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setColorFilter(int, android.graphics.PorterDuff.Mode)">setColorFilter</a></span>(int color, <a href="../../../../reference/android/graphics/PorterDuff.Mode.html">PorterDuff.Mode</a> mode)</nobr>
+        
+        <div class="jd-descrdiv">Specify a color and porterduff mode to be the colorfilter for this
+ drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setDither(boolean)">setDither</a></span>(boolean dither)</nobr>
+        
+        <div class="jd-descrdiv">Set to true to have the drawable dither its colors when drawn to a device
+ with fewer than 8-bits per color component.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setFilterBitmap(boolean)">setFilterBitmap</a></span>(boolean filter)</nobr>
+        
+        <div class="jd-descrdiv">Set to true to have the drawable filter its bitmap when scaled or rotated
+ (for drawables that use bitmaps).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setLevel(int)">setLevel</a></span>(int level)</nobr>
+        
+        <div class="jd-descrdiv">Specify the level for the drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setState(int[])">setState</a></span>(int[] stateSet)</nobr>
+        
+        <div class="jd-descrdiv">Specify a set of states for the drawable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#setVisible(boolean, boolean)">setVisible</a></span>(boolean visible, boolean restart)</nobr>
+        
+        <div class="jd-descrdiv">Set whether this Drawable is visible.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.html#unscheduleSelf(java.lang.Runnable)">unscheduleSelf</a></span>(<a href="../../../../reference/java/lang/Runnable.html">Runnable</a> what)</nobr>
+        
+        <div class="jd-descrdiv">Use the current <code><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">Drawable.Callback</a></code> implementation to have this Drawable
+ unscheduled.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../reference/java/lang/Object.html">java.lang.Object</a>
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/Object.html">Object</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#clone()">clone</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Creates and returns a copy of this <code>Object</code>.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#equals(java.lang.Object)">equals</a></span>(<a href="../../../../reference/java/lang/Object.html">Object</a> o)</nobr>
+        
+        <div class="jd-descrdiv">Compares this instance with the specified object and indicates if they
+ are equal.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#finalize()">finalize</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Invoked when the garbage collector has detected that this instance is no longer reachable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            <a href="../../../../reference/java/lang/Class.html">Class</a>&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#getClass()">getClass</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the unique instance of <code><a href="../../../../reference/java/lang/Class.html">Class</a></code> that represents this
+ object's class.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#hashCode()">hashCode</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns an integer hash code for this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#notify()">notify</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes a thread which is waiting on this object's monitor (by means of
+ calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#notifyAll()">notifyAll</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes all threads which are waiting on this object's monitor (by means
+ of calling one of the <code>wait()</code> methods) to be woken up.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../reference/java/lang/String.html">String</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#toString()">toString</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns a string containing a concise, human-readable description of this
+ object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#wait()">wait</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#wait(long, int)">wait</a></span>(long millis, int nanos)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/java/lang/Object.html#wait(long)">wait</a></span>(long millis)</nobr>
+        
+        <div class="jd-descrdiv">Causes the calling thread to wait until another thread calls the <code>notify()</code> or <code>notifyAll()</code> method of this object or until the
+ specified timeout expires.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-android.graphics.drawable.Drawable.Callback" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-android.graphics.drawable.Drawable.Callback-trigger"
+          src="../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html">android.graphics.drawable.Drawable.Callback</a>
+
+<div id="inherited-methods-android.graphics.drawable.Drawable.Callback">
+  <div id="inherited-methods-android.graphics.drawable.Drawable.Callback-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-android.graphics.drawable.Drawable.Callback-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html#invalidateDrawable(android.graphics.drawable.Drawable)">invalidateDrawable</a></span>(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who)</nobr>
+        
+        <div class="jd-descrdiv">Called when the drawable needs to be redrawn.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html#scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)">scheduleDrawable</a></span>(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who, <a href="../../../../reference/java/lang/Runnable.html">Runnable</a> what, long when)</nobr>
+        
+        <div class="jd-descrdiv">A Drawable can call this to schedule the next frame of its
+ animation.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-1" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html#unscheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable)">unscheduleDrawable</a></span>(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who, <a href="../../../../reference/java/lang/Runnable.html">Runnable</a> what)</nobr>
+        
+        <div class="jd-descrdiv">A Drawable can call this to unschedule an action previously
+ scheduled with <code><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html#scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)">scheduleDrawable(Drawable, Runnable, long)</a></code>.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>XML Attributes</h2>
+
+
+
+<A NAME="attr_android:bottom"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:bottom
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Bottom coordinate of the layer. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../../reference/android/R.attr.html#bottom">bottom</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:drawable"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:drawable
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Drawable used to render the layer. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../../reference/android/R.attr.html#drawable">drawable</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:id"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:id
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Identifier of the layer. This can be used to retrieve the layer
+             from a drawbable container. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../../reference/android/R.attr.html#id">id</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:left"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:left
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Left coordinate of the layer. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../../reference/android/R.attr.html#left">left</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:right"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:right
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Right coordinate of the layer. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../../reference/android/R.attr.html#right">right</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<A NAME="attr_android:top"></A>
+<div class="jd-details"> 
+    <h4 class="jd-details-title">android:top
+    </h4>
+    <div class="jd-details-descr">
+        
+  <div class="jd-tagdata jd-tagdescr"><p>Top coordinate of the layer. 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This corresponds to the global attribute
+          resource symbol <code><a href="../../../../reference/android/R.attr.html#top">top</a></code>.</p></div>
+
+
+        <div class="jd-tagdata">
+            <h5 class="jd-tagtitle">Related Methods</h5>
+            <ul class="nolist">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="LayerDrawable(android.graphics.drawable.Drawable[])"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">LayerDrawable</span>
+      <span class="normal">(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable[]</a> layers)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create a new layer drawable with the list of specified layers.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>layers</td>
+          <td>A list of drawables to use as layers in this new drawable.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="draw(android.graphics.Canvas)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">draw</span>
+      <span class="normal">(<a href="../../../../reference/android/graphics/Canvas.html">Canvas</a> canvas)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Draw in its bounds (set via setBounds) respecting optional effects such
+ as alpha (set via setAlpha) and color filter (set via setColorFilter).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>canvas</td>
+          <td>The canvas to draw into
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="findDrawableByLayerId(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a>
+      </span>
+      <span class="sympad">findDrawableByLayerId</span>
+      <span class="normal">(int id)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Look for a layer with the given id, and returns its <code><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>id</td>
+          <td>The layer ID to search for.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The <code><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> of the layer that has the given id in the hierarchy or null.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAlpha()"></A>
+
+<div class="jd-details api apilevel-19"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getAlpha</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 19</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Gets the current alpha value for the drawable. 0 means fully transparent,
+ 255 means fully opaque. This method is implemented by
+ Drawable subclasses and the value returned is specific to how that class treats alpha.
+ The default return value is 255 if the class does not override this method to return a value
+ specific to its use of alpha.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getChangingConfigurations()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getChangingConfigurations</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return a mask of the configuration parameters for which this drawable
+ may change, requiring that it be re-created.  The default implementation
+ returns whatever was provided through
+ <code><a href="../../../../reference/android/graphics/drawable/Drawable.html#setChangingConfigurations(int)">setChangingConfigurations(int)</a></code> or 0 by default.  Subclasses
+ may extend this to or in the changing configurations of any other
+ drawables they hold.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns a mask of the changing configuration parameters, as
+ defined by <code><a href="../../../../reference/android/content/res/Configuration.html">Configuration</a></code>.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getConstantState()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/android/graphics/drawable/Drawable.ConstantState.html">Drawable.ConstantState</a>
+      </span>
+      <span class="sympad">getConstantState</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return a <code><a href="../../../../reference/android/graphics/drawable/Drawable.ConstantState.html">Drawable.ConstantState</a></code> instance that holds the shared state of this Drawable.
+q</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The ConstantState associated to that Drawable.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getDrawable(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a>
+      </span>
+      <span class="sympad">getDrawable</span>
+      <span class="normal">(int index)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the drawable at the specified layer index.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>The layer index of the drawable to retrieve.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The <code><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> at the specified layer index.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getId(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getId</span>
+      <span class="normal">(int index)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the id of the specified layer.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>The index of the layer.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The id of the layer or <code><a href="../../../../reference/android/view/View.html#NO_ID">NO_ID</a></code> if the layer has no id. 
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getIntrinsicHeight()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getIntrinsicHeight</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the intrinsic height of the underlying drawable object. Returns
+ -1 if it has no intrinsic height, such as with a solid color.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getIntrinsicWidth()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getIntrinsicWidth</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the intrinsic width of the underlying drawable object.  Returns
+ -1 if it has no intrinsic width, such as with a solid color.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getNumberOfLayers()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getNumberOfLayers</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns the number of layers contained within this.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The number of layers.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getOpacity()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        int
+      </span>
+      <span class="sympad">getOpacity</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return the opacity/transparency of this Drawable.  The returned value is
+ one of the abstract format constants in
+ <code><a href="../../../../reference/android/graphics/PixelFormat.html">PixelFormat</a></code>:
+ <code><a href="../../../../reference/android/graphics/PixelFormat.html#UNKNOWN">UNKNOWN</a></code>,
+ <code><a href="../../../../reference/android/graphics/PixelFormat.html#TRANSLUCENT">TRANSLUCENT</a></code>,
+ <code><a href="../../../../reference/android/graphics/PixelFormat.html#TRANSPARENT">TRANSPARENT</a></code>, or
+ <code><a href="../../../../reference/android/graphics/PixelFormat.html#OPAQUE">OPAQUE</a></code>.
+
+ <p>Generally a Drawable should be as conservative as possible with the
+ value it returns.  For example, if it contains multiple child drawables
+ and only shows one of them at a time, if only one of the children is
+ TRANSLUCENT and the others are OPAQUE then TRANSLUCENT should be
+ returned.  You can use the method <code><a href="../../../../reference/android/graphics/drawable/Drawable.html#resolveOpacity(int, int)">resolveOpacity(int, int)</a></code> to perform a
+ standard reduction of two opacities to the appropriate single output.
+
+ <p>Note that the returned value does <em>not</em> take into account a
+ custom alpha or color filter that has been applied by the client through
+ the <code><a href="../../../../reference/android/graphics/drawable/Drawable.html#setAlpha(int)">setAlpha(int)</a></code> or <code><a href="../../../../reference/android/graphics/drawable/Drawable.html#setColorFilter(android.graphics.ColorFilter)">setColorFilter(ColorFilter)</a></code> methods.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>int The opacity class of the Drawable.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getPadding(android.graphics.Rect)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">getPadding</span>
+      <span class="normal">(<a href="../../../../reference/android/graphics/Rect.html">Rect</a> padding)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Return in padding the insets suggested by this Drawable for placing
+ content inside the drawable's bounds. Positive values move toward the
+ center of the Drawable (set Rect.inset). Returns true if this drawable
+ actually has a padding, else false. When false is returned, the padding
+ is always set to 0.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="inflate(android.content.res.Resources, org.xmlpull.v1.XmlPullParser, android.util.AttributeSet)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">inflate</span>
+      <span class="normal">(<a href="../../../../reference/android/content/res/Resources.html">Resources</a> r, <a href="../../../../reference/org/xmlpull/v1/XmlPullParser.html">XmlPullParser</a> parser, <a href="../../../../reference/android/util/AttributeSet.html">AttributeSet</a> attrs)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Inflate this Drawable from an XML resource.
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../reference/org/xmlpull/v1/XmlPullParserException.html">XmlPullParserException</a></td>
+            <td></td>
+        </tr>  
+        <tr>
+            <th><a href="../../../../reference/java/io/IOException.html">IOException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="invalidateDrawable(android.graphics.drawable.Drawable)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">invalidateDrawable</span>
+      <span class="normal">(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Called when the drawable needs to be redrawn.  A view at this point
+ should invalidate itself (or at least the part of itself where the
+ drawable appears).</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>who</td>
+          <td>The drawable that is requesting the update.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isAutoMirrored()"></A>
+
+<div class="jd-details api apilevel-19"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isAutoMirrored</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 19</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Tells if this Drawable will be automatically mirrored  when its layout direction is RTL
+ right-to-left. See <code><a href="../../../../reference/android/util/LayoutDirection.html">LayoutDirection</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>boolean Returns true if this Drawable will be automatically mirrored.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="isStateful()"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isStateful</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Indicates whether this view will change its appearance based on state.
+ Clients can use this to determine whether it is necessary to calculate
+ their state and call setState.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>True if this view changes its appearance based on state, false
+         otherwise.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="mutate()"></A>
+
+<div class="jd-details api apilevel-3"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a>
+      </span>
+      <span class="sympad">mutate</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 3</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Make this drawable mutable. This operation cannot be reversed. A mutable
+ drawable is guaranteed to not share its state with any other drawable.
+ This is especially useful when you need to modify properties of drawables
+ loaded from resources. By default, all drawables instances loaded from
+ the same resource share a common state; if you modify the state of one
+ instance, all the other instances will receive the same modification.
+
+ Calling this method on a mutable Drawable will have no effect.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>This drawable.</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">scheduleDrawable</span>
+      <span class="normal">(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who, <a href="../../../../reference/java/lang/Runnable.html">Runnable</a> what, long when)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>A Drawable can call this to schedule the next frame of its
+ animation.  An implementation can generally simply call
+ <code><a href="../../../../reference/android/os/Handler.html#postAtTime(java.lang.Runnable, java.lang.Object, long)">postAtTime(Runnable, Object, long)</a></code> with
+ the parameters <var>(what, who, when)</var> to perform the
+ scheduling.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>who</td>
+          <td>The drawable being scheduled.</td>
+        </tr>
+        <tr>
+          <th>what</td>
+          <td>The action to execute.</td>
+        </tr>
+        <tr>
+          <th>when</td>
+          <td>The time (in milliseconds) to run.  The timebase is
+             <code><a href="../../../../reference/android/os/SystemClock.html#uptimeMillis()">uptimeMillis()</a></code>
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setAlpha(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setAlpha</span>
+      <span class="normal">(int alpha)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Specify an alpha value for the drawable. 0 means fully transparent, and
+ 255 means fully opaque.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setAutoMirrored(boolean)"></A>
+
+<div class="jd-details api apilevel-19"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setAutoMirrored</span>
+      <span class="normal">(boolean mirrored)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 19</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set whether this Drawable is automatically mirrored when its layout direction is RTL
+ (right-to left). See <code><a href="../../../../reference/android/util/LayoutDirection.html">LayoutDirection</a></code>.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>mirrored</td>
+          <td>Set to true if the Drawable should be mirrored, false if not.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setColorFilter(android.graphics.ColorFilter)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setColorFilter</span>
+      <span class="normal">(<a href="../../../../reference/android/graphics/ColorFilter.html">ColorFilter</a> cf)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Specify an optional colorFilter for the drawable. Pass null to remove
+ any filters.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setDither(boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setDither</span>
+      <span class="normal">(boolean dither)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set to true to have the drawable dither its colors when drawn to a device
+ with fewer than 8-bits per color component. This can improve the look on
+ those devices, but can also slow down the drawing a little.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setDrawableByLayerId(int, android.graphics.drawable.Drawable)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">setDrawableByLayerId</span>
+      <span class="normal">(int id, <a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> drawable)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets (or replaces) the <code><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> for the layer with the given id.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>id</td>
+          <td>The layer ID to search for.</td>
+        </tr>
+        <tr>
+          <th>drawable</td>
+          <td>The replacement <code><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code>.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Whether the <code><a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> was replaced (could return false if
+         the id was not found).
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setId(int, int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setId</span>
+      <span class="normal">(int index, int id)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the ID of a layer.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>index</td>
+          <td>The index of the layer which will received the ID.</td>
+        </tr>
+        <tr>
+          <th>id</td>
+          <td>The ID to assign to the layer.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setLayerInset(int, int, int, int, int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setLayerInset</span>
+      <span class="normal">(int index, int l, int t, int r, int b)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Specify modifiers to the bounds for the drawable[index].
+        left += l
+        top += t;
+        right -= r;
+        bottom -= b;
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setOpacity(int)"></A>
+
+<div class="jd-details api apilevel-11"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setOpacity</span>
+      <span class="normal">(int opacity)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 11</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets the opacity of this drawable directly, instead of collecting the states from
+ the layers</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>opacity</td>
+          <td>The opacity to use, or <code><a href="../../../../reference/android/graphics/PixelFormat.html#UNKNOWN">PixelFormat.UNKNOWN</a></code>
+ for the default behavior</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">See Also</h5>
+      <ul class="nolist"><li><code><a href="../../../../reference/android/graphics/PixelFormat.html#UNKNOWN">UNKNOWN</a></code></li><li><code><a href="../../../../reference/android/graphics/PixelFormat.html#TRANSLUCENT">TRANSLUCENT</a></code></li><li><code><a href="../../../../reference/android/graphics/PixelFormat.html#TRANSPARENT">TRANSPARENT</a></code></li><li><code><a href="../../../../reference/android/graphics/PixelFormat.html#OPAQUE">OPAQUE</a></code></li>
+      </ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setVisible(boolean, boolean)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">setVisible</span>
+      <span class="normal">(boolean visible, boolean restart)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set whether this Drawable is visible.  This generally does not impact
+ the Drawable's behavior, but is a hint that can be used by some
+ Drawables, for example, to decide whether run animations.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>visible</td>
+          <td>Set to true if visible, false if not.</td>
+        </tr>
+        <tr>
+          <th>restart</td>
+          <td>You can supply true here to force the drawable to behave
+                as if it has just become visible, even if it had last
+                been set visible.  Used for example to force animations
+                to restart.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>boolean Returns true if the new visibility is different than
+         its previous state.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="unscheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">unscheduleDrawable</span>
+      <span class="normal">(<a href="../../../../reference/android/graphics/drawable/Drawable.html">Drawable</a> who, <a href="../../../../reference/java/lang/Runnable.html">Runnable</a> what)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>A Drawable can call this to unschedule an action previously
+ scheduled with <code><a href="../../../../reference/android/graphics/drawable/Drawable.Callback.html#scheduleDrawable(android.graphics.drawable.Drawable, java.lang.Runnable, long)">scheduleDrawable(Drawable, Runnable, long)</a></code>.  An implementation can
+ generally simply call
+ <code><a href="../../../../reference/android/os/Handler.html#removeCallbacks(java.lang.Runnable, java.lang.Object)">removeCallbacks(Runnable, Object)</a></code> with
+ the parameters <var>(what, who)</var> to unschedule the drawable.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>who</td>
+          <td>The drawable being unscheduled.</td>
+        </tr>
+        <tr>
+          <th>what</td>
+          <td>The action being unscheduled.
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="onBoundsChange(android.graphics.Rect)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">onBoundsChange</span>
+      <span class="normal">(<a href="../../../../reference/android/graphics/Rect.html">Rect</a> bounds)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Override this in your subclass to change appearance if you recognize the
+ specified state.
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="onLevelChange(int)"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">onLevelChange</span>
+      <span class="normal">(int level)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Override this in your subclass to change appearance if you vary based
+  on level.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns true if the level change has caused the appearance of
+ the Drawable to change (that is, it needs to be drawn), else false
+ if it looks the same and there is no need to redraw it since its
+ last level.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="onStateChange(int[])"></A>
+
+<div class="jd-details api apilevel-1"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">onStateChange</span>
+      <span class="normal">(int[] state)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+  Added in <a href="../../../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API level 1</a></div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Override this in your subclass to change appearance if you recognize the
+ specified state.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns true if the state change has caused the appearance of
+ the Drawable to change (that is, it needs to be drawn), else false
+ if it looks the same and there is no need to redraw it since its
+ last state.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is licensed under <a
+  href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>. 
+  For details and restrictions, see the <a href="../../../../license.html">
+  Content License</a>.
+  </div>
+  <div id="build_info">
+    
+    Android 4.4&nbsp;r1 &mdash; 
+<script src="../../../../timestamp.js" type="text/javascript"></script>
+<script>document.write(BUILD_TIMESTAMP)</script>
+
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Storage Access Framework | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Storage Access Framework</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+<h2>In this document</h2>
+<ol>
+    <li>
+        <a href="#overview">Overview</a>
+    </li>
+    <li>
+        <a href="#flow">Control Flow</a>
+    </li>
+    <li>
+        <a href="#client">Writing a Client App</a>
+        <ol>
+        <li><a href="#search">Search for documents</a></li>
+        <li><a href="#process">Process results</a></li>
+        <li><a href="#metadata">Examine document metadata</a></li>
+        <li><a href="#open">Open a document</a></li>
+        <li><a href="#create">Create a new document</a></li>
+        <li><a href="#delete">Delete a document</a></li>
+        <li><a href="#edit">Edit a document</a></li>
+        <li><a href="#permissions">Persist permissions</a></li>
+        </ol>
+    </li>
+    <li><a href="#custom">Writing a Custom Document Provider</a>
+        <ol>
+        <li><a href="#manifest">Manifest</a></li>
+        <li><a href="#contract">Contracts</a></li>
+        <li><a href="#subclass">Subclass DocumentsProvider</a></li>
+        <li><a href="#security">Security</a></li>
+        </ol>
+    </li>
+
+</ol>
+<h2>Key classes</h2>
+<ol>
+    <li><code><a href="../../../reference/android/provider/DocumentsProvider.html">DocumentsProvider</a></code></li>
+    <li><code><a href="../../../reference/android/provider/DocumentsContract.html">DocumentsContract</a></code></li>
+    <li><code><a href="../../../reference/android/provider/DocumentsContract.Document.html">DocumentsContract.Document</a></code></li>
+    <li><code><a href="../../../reference/android/provider/DocumentsContract.Root.html">DocumentsContract.Root</a></code></li>
+</ol>
+
+<h2>See Also</h2>
+<ol>
+    <li>
+        <a href="../../../guide/topics/providers/content-provider-basics.html">
+        Content Provider Basics
+        </a>
+    </li>
+</ol>
+</div>
+</div>
+<p>Android 4.4 (API level 19) introduces the Storage Access Framework. The
+Storage Access Framework encapsulates capabilities in the Android platform that
+allow apps to request files from file storage services. The Storage Access
+Framework includes the following:</p>
+
+<ul>
+<li><strong>Document provider</strong>&mdash;A content provider that allows a
+storage service (such as Google Drive) to reveal the files it manages. This is
+implemented as a subclass of the <code><a href="../../../reference/android/provider/DocumentsProvider.html">DocumentsProvider</a></code> class.
+The document provider schema is based on a traditional file hierarchy,
+though how your document provider physically stores data is up to you.
+The Android platform includes several built-in document providers, such as
+Downloads, Images, and Videos.</li>
+
+<li><strong>Client app</strong>&mdash;A custom app that invokes the
+<code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code> and/or
+<code><a href="../../../reference/android/content/Intent.html#ACTION_CREATE_DOCUMENT">ACTION_CREATE_DOCUMENT</a></code> intent and receives the
+files returned by document providers.</li>
+
+<li><strong>Picker</strong>&mdash;A system UI that lets users access documents from all
+document providers that satisfy the client app's search criteria.</li>
+</ul>
+
+<p>Some of the features offered by the Storage Access Framework are as follows:</p>
+<ul>
+<li>Lets users browse content from all document providers, not just a single app.</li>
+<li>Makes it possible for your app to have long term, persistent access to
+ documents owned by a document provider. Through this access users can add, edit,
+ save, and delete files on the provider.</li>
+<li>Supports multiple user accounts and transient roots such as USB storage
+providers, which only appear if the drive is plugged in. </li>
+</ul>
+
+<h2 id ="overview">Overview</h2>
+
+<p>The Storage Access Framework centers around a content provider that is a
+subclass of the <code><a href="../../../reference/android/provider/DocumentsProvider.html">DocumentsProvider</a></code> class. Within a <em>document provider</em>, data is
+structured as a traditional file hierarchy:</p>
+<p><img src="../../../images/providers/storage_datamodel.png" alt="data model" /></p>
+<p class="img-caption"><strong>Figure 1.</strong> Document provider data model. A Root points to a single Document,
+which then starts the fan-out of the entire tree.</p>
+
+<p>Note the following:</p>
+<ul>
+
+<li>Each document provider reports one or more
+&quot;roots&quot; which are starting points into exploring a tree of documents.
+Each root has a unique <code><a href="../../../reference/android/provider/DocumentsContract.Root.html#COLUMN_ROOT_ID">COLUMN_ROOT_ID</a></code>,
+and it points to a document (a directory)
+representing the contents under that root.
+Roots are dynamic by design to support use cases like multiple accounts,
+transient USB storage devices, or user login/log out.</li>
+
+<li>Under each root is a single document. That document points to 1 to <em>N</em> documents,
+each of which in turn can point to 1 to <em>N</em> documents. </li>
+
+<li>Each storage backend surfaces
+individual files and directories by referencing them with a unique
+<code><a href="../../../reference/android/provider/DocumentsContract.Document.html#COLUMN_DOCUMENT_ID">COLUMN_DOCUMENT_ID</a></code>.
+Document IDs must be unique and not change once issued, since they are used for persistent
+URI grants across device reboots.</li>
+
+
+<li>Documents can be either an openable file (with a specific MIME type), or a
+directory containing additional documents (with the
+<code><a href="../../../reference/android/provider/DocumentsContract.Document.html#MIME_TYPE_DIR">MIME_TYPE_DIR</a></code> MIME type).</li>
+
+<li>Each document can have different capabilities, as described by
+<code><a href="../../../reference/android/provider/DocumentsContract.Document.html#COLUMN_FLAGS">COLUMN_FLAGS</a></code>.
+For example, <code><a href="../../../reference/android/provider/DocumentsContract.Document.html#FLAG_SUPPORTS_WRITE">FLAG_SUPPORTS_WRITE</a></code>,
+<code><a href="../../../reference/android/provider/DocumentsContract.Document.html#FLAG_SUPPORTS_DELETE">FLAG_SUPPORTS_DELETE</a></code>, and
+<code><a href="../../../reference/android/provider/DocumentsContract.Document.html#FLAG_SUPPORTS_THUMBNAIL">FLAG_SUPPORTS_THUMBNAIL</a></code>.
+The same <code><a href="../../../reference/android/provider/DocumentsContract.Document.html#COLUMN_DOCUMENT_ID">COLUMN_DOCUMENT_ID</a></code> can be
+included in multiple directories.</li>
+</ul>
+
+<h2 id="flow">Control Flow</h2>
+<p>As stated above, the  document provider data model is based on a traditional
+file hierarchy. However, you can physically store your data however you like, as
+long as it can be accessed through the <code><a href="../../../reference/android/provider/DocumentsProvider.html">DocumentsProvider</a></code> API. For example, you
+could use tag-based cloud storage for your data.</p>
+
+<p>Figure 2 shows an example of how a photo app might use the Storage Access Framework
+to access  stored data:</p>
+<p><img src="../../../images/providers/storage_dataflow.png" alt="app" /></p>
+
+<p class="img-caption"><strong>Figure 2.</strong> Storage Access Framework Flow</p>
+
+<p>Note the following:</p>
+<ul>
+
+<li>In the Storage Access Framework, providers and clients don't interact
+directly. A client requests permission to interact
+with files (that is, to read, edit, create, or delete files).</li>
+
+<li>The interaction starts when an application (in this example, a photo app)  fires the intent
+<code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code> or <code><a href="../../../reference/android/content/Intent.html#ACTION_CREATE_DOCUMENT">ACTION_CREATE_DOCUMENT</a></code>. The intent may include filters
+to further refine the criteria&mdash;for example, &quot;give me all openable files
+that have the 'image' MIME type.&quot;</li>
+
+<li>Once the intent fires, the system picker goes to each registered provider
+and shows the user the matching content roots.</li>
+
+<li>The picker gives users a standard interface for accessing documents, even
+though the underlying document providers may be very different. For example, figure 2
+shows a Google Drive provider, a USB provider, and a cloud provider.</li>
+</ul>
+
+<p>Figure 3 shows a picker in which a user searching for images has selected a
+Google Drive account:</p>
+
+<p><img src="../../../images/providers/storage_picker.png" width="340"
+alt="picker" style="border:2px solid #ddd"/></p>
+
+<p class="img-caption"><strong>Figure 3.</strong> Picker</p>
+
+<p>When the user selects Google Drive the images are displayed, as shown in
+figure 4. From that point on, the user can interact with them in whatever ways
+are supported by the provider and client app.
+
+<p><img src="../../../images/providers/storage_photos.png" width="340"
+alt="picker" style="border:2px solid #ddd"/></p>
+
+<p class="img-caption"><strong>Figure 4.</strong> Images</p>
+
+<h2 id="client">Writing a Client App</h2>
+
+<p>On Android 4.3 and lower, if you want your app to retrieve a file from another
+app, it must invoke an intent such as <code><a href="../../../reference/android/content/Intent.html#ACTION_PICK">ACTION_PICK</a></code>
+or <code><a href="../../../reference/android/content/Intent.html#ACTION_GET_CONTENT">ACTION_GET_CONTENT</a></code>. The user must then select
+a single app from which to pick a file and the selected app must provide a user
+interface for the user to browse and pick from the available files. </p>
+
+<p>On Android 4.4 and higher, you have the additional option of using the
+<code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code> intent,
+which displays a picker UI controlled by the system that allows the user to
+browse all files that other apps have made available. From this single UI, the
+user can pick a file from any of the supported apps.</p>
+
+<p><code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code> is
+not intended to be a replacement for <code><a href="../../../reference/android/content/Intent.html#ACTION_GET_CONTENT">ACTION_GET_CONTENT</a></code>.
+The one you should use depends on the needs of your app:</p>
+
+<ul>
+<li>Use <code><a href="../../../reference/android/content/Intent.html#ACTION_GET_CONTENT">ACTION_GET_CONTENT</a></code> if you want your app
+to simply read/import data. With this approach, the app imports a copy of the data,
+such as an image file.</li>
+
+<li>Use <code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code> if you want your
+app to have long term, persistent access to documents owned by a document
+provider. An example would be a photo-editing app that lets users edit
+images stored in a document provider. </li>
+
+</ul>
+
+
+<p>This section describes how to write client apps based on the
+<code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code> and
+<code><a href="../../../reference/android/content/Intent.html#ACTION_CREATE_DOCUMENT">ACTION_CREATE_DOCUMENT</a></code> intents.</p>
+
+
+<h3 id="search">Search for documents</h3>
+
+<p>
+The following snippet uses <code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code>
+to search for document providers that
+contain image files:</p>
+
+<pre>private static final int READ_REQUEST_CODE = 42;
+...
+/**
+ * Fires an intent to spin up the &quot;file chooser&quot; UI and select an image.
+ */
+public void performFileSearch() {
+
+    // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's file
+    // browser.
+    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+
+    // Filter to only show results that can be &quot;opened&quot;, such as a
+    // file (as opposed to a list of contacts or timezones)
+    intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+    // Filter to show only images, using the image MIME data type.
+    // If one wanted to search for ogg vorbis files, the type would be &quot;audio/ogg&quot;.
+    // To search for all documents available via installed storage providers,
+    // it would be &quot;*/*&quot;.
+    intent.setType(&quot;image/*&quot;);
+
+    startActivityForResult(intent, READ_REQUEST_CODE);
+}</pre>
+
+<p>Note the following:</p>
+<ul>
+<li>When the app fires the <code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code>
+intent, it launches a picker that displays all matching document providers.</li>
+
+<li>Adding the category <code><a href="../../../reference/android/content/Intent.html#CATEGORY_OPENABLE">CATEGORY_OPENABLE</a></code> to the
+intent filters the results to display only documents that can be opened, such as image files.</li>
+
+<li>The statement <code>intent.setType(&quot;image/*&quot;)</code> further filters to
+display only documents that have the image MIME data type.</li>
+</ul>
+
+<h3 id="results">Process Results</h3>
+
+<p>Once the user selects a document in the picker,
+<code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> gets called.
+The URI that points to the selected document is contained in the <code>resultData</code>
+parameter. Extract the URI using <code><a href="../../../reference/android/content/Intent.html#getData()">getData()</a></code>.
+Once you have it, you can use it to retrieve the document the user wants. For
+example:</p>
+
+<pre>&#64;Override
+public void onActivityResult(int requestCode, int resultCode,
+        Intent resultData) {
+
+    // The ACTION_OPEN_DOCUMENT intent was sent with the request code
+    // READ_REQUEST_CODE. If the request code seen here doesn't match, it's the
+    // response to some other intent, and the code below shouldn't run at all.
+
+    if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+        // The document selected by the user won't be returned in the intent.
+        // Instead, a URI to that document will be contained in the return intent
+        // provided to this method as a parameter.
+        // Pull that URI using resultData.getData().
+        Uri uri = null;
+        if (resultData != null) {
+            uri = resultData.getData();
+            Log.i(TAG, "Uri: " + uri.toString());
+            showImage(uri);
+        }
+    }
+}
+</pre>
+
+<h3 id="metadata">Examine document metadata</h3>
+
+<p>Once you have the URI for a document, you gain access to its metadata. This
+snippet grabs the metadata for a document specified by the URI, and logs it:</p>
+
+<pre>public void dumpImageMetaData(Uri uri) {
+
+    // The query, since it only applies to a single document, will only return
+    // one row. There's no need to filter, sort, or select fields, since we want
+    // all fields for one document.
+    Cursor cursor = getActivity().getContentResolver()
+            .query(uri, null, null, null, null, null);
+
+    try {
+    // moveToFirst() returns false if the cursor has 0 rows.  Very handy for
+    // &quot;if there's anything to look at, look at it&quot; conditionals.
+        if (cursor != null &amp;&amp; cursor.moveToFirst()) {
+
+            // Note it's called &quot;Display Name&quot;.  This is
+            // provider-specific, and might not necessarily be the file name.
+            String displayName = cursor.getString(
+                    cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+            Log.i(TAG, &quot;Display Name: &quot; + displayName);
+
+            int sizeIndex = cursor.getColumnIndex(OpenableColumns.SIZE);
+            // If the size is unknown, the value stored is null.  But since an
+            // int can't be null in Java, the behavior is implementation-specific,
+            // which is just a fancy term for &quot;unpredictable&quot;.  So as
+            // a rule, check if it's null before assigning to an int.  This will
+            // happen often:  The storage API allows for remote files, whose
+            // size might not be locally known.
+            String size = null;
+            if (!cursor.isNull(sizeIndex)) {
+                // Technically the column stores an int, but cursor.getString()
+                // will do the conversion automatically.
+                size = cursor.getString(sizeIndex);
+            } else {
+                size = &quot;Unknown&quot;;
+            }
+            Log.i(TAG, &quot;Size: &quot; + size);
+        }
+    } finally {
+        cursor.close();
+    }
+}
+</pre>
+
+<h3 id="open-client">Open a document</h3>
+
+<p>Once you have the URI for a document, you can open it or do whatever else
+you want to do with it.</p>
+
+<h4>Bitmap</h4>
+
+<p>Here is an example of how you might open a <code><a href="../../../reference/android/graphics/Bitmap.html">Bitmap</a></code>:</p>
+
+<pre>private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+    ParcelFileDescriptor parcelFileDescriptor =
+            getContentResolver().openFileDescriptor(uri, "r");
+    FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+    Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+    parcelFileDescriptor.close();
+    return image;
+}
+</pre>
+
+<p>Note that you should not do this operation on the UI thread. Do it in the
+background, using <code><a href="../../../reference/android/os/AsyncTask.html">AsyncTask</a></code>. Once you open the bitmap, you
+can display it in an <code><a href="../../../reference/android/widget/ImageView.html">ImageView</a></code>.
+</p>
+
+<h4>Get an InputStream</h4>
+
+<p>Here is an example of how you can get an <code><a href="../../../reference/java/io/InputStream.html">InputStream</a></code> from the URI. In this
+snippet, the lines of the file are being read into a string:</p>
+
+<pre>private String readTextFromUri(Uri uri) throws IOException {
+    InputStream inputStream = getContentResolver().openInputStream(uri);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(
+            inputStream));
+    StringBuilder stringBuilder = new StringBuilder();
+    String line;
+    while ((line = reader.readLine()) != null) {
+        stringBuilder.append(line);
+    }
+    fileInputStream.close();
+    parcelFileDescriptor.close();
+    return stringBuilder.toString();
+}
+</pre>
+
+<h3 id="create">Create a new document</h3>
+
+<p>Your app can create a new document in a document provider using the
+<code><a href="../../../reference/android/content/Intent.html#ACTION_CREATE_DOCUMENT">ACTION_CREATE_DOCUMENT</a></code>
+intent. To create a file you give your intent a MIME type and a file name, and
+launch it with a unique request code. The rest is taken care of for you:</p>
+
+
+<pre>
+// Here are some examples of how you might call this method.
+// The first parameter is the MIME type, and the second parameter is the name
+// of the file you are creating:
+//
+// createFile("text/plain", "foobar.txt");
+// createFile("image/png", "mypicture.png");
+
+// Unique request code.
+private static final int WRITE_REQUEST_CODE = 43;
+...
+private void createFile(String mimeType, String fileName) {
+    Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+
+    // Filter to only show results that can be &quot;opened&quot;, such as
+    // a file (as opposed to a list of contacts or timezones).
+    intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+    // Create a file with the requested MIME type.
+    intent.setType(mimeType);
+    intent.putExtra(Intent.EXTRA_TITLE, fileName);
+    startActivityForResult(intent, WRITE_REQUEST_CODE);
+}
+</pre>
+
+<p>Once you create a new document you can get its URI in
+<code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code>, so that you
+can continue to write to it.</p>
+
+<h3 id="delete">Delete a document</h3>
+
+<p>If you have the URI for a document and the document's
+<code><a href="../../../reference/android/provider/DocumentsContract.Document.html#COLUMN_FLAGS">Document.COLUMN_FLAGS</a></code>
+contains
+<code><a href="../../../reference/android/provider/DocumentsContract.Document.html#FLAG_SUPPORTS_DELETE">SUPPORTS_DELETE</a></code>,
+you can delete the document. For example:</p>
+
+<pre>
+DocumentsContract.deleteDocument(getContentResolver(), uri);
+</pre>
+
+<h3 id="edit">Edit a document</h3>
+
+<p>You can use the Storage Access Framework to edit a text document in place.
+This snippet fires
+the <code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code> intent and uses the
+category <code><a href="../../../reference/android/content/Intent.html#CATEGORY_OPENABLE">CATEGORY_OPENABLE</a></code> to to display only
+documents that can be opened. It further filters to show only text files:</p>
+
+<pre>
+private static final int EDIT_REQUEST_CODE = 44;
+/**
+ * Open a file for writing and append some text to it.
+ */
+ private void editDocument() {
+    // ACTION_OPEN_DOCUMENT is the intent to choose a file via the system's
+    // file browser.
+    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+
+    // Filter to only show results that can be &quot;opened&quot;, such as a
+    // file (as opposed to a list of contacts or timezones).
+    intent.addCategory(Intent.CATEGORY_OPENABLE);
+
+    // Filter to show only text files.
+    intent.setType(&quot;text/plain&quot;);
+
+    startActivityForResult(intent, EDIT_REQUEST_CODE);
+}
+</pre>
+
+<p>Next, from <code><a href="../../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code>
+(see <a href="#results">Process results</a>) you can call code to perform the edit.
+The following snippet gets a <code><a href="../../../reference/java/io/FileOutputStream.html">FileOutputStream</a></code>
+from the <code><a href="../../../reference/android/content/ContentResolver.html">ContentResolver</a></code>. By default it uses “write” mode.
+It's best practice to ask for the least amount of access you need, so don’t ask
+for read/write if all you need is write:</p>
+
+<pre>private void alterDocument(Uri uri) {
+    try {
+        ParcelFileDescriptor pfd = getActivity().getContentResolver().
+                openFileDescriptor(uri, "w");
+        FileOutputStream fileOutputStream =
+                new FileOutputStream(pfd.getFileDescriptor());
+        fileOutputStream.write(("Overwritten by MyCloud at " +
+                System.currentTimeMillis() + "\n").getBytes());
+        // Let the document provider know you're done by closing the stream.
+        fileOutputStream.close();
+        pfd.close();
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}</pre>
+
+<h3 id="permissions">Persist permissions</h3>
+
+<p>When your app opens a file for reading or writing, the system gives your
+app a URI permission grant for that file. It lasts until the user's device restarts.
+But suppose your app is an image-editing app, and you want users to be able to
+access the last 5 images they edited, directly from your app. If the user's device has
+restarted, you'd have to send the user back to the system picker to find the
+files, which is obviously not ideal.</p>
+
+<p>To prevent this from happening, you can persist the permissions the system
+gives your app. Effectively, your app "takes" the persistable URI permission grant
+that the system is offering. This gives the user continued access to the files
+through your app, even if the device has been restarted:</p>
+
+
+<pre>final int takeFlags = intent.getFlags()
+            &amp; (Intent.FLAG_GRANT_READ_URI_PERMISSION
+            | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+// Check for the freshest data.
+getContentResolver().takePersistableUriPermission(uri, takeFlags);</pre>
+
+<p>There is one final step. You may have saved the most
+recent URIs your app accessed, but they may no longer be valid&mdash;another app
+may have deleted or modified a document. Thus, you should always call
+<code>getContentResolver().takePersistableUriPermission()</code> to check for the
+freshest data.</p>
+
+<h2 id="custom">Writing a Custom Document Provider</h2>
+
+<p>
+If you're developing an app that provides storage services for files (such as
+a cloud save service), you can make your files available through the Storage
+Access Framework by writing a custom document provider.  This section describes
+how to do this.</p>
+
+
+<h3 id="manifest">Manifest</h3>
+
+<p>To implement a custom document provider, add the following to your application's
+manifest:</p>
+<ul>
+
+<li>A target of API level 19 or higher.</li>
+
+<li>A <code>&lt;provider&gt;</code> element that declares your custom storage
+provider. </li>
+
+<li>The name of your provider, which is its class name, including package name.
+For example: <code>com.example.android.storageprovider.MyCloudProvider</code>.</li>
+
+<li>The name of your authority, which is your package name (in this example,
+<code>com.example.android.storageprovider</code>) plus the type of content provider
+(<code>documents</code>). For example, <code>com.example.android.storageprovider.documents</code>.</li>
+
+<li>The attribute <code>android:exported</code> set to <code>&quot;true&quot;</code>.
+You must export your provider so that other apps can see it.</li>
+
+<li>The attribute <code>android:grantUriPermissions</code> set to
+<code>&quot;true&quot;</code>. This allows the system to grant other apps access
+to content in your provider. For a discussion of how to persist a grant for
+a particular document, see <a href="#permissions">Persist permissions</a>.</li>
+
+<li>The <code>MANAGE_DOCUMENTS</code> permission. By default a provider is available
+to everyone. Adding this permission restricts your provider to the system,
+which is important for security. </li>
+
+<li>An intent filter that includes the
+<code>android.content.action.DOCUMENTS_PROVIDER</code> action, so that your provider
+appears in the picker when the system searches for providers.</li>
+
+</ul>
+<p>Here are excerpts from a sample manifest that includes a provider:</p>
+
+<pre>&lt;manifest... &gt;
+    ...
+    &lt;uses-sdk
+        android:minSdkVersion=&quot;19&quot;
+        android:targetSdkVersion=&quot;19&quot; /&gt;
+        ....
+        &lt;provider
+            android:name=&quot;com.example.android.storageprovider.MyCloudProvider&quot;
+            android:authorities=&quot;com.example.android.storageprovider.documents&quot;
+            android:grantUriPermissions=&quot;true&quot;
+            android:exported=&quot;true&quot;
+            android:permission=&quot;android.permission.MANAGE_DOCUMENTS&quot;&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.content.action.DOCUMENTS_PROVIDER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/provider&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre>
+
+<h4>Supporting devices running Android 4.3 and lower</h4>
+
+<p>The
+<code><a href="../../../reference/android/content/Intent.html#ACTION_OPEN_DOCUMENT">ACTION_OPEN_DOCUMENT</a></code> intent is only available
+on devices running Android 4.4 and higher.
+If you want your application to support <code><a href="../../../reference/android/content/Intent.html#ACTION_GET_CONTENT">ACTION_GET_CONTENT</a></code>
+to accommodate devices that are running Android 4.3 and lower, you should
+disable the <code><a href="../../../reference/android/content/Intent.html#ACTION_GET_CONTENT">ACTION_GET_CONTENT</a></code> intent filter in
+your manifest if a device is running Android 4.4 or higher. A
+document provider and <code><a href="../../../reference/android/content/Intent.html#ACTION_GET_CONTENT">ACTION_GET_CONTENT</a></code> should be considered
+ mutually exclusive. If you support both of them simultaneously, your app will
+appear twice in the system picker UI, offering two different ways of accessing
+your stored data. This would be confusing for users.</p>
+
+<p>Here is the recommended way of disabling the
+<code><a href="../../../reference/android/content/Intent.html#ACTION_GET_CONTENT">ACTION_GET_CONTENT</a></code> intent filter for devices
+running Android version 4.4 or higher:</p>
+
+<ol>
+<li>In your <code>bool.xml</code> resources file under <code>res/values/</code>, add
+this line: <pre>&lt;bool name=&quot;atMostJellyBeanMR2&quot;&gt;true&lt;/bool&gt;</pre></li>
+
+<li>In your <code>bool.xml</code> resources file under <code>res/values-v19/</code>, add
+this line: <pre>&lt;bool name=&quot;atMostJellyBeanMR2&quot;&gt;false&lt;/bool&gt;</pre></li>
+
+<li>Add an
+<a href="../../../guide/topics/manifest/activity-alias-element.html">activity
+alias</a> to disable the <code><a href="../../../reference/android/content/Intent.html#ACTION_GET_CONTENT">ACTION_GET_CONTENT</a></code> intent
+filter for versions 4.4 (API level 19) and higher. For example:
+
+<pre>
+&lt;!-- This activity alias is added so that GET_CONTENT intent-filter
+     can be disabled for builds on API level 19 and higher. --&gt;
+&lt;activity-alias android:name=&quot;com.android.example.app.MyPicker&quot;
+        android:targetActivity=&quot;com.android.example.app.MyActivity&quot;
+        ...
+        android:enabled=&quot;@bool/atMostJellyBeanMR2&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.GET_CONTENT&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.OPENABLE&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+        &lt;data android:mimeType=&quot;image/*&quot; /&gt;
+        &lt;data android:mimeType=&quot;video/*&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity-alias&gt;
+</pre>
+</li>
+</ol>
+<h3 id="contract">Contracts</h3>
+
+<p>Usually when you write a custom content provider, one of the tasks is
+implementing contract classes, as described in the
+<a href="../../../guide/topics/providers/content-provider-creating.html#ContractClass">
+Content Providers</a> developers guide. A contract class is a <code>public final</code> class
+that contains constant definitions for the URIs, column names, MIME types, and
+other metadata that pertain to the provider. The Storage Access Framework
+provides these contract classes for you, so you don't need to write your
+own:</p>
+
+<ul>
+   <li><code><a href="../../../reference/android/provider/DocumentsContract.Document.html">DocumentsContract.Document</a></code></li>
+   <li><code><a href="../../../reference/android/provider/DocumentsContract.Root.html">DocumentsContract.Root</a></code></li>
+</ul>
+
+<p>For example, here are the columns you might return in a cursor when
+your document provider is queried for documents or the root:</p>
+
+<pre>private static final String[] DEFAULT_ROOT_PROJECTION =
+        new String[]{Root.COLUMN_ROOT_ID, Root.COLUMN_MIME_TYPES,
+        Root.COLUMN_FLAGS, Root.COLUMN_ICON, Root.COLUMN_TITLE,
+        Root.COLUMN_SUMMARY, Root.COLUMN_DOCUMENT_ID,
+        Root.COLUMN_AVAILABLE_BYTES,};
+private static final String[] DEFAULT_DOCUMENT_PROJECTION = new
+        String[]{Document.COLUMN_DOCUMENT_ID, Document.COLUMN_MIME_TYPE,
+        Document.COLUMN_DISPLAY_NAME, Document.COLUMN_LAST_MODIFIED,
+        Document.COLUMN_FLAGS, Document.COLUMN_SIZE,};
+</pre>
+
+<h3 id="subclass">Subclass DocumentsProvider</h3>
+
+<p>The next step in writing a custom document provider is to subclass the
+abstract class <code><a href="../../../reference/android/provider/DocumentsProvider.html">DocumentsProvider</a></code>. At minimum, you need
+to implement the following methods:</p>
+
+<ul>
+<li><code><a href="../../../reference/android/provider/DocumentsProvider.html#queryRoots(java.lang.String[])">queryRoots()</a></code></li>
+
+<li><code><a href="../../../reference/android/provider/DocumentsProvider.html#queryChildDocuments(java.lang.String, java.lang.String[], java.lang.String)">queryChildDocuments()</a></code></li>
+
+<li><code><a href="../../../reference/android/provider/DocumentsProvider.html#queryDocument(java.lang.String, java.lang.String[])">queryDocument()</a></code></li>
+
+<li><code><a href="../../../reference/android/provider/DocumentsProvider.html#openDocument(java.lang.String, java.lang.String, android.os.CancellationSignal)">openDocument()</a></code></li>
+</ul>
+
+<p>These are the only methods you are strictly required to implement, but there
+are many more you might want to. See <code><a href="../../../reference/android/provider/DocumentsProvider.html">DocumentsProvider</a></code>
+for details.</p>
+
+<h4 id="queryRoots">Implement queryRoots</h4>
+
+<p>Your implementation of <code><a href="../../../reference/android/provider/DocumentsProvider.html#queryRoots(java.lang.String[])">queryRoots()</a></code> must return a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> pointing to all the
+root directories of your document providers, using columns defined in
+<code><a href="../../../reference/android/provider/DocumentsContract.Root.html">DocumentsContract.Root</a></code>.</p>
+
+<p>In the following snippet, the <code>projection</code> parameter represents the
+specific fields the caller wants to get back. The snippet creates a new cursor
+and adds one row to it&mdash;one root, a top level directory, like
+Downloads or Images.  Most providers only have one root. You might have more than one,
+for example, in the case of multiple user accounts. In that case, just add a
+second row to the cursor.</p>
+
+<pre>
+&#64;Override
+public Cursor queryRoots(String[] projection) throws FileNotFoundException {
+
+    // Create a cursor with either the requested fields, or the default
+    // projection if "projection" is null.
+    final MatrixCursor result =
+            new MatrixCursor(resolveRootProjection(projection));
+
+    // If user is not logged in, return an empty root cursor.  This removes our
+    // provider from the list entirely.
+    if (!isUserLoggedIn()) {
+        return result;
+    }
+
+    // It's possible to have multiple roots (e.g. for multiple accounts in the
+    // same app) -- just add multiple cursor rows.
+    // Construct one row for a root called &quot;MyCloud&quot;.
+    final MatrixCursor.RowBuilder row = result.newRow();
+    row.add(Root.COLUMN_ROOT_ID, ROOT);
+    row.add(Root.COLUMN_SUMMARY, getContext().getString(R.string.root_summary));
+
+    // FLAG_SUPPORTS_CREATE means at least one directory under the root supports
+    // creating documents. FLAG_SUPPORTS_RECENTS means your application's most
+    // recently used documents will show up in the &quot;Recents&quot; category.
+    // FLAG_SUPPORTS_SEARCH allows users to search all documents the application
+    // shares.
+    row.add(Root.COLUMN_FLAGS, Root.FLAG_SUPPORTS_CREATE |
+            Root.FLAG_SUPPORTS_RECENTS |
+            Root.FLAG_SUPPORTS_SEARCH);
+
+    // COLUMN_TITLE is the root title (e.g. Gallery, Drive).
+    row.add(Root.COLUMN_TITLE, getContext().getString(R.string.title));
+
+    // This document id cannot change once it's shared.
+    row.add(Root.COLUMN_DOCUMENT_ID, getDocIdForFile(mBaseDir));
+
+    // The child MIME types are used to filter the roots and only present to the
+    //  user roots that contain the desired type somewhere in their file hierarchy.
+    row.add(Root.COLUMN_MIME_TYPES, getChildMimeTypes(mBaseDir));
+    row.add(Root.COLUMN_AVAILABLE_BYTES, mBaseDir.getFreeSpace());
+    row.add(Root.COLUMN_ICON, R.drawable.ic_launcher);
+
+    return result;
+}</pre>
+
+<h4 id="queryChildDocuments">Implement queryChildDocuments</h4>
+
+<p>Your implementation of
+<code><a href="../../../reference/android/provider/DocumentsProvider.html#queryChildDocuments(java.lang.String, java.lang.String[], java.lang.String)">queryChildDocuments()</a></code>
+must return a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> that points to all the files in
+the specified directory, using columns defined in
+<code><a href="../../../reference/android/provider/DocumentsContract.Document.html">DocumentsContract.Document</a></code>.</p>
+
+<p>This method gets called when you choose an application root in the picker UI.
+It gets the child documents of a directory under the root.  It can be called at any level in
+the file hierarchy, not just the root. This snippet
+makes a new cursor with the requested columns, then adds information about
+every immediate child in the parent directory to the cursor.
+A child can be an image, another directory&mdash;any file:</p>
+
+<pre>&#64;Override
+public Cursor queryChildDocuments(String parentDocumentId, String[] projection,
+                              String sortOrder) throws FileNotFoundException {
+
+    final MatrixCursor result = new
+            MatrixCursor(resolveDocumentProjection(projection));
+    final File parent = getFileForDocId(parentDocumentId);
+    for (File file : parent.listFiles()) {
+        // Adds the file's display name, MIME type, size, and so on.
+        includeFile(result, null, file);
+    }
+    return result;
+}
+</pre>
+
+<h4 id="queryDocument">Implement queryDocument</h4>
+
+<p>Your implementation of
+<code><a href="../../../reference/android/provider/DocumentsProvider.html#queryDocument(java.lang.String, java.lang.String[])">queryDocument()</a></code>
+must return a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> that points to the specified file,
+using columns defined in <code><a href="../../../reference/android/provider/DocumentsContract.Document.html">DocumentsContract.Document</a></code>.
+</p>
+
+<p>The <code><a href="../../../reference/android/provider/DocumentsProvider.html#queryDocument(java.lang.String, java.lang.String[])">queryDocument()</a></code>
+method returns the same information that was passed in
+<code><a href="../../../reference/android/provider/DocumentsProvider.html#queryChildDocuments(java.lang.String, java.lang.String[], java.lang.String)">queryChildDocuments()</a></code>,
+but for a specific file:</p>
+
+
+<pre>&#64;Override
+public Cursor queryDocument(String documentId, String[] projection) throws
+        FileNotFoundException {
+
+    // Create a cursor with the requested projection, or the default projection.
+    final MatrixCursor result = new
+            MatrixCursor(resolveDocumentProjection(projection));
+    includeFile(result, documentId, null);
+    return result;
+}
+</pre>
+
+<h4 id="openDocument">Implement openDocument</h4>
+
+<p>You must implement <code><a href="../../../reference/android/provider/DocumentsProvider.html#openDocument(java.lang.String, java.lang.String, android.os.CancellationSignal)">openDocument()</a></code> to return a <code><a href="../../../reference/android/os/ParcelFileDescriptor.html">ParcelFileDescriptor</a></code> representing
+the specified file. Other apps can use the returned <code><a href="../../../reference/android/os/ParcelFileDescriptor.html">ParcelFileDescriptor</a></code>
+to stream data. The system calls this method once the user selects a file
+and the client app requests access to it by calling
+<code><a href="../../../reference/android/content/ContentResolver.html#openFileDescriptor(android.net.Uri, java.lang.String)">openFileDescriptor()</a></code>.
+For example:</p>
+
+<pre>&#64;Override
+public ParcelFileDescriptor openDocument(final String documentId,
+                                         final String mode,
+                                         CancellationSignal signal) throws
+        FileNotFoundException {
+    Log.v(TAG, &quot;openDocument, mode: &quot; + mode);
+    // It's OK to do network operations in this method to download the document,
+    // as long as you periodically check the CancellationSignal. If you have an
+    // extremely large file to transfer from the network, a better solution may
+    // be pipes or sockets (see ParcelFileDescriptor for helper methods).
+
+    final File file = getFileForDocId(documentId);
+
+    final boolean isWrite = (mode.indexOf('w') != -1);
+    if(isWrite) {
+        // Attach a close listener if the document is opened in write mode.
+        try {
+            Handler handler = new Handler(getContext().getMainLooper());
+            return ParcelFileDescriptor.open(file, accessMode, handler,
+                        new ParcelFileDescriptor.OnCloseListener() {
+                &#64;Override
+                public void onClose(IOException e) {
+
+                    // Update the file with the cloud server. The client is done
+                    // writing.
+                    Log.i(TAG, &quot;A file with id &quot; +
+                    documentId + &quot; has been closed!
+                    Time to &quot; +
+                    &quot;update the server.&quot;);
+                }
+
+            });
+        } catch (IOException e) {
+            throw new FileNotFoundException(&quot;Failed to open document with id &quot;
+            + documentId + &quot; and mode &quot; + mode);
+        }
+    } else {
+        return ParcelFileDescriptor.open(file, accessMode);
+    }
+}
+</pre>
+
+<h3 id="security">Security</h3>
+
+<p>Suppose your document provider is a password-protected cloud storage service
+and you want to make sure that users are logged in before you start sharing their files.
+What should your app do if the user is not logged in?  The solution is to return
+zero roots in your implementation of <code><a href="../../../reference/android/provider/DocumentsProvider.html#queryRoots(java.lang.String[])">queryRoots()</a></code>. That is, an empty root cursor:</p>
+
+<pre>
+public Cursor queryRoots(String[] projection) throws FileNotFoundException {
+...
+    // If user is not logged in, return an empty root cursor.  This removes our
+    // provider from the list entirely.
+    if (!isUserLoggedIn()) {
+        return result;
+}
+</pre>
+
+<p>The other step is to call <code>getContentResolver().notifyChange()</code>.
+Remember the <code><a href="../../../reference/android/provider/DocumentsContract.html">DocumentsContract</a></code>?  We’re using it to make
+this URI. The following snippet tells the system to query the roots of your
+document provider whenever the user's login status changes. If the user is not
+logged in, a call to <code><a href="../../../reference/android/provider/DocumentsProvider.html#queryRoots(java.lang.String[])">queryRoots()</a></code> returns an
+empty cursor, as shown above. This ensures that a provider's documents are only
+available if the user is logged into the provider.</p>
+
+<pre>private void onLoginButtonClick() {
+    loginOrLogout();
+    getContentResolver().notifyChange(DocumentsContract
+            .buildRootsUri(AUTHORITY), null);
+}
+</pre>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

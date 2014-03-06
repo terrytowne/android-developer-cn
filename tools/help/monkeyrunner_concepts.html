@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>monkeyrunner | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">Get Started</a></li>
+                        <li><a href="../../design/style/index.html">Style</a></li>
+                        <li><a href="../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty">
+        <a href="../../tools/index.html"><span class="en">Developer Tools</span></a>
+    </div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../sdk/index.html"><span class="en">Download</span></a></div>
+    <ul>
+      <li><a href="../../sdk/installing/bundle.html">
+          <span class="en">Setting Up the ADT Bundle</span></a></li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/index.html"><span class="en">Setting Up
+    an Existing IDE</span></a></div>
+        <ul>
+          <li><a href="../../sdk/installing/installing-adt.html">
+              <span class="en">Installing the Eclipse Plugin</span></a></li>
+        <li><a href="../../sdk/installing/adding-packages.html">
+            <span class="en">Adding Platforms and Packages</span></a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../sdk/installing/studio.html">Android Studio</a>
+        </div>
+        <ul>
+          <li><a href="../../sdk/installing/migrate.html">
+              Migrating from Eclipse</a></li>
+          <li><a href="../../sdk/installing/studio-tips.html">
+              Tips and Tricks</a></li>
+        </ul>
+      </li>
+      <li><a href="../../sdk/exploring.html">
+          <span class="en">Exploring the SDK</span></a></li>
+      <li><a href="../../tools/sdk/ndk/index.html">Download the NDK</a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+        <a href="../../tools/workflow/index.html"><span class="en">Workflow</span></a>
+    </div>
+    <ul>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/devices/index.html"><span class="en">Setting Up Virtual Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/devices/managing-avds.html"><span class="en">With AVD Manager</span></a></li>
+          <li><a href="../../tools/devices/managing-avds-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/devices/emulator.html"><span class="en">Using the Emulator</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/device.html"><span class="en">Using Hardware Devices</span></a></div>
+        <ul>
+          <li><a href="../../tools/extras/oem-usb.html"><span
+            class="en">USB Drivers</span></a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/projects/index.html"><span class="en">Setting Up Projects</span></a></div>
+        <ul>
+          <li><a href="../../tools/projects/projects-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/projects/projects-cmdline.html"><span class="en">From the Command Line</span></a></li>
+          <li><a href="../../tools/projects/templates.html"><span class="en">Using Code Templates</span></a></li>
+        </ul>
+      </li>
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/building/index.html"><span class="en">Building and Running</span></a></div>
+        <ul>
+          <li><a href="../../tools/building/building-eclipse.html"><span class="en">From Eclipse with ADT</span></a></li>
+          <li><a href="../../tools/building/building-cmdline.html"><span class="en">From the Command Line</span></a></li>
+        </ul>
+      </li>
+
+
+  <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/testing/index.html">
+            <span class="en">Testing</span>
+          </a></div>
+        <ul>
+          <li>
+            <a href="../../tools/testing/testing_android.html">
+            <span class="en">Fundamentals</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_eclipse.html">
+            <span class="en">From Eclipse</span></a>
+          </li>
+          <li><a href="../../tools/testing/testing_otheride.html">
+            <span class="en">From Other IDEs</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_testing.html">
+            <span class="en">Activity Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/service_testing.html">
+            <span class="en">Service Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/contentprovider_testing.html">
+            <span class="en">Content Provider Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/testing_accessibility.html">
+            <span class="en">Accessibility Testing</span></a>
+          </li>
+           <li>
+            <a href="../../tools/testing/testing_ui.html">
+            <span class="en">UI Testing</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/what_to_test.html">
+            <span class="en">What To Test</span></a>
+          </li>
+          <li>
+            <a href="../../tools/testing/activity_test.html">
+            <span class="en">Activity Testing Tutorial</span></a>
+          </li>
+        </ul>
+  </li><!-- end of testing -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/debugging/index.html"><span class="en">Debugging</span></a></div>
+    <ul>
+      <li><a href="../../tools/debugging/debugging-projects.html"><span class="en">From Eclipse with ADT</span></a></li>
+      <li><a href="../../tools/debugging/debugging-projects-cmdline.html"><span class="en">From Other IDEs</span></a></li>
+      <li><a href="../../tools/debugging/ddms.html"><span class="en">Using DDMS</span></a></li>
+      <li><a href="../../tools/debugging/debugging-log.html"><span class="en">Reading and Writing Logs</span></a></li>
+      <li><a href="../../tools/debugging/improving-w-lint.html"><span class="en">Improving Your Code with lint</span></a></li>
+      <li><a href="../../tools/debugging/debugging-ui.html"><span class="en">Optimizing your UI</span></a></li>
+      <li><a href="../../tools/debugging/debugging-tracing.html"><span class="en">Profiling with Traceview and dmtracedump</span></a></li>
+      <li><a href="../../tools/debugging/systrace.html"><span class="en">Analysing Display and Performance with Systrace</span></a></li>
+      <li><a href="../../tools/debugging/debugging-memory.html">Investigating Your RAM Usage</a></li>
+      <li><a href="../../tools/debugging/debugging-devtools.html"><span class="en">Using the Dev Tools App</span></a></li>
+    </ul>
+  </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/publishing/publishing_overview.html"><span class="en">Publishing</span></a></div>
+        <ul>
+          <li><a href="../../tools/publishing/preparing.html"><span class="en">Preparing for Release</span></a></li>
+          <li><a href="../../tools/publishing/versioning.html"><span class="en">Versioning Your Apps</span></a></li>
+          <li><a href="../../tools/publishing/app-signing.html"><span class="en">Signing Your Apps</span></a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/support-library/index.html"><span
+class="en">Support Library</span></a></div>
+    <ul>
+      <li><a href="../../tools/support-library/features.html">Features</a></li>
+      <li><a href="../../tools/support-library/setup.html">Setup</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/help/index.html"><span
+class="en">Tools Help</span></a></div>
+    <ul>
+      <li><a href="../../tools/help/adb.html">adb</a></li>
+      <li><a href="../../tools/help/adt.html">ADT</a></li>
+      <li><a href="../../tools/help/android.html">android</a></li>
+      <li><a href="../../tools/help/avd-manager.html">AVD Manager</a></li>
+      <li><a href="../../tools/help/bmgr.html">bmgr</a>
+      <li><a href="../../tools/help/monitor.html">Device Monitor</a></li>
+      <li><a href="../../tools/help/dmtracedump.html">dmtracedump</a></li>
+      <li><a href="../../tools/help/draw9patch.html">Draw 9-Patch</a></li>
+      <li><a href="../../tools/help/emulator.html">Emulator</a></li>
+      <li><a href="../../tools/help/etc1tool.html">etc1tool</a></li>
+      <li><a href="../../tools/help/hierarchy-viewer.html">Hierarchy Viewer</a></li>
+      <li><a href="../../tools/help/hprof-conv.html">hprof-conv</a></li>
+      <li><a href="../../tools/help/jobb.html">jobb</a></li>
+      <li><a href="../../tools/help/lint.html">lint</span></a></li>
+      <li><a href="../../tools/help/logcat.html">logcat</a></li>
+      <li><a href="../../tools/help/mksdcard.html">mksdcard</a></li>
+      <li><a href="../../tools/help/monkey.html">monkey</a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../tools/help/monkeyrunner_concepts.html"><span class="en">monkeyrunner</span></a></div>
+        <ul>
+          <li><a href="../../tools/help/MonkeyDevice.html"><span
+class="en">MonkeyDevice</span></a></li>
+          <li><a href="../../tools/help/MonkeyImage.html"><span
+class="en">MonkeyImage</span></a></li>
+          <li><a href="../../tools/help/MonkeyRunner.html"><span
+class="en">MonkeyRunner</span></a></li>
+        </ul>
+      </li>
+       <li><a href="../../tools/help/proguard.html">ProGuard</a></li>
+       <li><a href="../../tools/help/sdk-manager.html">SDK Manager</a></li>
+       <li><a href="../../tools/help/systrace.html">Systrace</a></li>
+       <li><a href="../../tools/help/gltracer.html">Tracer for OpenGL ES</a></li>
+       <li><a href="../../tools/help/traceview.html">Traceview</a></li>
+       <li class="nav-section">
+          <div class="nav-section-header"><a href="../../tools/help/uiautomator/index.html"><span class="en">uiautomator</span></a></div>
+          <ul>
+             <li><a href="../../tools/help/uiautomator/Configurator.html"><span class="en">Configurator</span></a></li>
+             <li><a href="../../tools/help/uiautomator/IAutomationSupport.html"><span class="en">IAutomationSupport</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiAutomatorTestCase.html"><span class="en">UiAutomatorTestCase</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiCollection.html"><span class="en">UiCollection</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiDevice.html"><span class="en">UiDevice</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObject.html"><span class="en">UiObject</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiObjectNotFoundException.html"><span class="en">UiObjectNotFoundException</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiScrollable.html"><span class="en">UiScrollable</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiSelector.html"><span class="en">UiSelector</span></a></li>
+             <li><a href="../../tools/help/uiautomator/UiWatcher.html"><span class="en">UiWatcher</span></a></li>
+          </ul>
+       </li>
+       <li><a href="../../tools/help/zipalign.html">zipalign</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../tools/revisions/index.html"><span class="en">Revisions</span></a></div>
+    <ul>
+      <li><a href="../../tools/sdk/tools-notes.html">
+        <span class="en">Tools</span>
+      </a></li>
+      <li><a href="../../tools/sdk/eclipse-adt.html">
+        <span class="en">ADT Plugin</span>
+      </a></li>
+      <!--
+      <li><a href="../../tools/sdk/addons.html"><span class="en">Add-ons</span></a></li>
+      -->
+      <li><a href="../../tools/revisions/platforms.html"><span
+class="en">Platforms</span></a></li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../tools/samples/index.html"><span class="en">Samples</span></a></div>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header">
+    <a href="../../tools/adk/index.html">
+      <span class="en">ADK</span></a>
+    </div>
+    <ul>
+      <li><a href="../../tools/adk/adk2.html">ADK 2012 Guide</a></li>
+      <li><a href="../../tools/adk/adk.html">ADK 2011 Guide</a></li>
+    </ul>
+  </li>
+
+</ul><!-- nav -->
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+        
+        
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >monkeyrunner</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+  <h2>In this document</h2>
+  <ol>
+    <li>
+        <a href="#SampleProgram">A Simple monkeyrunner Program</a>
+    </li>
+    <li>
+        <a href="#APIClasses">The monkeyrunner API</a>
+    </li>
+    <li>
+        <a href="#RunningMonkeyRunner">Running monkeyrunner</a>
+    </li>
+    <li>
+        <a href="#Help">monkeyrunner Built-in Help</a>
+    </li>
+    <li>
+        <a href="#Plugins">Extending monkeyrunner with Plugins</a>
+    </li>
+  </ol>
+  <h2>See Also</h2>
+      <ol>
+        <li>
+            <a href="../../tools/testing/testing_android.html">Testing Fundamentals</a>
+        </li>
+      </ol>
+  </div>
+</div>
+<p>
+    The monkeyrunner tool provides an API for writing programs that control an Android device
+    or emulator from outside of Android code. With monkeyrunner, you can write a Python program
+    that installs an Android application or test package, runs it, sends keystrokes to it,
+    takes screenshots of its user interface, and stores screenshots on the workstation. The
+    monkeyrunner tool is primarily designed to test applications and devices at the
+    functional/framework level and for running unit test suites, but you are free to use it for
+    other purposes.
+</p>
+<p>
+    The monkeyrunner tool is not related to the
+    <a href="../../tools/help/monkey.html">UI/Application Exerciser Monkey</a>,
+    also known as the <code>monkey</code> tool. The <code>monkey</code> tool runs in an
+    <code><a href="../../tools/help/adb.html">adb</a></code> shell directly on the
+    device or emulator and generates pseudo-random streams of user and system events. In comparison,
+    the monkeyrunner tool controls devices and emulators from a workstation by sending specific
+    commands and events from an API.
+</p>
+<p>
+    The monkeyrunner tool provides these unique features for Android testing:
+</p>
+<ul>
+    <li>
+        Multiple device control: The monkeyrunner API can apply one or more
+        test suites across multiple devices or emulators. You can physically attach all the devices
+        or start up all the emulators (or both) at once, connect to each one in turn
+        programmatically, and then run one or more tests. You can also start up an emulator
+        configuration programmatically, run one or more tests, and then shut down the emulator.
+    </li>
+    <li>
+        Functional testing: monkeyrunner can run an automated start-to-finish test of an Android
+        application. You provide input values with keystrokes or touch events, and view the results
+        as screenshots.
+    </li>
+    <li>
+        Regression testing - monkeyrunner can test application stability by running an application
+        and comparing its output screenshots to a set of screenshots that are known to be correct.
+    </li>
+    <li>
+        Extensible automation - Since monkeyrunner is an API toolkit, you can develop an entire
+        system of Python-based modules and programs for controlling Android devices. Besides using
+        the monkeyrunner API itself, you can use the standard Python
+        <code><a href="http://docs.python.org/library/os.html">os</a></code> and
+        <code><a href="http://docs.python.org/library/subprocess.html">subprocess</a></code>
+        modules to call Android tools such as
+        <a href="../../tools/help/adb.html">Android Debug Bridge</a>.
+        <p>
+            You can also add your own classes to the monkeyrunner API. This is described
+            in more detail in the section
+            <a href="#Plugins">Extending monkeyrunner with plugins</a>.
+        </p>
+    </li>
+</ul>
+<p>
+    The monkeyrunner tool uses <a href="http://www.jython.org/">Jython</a>, a
+    implementation of Python that uses the Java programming language. Jython allows the
+    monkeyrunner API to interact easily with the Android framework. With Jython you can
+    use Python syntax to access the constants, classes, and methods of the API.
+</p>
+
+<h2 id="SampleProgram">A Simple monkeyrunner Program</h2>
+<p>
+    Here is a simple monkeyrunner program that connects to a device, creating a
+    <code><a href="../../tools/help/MonkeyDevice.html">MonkeyDevice</a></code>
+    object. Using the <code>MonkeyDevice</code> object, the program installs an Android application
+    package, runs one of its activities, and sends key events to the activity.
+    The program then takes a screenshot of the result, creating a
+    <code><a href="../../tools/help/MonkeyImage.html">MonkeyImage</a></code> object.
+    From this object, the program writes out a <code>.png</code> file containing the screenshot.
+</p>
+<pre>
+# Imports the monkeyrunner modules used by this program
+from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
+
+# Connects to the current device, returning a MonkeyDevice object
+device = MonkeyRunner.waitForConnection()
+
+# Installs the Android package. Notice that this method returns a boolean, so you can test
+# to see if the installation worked.
+device.installPackage('myproject/bin/MyApplication.apk')
+
+# sets a variable with the package's internal name
+package = 'com.example.android.myapplication'
+
+# sets a variable with the name of an Activity in the package
+activity = 'com.example.android.myapplication.MainActivity'
+
+# sets the name of the component to start
+runComponent = package + '/' + activity
+
+# Runs the component
+device.startActivity(component=runComponent)
+
+# Presses the Menu button
+device.press('KEYCODE_MENU', MonkeyDevice.DOWN_AND_UP)
+
+# Takes a screenshot
+result = device.takeSnapshot()
+
+# Writes the screenshot to a file
+result.writeToFile('myproject/shot1.png','png')
+</pre>
+
+<h2 id="APIClasses">The monkeyrunner API</h2>
+<p>
+    The monkeyrunner API is contained in three modules in the package
+    <code>com.android.monkeyrunner</code>:
+</p>
+<ul>
+    <li>
+        <code><a href="../../tools/help/MonkeyRunner.html">MonkeyRunner</a></code>:
+        A class of utility methods for monkeyrunner programs. This class provides a method for
+        connecting monkeyrunner to a device or emulator. It also provides methods for
+        creating UIs for a monkeyrunner program and for displaying the built-in help.
+    </li>
+    <li>
+        <code><a href="../../tools/help/MonkeyDevice.html">MonkeyDevice</a></code>:
+        Represents a device or emulator. This class provides methods for installing and
+        uninstalling packages, starting an Activity, and sending keyboard or touch events to an
+        application. You also use this class to run test packages.
+    </li>
+    <li>
+        <code><a href="../../tools/help/MonkeyImage.html">MonkeyImage</a></code>:
+        Represents a screen capture image. This class provides methods for capturing screens,
+        converting bitmap images to various formats, comparing two MonkeyImage objects, and
+        writing an image to a file.
+    </li>
+</ul>
+<p>
+    In a Python program, you access each class as a Python module. The monkeyrunner tool
+    does not import these modules automatically. To import a module, use the
+    Python <code>from</code> statement:
+</p>
+<pre>
+from com.android.monkeyrunner import &lt;module&gt;
+</pre>
+<p>
+    where <code>&lt;module&gt;</code> is the class name you want to import. You can import more
+    than one module in the same <code>from</code> statement by separating the module names with
+    commas.
+</p>
+<h2 id="RunningMonkeyRunner">Running monkeyrunner</h2>
+<p>
+    You can either run monkeyrunner programs from a file, or enter monkeyrunner statements in
+    an interactive session. You do both by invoking the <code>monkeyrunner</code> command
+    which is found in the <code>tools/</code> subdirectory of your SDK directory.
+    If you provide a filename as an argument, the <code>monkeyrunner</code> command
+    runs the file's contents as a Python program; otherwise, it starts an interactive session.
+</p>
+<p>
+    The syntax of the <code>monkeyrunner</code> command is
+</p>
+<pre>
+monkeyrunner -plugin &lt;plugin_jar&gt; &lt;program_filename&gt; &lt;program_options&gt;
+</pre>
+<p>
+Table 1 explains the flags and arguments.
+</p>
+<p class="table-caption" id="table1">
+  <strong>Table 1.</strong> <code>monkeyrunner</code> flags and arguments.</p>
+
+<table>
+    <tr>
+        <th>Argument</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>
+            <nobr>
+                <code>-plugin &lt;plugin_jar&gt;</code>
+            </nobr>
+        </td>
+        <td>
+            (Optional) Specifies a <code>.jar</code> file containing a plugin for monkeyrunner.
+            To learn more about monkeyrunner plugins, see
+            <a href="#Plugins">Extending monkeyrunner with plugins</a>. To specify more than one
+            file, include the argument multiple times.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <nobr>
+                <code>&lt;program_filename&gt;</code>
+            </nobr>
+        </td>
+        <td>
+            If you provide this argument, the <code>monkeyrunner</code> command runs the contents
+            of the file as a Python program. If the argument is not provided, the command starts an
+            interactive session.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <code>&lt;program_options&gt;</code>
+        </td>
+        <td>
+            (Optional) Flags and arguments for the program in &lt;program_file&gt;.
+        </td>
+    </tr>
+</table>
+<h2 id="Help">monkeyrunner Built-in Help</h2>
+<p>
+    You can generate an API reference for monkeyrunner by running:
+</p>
+<pre>
+monkeyrunner help.py &lt;format&gt; &lt;outfile&gt;
+</pre>
+<p>
+The arguments are:
+</p>
+    <ul>
+        <li>
+            <code>&lt;format&gt;</code> is either <code>text</code> for plain text output
+            or <code>html</code> for HTML output.
+        </li>
+        <li>
+            <code>&lt;outfile&gt;</code> is a path-qualified name for the output file.
+        </li>
+    </ul>
+<h2 id="Plugins">Extending monkeyrunner with Plugins</h2>
+<p>
+    You can extend the monkeyrunner API with classes you write in the Java programming language
+    and build into one or more <code>.jar</code> files. You can use this feature to extend the
+    monkeyrunner API with your own classes or to extend the existing classes. You can also use this
+    feature to initialize the monkeyrunner environment.
+</p>
+<p>
+    To provide a plugin to monkeyrunner, invoke the <code>monkeyrunner</code> command with the
+    <code>-plugin &lt;plugin_jar&gt;</code> argument described in
+    <a href="#table1">table 1</a>.
+</p>
+<p>
+    In your plugin code, you can import and extend the the main monkeyrunner classes
+    <code>MonkeyDevice</code>, <code>MonkeyImage</code>, and <code>MonkeyRunner</code> in
+    <code>com.android.monkeyrunner</code> (see <a href="#APIClasses">The monkeyrunner API</a>).
+</p>
+<p>
+    Note that plugins do not give you access to the Android SDK. You can't import packages
+    such as <code>com.android.app</code>. This is because monkeyrunner interacts with the
+    device or emulator below the level of the framework APIs.
+</p>
+<h3>The plugin startup class</h3>
+<p>
+    The <code>.jar</code> file for a plugin can specify a class that is instantiated before
+    script processing starts. To specify this class, add the key
+    <code>MonkeyRunnerStartupRunner</code> to the <code>.jar</code> file's
+    manifest. The value should be the name of the class to run at startup. The following
+    snippet shows how you would do this within an <code>ant</code> build script:
+</p>
+<pre>
+&lt;jar jarfile=&quot;myplugin&quot; basedir="&#36;&#123;build.dir&#125;&quot;&gt;
+&lt;manifest&gt;
+&lt;attribute name=&quot;MonkeyRunnerStartupRunner&quot; value=&quot;com.myapp.myplugin&quot;/&gt;
+&lt;/manifest&gt;
+&lt;/jar&gt;
+
+
+</pre>
+<p>
+    To get access to monkeyrunner's runtime environment, the startup class can implement
+    <code>com.google.common.base.Predicate&lt;PythonInterpreter&gt;</code>. For example, this
+    class sets up some variables in the default namespace:
+</p>
+<pre>
+package com.android.example;
+
+import com.google.common.base.Predicate;
+import org.python.util.PythonInterpreter;
+
+public class Main implements Predicate&lt;PythonInterpreter&gt; {
+    &#64;Override
+    public boolean apply(PythonInterpreter anInterpreter) {
+
+        /*
+        * Examples of creating and initializing variables in the monkeyrunner environment's
+        * namespace. During execution, the monkeyrunner program can refer to the variables "newtest"
+        * and "use_emulator"
+        *
+        */
+        anInterpreter.set("newtest", "enabled");
+        anInterpreter.set("use_emulator", 1);
+
+        return true;
+    }
+}
+</pre>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

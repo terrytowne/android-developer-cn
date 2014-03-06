@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Adding Custom Suggestions | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Adding Custom Suggestions</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+<h2>In this document</h2>
+<ol>
+<li><a href="#TheBasics">The Basics</a></li>
+<li><a href="#CustomSearchableConfiguration">Modifying the Searchable Configuration</a></li>
+<li><a href="#CustomContentProvider">Creating a Content Provider</a>
+  <ol>
+    <li><a href="#HandlingSuggestionQuery">Handling a suggestion query</a></li>
+    <li><a href="#SuggestionTable">Building a suggestion table</a></li>
+  </ol>
+</li>
+<li><a href="#IntentForSuggestions">Declaring an Intent for Suggestions</a>
+  <ol>
+    <li><a href="#IntentAction">Declaring the intent action</a></li>
+    <li><a href="#IntentData">Declaring the intent data</a></li>
+  </ol>
+</li>
+<li><a href="#HandlingIntent">Handling the Intent</a></li>
+<li><a href="#RewritingQueryText">Rewriting the Query Text</a></li>
+<li><a href="#QSB">Exposing Search Suggestions to Quick Search Box</a></li>
+</ol>
+
+<h2>Key classes</h2>
+<ol>
+<li><code><a href="../../../reference/android/app/SearchManager.html">SearchManager</a></code></li>
+<li><code><a href="../../../reference/android/content/SearchRecentSuggestionsProvider.html">SearchRecentSuggestionsProvider</a></code></li>
+<li><code><a href="../../../reference/android/content/ContentProvider.html">ContentProvider</a></code></li>
+</ol>
+
+<h2>Related samples</h2>
+<ol>
+<li><a href="../../../resources/samples/SearchableDictionary/index.html">Searchable
+Dictionary</a></li>
+</ol>
+
+<h2>See also</h2>
+<ol>
+<li><a href="searchable-config.html">Searchable Configuration</a></li>
+<li><a href="../../../guide/topics/providers/content-providers.html">Content Providers</a></li>
+</ol>
+</div>
+</div>
+
+<p>When using the Android search dialog or search widget, you can provide custom search suggestions
+that are created from data in your application. For example, if your application is a word
+dictionary, you can suggest words from the
+dictionary that match the text entered so far. These are the most valuable suggestions, because you
+can effectively predict what the user wants and provide instant access to it. Figure 1 shows
+an example of a search dialog with custom suggestions.</p>
+
+<p>Once you provide custom suggestions, you can also make them available to the system-wide Quick
+Search Box, providing access to your content from outside your application.</p>
+
+<p>Before you begin with this guide to add custom suggestions, you need to have implemented the
+Android search dialog or a search widget for searches in your
+application. If you haven't, see <a href="search-dialog.html">Creating a Search Interface</a>.</p>
+
+
+<h2 id="TheBasics">The Basics</h2>
+
+<div class="figure" style="width:250px">
+<img src="../../../images/search/search-suggest-custom.png" alt="" height="417" />
+<p class="img-caption"><strong>Figure 1.</strong> Screenshot of a search dialog with custom
+search suggestions.</p>
+</div>
+
+<p>When the user selects a custom suggestion, the Android system sends an <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> to
+your searchable activity. Whereas a normal search query sends an intent with the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> action, you can instead define your custom suggestions to use
+<code><a href="../../../reference/android/content/Intent.html#ACTION_VIEW">ACTION_VIEW</a></code> (or any other intent action), and also include data
+that's relevant to the selected suggestion. Continuing
+the dictionary example, when the user selects a suggestion, your application can immediately
+open the definition for that word, instead of searching the dictionary for matches.</p>
+
+<p>To provide custom suggestions, do the following:</p>
+
+<ul>
+  <li>Implement a basic searchable activity, as described in <a
+href="search-dialog.html">Creating a Search Interface</a>.</li>
+  <li>Modify the searchable configuration with information about the content provider that
+provides custom suggestions.</li>
+  <li>Build a table (such as in an <code><a href="../../../reference/android/database/sqlite/SQLiteDatabase.html">SQLiteDatabase</a></code>) for your
+suggestions and format the table with required columns.</li>
+  <li>Create a <a href="../../../guide/topics/providers/content-providers.html">Content
+Provider</a> that has access to your suggestions table and declare the provider
+in your manifest.</li>
+  <li>Declare the type of <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> to be sent when the user selects a
+suggestion (including a custom action and custom data). </li>
+</ul>
+
+<p>Just as the Android system displays the search dialog, it also displays your search
+suggestions. All you need is a content provider from which the system can retrieve your
+suggestions. If you're not familiar with creating content
+providers, read the <a href="../../../guide/topics/providers/content-providers.html">Content
+Providers</a> developer guide before you continue.</p>
+
+<p>When the system identifies that your activity is searchable and provides search
+suggestions, the following procedure takes place when the user types a query:</p>
+
+<ol>
+  <li>The system takes the search query text (whatever has been typed so far) and performs a
+query to your content provider that manages your suggestions.</li>
+  <li>Your content provider returns a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> that points to all
+suggestions that are relevant to the search query text.</li>
+  <li>The system displays the list of suggestions provided by the Cursor.</li>
+</ol>
+
+<p>Once the custom suggestions are displayed, the following might happen:</p>
+
+<ul>
+  <li>If the user types another key, or changes the query in any way, the above steps are repeated
+and the suggestion list is updated as appropriate. </li>
+  <li>If the user executes the search, the suggestions are ignored and the search is delivered
+to your searchable activity using the normal <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code>
+intent.</li>
+  <li>If the user selects a suggestion, an intent is sent to your searchable activity, carrying a
+custom action and custom data so that your application can open the suggested content.</li>
+</ul>
+
+
+
+<h2 id="CustomSearchableConfiguration">Modifying the searchable configuration</h2>
+
+<p>To add support for custom suggestions, add the <code>android:searchSuggestAuthority</code> attribute
+to the <code>&lt;searchable&gt;</code> element in your searchable configuration file. For example:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_label"
+    android:hint="@string/search_hint"
+    <b>android:searchSuggestAuthority="com.example.MyCustomSuggestionProvider"</b>&gt;
+&lt;/searchable&gt;
+</pre>
+
+<p>You might need some additional attributes, depending on the type of intent you attach
+to each suggestion and how you want to format queries to your content provider. The other optional
+attributes are discussed in the following sections.</p>
+
+
+
+<h2 id="CustomContentProvider">Creating a Content Provider</h2>
+
+<p>Creating a content provider for custom suggestions requires previous knowledge about content
+providers that's covered in the <a
+href="../../../guide/topics/providers/content-providers.html">Content Provider</a> developer
+guide. For the most part, a content provider for custom suggestions is the
+same as any other content provider. However, for each suggestion you provide, the respective row in
+the <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> must include specific columns that the system
+understands and uses to format the suggestions.</p>
+
+<p>When the user starts typing into the search dialog or search widget, the system queries
+your content provider for suggestions by calling <code><a href="../../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> each time
+a letter is typed. In your implementation of <code><a href="../../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code>, your
+content provider must search your suggestion data and return a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> that points to the rows you have determined to be good suggestions.</p>
+
+<p>Details about creating a content provider for custom suggestions are discussed in the following
+two sections:</p>
+<dl>
+  <dt><a href="#HandlingSuggestionQuery">Handling the suggestion query</a></dt>
+  <dd>How the system sends requests to your content provider and how to handle them</dd>
+  <dt><a href="#SuggestionTable">Building a suggestion table</a></dt>
+  <dd>How to define the columns that the system expects in the <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> returned with each query</dd>
+</dl>
+
+
+<h3 id="HandlingSuggestionQuery">Handling the suggestion query</h3>
+
+<p>When the system requests suggestions from your content provider, it calls your content
+provider's <code><a href="../../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> method. You must
+implement this method to search your suggestion data and return a
+<code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> pointing to the suggestions you deem relevant.</p>
+
+<p>Here's a summary of the parameters that the system passes to your <code><a href="../../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> method
+(listed in order):</p>
+
+<dl>
+  <dt><code>uri</code></dt>
+  <dd>Always a content <code><a href="../../../reference/android/net/Uri.html">Uri</a></code>, formatted as:
+<pre class="no-pretty-print">
+content://<em>your.authority</em>/<em>optional.suggest.path</em>/<em><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_URI_PATH_QUERY">SUGGEST_URI_PATH_QUERY</a></code></em>
+</pre>
+<p>The default behavior is for system to pass this URI and append it with the query text.
+For example:</p>
+<pre class="no-pretty-print">
+content://<em>your.authority</em>/<em>optional.suggest.path</em>/<em><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_URI_PATH_QUERY">SUGGEST_URI_PATH_QUERY</a></code></em>/puppies
+</pre>
+<p>The query text on the end is encoded using URI encoding rules, so you might need to decode
+it before performing a search.</p>
+<p>The <em><code>optional.suggest.path</code></em> portion is only included in the URI if you have set
+such a path in your searchable configuration file with the <code>android:searchSuggestPath</code>
+attribute. This is only needed if you use the same content provider for multiple searchable
+activities, in which case, you need to disambiguate the source of the suggestion query.</p>
+<p class="note"><strong>Note:</strong> <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_URI_PATH_QUERY">SUGGEST_URI_PATH_QUERY</a></code> is not the literal
+string provided in the URI, but a constant that you should use if you need to refer to this
+path.</p>
+  </dd>
+
+  <dt><code>projection</code></dt>
+  <dd>Always null</dd>
+
+  <dt><code>selection</code></dt>
+  <dd>The value provided in the <code>android:searchSuggestSelection</code> attribute of
+your searchable configuration file, or null if you have not declared the <code>android:searchSuggestSelection</code> attribute. More about using this to <a href="#GetTheQuery">get the
+query</a> below.</dd>
+
+  <dt><code>selectionArgs</code></dt>
+  <dd>Contains the search query as the first (and only) element of the array if you have
+declared the <code>android:searchSuggestSelection</code> attribute in your searchable configuration. If
+you have not declared <code>android:searchSuggestSelection</code>, then this parameter is null. More
+about using this to <a href="#GetTheQuery">get the query</a> below.</dd>
+
+  <dt><code>sortOrder</code></dt>
+  <dd>Always null</dd>
+</dl>
+
+<p>The system can send you the search query text in two ways. The
+default manner is for the query text to be included as the last path of the content
+URI passed in the <code>uri</code> parameter. However, if you include a selection value in your
+searchable configuration's <code>android:searchSuggestSelection</code> attribute, then the query text is instead passed as the first
+element of the <code>selectionArgs</code> string array. Both options are summarized next.</p>
+
+
+<h4 id="GetTheQueryUri">Get the query in the Uri</h4>
+
+<p>By default, the query is appended as the last segment of the <code>uri</code>
+parameter (a <code><a href="../../../reference/android/net/Uri.html">Uri</a></code> object). To retrieve the query text in this case, simply use
+<code><a href="../../../reference/android/net/Uri.html#getLastPathSegment()">getLastPathSegment()</a></code>. For example:</p>
+
+<pre>
+String query = uri.getLastPathSegment().toLowerCase();
+</pre>
+
+<p>This returns the last segment of the <code><a href="../../../reference/android/net/Uri.html">Uri</a></code>, which is the query text entered
+by the user.</p>
+
+
+
+<h4 id="GetTheQuery">Get the query in the selection arguments</h4>
+
+<p>Instead of using the URI, you might decide it makes more sense for your <code><a href="../../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> method to
+receive everything it needs to perform the look-up and you want the
+<code>selection</code> and <code>selectionArgs</code> parameters to carry the appropriate values. In such a
+case, add the <code>android:searchSuggestSelection</code> attribute to your searchable configuration with
+your SQLite selection string. In the selection string, include a question mark ("?") as
+a placeholder for the actual search query. The system calls <code><a href="../../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> with the
+selection string as the <code>selection</code> parameter and the search query as the first
+element in the <code>selectionArgs</code> array.</p>
+
+<p>For example, here's how you might form the <code>android:searchSuggestSelection</code> attribute to
+create a full-text search statement:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_label"
+    android:hint="@string/search_hint"
+    android:searchSuggestAuthority="com.example.MyCustomSuggestionProvider"
+    android:searchSuggestIntentAction="android.intent.action.VIEW"
+    <b>android:searchSuggestSelection="word MATCH ?"</b>&gt;
+&lt;/searchable&gt;
+</pre>
+
+<p>With this configuration, your <code><a href="../../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> method
+delivers the <code>selection</code> parameter as <code>"word MATCH ?"</code> and the <code>selectionArgs</code>
+parameter as the search query. When you pass these to an SQLite
+<code><a href="../../../reference/android/database/sqlite/SQLiteDatabase.html#query(java.lang.String, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String, java.lang.String, java.lang.String)">query()</a></code> method, as their respective arguments, they are synthesized together (the
+question mark is replaced with the query
+text). If you chose to receive suggestion queries this way and need to add wildcards to
+the query text, append (and/or prefix) them to the <code>selectionArgs</code>
+parameter, because this value is wrapped in quotes and inserted in place of the
+question mark.</p>
+
+<p>Another new attribute in the example above is <code>android:searchSuggestIntentAction</code>, which
+defines the intent action sent with each intent when the user selects a suggestion. It is
+discussed further in the section about <a href="#IntentForSuggestions">Declaring an Intent for
+Suggestions</a>.</p>
+
+<p class="note"><strong>Tip:</strong> If you don't want to define a selection clause in
+the <code>android:searchSuggestSelection</code> attribute, but would still like to receive the query
+text in the <code>selectionArgs</code> parameter, simply provide a non-null value for the <code>android:searchSuggestSelection</code> attribute. This triggers the query to be passed in <code>selectionArgs</code> and you can ignore the <code>selection</code> parameter. In this way, you can instead
+define the actual selection clause at a lower level so that your content provider doesn't have to
+handle it.</p>
+
+
+
+<h3 id="SuggestionTable">Building a suggestion table</h3>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+<h2>Creating a Cursor without a table</h2>
+<p>If your search suggestions are not stored in a table format (such as an SQLite table) using the
+columns required by the
+system, then you can search your suggestion data for matches and then format them
+into the necessary table on each request. To do so, create a <code><a href="../../../reference/android/database/MatrixCursor.html">MatrixCursor</a></code>
+using the required column names and then add a row for each suggestion using <code><a href="../../../reference/android/database/MatrixCursor.html#addRow(java.lang.Object[])">addRow(Object[])</a></code>. Return the final product from your Content
+Provider's <code><a href="../../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> method.</p>
+</div>
+</div>
+
+<p>When you return suggestions to the system with a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code>, the
+system expects specific columns in each row. So, regardless of whether you
+decide to store
+your suggestion data in an SQLite database on the device, a database on a web server, or another
+format on the device or web, you must format the suggestions as rows in a table and
+present them with a <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code>. The system understands several columns, but
+only two are required:</p>
+
+<dl>
+  <dt><code><a href="../../../reference/android/provider/BaseColumns.html#_ID">_ID</a></code></dt>
+  <dd>A unique integer row ID for each suggestion. The system requires this in order
+to present suggestions in a <code><a href="../../../reference/android/widget/ListView.html">ListView</a></code>.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_TEXT_1">SUGGEST_COLUMN_TEXT_1</a></code></dt>
+  <dd>The string that is presented as a suggestion.</dd>
+</dl>
+
+<p>The following columns are all optional (and most are discussed further in the following
+sections):</p>
+
+<dl>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_TEXT_2">SUGGEST_COLUMN_TEXT_2</a></code></dt>
+  <dd>A string. If your Cursor includes this column, then all suggestions are provided in a
+two-line format. The string in this column is displayed as a second, smaller line of text below the
+primary suggestion text. It can be null or empty to indicate no secondary text.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_ICON_1">SUGGEST_COLUMN_ICON_1</a></code></dt>
+  <dd>A drawable resource, content, or file URI string. If your Cursor includes this column, then
+all suggestions are provided in an icon-plus-text format with the drawable icon on the left side.
+This can be null or zero to indicate no icon in this row.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_ICON_2">SUGGEST_COLUMN_ICON_2</a></code></dt>
+  <dd>A drawable resource, content, or file URI string. If your Cursor  includes this column, then
+all suggestions are provided in an icon-plus-text format with the icon on the right side. This can
+be null or zero to indicate no icon in this row.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_ACTION">SUGGEST_COLUMN_INTENT_ACTION</a></code></dt>
+  <dd>An intent action string. If this column exists and contains a value at the given row, the
+action defined here is used when forming the suggestion's intent. If the element is not
+provided, the action is taken from the <code>android:searchSuggestIntentAction</code> field in your
+searchable configuration. If your action is the same for all
+suggestions, it is more efficient to specify the action using <code>android:searchSuggestIntentAction</code> and omit this column.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA">SUGGEST_COLUMN_INTENT_DATA</a></code></dt>
+  <dd>A data URI string. If this column exists and contains a value at the given row, this is the
+data that is used when forming the suggestion's intent. If the element is not provided, the data is
+taken from the <code>android:searchSuggestIntentData</code> field in your searchable configuration. If
+neither source is provided,
+the intent's data field is null. If your data is the same for all suggestions, or can be
+described using a constant part and a specific ID, it is more efficient to specify it using <code>android:searchSuggestIntentData</code> and omit this column.
+</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA_ID">SUGGEST_COLUMN_INTENT_DATA_ID</a></code></dt>
+  <dd>A URI path string. If this column exists and contains a value at the given row, then "/" and
+this value is appended to the data field in the intent. This should only be used if the data field
+specified
+by the <code>android:searchSuggestIntentData</code> attribute in the searchable configuration has already
+been set to an appropriate base string.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_EXTRA_DATA">SUGGEST_COLUMN_INTENT_EXTRA_DATA</a></code></dt>
+  <dd>Arbitrary data. If this column exists and contains a value at a given row, this is the
+<em>extra</em> data used when forming the suggestion's intent. If not provided, the
+intent's extra data field is null. This column allows suggestions to provide additional data that is
+included as an extra in the intent's <code><a href="../../../reference/android/app/SearchManager.html#EXTRA_DATA_KEY">EXTRA_DATA_KEY</a></code> key.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_QUERY">SUGGEST_COLUMN_QUERY</a></code></dt>
+  <dd>If this column exists and this element exists at the given row, this is the data that is
+used when forming the suggestion's query, included as an extra in the intent's <code><a href="../../../reference/android/app/SearchManager.html#QUERY">QUERY</a></code> key. Required if suggestion's action is <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code>, optional otherwise.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_SHORTCUT_ID">SUGGEST_COLUMN_SHORTCUT_ID</a></code></dt>
+  <dd>Only used when providing suggestions for Quick Search Box. This column indicates
+whether a search suggestion should be stored as a
+shortcut and whether it should be validated. Shortcuts are usually formed when the user clicks a
+suggestion from Quick Search Box. If missing, the result is stored as a shortcut and never
+refreshed. If set to <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_NEVER_MAKE_SHORTCUT">SUGGEST_NEVER_MAKE_SHORTCUT</a></code>, the result is
+not stored as a shortcut.
+Otherwise, the shortcut ID is used to check back for an up to date suggestion using
+<code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_URI_PATH_SHORTCUT">SUGGEST_URI_PATH_SHORTCUT</a></code>.</dd>
+  <dt><code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_SPINNER_WHILE_REFRESHING">SUGGEST_COLUMN_SPINNER_WHILE_REFRESHING</a></code></dt>
+  <dd>Only used when providing suggestions for Quick Search Box. This column specifies that
+a spinner should be shown instead of an icon from <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_ICON_2">SUGGEST_COLUMN_ICON_2</a></code>
+while the shortcut of this suggestion is being refreshed in Quick Search Box.</dd>
+</dl>
+
+<p>Some of these columns are discussed more in the following sections.</p>
+
+
+
+<h2 id="IntentForSuggestions">Declaring an Intent for Suggestions</h2>
+
+<p>When the user selects a suggestion from the list that appears below the search dialog or widget,
+the system sends a custom <code><a href="../../../reference/android/content/Intent.html">Intent</a></code> to your searchable activity. You
+must define the action and data for the intent.</p>
+
+
+<h3 id="IntentAction">Declaring the intent action</h3>
+
+<p>The most common intent action for a custom suggestion is <code><a href="../../../reference/android/content/Intent.html#ACTION_VIEW">ACTION_VIEW</a></code>, which is appropriate when
+you want to open something, like the definition for a word, a person's contact information, or a web
+page. However, the intent action can be any other action and can even be different for each
+suggestion.</p>
+
+<p>Depending on whether you want all suggestions to use the same intent action, you
+can define the action in two ways:</p>
+
+<ol type="a">
+  <li>Use the <code>android:searchSuggestIntentAction</code> attribute of your searchable configuration
+file to define the action for all suggestions. <p>For example:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_label"
+    android:hint="@string/search_hint"
+    android:searchSuggestAuthority="com.example.MyCustomSuggestionProvider"
+    <b>android:searchSuggestIntentAction="android.Intent.action.VIEW"</b> >
+&lt;/searchable>
+</pre>
+
+  </li>
+  <li>Use the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_ACTION">SUGGEST_COLUMN_INTENT_ACTION</a></code> column to define the
+action for individual suggestions.
+  <p>Add the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_ACTION">SUGGEST_COLUMN_INTENT_ACTION</a></code> column to
+your suggestions table and, for each suggestion, place in it the action to use (such as
+<code>"android.Intent.action.VIEW"</code>).</p>
+
+  </li>
+</ol>
+
+<p>You can also combine these two techniques. For instance, you can include the <code>android:searchSuggestIntentAction</code> attribute with an action to be used with all suggestions by
+default, then override this action for some suggestions by declaring a different action in the
+<code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_ACTION">SUGGEST_COLUMN_INTENT_ACTION</a></code> column. If you do not include
+a value in the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_ACTION">SUGGEST_COLUMN_INTENT_ACTION</a></code> column, then the
+intent provided in the <code>android:searchSuggestIntentAction</code> attribute is used.</p>
+
+<p class="note"><strong>Note</strong>: If you do not include the
+<code>android:searchSuggestIntentAction</code> attribute in your searchable configuration, then you
+<em>must</em> include a value in the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_ACTION">SUGGEST_COLUMN_INTENT_ACTION</a></code>
+column for every suggestion, or the intent will fail.</p>
+
+
+
+<h3 id="IntentData">Declaring intent data</h3>
+
+<p>When the user selects a suggestion, your searchable activity receives the intent with the
+action you've defined (as discussed in the previous section), but the intent must also carry
+data in order for your activity to identify which suggestion was selected. Specifically,
+the data should be something unique for each suggestion, such as the row ID for the suggestion in
+your SQLite table. When the intent is received,
+you can retrieve the attached data with <code><a href="../../../reference/android/content/Intent.html#getData()">getData()</a></code> or <code><a href="../../../reference/android/content/Intent.html#getDataString()">getDataString()</a></code>.</p>
+
+<p>You can define the data included with the intent in two ways:</p>
+
+<ol type="a">
+  <li>Define the data for each suggestion inside the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA">SUGGEST_COLUMN_INTENT_DATA</a></code> column of your suggestions table.
+
+<p>Provide all necessary data information for each intent in the suggestions table by including the
+<code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA">SUGGEST_COLUMN_INTENT_DATA</a></code> column and then populating it with
+unique data for each row. The data from this column is attached to the intent exactly as you
+define it in this column. You can then retrieve it with with <code><a href="../../../reference/android/content/Intent.html#getData()">getData()</a></code> or <code><a href="../../../reference/android/content/Intent.html#getDataString()">getDataString()</a></code>.</p>
+
+<p class="note"><strong>Tip</strong>: It's usually easiest to use the table's row ID as the
+Intent data, because it's always unique. And the easiest way to do that is by using the
+<code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA">SUGGEST_COLUMN_INTENT_DATA</a></code> column name as an alias for the row ID
+column. See the <a
+href="../../../resources/samples/SearchableDictionary/index.html">Searchable Dictionary sample
+app</a> for an example in which <code><a href="../../../reference/android/database/sqlite/SQLiteQueryBuilder.html">SQLiteQueryBuilder</a></code> creates a
+projection map of column names to aliases.</p>
+  </li>
+
+  <li>Fragment a data URI into two pieces: the portion common to all suggestions and the portion
+unique to each suggestion. Place these parts into the <code>android:searchSuggestintentData</code>
+attribute of the searchable configuration and the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA_ID">SUGGEST_COLUMN_INTENT_DATA_ID</a></code> column of your
+suggestions table, respectively.
+
+<p>Declare the piece of the URI that is common to all suggestions in the <code>android:searchSuggestIntentData</code> attribute of your searchable configuration. For example:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_label"
+    android:hint="@string/search_hint"
+    android:searchSuggestAuthority="com.example.MyCustomSuggestionProvider"
+    android:searchSuggestIntentAction="android.intent.action.VIEW"
+    <b>android:searchSuggestIntentData="content://com.example/datatable"</b> >
+&lt;/searchable>
+</pre>
+
+<p>Then include the final path for each suggestion (the unique part) in the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA_ID">SUGGEST_COLUMN_INTENT_DATA_ID</a></code>
+column of your suggestions table. When the user selects a suggestion, the system takes
+the string from <code>android:searchSuggestIntentData</code>, appends a slash ("/") and then adds the
+respective value from the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA_ID">SUGGEST_COLUMN_INTENT_DATA_ID</a></code> column to
+form a complete content URI. You can then retrieve the <code><a href="../../../reference/android/net/Uri.html">Uri</a></code> with with <code><a href="../../../reference/android/content/Intent.html#getData()">getData()</a></code>.</p>
+
+  </li>
+</ol>
+
+<h4>Add more data</h4>
+
+<p>If you need to express even more information with your intent, you can add another table column,
+<code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_EXTRA_DATA">SUGGEST_COLUMN_INTENT_EXTRA_DATA</a></code>, which can store additional
+information about the suggestion. The data saved in this column is placed in <code><a href="../../../reference/android/app/SearchManager.html#EXTRA_DATA_KEY">EXTRA_DATA_KEY</a></code> of the intent's extra Bundle.</p>
+
+
+
+<h2 id="HandlingIntent">Handling the Intent</h2>
+
+<p>Now that you provide custom search suggestions with custom intents, you
+need your searchable activity to handle these intents when the user selects a
+suggestion. This is in addition to handling the <code><a href="../../../reference/android/content/Intent.html#ACTION_SEARCH">ACTION_SEARCH</a></code> intent, which your searchable activity already does.
+Here's an example of how you can handle the intents during your activity <code><a href="../../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> callback:</p>
+
+<pre>
+Intent intent = getIntent();
+if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+    // Handle the normal search query case
+    String query = intent.getStringExtra(SearchManager.QUERY);
+    doSearch(query);
+} else if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+    // Handle a suggestions click (because the suggestions all use ACTION_VIEW)
+    Uri data = intent.getData();
+    showResult(data);
+}
+</pre>
+
+<p>In this example, the intent action is <code><a href="../../../reference/android/content/Intent.html#ACTION_VIEW">ACTION_VIEW</a></code> and the data carries a complete URI pointing to the suggested
+item, as synthesized by the <code>android:searchSuggestIntentData</code> string and <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA_ID">SUGGEST_COLUMN_INTENT_DATA_ID</a></code> column. The URI is then passed to the local
+<code>showResult()</code> method that queries the content provider for the item specified by the URI.</p>
+
+<p class="note"><strong>Note:</strong> You do <em>not</em> need to add an intent filter to your
+Android manifest file for the intent action you defined with the <code>android:searchSuggestIntentAction</code> attribute or <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_ACTION">SUGGEST_COLUMN_INTENT_ACTION</a></code> column. The system opens your
+searchable activity by name to deliver the suggestion's intent, so the activity does not need to
+declare the accepted action.</p>
+
+
+<h2 id="RewritingQueryText">Rewriting the query text</h2>
+
+<p>If the user navigates through the suggestions list using the directional controls (such
+as with a trackball or d-pad), the query text does not update, by default. However, you
+can temporarily rewrite the user's query text as it appears in the text box with
+a query that matches the suggestion currently in focus. This enables the user to see what query is
+being suggested (if appropriate) and then select the search box and edit the query before
+dispatching it as a search.</p>
+
+<p>You can rewrite the query text in the following ways:</p>
+
+<ol type="a">
+  <li>Add the <code>android:searchMode</code> attribute to your searchable configuration with the
+"queryRewriteFromText" value. In this case, the content from the suggestion's <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_TEXT_1">SUGGEST_COLUMN_TEXT_1</a></code>
+column is used to rewrite the query text.</li>
+  <li>Add the <code>android:searchMode</code> attribute to your searchable configuration with the
+"queryRewriteFromData" value. In this case, the content from the suggestion's
+<code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_INTENT_DATA">SUGGEST_COLUMN_INTENT_DATA</a></code> column is used to rewrite the
+query text. This should only
+be used with URI's or other data formats that are intended to be user-visible, such as HTTP URLs.
+Internal URI schemes should not be used to rewrite the query in this way.</li>
+  <li>Provide a unique query text string in the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_QUERY">SUGGEST_COLUMN_QUERY</a></code> column of your suggestions table. If this column is
+present and contains a value for the current suggestion, it is used to rewrite the query text
+(and override either of the previous implementations).</li>
+</ol>
+
+
+
+<h2 id="QSB">Exposing search suggestions to Quick Search Box</h2>
+
+<p>Once you configure your application to provide custom search suggestions, making them available
+to the globally accessible Quick Search Box is as easy as modifying your searchable configuration to
+include <code>android:includeInGlobalSearch</code> as "true".</p>
+
+<p>The only scenario in which additional work is necessary is when your content provider demands a
+read permission. In which case, you need to add a special
+<code>&lt;path-permission&gt;</code> element for the provider to grant Quick Search Box read access to
+your content provider. For example:</p>
+
+<pre>
+&lt;provider android:name="MySuggestionProvider"
+          android:authorities="com.example.MyCustomSuggestionProvider"
+          android:readPermission="com.example.provider.READ_MY_DATA"
+          android:writePermission="com.example.provider.WRITE_MY_DATA"&gt;
+  &lt;path-permission android:pathPrefix="/search_suggest_query"
+                   android:readPermission="android.permission.GLOBAL_SEARCH" /&gt;
+&lt;/provider&gt;
+</pre>
+
+<p>In this example, the provider restricts read and write access to the content. The
+<code>&lt;path-permission></code> element amends the restriction by granting read access to content
+inside the <code>"/search_suggest_query"</code> path prefix when the <code>"android.permission.GLOBAL_SEARCH"</code> permission exists. This grants access to Quick Search Box
+so that it may query your content provider for suggestions.</p>
+
+<p>If your content provider does not enforce read permissions, then Quick Search Box can read
+it by default.</p>
+
+
+<h3 id="EnablingSuggestions">Enabling suggestions on a device</h3>
+
+<p>When your application is configured to provide suggestions in Quick Search Box, it is not
+actually enabled to provide suggestions in Quick Search Box, by default. It is the user's choice
+whether to include suggestions from your application in the Quick Search Box. To enable search
+suggestions from your application, the user must open "Searchable items" (in Settings > Search) and
+enable your application as a searchable item.</p>
+
+<p>Each application that is available to Quick Search Box has an entry in the Searchable items
+settings page. The entry includes the name of the application and a short description of what
+content can be searched from the application and made available for suggestions in Quick Search Box.
+To define the description text for your searchable application, add the <code>android:searchSettingsDescription</code> attribute to your searchable configuration. For example:</p>
+
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_label"
+    android:hint="@string/search_hint"
+    android:searchSuggestAuthority="com.example.MyCustomSuggestionProvider"
+    android:searchSuggestIntentAction="android.intent.action.VIEW"
+    android:includeInGlobalSearch="true"
+    <b>android:searchSettingsDescription="@string/search_description"</b> >
+&lt;/searchable>
+</pre>
+
+<p>The string for <code>android:searchSettingsDescription</code> should be as concise as possible and
+state the content that is searchable. For example, "Artists, albums, and tracks" for a music
+application, or "Saved notes" for a notepad application. Providing this description is important so
+the user knows what kind of suggestions are provided. You should always include this attribute
+when <code>android:includeInGlobalSearch</code> is "true".</p>
+
+<p>Remember that the user must visit the settings menu to enable search suggestions for your
+application before your search suggestions appear in Quick Search Box. As such, if search is an
+important aspect of your application, then you might want to consider a way to convey that to
+your users &mdash; you might provide a note the first time they launch the app that instructs
+them how to enable search suggestions for Quick Search Box.</p>
+
+
+<h3 id="ManagingShortcuts">Managing Quick Search Box suggestion shortcuts</h3>
+
+<p>Suggestions that the user selects from Quick Search Box can be automatically made into shortcuts.
+These are suggestions that the system has copied from your content provider  so it can
+quickly access the suggestion without the need to re-query your content provider. </p>
+
+<p>By default, this is enabled for all suggestions retrieved by Quick Search Box, but if your
+suggestion data changes over time, then you can request that the shortcuts be refreshed. For
+instance, if your suggestions refer to dynamic data, such as a contact's presence status, then you
+should request that the suggestion shortcuts be refreshed when shown to the user. To do so,
+include the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_SHORTCUT_ID">SUGGEST_COLUMN_SHORTCUT_ID</a></code> in your suggestions table.
+Using this column, you can
+configure the shortcut behavior for each suggestion in one of the following ways:</p>
+
+<ol type="a">
+  <li>Have Quick Search Box re-query your content provider for a fresh version of the suggestion
+shortcut.
+    <p>Provide a value in the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_SHORTCUT_ID">SUGGEST_COLUMN_SHORTCUT_ID</a></code> column
+and the suggestion is
+re-queried for a fresh version each time the shortcut is displayed. The shortcut
+is quickly displayed with whatever data was most recently available until the refresh query
+returns, at which point the suggestion is refreshed with the new information. The
+refresh query is sent to your content provider with a URI path of <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_URI_PATH_SHORTCUT">SUGGEST_URI_PATH_SHORTCUT</a></code>
+(instead of <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_URI_PATH_QUERY">SUGGEST_URI_PATH_QUERY</a></code>).</p>
+    <p>The <code><a href="../../../reference/android/database/Cursor.html">Cursor</a></code> you return should contain one suggestion using the
+same columns as the original suggestion, or be empty, indicating that the shortcut is no
+longer valid (in which case, the suggestion disappears and the shortcut is removed).</p>
+    <p>If a suggestion refers to data that could take longer to refresh, such as a network-based
+refresh, you can also add the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_SPINNER_WHILE_REFRESHING">SUGGEST_COLUMN_SPINNER_WHILE_REFRESHING</a></code> column to your suggestions
+table with a value
+of "true" in order to show a progress spinner for the right hand icon until the refresh is complete.
+Any value other than "true" does not show the progress spinner.</p>
+  </li>
+
+  <li>Prevent the suggestion from being copied into a shortcut at all.
+    <p>Provide a value of <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_NEVER_MAKE_SHORTCUT">SUGGEST_NEVER_MAKE_SHORTCUT</a></code> in the
+<code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_SHORTCUT_ID">SUGGEST_COLUMN_SHORTCUT_ID</a></code> column. In
+this case, the suggestion is never copied into a shortcut. This should only be necessary if you
+absolutely do not want the previously copied suggestion to appear. (Recall that if you
+provide a normal value for the column, then the suggestion shortcut appears only until the
+refresh query returns.)</p></li>
+  <li>Allow the default shortcut behavior to apply.
+    <p>Leave the <code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_SHORTCUT_ID">SUGGEST_COLUMN_SHORTCUT_ID</a></code> empty for each
+suggestion that will not change and can be saved as a shortcut.</p></li>
+</ol>
+
+<p>If none of your suggestions ever change, then you do not need the
+<code><a href="../../../reference/android/app/SearchManager.html#SUGGEST_COLUMN_SHORTCUT_ID">SUGGEST_COLUMN_SHORTCUT_ID</a></code> column at all.</p>
+
+<p class="note"><strong>Note</strong>: Quick Search Box ultimately decides whether or not to create
+a shortcut for a suggestion, considering these values as a strong request from your
+application&mdash;there is no guarantee that the behavior you have requested for your suggestion
+shortcuts will be honored.</p>
+
+
+<h3 id="AboutRanking">About Quick Search Box suggestion ranking</h3>
+
+<p>Once you make your application's search suggestions available to Quick Search Box, the Quick
+Search Box ranking determines how the suggestions are surfaced to the user for a particular query.
+This might depend on how many other apps have results for that query, and how often the user has
+selected your results compared to those from other apps. There is no guarantee about how your
+suggestions are ranked, or whether your app's suggestions show at all for a given query. In
+general, you can expect that providing quality results increases the likelihood that your app's
+suggestions are provided in a prominent position and apps that provide low quality suggestions
+are more likely to be ranked lower or not displayed.</p>
+
+<div class="special">
+<p>See the <a href="../../../resources/samples/SearchableDictionary/index.html">Searchable
+Dictionary sample app</a> for a complete demonstration of custom search suggestions.</p>
+</div>
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

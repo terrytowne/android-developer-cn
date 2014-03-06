@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>USB Accessory | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../../";
+  var devsite = false;
+</script>
+<script src="../../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../../index.html">
+            <img src="../../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../../')" 
+onkeyup="return search_changed(event, false, '../../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >USB Accessory</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+    <div id="qv">
+      <h2>In this document</h2>
+
+      <ol>
+        <li>
+          <a href="#choosing">Choosing the Right USB Accessory APIs</a>
+
+          <ol>
+            <li><a href="#installing">Installing the Google APIs add-on library</a></li>
+          </ol>
+        </li>
+
+        <li>
+          <a href="#api">API Overview</a>
+
+          <ol>
+            <li><a href="#usage">Usage differences between the add-on library and the platform
+            APIs</a></li>
+          </ol>
+        </li>
+
+        <li><a href="#manifest">Android Manifest Requirements</a></li>
+
+        <li>
+          <a href="#working-a">Working with accessories</a>
+
+          <ol>
+            <li><a href="#discovering-a">Discovering an accessory</a></li>
+
+            <li><a href="#permission-a">Obtaining permission to communicate with an
+            accessory</a></li>
+
+            <li><a href="#communicating-a">Communicating with an accessory</a></li>
+
+            <li><a href="#terminating-a">Terminating communication with an accessory</a></li>
+          </ol>
+        </li>
+      </ol>
+
+      <h2>See also</h2>
+
+      <ol>
+        <li><a href="http://accessories.android.com/demokit">Android USB Accessory Development
+        Kit</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <p>USB accessory mode allows users to connect
+  USB host hardware specifically designed for Android-powered devices. The accessories must adhere
+  to the Android accessory protocol outlined in the <a href=
+  "http://accessories.android.com/demokit">Android Accessory Development Kit</a> documentation.
+  This allows Android-powered devices that cannot act as a USB host to still interact with USB
+  hardware. When an Android-powered device is in USB accessory mode, the attached Android USB
+  accessory acts as the host, provides power to the USB bus, and enumerates connected devices.
+  Android 3.1 (API level 12) supports USB accessory mode and the feature is also backported to
+  Android 2.3.4 (API level 10) to enable support for a broader range of devices.</p>
+
+  <h2 id="choosing">Choosing the Right USB Accessory APIs</h2>
+
+  <p>Although the USB accessory APIs were introduced to the platform in Android 3.1, they are also
+  available in Android 2.3.4 using the Google APIs add-on library. Because these APIs were
+  backported using an external library, there are two packages that you can import to support USB
+  accessory mode. Depending on what Android-powered devices you want to support, you might have to
+  use one over the other:</p>
+
+  <ul>
+    <li><code>com.android.future.usb</code>: To support USB accessory mode in Android 2.3.4, the
+    <a href="http://code.google.com/android/add-ons/google-apis/index.html">Google APIs add-on
+    library</a> includes the backported USB accessory APIs and they are contained in this
+    namespace. Android 3.1 also supports importing and calling the classes within this namespace to
+    support applications written with the add-on library. This add-on library is a thin wrapper
+    around the <code><a href="../../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></code> accessory APIs and does not support USB host mode. If
+    you want to support the widest range of devices that support USB accessory mode, use the add-on
+    library and import this package. It is important to note that not all Android 2.3.4 devices are
+    required to support the USB accessory feature. Each individual device manufacturer decides
+    whether or not to support this capability, which is why you must declare it in your manifest
+    file.</li>
+
+    <li><code><a href="../../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></code>: This namespace contains the classes that support USB
+    accessory mode in Android 3.1. This package is included as part of the framework APIs, so
+    Android 3.1 supports USB accessory mode without the use of an add-on library. Use this package
+    if you only care about Android 3.1 or newer devices that have hardware support for USB
+    accessory mode, which you can declare in your manifest file.</li>
+  </ul>
+
+  <h3 id="installing">Installing the Google APIs add-on library</h3>
+
+  <p>If you want to install the add-on, you can do so by installing the Google APIs Android API 10
+  package with the SDK Manager. See <a href=
+  "http://code.google.com/android/add-ons/google-apis/installing.html">Installing the Google APIs
+  Add-on</a> for more information on installing the add-on library.</p>
+
+  <h2 id="api">API Overview</h2>
+
+  <p>Because the add-on library is a wrapper for the framework APIs, the classes that support the
+  USB accessory feature are similar. You can use the reference documentation for the <code><a href="../../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></code> even if you are using the add-on library.</p>
+
+  <p class="note"><strong>Note:</strong> There is, however, a minor <a href="#usage">usage
+  difference</a> between the add-on library and framework APIs that you should be aware of.</p>
+
+  <p>The following table describes the classes that support the USB accessory APIs:</p>
+
+  <table>
+    <tr>
+      <th>Class</th>
+
+      <th>Description</th>
+    </tr>
+
+    <tr>
+      <td><code><a href="../../../../reference/android/hardware/usb/UsbManager.html">UsbManager</a></code></td>
+
+      <td>Allows you to enumerate and communicate with connected USB accessories.</td>
+    </tr>
+
+    <tr>
+      <td><code><a href="../../../../reference/android/hardware/usb/UsbAccessory.html">UsbAccessory</a></code></td>
+
+      <td>Represents a USB accessory and contains methods to access its identifying
+      information.</td>
+    </tr>
+  </table>
+
+  <h3 id="usage">Usage differences between the add-on library and platform APIs</h3>
+
+  <p>There are two usage differences between using the Google APIs add-on library and the platform
+  APIs.</p>
+
+  <p>If you are using the add-on library, you must obtain the <code><a href="../../../../reference/android/hardware/usb/UsbManager.html">UsbManager</a></code> object in the following manner:</p>
+  <pre>
+UsbManager manager = UsbManager.getInstance(this);
+</pre>
+
+  <p>If you are not using the add-on library, you must obtain the <code><a href="../../../../reference/android/hardware/usb/UsbManager.html">UsbManager</a></code> object in the following manner:</p>
+  <pre>
+UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
+</pre>
+
+  <p>When you filter for a connected accessory with an intent filter, the <code><a href="../../../../reference/android/hardware/usb/UsbAccessory.html">UsbAccessory</a></code> object is contained inside the intent that is passed to your
+  application. If you are using the add-on library, you must obtain the <code><a href="../../../../reference/android/hardware/usb/UsbAccessory.html">UsbAccessory</a></code> object in the following manner:</p>
+  <pre>
+UsbAccessory accessory = UsbManager.getAccessory(intent);
+</pre>
+
+  <p>If you are not using the add-on library, you must obtain the <code><a href="../../../../reference/android/hardware/usb/UsbAccessory.html">UsbAccessory</a></code> object in the following manner:</p>
+  <pre>
+UsbAccessory accessory = (UsbAccessory) intent.getParcelableExtra(UsbManager.EXTRA_ACCESSORY);
+</pre>
+
+  <h2 id="manifest">Android Manifest requirements</h2>
+
+  <p>The following list describes what you need to add to your application's manifest file before
+  working with the USB accesory APIs. The <a href="#manifest-example">manifest and resource file
+  examples</a> show how to declare these items:</p>
+
+  <ul>
+    <li>Because not all Android-powered devices are guaranteed to support the USB accessory APIs,
+    include a <code>&lt;uses-feature&gt;</code> element that declares that your application uses
+    the <code>android.hardware.usb.accessory</code> feature.</li>
+
+    <li>If you are using the 
+    <a href="http://code.google.com/android/add-ons/google-apis/index.html">add-on library</a>,
+    add the <code>&lt;uses-library&gt;</code> element specifying
+    <code>com.android.future.usb.accessory</code> for the library.</li>
+
+    <li>Set the minimum SDK of the application to API Level 10 if you are using the add-on library
+    or 12 if you are using the <code><a href="../../../../reference/android/hardware/usb/package-summary.html">android.hardware.usb</a></code> package.</li>
+
+    <li>
+      <p>If you want your application to be notified of an attached USB accessory, specify an
+      <code>&lt;intent-filter&gt;</code> and <code>&lt;meta-data&gt;</code> element pair for the
+      <code>android.hardware.usb.action.USB_ACCESSORY_ATTACHED</code> intent in your main activity.
+      The <code>&lt;meta-data&gt;</code> element points to an external XML resource file that
+      declares identifying information about the accessory that you want to detect.</p>
+
+      <p>In the XML resource file, declare <code>&lt;usb-accessory&gt;</code> elements for the
+      accessories that you want to filter. Each <code>&lt;usb-accessory&gt;</code> can have the
+      following attributes:</p>
+
+      <ul>
+        <li><code>manufacturer</code></li>
+
+        <li><code>model</code></li>
+
+        <li><code>version</code></li>
+      </ul>
+
+      <p>Save the resource file in the <code>res/xml/</code> directory. The resource file name
+      (without the .xml extension) must be the same as the one you specified in the
+      <code>&lt;meta-data&gt;</code> element. The format for the XML resource file is also shown in
+      the <a href="#example">example</a> below.</p>
+    </li>
+  </ul>
+
+  <h3 id="manifest-example">Manifest and resource file examples</h3>
+
+  <p>The following example shows a sample manifest and its corresponding resource file:</p>
+  <pre>
+&lt;manifest ...&gt;
+    &lt;uses-feature android:name="android.hardware.usb.accessory" /&gt;
+    <!-- version must be either 10 or 12 -->
+    &lt;uses-sdk android:minSdkVersion="&lt;<em>version</em>&gt;" /&gt;
+    ...
+    &lt;application&gt;
+      &lt;uses-library android:name="com.android.future.usb.accessory" /&gt;
+        &lt;activity ...&gt;
+            ...
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" /&gt;
+            &lt;/intent-filter&gt;
+
+            &lt;meta-data android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED"
+                android:resource="@xml/accessory_filter" /&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
+</pre>
+
+  <p>In this case, the following resource file should be saved in
+  <code>res/xml/accessory_filter.xml</code> and specifies that any accessory that has the
+  corresponding model, manufacturer, and version should be filtered. The accessory sends these
+  attributes the Android-powered device:</p>
+  <pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;resources&gt;
+    &lt;usb-accessory model="DemoKit" manufacturer="Google" version="1.0"/&gt;
+&lt;/resources&gt;
+</pre>
+
+  <h2 id="working-a">Working with Accessories</h2>
+
+  <p>When users connect USB accessories to an Android-powered device, the Android system can
+  determine whether your application is interested in the connected accessory. If so, you can set
+  up communication with the accessory if desired. To do this, your application has to:</p>
+
+  <ol>
+    <li>Discover connected accessories by using an intent filter that filters for accessory
+    attached events or by enumerating connected accessories and finding the appropriate one.</li>
+
+    <li>Ask the user for permission to communicate with the accessory, if not already
+    obtained.</li>
+
+    <li>Communicate with the accessory by reading and writing data on the appropriate interface
+    endpoints.</li>
+  </ol>
+
+  <h3 id="discovering-a">Discovering an accessory</h3>
+
+  <p>Your application can discover accessories by either using an intent filter to be notified when
+  the user connects an accessory or by enumerating accessories that are already connected. Using an
+  intent filter is useful if you want to be able to have your application automatically detect a
+  desired accessory. Enumerating connected accessories is useful if you want to get a list of all
+  connected accessories or if your application did not filter for an intent.</p>
+
+  <h4 id="discover-a-intent">Using an intent filter</h4>
+
+  <p>To have your application discover a particular USB accessory, you can specify an intent filter
+  to filter for the <code>android.hardware.usb.action.USB_ACCESSORY_ATTACHED</code> intent. Along
+  with this intent filter, you need to specify a resource file that specifies properties of the USB
+  accessory, such as manufacturer, model, and version. When users connect an accessory that matches
+  your accessory filter,</p>
+
+  <p>The following example shows how to declare the intent filter:</p>
+  <pre>
+&lt;activity ...&gt;
+    ...
+    &lt;intent-filter&gt;
+        &lt;action android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" /&gt;
+    &lt;/intent-filter&gt;
+
+    &lt;meta-data android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED"
+        android:resource="@xml/accessory_filter" /&gt;
+&lt;/activity&gt;
+</pre>
+
+  <p>The following example shows how to declare the corresponding resource file that specifies the
+  USB accessories that you're interested in:</p>
+  <pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+
+&lt;resources&gt;
+    &lt;usb-accessory manufacturer="Google, Inc." model="DemoKit" version="1.0" /&gt;
+&lt;/resources&gt;
+</pre>
+
+  <p>In your activity, you can obtain the <code><a href="../../../../reference/android/hardware/usb/UsbAccessory.html">UsbAccessory</a></code> that represents
+  the attached accessory from the intent like this (with the add-on library):</p>
+  <pre>
+UsbAccessory accessory = UsbManager.getAccessory(intent);
+</pre>
+
+  <p>or like this (with the platform APIs):</p>
+  <pre>
+UsbAccessory accessory = (UsbAccessory)intent.getParcelableExtra(UsbManager.EXTRA_ACCESSORY);
+</pre>
+
+  <h4 id="discover-a-enumerate">Enumerating accessories</h4>
+
+  <p>You can have your application enumerate accesories that have identified themselves while your
+  application is running.</p>
+
+  <p>Use the <code><a href="../../../../reference/android/hardware/usb/UsbManager.html#getAccessoryList()">getAccessoryList()</a></code> method
+  to get an array all the USB accessories that are connected:</p>
+  <pre>
+UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
+UsbAccessory[] accessoryList = manager.getAcccessoryList();
+</pre>
+
+  <p class="note"><strong>Note:</strong> Currently, only one connected accessory is supported at
+  one time, but the API is designed to support multiple accessories in the future.</p>
+
+  <h3 id="permission-a">Obtaining permission to communicate with an accessory</h3>
+
+  <p>Before communicating with the USB accessory, your applicaton must have permission from your
+  users.</p>
+
+  <p class="note"><strong>Note:</strong> If your application <a href="#using-intents">uses an
+  intent filter</a> to discover accessories as they're connected, it automatically receives
+  permission if the user allows your application to handle the intent. If not, you must request
+  permission explicitly in your application before connecting to the accessory.</p>
+
+  <p>Explicitly asking for permission might be neccessary in some situations such as when your
+  application enumerates accessories that are already connected and then wants to communicate with
+  one. You must check for permission to access an accessory before trying to communicate with it.
+  If not, you will receive a runtime error if the user denied permission to access the
+  accessory.</p>
+
+  <p>To explicitly obtain permission, first create a broadcast receiver. This receiver listens for
+  the intent that gets broadcast when you call <code><a href="../../../../reference/android/hardware/usb/UsbManager.html#requestPermission(android.hardware.usb.UsbAccessory, android.app.PendingIntent)">requestPermission()</a></code>. The call to <code><a href="../../../../reference/android/hardware/usb/UsbManager.html#requestPermission(android.hardware.usb.UsbAccessory, android.app.PendingIntent)">requestPermission()</a></code> displays a dialog to the
+  user asking for permission to connect to the accessory. The following sample code shows how to
+  create the broadcast receiver:</p>
+  <pre>
+private static final String ACTION_USB_PERMISSION =
+    "com.android.example.USB_PERMISSION";
+private final BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
+ 
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        if (ACTION_USB_PERMISSION.equals(action)) {
+            synchronized (this) {
+                UsbAccessory accessory = (UsbAccessory) intent.getParcelableExtra(UsbManager.EXTRA_ACCESSORY);
+
+                if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {
+                    if(accessory != null){
+                        //call method to set up accessory communication
+                    }
+                }
+                else {
+                    Log.d(TAG, "permission denied for accessory " + accessory);
+                }
+            }
+        }
+    }
+};
+</pre>
+
+  <p>To register the broadcast receiver, put this in your <code>onCreate()</code> method in your
+  activity:</p>
+  <pre>
+UsbManager mUsbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
+private static final String ACTION_USB_PERMISSION =
+    "com.android.example.USB_PERMISSION";
+...
+mPermissionIntent = PendingIntent.getBroadcast(this, 0, new Intent(ACTION_USB_PERMISSION), 0);
+IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
+registerReceiver(mUsbReceiver, filter);
+</pre>
+
+  <p>To display the dialog that asks users for permission to connect to the accessory, call the
+  <code><a href="../../../../reference/android/hardware/usb/UsbManager.html#requestPermission(android.hardware.usb.UsbAccessory, android.app.PendingIntent)">requestPermission()</a></code> method:</p>
+  <pre>
+UsbAccessory accessory;
+...
+mUsbManager.requestPermission(accessory, mPermissionIntent);
+</pre>
+
+  <p>When users reply to the dialog, your broadcast receiver receives the intent that contains the
+  <code><a href="../../../../reference/android/hardware/usb/UsbManager.html#EXTRA_PERMISSION_GRANTED">EXTRA_PERMISSION_GRANTED</a></code> extra, which is a boolean
+  representing the answer. Check this extra for a value of true before connecting to the
+  accessory.</p>
+
+  <h3 id="communicating-a">Communicating with an accessory</h3>
+
+  <p>You can communicate with the accessory by using the <code><a href="../../../../reference/android/hardware/usb/UsbManager.html">UsbManager</a></code> to
+  obtain a file descriptor that you can set up input and output streams to read and write data to
+  descriptor. The streams represent the accessory's input and output bulk endpoints. You should set
+  up the communication between the device and accessory in another thread, so you don't lock the
+  main UI thread. The following example shows how to open an accessory to communicate with:</p>
+  <pre>
+UsbAccessory mAccessory;
+ParcelFileDescriptor mFileDescriptor;
+FileInputStream mInputStream;
+FileOutputStream mOutputStream;
+
+...
+
+private void openAccessory() {
+    Log.d(TAG, "openAccessory: " + accessory);
+    mFileDescriptor = mUsbManager.openAccessory(mAccessory);
+    if (mFileDescriptor != null) {
+        FileDescriptor fd = mFileDescriptor.getFileDescriptor();
+        mInputStream = new FileInputStream(fd);
+        mOutputStream = new FileOutputStream(fd);
+        Thread thread = new Thread(null, this, "AccessoryThread");
+        thread.start();
+    }
+}
+</pre>
+
+  <p>In the thread's <code>run()</code> method, you can read and write to the accessory by using
+  the <code><a href="../../../../reference/java/io/FileInputStream.html">FileInputStream</a></code> or <code><a href="../../../../reference/java/io/FileOutputStream.html">FileOutputStream</a></code> objects. When reading
+  data from an accessory with a <code><a href="../../../../reference/java/io/FileInputStream.html">FileInputStream</a></code> object, ensure that the buffer that
+  you use is big enough to store the USB packet data. The Android accessory protocol supports
+  packet buffers up to 16384 bytes, so you can choose to always declare your buffer to be of this
+  size for simplicity.</p>
+
+  <p class="note"><strong>Note:</strong> At a lower level, the packets are 64 bytes for USB
+  full-speed accessories and 512 bytes for USB high-speed accessories. The Android accessory
+  protocol bundles the packets together for both speeds into one logical packet for simplicity.</p>
+
+  <p>For more information about using threads in Android, see <a href=
+  "../../../../guide/components/processes-and-threads.html#Threads">Processes and
+  Threads</a>.</p>
+
+  <h3 id="terminating-a">Terminating communication with an accessory</h3>
+
+  <p>When you are done communicating with an accessory or if the accessory was detached, close the
+  file descriptor that you opened by calling <code><a href="../../../../reference/android/os/ParcelFileDescriptor.html#close()">close()</a></code>.
+  To listen for detached events, create a broadcast receiver like below:</p>
+  <pre>
+BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction(); 
+
+        if (UsbManager.ACTION_USB_ACCESSORY_DETACHED.equals(action)) {
+            UsbAccessory accessory = (UsbAccessory)intent.getParcelableExtra(UsbManager.EXTRA_ACCESSORY);
+            if (accessory != null) {
+                // call your method that cleans up and closes communication with the accessory
+            }
+        }
+    }
+};
+</pre>
+
+  <p>Creating the broadcast receiver within the application, and not the manifest, allows your
+  application to only handle detached events while it is running. This way, detached events are
+  only sent to the application that is currently running and not broadcast to all applications.</p>
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

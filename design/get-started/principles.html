@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>设计原则 | 安卓开发者</title><!-- STYLESHEETS --><!-- JAVASCRIPT -->
+
+
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  design" itemscope itemtype="http://schema.org/Article"><!-- Header -->
+
+<a name="top"></a>
+
+    
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >设计</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >开发</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >分发</a></li>
+            </ul><!-- New Search -->
+            
+            
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div><!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+  
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">入门</a></li>
+                        <li><a href="../../design/style/index.html">样式</a></li>
+                        <li><a href="../../design/patterns/index.html">设计模式</a></li>
+                        <li><a href="../../design/building-blocks/index.html">构造块</a></li>
+                        <li><a href="../../design/downloads/index.html">下载</a></li>
+                        <li><a href="../../design/videos/index.html">视频</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >训练课程</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API 指南</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >参考资源</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >开发工具</a>
+                          <ul><li><a href="../../sdk/index.html">获取 SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google 服务</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play 市场</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">应用发布</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">应用推广</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">应用质量</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">精品聚焦</a></li>
+                        <li><a href="../../distribute/open.html">开放发行</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div><!-- /Expanded quicknav -->
+          
+        </div>
+    </div><!-- /Header -->
+    
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../design/index.html">入门</a></div>
+    <ul>
+      <li><a href="../../design/get-started/creative-vision.html">视觉创新</a></li>
+      <li><a href="../../design/get-started/principles.html">设计原则</a></li>
+      <li><a href="../../design/get-started/ui-overview.html">界面概述</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../design/style/index.html">样式</a></div>
+    <ul>
+      <li><a href="../../design/style/devices-displays.html">设备与显示</a></li>
+      <li><a href="../../design/style/themes.html">主题</a></li>
+      <li><a href="../../design/style/touch-feedback.html">触控反馈</a></li>
+      <li><a href="../../design/style/metrics-grids.html">度量与网格</a></li>
+      <li><a href="../../design/style/typography.html">排印</a></li>
+      <li><a href="../../design/style/color.html">颜色</a></li>
+      <li><a href="../../design/style/iconography.html">图标</a></li>
+      <li><a href="../../design/style/branding.html">品牌打造</a></li>
+      <li><a href="../../design/style/writing.html">写作风格</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../design/patterns/index.html">设计模式</a></div>
+    <ul>
+      <li><a href="../../design/patterns/new.html">安卓新特性</a></li>
+      <li><a href="../../design/patterns/gestures.html">手势</a></li>
+      <li><a href="../../design/patterns/app-structure.html">应用结构</a></li>
+      <li><a href="../../design/patterns/navigation.html">导航</a></li>
+      <li><a href="../../design/patterns/actionbar.html">操作栏</a></li>
+      <li><a href="../../design/patterns/navigation-drawer.html">导航抽屉</a></li>
+      <li><a href="../../design/patterns/multi-pane-layouts.html">多面板布局</a></li>
+      <li><a href="../../design/patterns/swipe-views.html">滑动视图</a></li>
+      <li><a href="../../design/patterns/fullscreen.html">全屏幕</a></li>
+      <li><a href="../../design/patterns/selection.html">选择</a></li>
+      <li><a href="../../design/patterns/confirming-acknowledging.html">确认和提醒</a></li>
+      <li><a href="../../design/patterns/notifications.html">通知</a></li>
+      <li><a href="../../design/patterns/widgets.html">小部件</a></li>
+      <li><a href="../../design/patterns/settings.html">设置</a></li>
+      <li><a href="../../design/patterns/help.html">帮助</a></li>
+      <li><a href="../../design/patterns/compatibility.html">兼容性</a></li>
+      <li><a href="../../design/patterns/accessibility.html">辅助功能</a></li>
+      <li><a href="../../design/patterns/pure-android.html">安卓风格</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../design/building-blocks/index.html">构造块</a></div>
+    <ul>
+      <li><a href="../../design/building-blocks/tabs.html">选项卡</a></li>
+      <li><a href="../../design/building-blocks/lists.html">列表</a></li>
+      <li><a href="../../design/building-blocks/grid-lists.html">网格列表</a></li>
+      <li><a href="../../design/building-blocks/scrolling.html">滚动条</a></li>
+      <li><a href="../../design/building-blocks/spinners.html">下拉列表</a></li>
+      <li><a href="../../design/building-blocks/buttons.html">按钮</a></li>
+      <li><a href="../../design/building-blocks/text-fields.html">文本框</a></li>
+      <li><a href="../../design/building-blocks/seek-bars.html">滑动条</a></li>
+      <li><a href="../../design/building-blocks/progress.html">进度与活动</a></li>
+      <li><a href="../../design/building-blocks/switches.html">开关</a></li>
+      <li><a href="../../design/building-blocks/dialogs.html">对话框</a></li>
+      <li><a href="../../design/building-blocks/pickers.html">选择器</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../design/downloads/index.html">下载</a></div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../design/videos/index.html">视频</a></div>
+  </li>
+
+</ul>
+       
+
+      </div>
+    </div><!-- end side-nav --> 
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+  <div class="layout-content-row content-header ">
+    <div class="layout-content-col span-9">
+      <h1 itemprop="name">设计原则</h1>
+      
+    </div>
+    
+      <div class="paging-links layout-content-col span-4" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <a href="#" class="prev-page-link hide"
+            zh-tw-lang="上一堂課"
+            zh-cn-lang="上一课"
+            ru-lang="Предыдущий"
+            ko-lang="이전"
+            ja-lang="前へ"
+            es-lang="Anterior"               
+            >上一节</a> <a href="#" class="next-page-link hide"
+            zh-tw-lang="下一堂課"
+            zh-cn-lang="下一课"
+            ru-lang="Следующий"
+            ko-lang="다음"
+            ja-lang="次へ"
+            es-lang="Siguiente"               
+            >下一节</a>
+      </div>
+    
+  </div>
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <p>这些设计原则由安卓用户体验团队提出并且在开发中广泛使用，目的是保证能给用户带来最好的用户体验。在你创造和构思设计应用时参考这些设计原则。默认情况下，请遵守这些设计原则。</p>
+
+<h2 id="enchant-me">让人着迷</h2>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="delight-me">小地方的惊喜</h4>
+<p>漂亮的界面，精心设计的动画或者恰到好处的声音效果都是一种令人愉快的体验。而精致的显式效果更让人游刃有余。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_delight.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="real-objects-more-fun">实物更有趣</h4>
+<p>让用户直接触摸和操作应用里的对象。这样可以降低完成任务时的认知难度，并且让操作更有情感上的满足感。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_real_objects.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="make-it-mine">让用户能个性化</h4>
+<p>用户喜欢添加个性化的触摸效果，应为这让他们有归属感，知道一切尽在掌握。提供实用的、美观的默认设置，但是同时提供有趣的可选择个性化设置，但又不会妨碍主要任务。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_make_it_mine.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="get-to-know-me">慢慢了解用户</h4>
+<p>逐渐的学习用户的偏好。不要一次又一次的问用户同样的选项，提示用户之前的选择。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_get_to_know_me.png">
+
+  </div>
+</div>
+
+<h2 id="simplify-my-life">让生活简单</h2>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="keep-it-brief">保持简洁</h4>
+<p>使用简单的短句。如果句子很长，人们就容易跳过它。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_keep_it_brief.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="pictures-faster-than-words">一图胜千言</h4>
+<p>可以使用图片来解释想法。图片可以引起人们注意，也比文字传递信息时更有效率。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_pictures.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="decide-for-me">帮我做决定，但让我可以撤销它</h4>
+<p>猜测用户的想法，然后互不用询问用户而直接执行你的猜测。因为太多的选项和决定会让人厌烦。为防止出错，允许“撤销”操作。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_decide_for_me.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="only-show-when-i-need-it">只显示用户需要的内容</h4>
+<p>如果一次让用户收到太多内容，他们会迷惑不解。将任务和信息分解成小的、可以接受的区块。隐藏当前不重要的选项，当他们访问这些选项时再告诉它们相关信息。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_information_when_need_it.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="always-know-where-i-am">让用户不会迷路</h4>
+<p>让用户知道他们在应用中的位置。让你应用的位置信息突出，使用动画来显示不同屏幕之间的关系。给正在进行的任务提供反馈信息。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_navigation.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="never-lose-my-stuff">不要弄丢用户的东西</h4>
+<p>保存用户花时间完成的内容，让他能随处访问这些内容。记住设置、访问记录和创作内容，并同步至手机、平板和电脑上。让升级成为世上最容易的事情。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_never_lose_stuff.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="looks-same-should-act-same">如果看起来一样，就要有同样的功能</h4>
+<p>帮助用户区分功能上的不同，让各功能之间在视觉上有明显的不同。不要使用多模式，这样会出现看起来一样但是对同样操作有不同操作的情况。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_looks_same.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="interrupt-only-if-important">只有在重要的时候打断用户</h4>
+<p>像一个合格的私人助理，挡住不重要的细枝末节。用户希望集中精力，除非信息非常重而且需要立刻回复，否则突然打断用户既让人耗神又令人沮丧。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_important_interruption.png">
+
+  </div>
+</div>
+
+<h2 id="make-me-amazing">给人惊喜</h2>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="give-me-tricks">使用通用的小技巧</h4>
+<p>人们希望自己就能解决问题。你应该沿用其它安卓的视觉模式和手势来让你的应用更容易学习。例如，轻扫手势就是一个不错的导航快捷方式。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_tricks.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="its-not-my-fault">这不是用户的错</h4>
+<p>在提示用户做更正时，请温柔相待。当他们使用你的应用时，他们也希望自己是个聪明人。如果发生错误，请给出清楚的恢复指令，但不要告诉他们技术方面的细节。如果你能在后台自动修正错误，那就再好不过。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_error.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="sprinkle-encouragement">适当的鼓励</h4>
+<p>将复杂的任务分解成能轻易完成的小步骤。在这些操作后给予反馈，即便这种反馈只是很小的发光。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_sprinkle_encouragement.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="do-heavy-lifting-for-me">为用户完成繁重的工作</h4>
+<p>让新手可以做他们从不认为他们能做的事情，让他们觉得自己就是专家。举例来说，多重图片效果的快捷方式能让业余爱好者的图片立马变得神奇。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_heavy_lifting.png">
+
+  </div>
+</div>
+
+<div class="vspace size-2">&nbsp;</div>
+
+<div class="layout-content-row">
+  <div class="layout-content-col span-7">
+
+<h4 id="make-important-things-fast">让重要的操作快速响应</h4>
+<p>不是所有的操作都一样重要。先决定好什么是应用中最重要的操作，然后让它容易找到并且反应迅速，就像相机的快门按钮和音乐播放器的暂停按钮。</p>
+
+  </div>
+  <div class="layout-content-col span-6">
+
+    <img src="../../design/media/principles_make_important_fast.png">
+
+  </div>
+</div>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+            <a href="#" class="prev-page-link hide"
+                zh-tw-lang="上一堂課"
+                zh-cn-lang="上一课"
+                ru-lang="Предыдущий"
+                ko-lang="이전"
+                ja-lang="前へ"
+                es-lang="Anterior"               
+                >上一节</a> <a href="#" class="next-page-link hide"
+                zh-tw-lang="下一堂課"
+                zh-cn-lang="下一课"
+                ru-lang="Следующий"
+                ko-lang="다음"
+                ja-lang="次へ"
+                es-lang="Siguiente"               
+                >下一节</a>
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div><!-- end jd-content --> 
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div><!-- end footer --> 
+</div><!-- end doc-content -->
+
+</div><!-- end body-content -->  
+
+
+
+
+
+
+</body>
+</html>
+
+
+

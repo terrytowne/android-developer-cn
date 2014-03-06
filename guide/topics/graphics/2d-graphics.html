@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>Canvas and Drawables | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >Canvas and Drawables</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+  <div id="qv">
+  <h2>In this document</h2>
+  <ol>
+    <li><a href="#draw-with-canvas">Draw with a Canvas</a>
+    <ol>
+      <li><a href="#on-view">On a View</a></li>
+      <li><a href="#on-surfaceview">On a SurfaceView</a></li>
+    </ol>
+    </li>
+    <li><a href="#drawables">Drawables</a>
+        <ol>
+          <li><a href="#drawables-from-images">Creating from resource images</a></li>
+          <li><a href="#drawables-from-xml">Creating from resource XML</a></li>
+        </ol>
+    </li>
+    <li><a href="#shape-drawable">Shape Drawable</a></li>
+    <li><a href="#nine-patch">Nine-patch</a></li>
+  </ol>
+
+  <h2>See also</h2>
+  <ol>
+    <li><a href="../../../guide/topics/graphics/opengl.html">OpenGL with the Framework
+APIs</a></li>
+    <li><a href="../../../guide/topics/renderscript/index.html">RenderScript</a></li>
+  </ol>
+  </div>
+</div>
+
+<p>The Android framework APIs provides a set 2D drawing APIs that allow you to render your own
+custom graphics onto a canvas or to modify existing Views to customize their look and feel.
+When drawing 2D graphics, you'll typically do so in one of two ways:</p>
+
+<ol type="a">
+  <li>Draw your graphics or animations into a View object from your layout. In this manner,
+  the drawing of your graphics is handled by the system's
+  normal View hierarchy drawing process &mdash; you simply define the graphics to go inside the View.</li>
+  <li>Draw your graphics directly to a Canvas. This way, you personally call the appropriate class's
+  <code><a href="../../../reference/android/view/View.html#onDraw(android.graphics.Canvas)">onDraw()</a></code> method (passing it your Canvas), or one of the Canvas
+<code>draw...()</code> methods (like
+  <code><code><a href="../../../reference/android/graphics/Canvas.html#drawPicture(android.graphics.Picture, android.graphics.Rect)">drawPicture()</a></code></code>). In doing so, you are also in
+  control of any animation.</li>
+</ol>
+
+<p>Option "a," drawing to a View, is your best choice when you want to draw simple graphics that do not
+need to change dynamically and are not part of a performance-intensive game. For example, you should
+draw your graphics into a View when you want to display a static graphic or predefined animation, within
+an otherwise static application. Read <a href="#drawables">Drawables</a> for more information.</li>
+</p>
+
+<p>Option "b," drawing to a Canvas, is better when your application needs to regularly re-draw itself.
+Applications such as video games should be drawing to the Canvas on its own. However, there's more than
+one way to do this:</p>
+
+<ul>
+  <li>In the same thread as your UI Activity, wherein you create a custom View component in
+  your layout, call <code><code><a href="../../../reference/android/view/View.html#invalidate()">invalidate()</a></code></code> and then handle the
+  <code><code><a href="../../../reference/android/view/View.html#onDraw(android.graphics.Canvas)">onDraw()</a></code></code> callback.</li>
+  <li>Or, in a separate thread, wherein you manage a <code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code> and
+  perform draws to the Canvas as fast as your thread is capable
+  (you do not need to request <code>invalidate()</code>).</li>
+</ul>
+
+<h2 id="draw-with-canvas">Draw with a Canvas</h2>
+
+<p>When you're writing an application in which you would like to perform specialized drawing
+and/or control the animation of graphics,
+you should do so by drawing through a <code><a href="../../../reference/android/graphics/Canvas.html">Canvas</a></code>. A Canvas works for you as
+a pretense, or interface, to the actual surface upon which your graphics will be drawn &mdash; it
+holds all of your "draw" calls. Via the Canvas, your drawing is actually performed upon an
+underlying <code><a href="../../../reference/android/graphics/Bitmap.html">Bitmap</a></code>, which is placed into the window.</p>
+
+<p>In the event that you're drawing within the <code><code><a href="../../../reference/android/view/View.html#onDraw(android.graphics.Canvas)">onDraw()</a></code></code>
+callback method, the Canvas is provided for you and you need only place your drawing calls upon it.
+You can also acquire a Canvas from <code><code><a href="../../../reference/android/view/SurfaceHolder.html#lockCanvas()">SurfaceHolder.lockCanvas()</a></code></code>,
+when dealing with a SurfaceView object. (Both of these scenarios are discussed in the following sections.)
+However, if you need to create a new Canvas, then you must define the <code><a href="../../../reference/android/graphics/Bitmap.html">Bitmap</a></code>
+upon which drawing will actually be performed. The Bitmap is always required for a Canvas. You can set up
+a new Canvas like this:</p>
+<pre>
+Bitmap b = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+Canvas c = new Canvas(b);
+</pre>
+
+<p>Now your Canvas will draw onto the defined Bitmap. After drawing upon it with the Canvas, you can then carry your
+Bitmap to another Canvas with one of the <code><code><a href="../../../reference/android/graphics/Canvas.html#drawBitmap(android.graphics.Bitmap, android.graphics.Matrix, android.graphics.Paint)">Canvas.drawBitmap(Bitmap,...)</a></code></code> methods. It's recommended that you ultimately draw your final
+graphics through a Canvas offered to you
+by <code><code><a href="../../../reference/android/view/View.html#onDraw(android.graphics.Canvas)">View.onDraw()</a></code></code> or
+<code><code><a href="../../../reference/android/view/SurfaceHolder.html#lockCanvas()">SurfaceHolder.lockCanvas()</a></code></code> (see the following sections).</p>
+
+<p>The <code><a href="../../../reference/android/graphics/Canvas.html">Canvas</a></code> class has its own set of drawing methods that you can use,
+like <code>drawBitmap(...)</code>, <code>drawRect(...)</code>, <code>drawText(...)</code>, and many more.
+Other classes that you might use also have <code>draw()</code> methods. For example, you'll probably
+have some <code><a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> objects that you want to put on the Canvas. Drawable
+has its own <code><code><a href="../../../reference/android/graphics/drawable/Drawable.html#draw(android.graphics.Canvas)">draw()</a></code></code> method
+that takes your Canvas as an argument.</p>
+
+
+<h3 id="on-view">On a View</h3>
+
+<p>If your application does not require a significant amount of processing or
+frame-rate speed (perhaps for a chess game, a snake game,
+or another slowly-animated application), then you should consider creating a custom View component
+and drawing with a Canvas in <code><code><a href="../../../reference/android/view/View.html#onDraw(android.graphics.Canvas)">View.onDraw()</a></code></code>.
+The most convenient aspect of doing so is that the Android framework will
+provide you with a pre-defined Canvas to which you will place your drawing calls.</p>
+
+<p>To start, extend the <code><a href="../../../reference/android/view/View.html">View</a></code> class (or descendant thereof) and define
+the <code><code><a href="../../../reference/android/view/View.html#onDraw(android.graphics.Canvas)">onDraw()</a></code></code> callback method. This method will be called by the Android
+framework to request that your View draw itself. This is where you will perform all your calls
+to draw through the <code><a href="../../../reference/android/graphics/Canvas.html">Canvas</a></code>, which is passed to you through the <code>onDraw()</code> callback.</p>
+
+<p>The Android framework will only call <code>onDraw()</code> as necessary. Each time that
+your application is prepared to be drawn, you must request your View be invalidated by calling
+<code><code><a href="../../../reference/android/view/View.html#invalidate()">invalidate()</a></code></code>. This indicates that you'd like your View to be drawn and
+Android will then call your <code>onDraw()</code> method (though is not guaranteed that the callback will
+be instantaneous). </p>
+
+<p>Inside your View component's <code>onDraw()</code>, use the Canvas given to you for all your drawing,
+using various <code>Canvas.draw...()</code> methods, or other class <code>draw()</code> methods that
+take your Canvas as an argument. Once your <code>onDraw()</code> is complete, the Android framework will
+use your Canvas to draw a Bitmap handled by the system.</p>
+
+<p class="note"><strong>Note: </strong> In order to request an invalidate from a thread other than your main
+Activity's thread, you must call <code><code><a href="../../../reference/android/view/View.html#postInvalidate()">postInvalidate()</a></code></code>.</p>
+
+<p>For information about extending the <code><a href="../../../reference/android/view/View.html">View</a></code> class, read
+<a href="../../../guide/topics/ui/custom-components.html">Building Custom Components</a>.</p>
+
+<p>For a sample application, see the Snake game, in the SDK samples folder:
+<code>&lt;your-sdk-directory>/samples/Snake/</code>.</p>
+
+<h3 id="on-surfaceview">On a SurfaceView</h3>
+
+<p>The <code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code> is a special subclass of View that offers a dedicated
+drawing surface within the View hierarchy. The aim is to offer this drawing surface to
+an application's secondary thread, so that the application isn't required
+to wait until the system's View hierarchy is ready to draw. Instead, a secondary thread
+that has reference to a SurfaceView can draw to its own Canvas at its own pace.</p>
+
+<p>To begin, you need to create a new class that extends <code><a href="../../../reference/android/view/SurfaceView.html">SurfaceView</a></code>. The class should also
+implement <code><a href="../../../reference/android/view/SurfaceHolder.Callback.html">SurfaceHolder.Callback</a></code>. This subclass is an interface that will notify you
+with information about the underlying <code><a href="../../../reference/android/view/Surface.html">Surface</a></code>, such as when it is created, changed, or destroyed.
+These events  are important so that you know when you can start drawing, whether you need
+to make adjustments based on new surface properties, and when to stop drawing and potentially
+kill some tasks. Inside your SurfaceView class is also a good place to define your secondary Thread class, which will
+perform all the drawing procedures to your Canvas.</p>
+
+<p>Instead of handling the Surface object directly, you should handle it via
+a <code><a href="../../../reference/android/view/SurfaceHolder.html">SurfaceHolder</a></code>. So, when your SurfaceView is initialized, get the SurfaceHolder by calling
+<code><code><a href="../../../reference/android/view/SurfaceView.html#getHolder()">getHolder()</a></code></code>. You should then notify the SurfaceHolder that you'd
+like to receive SurfaceHolder callbacks (from <code><a href="../../../reference/android/view/SurfaceHolder.Callback.html">SurfaceHolder.Callback</a></code>) by calling
+<code><a href="../../../reference/android/view/SurfaceHolder.html#addCallback(android.view.SurfaceHolder.Callback)">addCallback()</a></code>
+(pass it <var>this</var>). Then override each of the
+<code><a href="../../../reference/android/view/SurfaceHolder.Callback.html">SurfaceHolder.Callback</a></code> methods inside your SurfaceView class.</p>
+
+<p>In order to draw to the Surface Canvas from within your second thread, you must pass the thread your SurfaceHandler
+and retrieve the Canvas with <code><code><a href="../../../reference/android/view/SurfaceHolder.html#lockCanvas()">lockCanvas()</a></code></code>.
+You can now take the Canvas given to you by the SurfaceHolder and do your necessary drawing upon it.
+Once you're done drawing with the Canvas, call
+<code><code><a href="../../../reference/android/view/SurfaceHolder.html#unlockCanvasAndPost(android.graphics.Canvas)">unlockCanvasAndPost()</a></code></code>, passing it
+your Canvas object. The Surface will now draw the Canvas as you left it. Perform this sequence of locking and
+unlocking the canvas each time you want to redraw.</p>
+
+<p class="note"><strong>Note:</strong> On each pass you retrieve the Canvas from the SurfaceHolder,
+the previous state of the Canvas will be retained. In order to properly animate your graphics, you must re-paint the
+entire surface. For example, you can clear the previous state of the Canvas by filling in a color
+with <code><code><a href="../../../reference/android/graphics/Canvas.html#drawColor(int)">drawColor()</a></code></code> or setting a background image
+with <code><code><a href="../../../reference/android/graphics/Canvas.html#drawBitmap(android.graphics.Bitmap, android.graphics.Rect, android.graphics.RectF, android.graphics.Paint)">drawBitmap()</a></code></code>. Otherwise,
+you will see traces of the drawings you previously performed.</p>
+
+
+<p>For a sample application, see the Lunar Lander game, in the SDK samples folder:
+<code>&lt;your-sdk-directory>/samples/LunarLander/</code>. Or,
+browse the source in the <a href="../../../guide/samples/index.html">Sample Code</a> section.</p>
+
+<h2 id="drawables">Drawables</h2>
+<p>Android offers a custom 2D graphics library for drawing shapes and images.
+  The <code><a href="../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></code> package is where you'll find the common classes used for
+  drawing in two-dimensions.</p>
+
+<p>This document discusses the basics of using Drawable objects to draw graphics and how to use a
+couple subclasses of the Drawable class. For information on using Drawables to do frame-by-frame
+animation, see <a href="../../../guide/topics/graphics/drawable-animation.html">Drawable
+Animation</a>.</p>
+
+<p>A <code><a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> is a general abstraction for "something that can be
+  drawn."  You'll discover that the Drawable class extends to define a variety of specific kinds of
+drawable graphics, including <code><a href="../../../reference/android/graphics/drawable/BitmapDrawable.html">BitmapDrawable</a></code>, <code><a href="../../../reference/android/graphics/drawable/ShapeDrawable.html">ShapeDrawable</a></code>, <code><a href="../../../reference/android/graphics/drawable/PictureDrawable.html">PictureDrawable</a></code>,
+<code><a href="../../../reference/android/graphics/drawable/LayerDrawable.html">LayerDrawable</a></code>, and several more.  Of course, you can also extend
+these to define your own custom Drawable objects that behave in unique ways.</p>
+
+<p>There are three ways to define and instantiate a Drawable: using an image saved in your project
+  resources; using an XML file that defines the Drawable properties; or using the normal class
+constructors. Below, we'll discuss each the first two techniques (using constructors is nothing new
+for an experienced developer).</p>
+
+
+<h3 id="drawables-from-images">Creating from resource images</h3>
+
+<p>A simple way to add graphics to your application is by referencing an image file from your
+  project resources. Supported file types are PNG (preferred), JPG (acceptable) and GIF
+(discouraged). This technique would obviously be preferred for application icons, logos, or other
+graphics such as those used in a game.</p>
+
+<p>To use an image resource, just add your file to the <code>res/drawable/</code> directory of your
+  project. From there, you can reference it from your code or your XML layout.
+  Either way, it is referred using a resource ID, which is the file name without the file type
+  extension (E.g., <code>my_image.png</code> is referenced as <var>my_image</var>).</p>
+
+<p class="note"><strong>Note:</strong> Image resources placed in <code>res/drawable/</code> may be
+  automatically optimized with lossless image compression by the
+  <code>aapt</code> tool during the build process. For example, a true-color PNG that does
+  not require more than 256 colors may be converted to an 8-bit PNG with a color palette. This
+  will result in an image of equal quality but which requires less memory. So be aware that the
+  image binaries placed in this directory can change during the build. If you plan on reading
+  an image as a bit stream in order to convert it to a bitmap, put your images in the
+  <code>res/raw/</code> folder instead, where they will not be optimized.</p>
+
+<h4>Example code</h4>
+<p>The following code snippet demonstrates how to build an <code><a href="../../../reference/android/widget/ImageView.html">ImageView</a></code> that
+  uses an image from drawable resources and add it to the layout.</p>
+<pre>
+  LinearLayout mLinearLayout;
+
+  protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(savedInstanceState);
+
+  // Create a LinearLayout in which to add the ImageView
+  mLinearLayout = new LinearLayout(this);
+
+  // Instantiate an ImageView and define its properties
+  ImageView i = new ImageView(this);
+  i.setImageResource(R.drawable.my_image);
+  i.setAdjustViewBounds(true); // set the ImageView bounds to match the Drawable's dimensions
+  i.setLayoutParams(new Gallery.LayoutParams(LayoutParams.WRAP_CONTENT,
+  LayoutParams.WRAP_CONTENT));
+
+  // Add the ImageView to the layout and set the layout as the content view
+  mLinearLayout.addView(i);
+  setContentView(mLinearLayout);
+  }
+</pre>
+<p>In other cases, you may want to handle your image resource as a
+  <code><a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code> object.
+  To do so, create a Drawable from the resource like so:
+  <pre>
+    Resources res = mContext.getResources();
+    Drawable myImage = res.getDrawable(R.drawable.my_image);
+  </pre>
+
+  <p class="warning"><strong>Note:</strong> Each unique resource in your project can maintain only
+one state, no matter how many different objects you may instantiate for it. For example, if you
+    instantiate two Drawable objects from the same image resource, then change a property (such
+as the alpha) for one of the Drawables, then it will also affect the other. So when dealing with
+multiple instances of an image resource, instead of directly transforming the Drawable, you
+should perform a <a href="../../../guide/topics/graphics/view-animation.html#tween-animation">tween
+animation</a>.</p>
+
+
+  <h4>Example XML</h4>
+  <p>The XML snippet below shows how to add a resource Drawable to an
+    <code><a href="../../../reference/android/widget/ImageView.html">ImageView</a></code> in the XML layout (with some red tint just for fun).
+    <pre>
+      &lt;ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:tint="#55ff0000"
+      android:src="@drawable/my_image"/>
+  </pre>
+  <p>For more information on using project resources, read about
+    <a href="../../../guide/topics/resources/index.html">Resources and Assets</a>.</p>
+
+
+  <h3 id="drawables-from-xml">Creating from resource XML</h3>
+
+  <p>By now, you should be familiar with Android's principles of developing a
+    <a href="../../../guide/topics/ui/index.html">User Interface</a>. Hence, you understand the
+power and flexibility inherent in defining objects in XML. This philosophy caries over from Views
+to Drawables.  If there is a Drawable object that you'd like to create, which is not initially
+dependent on variables defined by your application code or user interaction, then defining the
+Drawable in XML is a good option. Even if you expect your Drawable to change its properties
+during the user's experience with your application, you should consider defining the object in
+XML, as you can always modify properties once it is instantiated.</p>
+
+  <p>Once you've defined your Drawable in XML, save the file in the <code>res/drawable/</code>
+    directory of your project. Then, retrieve and instantiate the object by calling
+    <code><a href="../../../reference/android/content/res/Resources.html#getDrawable(int)">Resources.getDrawable()</a></code>, passing it the
+    resource ID of your XML file. (See the <a href="#drawable-xml-example">example
+below</a>.)</p>
+
+  <p>Any Drawable subclass that supports the <code>inflate()</code> method can be defined in
+    XML and instantiated by your application. Each Drawable that supports XML inflation utilizes
+specific XML attributes that help define the object
+    properties (see the class reference to see what these are). See the class documentation for each
+    Drawable subclass for information on how to define it in XML.
+
+    <h4 id="drawable-xml-example">Example</h4>
+    <p>Here's some XML that defines a TransitionDrawable:</p>
+    <pre>
+      &lt;transition xmlns:android="http://schemas.android.com/apk/res/android">
+      &lt;item android:drawable="&#64;drawable/image_expand">
+      &lt;item android:drawable="&#64;drawable/image_collapse">
+      &lt;/transition>
+    </pre>
+
+    <p>With this XML saved in the file <code>res/drawable/expand_collapse.xml</code>,
+      the following code will instantiate the TransitionDrawable and set it as the content of an
+      ImageView:</p>
+    <pre>
+      Resources res = mContext.getResources();
+      TransitionDrawable transition = (TransitionDrawable)
+res.getDrawable(R.drawable.expand_collapse);
+      ImageView image = (ImageView) findViewById(R.id.toggle_image);
+      image.setImageDrawable(transition);
+    </pre>
+    <p>Then this transition can be run forward (for 1 second) with:</p>
+    <pre>transition.startTransition(1000);</pre>
+
+    <p>Refer to the Drawable classes listed above for more information on the XML attributes
+supported by each.</p>
+
+
+
+    <h2 id="shape-drawable">Shape Drawable</h2>
+
+    <p>When you want to dynamically draw some two-dimensional graphics, a <code><a href="../../../reference/android/graphics/drawable/ShapeDrawable.html">ShapeDrawable</a></code>
+      object will probably suit your needs. With a ShapeDrawable, you can programmatically draw
+      primitive shapes and style them in any way imaginable.</p>
+
+    <p>A ShapeDrawable is an extension of <code><a href="../../../reference/android/graphics/drawable/Drawable.html">Drawable</a></code>, so you can use
+one      where ever
+      a Drawable is expected &mdash; perhaps for the background of a View, set with
+      <code><a href="../../../reference/android/view/View.html#setBackgroundDrawable(android.graphics.drawable.Drawable)">setBackgroundDrawable()</a></code>.
+      Of course, you can also draw your shape as its own custom <code><a href="../../../reference/android/view/View.html">View</a></code>,
+      to be added to your layout however you please.
+      Because the ShapeDrawable has its own <code>draw()</code> method, you can create a subclass of
+View      that
+      draws the ShapeDrawable during the <code>View.onDraw()</code> method.
+      Here's a basic extension of the View class that does just this, to draw a ShapeDrawable as a
+      View:</p>
+    <pre>
+      public class CustomDrawableView extends View {
+      private ShapeDrawable mDrawable;
+
+      public CustomDrawableView(Context context) {
+      super(context);
+
+      int x = 10;
+      int y = 10;
+      int width = 300;
+      int height = 50;
+
+      mDrawable = new ShapeDrawable(new OvalShape());
+      mDrawable.getPaint().setColor(0xff74AC23);
+      mDrawable.setBounds(x, y, x + width, y + height);
+      }
+
+      protected void onDraw(Canvas canvas) {
+      mDrawable.draw(canvas);
+      }
+      }
+    </pre>
+
+    <p>In the constructor, a ShapeDrawable is defines as an <code><a href="../../../reference/android/graphics/drawable/shapes/OvalShape.html">OvalShape</a></code>.
+      It's then given a color and the bounds of the shape are set. If you do not set the bounds,
+then the
+      shape will not be drawn, whereas if you don't set the color, it will default to black.</p>
+    <p>With the custom View defined, it can be drawn any way you like. With the sample above, we can
+      draw the shape programmatically in an Activity:</p>
+    <pre>
+      CustomDrawableView mCustomDrawableView;
+
+      protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      mCustomDrawableView = new CustomDrawableView(this);
+
+      setContentView(mCustomDrawableView);
+      }
+    </pre>
+
+    <p>If you'd like to draw this custom drawable from the XML layout instead of from the Activity,
+      then the CustomDrawable class must override the <code><a href="../../../reference/android/view/View.html#View(android.content.Context, android.util.AttributeSet)">View(Context,
+      AttributeSet)</a></code> constructor, which is called when
+      instantiating a View via inflation from XML. Then add a CustomDrawable element to the XML,
+      like so:</p>
+    <pre>
+      &lt;com.example.shapedrawable.CustomDrawableView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      />
+  </pre>
+
+  <p>The ShapeDrawable class (like many other Drawable types in the <code><a href="../../../reference/android/graphics/drawable/package-summary.html">android.graphics.drawable</a></code>    package)
+    allows you to define various properties of the drawable with public methods.
+    Some properties you might want to adjust include
+    alpha transparency, color filter, dither, opacity and color.</p>
+
+  <p>You can also define primitive drawable shapes using XML. For more information, see the
+    section about Shape Drawables in the <a
+
+href="../../../guide/topics/resources/drawable-resource.html#Shape">Drawable Resources</a>
+    document.</p>
+
+  <!-- TODO
+       <h2 id="state-list">StateListDrawable</h2>
+
+       <p>A StateListDrawable is an extension of the DrawableContainer class, making it  little
+different.
+         The primary distinction is that the
+         StateListDrawable manages a collection of images for the Drawable, instead of just one.
+         This means that it can switch the image when you want, without switching objects. However,
+the
+         intention of the StateListDrawable is to automatically change the image used based on the
+state
+         of the object it's attached to.
+         -->
+
+         <h2 id="nine-patch">Nine-patch</h2>
+
+         <p>A <code><a href="../../../reference/android/graphics/drawable/NinePatchDrawable.html">NinePatchDrawable</a></code> graphic is a stretchable bitmap
+image,           which Android
+           will automatically resize to accommodate the contents of the View in which you have
+placed it as the           background.
+           An example use of a NinePatch is the backgrounds used by standard Android buttons &mdash;
+           buttons must stretch to accommodate strings of various lengths. A NinePatch drawable is a
+standard           PNG
+           image that includes an extra 1-pixel-wide border. It must be saved with the extension
+           <code>.9.png</code>,
+           and saved into the <code>res/drawable/</code> directory of your project.
+         </p>
+         <p>
+           The border is used to define the stretchable and static areas of
+           the image. You indicate a stretchable section by drawing one (or more) 1-pixel-wide
+           black line(s) in the left and top part of the border (the other border pixels should
+           be fully transparent or white). You can have as many stretchable sections as you want:
+           their relative size stays the same, so the largest sections always remain the largest.
+         </p>
+         <p>
+           You can also define an optional drawable section of the image (effectively,
+           the padding lines) by drawing a line on the right and bottom lines.
+           If a View object sets the NinePatch as its background and then specifies the
+           View's text, it will stretch itself so that all the text fits inside only
+           the area designated by the right and bottom lines (if included). If the
+           padding lines are not included, Android uses the left and top lines to
+           define this drawable area.
+         </p>
+         <p>To clarify the difference between the different lines, the left and top lines define
+           which pixels of the image are allowed to be replicated in order to stretch the image.
+           The bottom and right lines define the relative area within the image that the contents
+           of the View are allowed to lie within.</p>
+         <p>
+           Here is a sample NinePatch file used to define a button:
+         </p>
+         <img src="../../../images/ninepatch_raw.png" alt="" />
+
+         <p>This NinePatch defines one stretchable area with the left and top lines
+           and the drawable area with the bottom and right lines. In the top image, the dotted grey
+           lines identify the regions of the image that will be replicated in order to stretch the
+image. The           pink
+           rectangle in the bottom image identifies the region in which the contents of the View are
+allowed.
+           If the contents don't fit in this region, then the image will be stretched so that they
+do.
+</p>
+
+<p>The <a href="../../../tools/help/draw9patch.html">Draw 9-patch</a> tool offers
+   an extremely handy way to create your NinePatch images, using a WYSIWYG graphics editor. It
+even raises warnings if the region you've defined for the stretchable area is at risk of
+producing drawing artifacts as a result of the pixel replication.
+</p>
+
+<h3>Example XML</h3>
+
+<p>Here's some sample layout XML that demonstrates how to add a NinePatch image to a
+couple of buttons. (The NinePatch image is saved as
+<code>res/drawable/my_button_background.9.png</code>
+<pre>
+&lt;Button id="@+id/tiny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:text="Tiny"
+        android:textSize="8sp"
+        android:background="@drawable/my_button_background"/&gt;
+
+&lt;Button id="@+id/big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="Biiiiiiig text!"
+        android:textSize="30sp"
+        android:background="@drawable/my_button_background"/&gt;
+</pre>
+<p>Note that the width and height are set to "wrap_content" to make the button fit neatly around the
+text.
+</p>
+
+<p>Below are the two buttons rendered from the XML and NinePatch image shown above.
+Notice how the width and height of the button varies with the text, and the background image
+stretches to accommodate it.
+</p>
+
+<img src="../../../images/ninepatch_examples.png" alt=""/>
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

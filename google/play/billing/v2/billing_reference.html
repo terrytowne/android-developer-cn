@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+<title>In-app Billing Reference <span style="font-size:16px;">(IAB Version 2)</span> | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../../";
+  var devsite = false;
+</script>
+<script src="../../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation google
+  " itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../../index.html">
+            <img src="../../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../../')" 
+onkeyup="return search_changed(event, false, '../../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../../google/index.html">
+          <span class="en">Overview</span>
+      </a></div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../../google/play-services/games.html">
+          <span class="en">Games</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../../google/play-services/location.html">
+          <span class="en">Location</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../../google/play-services/plus.html">
+          <span class="en">Google+</span>
+                </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../../google/play-services/maps.html">
+          <span class="en">Maps</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../google/play-services/ads.html">
+      <span class="en">Ads</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../../google/play-services/id.html">
+          <span class="en">Advertising ID</span></a>
+      </li>
+    </ul>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../../google/play-services/wallet.html">
+          <span class="en">Wallet</span>
+      </a></div>
+  </li>
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../../../google/play-services/auth.html">
+          <span class="en">Authorization</span>
+      </a></div>
+  </li>
+
+
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../google/play-services/index.html">
+      <span class="en">Google Play Services</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../../google/play-services/setup.html">
+          <span class="en">Setup</span></a>
+      </li>
+      <li id="gms-tree-list" class="nav-section">
+        <div class="nav-section-header">
+          <a href="../../../../reference/gms-packages.html">
+            <span class="en">Reference</span>
+          </a>
+        <div>
+      </li>
+    </ul>
+  </li>
+
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../google/play/billing/index.html">
+      <span class="en">Google Play In-app Billing</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../../google/play/billing/billing_overview.html">
+              <span class="en">Overview</span></a>
+      </li>
+      <li class="nav-section"><div class="nav-section-header"><a href="../../../../google/play/billing/api.html">
+              <span class="en">Version 3 API</span></a></div>
+              <ul>
+              <li><a href="../../../../google/play/billing/billing_integrate.html">
+              <span class="en">Implementing the API</span></a></li>
+              <li><a href="../../../../google/play/billing/billing_reference.html">
+              <span class="en">Reference</span></a></li>
+              </ul>
+      </li>
+      <li class="nav-section"><div class="nav-section-header"><a href="../../../../google/play/billing/v2/api.html">
+              <span class="en">Version 2 API</span></a></div>
+              <ul>
+              <li><a href="../../../../google/play/billing/v2/billing_integrate.html">
+              <span class="en">Implementing the API</span></a></li>
+              <li><a href="../../../../google/play/billing/v2/billing_subscriptions.html">
+              <span class="en">Subscriptions</span></a></li>
+              <li><a href="../../../../google/play/billing/v2/billing_reference.html">
+              <span class="en">Reference</span></a></li>
+              </ul>
+      </li>
+      <li><a href="../../../../google/play/billing/billing_subscriptions.html">
+              <span class="en">Subscriptions</span></a>
+      </li>
+      <li><a href="../../../../google/play/billing/billing_best_practices.html">
+              <span class="en">Security and Design</span></a>
+      </li>
+      <li><a href="../../../../google/play/billing/billing_testing.html">
+              <span class="en">Testing In-app Billing</span></a>
+      </li>
+      <li><a href="../../../../google/play/billing/billing_admin.html">
+              <span class="en">Administering In-app Billing</span></a>
+      </li>
+      <li><a href="../../../../google/play/billing/gp-purchase-status-api.html">
+              <span class="en">Purchase Status API</span></a>
+      </li>
+      <li><a href="../../../../google/play/billing/versions.html">
+              <span class="en">Version Notes</span></a>
+      </li>
+    </ul>
+  </li>
+
+
+
+  <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../../google/gcm/index.html">
+        <span class="en">Google Cloud Messaging</span></a>
+      </div>
+      <ul>
+        <li><a href="../../../../google/gcm/gs.html">
+            <span class="en">Getting Started</span></a>
+        </li>
+        <li><a href="../../../../google/gcm/gcm.html">
+            <span class="en">Architectural Overview</span></a>
+        </li>
+         <li><a href="../../../../google/gcm/ccs.html">
+              <span class="en">Cloud Connection Server</span></a>
+        </li>
+        <li><a href="../../../../google/gcm/notifications.html">
+              <span class="en">User Notifications</span></a>
+        </li>
+        <li><a href="../../../../google/gcm/client.html">
+            <span class="en">GCM Client</span></a>
+        </li>
+        <li><a href="../../../../google/gcm/server.html">
+            <span class="en">GCM Server</span></a>
+        </li>
+        <li><a href="../../../../google/gcm/adv.html">
+            <span class="en">Advanced Topics</span></a>
+        </li>
+        <li><a href="../../../../google/gcm/c2dm.html">
+            <span class="en">Migration</span></a>
+        </li>
+        <li id="gcm-tree-list" class="nav-section">
+          <div class="nav-section-header">
+            <a href="../../../../reference/gcm-packages.html">
+              <span class="en">Reference</span>
+            </a>
+          <div>
+        </li>
+      </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../google/play/dist.html">
+      <span class="en">Google Play Distribution</span></a>
+    </div>
+    <ul>
+      <li><a href="../../../../google/play/filters.html">
+          <span class="en">Filters on Google Play</span></a>
+      </li>
+
+      <li><a href="../../../../google/play/publishing/multiple-apks.html">
+          <span class="en">Multiple APK Support</span></a>
+      </li>
+      <li><a href="../../../../google/play/expansion-files.html">
+          <span class="en">APK Expansion Files</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../../google/play/licensing/index.html">
+          <span class="en">Application Licensing</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../../google/play/licensing/overview.html">
+              <span class="en">Licensing Overview</span></a>
+          </li>
+          <li><a href="../../../../google/play/licensing/setting-up.html">
+              <span class="en">Setting Up for Licensing</span></a>
+          </li>
+          <li><a href="../../../../google/play/licensing/adding-licensing.html">
+              <span class="en">Adding Licensing to Your App</span></a>
+          </li>
+          <li><a href="../../../../google/play/licensing/licensing-reference.html">
+              <span class="en">Licensing Reference</span></a>
+          </li>
+        </ul>
+      </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../../google/backup/index.html">
+      Android Backup Service</a>
+    </div>
+    <ul>
+      <li><a href="../../../../google/backup/signup.html">
+          Register</a>
+      </li>
+    </ul>
+  </li>
+
+  </ul>
+
+</li>
+
+
+
+</ul>
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+      <script type="text/javascript">
+       showGoogleRefTree();
+    
+      </script>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >In-app Billing Reference <span style="font-size:16px;">(IAB Version 2)</span></h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div style="background-color:#fffdeb;width:100%;margin-bottom:1em;padding:.5em;">In-app Billing Version 2 is superseded. Please <a href="../../../../google/play/billing/billing_overview.html#migration">migrate to Version 3</a> at your earliest convenience.</div>
+    <div id="qv-wrapper" style="margin-top:0;">
+<div id="qv">
+<h2>In this document</h2>
+  <ol>
+  <li><a href="#billing-codes">Server Response Codes</a></li>
+  <li><a href="#billing-interface">API Reference</a></li>
+  <li><a href="#billing-intents">Broadcast Intents</a></li>
+  <li><a href="#http-api">REST API for Subscriptions</a></li>
+  </ol>	
+
+<h2>Related Samples</h2>
+  <ol>
+  <li><a href="../../../../google/play/billing/v2/billing_integrate.html#billing-download">Sample
+    Application (V2)</a></li>
+  </ol>  
+
+</div>
+</div>
+<p>This documentation provides technical reference information for using the In-app Billing Version 2 API. </p>
+
+<h2 id="billing-codes">Server Response Codes</h2>
+<p>The following table lists all of the server response codes that are sent from Google Play to
+your application. Google Play sends these response codes asynchronously as
+<code>response_code</code> extras in the <code>com.android.vending.billing.RESPONSE_CODE</code>
+broadcast intent. Your application must handle all of these response codes.</p>
+
+<p class="table-caption" id="response-codes-table"><strong>Table 6.</strong> Summary of response
+codes returned by Google Play.</p>
+
+<table>
+<tr>
+<th>Response Code</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+<tr>
+  <td><code>RESULT_OK</code></td>
+  <td>0</td>
+  <td>Indicates that the request was sent to the server successfully. When this code is returned in
+  response to a <code>CHECK_BILLING_SUPPORTED</code> request, indicates that billing is
+  supported.</td>
+</tr>
+<tr>
+  <td><code>RESULT_USER_CANCELED</code></td>
+  <td>1</td>
+  <td>Indicates that the user pressed the back button on the checkout page instead of buying the
+  item.</td>
+</tr>
+<tr>
+  <td><code>RESULT_SERVICE_UNAVAILABLE</code></td>
+  <td>2</td>
+  <td>Indicates that the network connection is down.</td>
+</tr>
+<tr>
+  <td><code>RESULT_BILLING_UNAVAILABLE</code></td>
+  <td>3</td>
+  <td>Indicates that In-app Billing is not available because the <code>API_VERSION</code> that you
+  specified is not recognized by the Google Play application or the user is ineligible for in-app
+  billing (for example, the user resides in a country that prohibits in-app purchases).</td>
+</tr>
+<tr>
+  <td><code>RESULT_ITEM_UNAVAILABLE</code></td>
+  <td>4</td>
+  <td>Indicates that Google Play cannot find the requested item in the application's product
+  list. This can happen if the product ID is misspelled in your <code>REQUEST_PURCHASE</code>
+  request or if an item is unpublished in the application's product list.</td>
+</tr>
+<tr>
+  <td><code>RESULT_DEVELOPER_ERROR</code></td>
+  <td>5</td>
+  <td>Indicates that an application is trying to make an In-app Billing request but the application
+  has not declared the com.android.vending.BILLING permission in its manifest. Can also indicate
+  that an application is not properly signed, or that you sent a malformed request, such as a
+  request with missing Bundle keys or a request that uses an unrecognized request type.</td>
+</tr>
+<tr>
+  <td><code>RESULT_ERROR</code></td>
+  <td>6</td>
+  <td>Indicates an unexpected server error. For example, this error is triggered if you try to
+purchase an item from yourself, which is not allowed by Google Wallet.</td>
+</tr>
+</table>
+</p>
+
+<h3 id="billing-interface">In-app billing Version 2 API reference</h3>
+
+<p>The following section describes the interface for Google Play's In-app Billing service. The
+interface is defined in the <code>IMarketBillingService.aidl</code> file, which is included with the
+In-app Billing <a
+href="../../../../google/play/billing/v2/billing_integrate.html#billing-download">sample
+application</a>.</p>
+<p>The interface consists of a single request method <code>sendBillingRequest()</code>. This method
+takes a single <code><a href="../../../../reference/android/os/Bundle.html">Bundle</a></code> parameter. The Bundle parameter includes several key-value
+pairs, which are summarized in table 7.</p>
+
+<p class="table-caption"><strong>Table 7.</strong> Description of Bundle keys passed in a
+<code>sendBillingRequest()</code> request.</p>
+
+<table>
+
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Possible Values</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+<tr>
+  <td><code>BILLING_REQUEST</code></td>
+  <td><code>String</code></td>
+  <td><code>CHECK_BILLING_SUPPORTED</code>, <code>REQUEST_PURCHASE</code>,
+  <code>GET_PURCHASE_INFORMATION</code>, <code>CONFIRM_NOTIFICATIONS</code>, or
+  <code>RESTORE_TRANSACTIONS</code></td>
+  <td>Yes</td>
+  <td>The type of billing request you are making with the <code>sendBillingRequest()</code> request.
+  The possible values are discussed more below this table.</td>
+</tr>
+<tr>
+  <td><code>API_VERSION</code></td>
+  <td><code>int</code></td>
+  <td>  <ul>
+  <li><code>"2"</code> [<a href="#version_2">details</a>]</li>
+  <li><code>"1"</code> [<a href="#version_1">details</a>]</li>
+  </ul></td>
+  <td>Yes</td>
+  <td>The version of Google Play's In-app Billing service you want to use.</td>
+</tr>
+<tr>
+  <td><code>PACKAGE_NAME</code></td>
+  <td><code>String</code></td>
+  <td>A valid package name.</td>
+  <td>Yes</td>
+  <td>The name of the application that is making the request.</td>
+</tr>
+<tr>
+  <td><code>ITEM_ID</code></td>
+  <td><code>String</code></td>
+  <td>Any valid product identifier.</td>
+  <td>Required for <code>REQUEST_PURCHASE</code> requests.</td>
+  <td>The product ID of the item you are making a billing request for. Every in-app item that you
+  sell using Google Play's In-app Billing service must have a unique product ID, which you
+  specify on the Google Play Developer Console.</td>
+</tr>
+<tr>
+  <td><code>NONCE</code></td>
+  <td><code>long</code></td>
+  <td>Any valid <code>long</code> value.</td>
+  <td>Required for <code>GET_PURCHASE_INFORMATION</code> and <code>RESTORE_TRANSACTIONS</code>
+  requests.</td>
+  <td>A number used once. Your application must generate and send a nonce with each
+  <code>GET_PURCHASE_INFORMATION</code> and <code>RESTORE_TRANSACTIONS</code> request. The nonce is
+  returned with the <code>PURCHASE_STATE_CHANGED</code> broadcast intent, so you can use this value
+  to verify the integrity of transaction responses form Google Play.</td>
+</tr>
+<tr>
+  <td><code>NOTIFY_IDS</code></td>
+  <td>Array of <code>long</code> values</td>
+  <td>Any valid array of <code>long</code> values</td>
+  <td>Required for <code>GET_PURCHASE_INFORMATION</code> and <code>CONFIRM_NOTIFICATIONS</code>
+  requests.</td>
+  <td>An array of notification identifiers. A notification ID is sent to your application in an
+  <code>IN_APP_NOTIFY</code> broadcast intent every time a purchase changes state. You use the
+  notification to retrieve the details of the purchase state change.</td>
+</tr>
+<tr>
+  <td><code>DEVELOPER_PAYLOAD</code></td>
+  <td><code>String</code></td>
+  <td>Any valid <code>String</code> less than 256 characters long.</td>
+  <td>No</td>
+  <td>A developer-specified string that can be specified when you make a
+  <code>REQUEST_PURCHASE</code> request. This field is returned in the JSON string that contains
+  transaction information for an order. You can use this key to send supplemental information with
+  an order. For example, you can use this key to send index keys with an order, which is useful if
+  you are using a database to store purchase information. We recommend that you do not use this key
+  to send data or content.</td>
+</tr>
+</table>
+
+<p>The <code>BILLING_REQUEST</code> key can have the following values:</p>
+
+<ul>
+  <li><code>CHECK_BILLING_SUPPORTED</code>
+    <p>This request verifies that the Google Play application supports In-app Billing. You
+    usually send this request when your application first starts up. This request is useful if you
+    want to enable or disable certain UI features that are relevant only to In-app Billing.</p>
+  </li>
+  <li><code>REQUEST_PURCHASE</code>
+    <p>This request sends a purchase message to the Google Play application and is the foundation
+    of In-app Billing. You send this request when a user indicates that he or she wants to purchase
+    an item in your application. Google Play then handles the financial transaction by displaying
+    the checkout user interface.</p>
+  </li>
+  <li><code>GET_PURCHASE_INFORMATION</code>
+    <p>This request retrieves the details of a purchase state change. A purchase state change can
+    occur when a purchase request is billed successfully or when a user cancels a transaction during
+    checkout. It can also occur when a previous purchase is refunded. Google Play notifies your
+    application when a purchase changes state, so you only need to send this request when there is
+    transaction information to retrieve.</p>
+  </li>
+  <li><code>CONFIRM_NOTIFICATIONS</code>
+    <p>This request acknowledges that your application received the details of a purchase state
+    change. That is, this message confirms that you sent a <code>GET_PURCHASE_INFORMATION</code>
+    request for a given notification and that you received the purchase information for the
+    notification.</p>
+  </li>
+  <li><code>RESTORE_TRANSACTIONS</code>
+    <p>This request retrieves a user's transaction status for managed purchases (see <a
+    href="../../../../google/play/billing/billing_admin.html#billing-purchase-type">Choosing a
+    Purchase Type</a> for more information). You should send this message only when you need to
+    retrieve a user's transaction status, which is usually only when your application is reinstalled
+    or installed for the first time on a device.</p>
+  </li>
+</ul>
+
+<p>Every In-app Billing request generates a synchronous response. The response is a <code><a href="../../../../reference/android/os/Bundle.html">Bundle</a></code> and can include one or more of the following keys:</p>
+
+<ul>
+  <li><code>RESPONSE_CODE</code>
+    <p>This key provides status information and error information about a request.</p>
+  </li>
+  <li><code>PURCHASE_INTENT</code>
+    <p>This key provides a <code><a href="../../../../reference/android/app/PendingIntent.html">PendingIntent</a></code>, which you use to launch the checkout
+    activity.</p>
+  </li>
+  <li><code>REQUEST_ID</code>
+    <p>This key provides you with a request identifier, which you can use to match asynchronous
+    responses with requests.</p>
+  </li>
+</ul>
+
+<p>Some of these keys are not relevant to certain types of requests. Table 8 shows which keys are
+returned for each request type.</p>
+
+<p class="table-caption"><strong>Table 8.</strong> Description of Bundle keys that are returned with
+each In-app Billing request type.</p>
+
+<table>
+
+<tr>
+<th>Request Type</th>
+<th>Keys Returned</th>
+<th>Possible Response Codes</th>
+</tr>
+<tr>
+  <td><code>CHECK_BILLING_SUPPORTED</code></td>
+  <td><code>RESPONSE_CODE</code></td>
+  <td><code>RESULT_OK</code>, <code>RESULT_BILLING_UNAVAILABLE</code>, <code>RESULT_ERROR</code>,
+  <code>RESULT_DEVELOPER_ERROR</code></td>
+</tr>
+<tr>
+  <td><code>REQUEST_PURCHASE</code></td>
+  <td><code>RESPONSE_CODE</code>, <code>PURCHASE_INTENT</code>, <code>REQUEST_ID</code></td>
+  <td><code>RESULT_OK</code>, <code>RESULT_ERROR</code>, <code>RESULT_DEVELOPER_ERROR</code></td>
+</tr>
+<tr>
+  <td><code>GET_PURCHASE_INFORMATION</code></td>
+  <td><code>RESPONSE_CODE</code>, <code>REQUEST_ID</code></td>
+  <td><code>RESULT_OK</code>, <code>RESULT_ERROR</code>, <code>RESULT_DEVELOPER_ERROR</code></td>
+</tr>
+<tr>
+  <td><code>CONFIRM_NOTIFICATIONS</code></td>
+  <td><code>RESPONSE_CODE</code>, <code>REQUEST_ID</code></td>
+  <td><code>RESULT_OK</code>, <code>RESULT_ERROR</code>, <code>RESULT_DEVELOPER_ERROR</code></td>
+</tr>
+<tr>
+  <td><code>RESTORE_TRANSACTIONS</code></td>
+  <td><code>RESPONSE_CODE</code>, <code>REQUEST_ID</code></td>
+  <td><code>RESULT_OK</code>, <code>RESULT_ERROR</code>, <code>RESULT_DEVELOPER_ERROR</code></td>
+</tr>
+</table>
+
+<h3 id="billing-intents">In-app billing broadcast intents</h3>
+
+<p>The following section describes the In-app Billing broadcast intents that are sent by the Google
+Play application. These broadcast intents inform your application about In-app Billing actions
+that have occurred. Your application must implement a <code><a href="../../../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> to
+receive these broadcast intents, such as the <code>BillingReceiver</code> that's shown in the in-app
+billing <a href="../../../../google/play/billing/v2/billing_integrate.html#billing-download">sample
+application</a>.</p>
+
+<h4>com.android.vending.billing.RESPONSE_CODE</h4>
+
+<p>This broadcast intent contains a Google Play response code, and is sent after you make an
+In-app Billing request. A server response code can indicate that a billing request was successfully
+sent to Google Play or it can indicate that some error occurred during a billing request. This
+intent is not used to report any purchase state changes (such as refund or purchase information).
+For more information about the response codes that are sent with this response, see <a
+href="#billing-codes">Google Play Response Codes for In-app Billing</a>. The sample application
+assigns this broadcast intent to a constant named <code>ACTION_RESPONSE_CODE</code>.</p>
+
+<h5>Extras</h5>
+
+<ul type="none">
+  <li><code>request_id</code>&mdash;a <code>long</code> representing a request ID. A request ID
+  identifies a specific billing request and is returned by Google Play at the time a request is
+  made.</li>
+  <li><code>response_code</code>&mdash;an <code>int</code> representing the Google Play server
+  response code.</li>
+</ul>
+
+<h4>com.android.vending.billing.IN_APP_NOTIFY</h4>
+
+<p>This response indicates that a purchase has changed state, which means a purchase succeeded, was
+canceled, or was refunded. This response contains one or more notification IDs. Each notification ID
+corresponds to a specific server-side message, and each messages contains information about one or
+more transactions. After your application receives an <code>IN_APP_NOTIFY</code> broadcast intent,
+you send a <code>GET_PURCHASE_INFORMATION</code> request with the notification IDs to retrieve the
+message details. The sample application assigns this broadcast intent to a constant named
+<code>ACTION_NOTIFY</code>.</p>
+
+<h5>Extras</h5>
+
+<ul type="none">
+  <li><code>notification_id</code>&mdash;a <code>String</code> representing the notification ID for
+  a given purchase state change. Google Play notifies you when there is a purchase state change
+  and the notification includes a unique notification ID. To get the details of the purchase state
+  change, you send the notification ID with the <code>GET_PURCHASE_INFORMATION</code> request.</li>
+</ul>
+
+<h4>com.android.vending.billing.PURCHASE_STATE_CHANGED</h4>
+
+<p>This broadcast intent contains detailed information about one or more transactions. The
+transaction information is contained in a JSON string. The JSON string is signed and the signature
+is sent to your application along with the JSON string (unencrypted). To help ensure the security of
+your In-app Billing messages, your application can verify the signature of this JSON string. The
+sample application assigns this broadcast intent to a constant named
+<code>ACTION_PURCHASE_STATE_CHANGED</code>.</p>
+
+<h5>Extras</h5>
+
+<ul type="none">
+  <li><code>inapp_signed_data</code>&mdash;a <code>String</code> representing the signed JSON
+  string.</li>
+  <li><code>inapp_signature</code>&mdash;a <code>String</code> representing the signature.</li>
+</ul>
+
+<p class="note"><strong>Note:</strong> Your application should map the broadcast intents and extras
+to constants that are unique to your application. See the <code>Consts.java</code> file in the
+sample application to see how this is done.</p>
+
+<p>The fields in the JSON string are described in the following table (see table 9):</p>
+
+<p class="table-caption"><strong>Table 9.</strong> Description of JSON fields that are returned with
+a <code>PURCHASE_STATE_CHANGED</code> intent.</p>
+
+<table>
+
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+<tr>
+  <td>nonce</td>
+  <td>A number used once. Your application generates the nonce and sends it with the
+  <code>GET_PURCHASE_INFORMATION</code> request. Google Play sends the nonce back as part of the
+  JSON string so you can verify the integrity of the message.</td>
+</tr>
+<tr>
+  <td>notificationId</td>
+  <td>A unique identifier that is sent with an <code>IN_APP_NOTIFY</code> broadcast intent. Each
+  <code>notificationId</code> corresponds to a specify message that is waiting to be retrieved on
+  the Google Play server. Your application sends back the <code>notificationId</code> with the
+  <code>GET_PURCHASE_INFORMATION</code> message so Google Play can determine which messages you
+  are retrieving.</td>
+</tr>
+<tr>
+  <td>orderId</td>
+  <td>A unique order identifier for the transaction. This corresponds to the Google Wallet Order
+  ID.</td>
+</tr>
+<tr>
+  <td>packageName</td>
+  <td>The application package from which the purchase originated.</td>
+</tr>
+<tr>
+  <td>productId</td>
+  <td>The item's product identifier. Every item has a product ID, which you must specify in the
+  application's product list on the Google Play Developer Console.</td>
+</tr>
+<tr>
+  <td>purchaseTime</td>
+  <td>The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970).</td>
+</tr>
+
+<tr>
+  <td>purchaseState</td>
+  <td>The purchase state of the order. Possible values are 0 (purchased), 1 (canceled), 2
+  (refunded), or 3 (expired, for subscription purchases only).</td>
+</tr>
+<tr>
+  <td>purchaseToken</td>
+  <td>A token that uniquely identifies a subscription purchase for a given item and user pair.
+  You can use the token to specify the subscription when querying for subscription validity.
+  
+  <p><br><em>Supported only in In-app Billing API Version 2 and higher.</em></p></td>
+</tr>
+<tr>
+  <td>developerPayload</td>
+  <td>A developer-specified string that contains supplemental information about an order. You can
+  specify a value for this field when you make a <code>REQUEST_PURCHASE</code> request.</td>
+</tr>
+</table>
+
+<!--<h2 id="other-intents">Other Intents</h2> 
+
+<p>The following Intents related to In-app Billing may be useful in your
+implemention. </p> -->
+
+<h3 id="http-api">REST API for subscriptions</h3>
+<p>Google Play offers an HTTP-based API that you can use to remotely query the validity of a specific subscription at any time or cancel a subscription. The API is designed to be used from your backend servers as a way of securely managing subscriptions, as well as extending and integrating subscriptions with other services. See <a href="../../../../google/play/billing/gp-purchase-status-api.html">Purchase Status API</a> for more information.</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico" />
+<title>向后和向上导航 | 安卓开发者</title><!-- STYLESHEETS --><!-- JAVASCRIPT -->
+
+
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../";
+  var devsite = false;
+</script>
+<script src="../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  design" itemscope itemtype="http://schema.org/Article"><!-- Header -->
+
+<a name="top"></a>
+
+    
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../index.html">
+            <img src="../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >设计</a></li>
+                <li class="develop"><a href="../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >开发</a></li>
+                <li class="distribute last"><a href="../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >分发</a></li>
+            </ul><!-- New Search -->
+            
+            
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../')" 
+onkeyup="return search_changed(event, false, '../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div><!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+  
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../design/index.html">入门</a></li>
+                        <li><a href="../../design/style/index.html">样式</a></li>
+                        <li><a href="../../design/patterns/index.html">设计模式</a></li>
+                        <li><a href="../../design/building-blocks/index.html">构造块</a></li>
+                        <li><a href="../../design/downloads/index.html">下载</a></li>
+                        <li><a href="../../design/videos/index.html">视频</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >训练课程</a></li>
+                        <li><a href="../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API 指南</a></li>
+                        <li><a href="../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >参考资源</a></li>
+                        <li><a href="../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >开发工具</a>
+                          <ul><li><a href="../../sdk/index.html">获取 SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../google/index.html">Google 服务</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../distribute/index.html">Google Play 市场</a></li>
+                        <li><a href="../../distribute/googleplay/publish/index.html">应用发布</a></li>
+                        <li><a href="../../distribute/googleplay/promote/index.html">应用推广</a></li>
+                        <li><a href="../../distribute/googleplay/quality/index.html">应用质量</a></li>
+                        <li><a href="../../distribute/googleplay/spotlight/index.html">精品聚焦</a></li>
+                        <li><a href="../../distribute/open.html">开放发行</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div><!-- /Expanded quicknav -->
+          
+        </div>
+    </div><!-- /Header -->
+    
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-3" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+<ul id="nav">
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../design/index.html">入门</a></div>
+    <ul>
+      <li><a href="../../design/get-started/creative-vision.html">视觉创新</a></li>
+      <li><a href="../../design/get-started/principles.html">设计原则</a></li>
+      <li><a href="../../design/get-started/ui-overview.html">界面概述</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../design/style/index.html">样式</a></div>
+    <ul>
+      <li><a href="../../design/style/devices-displays.html">设备与显示</a></li>
+      <li><a href="../../design/style/themes.html">主题</a></li>
+      <li><a href="../../design/style/touch-feedback.html">触控反馈</a></li>
+      <li><a href="../../design/style/metrics-grids.html">度量与网格</a></li>
+      <li><a href="../../design/style/typography.html">排印</a></li>
+      <li><a href="../../design/style/color.html">颜色</a></li>
+      <li><a href="../../design/style/iconography.html">图标</a></li>
+      <li><a href="../../design/style/branding.html">品牌打造</a></li>
+      <li><a href="../../design/style/writing.html">写作风格</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../design/patterns/index.html">设计模式</a></div>
+    <ul>
+      <li><a href="../../design/patterns/new.html">安卓新特性</a></li>
+      <li><a href="../../design/patterns/gestures.html">手势</a></li>
+      <li><a href="../../design/patterns/app-structure.html">应用结构</a></li>
+      <li><a href="../../design/patterns/navigation.html">导航</a></li>
+      <li><a href="../../design/patterns/actionbar.html">操作栏</a></li>
+      <li><a href="../../design/patterns/navigation-drawer.html">导航抽屉</a></li>
+      <li><a href="../../design/patterns/multi-pane-layouts.html">多面板布局</a></li>
+      <li><a href="../../design/patterns/swipe-views.html">滑动视图</a></li>
+      <li><a href="../../design/patterns/fullscreen.html">全屏幕</a></li>
+      <li><a href="../../design/patterns/selection.html">选择</a></li>
+      <li><a href="../../design/patterns/confirming-acknowledging.html">确认和提醒</a></li>
+      <li><a href="../../design/patterns/notifications.html">通知</a></li>
+      <li><a href="../../design/patterns/widgets.html">小部件</a></li>
+      <li><a href="../../design/patterns/settings.html">设置</a></li>
+      <li><a href="../../design/patterns/help.html">帮助</a></li>
+      <li><a href="../../design/patterns/compatibility.html">兼容性</a></li>
+      <li><a href="../../design/patterns/accessibility.html">辅助功能</a></li>
+      <li><a href="../../design/patterns/pure-android.html">安卓风格</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../design/building-blocks/index.html">构造块</a></div>
+    <ul>
+      <li><a href="../../design/building-blocks/tabs.html">选项卡</a></li>
+      <li><a href="../../design/building-blocks/lists.html">列表</a></li>
+      <li><a href="../../design/building-blocks/grid-lists.html">网格列表</a></li>
+      <li><a href="../../design/building-blocks/scrolling.html">滚动条</a></li>
+      <li><a href="../../design/building-blocks/spinners.html">下拉列表</a></li>
+      <li><a href="../../design/building-blocks/buttons.html">按钮</a></li>
+      <li><a href="../../design/building-blocks/text-fields.html">文本框</a></li>
+      <li><a href="../../design/building-blocks/seek-bars.html">滑动条</a></li>
+      <li><a href="../../design/building-blocks/progress.html">进度与活动</a></li>
+      <li><a href="../../design/building-blocks/switches.html">开关</a></li>
+      <li><a href="../../design/building-blocks/dialogs.html">对话框</a></li>
+      <li><a href="../../design/building-blocks/pickers.html">选择器</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../design/downloads/index.html">下载</a></div>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header empty"><a href="../../design/videos/index.html">视频</a></div>
+  </li>
+
+</ul>
+       
+
+      </div>
+    </div><!-- end side-nav --> 
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-13" id="doc-col" >
+
+
+  
+  <div class="layout-content-row content-header ">
+    <div class="layout-content-col span-9">
+      <h1 itemprop="name">向后和向上导航</h1>
+      
+    </div>
+    
+      <div class="paging-links layout-content-col span-4" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <a href="#" class="prev-page-link hide"
+            zh-tw-lang="上一堂課"
+            zh-cn-lang="上一课"
+            ru-lang="Предыдущий"
+            ko-lang="이전"
+            ja-lang="前へ"
+            es-lang="Anterior"               
+            >上一节</a> <a href="#" class="next-page-link hide"
+            zh-tw-lang="下一堂課"
+            zh-cn-lang="下一课"
+            ru-lang="Следующий"
+            ko-lang="다음"
+            ja-lang="次へ"
+            es-lang="Siguiente"               
+            >下一节</a>
+      </div>
+    
+  </div>
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <a class="notice-developers" href="../../training/implementing-navigation/index.html">
+  <div>
+    <h3>开发者文档</h3>
+    <p>实现高效的导航</p>
+  </div>
+</a>
+
+<p>一致的导航是整个用户体验的重要组成部分。没有什么比不一致或出人意料的导航方式更让人沮丧了。Android 3.0 在全局导航行为做出了重大改变。认真遵守下面关于向后和向上导航指导能让你的应用导航机制可信而可靠。</p>
+<p>Android 2.3 和之前的版本依赖系统<em>返回</em>按键来实现应用导航。自从 Android 3.0 引入了操作栏，出现了第二个导航机制：<em>向上</em>按钮，它包括应用图标和左箭头。</p>
+
+<img src="../../design/media/navigation_with_back_and_up.png">
+
+<h2 id="up-vs-back">向上还是向后</h2>
+
+<p>向上按钮用于应用基于屏幕的层级结构的导航。例如，如果屏幕A显示一个列表，选择一个列表项开始浏览屏幕B（显示列表项的更多细节），那么屏幕B应该提供返回屏幕A的向上按钮。</p>
+<p>如果屏幕时应用的顶层屏幕（即，主屏幕），它就不应该显示向上按钮。</p>
+
+<p>系统返回按键用于在用户最近访问的屏幕中导航，这种导航是根据时间从新到旧的顺序决定的。它是根据屏幕之间的临时关系，而不是应用的层次结构。</p>
+
+<p>当前一个访问的屏幕也是当前屏幕的上级时，按下返回按键和按下向上按钮有同样的结果 - 这是常发生的事情。但是，和向上按钮不同，向上按钮保证用户在你的应用中，返回按键可以将用户返回至主屏幕甚至是不同的应用。</p>
+
+<img src="../../design/media/navigation_up_vs_back_gmail.png">
+
+<p>返回按键也支持一些和屏幕间导航无关的行为：
+</p>
+<ul>
+<li>取消浮动窗口（对话框、弹窗）</li>
+<li>取消情境操作栏，去掉选择项的高亮</li>
+<li>隐藏软键盘（IME）</li>
+</ul>
+<h2 id="within-app">在应用中导航</h2>
+
+<h4>多入口屏幕的导航</h4>
+<p>有时屏幕在应用的层级结构中没有严格的位置，它能从多个入口访问 - 像设置屏幕能充任何应用的其他屏幕访问。这种情况中，向上按钮应该指定返回哪一个屏幕，应该和返回按键的行为保持一致。</p>
+<h4>改变屏幕的视图</h4>
+<p>改变屏幕的视图选项不会改变向上或向后导航行为：屏幕仍然在应用层次结构的相同位置，而且也不会产生新的导航历史。</p>
+<p>像这样的视图改变的例子：</p>
+<ul>
+<li>用选项卡或者左右滑动来切换视图</li>
+<li>使用下拉菜单切换视图</li>
+<li>列表过滤</li>
+<li>列表排序</li>
+<li>改变显示特征（像缩放）</li>
+</ul>
+<h4>在相邻屏幕间导航</h4>
+<p>当应用支持从列表视图到某个列表项视图的访问，常常会支持直接在该列表项视图访问相邻列表项视图。例如，在 Gmail 应用中，可以在对话中向左向右滑动来查看相同收件箱的其它对话。就像改变屏幕的视图，这样的导航也不会改变向上或向后导航的行为。</p>
+
+<img src="../../design/media/navigation_between_siblings_gmail.png">
+
+<p>但是，当浏览不是一个列表中的其它相关细节的视图时 - 譬如当浏览 Play 商店应用中同一个开发者的应用或者同一个艺术家的专辑。在这些例子中，访问每一个连接都会留下访问历史，这样返回按键会返回每一个访问过的屏幕。向上按钮应该跳过这些相关的屏幕，直接返回最近访问的上级屏幕。</p>
+
+<img src="../../design/media/navigation_between_siblings_market1.png">
+
+<p>你应该根据细节视图的情况来决定向上按钮的行为。继续上面 Play 商店的例子，假如用户从刚看过的图书里查看它改编的电影。这里，向上按钮返回到电影的容器（电影屏幕），而这个屏幕用户之前没有访问过。</p>
+
+<img src="../../design/media/navigation_between_siblings_market2.png">
+
+<h2 id="into-your-app">从主屏幕小部件和通知访问你的应用</h2>
+
+<p>你可以使用主屏幕小部件或者通知来帮助用户直接访问用户层级结构的某一个屏幕。例如，Gmail 收件箱小部件和新消息通知都能跳过收件箱屏幕，把用户直接带到一个具体的对话视图中。</p>
+
+<p>这这两个例子中，应该这样使用向上按钮：</p>
+
+<ul>
+<li><em>如果目标屏幕一般是从应用中一个特定的屏幕访问</em>，向上按钮应该导航至那个特定的屏幕。</li>
+<li><em>其它情况</em>，向上按钮应该导航至应用的最顶级屏幕（应用主屏幕）。</li>
+</ul>
+
+<p>而关于这些例子中的返回按键，你应该将任务的返回栈设为应用的主屏幕。这样当用户忘了它们如何访问你的应用时，在退出前可以回到应用的主屏幕。</p>
+
+<p>作为一个例子，Gmail 应用的主屏幕小部件有一个访问撰写屏幕的快捷按钮。这是从撰写屏幕向上或向后导航会将用户带到收件箱，在收件箱使用返回按钮将退回至主屏幕。</p>
+
+<img src="../../design/media/navigation_from_outside_back.png">
+
+<h4>间接消息</h4>
+
+<p>当应用需要同时提供多个事件的信息，它可以使用一个消息将用户导航至一个插入式屏幕。这个屏幕会总结所有的事件，提供用户进一步访问应用的路径。这种类型的通知称作<em>间接通知</em>。</p>
+
+<p>不像标准通知，在间接通知的插屏中使用返回按键将用户返回到用户出发通知前的点 - 没有额外的屏幕插入到返回屏幕栈中。一旦用户从插屏中继续使用应用，向上和向后导航就和从标准通知访问的行为一致，在应用中继续导航而不是返回到之前的插屏中。</p>
+
+<p>例如，当用户在 Gmail 应用中收到一个从日历来的间接通知。触摸这个通知打开一个插屏，显示不同事件的提醒。从插屏按返回按键返回至 Gmail 应用。触摸插屏中的一个事件将用户导航至日历应用来显示更多的细节。从事件细节屏幕，向上和向后导航都会退出到日历的顶级视图。</p>
+
+<img src="../../design/media/navigation_indirect_notification.png">
+
+<h4>弹出式通知</h4>
+
+<p><em>弹出式通知</em>跳过通知抽屉，直接出现在用户眼前。它们不常使用到，而且<strong>应该限制于需要立刻回复或者必须要打断用户当前环境的事件</strong>。例如，Talk 应用使用这种弹窗来通知用户收到了一个朋友的视频聊天，这个邀请会在几秒后自动超时关闭。</p>
+
+<p>而关于这种情况下的导航行为，弹出式通知和间接通知的插屏行为类似。返回按键取消弹出式通知。如果用户从弹出式同时进入通知的应用，向上和向后导航应该遵循标准通知的规则，在应用内导航。</p>
+
+<img src="../../design/media/navigation_popup_notification.png">
+
+<h2 id="between-apps">在应用间导航</h2>
+
+<p>安卓系统的一个基本能力是应用间可以互相激活，这让用户可以从一个应用访问另一个应用。例如，一个需要拍摄照片的应用可以激活相机应用，相机应用可以将照片返回原应用。这对两个应用的开发者都是一个巨大的福利，开发者可以利用其它应用，用户则可以用常用的软件执行相关操作而享受一致的用户体验。</p>
+
+<p>要理解这种应用间的导航，首先要理解下面讨论的安卓框架行为。</p>
+
+<h4>活动、任务和意图</h4>
+
+<p>在安卓系统里，<strong>活动</strong>是一个应用组件，它定义了屏幕的信息和用户可以执行的所有相关操作。你的应用是活动的集合，包括你创建的活动和从其它应用里复用的活动。</p>
+
+<p><strong>任务</strong>是用户需要完成一个目标使用的一系列的活动。一个任务既可以只用一个应用中的活动，可以借用其它应用中的活动。</p>
+
+<p><strong>意图</strong>是应用的信号机制，它希望其它应用来辅助执行某个操作。一个应用的活动可以声明它们希望回应哪些意图。对于像“分享”这种常用的意图，用户可能有许多安装的应用会相应这个请求。</p>
+
+<h4>例子：支持分享的应用之间互相访问</h4>
+
+<p>要理解活动、任务和意图如何一起工作，考虑应用如何让用户可以使用另一个应用分享内容的例子。从主屏幕启动 Play 商店应用，开始新任务A（先下图）。在 Play 商店中浏览，点击一个推广的图书查看它的详情，用户保持在相同的任务里，在这个任务里添加了一个新的活动。点击分享操作会弹出一个对话框列出每一个注册了分享意图的活动（来自不同的应用）。</p>
+
+<img src="../../design/media/navigation_between_apps_inward.png">
+
+<p>当用户选择通过 Gmail 应用分享，Gmail 的撰写活动被添加到任务A中 - 没有新的任务被创建。如果 Gmail 在后台有包含自己的任务，这也不会影响。</p>
+
+<p>对于撰写活动，发送消息或者触摸返回按键会将用户返回至书本详情活动。继续触摸返回按键会导航返回 Play 商店，再按返回按键返回至主屏幕。</p>
+
+<img src="../../design/media/navigation_between_apps_back.png">
+
+<p>但是在撰写活动中触摸向上按钮，用户表示希望继续留在 Gmail 应用中。Gmail 的对话列表活动出现，一个新的任务B会因此创建。新的任务会从应用主屏幕继承，触摸返回按键会从对话列表返回到应用主屏幕。</p>
+
+<img src="../../design/media/navigation_between_apps_up.png">
+
+<p>任务A会在后台保持，用户可能会之后返回任务A（譬如从最近访问屏幕返回）。如果 Gmail 已经在后台有自己的任务，它会被任务B替换 - 之前的环境被用户的新目标取代。</p>
+
+<p>当你的应用注册一个应用深层次的活动来处理意图时， 参考<a href="#into-your-app">使用主屏幕小部件和通知来访问你的应用</a>来知道如何指定向上按钮导航行为。</p>
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-9" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+            <a href="#" class="prev-page-link hide"
+                zh-tw-lang="上一堂課"
+                zh-cn-lang="上一课"
+                ru-lang="Предыдущий"
+                ko-lang="이전"
+                ja-lang="前へ"
+                es-lang="Anterior"               
+                >上一节</a> <a href="#" class="next-page-link hide"
+                zh-tw-lang="下一堂課"
+                zh-cn-lang="下一课"
+                ru-lang="Следующий"
+                ko-lang="다음"
+                ja-lang="次へ"
+                es-lang="Siguiente"               
+                >下一节</a>
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div><!-- end jd-content --> 
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../license.html">Content 
+  License</a>.
+  
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../support.html">Support</a>
+  </p>
+  </div>
+
+</div><!-- end footer --> 
+</div><!-- end doc-content -->
+
+</div><!-- end body-content -->  
+
+
+
+
+
+
+</body>
+</html>
+
+
+

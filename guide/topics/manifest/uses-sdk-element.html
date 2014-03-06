@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico" />
+<title>&lt;uses-sdk&gt; | Android Developers</title>
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet"
+href="http://fonts.googleapis.com/css?family=Roboto:regular,medium,thin,italic,mediumitalic,bold" title="roboto">
+<link href="../../../assets/css/default.css" rel="stylesheet" type="text/css">
+
+
+
+<!-- JAVASCRIPT -->
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="../../../assets/js/android_3p-bundle.js" type="text/javascript"></script>
+<script type="text/javascript">
+  var toRoot = "../../../";
+  var devsite = false;
+</script>
+<script src="../../../assets/js/docs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-5831155-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body class="gc-documentation 
+  develop guide" itemscope itemtype="http://schema.org/Article">
+
+<a name="top"></a>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="wrap" id="header-wrap">
+          <div class="col-3 logo">
+          <a href="../../../index.html">
+            <img src="../../../assets/images/dac_logo.png" width="123" height="25" alt="Android Developers" />
+          </a>
+          <div class="btn-quicknav" id="btn-quicknav">
+          	<a href="#" class="arrow-inactive">Quicknav</a>
+			      <a href="#" class="arrow-active">Quicknav</a>
+          </div>
+          </div>
+            <ul class="nav-x col-9">
+                <li class="design">
+                  <a href="../../../design/index.html"
+                  zh-tw-lang="設計"
+                  zh-cn-lang="设计"
+                  ru-lang="Проектирование"
+                  ko-lang="디자인"
+                  ja-lang="設計"
+                  es-lang="Diseñar"               
+                  >Design</a></li>
+                <li class="develop"><a href="../../../develop/index.html"
+                  zh-tw-lang="開發"
+                  zh-cn-lang="开发"
+                  ru-lang="Разработка"
+                  ko-lang="개발"
+                  ja-lang="開発"
+                  es-lang="Desarrollar"               
+                  >Develop</a></li>
+                <li class="distribute last"><a href="../../../distribute/index.html"
+                  zh-tw-lang="發佈"
+                  zh-cn-lang="分发"
+                  ru-lang="Распространение"
+                  ko-lang="배포"
+                  ja-lang="配布"
+                  es-lang="Distribuir"               
+                  >Distribute</a></li>
+            </ul>
+            
+            <!-- New Search -->
+            <div class="menu-container">
+            <div class="moremenu">
+    <div id="more-btn"></div>
+  </div>
+  <div class="morehover" id="moremenu">
+    <div class="top"></div>
+    <div class="mid">
+      <div class="header">Links</div>
+      <ul>
+        <li><a href="https://play.google.com/apps/publish/">Google Play Developer Console</a></li>
+        <li><a href="http://android-developers.blogspot.com/">Android Developers Blog</a></li>
+        <li><a href="../../../about/index.html">About Android</a></li>
+      </ul>
+      <div class="header">Android Sites</div>
+      <ul>
+        <li><a href="http://www.android.com">Android.com</a></li>
+        <li class="active"><a>Android Developers</a></li>
+        <li><a href="http://source.android.com">Android Open Source Project</a></li>
+      </ul>
+      
+      
+      
+      
+
+
+      <br class="clearfix" />
+    </div>
+    <div class="bottom"></div>
+  </div>
+  <div class="search" id="search-container">
+    <div class="search-inner">
+      <div id="search-btn"></div>
+      <div class="left"></div>
+      <form onsubmit="return submit_search()">
+        <input id="search_autocomplete" type="text" value="" autocomplete="off" name="q"
+onfocus="search_focus_changed(this, true)" onblur="search_focus_changed(this, false)"
+onkeydown="return search_changed(event, true, '../../../')" 
+onkeyup="return search_changed(event, false, '../../../')" />
+      </form>
+      <div class="right"></div>
+        <a class="close hide">close</a>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper reference">
+    <div class="suggest-card reference no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  <div class="search_filtered_wrapper docs">
+    <div class="suggest-card dummy no-display">&nbsp;</div>
+    <div class="suggest-card develop no-display">
+      <ul class="search_filtered">
+      </ul>
+      <div class="child-card guides no-display">
+      </div>
+      <div class="child-card training no-display">
+      </div>
+    </div>
+    <div class="suggest-card design no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+    <div class="suggest-card distribute no-display">
+      <ul class="search_filtered">
+      </ul>
+    </div>
+  </div>
+
+  </div>
+  <!-- /New Search>
+          
+          
+          <!-- Expanded quicknav -->
+           <div id="quicknav" class="col-9">
+                <ul>
+                    <li class="design">
+                      <ul>
+                        <li><a href="../../../design/index.html">Get Started</a></li>
+                        <li><a href="../../../design/style/index.html">Style</a></li>
+                        <li><a href="../../../design/patterns/index.html">Patterns</a></li>
+                        <li><a href="../../../design/building-blocks/index.html">Building Blocks</a></li>
+                        <li><a href="../../../design/downloads/index.html">Downloads</a></li>
+                        <li><a href="../../../design/videos/index.html">Videos</a></li>
+                      </ul>
+                    </li>
+                    <li class="develop">
+                      <ul>
+                        <li><a href="../../../training/index.html"
+                          zh-tw-lang="訓練課程"
+                          zh-cn-lang="培训"
+                          ru-lang="Курсы"
+                          ko-lang="교육"
+                          ja-lang="トレーニング"
+                          es-lang="Capacitación"               
+                          >Training</a></li>
+                        <li><a href="../../../guide/components/index.html"
+                          zh-tw-lang="API 指南"
+                          zh-cn-lang="API 指南"
+                          ru-lang="Руководства по API"
+                          ko-lang="API 가이드"
+                          ja-lang="API ガイド"
+                          es-lang="Guías de la API"               
+                          >API Guides</a></li>
+                        <li><a href="../../../reference/packages.html"
+                          zh-tw-lang="參考資源"
+                          zh-cn-lang="参考"
+                          ru-lang="Справочник"
+                          ko-lang="참조문서"
+                          ja-lang="リファレンス"
+                          es-lang="Referencia"               
+                          >Reference</a></li>
+                        <li><a href="../../../tools/index.html"
+                          zh-tw-lang="相關工具"
+                          zh-cn-lang="工具"
+                          ru-lang="Инструменты"
+                          ko-lang="도구"
+                          ja-lang="ツール"
+                          es-lang="Herramientas"               
+                          >Tools</a>
+                          <ul><li><a href="../../../sdk/index.html">Get the SDK</a></li></ul>
+                        </li>
+                        <li><a href="../../../google/index.html">Google Services</a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                    <li class="distribute last">
+                      <ul>
+                        <li><a href="../../../distribute/index.html">Google Play</a></li>
+                        <li><a href="../../../distribute/googleplay/publish/index.html">Publishing</a></li>
+                        <li><a href="../../../distribute/googleplay/promote/index.html">Promoting</a></li>
+                        <li><a href="../../../distribute/googleplay/quality/index.html">App Quality</a></li>
+                        <li><a href="../../../distribute/googleplay/spotlight/index.html">Spotlight</a></li>
+                        <li><a href="../../../distribute/open.html">Open Distribution</a></li>
+                      </ul>
+                    </li>
+                </ul>
+          </div>
+          <!-- /Expanded quicknav -->
+        </div>
+    </div>
+    <!-- /Header -->
+    
+    
+  <div id="searchResults" class="wrap" style="display:none;">
+          <h2 id="searchTitle">Results</h2>
+          <div id="leftSearchControl" class="search-control">Loading...</div>
+  </div>
+    
+    
+  
+    <!-- Secondary x-nav -->
+    <div id="nav-x">
+        <div class="wrap">
+            <ul class="nav-x col-9 develop" style="width:100%">
+                <li class="training"><a href="../../../training/index.html"
+                  zh-tw-lang="訓練課程"
+                  zh-cn-lang="培训"
+                  ru-lang="Курсы"
+                  ko-lang="교육"
+                  ja-lang="トレーニング"
+                  es-lang="Capacitación"               
+                  >Training</a></li>
+                <li class="guide"><a href="../../../guide/components/index.html"
+                  zh-tw-lang="API 指南"
+                  zh-cn-lang="API 指南"
+                  ru-lang="Руководства по API"
+                  ko-lang="API 가이드"
+                  ja-lang="API ガイド"
+                  es-lang="Guías de la API"               
+                  >API Guides</a></li>
+                <li class="reference"><a href="../../../reference/packages.html"
+                  zh-tw-lang="參考資源"
+                  zh-cn-lang="参考"
+                  ru-lang="Справочник"
+                  ko-lang="참조문서"
+                  ja-lang="リファレンス"
+                  es-lang="Referencia"               
+                  >Reference</a></li>
+                <li class="tools"><a href="../../../tools/index.html"
+                  zh-tw-lang="相關工具"
+                  zh-cn-lang="工具"
+                  ru-lang="Инструменты"
+                  ko-lang="도구"
+                  ja-lang="ツール"
+                  es-lang="Herramientas"
+                  >Tools</a></li>
+                <li class="google"><a href="../../../google/index.html"
+                  >Google Services</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <!-- /Sendondary x-nav -->
+  
+
+
+
+
+  
+
+  <div class="wrap clearfix" id="body-content">
+    <div class="col-4" id="side-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <div id="devdoc-nav" class="scroll-pane">
+<a class="totop" href="#top" data-g-event="left-nav-top">to top</a>
+
+
+
+<ul id="nav">
+  <!--  Walkthrough for Developers -- quick overview of what it's like to develop on Android -->
+  <!--<li style="color:red">Overview</li> -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/components/index.html">
+        <span class="en">App Components</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/components/fundamentals.html">
+            <span class="en">App Fundamentals</span></a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/activities.html">
+            <span class="en">Activities</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/fragments.html">
+              <span class="en">Fragments</span>
+            </a></li>
+          <li><a href="../../../guide/components/loaders.html">
+              <span class="en">Loaders</span>
+            </a></li>
+          <li><a href="../../../guide/components/tasks-and-back-stack.html">
+              <span class="en">Tasks and Back Stack</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/components/services.html">
+            <span class="en">Services</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/components/bound-services.html">
+              <span class="en">Bound Services</span>
+            </a></li>
+          <li><a href="../../../guide/components/aidl.html">
+              <span class="en">AIDL</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/providers/content-providers.html">
+            <span class="en">Content Providers</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/providers/content-provider-basics.html">
+              <span class="en">Content Provider Basics</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/content-provider-creating.html">
+              <span class="en">Creating a Content Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/calendar-provider.html">
+              <span class="en">Calendar Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/contacts-provider.html">
+              <span class="en">Contacts Provider</span>
+            </a></li>
+          <li><a href="../../../guide/topics/providers/document-provider.html">
+              <span class="en">Storage Access Framework</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/components/intents-filters.html">
+          <span class="en">Intents and Intent Filters</span>
+        </a></li>
+      <li><a href="../../../guide/components/processes-and-threads.html">
+          <span class="en">Processes and Threads</span>
+        </a>
+      </li>
+      <li><a href="../../../guide/topics/security/permissions.html">
+          <span class="en">Permissions</span>
+        </a>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/appwidgets/index.html">
+            <span class="en">App Widgets</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/appwidgets/host.html">
+              <span class="en">App Widget Host</span>
+            </a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/manifest/manifest-intro.html">
+          <span class="en">Android Manifest</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/manifest/action-element.html">&lt;action&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/activity-alias-element.html">&lt;activity-alias&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/category-element.html">&lt;category&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/compatible-screens-element.html">&lt;compatible-screens&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/data-element.html">&lt;data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/grant-uri-permission-element.html">&lt;grant-uri-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/instrumentation-element.html">&lt;instrumentation&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/intent-filter-element.html">&lt;intent-filter&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/meta-data-element.html">&lt;meta-data&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/path-permission-element.html">&lt;path-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-element.html">&lt;permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-group-element.html">&lt;permission-group&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/permission-tree-element.html">&lt;permission-tree&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-gl-texture-element.html">&lt;supports-gl-texture&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/supports-screens-element.html">&lt;supports-screens&gt;</a></li><!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-configuration-element.html">&lt;uses-configuration&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-feature-element.html">&lt;uses-feature&gt;</a></li> <!-- ##api level 4## -->
+          <li><a href="../../../guide/topics/manifest/uses-library-element.html">&lt;uses-library&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-permission-element.html">&lt;uses-permission&gt;</a></li>
+          <li><a href="../../../guide/topics/manifest/uses-sdk-element.html">&lt;uses-sdk&gt;</a></li>
+        </ul>
+   </li><!-- end of the manifest file -->
+
+    </ul>
+  </li>
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/topics/ui/index.html">
+        <span class="en">User Interface</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/topics/ui/overview.html">
+          <span class="en">Overview</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/declaring-layout.html">
+            <span class="en">Layouts</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/layout/linear.html">
+              <span class="en">Linear Layout</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/relative.html">
+              <span class="en">Relative Layout</span>
+            </a></li>
+       <!--
+          <li><a href="../../../guide/topics/ui/layout/grid.html">
+              <span class="en">Grid Layout</span>
+            </a></li>
+       -->
+          <li><a href="../../../guide/topics/ui/layout/listview.html">
+              <span class="en">List View</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/layout/gridview.html">
+              <span class="en">Grid View</span>
+            </a></li>
+        </ul>
+      </li>
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/controls.html">
+            <span class="en">Input Controls</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/controls/button.html">
+              <span class="en">Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/text.html">
+              <span class="en">Text Fields</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/checkbox.html">
+              <span class="en">Checkboxes</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/radiobutton.html">
+              <span class="en">Radio Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/togglebutton.html">
+              <span class="en">Toggle Buttons</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/spinner.html">
+              <span class="en">Spinners</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/controls/pickers.html">
+              <span class="en">Pickers</span>
+            </a></li>
+<!--
+          <li><a href="../../../guide/topics/ui/controls/progress.html">
+              <span class="en">Seek and Progress Bars</span>
+            </a></li>
+-->
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/ui-events.html">
+          <span class="en">Input Events</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/menus.html">
+          <span class="en">Menus</span></span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/actionbar.html">
+           <span class="en">Action Bar</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/settings.html">
+            <span class="en">Settings</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/dialogs.html">
+           <span class="en">Dialogs</span>
+          </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/notifications.html">
+          <span class="en">Notifications</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/notifiers/toasts.html">
+          <span class="en">Toasts</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/search/index.html">
+            <span class="en">Search</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/search/search-dialog.html">Creating a Search Interface</a></li>
+            <li><a href="../../../guide/topics/search/adding-recent-query-suggestions.html">Adding Recent Query Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/adding-custom-suggestions.html">Adding Custom Suggestions</a></li>
+            <li><a href="../../../guide/topics/search/searchable-config.html">Searchable Configuration</a></li>
+          </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/drag-drop.html">
+          <span class="en">Drag and Drop</span>
+        </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/ui/accessibility/index.html">
+            <span class="en">Accessibility</span>
+          </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/ui/accessibility/apps.html">
+              <span class="en">Making Applications Accessible</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/checklist.html">
+              <span class="en">Accessibility Developer Checklist</span>
+            </a></li>
+          <li><a href="../../../guide/topics/ui/accessibility/services.html">
+              <span class="en">Building Accessibility Services</span>
+            </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/ui/themes.html">
+          <span class="en">Styles and Themes</span>
+        </a></li>
+      <li><a href="../../../guide/topics/ui/custom-components.html">
+          <span class="en">Custom Components</span>
+        </a></li>
+    </ul>
+  </li><!-- end of User Interface -->
+
+    <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/resources/index.html">
+           <span class="en">App Resources</span>
+         </a></div>
+      <ul>
+        <li><a href="../../../guide/topics/resources/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+          <li><a href="../../../guide/topics/resources/providing-resources.html">
+            <span class="en">Providing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/accessing-resources.html">
+            <span class="en">Accessing Resources</span>
+          </a></li>
+        <li><a href="../../../guide/topics/resources/runtime-changes.html">
+              <span class="en">Handling Runtime Changes</span>
+            </a></li>
+        <li><a href="../../../guide/topics/resources/localization.html">
+            <span class="en">Localization</span>
+          </a></li>
+        <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/resources/available-resources.html">
+              <span class="en">Resource Types</span>
+            </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/resources/animation-resource.html">Animation</a></li>
+            <li><a href="../../../guide/topics/resources/color-list-resource.html">Color State List</a></li>
+            <li><a href="../../../guide/topics/resources/drawable-resource.html">Drawable</a></li>
+            <li><a href="../../../guide/topics/resources/layout-resource.html">Layout</a></li>
+            <li><a href="../../../guide/topics/resources/menu-resource.html">Menu</a></li>
+            <li><a href="../../../guide/topics/resources/string-resource.html">String</a></li>
+            <li><a href="../../../guide/topics/resources/style-resource.html">Style</a></li>
+            <li><a href="../../../guide/topics/resources/more-resources.html">More Types</a></li>
+          </ul>
+        </li><!-- end of resource types -->
+      </ul>
+    </li><!-- end of app resources -->
+
+   <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/graphics/index.html">
+          <span class="en">Animation and Graphics</span>
+        </a></div>
+      <ul>
+      <li class="nav-section">
+        <li><a href="../../../guide/topics/graphics/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/prop-animation.html">
+            <span class="en">Property Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/view-animation.html">
+            <span class="en">View Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/drawable-animation.html">
+            <span class="en">Drawable Animation</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/2d-graphics.html">
+            <span class="en">Canvas and Drawables</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/opengl.html">
+            <span class="en">OpenGL ES</span>
+          </a></li>
+        <li><a href="../../../guide/topics/graphics/hardware-accel.html">
+            <span class="en">Hardware Acceleration</span>
+          </a></li>
+       </ul>
+    </li><!-- end of graphics and animation-->
+
+   <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/topics/renderscript/index.html">
+              <span class="en">Computation</span>
+            </a></div>
+            <ul>
+              <li><a href="../../../guide/topics/renderscript/compute.html">
+                    <span class="en">RenderScript</span></a>
+                  </li>
+
+              <li><a href="../../../guide/topics/renderscript/advanced.html">
+                    <span class="en">Advanced RenderScript</span></a>
+                  </li>
+              <li><a href="../../../guide/topics/renderscript/reference.html">
+                    <span class="en">Runtime API Reference</span></a>
+              </li>
+             </ul>
+   </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/media/index.html">
+            <span class="en">Media and Camera</span>
+          </a></div>
+          <ul>
+            <li><a href="../../../guide/topics/media/mediaplayer.html">
+                  <span class="en">Media Playback</span></a>
+                </li>
+            <li><a href="../../../guide/appendix/media-formats.html">
+                   <span class="en">Supported Media Formats</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/audio-capture.html">
+                  <span class="en">Audio Capture</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/jetplayer.html">
+                  <span class="en">JetPlayer</span></a>
+                </li>
+            <li><a href="../../../guide/topics/media/camera.html">
+                  <span class="en">Camera</span></a>
+                </li>
+          </ul>
+      </li><!-- end of media and camera -->
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/sensors/index.html">
+              <span class="en">Location and Sensors</span>
+              </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/location/index.html">
+               <span class="en">Location and Maps</span>
+             </a>
+          <li><a href="../../../guide/topics/location/strategies.html">
+               <span class="en">Location Strategies</span>
+             </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_overview.html">
+              <span class="en">Sensors Overview</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_motion.html">
+              <span class="en">Motion Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_position.html">
+              <span class="en">Position Sensors</span>
+            </a></li>
+          <li><a href="../../../guide/topics/sensors/sensors_environment.html">
+              <span class="en">Environment Sensors</span>
+            </a></li>
+        </ul>
+      </li><!-- end of location and sensors -->
+
+
+
+<li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/index.html">
+               <span class="en">Connectivity</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/bluetooth.html">
+          <span class="en">Bluetooth</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/bluetooth-le.html">Bluetooth Low Energy</a></li>
+        </ul>
+      </li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/connectivity/nfc/index.html">
+          <span class="en">NFC</span></a>
+        </div>
+        <ul>
+          <li><a href="../../../guide/topics/connectivity/nfc/nfc.html">NFC Basics</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/advanced-nfc.html">Advanced NFC</a></li>
+          <li><a href="../../../guide/topics/connectivity/nfc/hce.html">Host-based Card Emulation</a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/topics/connectivity/wifip2p.html">
+            <span class="en">Wi-Fi P2P</span></a>
+          </li>
+      <li class="nav-section">
+          <div class="nav-section-header"><a href="../../../guide/topics/connectivity/usb/index.html">
+            <span class="en">USB</span></a>
+          </div>
+            <ul>
+              <li><a href="../../../guide/topics/connectivity/usb/accessory.html">Accessory</a></li>
+              <li><a href="../../../guide/topics/connectivity/usb/host.html">Host</a></li>
+            </ul>
+     </li>
+     <li><a href="../../../guide/topics/connectivity/sip.html">
+            <span class="en">SIP</span>
+          </a>
+     </li>
+
+    </ul>
+  </li><!-- end of connectivity -->
+
+
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/topics/text/index.html">
+            <span class="en">Text and Input</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/topics/text/copy-paste.html">
+              <span class="en">Copy and Paste</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/creating-input-method.html">
+              <span class="en">Creating an IME</span>
+            </a></li>
+          <li><a href="../../../guide/topics/text/spell-checker-framework.html">
+              <span class="en">Spelling Checker</span>
+            </a></li>
+        </ul>
+      </li><!-- end of text and input -->
+
+     <li class="nav-section">
+      <div class="nav-section-header"><a href="../../../guide/topics/data/index.html">
+          <span class="en">Data Storage</span>
+        </a></div>
+      <ul>
+         <li><a href="../../../guide/topics/data/data-storage.html">
+            <span class="en">Storage Options</span>
+           </a></li>
+        <li><a href="../../../guide/topics/data/backup.html">
+            <span class="en">Data Backup</span>
+          </a></li>
+        <li><a href="../../../guide/topics/data/install-location.html">
+            <span class="en">App Install Location</span>
+          </a></li>
+      </ul>
+    </li><!-- end of data storage -->
+
+
+  <li class="nav-section">
+           <div class="nav-section-header"><a href="../../../guide/topics/admin/index.html">
+               <span class="en">Administration</span>
+             </a></div>
+           <ul>
+              <li>
+                <a href="../../../guide/topics/admin/device-admin.html">
+                <span class="en">Device Policies</span></a>
+              </li>
+            <!--
+              <li>
+                <a href="../../../guide/topics/admin/keychain.html">
+                <span class="en">Certificate Store</span></a>
+              </li>
+            -->
+           </ul>
+  </li><!-- end of administration -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/webapps/index.html">
+    <span class="en">Web Apps</span>
+    </a></div>
+    <ul>
+      <li><a href="../../../guide/webapps/overview.html">
+            <span class="en">Overview</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/targeting.html">
+            <span class="en">Targeting Screens from Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/webview.html">
+            <span class="en">Building Web Apps in WebView</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/migrating.html">
+            <span class="en">Migrating to WebView in Android 4.4</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/debugging.html">
+            <span class="en">Debugging Web Apps</span>
+          </a></li>
+      <li><a href="../../../guide/webapps/best-practices.html">
+            <span class="en">Best Practices for Web Apps</span>
+          </a></li>
+    </ul>
+  </li><!-- end of web apps -->
+
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/practices/index.html">
+      <span class="en">Best Practices</span>
+      <span class="de" style="display:none">Bewährte Verfahren</span>
+      <span class="es" style="display:none">Prácticas recomendadas</span>
+      <span class="fr" style="display:none">Meilleures pratiques</span>
+      <span class="it" style="display:none">Best practice</span>
+      <span class="ja" style="display:none">ベスト プラクティス</span>
+      <span class="zh-cn" style="display:none">最佳实践</span>
+      <span class="zh-tw" style="display:none">最佳實務</span>
+    </div></a>
+    <ul>
+      <li><a href="../../../guide/practices/compatibility.html">
+            <span class="en">Compatibility</span>
+          </a></li>
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/screens_support.html">
+          <span class="en">Supporting Multiple Screens</span>
+        </a></div>
+        <ul>
+          <li><a href="../../../guide/practices/screens-distribution.html">
+            <span class="en">Distributing to Specific Screens</span>
+          </a></li>
+          <li><a href="../../../guide/practices/screen-compat-mode.html">
+            <span class="en">Screen Compatibility Mode</span>
+          </a></li>
+        </ul>
+      </li>
+      <li><a href="../../../guide/practices/tablets-and-handsets.html">
+            <span class="en">Supporting Tablets and Handsets</span>
+          </a></li>
+
+    </ul>
+  </li>
+
+      <!-- this needs to move
+      <li class="nav-section">
+        <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/index.html">
+               <span class="en">UI Guidelines</span>
+             </a></div>
+        <ul>
+          <li class="nav-section">
+            <div class="nav-section-header"><a href="../../../guide/practices/ui_guidelines/icon_design.html">
+                   <span class="en">Icon Design</span>
+                 </a></div>
+            <ul>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_launcher.html">
+                    <span class="en">Launcher Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_menu.html">
+                    <span class="en">Menu Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_action_bar.html">
+                    <span class="en">Action Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_status_bar.html">
+                    <span class="en">Status Bar Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_tab.html">
+                    <span class="en">Tab Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_dialog.html">
+                    <span class="en">Dialog Icons</span>
+                  </a></li>
+              <li><a href="../../../guide/practices/ui_guidelines/icon_design_list.html">
+                    <span class="en">List View Icons</span>
+                  </a></li>
+            </ul>
+          </li>
+          <li><div><a href="../../../guide/practices/ui_guidelines/widget_design.html">
+                <span class="en">App Widget Design</span>
+              </a></div>
+          </li>
+        </ul>
+      </li>
+        </ul> -->
+
+<!-- Remove
+  <li class="nav-section">
+    <div class="nav-section-header"><a href="../../../guide/appendix/index.html">
+        <span class="en">Appendix</span>
+        <span class="de" style="display:none">Anhang</span>
+        <span class="es" style="display:none">Apéndice</span>
+        <span class="fr" style="display:none">Annexes</span>
+        <span class="it" style="display:none">Appendice</span>
+        <span class="ja" style="display:none">付録</span>
+        <span class="zh-cn" style="display:none">附录</span>
+        <span class="zh-tw" style="display:none">附錄</span>
+      </a></div>
+    <ul>
+      <li><a href="../../../guide/appendix/g-app-intents.html">
+            <span class="en">Intents List: Google Apps</span>
+          </a></li>
+
+
+      <li><a href="../../../guide/appendix/glossary.html">
+            <span class="en">Glossary</span>
+          </a></li>
+    </ul>
+  </li>
+
+</li>
+-->
+</ul>
+
+
+<script type="text/javascript">
+<!--
+    buildToggleLists();
+    changeNavLang(getLangPref());
+//-->
+</script>
+
+
+        
+
+      </div>
+    </div> <!-- end side-nav -->
+    <script>
+      $(document).ready(function() {
+        scrollIntoView("devdoc-nav");
+        });
+    </script>
+
+
+
+
+<div class="col-12" id="doc-col" >
+
+
+  
+    
+      
+        <h1 itemprop="name" >&lt;uses-sdk&gt;</h1>
+      
+    
+  
+
+
+  
+  <div id="jd-content">
+
+
+    <div class="jd-descr" itemprop="articleBody">
+    <div id="qv-wrapper">
+<div id="qv">
+
+<h2>In this document</h2>
+<ol>
+  <li><a href="#ApiLevels">What is API Level?</a></li>
+  <li><a href="#uses">Uses of API Level in Android</a></li>
+  <li><a href="#considerations">Development Considerations</a>
+    <ol>
+      <li><a href="#fc">Application forward compatibility</a></li>
+      <li><a href="#bc">Application backward compatibility</a></li>
+      <li><a href="#platform">Selecting a platform version and API Level</a></li>
+      <li><a href="#apilevel">Declaring a minimum API Level</a></li>
+      <li><a href="#testing">Testing against higher API Levels</a></li>
+    </ol>
+  </li>
+  <li><a href="#provisional">Using a Provisional API Level</a></li>
+  <li><a href="#filtering">Filtering the Reference Documentation by API Level</a></li>
+</ol>
+</div>
+</div>
+
+<div class="sidebox-wrapper">
+<div class="sidebox">
+    <img src="../../../assets/images/icon_play.png" style="float:left;margin:0;padding:0;">
+    <p style="color:#669999;padding-top:1em;">Google Play Filtering</p>
+    <p style="padding-top:1em;">Google Play uses the <code>&lt;uses-sdk&gt;</code>
+    attributes declared in your app manifest to filter your app from devices
+    that do not meet it's platform version requirements. Before setting these
+    attributes, make sure that you understand
+    <a href="../../../google/play/filters.html">Google Play filters</a>. </p>
+  </div>
+</div>
+
+<dl class="xml">
+<dt>syntax:</dt>
+<dd><pre>
+&lt;uses-sdk android:<a href="#min">minSdkVersion</a>="<i>integer</i>"
+          android:<a href="#target">targetSdkVersion</a>="<i>integer</i>"
+          android:<a href="#max">maxSdkVersion</a>="<i>integer</i>" /&gt;</pre></dd>
+
+<dt>contained in:</dt>
+<dd><code><a href="../../../guide/topics/manifest/manifest-element.html">&lt;manifest&gt;</a></code></dd>
+
+<dt>description:</dt>
+<dd>Lets you express an application's compatibility with one or more versions of the Android platform,
+by means of an API Level integer. The API Level expressed by an application will be compared to the
+API Level of a given Android system, which may vary among different Android devices.
+</p>
+
+<p>Despite its name, this element is used to specify the API Level, <em>not</em>
+the version number of the SDK (software development kit) or Android platform.
+The API Level is always a single integer. You cannot derive the API Level from
+its associated Android version number (for example, it is not the same as the
+major version or the sum of the major and minor versions).</p>
+
+<p>Also read the document about
+<a href="../../../tools/publishing/versioning.html">Versioning Your Applications</a>.
+</p></dd>
+
+<dt>attributes:</dt>
+
+<dd>
+<dl class="attr">
+  <dt><a name="min"></a><code>android:minSdkVersion</code></dt>
+  <dd>An integer designating the minimum API Level required
+  for the application to run. The Android system will prevent the user from installing
+  the application if the system's API Level is lower than the value specified in
+  this attribute. You should always declare this attribute.
+
+  <p class="caution"><strong>Caution:</strong> If you do not declare this
+  attribute, the system assumes a default value of "1", which indicates that your
+  application is compatible with all versions of Android. If your application is
+  <em>not</em> compatible with all versions (for instance, it uses APIs introduced
+  in API Level 3) and you have not declared the proper <code>minSdkVersion</code>,
+  then when installed on a system with an API Level less than 3, the application
+  will crash during runtime when attempting to access the unavailable APIs. For
+  this reason, be certain to declare the appropriate API Level in the
+  <code>minSdkVersion</code> attribute.</p>
+  </dd>
+
+  <dt><a name="target"></a><code>android:targetSdkVersion</code></dt>
+  <dd>An integer designating the API Level that the application targets. If not set, the default
+value equals that given to <code>minSdkVersion</code>.
+
+  <p>This attribute informs the system that you have tested against the target version and the
+system should not enable any compatibility behaviors to maintain your app's forward-compatibility
+with the target version. The application is still able to run on older versions (down to <code>minSdkVersion</code>).</p>
+
+  <p>As Android evolves with each new version, some behaviors and even appearances might change.
+However, if the API level of the platform is higher than the version declared by your app's <code>targetSdkVersion</code>, the system may enable compatibility behaviors to ensure that your app
+continues to work the way you expect. You can disable such compatibility
+behaviors by specifying <code>targetSdkVersion</code> to match the API
+level of the platform on which it's running. For example, setting this value to "11" or higher
+allows the system to apply a new default theme (Holo) to your app when running on Android 3.0 or
+higher and also disables <a href="../../../guide/practices/screen-compat-mode.html">screen
+compatibility mode</a> when running on larger screens (because support for API level 11 implicitly
+supports larger screens).</p>
+
+  <p>There are many compatibility behaviors that the system may enable based on the value you set
+for this attribute. Several of these behaviors are described by the corresponding platform versions
+in the <code><a href="../../../reference/android/os/Build.VERSION_CODES.html">Build.VERSION_CODES</a></code> reference.</p>
+
+  <p>To maintain your application along with each Android release, you should increase
+the value of this attribute to match the latest API level, then thoroughly test your application on
+the corresponding platform version.</p>
+
+  <p>Introduced in: API Level 4</p>
+  </dd>
+
+  <dt><a name="max"></a><code>android:maxSdkVersion</code></dt>
+  <dd>An integer designating the maximum API Level on which the application is
+  designed to run.
+
+  <p>In Android 1.5, 1.6, 2.0, and 2.0.1, the system checks the value of this
+  attribute when installing an application and when re-validating the application
+  after a system update. In either case, if the application's
+  <code>maxSdkVersion</code> attribute is lower than the API Level used by
+  the system itself, then the system will not allow the application to be
+  installed. In the case of re-validation after system update, this effectively
+  removes your application from the device.
+
+  <p>To illustrate how this attribute can affect your application after system
+  updates, consider the following example: </p>
+
+  <p>An application declaring <code>maxSdkVersion="5"</code> in its
+  manifest is published on Google Play. A user whose device is running Android
+  1.6 (API Level 4) downloads and installs the app. After a few weeks, the user
+  receives an over-the-air system update to Android 2.0 (API Level 5). After the
+  update is installed, the system checks the application's
+  <code>maxSdkVersion</code> and successfully re-validates it. The
+  application functions as normal. However, some time later, the device receives
+  another system update, this time to Android 2.0.1 (API Level 6). After the
+  update, the system can no longer re-validate the application because the system's
+  own API Level (6) is now higher than the maximum supported by the application
+  (5). The system prevents the application from being visible to the user, in
+  effect removing it from the device.</p>
+
+  <p class="warning"><strong>Warning:</strong> Declaring this attribute is not
+  recommended. First, there is no need to set the attribute as means of blocking
+  deployment of your application onto new versions of the Android platform as they
+  are released. By design, new versions of the platform are fully
+  backward-compatible. Your application should work properly on new versions,
+  provided it uses only standard APIs and follows development best practices.
+  Second, note that in some cases, declaring the attribute can <strong>result in
+  your application being removed from users' devices after a system
+  update</strong> to a higher API Level. Most devices on which your application
+  is likely to be installed will receive periodic system updates over the air, so
+  you should consider their effect on your application before setting this
+  attribute.</p>
+
+  <p style="margin-bottom:1em;">Introduced in: API Level 4</p>
+
+  <div class="special">Future versions of Android (beyond Android 2.0.1) will no
+longer check or enforce the <code>maxSdkVersion</code> attribute during
+installation or re-validation. Google Play will continue to use the attribute
+as a filter, however, when presenting users with applications available for
+download. </div>
+  </dd>
+
+
+</dl></dd>
+
+<!-- ##api level indication## -->
+<dt>introduced in:</dt>
+<dd>API Level 1</dd>
+
+</dl>
+
+
+
+
+
+<!--- CONTENT FROM OLD API LEVEL DOC ---->
+
+
+
+
+<h2 id="ApiLevels">What is API Level?</h2>
+
+<p>API Level is an integer value that uniquely identifies the framework API
+revision offered by a version of the Android platform.</p>
+
+<p>The Android platform provides a framework API that applications can use to
+interact with the underlying Android system. The framework API consists of:</p>
+
+<ul>
+<li>A core set of packages and classes</li>
+<li>A set of XML elements and attributes for declaring a manifest file</li>
+<li>A set of XML elements and attributes for declaring and accessing resources</li>
+<li>A set of Intents</li>
+<li>A set of permissions that applications can request, as well as permission
+enforcements included in the system</li>
+</ul>
+
+<p>Each successive version of the Android platform can include updates to the
+Android application framework API that it delivers. </p>
+
+<p>Updates to the framework API are designed so that the new API remains
+compatible with earlier versions of the API. That is, most changes in the API
+are additive and introduce new or replacement functionality. As parts of the API
+are upgraded, the older replaced parts are deprecated but are not removed, so
+that existing applications can still use them. In a very small number of cases,
+parts of the API may be modified or removed, although typically such changes are
+only needed to ensure API robustness and application or system security. All
+other API parts from earlier revisions are carried forward without
+modification.</p>
+
+<p>The framework API that an Android platform delivers is specified using an
+integer identifier called "API Level". Each Android platform version supports
+exactly one API Level, although support is implicit for all earlier API Levels
+(down to API Level 1). The initial release of the Android platform provided
+API Level 1 and subsequent releases have incremented the API Level.</p>
+
+<p>The table below specifies the API Level supported by each version of the
+Android platform. For information about the relative numbers of devices that
+are running each version, see the <a href="../../../about/dashboards/index.html">Platform
+Versions dashboards page</a>.</p>
+
+<table>
+  <tr><th>Platform Version</th><th>API Level</th><th>VERSION_CODE</th><th>Notes</th></tr>
+
+    <tr><td><a href="../../../about/versions/android-4.4.html">Android 4.4</a></td>
+    <td><a href="../../../sdk/api_diff/19/changes.html" title="Diff Report">19</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#KITKAT">KITKAT</a></code></td>
+    <td><a href="../../../about/versions/kitkat.html">Platform
+Highlights</a></td></tr>
+
+    <tr><td><a href="../../../about/versions/android-4.3.html">Android 4.3</a></td>
+    <td><a href="../../../sdk/api_diff/18/changes.html" title="Diff Report">18</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#JELLY_BEAN_MR2">JELLY_BEAN_MR2</a></code></td>
+    <td><a href="../../../about/versions/jelly-bean.html">Platform
+Highlights</a></td></tr>
+
+    <tr><td><a href="../../../about/versions/android-4.2.html">Android 4.2, 4.2.2</a></td>
+    <td><a href="../../../sdk/api_diff/17/changes.html" title="Diff Report">17</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#JELLY_BEAN_MR1">JELLY_BEAN_MR1</a></code></td>
+    <td><a href="../../../about/versions/jelly-bean.html#android-42">Platform
+Highlights</a></td></tr>
+
+    <tr><td><a href="../../../about/versions/android-4.1.html">Android 4.1, 4.1.1</a></td>
+    <td><a href="../../../sdk/api_diff/16/changes.html" title="Diff Report">16</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#JELLY_BEAN">JELLY_BEAN</a></code></td>
+    <td><a href="../../../about/versions/jelly-bean.html#android-41">Platform
+Highlights</a></td></tr>
+
+    <tr><td><a href="../../../about/versions/android-4.0.3.html">Android 4.0.3, 4.0.4</a></td>
+    <td><a href="../../../sdk/api_diff/15/changes.html" title="Diff Report">15</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#ICE_CREAM_SANDWICH_MR1">ICE_CREAM_SANDWICH_MR1</a></code></td>
+    <td rowspan="2"><a href="../../../about/versions/android-4.0-highlights.html">Platform
+Highlights</a></td></tr>
+
+    <tr><td><a href="../../../about/versions/android-4.0.html">Android 4.0, 4.0.1, 4.0.2</a></td>
+    <td><a href="../../../sdk/api_diff/14/changes.html" title="Diff Report">14</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#ICE_CREAM_SANDWICH">ICE_CREAM_SANDWICH</a></code></td>
+    </tr>
+
+    <tr><td><a href="../../../about/versions/android-3.2.html">Android 3.2</a></td>
+    <td><a href="../../../sdk/api_diff/13/changes.html" title="Diff Report">13</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#HONEYCOMB_MR2">HONEYCOMB_MR2</a></code></td>
+    <td><!-- <a href="../../../about/versions/android-3.2-highlights.html">Platform
+Highlights</a>--></td></tr>
+
+  <tr><td><a href="../../../about/versions/android-3.1.html">Android 3.1.x</a></td>
+    <td><a href="../../../sdk/api_diff/12/changes.html" title="Diff Report">12</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#HONEYCOMB_MR1">HONEYCOMB_MR1</a></code></td>
+    <td><a href="../../../about/versions/android-3.1-highlights.html">Platform Highlights</a></td></tr>
+
+  <tr><td><a href="../../../about/versions/android-3.0.html">Android 3.0.x</td>
+    <td><a href="../../../sdk/api_diff/11/changes.html" title="Diff Report">11</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#HONEYCOMB">HONEYCOMB</a></code></td>
+    <td><a href="../../../about/versions/android-3.0-highlights.html">Platform Highlights</a></td></tr>
+
+  <tr><td><a href="../../../about/versions/android-2.3.3.html">Android 2.3.4<br>Android 2.3.3</td>
+    <td><a href="../../../sdk/api_diff/10/changes.html" title="Diff Report">10</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#GINGERBREAD_MR1">GINGERBREAD_MR1</a></code></td>
+    <td rowspan="2"><a href="../../../about/versions/android-2.3-highlights.html">Platform
+Highlights</a></td></tr>
+
+  <tr><td><a href="../../../about/versions/android-2.3.html">Android 2.3.2<br>Android 2.3.1<br>Android
+2.3</td>
+    <td><a href="../../../sdk/api_diff/9/changes.html" title="Diff Report">9</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#GINGERBREAD">GINGERBREAD</a></code></td>
+    </tr>
+
+  <tr><td><a href="../../../about/versions/android-2.2.html">Android 2.2.x</td>
+    <td ><a href="../../../sdk/api_diff/8/changes.html" title="Diff Report">8</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#FROYO">FROYO</a></code></td>
+    <td><a href="../../../about/versions/android-2.2-highlights.html">Platform Highlights</a></td></tr>
+
+  <tr><td><a href="../../../about/versions/android-2.1.html">Android 2.1.x</td>
+    <td><a href="../../../sdk/api_diff/7/changes.html" title="Diff Report">7</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#ECLAIR_MR1">ECLAIR_MR1</a></code></td>
+    <td rowspan="3" ><a href="../../../about/versions/android-2.0-highlights.html">Platform
+Highlights</a></td></tr>
+
+  <tr><td><a href="../../../about/versions/android-2.0.1.html">Android 2.0.1</td>
+    <td><a href="../../../sdk/api_diff/6/changes.html" title="Diff Report">6</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#ECLAIR_0_1">ECLAIR_0_1</a></code></td>
+    </tr>
+
+  <tr><td><a href="../../../about/versions/android-2.0.html">Android 2.0</td>
+    <td><a href="../../../sdk/api_diff/5/changes.html" title="Diff Report">5</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#ECLAIR">ECLAIR</a></code></td>
+    </tr>
+
+  <tr><td><a href="../../../about/versions/android-1.6.html">Android 1.6</td>
+    <td><a href="../../../sdk/api_diff/4/changes.html" title="Diff Report">4</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#DONUT">DONUT</a></code></td>
+    <td><a href="../../../about/versions/android-1.6-highlights.html">Platform Highlights</a></td></tr>
+
+  <tr><td><a href="../../../about/versions/android-1.5.html">Android 1.5</td>
+    <td><a href="../../../sdk/api_diff/3/changes.html" title="Diff Report">3</a></td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#CUPCAKE">CUPCAKE</a></code></td>
+    <td><a href="../../../about/versions/android-1.5-highlights.html">Platform Highlights</a></td></tr>
+
+  <tr><td><a href="../../../about/versions/android-1.1.html">Android 1.1</td>
+    <td>2</td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#BASE_1_1">BASE_1_1</a></code></td><td></td></tr>
+
+  <tr><td>Android 1.0</td>
+    <td>1</td>
+    <td><code><a href="../../../reference/android/os/Build.VERSION_CODES.html#BASE">BASE</a></code></td>
+    <td></td></tr>
+</table>
+
+
+<h2 id="uses">Uses of API Level in Android</h2>
+
+<p>The API Level identifier serves a key role in ensuring the best possible
+experience for users and application developers:
+
+<ul>
+<li>It lets the Android platform describe the maximum framework API revision
+that it supports</li>
+<li>It lets applications describe the framework API revision that they
+require</li>
+<li>It lets the system negotiate the installation of applications on the user's
+device, such that version-incompatible applications are not installed.</li>
+</ul>
+
+<p>Each Android platform version stores its API Level identifier internally, in
+the Android system itself. </p>
+
+<p>Applications can use a manifest element provided by the framework API &mdash;
+<code>&lt;uses-sdk&gt;</code> &mdash; to describe the minimum and maximum API
+Levels under which they are able to run, as well as the preferred API Level that
+they are designed to support. The element offers three key attributes:</p>
+
+<ul>
+<li><code>android:minSdkVersion</code> &mdash; Specifies the minimum API Level
+on which the application is able to run. The default value is "1".</li>
+<li><code>android:targetSdkVersion</code> &mdash; Specifies the API Level
+on which the application is designed to run. In some cases, this allows the
+application to use manifest elements or behaviors defined in the target
+API Level, rather than being restricted to using only those defined
+for the minimum API Level.</li>
+<li><code>android:maxSdkVersion</code> &mdash; Specifies the maximum API Level
+on which the application is able to run. <strong>Important:</strong> Please read the <a
+href="../../../guide/topics/manifest/uses-sdk-element.html"><code>&lt;uses-sdk&gt;</code></a>
+documentation before using this attribute.  </li>
+</ul>
+
+<p>For example, to specify the minimum system API Level that an application
+requires in order to run, the application would include in its manifest a
+<code>&lt;uses-sdk&gt;</code> element with a <code>android:minSdkVersion</code>
+attribute. The value of <code>android:minSdkVersion</code> would be the integer
+corresponding to the API Level of the earliest version of the Android platform
+under which the application can run. </p>
+
+<p>When the user attempts to install an application, or when revalidating an
+appplication after a system update, the Android system first checks the
+<code>&lt;uses-sdk&gt;</code> attributes in the application's manifest and
+compares the values against its own internal API Level. The system allows the
+installation to begin only if these conditions are met:</p>
+
+<ul>
+<li>If a <code>android:minSdkVersion</code> attribute is declared, its value
+must be less than or equal to the system's API Level integer. If not declared,
+the system assumes that the application requires API Level 1. </li>
+<li>If a <code>android:maxSdkVersion</code> attribute is declared, its value
+must be equal to or greater than the system's API Level integer.
+If not declared, the system assumes that the application
+has no maximum API Level. Please read the <a
+href="../../../guide/topics/manifest/uses-sdk-element.html"><code>&lt;uses-sdk&gt;</code></a>
+documentation for more information about how the system handles this attribute.</li>
+</ul>
+
+<p>When declared in an application's manifest, a <code>&lt;uses-sdk&gt;</code>
+element might look like this: </p>
+
+<pre>&lt;manifest&gt;
+  &lt;uses-sdk android:minSdkVersion="5" /&gt;
+  ...
+&lt;/manifest&gt;</pre>
+
+<p>The principal reason that an application would declare an API Level in
+<code>android:minSdkVersion</code> is to tell the Android system that it is
+using APIs that were <em>introduced</em> in the API Level specified. If the
+application were to be somehow installed on a platform with a lower API Level,
+then it would crash at run-time when it tried to access APIs that don't exist.
+The system prevents such an outcome by not allowing the application to be
+installed if the lowest API Level it requires is higher than that of the
+platform version on the target device.</p>
+
+<p>For example, the <code><a href="../../../reference/android/appwidget/package-summary.html">android.appwidget</a></code> package was introduced with API
+Level 3. If an application uses that API, it must declare a
+<code>android:minSdkVersion</code> attribute with a value of "3". The
+application will then be installable on platforms such as Android 1.5 (API Level
+3) and Android 1.6 (API Level 4), but not on the Android 1.1 (API Level 2) and
+Android 1.0 platforms (API Level 1).</p>
+
+<p>For more information about how to specify an application's API Level
+requirements, see the <a
+href="../../../guide/topics/manifest/uses-sdk-element.html"><code>&lt;uses-sdk&gt;</code></a>
+ section of the manifest file documentation.</p>
+
+
+<h2 id="considerations">Development Considerations</h2>
+
+<p>The sections below provide information related to API level that you should
+consider when developing your application.</p>
+
+<h3 id="fc">Application forward compatibility</h3>
+
+<p>Android applications are generally forward-compatible with new versions of
+the Android platform.</p>
+
+<p>Because almost all changes to the framework API are additive, an Android
+application developed using any given version of the API (as specified by its
+API Level) is forward-compatible with later versions of the Android platform and
+higher API levels. The application should be able to run on all later versions
+of the Android platform, except in isolated cases where the application uses a
+part of the API that is later removed for some reason. </p>
+
+<p>Forward compatibility is important because many Android-powered devices
+receive over-the-air (OTA) system updates. The user may install your
+application and use it successfully, then later receive an OTA update to a new
+version of the Android platform. Once the update is installed, your application
+will run in a new run-time version of the environment, but one that has the API
+and system capabilities that your application depends on. </p>
+
+<p>In some cases, changes <em>below</em> the API, such those in the underlying
+system itself, may affect your application when it is run in the new
+environment. For that reason it's important for you, as the application
+developer, to understand how the application will look and behave in each system
+environment. To help you test your application on various versions of the Android
+platform, the Android SDK includes multiple platforms that you can download.
+Each platform includes a compatible system image that you can run in an AVD, to
+test your application. </p>
+
+<h3 id="bc">Application backward compatibility</h3>
+
+<p>Android applications are not necessarily backward compatible with versions of
+the Android platform older than the version against which they were compiled.
+</p>
+
+<p>Each new version of the Android platform can include new framework APIs, such
+as those that give applications access to new platform capabilities or replace
+existing API parts. The new APIs are accessible to applications when running on
+the new platform and, as mentioned above, also when running on later versions of
+the platform, as specified by API Level. Conversely, because earlier versions of
+the platform do not include the new APIs, applications that use the new APIs are
+unable to run on those platforms.</p>
+
+<p>Although it's unlikely that an Android-powered device would be downgraded to
+a previous version of the platform, it's important to realize that there are
+likely to be many devices in the field that run earlier versions of the
+platform. Even among devices that receive OTA updates, some might lag and
+might not receive an update for a significant amount of time. </p>
+
+<h3 id="platform">Selecting a platform version and API Level</h3>
+
+<p>When you are developing your application, you will need to choose
+the platform version against which you will compile the application. In
+general, you should compile your application against the lowest possible
+version of the platform that your application can support.
+
+<p>You can determine the lowest possible platform version by compiling the
+application against successively lower build targets. After you determine the
+lowest version, you should create an AVD using the corresponding platform
+version (and API Level) and fully test your application. Make sure to declare a
+<code>android:minSdkVersion</code> attribute in the application's manifest and
+set its value to the API Level of the platform version. </p>
+
+<h3 id="apilevel">Declaring a minimum API Level</h3>
+
+<p>If you build an application that uses APIs or system features introduced in
+the latest platform version, you should set the
+<code>android:minSdkVersion</code> attribute to the API Level of the latest
+platform version. This ensures that users will only be able to install your
+application if their devices are running a compatible version of the Android
+platform. In turn, this ensures that your application can function properly on
+their devices. </p>
+
+<p>If your application uses APIs introduced in the latest platform version but
+does <em>not</em> declare a <code>android:minSdkVersion</code> attribute, then
+it will run properly on devices running the latest version of the platform, but
+<em>not</em> on devices running earlier versions of the platform. In the latter
+case, the application will crash at runtime when it tries to use APIs that don't
+exist on the earlier versions.</p>
+
+<h3 id="testing">Testing against higher API Levels</h3>
+
+<p>After compiling your application, you should make sure to test it on the
+platform specified in the application's <code>android:minSdkVersion</code>
+attribute. To do so, create an AVD that uses the platform version required by
+your application. Additionally, to ensure forward-compatibility, you should run
+and test the application on all platforms that use a higher API Level than that
+used by your application. </p>
+
+<p>The Android SDK includes multiple platform versions that you can use,
+including the latest version, and provides an updater tool that you can use to
+download other platform versions as necessary. </p>
+
+<p>To access the updater, use the <code>android</code> command-line tool,
+located in the &lt;sdk&gt;/tools directory. You can launch the SDK updater by
+executing <code>android sdk</code>. You can
+also simply double-click the android.bat (Windows) or android (OS X/Linux) file.
+In ADT, you can also access the updater by selecting
+<strong>Window</strong>&nbsp;>&nbsp;<strong>Android SDK
+Manager</strong>.</p>
+
+<p>To run your application against different platform versions in the emulator,
+create an AVD for each platform version that you want to test. For more
+information about AVDs, see <a
+href="../../../tools/devices/index.html">Creating and Managing Virtual Devices</a>. If
+you are using a physical device for testing, ensure that you know the API Level
+of the Android platform it runs. See the table at the top of this document for
+a list of platform versions and their API Levels. </p>
+
+<h2 id="provisional">Using a Provisional API Level</h2>
+
+<p>In some cases, an "Early Look" Android SDK platform may be available. To let
+you begin developing on the platform although the APIs may not be final, the
+platform's API Level integer will not be specified. You must instead use the
+platform's <em>provisional API Level</em> in your application manifest, in order
+to build applications against the platform. A provisional API Level is not an
+integer, but a string matching the codename of the unreleased platform version.
+The provisional API Level will be specified in the release notes for the Early
+Look SDK release notes and is case-sensitive.</p>
+
+<p>The use of a provisional API Level is designed to protect developers and
+device users from inadvertently publishing or installing applications based on
+the Early Look framework API, which may not run properly on actual devices
+running the final system image.</p>
+
+<p>The provisional API Level will only be valid while using the Early Look SDK
+and can only be used to run applications in the emulator. An application using
+the provisional API Level can never be installed on an Android device. At the
+final release of the platform, you must replace any instances of the provisional
+API Level in your application manifest with the final platform's actual API
+Level integer.</p>
+
+
+<h2 id="filtering">Filtering the Reference Documentation by API Level</h2>
+
+<p>Reference documentation pages on the Android Developers site offer a "Filter
+by API Level" control in the top-right area of each page. You can use the
+control to show documentation only for parts of the API that are actually
+accessible to your application, based on the API Level that it specifies in
+the <code>android:minSdkVersion</code> attribute of its manifest file. </p>
+
+<p>To use filtering, select the checkbox to enable filtering, just below the
+page search box. Then set the "Filter by API Level" control to the same API
+Level as specified by your application. Notice that APIs introduced in a later
+API Level are then grayed out and their content is masked, since they would not
+be accessible to your application. </p>
+
+<p>Filtering by API Level in the documentation does not provide a view
+of what is new or introduced in each API Level &mdash; it simply provides a way
+to view the entire API associated with a given API Level, while excluding API
+elements introduced in later API Levels.</p>
+
+<p>If you decide that you don't want to filter the API documentation, just
+disable the feature using the checkbox. By default, API Level filtering is
+disabled, so that you can view the full framework API, regardless of API Level.
+</p>
+
+<p>Also note that the reference documentation for individual API elements
+specifies the API Level at which each element was introduced. The API Level
+for packages and classes is specified as "Since &lt;api level&gt;" at the
+top-right corner of the content area on each documentation page. The API Level
+for class members is specified in their detailed description headers,
+at the right margin. </p>
+
+
+
+
+
+
+
+
+
+
+    </div>
+      
+      <div class="content-footer layout-content-row" 
+                    itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="layout-content-col col-8" style="padding-top:4px">
+          
+            <div class="g-plusone" data-size="medium"></div>
+          
+        </div>
+        
+        <div class="paging-links layout-content-col col-4">
+          
+        </div>
+        
+      </div>
+      
+      
+      
+
+  </div> <!-- end jd-content -->
+
+<div id="footer" class="wrap" >
+        
+
+  <div id="copyright">
+    
+  Except as noted, this content is 
+  licensed under <a href="http://creativecommons.org/licenses/by/2.5/">
+  Creative Commons Attribution 2.5</a>. For details and 
+  restrictions, see the <a href="../../../license.html">Content 
+  License</a>.
+  </div>
+
+
+  <div id="footerlinks">
+    
+  <p>
+    <a href="../../../about/index.html">About Android</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../legal.html">Legal</a>&nbsp;&nbsp;|&nbsp;
+    <a href="../../../support.html">Support</a>
+  </p>
+  </div>
+
+</div> <!-- end footer -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+
+
+
+
+
+</body>
+</html>
+
+
+
