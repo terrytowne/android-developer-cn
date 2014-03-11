@@ -1046,7 +1046,7 @@ onkeyup="return search_changed(event, false, '../../')" />
 
 <p>当一个应用程序在没有其他组件在运行的时候启动，安卓系统会启动为其一个新的单线程 Linux 进程来执行。默认情况下，同一个应用程序的所有组件运行在同一个进程和线程（主线程）中。如果当一个应用程序组件启动的时候，系统中已经存在该应用的进程（因为应用的其它组件已经在运行了），那么这个组件将会在这个已经存在的进程中启动并使用同一个线程来执行。但是，你也可以将你的应用中的不同组件安排在不同的进程中执行，同时你也可以为任意一个进程创建多个附加的线程。</p>
 
-<p>这个文档将讨论进程和线程如何在安卓应用中工作。</p>
+<p>本文档将讨论进程和线程如何在安卓应用中工作。</p>
 
 
 <h2 id="Processes">进程</h2>
@@ -1065,116 +1065,61 @@ href="../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;<
 
 <h3 id="Lifecycle">进程生命周期</h3>
 
-<p>The Android system tries to maintain an application process for as long as possible, but
-eventually needs to remove old processes to reclaim memory for new or more important processes.  To
-determine which processes to keep
-and which to kill, the system places each process into an "importance hierarchy" based on the
-components running in the process and the state of those components.  Processes with the lowest
-importance are eliminated first, then those with the next lowest importance, and so on, as necessary
-to recover system resources.</p>
+<p>安卓系统原则上尽可能长保持一个应用进程，但有时会为一些更为重要的进程删除旧的进程从而释放内存空间。这些“重要性级别”的定义取决于运行在该进程中的组件以及这些组件的状态，而系统根据“重要性级别”来判断那些进程保持，那些进程会被杀死。当系统资源需释放时，理所当然地最低重要性级别的进程应最先被终止，接着被终止的就是重要性级别次于最低级别的进程，以此类推，直到系统资源足够为止。</p>
 
-<p>There are five levels in the importance hierarchy. The following list presents the different
-types of processes in order of importance (the first process is <em>most important</em> and is
-<em>killed last</em>):</p>
+<p>进程的重要性级别分为五个等级。下面根据重要性列出了不同种类的介绍（第一个进程为“最重要”，也会最后被杀死）：</p>
 
 <ol>
-  <li><b>Foreground process</b>
-    <p>A process that is required for what the user is currently doing.  A
-      process is considered to be in the foreground if any of the following conditions are true:</p>
+  <li><b>前台进程</b>
+    <p>涉及到当前用户正在进行操作的进程为前台进程。如果满足下面所列其中一种情况的进程即为前台进程。</p>
 
       <ul>
-        <li>It hosts an <code><a href="../../reference/android/app/Activity.html">Activity</a></code> that the user is interacting with (the <code><a href="../../reference/android/app/Activity.html">Activity</a></code>'s <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> method has been
-called).</li>
+        <li>进程托管一个用户正在交互的<code><a href="../../reference/android/app/Activity.html">活动</a></code>（<code><a href="../../reference/android/app/Activity.html">活动</a></code>的 <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> 方法正在被调用。</li>
 
-        <li>It hosts a <code><a href="../../reference/android/app/Service.html">Service</a></code> that's bound to the activity that the user is
-interacting with.</li>
+        <li>进程托管一个与用户正在交互的活动绑定的<code><a href="../../reference/android/app/Service.html">服务</a></code>。</li>
 
-        <li>It hosts a <code><a href="../../reference/android/app/Service.html">Service</a></code> that's running "in the foreground"—the
-service has called <code><a href="../../reference/android/app/Service.html#startForeground(int, android.app.Notification)">startForeground()</a></code>.
+        <li>进程托管一个正在“前台”运行的<code><a href="../../reference/android/app/Service.html">服务</a></code> — 这个服务调用 <code><a href="../../reference/android/app/Service.html#startForeground(int, android.app.Notification)">startForeground()</a></code>方法。
 
-        
+        </li><li>进程托管一个生命周期回调方法（<code><a href="../../reference/android/app/Service.html#onCreate()">onCreate()</a></code>、<code><a href="../../reference/android/app/Service.html#onStart(android.content.Intent, int)">onStart()</a></code>、<code><a href="../../reference/android/app/Service.html#onDestroy()">onDestroy()</a></code>）正在被执行的 <code><a href="../../reference/android/app/Service.html">服务</a></code>。</li>
 
-        </li><li>It hosts a <code><a href="../../reference/android/app/Service.html">Service</a></code> that's executing one of its lifecycle
-callbacks (<code><a href="../../reference/android/app/Service.html#onCreate()">onCreate()</a></code>, <code><a href="../../reference/android/app/Service.html#onStart(android.content.Intent, int)">onStart()</a></code>, or <code><a href="../../reference/android/app/Service.html#onDestroy()">onDestroy()</a></code>).</li>
-
-        <li>It hosts a <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> that's executing its <code><a href="../../reference/android/content/BroadcastReceiver.html#onReceive(android.content.Context, android.content.Intent)">onReceive()</a></code> method.</li>
+        <li>进程托管一个正执行 <code><a href="../../reference/android/content/BroadcastReceiver.html#onReceive(android.content.Context, android.content.Intent)">onReceive()</a></code> 方法的<code><a href="../../reference/android/content/BroadcastReceiver.html">广播接收器</a></code>。</li>
     </ul>
 
-    <p>Generally, only a few foreground processes exist at any given time.  They are killed only as
-a last resort—if memory is so low that they cannot all continue to run.  Generally, at that
-point, the device has reached a memory paging state, so killing some foreground processes is
-required to keep the user interface responsive.</p></li>
+    <p>通常在特定的时间内，只有为数不多的前台进程存在。在内存的剩余资源非常少以至这些前台进程不能继续保持运行的情况下才会被迫不得已杀死。就此而言，当用户的设备达到内存分页的状态时，杀死一些前台进程是为了让用户体验更好，系统能够及时的响应用户的操作。</p></li>
 
-  <li><b>Visible process</b>
-    <p>A process that doesn't have any foreground components, but still can
-      affect what the user sees on screen. A process is considered to be visible if either of the
-      following conditions are true:</p>
+  <li><b>可视进程</b>
+    <p>可视进程是一种没有任何前台组件的进程，但是它仍然能影响用户在屏幕上看到东西。只要满足下面所列其中一种情况的进程即为可视进程。</p>
 
       <ul>
-        <li>It hosts an <code><a href="../../reference/android/app/Activity.html">Activity</a></code> that is not in the foreground, but is still
-visible to the user (its <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> method has been called). 
-This might occur, for example, if the foreground activity started a dialog, which allows the
-previous activity to be seen behind it.</li>
+        <li>进程托管一个<code><a href="../../reference/android/app/Activity.html">活动</a></code>，它尽管不在前台但仍能被用户看见（它的 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法被调用）。这是有可能发生的，例如如果一个前台活动开启一个对话框，这个对话框没有完全覆盖该活动。</li>
 
-        <li>It hosts a <code><a href="../../reference/android/app/Service.html">Service</a></code> that's bound to a visible (or foreground)
-activity.</li>
+        <li>进程托管一个绑定到可见（或前台）活动的<code><a href="../../reference/android/app/Service.html">服务</a></code>。</li>
       </ul>
 
-      <p>A visible process is considered extremely important and will not be killed unless doing so
-is required to keep all foreground processes running.  </p>
+      <p>可视进程十分重要的，除非为了保持所有前台进程运行，可视进程才有可能被杀死。 </p>
     </li>
 
-  <li><b>Service process</b>
-    <p>A process that is running a service that has been started with the <code><a href="../../reference/android/content/Context.html#startService(android.content.Intent)">startService()</a></code> method and does not fall into either of the two
-higher categories. Although service processes are not directly tied to anything the user sees, they
-are generally doing things that the user cares about (such as playing music in the background or
-downloading  data on the network), so the system keeps them running unless there's not enough memory
-to retain them along with all foreground and visible processes.  </p>
+  <li><b>服务进程</b>
+    <p>如果一个进程正运行一个服务，服务已经启动 <code><a href="../../reference/android/content/Context.html#startService(android.content.Intent)">startService()</a></code> 方法，但是这个进程不是前台进程和可视进程，那么这个进程是服务进程。尽管服务进程没有直接绑定在任何用户可见视图，但其处理的操作同样为用户所关心（例如在后台播放音乐、从网络上下载数据），除非系统没有足够的内存空间同时保持前台进程和可见进程同时运行，系统才不会保持这些服务进程运行。 </p>
   </li>
 
-  <li><b>Background process</b>
-    <p>A process holding an activity that's not currently visible to the user  (the activity's
-<code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> method has been called). These processes have no direct
-impact on the user experience, and the system can kill them at any time to reclaim memory for a
-foreground,
-visible, or service process. Usually there are many background processes running, so they are kept
-in an LRU (least recently used) list to ensure that the process with the activity that was most
-recently seen by the user is the last to be killed. If an activity implements its lifecycle methods
-correctly, and saves its current state, killing its process will not have a visible effect on
-the user experience, because when the user navigates back to the activity, the activity restores
-all of its visible state. See the <a
-href="../../guide/components/activities.html#SavingActivityState">Activities</a>
-document for information about saving and restoring state.</p>
+  <li><b>后台进程</b>
+    <p>如果进程包含对用户不可见的活动（活动的 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法被调用），这个进程是后台进程。这些后台进程对用户体验没有直接的影响，当系统需要为后台、可视或者服务进程释放内存空间时可随时杀死这些后台进程。通常系统中有大量后台进程在运行，所有正在运行的后台进程都记录在LRU（最近最少使用）表中，以确保带有最近被用户看到的活动的进程最后一个被杀死。如果一个活动正确地实现了声明周期方法，和保存了当前状态，杀死这个活动所在的进程对用户的视觉改变是不会被感受到的，理由在于当用户导航返回该活动时会恢复所有可见的状态。查看<a
+href="../../guide/components/activities.html#SavingActivityState">活动</a>文档来了解更多关于保存和恢复活动状态的更多信息。</p>
   </li>
 
-  <li><b>Empty process</b>
-    <p>A process that doesn't hold any active application components.  The only reason to keep this
-kind of process alive is for caching purposes, to improve startup time the next time a component
-needs to run in it.  The system often kills these processes in order to balance overall system
-resources between process caches and the underlying kernel caches.</p>
+  <li><b>空进程</b>
+    <p>不包含任何一个活跃状态的应用程序组件的进程为空进程。唯一保持这种进程活跃的目的是为了缓存，以此优化了下次当有一个必要的组件需要运行在该空进程时的启动时间。为了平衡进程缓存和底层内核缓存之间的整体系统资源，安卓系统经常把空进程杀死。</p>
   </li>
 </ol>
 
 
-  <p>Android ranks a process at the highest level it can, based upon the importance of the
-components currently active in the process.  For example, if a process hosts a service and a visible
-activity, the process is ranked as a visible process, not a service process.</p>
+  <p>安卓系统根据进程中当前活动组件的重要性，设置进程的最高优先级。举例来说，如果一个进程托管一个服务组件和一个可见的活动组件，那么这个进程会被设置为可视线程级别，而不是服务进程级别。</p>
 
-  <p>In addition, a process's ranking might be increased because other processes are dependent on
-it—a process that is serving another process can never be ranked lower than the process it is
-serving. For example, if a content provider in process A is serving a client in process B, or if a
-service in process A is bound to a component in process B, process A is always considered at least
-as important as process B.</p>
+  <p>另外，如果其他进程都依赖一个进程，这个进程级别可能会提高 — 某个线程的级别不会比依赖它的线程的级别低。例如，如果线程 A 中的内容提供器给线程 B 中的客户端提供服务，或者线程 A 中的服务组件被绑定到线程 B 中，那么线程 A 总是被认为至少和线程 B 一样重要。</p>
 
-  <p>Because a process running a service is ranked higher than a process with background activities,
-an activity that initiates a long-running operation might do well to start a <a
-href="../../guide/components/services.html">service</a> for that operation, rather than
-simply create a worker thread—particularly if the operation will likely outlast the activity.
-For example, an activity that's uploading a picture to a web site should start a service to perform
-the upload so that the upload can continue in the background even if the user leaves the activity.
-Using a service guarantees that the operation will have at least "service process" priority,
-regardless of what happens to the activity. This is the same reason that broadcast receivers should
-employ services rather than simply put time-consuming operations in a thread.</p>
+  <p>因为一个运行服务的线程优先级高于后台活动的线程，一个包含长运行操作的活动可能会启动一个<a
+href="../../guide/components/services.html">服务</a>来运行这个操作，而不是简单的创建一个工作线程 — 特别是这个长操作运行时间可能比活动可见周期更长。例如，一个上传图片到网站的活动应该启动一个服务来执行上传操作，这样即便用户离开这个活动图片仍然可以持续在后台上传。使用服务来确保操作至少会有“服务进程”优先级，而不会受活动状态影响。这也是广播接收器为什么应该使用服务而不是将花时间的操作在一个线程中运行的原因。</p>
 
 
 
