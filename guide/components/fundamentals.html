@@ -1029,7 +1029,7 @@ onkeyup="return search_changed(event, false, '../../')" />
 </ul>
 
 
-<h2>在这个文档中</h2>
+<h2>在本文档中</h2>
 <ol>
 <li><a href="#Components">应用组件</a>
   <ol>
@@ -1105,63 +1105,30 @@ to get up to speed on the core Android concepts.</p>
 
 <dt><b>服务</b></dt>
 
-<dd>A <i>service</i> is a component that runs in the background to perform long-running
-operations or to perform work for remote processes. A service
-does not provide a user interface. For example, a service might play music in the background while
-the user is in a different application, or it might fetch data over the network without
-blocking user interaction with an activity. Another component, such as an activity, can start the
-service and let it run or bind to it in order to interact with it.
+<dd><i>服务</i>是一种在后台执行长运行操作或者执行远程操作的应用组件。服务不提供用户界面。例如，服务组件可能当用户在其它应用时在后台播放音乐，或者它从网络获取数据而不阻塞用户和活动之间的交互。其它组件，如活动组件，可以启动服务组件，运行它或者和它绑定来与之交互。
 
-
-
-<p>A service is implemented as a subclass of <code><a href="../../reference/android/app/Service.html">Service</a></code> and you can learn more
-about it in the <a href="../../guide/components/services.html">Services</a> developer
-guide.</p>
+<p>服务组件继承 <code><a href="../../reference/android/app/Service.html">Service</a></code> 类，你可以从 <a href="../../guide/components/services.html">Services</a> 开发者指南了解更多信息。</p>
 </dd>
 
 
 <dt><b>内容提供器</b></dt>
 
-<dd>A <i>content provider</i> manages a shared set of application data. You can store the data in
-the file system, an SQLite database, on the web, or any other persistent storage location your
-application can access. Through the content provider, other applications can query or even modify
-the data (if the content provider allows it). For example, the Android system provides a content
-provider that manages the user's contact information. As such, any application with the proper
-permissions can query part of the content provider (such as <code><a href="../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code>) to read and write information about a particular person.
+<dd><i>内容提供器</i>管理一组共享的应用数据。你可以存储数据到文件系统、SQLite 数据库、网络上，或者其它应用可以访问的持久化存储地点。通过内容提供器，其它应用可以查询甚至修改数据（如果内容提供器允许）。例如，安卓系统提供管理用户联系人信息的内容提供器。这样，任何有正确权限的应用都可以查询该内容提供器的信息（如 <code><a href="../../reference/android/provider/ContactsContract.Data.html">ContactsContract.Data</a></code>）来读或者写有关特定联系人的信息。
 
+<p>内容提供器对于读写应用中的私有信息也同样有帮助。例如 <a
+href="../../resources/samples/NotePad/index.html">Note Pad</a> 示例应用使用内容提供器来保存笔记。</p>
 
-
-<p>Content providers are also useful for reading and writing data that is private to your
-application and not shared. For example, the <a
-href="../../resources/samples/NotePad/index.html">Note Pad</a> sample application uses a
-content provider to save notes.</p>
-
-<p>A content provider is implemented as a subclass of <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code>
-and must implement a standard set of APIs that enable other applications to perform
-transactions. For more information, see the <a
-href="../../guide/topics/providers/content-providers.html">Content Providers</a> developer
-guide.</p>
+<p>内容提供器继承 <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code> 类，必须实现一组标准 API 来让其它应用可以执行事务操作。更多相关信息，查看<a
+href="../../guide/topics/providers/content-providers.html">内容提供器</a>开发者指南。</p>
 </dd>
 
 
 <dt><b>广播接收器</b></dt>
 
-<dd>A <i>broadcast receiver</i> is a component that responds to system-wide broadcast
-announcements.  Many broadcasts originate from the system—for example, a broadcast announcing
-that the screen has turned off, the battery is low, or a picture was captured.
-Applications can also initiate broadcasts—for example, to let other applications know that
-some data has been downloaded to the device and is available for them to use. Although broadcast
-receivers don't display a user interface, they may <a
-href="../../guide/topics/ui/notifiers/notifications.html">create a status bar notification</a>
-to alert the user when a broadcast event occurs. More commonly, though, a broadcast receiver is
-just a "gateway" to other components and is intended to do a very minimal amount of work. For
-instance, it might initiate a service to perform some work based on the event.
+<dd><i>广播接收器</i>是用来响应系统级广播信息的应用组件。许多广播从系统发出 — 例如通知屏幕关闭的广播、电量低或截图广播。应用也可以发出广播 — 例如让其它应用知道一些数据已经下载完成，它们可以使用。尽管广播接收器不显示用户界面，当广播时间发生时它们可以<a
+href="../../guide/topics/ui/notifiers/notifications.html">创建状态栏通知</a>来报告用户。更常见的情况中，广播接收器只是一个其它组件的“门户”，它只做很少量的工作。例如，基于某个事件，它可能启动一个服务来执行一些工作。
 
-
-
-<p>A broadcast receiver is implemented as a subclass of <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code>
-and each broadcast is delivered as an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> object. For more information,
-see the <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> class.</p>
+<p>广播接收器继承 <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> 类而每一个广播都作为<code><a href="../../reference/android/content/Intent.html">意图</a></code>对象传播。更多相关信息，查看 <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> 类。</p>
 </dd>
 
 </dl>
