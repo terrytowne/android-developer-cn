@@ -1126,43 +1126,20 @@ href="../../guide/components/services.html">服务</a>来运行这个操作，�
 
 <h2 id="Threads">线程</h2>
 
-<p>When an application is launched, the system creates a thread of execution for the application,
-called "main." This thread is very important because it is in charge of dispatching events to
-the appropriate user interface widgets, including drawing events. It is also the thread in which
-your application interacts with components from the Android UI toolkit (components from the <code><a href="../../reference/android/widget/package-summary.html">android.widget</a></code> and <code><a href="../../reference/android/view/package-summary.html">android.view</a></code> packages). As such, the main thread is also sometimes
-called the UI thread.</p>
+<p>当一个应用程序启动的时候，系统将会创建一个线程用于应用程序执行，这个线程称作"主线程"。这个进程是否重要，因为它掌管着呈现在用户面前的界面小部件的事件分发，包括绘画事件。这也是安卓用户界面工具包中的组件（<code><a href="../../reference/android/widget/package-summary.html">android.widget</a></code> 和 <code><a href="../../reference/android/view/package-summary.html">android.view</a></code> 包中的组件）在你的应用程序中发生交互的地方。因此，主线程有时候被叫成 UI 线程。</p>
 
-<p>The system does <em>not</em> create a separate thread for each instance of a component. All
-components that run in the same process are instantiated in the UI thread, and system calls to
-each component are dispatched from that thread. Consequently, methods that respond to system
-callbacks (such as <code><a href="../../reference/android/view/View.html#onKeyDown(int, android.view.KeyEvent)">onKeyDown()</a></code> to report user actions
-or a lifecycle callback method) always run in the UI thread of the process.</p>
+<p>系统<em>不会</em>为某个组件的每个实例而单独创建一个线程。运行在同一个进程中的所有的组件都在 UI 线程中实例化，同时系统对每个组件的调用都是在这个线程中分发。因此,系统回调的响应方法（比如 <code><a href="../../reference/android/view/View.html#onKeyDown(int, android.view.KeyEvent)">onKeyDown()</a></code> 方法用于报告用户操作或用作一个生命周期的回调方法）总是运行在 UI 线程中以便进行处理。</p>
 
-<p>For instance, when the user touches a button on the screen, your app's UI thread dispatches the
-touch event to the widget, which in turn sets its pressed state and posts an invalidate request to
-the event queue. The UI thread dequeues the request and notifies the widget that it should redraw
-itself.</p>
+<p>例如，当用户点击屏幕上的一个按钮时，你的应用程序的 UI 线程分发触碰事件给对应的小部件，从而将按钮转变为按下状态同时发送一个无效化的请求到事件队列中。UI 线程让请求出列同时通知对应的小部件进行重新绘制。</p>
 
-<p>When your app performs intensive work in response to user interaction, this single thread model
-can yield poor performance unless you implement your application properly. Specifically, if
-everything is happening in the UI thread, performing long operations such as network access or
-database queries will block the whole UI. When the thread is blocked, no events can be dispatched,
-including drawing events. From the user's perspective, the
-application appears to hang. Even worse, if the UI thread is blocked for more than a few seconds
-(about 5 seconds currently) the user is presented with the infamous "<a
-href="http://developer.android.com/guide/practices/responsiveness.html">application not
-responding</a>" (ANR) dialog. The user might then decide to quit your application and uninstall it
-if they are unhappy.</p>
+<p>当你的应用程序在密集地响应用户交互时，这种单线程模式可能表现欠佳除非你的应用程序有正确的实现。具体来说，如果所有的事都发生在 UI 线程中，进行耗时的操作比如网络连接或者数据库查询操作都将阻塞整个 UI 线程。当线程被阻塞的时候，没有事件可以被分发，包括绘画事件。从用户的角度，应用看起来被挂起了。更糟糕的是，如果 UI 线程被阻塞超过一定的时间（目前大概5秒）用户将会看见臭名昭著的"<a
+href="http://developer.android.com/guide/practices/responsiveness.html">应用没有响应</a>“（ANR）对话框。如果用户不高兴的话,他们接下来也许会决定退出你的应用程序然后卸载掉它.</p>
 
-<p>Additionally, the Andoid UI toolkit is <em>not</em> thread-safe. So, you must not manipulate
-your UI from a worker thread—you must do all manipulation to your user interface from the UI
-thread. Thus, there are simply two rules to Android's single thread model:</p>
+<p>此外,安卓的界面工具包是<em>非</em>线程安全的。所以,你不允许从一个工作线程操作界面 — 你必须在 UI 线程中对你的用户界面进行所有的操作。因此，对于安卓的单线程模式这里只有两条简单的规则：</p>
 
 <ol>
-<li>Do not block the UI thread
-
-</li><li>Do not access the Android UI toolkit from outside the UI thread
-
+<li>不要阻塞 UI 线程
+</li><li>不要在 UI 线程外访问安卓的界面工具包
 </li></ol>
 
 <h3 id="WorkerThreads">工作线程</h3>
