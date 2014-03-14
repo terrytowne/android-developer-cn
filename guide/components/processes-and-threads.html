@@ -1074,7 +1074,7 @@ href="../../guide/topics/manifest/activity-element.html"><code>&lt;activity&gt;<
     <p>涉及到当前用户正在进行操作的进程为前台进程。如果满足下面所列其中一种情况的进程即为前台进程。</p>
 
       <ul>
-        <li>进程托管一个用户正在交互的<code><a href="../../reference/android/app/Activity.html">活动</a></code>（<code><a href="../../reference/android/app/Activity.html">活动</a></code>的 <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> 方法正在被调用。</li>
+        <li>进程托管一个用户正在交互的<code><a href="../../reference/android/app/Activity.html">活动</a></code>（<code><a href="../../reference/android/app/Activity.html">活动</a></code>的 <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> 方法正在被调用）。</li>
 
         <li>进程托管一个与用户正在交互的活动绑定的<code><a href="../../reference/android/app/Service.html">服务</a></code>。</li>
 
@@ -1139,18 +1139,14 @@ href="http://developer.android.com/guide/practices/responsiveness.html">应用�
 
 <ol>
 <li>不要阻塞 UI 线程
-</li><li>不要在 UI 线程外访问安卓的界面工具包
+</li><li>不要在 UI 线程外修改安卓界面
 </li></ol>
 
 <h3 id="WorkerThreads">工作线程</h3>
 
-<p>Because of the single thread model described above, it's vital to the responsiveness of your
-application's UI that you do not block the UI thread. If you have operations to perform
-that are not instantaneous, you should make sure to do them in separate threads ("background" or
-"worker" threads).</p>
+<p>由于上述单线程模式对你的应用程序的界面有着至关重要的影响，因此你不可以阻塞 UI 线程。如果你有一个非实时的操作，你应当确保在单独的线程中对其进行操作（"后台"或者"工作"线程）。</p>
 
-<p>For example, below is some code for a click listener that downloads an image from a separate
-thread and displays it in an <code><a href="../../reference/android/widget/ImageView.html">ImageView</a></code>:</p>
+<p>例如，下面这段代码通过对一个点击事件进行监听，然后在一个单独的线程中下载图片并同时在 <code><a href="../../reference/android/widget/ImageView.html">ImageView</a></code> 中显示它。</p>
 
 <pre>
 public void onClick(View v) {
@@ -1163,13 +1159,9 @@ public void onClick(View v) {
 }
 </pre>
 
-<p>At first, this seems to work fine, because it creates a new thread to handle the network
-operation. However, it violates the second rule of the single-threaded model: <em>do not access the
-Android UI toolkit from outside the UI thread</em>—this sample modifies the <code><a href="../../reference/android/widget/ImageView.html">ImageView</a></code> from the worker thread instead of the UI thread. This can result in
-undefined and unexpected behavior, which can be difficult and time-consuming to track down.</p>
+<p>一开始，它好像能正常工作，因为它创建了一个新的进程去处理网络操作。然而，它违反了单进程模型第二法则：<em>不要在 UI 线程外修改安卓界面</em> — 这个例子中使用工作线程对 <code><a href="../../reference/android/widget/ImageView.html">ImageView</a></code> 进行修改，而不是在 UI 线程中修改。这可能导致未定义或意想不到的行为，并且这些行为的追溯可能困难而且耗时。</p>
 
-<p>To fix this problem, Android offers several ways to access the UI thread from other
-threads. Here is a list of methods that can help:</p>
+<p>要修复这个问题，安卓提供了几种途径在其他线程中访问 UI 线程。下面列出了一些方法，这也许可以帮助你：</p>
 
 <ul>
 <li><code><a href="../../reference/android/app/Activity.html#runOnUiThread(java.lang.Runnable)">Activity.runOnUiThread(Runnable)</a></code></li>
@@ -1178,7 +1170,7 @@ threads. Here is a list of methods that can help:</p>
 long)</a></code></li>
 </ul>
 
-<p>For example, you can fix the above code by using the <code><a href="../../reference/android/view/View.html#post(java.lang.Runnable)">View.post(Runnable)</a></code> method:</p>
+<p>例如，你可以通过使用 <code><a href="../../reference/android/view/View.html#post(java.lang.Runnable)">View.post(Runnable)</a></code> 方法来修复上面的代码：</p>
 
 <pre>
 public void onClick(View v) {
@@ -1195,29 +1187,18 @@ public void onClick(View v) {
 }
 </pre>
 
-<p>Now this implementation is thread-safe: the network operation is done from a separate thread
-while the <code><a href="../../reference/android/widget/ImageView.html">ImageView</a></code> is manipulated from the UI thread.</p>
+<p>现在这个实现是线程安全的：当 <code><a href="../../reference/android/widget/ImageView.html">ImageView</a></code> 在 UI 线程中进行操作的时候，网络操作在一个单独的线程中完成。</p>
 
-<p>However, as the complexity of the operation grows, this kind of code can get complicated and
-difficult to maintain. To handle more complex interactions with a worker thread, you might consider
-using a <code><a href="../../reference/android/os/Handler.html">Handler</a></code> in your worker thread, to process messages delivered from the UI
-thread. Perhaps the best solution, though, is to extend the <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> class,
-which simplifies the execution of worker thread tasks that need to interact with the UI.</p>
+<p>但是，随着操作复杂性的增加，这样的代码可能维护起来既困难又复杂。为了在工作线程中处理更加复杂的交互，你可以考虑在你的工作线程中使用一个 <code><a href="../../reference/android/os/Handler.html">Handler</a></code> 去处理来自 UI 线程的信息递送。也许最好的解决方案是使用 <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> 类的扩展类，它会简化界面交互任务在工作进程中的执行。</p>
 
 
-<h4 id="AsyncTask">Using AsyncTask</h4>
+<h4 id="AsyncTask">使用异步任务</h4>
 
-<p><code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> allows you to perform asynchronous work on your user
-interface. It performs the blocking operations in a worker thread and then publishes the results on
-the UI thread, without requiring you to handle threads and/or handlers yourself.</p>
+<p><code><a href="../../reference/android/os/AsyncTask.html">异步任务</a></code>允许你在你的用户界面上进行异步操作。它在工作线程中进行阻塞操作然后将结果发布到 UI 线程上，这不需要你去处理线程或程序本身。</p>
 
-<p>To use it, you must subclass <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> and implement the <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> callback method, which runs in a pool of
-background threads. To update your UI, you should implement <code><a href="../../reference/android/os/AsyncTask.html#onPostExecute(Result)">onPostExecute()</a></code>, which delivers the result from <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> and runs in the UI thread, so you can safely
-update your UI. You can then run the task by calling <code><a href="../../reference/android/os/AsyncTask.html#execute(Params...)">execute()</a></code>
-from the UI thread.</p>
+<p>要使用它，你必须继承 <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> 类，然后实现 <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> 回调方法，该接口运行在一个后台线程池中。为了更新你的界面,你应当实现 <code><a href="../../reference/android/os/AsyncTask.html#onPostExecute(Result)">onPostExecute()</a></code> 方法该方法负责递送来自 <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> 方法的结果然后在 UI 线程中运行，所以你可以安全的更新你的界面。接下来你就可以通过在 UI 线程调用 <code><a href="../../reference/android/os/AsyncTask.html#execute(Params...)">execute()</a></code> 方法来执行任务。</p>
 
-<p>For example, you can implement the previous example using <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> this
-way:</p>
+<p>例如，你可以通过使用 <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> 实现之前的例子：</p>
 
 <pre>
 public void onClick(View v) {
@@ -1239,31 +1220,22 @@ private class DownloadImageTask extends AsyncTask&lt;String, Void, Bitmap&gt; {
 }
 </pre>
 
-<p>Now the UI is safe and the code is simpler, because it separates the work into the
-part that should be done on a worker thread and the part that should be done on the UI thread.</p>
+<p>现在用户界面在安全的同时代码也更加简洁了，因为它把应当在工作线程中运行的部分和应当在 UI 线程运行的部分分开来了。</p>
 
-<p>You should read the <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> reference for a full understanding on
-how to use this class, but here is a quick overview of how it works:</p>
+<p>你应当阅读 <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> 的参考文献以获得一个关于如何去使用这个类的全面认识,但是这里有一个关于它如何工作的简要概述：</p>
 
 <ul>
-<li>You can specify the type of the parameters, the progress values, and the final
-value of the task, using generics</li>
-<li>The method <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> executes automatically
-on a worker thread</li>
-<li><code><a href="../../reference/android/os/AsyncTask.html#onPreExecute()">onPreExecute()</a></code>, <code><a href="../../reference/android/os/AsyncTask.html#onPostExecute(Result)">onPostExecute()</a></code>, and <code><a href="../../reference/android/os/AsyncTask.html#onProgressUpdate(Progress...)">onProgressUpdate()</a></code> are all invoked on the UI thread</li>
-<li>The value returned by <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> is sent to
-<code><a href="../../reference/android/os/AsyncTask.html#onPostExecute(Result)">onPostExecute()</a></code></li>
-<li>You can call <code><a href="../../reference/android/os/AsyncTask.html#publishProgress(Progress...)">publishProgress()</a></code> at anytime in <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> to execute <code><a href="../../reference/android/os/AsyncTask.html#onProgressUpdate(Progress...)">onProgressUpdate()</a></code> on the UI thread</li>
-<li>You can cancel the task at any time, from any thread</li>
+<li>你可以通过使用泛型来制定参数的类型，进度条的值和最后任务的返回值。</li>
+<li> <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> 方法将会在一个工作线程中自动运行</li>
+<li><code><a href="../../reference/android/os/AsyncTask.html#onPreExecute()">onPreExecute()</a></code>方法、<code><a href="../../reference/android/os/AsyncTask.html#onPostExecute(Result)">onPostExecute()</a></code> 方法和 <code><a href="../../reference/android/os/AsyncTask.html#onProgressUpdate(Progress...)">onProgressUpdate()</a></code> 方法都是在 UI 线程中被调用的</li>
+<li><code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> 方法的返回值将发送给 <code><a href="../../reference/android/os/AsyncTask.html#onPostExecute(Result)">onPostExecute()</a></code> 方法</li>
+<li>无论什么时候,你都可以在 <code><a href="../../reference/android/os/AsyncTask.html#doInBackground(Params...)">doInBackground()</a></code> 方法中调用 <code><a href="../../reference/android/os/AsyncTask.html#publishProgress(Progress...)">publishProgress()</a></code> 去执行 UI 线程中的 <code><a href="../../reference/android/os/AsyncTask.html#onProgressUpdate(Progress...)">onProgressUpdate()</a></code> 方法。</li>
+<li>在任何时候、任意线程中，你都可以取消该任务。</li>
 </ul>
 
-<p class="caution"><strong>Caution:</strong> Another problem you might encounter when using a worker
-thread is unexpected restarts in your activity due to a <a
-href="../../guide/topics/resources/runtime-changes.html">runtime configuration change</a>
-(such as when the user changes the screen orientation), which may destroy your worker thread. To
-see how you can persist your task during one of these restarts and how to properly cancel the task
-when the activity is destroyed, see the source code for the <a
-href="http://code.google.com/p/shelves/">Shelves</a> sample application.</p>
+<p class="caution"><strong>警告：</strong>当活动中的工作线程因为<a
+href="../../guide/topics/resources/runtime-changes.html">运行时配置变化</a>（如用户改变了屏幕方向）而重启，你可能会碰到其它问题，这些问题也可能会破坏你的工作线程。要了解如何当活动重启时保持这些异步任务或是如何在活动销毁时正确地取消异步任务，请查看 <a
+href="http://code.google.com/p/shelves/">Shelves</a> 示例应用的源代码。</p>
 
 
 <h3 id="ThreadSafe">线程安全方法</h3>
