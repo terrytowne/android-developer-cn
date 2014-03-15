@@ -1240,25 +1240,12 @@ href="http://code.google.com/p/shelves/">Shelves</a> 示例应用的源代码。
 
 <h3 id="ThreadSafe">线程安全方法</h3>
 
-<p>  In some situations, the methods you implement might be called from more than one thread, and
-therefore must be written to be thread-safe.  </p>
+<p> 在一些情形中，一些方法可能会被超过一个线程调用，因此这些方法必须是线程安全的。 </p>
 
-<p>This is primarily true for methods that can be called remotely—such as methods in a <a
-href="../../guide/components/bound-services.html">bound service</a>. When a call on a
-method implemented in an <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> originates in the same process in which the
-<code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> is running, the method is executed in the caller's thread.
-However, when the call originates in another process, the method is executed in a thread chosen from
-a pool of threads that the system maintains in the same process as the <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> (it's not executed in the UI thread of the process).  For example, whereas a service's
-<code><a href="../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> method would be called from the UI thread of the
-service's process, methods implemented in the object that <code><a href="../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> returns (for example, a subclass that implements RPC methods) would be called from threads
-in the pool. Because a service can have more than one client, more than one pool thread can engage
-the same <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> method at the same time.  <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> methods must, therefore, be implemented to be thread-safe.</p>
+<p>这对一些需要远程调用的方法特别重要 — 如<a
+href="../../guide/components/bound-services.html">绑定服务</a>中的方法。当对一个实现了 <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> 接口的方法在 <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> 正在运行的进程中调用，方法会在调用者的线程中执行。但是当方法从其它进程中调用时，该方法会在 <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> 进程中由系统管理的线程池中执行（不是在进程的 UI 线程中执行）。例如，尽管 <code><a href="../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> 方法会在服务组件进程的 UI 线程中调用，<code><a href="../../reference/android/app/Service.html#onBind(android.content.Intent)">onBind()</a></code> 方法返回的对象中的方法（如一个实现了 RPC 方法的子类）将会在一个线程池中被调用。应为服务可以有超过一个客户，多个线程池可以同时访问 <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> 方法。因此 <code><a href="../../reference/android/os/IBinder.html">IBinder</a></code> 方法必须是一个线程安全的实现。</p>
 
-<p>  Similarly, a content provider can receive data requests that originate in other processes.
-Although the <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code> and <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code>
-classes hide the details of how the interprocess communication is managed, <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code> methods that respond to those requests—the methods <code><a href="../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code>, <code><a href="../../reference/android/content/ContentProvider.html#insert(android.net.Uri, android.content.ContentValues)">insert()</a></code>, <code><a href="../../reference/android/content/ContentProvider.html#delete(android.net.Uri, java.lang.String, java.lang.String[])">delete()</a></code>, <code><a href="../../reference/android/content/ContentProvider.html#update(android.net.Uri, android.content.ContentValues, java.lang.String, java.lang.String[])">update()</a></code>, and <code><a href="../../reference/android/content/ContentProvider.html#getType(android.net.Uri)">getType()</a></code>—are called from a pool of threads in the content provider's process, not the UI
-thread for the process.  Because these methods might be called from any number of threads at the
-same time, they too must be implemented to be thread-safe.  </p>
+<p> 相似的，内容提供器可以收到来自其他线程的数据请求。尽管 <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code> 和 <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code> 类隐藏了它们如何管理进程间通信的细节， <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code> 中响应这些来自其它线程请求的方法 — 方法 <code><a href="../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> 、<code><a href="../../reference/android/content/ContentProvider.html#insert(android.net.Uri, android.content.ContentValues)">insert()</a></code>、<code><a href="../../reference/android/content/ContentProvider.html#delete(android.net.Uri, java.lang.String, java.lang.String[])">delete()</a></code> 、<code><a href="../../reference/android/content/ContentProvider.html#update(android.net.Uri, android.content.ContentValues, java.lang.String, java.lang.String[])">update()</a></code> 和 <code><a href="../../reference/android/content/ContentProvider.html#getType(android.net.Uri)">getType()</a></code> — 都从一个内容提供器进程的线程池中被调用，而不是在进程的 UI 线程中调用。因为这些方法可能同时被多个线程调用，因此它们也必须是线程安全的。 </p>
 
 
 <h2 id="IPC">进程间通信</h2>
