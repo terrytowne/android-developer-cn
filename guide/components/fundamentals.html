@@ -1135,27 +1135,11 @@ href="../../guide/topics/ui/notifiers/notifications.html">创建状态栏通知<
 
 
 
-<p>A unique aspect of the Android system design is that any application can start another
-application’s component. For example, if you want the user to capture a
-photo with the device camera, there's probably another application that does that and your
-application can use it, instead of developing an activity to capture a photo yourself. You don't
-need to incorporate or even link to the code from the camera application.
-Instead, you can simply start the activity in the camera application that captures a
-photo. When complete, the photo is even returned to your application so you can use it. To the user,
-it seems as if the camera is actually a part of your application.</p>
+<p>安卓系统设计中的一个特性就是任何应用都可以启动其它应用组件。例如，如果你希望用户使用设备照相机拍照片，可能有另一个应用可以拍照而你的应用希望使用它，而不是自己开发一个活动组件来拍照片。你不需要包含相机应用的代码，甚至不需要链接到相机应用代码。相反，你可以简单地启动相机应用中的活动来拍照片。当拍好照片，图片返回到你的应用而你可以使用这个图片。对用户来说，这好像相机是你的应用的一部分。</p>
 
-<p>When the system starts a component, it starts the process for that application (if it's not
-already running) and instantiates the classes needed for the component. For example, if your
-application starts the activity in the camera application that captures a photo, that activity
-runs in the process that belongs to the camera application, not in your application's process.
-Therefore, unlike applications on most other systems, Android applications don't have a single entry
-point (there's no <code>main()</code> function, for example).</p>
+<p>当系统启动一个组件，系统启动该应用的进程（如果应用还没有运行）然后实例化组件需要的所有类。例如，如果应用启动相机应用的活动来拍照片，该活动组件运行在相机应用的进程中，而不是你的应用的进程中。因此，不像其它系统中的应用，安卓应用没有单独的入口点（例如没有 <code>main()</code> 函数）。</p>
 
-<p>Because the system runs each application in a separate process with file permissions that
-restrict access to other applications, your application cannot directly activate a component from
-another application. The Android system, however, can. So, to activate a component in
-another application, you must deliver a message to the system that specifies your <em>intent</em> to
-start a particular component. The system then activates the component for you.</p>
+<p>因为系统在不同的进程横纵运行各个应用，每个应用有各自的文件权限限制其它应用的访问，你的应用不能直接激活其它应用中的组件。但是安卓系统可以激活这些组件。因此，要激活其它应用中的组件，你必须发送消息给系统，这个消息具体说明你要启动一个特定组件的<em>意图</em>。然后安卓系统为你激活这个组件。</p>
 
 
 <h3 id="ActivatingComponents">Activating Components</h3>
@@ -1213,25 +1197,16 @@ href="../../guide/topics/providers/content-providers.html">Content Providers</a>
 
 <h2 id="Manifest">项目清单文件</h2>
 
-<p>Before the Android system can start an application component, the system must know that the
-component exists by reading the application's <code>AndroidManifest.xml</code> file (the "manifest"
-file). Your application must declare all its components in this file, which must be at the root of
-the application project directory.</p>
+<p>在安卓系统能启动应用组件前，系统必须阅读应用的 <code>AndroidManifest.xml</code> 文件（“清单”文件）以知道各组件的存在。你的应用必须在这个文件中声明它包括的所有组件，这个文件必须位于应用项目的根目录中。</p>
 
-<p>The manifest does a number of things in addition to declaring the application's components,
-such as:</p>
+<p>清单文件除了声明应用组件，还做了其它一些事情，包括：</p>
 <ul>
-  <li>Identify any user permissions the application requires, such as Internet access or
-read-access to the user's contacts.</li>
-  <li>Declare the minimum <a href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API Level</a>
-required by the application, based on which APIs the application uses.</li>
-  <li>Declare hardware and software features used or required by the application, such as a camera,
-bluetooth services, or a multitouch screen.</li>
-  <li>API libraries the application needs to be linked against (other than the Android framework
-APIs), such as the <a
-href="http://code.google.com/android/add-ons/google-apis/maps-overview.html">Google Maps
-library</a>.</li>
-  <li>And more</li>
+  <li>识别应用需要的用户权限，如网络访问或读访问用户联系人等权限。</li>
+  <li>声明应用需要的最小 <a href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API 级别</a> ，只有高于这个级别应用才能运行。</li>
+  <li>声明应用需要的硬件和所使用的软件特性，如照相机、蓝牙服务或屏幕多点触摸。</li>
+  <li>应用需要链接的 API 库（非安卓框架 API），如 <a
+href="http://code.google.com/android/add-ons/google-apis/maps-overview.html">Google Maps 库</a>。</li>
+  <li>其它</li>
 </ul>
 
 
