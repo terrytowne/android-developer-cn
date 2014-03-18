@@ -1033,7 +1033,7 @@ onkeyup="return search_changed(event, false, '../../')" />
 <ol>
 <li><a href="#Components">应用组件</a>
   <ol>
-    <li><a href="#ActivatingComponents">激活组件</a></li>
+    <li><a href="#ActivatingComponents">启动应用组件</a></li>
   </ol>
 </li>
 <li><a href="#Manifest">项目清单文件</a>
@@ -1142,57 +1142,31 @@ href="../../guide/topics/ui/notifiers/notifications.html">创建状态栏通知<
 <p>因为系统在不同的进程横纵运行各个应用，每个应用有各自的文件权限限制其它应用的访问，你的应用不能直接激活其它应用中的组件。但是安卓系统可以激活这些组件。因此，要激活其它应用中的组件，你必须发送消息给系统，这个消息具体说明你要启动一个特定组件的<em>意图</em>。然后安卓系统为你激活这个组件。</p>
 
 
-<h3 id="ActivatingComponents">Activating Components</h3>
+<h3 id="ActivatingComponents">启动应用组件</h3>
 
-<p>Three of the four component types—activities, services, and
-broadcast receivers—are activated by an asynchronous message called an <em>intent</em>.
-Intents bind individual components to each other at runtime (you can think of them
-as the messengers that request an action from other components), whether the component belongs
-to your application or another.</p>
+<p>四种组建类型中的三个 — 活动、服务和广播接收器 — 都可以通过<em>意图</em>这个异步消息启动。无论组件是否属于你的应用，意图在运行时将各个独立的组件绑在一起（你可以将它理解成请求其它组件操作的信使）。</p>
 
-<p>An intent is created with an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> object, which defines a message to
-activate either a specific component or a specific <em>type</em> of component—an intent
-can be either explicit or implicit, respectively.</p>
+<p>意图由 <code><a href="../../reference/android/content/Intent.html">Intent</a></code> 对象创建，它定义了一个启动某个特定组件或某<em>类</em>组件的消息 — 即意图可以是显式的或者隐式的。</p>
 
-<p>For activities and services, an intent defines the action to perform (for example, to "view" or
-"send" something) and may specify the URI of the data to act on (among other things that the
-component being started might need to know). For example, an intent might convey a request for an
-activity to show an image or to open a web page. In some cases, you can start an
-activity to receive a result, in which case, the activity also returns
-the result in an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> (for example, you can issue an intent to let
-the user pick a personal contact and have it returned to you—the return intent includes a
-URI pointing to the chosen contact).</p>
+<p>对于活动和服务，意图定义了要执行的操作（如"查看"或 "发送"操作）或指定操作数据对象的 URI 地址（连同其它要启动的组件需要知道的信息）。例如，意图可以向活动传递一个请求来显示图片或者打开一个网页。在一些情况下，你可以启动一个活动来接受它的返回结果，在这种情况中，活动也会返回一个<code><a href="../../reference/android/content/Intent.html">意图</a></code>作为返回结果（举例来说，你可以发送一个意图来让用户选择一个联系人，然后使用意图将结果返回给你 — 返回的意图包括一个指向选定联系人的 URI 地址。</p>
 
-<p>For broadcast receivers, the intent simply defines the
-announcement being broadcast (for example, a broadcast to indicate the device battery is low
-includes only a known action string that indicates "battery is low").</p>
+<p>对于广播接收器组件，意图定义了广播的公告（如设备电量低广播消息意图只包括一个已知的操作字符串来表示“电量低”）。</p>
 
-<p>The other component type, content provider, is not activated by intents. Rather, it is
-activated when targeted by a request from a <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code>. The content
-resolver handles all direct transactions with the content provider so that the component that's
-performing transactions with the provider doesn't need to and instead calls methods on the <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code> object. This leaves a layer of abstraction between the content
-provider and the component requesting information (for security).</p>
+<p>另一个种组件类型，内容提供器，不能从意图启动。它在<code><a href="../../reference/android/content/ContentResolver.html">内容解析器</a></code>请求时激活。内容解析器管理和内容提供器的所有直接事务，这样执行事务操作的组件不需要直接访问内容提供器，而是通过调用<code><a href="../../reference/android/content/ContentResolver.html">内容解析器</a></code>对象方法来访问。这带来内容提供器和组件请求信息之间的抽象层（出于安全考虑）。</p>
 
-<p>There are separate methods for activating each type of component:</p>
+<p>启动各种类型的组件有不同的方法：</p>
 <ul>
-  <li>You can start an activity (or give it something new to do) by
-passing an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to <code><a href="../../reference/android/content/Context.html#startActivity(android.content.Intent)">startActivity()</a></code> or <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code>
-(when you want the activity to return a result).</li>
-  <li>You can start a service (or give new instructions to an ongoing service) by
-passing an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to <code><a href="../../reference/android/content/Context.html#startService(android.content.Intent)">startService()</a></code>. Or you can bind to the service by passing an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to
-<code><a href="../../reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)">bindService()</a></code>.</li>
-  <li>You can initiate a broadcast by passing an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to methods like
-<code><a href="../../reference/android/content/Context.html#sendBroadcast(android.content.Intent)">sendBroadcast()</a></code>, <code><a href="../../reference/android/content/Context.html#sendOrderedBroadcast(android.content.Intent, java.lang.String)">sendOrderedBroadcast()</a></code>, or <code><a href="../../reference/android/content/Context.html#sendStickyBroadcast(android.content.Intent)">sendStickyBroadcast()</a></code>.</li>
-  <li>You can perform a query to a content provider by calling <code><a href="../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> on a <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code>.</li>
+  <li>你可以传一个<code><a href="../../reference/android/content/Intent.html">意图</a></code>参数给 <code><a href="../../reference/android/content/Context.html#startActivity(android.content.Intent)">startActivity()</a></code> 方法或 <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code> 方法（当你想要活动返回结果）来启动一个活动（或告诉活动执行新任务）。</li>
+  <li>你可以传一个<code><a href="../../reference/android/content/Intent.html">意图</a></code>参数给 <code><a href="../../reference/android/content/Context.html#startService(android.content.Intent)">startService()</a></code> 方法来启动一个服务（或给一个正在运行的服务新的指令）。或者你可以传一个<code><a href="../../reference/android/content/Intent.html">意图</a></code>参数给 <code><a href="../../reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)">bindService()</a></code> 方法类绑定服务。</li>
+  <li>你可以传一个<code><a href="../../reference/android/content/Intent.html">意图</a></code>参数给 <code><a href="../../reference/android/content/Context.html#sendBroadcast(android.content.Intent)">sendBroadcast()</a></code>、<code><a href="../../reference/android/content/Context.html#sendOrderedBroadcast(android.content.Intent, java.lang.String)">sendOrderedBroadcast()</a></code> 或 <code><a href="../../reference/android/content/Context.html#sendStickyBroadcast(android.content.Intent)">sendStickyBroadcast()</a></code> 方法来启动一个广播接收器。</li>
+  <li>你可以调用 <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code> 的 <code><a href="../../reference/android/content/ContentProvider.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)">query()</a></code> 方法来执行查询操作。</li>
 </ul>
 
-<p>For more information about using intents, see the <a
-href="../../guide/components/intents-filters.html">Intents and
-Intent Filters</a> document. More information about activating specific components is also provided
-in the following documents: <a
-href="../../guide/components/activities.html">Activities</a>, <a
-href="../../guide/components/services.html">Services</a>, <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> and <a
-href="../../guide/topics/providers/content-providers.html">Content Providers</a>.</p>
+<p>更多关于使用意图的信息，查看<a
+href="../../guide/components/intents-filters.html">意图和意图过滤器</a>文档。更多关于启动特定组件的信息可以查看这些文档：<a
+href="../../guide/components/activities.html">活动</a>、<a
+href="../../guide/components/services.html">服务</a>、<code><a href="../../reference/android/content/BroadcastReceiver.html">广播接收器</a></code>和<a
+href="../../guide/topics/providers/content-providers.html">内容提供器</a>。</p>
 
 
 <h2 id="Manifest">项目清单文件</h2>
@@ -1212,8 +1186,7 @@ href="http://code.google.com/android/add-ons/google-apis/maps-overview.html">Goo
 
 <h3 id="DeclaringComponents">声明组件</h3>
 
-<p>The primary task of the manifest is to inform the system about the application's components. For
-example, a manifest file can declare an activity as follows:  </p>
+<p>清单的首要任务就是向系统报告应用程序的组件。例如，一个清单文件可以像下面这样声明一个活动： </p>
 
 <pre>
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1226,73 +1199,43 @@ example, a manifest file can declare an activity as follows:  </p>
     &lt;/application&gt;
 &lt;/manifest&gt;</pre>
 
-<p>In the <code><a
-href="../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></code>
-element, the <code>android:icon</code> attribute points to resources for an icon that identifies the
-application.</p>
+<p>在 <code><a
+href="../../guide/topics/manifest/application-element.html">&lt;application&gt;</a></code> 元素中，<code>android:icon</code> 属性指明一个可以识别该应用程序的图标资源。</p>
 
-<p>In the <code><a
-href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></code> element,
-the <code>android:name</code> attribute specifies the fully qualified class name of the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> subclass and the <code>android:label</code> attributes specifies a string
-to use as the user-visible label for the activity.</p>
+<p>在 <code><a
+href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></code> 元素中，<code>android:name</code> 属性指定 <code><a href="../../reference/android/app/Activity.html">Activity</a></code> 子类的完全匹配类名，<code>android:label</code> 属性指定一个用于活动的用户可见标签字符串。</p>
 
-<p>You must declare all application components this way:</p>
+<p>你必须以下面方式这种声明所以的应用程序组件：</p>
 <ul>
   <li><code><a
-href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></code> elements
-for activities</li>
+href="../../guide/topics/manifest/activity-element.html">&lt;activity&gt;</a></code> 元素来声明活动</li>
   <li><code><a
-href="../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></code> elements for
-services</li>
+href="../../guide/topics/manifest/service-element.html">&lt;service&gt;</a></code> 元素来声明服务</li>
   <li><code><a
-href="../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></code> elements
-for broadcast receivers</li>
+href="../../guide/topics/manifest/receiver-element.html">&lt;receiver&gt;</a></code> 元素来声明广播接收器</li>
   <li><code><a
-href="../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></code> elements
-for content providers</li>
+href="../../guide/topics/manifest/provider-element.html">&lt;provider&gt;</a></code> 元素来声明内容提供器</li>
 </ul>
 
-<p>Activities, services, and content providers that you include in your source but do not declare
-in the manifest are not visible to the system and, consequently, can never run.  However,
-broadcast
-receivers can be either declared in the manifest or created dynamically in code (as
-<code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> objects) and registered with the system by calling
-<code><a href="../../reference/android/content/Context.html#registerReceiver(android.content.BroadcastReceiver, android.content.IntentFilter)">registerReceiver()</a></code>.</p>
+<p>如果你代码中包含的活动，服务和内容提供器没有在清单中声明的话，对系统来说它们是不可见的，这样的结果就是，你的应用程序无法运行这些组件。但是，广播接收器可以在清单中声明，也可以在动态地在代码中创建（比如 <code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> 对象）然后通过调用 <code><a href="../../reference/android/content/Context.html#registerReceiver(android.content.BroadcastReceiver, android.content.IntentFilter)">registerReceiver()</a></code> 方法注册组件。</p>
 
-<p>For more about how to structure the manifest file for your application, see <a
-href="../../guide/topics/manifest/manifest-intro.html">The AndroidManifest.xml File</a>
-documentation.  </p>
+<p>更多关于如何去构造你应用程序的清单文件的信息，查看<a
+href="../../guide/topics/manifest/manifest-intro.html">安卓项目清单</a> 文档。 </p>
 
 
 
-<h3 id="DeclaringComponentCapabilities">Declaring component capabilities</h3>
+<h3 id="DeclaringComponentCapabilities">声明组件功能</h3>
 
-<p>As discussed above, in <a href="#ActivatingComponents">Activating Components</a>, you can use an
-<code><a href="../../reference/android/content/Intent.html">Intent</a></code> to start activities, services, and broadcast receivers. You can do so
-by explicitly naming the target component (using the component class name) in the intent. However,
-the real power of intents lies in the concept of intent actions. With intent actions, you simply
-describe the type of action you want to perform (and optionally, the data upon which you’d like to
-perform the action) and allow the system to find a component on the device that can perform the
-action and start it. If there are multiple components that can perform the action described by the
-intent, then the user selects which one to use.</p>
+<p>正如上面<a href="#ActivatingComponents">启动应用组件</a>小节中所讨论的，你可以使用<code><a href="../../reference/android/content/Intent.html">意图</a></code>来启动活动、服务和广播接收器组件。你可以显式的在意图中使用目标组件名（使用组件的类名）来启动它们。但是，意图的真正力量在于意图操作这一概念。通过意图操作，你可以简单地描述你将要进行的行动的类别（或是根据你想执行的操作的数据），让系统在设备上找到一个可以执行这个操作的组件来启动这个组件。如果有多个组件可以执行意图描述的操作，那么用户可以选择使用哪一个组件。</p>
 
-<p>The way the system identifies the components that can respond to an intent is by comparing the
-intent received to the <i>intent filters</i> provided in the manifest file of other applications on
-the device.</p>
+<p>系统是通过对比设别上其他应用程序的清单文件中意图所提供的<i>意图过滤器</i>来识别组件是否会对一个意图进行响应的。</p>
 
-<p>When you declare a component in your application's manifest, you can optionally include
-intent filters that declare the capabilities of the component so it can respond to intents
-from other applications. You can declare an intent filter for your component by
-adding an <a href="../../guide/topics/manifest/intent-filter-element.html"><code>&lt;intent-filter&gt;</code></a> element as a child of the component's declaration element.</p>
+<p>当你在你应用程序的清单中声明一个组件时，你可以选择包含意图过滤器来声明组件的功能，以便它可以对来自其他应用程序的意图进行响应。你可以通过添加一个 <a href="../../guide/topics/manifest/intent-filter-element.html"><code>&lt;intent-filter&gt;</code></a> 作为组件元素声明的子元素来声明意图过滤器。</p>
 
-<p>For example, an email application with an activity for composing a new email might declare an
-intent filter in its manifest entry to respond to "send" intents (in order to send email). An
-activity in your application can then create an intent with the “send” action (<code><a href="../../reference/android/content/Intent.html#ACTION_SEND">ACTION_SEND</a></code>), which the system matches to the email application’s “send”
-activity and launches it when you invoke the intent with <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code>.</p>
+<p>例如，一个带有一个活动的邮箱应用程序为了构建一封新邮件，它也许要在他的清单入口中声明一个意图过滤器来对“发送”意图进行响应（为了发邮件）。应用中的活动可以创建一个带“发送”操作的意图（<code><a href="../../reference/android/content/Intent.html#ACTION_SEND">ACTION_SEND</a></code>），系统会将这个意图匹配到邮件应用中的“发邮件”活动组件上，当使用  <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code> 方法调用这个意图时，“发邮件”组件就会启动。</p>
 
-<p>For more about creating intent filters, see the <a
-href="../../guide/components/intents-filters.html">Intents and Intent Filters</a> document.
-
+<p>更多关于创建意图过滤器的信息，参见<a
+href="../../guide/components/intents-filters.html">意图和意图过滤器</a>文档。
 </p>
 
 
