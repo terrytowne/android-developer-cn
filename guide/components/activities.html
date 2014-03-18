@@ -1033,9 +1033,9 @@ onkeyup="return search_changed(event, false, '../../')" />
       <li><a href="#Declaring">在项目清单中定义活动</a></li>
     </ol>
   </li>
-  <li><a href="#StartingAnActivity">开始活动</a>
+  <li><a href="#StartingAnActivity">启动活动组件</a>
     <ol>
-      <li><a href="#StartingAnActivityForResult">Starting an activity for a result</a></li>
+      <li><a href="#StartingAnActivityForResult">启动其他活动并返回结果</a></li>
     </ol>
   </li>
   <li><a href="#ShuttingDown">Shutting Down an Activity</a></li>
@@ -1144,55 +1144,30 @@ href="../../guide/topics/manifest/intent-filter-element.html"><code>&lt;intent-f
 <p><a href="../../guide/topics/manifest/action-element.html"><code>&lt;action&gt;</code></a> 元素指定该活动为应用的“主要“入口点。<a
 href="../../guide/topics/manifest/category-element.html"><code>&lt;category&gt;</code></a> 元素指定这个活动应该在系统的应用启动器中列出（让用户可以启动这个活动）。</p>
 
-<p>If you intend for your application to be self-contained and not allow other applications to
-activate its activities, then you don't need any other intent filters. Only one activity should
-have the "main" action and "launcher" category, as in the previous example. Activities that
-you don't want to make available to other applications should have no intent filters and you can
-start them yourself using explicit intents (as discussed in the following section).</p>
+<p>如果想让一个应用程序独立于其他应用程序而不允许其他应用程序激活该独立应用程序的活动，那么你不需要意图过滤器。就像前面的例子中一样，只需要一个活动有"主要"动作和"启动器"分类意图过滤器。不希望被其他应用程序使用的活动不应包含意图过滤器和你可以使用显式的意图启动这些活动（将在下面的章节中讨论）。</p>
 
-<p>However, if you want your activity to respond to implicit intents that are delivered from
-other applications (and your own), then you must define additional intent filters for your
-activity. For each type of intent to which you want to respond, you must include an <a
-href="../../guide/topics/manifest/intent-filter-element.html"><code>&lt;intent-filter&gt;</code></a> that includes an
-<a href="../../guide/topics/manifest/action-element.html"><code>&lt;action&gt;</code></a> element and, optionally, a <a
-href="../../guide/topics/manifest/category-element.html"><code>&lt;category&gt;</code></a> element and/or a <a
-href="../../guide/topics/manifest/data-element.html"><code>&lt;data&gt;</code></a> element. These elements specify the type of intent to which your activity can
-respond.</p>
+<p>但如果想让你的活动响应从其他应用程序传递过来的隐式的意图（或者是开发者自己传递的隐式的意图），这时必须在你的活动中定义额外的意图过滤器。对每一种需要响应的意图类型，你必须包括一个 <a
+href="../../guide/topics/manifest/intent-filter-element.html"><code>&lt;intent-filter&gt;</code></a> 元素，它会包括 <a href="../../guide/topics/manifest/action-element.html"><code>&lt;action&gt;</code></a> 元素、 <a
+href="../../guide/topics/manifest/category-element.html"><code>&lt;category&gt;</code></a> 元素或 <a
+href="../../guide/topics/manifest/data-element.html"><code>&lt;data&gt;</code></a> 元素。这些元素说明活动能响应的意图类型。</p>
 
-<p>For more information about how your activities can respond to intents, see the <a
-href="../../guide/components/intents-filters.html">Intents and Intent Filters</a>
-document.</p>
+<p>更多关于活动如何响应意图的信息，请查看<a
+href="../../guide/components/intents-filters.html">意图和意图过滤器</a>文档。</p>
 
 
 
-<h2 id="StartingAnActivity">开始活动</h2>
+<h2 id="StartingAnActivity">启动活动组件</h2>
 
-<p>You can start another activity by calling <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code>, passing it an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> that describes the activity you
-  want to start. The intent specifies either the exact activity you want to start or describes the
-  type of action you want to perform (and the system selects the appropriate activity for you,
-which
-  can even be from a different application). An intent can also carry small amounts of data to be
-  used by the activity that is started.</p>
+<p>通过调用 <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code> 方法可以启动另一个活动，给方法传递一个<code><a href="../../reference/android/content/Intent.html">意图</a></code>参数来描述你希望启动的活动。这个意图指定你想要启动的具体活动或者描述你想要执行的那种动作（系统为你选择了合适的活动，这个活动甚至可来自其他应用程序）。意图可以携带少量的数据，这些数据会被启动的活动组件使用。</p>
 
-<p>When working within your own application, you'll often need to simply launch a known activity.
- You can do so by creating an intent that explicitly defines the activity you want to start,
-using the class name. For example, here's how one activity starts another activity named <code>SignInActivity</code>:</p>
+<p>当在你自己的应用程序中工作时，通常需要简单地启动一个已知活动。你可以使用要启动的活动组件类名称来显式地定义一个意图。例如下面这两行代码是某个活动组件启动另外一个名为 <code>SignInActivity</code> 的活动的例子：</p>
 
 <pre>
 Intent intent = new Intent(this, SignInActivity.class);
 startActivity(intent);
 </pre>
 
-<p>However, your application might also want to perform some action, such as send an email, text
-  message, or status update, using data from your activity. In this case, your application might
- not have its own activities to perform such actions, so you can instead leverage the activities
-  provided by other applications on the device, which can perform the actions for you. This is where
-intents are really valuable—you can create an intent that describes an action you want to
-perform and the system
-  launches the appropriate activity from another application. If there are
-  multiple activities that can handle the intent, then the user can select which one to use. For
-  example, if you want to allow the user to send an email message, you can create the
-  following intent:</p>
+<p>然而，你的应用程序可能会执行一些动作，例如发邮件、文本信息、或者状态更新、从活动中使用数据。在这些的情况中，你的应用程序可能没有类似的活动去完成上述的一些动作，所以你可以利用来本设备上其他应用程序的活动，这些活动能够完成你想要的动作。这正是体现了意图的真正价值的地方 — 你可以创建一个意图，意图中描述了你想要执行的动作，之后系统便会从其他应用程序中启动合适的活动。如果存在多个能够操纵意图的活动，那么用户可以选择使用那一个活动。例如，如果你想允许用户发送邮件信息，你可以创建如下的意图：</p>
 
 <pre>
 Intent intent = new Intent(Intent.ACTION_SEND);
@@ -1200,22 +1175,14 @@ intent.putExtra(Intent.EXTRA_EMAIL, recipientArray);
 startActivity(intent);
 </pre>
 
-<p>The <code><a href="../../reference/android/content/Intent.html#EXTRA_EMAIL">EXTRA_EMAIL</a></code> extra added to the intent is a string array of
-  email addresses to which the email should be sent. When an email application responds to this
-  intent, it reads the string array provided in the extra and places them in the "to" field of the
-  email composition form. In this situation, the email application's activity starts and when the
-  user is done, your activity resumes.</p>
+<p>意图中添加的 <code><a href="../../reference/android/content/Intent.html#EXTRA_EMAIL">EXTRA_EMAIL</a></code> 额外字段是一个邮件地址的字符串属猪，它说明了所有收件人邮件地址。当一个电子邮箱应用程序响应了这个意图，将会读取额外字段里面的字符串数组并将这些邮箱地址作为电子邮箱收件人地址。在这中的情况中国，电子邮件应用程序的活动启动并且当用户完成发动邮件操作时，会返回到你的活动中。</p>
 
 
 
 
-<h3 id="StartingAnActivityForResult">Starting an activity for a result</h3>
+<h3 id="StartingAnActivityForResult">启动其他活动并返回结果</h3>
 
-<p>Sometimes, you might want to receive a result from the activity that you start. In that case,
-  start the activity by calling <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code> (instead of <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code>). To then receive the result from the subsequent
-activity, implement the <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> callback
-  method. When the subsequent activity is done, it returns a result in an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> to your <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code>
-method.</p>
+<p>有时候，你可能需要从你启动的另外一个活动中得到一个返回结果。在这样的情形下，通过调用  <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code> 方法（而不是 <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code> 方法）。然后实现 <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> 回调方法来接收后续活动中获取返回的结果。当后续队列中的活动完成之后，它返回一个<code><a href="../../reference/android/content/Intent.html">意图</a></code>作为结果给你的 <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> 方法。</p>
 
 <p>For example, perhaps you want the user to pick one of their contacts, so your activity can
 do something with the information in that contact. Here's how you can create such an intent and
