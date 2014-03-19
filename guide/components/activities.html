@@ -1038,7 +1038,7 @@ onkeyup="return search_changed(event, false, '../../')" />
       <li><a href="#StartingAnActivityForResult">启动其他活动并返回结果</a></li>
     </ol>
   </li>
-  <li><a href="#ShuttingDown">Shutting Down an Activity</a></li>
+  <li><a href="#ShuttingDown">关闭活动组件</a></li>
   <li><a href="#Lifecycle">管理活动生命周期</a>
     <ol>
       <li><a href="#ImplementingLifecycleCallbacks">Implementing the lifecycle callbacks</a></li>
@@ -1184,9 +1184,7 @@ startActivity(intent);
 
 <p>有时候，你可能需要从你启动的另外一个活动中得到一个返回结果。在这样的情形下，通过调用  <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code> 方法（而不是 <code><a href="../../reference/android/app/Activity.html#startActivity(android.content.Intent)">startActivity()</a></code> 方法）。然后实现 <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> 回调方法来接收后续活动中获取返回的结果。当后续队列中的活动完成之后，它返回一个<code><a href="../../reference/android/content/Intent.html">意图</a></code>作为结果给你的 <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> 方法。</p>
 
-<p>For example, perhaps you want the user to pick one of their contacts, so your activity can
-do something with the information in that contact. Here's how you can create such an intent and
-handle the result:</p>
+<p>例如，你可能希望用户从设备的通信录中选择一个联系人，这样你的活动可以对联系人的信息进行一些操作。下段代码可以创建一个意图并处理返回结果：</p>
 
 <pre>
 private void pickContact() {
@@ -1211,42 +1209,25 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 </pre>
 
-<p>This example shows the basic logic you should use in your <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> method in order to handle an
-activity result. The first condition checks whether the request was successful—if it was, then
-the <code>resultCode</code> will be <code><a href="../../reference/android/app/Activity.html#RESULT_OK">RESULT_OK</a></code>—and whether the request
-to which this result is responding is known—in this case, the <code>requestCode</code> matches the
-second parameter sent with <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code>. From there, the code handles the activity result by querying the
-data returned in an <code><a href="../../reference/android/content/Intent.html">Intent</a></code> (the <code>data</code> parameter).</p>
+<p>这个例子显示了为了处理活动返回结果你需要在 <code><a href="../../reference/android/app/Activity.html#onActivityResult(int, int, android.content.Intent)">onActivityResult()</a></code> 方法中使用的基本逻辑。第一个判断条件判断了请求是否成功 — 如果成功，<code>resultCode</code> 值将会是 <code><a href="../../reference/android/app/Activity.html#RESULT_OK">RESULT_OK</a></code> — 以及请求的结果是否已知 — 在这个例子中，<code>requestCode</code> 与 <code><a href="../../reference/android/app/Activity.html#startActivityForResult(android.content.Intent, int)">startActivityForResult()</a></code> 发送的第二个参数相匹配。在匹配请求码后，代码将对活动返回结果进行操作，它会查询使用<code><a href="../../reference/android/content/Intent.html">意图</a></code>返回的数据（<code>data</code> 参数项）。</p>
 
-<p>What happens is, a <code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code> performs a query against a content provider, which returns a
-<code><a href="../../reference/android/database/Cursor.html">Cursor</a></code> that allows the queried data to be read. For more information, see
-the <a
-href="../../guide/topics/providers/content-providers.html">Content Providers</a> document.</p>
+<p>查询过程即是：<code><a href="../../reference/android/content/ContentResolver.html">内容解析器</a></code>将在内容提供器中执行一个查询，它返回一个<code><a href="../../reference/android/database/Cursor.html">游标</a></code>对象，然后通过游标可以读取查询数据。更多相关信息，查看<a
+href="../../guide/topics/providers/content-providers.html">内容提供器</a>文档。</p>
 
-<p>For more information about using intents, see the <a
-href="../../guide/components/intents-filters.html">Intents and Intent
-Filters</a> document.</p>
+<p>更多关于使用意图的信息，查看<a
+href="../../guide/components/intents-filters.html">意图和意图过滤器</a>文档。</p>
 
 
-<h2 id="ShuttingDown">Shutting Down an Activity</h2>
+<h2 id="ShuttingDown">关闭活动组件</h2>
 
-<p>You can shut down an activity by calling its <code><a href="../../reference/android/app/Activity.html#finish()">finish()</a></code> method. You can also shut down a separate activity that you previously started by calling
-<code><a href="../../reference/android/app/Activity.html#finishActivity(int)">finishActivity()</a></code>.</p>
+<p>你可以使用 <code><a href="../../reference/android/app/Activity.html#finish()">finish()</a></code> 方法关闭一个活动组件。你也可以通过调用 <code><a href="../../reference/android/app/Activity.html#finishActivity(int)">finishActivity()</a></code> 方法来关闭一个先前已经启动且独立的活动。</p>
 
-<p class="note"><strong>Note:</strong> In most cases, you should not explicitly finish an activity
-using these methods. As discussed in the following section about the activity lifecycle, the
-Android system manages the life of an activity for you, so you do not need to finish your own
-activities. Calling these methods could adversely affect the expected user
-experience and should only be used when you absolutely do not want the user to return to this
-instance of the activity.</p>
+<p class="note"><strong>注意：</strong>在大多数情况下，你不应该显示地使用这些方法关闭活动。在后面讨论活动生命周期的章节中，安卓系统会为你管理活动的生命，所以你不必要手动关闭你自己的活动。调用这些方法可能会对用户预期的体验造成不利的影响，只有确定你不要希望用户返回这个活动实例时才建议你使用这两个方法。</p>
 
 
 <h2 id="Lifecycle">管理活动生命周期</h2>
 
-<p>Managing the lifecycle of your activities by implementing callback methods is
-crucial to developing a strong
-and flexible application. The lifecycle of an activity is directly affected by its association with
-other activities, its task and back stack.</p>
+<p>实现回调方法来管理你活动的生命周期是开发一个健壮和灵活应用程序的关键。活动的生命周期受到与之相关联的其他活动直接的影响，它的任务和返回堆栈。</p>
 
 <p>An activity can exist in essentially three states:</p>
 
