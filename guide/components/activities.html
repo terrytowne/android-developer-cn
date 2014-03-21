@@ -1304,46 +1304,24 @@ public class ExampleActivity extends Activity {
 <p class="note"><strong>Note:</strong> Your implementation of these lifecycle methods must
 always call the superclass implementation before doing any work, as shown in the examples above.</p>
 
-<p>Taken together, these methods define the entire lifecycle of an activity. By implementing these
-methods, you can monitor three nested loops in the activity lifecycle:  </p>
+<p>总的来说，这些方法定义了整个活动组件生命周期。通过实现这些方法，你可以监视活动组件声明周期的三层循环。 </p>
 
 <ul>
-<li>The <b>entire lifetime</b> of an activity happens between the call to <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> and the call to <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code>. Your activity should perform setup of
-"global" state (such as defining layout) in <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code>, and
-release all remaining resources in <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code>. For example, if your
-activity has a thread running in the background to download data from the network, it might create
-that thread in <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> and then stop the thread in <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code>.</li>
+<li>活动组件的<b>完整生命周期</b>开始于调用 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法，结束于调用 <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code> 方法。活动组件可以在 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法中执行一些全局状态设置（如定义布局），在 <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code> 中释放所有剩余的资源。例如，如果你的活动中包含一个从网络上下载数据的后台线程，那么该线程可以在 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法中创建并在 <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code> 方法中停止。</li>
 
-<li><p>The <b>visible lifetime</b> of an activity happens between the call to <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> and the call to <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code>. During this time, the user can see the activity
-on-screen and interact with it. For example, <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> is called
-when a new activity starts and this one is no longer visible. Between these two methods, you can
-maintain resources that are needed to show the activity to the user. For example, you can register a
-<code><a href="../../reference/android/content/BroadcastReceiver.html">BroadcastReceiver</a></code> in <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> to monitor changes that impact your UI, and unregister
-it in <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> when the user can no longer see what you are
-displaying. The system might call <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> and <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> multiple times during the entire lifetime of the activity, as
-the activity alternates between being visible and hidden to the user.</p></li>
+<li><p>活动组件的<b>可视生命周期</b>发生在 <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> 方法与 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法的调用之间。在这个时间段，用户可以在屏幕上看见活动并与之交互。例如 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 当新活动开始时被调用，而原先的活动不再可见。在这两个方法之间，你可以管理活动中需要显示的资源。例如，你可以在 <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> 方法中注册一个<code><a href="../../reference/android/content/BroadcastReceiver.html">广播接收器</a></code>来监视对用户界面的变化，然后当用户不能看见该活动时在 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法中取消注册。当活动在可视状态和隐藏状态中切换时，系统会在整个生命周期内多次调用 <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> 和 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法。</p></li>
 
-<li><p>The <b>foreground lifetime</b> of an activity happens between the call to <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> and the call to <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code>. During this time, the activity is in front of all other activities on screen and has
-user input focus.  An activity can frequently transition in and out of the foreground—for
-example, <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> is called when the device goes to sleep or
-when a dialog appears. Because this state can transition often, the code in these two methods should
-be fairly lightweight in order to avoid slow transitions that make the user wait.</p></li>
+<li><p>活动组件的<b>前台生命周期</b>发生在 <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> 方法与 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法的调用之间。在这个时间短，活动在屏幕中所有活动的最前端并拥有用户输入焦点。一个活动可以频繁地进出前台生命周期 — 例如当设备休眠时或者当一个对话框出现时 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 会被调用。因为这个状态会频繁的转变，在这两个方法中的代码应该相对轻量，以避免用户会等待状态的转变。</p></li>
 </ul>
 
-<p>Figure 1 illustrates these loops and the paths an activity might take between states.
-The rectangles represent the callback methods you can implement to perform operations when
-the activity transitions between states.  <p>
+<p>图表 1 显示这些循环和活动状态转变的路径。其中方形表示当活动状态转换时你可以实现的回调方法。 <p>
 
 <img src="../../images/activity_lifecycle.png" alt="" />
-<p class="img-caption"><strong>Figure 1.</strong> The activity lifecycle.</p>
+<p class="img-caption"><strong>图表 1.</strong> 活动生命周期。</p>
 
-<p>The same lifecycle callback methods are listed in table 1, which describes each of the callback
-methods in more detail and locates each one within the
-activity's overall lifecycle, including whether the system can kill the activity after the
-callback method completes.</p>
+<p>相同的生命周期回调方法在表格 1 中列出，它描述了回调方法的更多细节以及该方法在完整生命周期内的位置，还包括了在回调方法完成后系统是否能杀死活动的信息。</p>
 
-<p class="table-caption"><strong>Table 1.</strong> A summary of the activity lifecycle's
-callback methods.</p>
+<p class="table-caption"><strong>表格 1.</strong> 活动生命周期回调方法的总结。</p>
 
 <table border="2" width="85%" frame="hsides" rules="rows">
 <colgroup align="left" span="3"></colgroup>
@@ -1352,94 +1330,65 @@ callback methods.</p>
 <colgroup align="center"></colgroup>
 
 <thead>
-<tr><th colspan="3">Method</th> <th>Description</th> <th>Killable after?</th> <th>Next</th></tr>
+<tr><th colspan="3">方法</th> <th>描述</th> <th>能杀死？</th> <th>下一个方法</th></tr>
 </thead>
 
 <tbody>
 <tr>
   <td colspan="3" align="left"><code><code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code></code></td>
-  <td>Called when the activity is first created.
-      This is where you should do all of your normal static set up —
-      create views, bind data to lists, and so on.  This method is passed
-      a Bundle object containing the activity's previous state, if that
-      state was captured (see <a href="#actstate">Saving Activity State</a>,
-      later).
-      
-      <p>Always followed by <code>onStart()</code>.</p></td>
-  <td align="center">No</td>
+  <td>当活动创建时被调用。在这里你可以进行所有的常规静态设置 — 创建视图、绑定数据到列表上等等。如果状态被捕捉到，方法会传入一个包含活动之前状态的绑定对象（查看<a href="#actstate">保存活动状态</a>小节）。
+      <p>永远接着 <code>onStart()</code> 方法。</p></td>
+  <td align="center">不能</td>
       <td align="center"><code>onStart()</code></td>
 </tr>
 
 <tr>
    <td rowspan="5" style="border-left: none; border-right: none;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
    <td colspan="2" align="left"><code><code><a href="../../reference/android/app/Activity.html#onRestart()">onRestart()</a></code></code></td>
-   <td>Called after the activity has been stopped, just prior to it being
-       started again.
-       
-       <p>Always followed by <code>onStart()</code></p></td>
-   <td align="center">No</td>
+   <td>当活动停止后再次启动前被调用。
+       <p>永远接着 <code>onStart()</code> 方法。</p></td>
+   <td align="center">不能</td>
    <td align="center"><code>onStart()</code></td>
 </tr>
 
 <tr>
    <td colspan="2" align="left"><code><code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code></code></td>
-   <td>Called just before the activity becomes visible to the user.
-       
-       <p>Followed by <code>onResume()</code> if the activity comes
-       to the foreground, or <code>onStop()</code> if it becomes hidden.</p></td>
-    <td align="center">No</td>
-    <td align="center"><code>onResume()</code> <br/>or<br/> <code>onStop()</code></td>
+   <td>在活动可见前被调用。
+       <p>如果活动要前台显示，接着 <code>onResume()</code> 方法，如果活动要变得不可见则接着 <code>onStop()</code> 方法。</p></td>
+    <td align="center">不能</td>
+    <td align="center"><code>onResume()</code> <br/>或<br/><code>onStop()</code></td>
 </tr>
 
 <tr>
    <td rowspan="2" style="border-left: none;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
    <td align="left"><code><code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code></code></td>
-   <td>Called just before the activity starts
-       interacting with the user.  At this point the activity is at
-       the top of the activity stack, with user input going to it.
-       
-       <p>Always followed by <code>onPause()</code>.</p></td>
-   <td align="center">No</td>
+   <td>在活动开始和用户交互前被调用。从这里开始活动会在活动堆栈顶端，用户可以在活动中输入信息。
+       <p>永远接着 <code>onPause()</code> 方法。</p></td>
+   <td align="center">不能</td>
    <td align="center"><code>onPause()</code></td>
 </tr>
 
 <tr>
    <td align="left"><code><code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code></code></td>
-   <td>Called when the system is about to start resuming another
-       activity.  This method is typically used to commit unsaved changes to
-       persistent data, stop animations and other things that may be consuming
-       CPU, and so on.  It should do whatever it does very quickly, because
-       the next activity will not be resumed until it returns.
-       
-       <p>Followed either by <code>onResume()</code> if the activity
-       returns back to the front, or by <code>onStop()</code> if it becomes
-       invisible to the user.</td>
-   <td align="center"><strong style="color:#800000">Yes</strong></td>
-   <td align="center"><code>onResume()</code> <br/>or<br/> <code>onStop()</code></td>
+   <td>当系统要启动其它活动时被调用。这个方法主要用于持久化没有保存的变化数据以及停止动画等一些消费 CPU 资源的事情。它应该尽快完成所有工作，因为下一个活动在它返回后才开始。
+       <p>当活动返回前台时接着 <code>onResume()</code> 方法，或当活动不可见后接着 <code>onStop()</code> 方法。</td>
+   <td align="center"><strong style="color:#800000">能</strong></td>
+   <td align="center"><code>onResume()</code> <br/>或<br/><code>onStop()</code></td>
 </tr>
 
 <tr>
    <td colspan="2" align="left"><code><code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code></code></td>
-   <td>Called when the activity is no longer visible to the user.  This
-       may happen because it is being destroyed, or because another activity
-       (either an existing one or a new one) has been resumed and is covering it.
-       
-       <p>Followed either by <code>onRestart()</code> if
-       the activity is coming back to interact with the user, or by
-       <code>onDestroy()</code> if this activity is going away.</p></td>
-   <td align="center"><strong style="color:#800000">Yes</strong></td>
-   <td align="center"><code>onRestart()</code> <br/>or<br/> <code>onDestroy()</code></td>
+   <td>当活动对用户不再可见时被调用。这是因为活动可能正在被销毁，或是因为其它活动（已经存在的活动或新活动）正在被启动并覆盖在这个活动上。
+       <p>当活动将返回前台时接着 <code>onRestart()</code> 方法，或活动要消失时接着 <code>onDestroy()</code> 方法。</p></td>
+   <td align="center"><strong style="color:#800000">能</strong></td>
+   <td align="center"><code>onRestart()</code> <br/>或<br/><code>onDestroy()</code></td>
 </tr>
 
 <tr>
    <td colspan="3" align="left"><code><code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code></code></td>
-   <td>Called before the activity is destroyed.  This is the final call
-       that the activity will receive.  It could be called either because the
-       activity is finishing (someone called <code><code><a href="../../reference/android/app/Activity.html#finish()">finish()</a></code></code> on it), or because the system is temporarily destroying this
-       instance of the activity to save space.  You can distinguish
-       between these two scenarios with the <code><code><a href="../../reference/android/app/Activity.html#isFinishing()">isFinishing()</a></code></code> method.</td>
-   <td align="center"><strong style="color:#800000">Yes</strong></td>
-   <td align="center"><em>nothing</em></td>
+   <td>在活动被销毁前被调用。这是活动会收到的最后一个调用。在活动已经完成时（<code><code><a href="../../reference/android/app/Activity.html#finish()">finish()</a></code></code> 被调用），或系统要临时销毁这个活动实例来节省空间时，这个方法会被调用。你可以使用 <code><code><a href="../../reference/android/app/Activity.html#isFinishing()">isFinishing()</a></code></code> 方法来区分这两种情形。</td>
+   <td align="center"><strong style="color:#800000">能</strong></td>
+   <td align="center"><em>无</em></td>
 </tr>
 </tbody>
 </table>
