@@ -1043,8 +1043,8 @@ onkeyup="return search_changed(event, false, '../../')" />
     <ol>
       <li><a href="#ImplementingLifecycleCallbacks">Implementing the lifecycle callbacks</a></li>
       <li><a href="#SavingActivityState">Saving activity state</a></li>
-      <li><a href="#ConfigurationChanges">Handling configuration changes</a></li>
-      <li><a href="#CoordinatingActivities">Coordinating activities</a></li>
+      <li><a href="#ConfigurationChanges">处理配置更改</a></li>
+      <li><a href="#CoordinatingActivities">活动间协调</a></li>
     </ol>
   </li>
 </ol>
@@ -1505,54 +1505,33 @@ completely restores its state when it is recreated, because users regularly rota
 using applications.</p>
 
 
-<h3 id="ConfigurationChanges">Handling configuration changes</h3>
+<h3 id="ConfigurationChanges">处理配置更改</h3>
 
-<p>Some device configurations can change during runtime (such as screen orientation, keyboard
-availability, and language). When such a change occurs, Android recreates the running activity
-(the system calls <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code>, then immediately calls <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code>). This behavior is
-designed to help your application adapt to new configurations by automatically reloading your
-application with alternative resources that you've provided (such as different layouts for
-different screen orientations and sizes).</p>
+<p>一些设备配置可以在运行时更改（如屏幕方向、软键盘显示和语言）。当这些配置更改时，安卓系统重建运行的活动组件（系统调用 <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code> 方法，然后紧接着调用 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法）。这样你的应用可以通过重载资源来自适应配置变化（如为不同屏幕方向和尺寸使用不同的界面布局）。</p>
 
-<p>If you properly design your activity to handle a restart due to a screen orientation change and
-restore the activity state as described above, your application will be more resilient to other
-unexpected events in the activity lifecycle.</p>
+<p>如果你正确的设计你的活动来处理由于屏幕方向更改引起的重启并回复活动状态，你的应用会面对活动声明周期的其它突发事件时更有弹性。</p>
 
-<p>The best way to handle such a restart is
-  to save and restore the state of your activity using <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code> and <code><a href="../../reference/android/app/Activity.html#onRestoreInstanceState(android.os.Bundle)">onRestoreInstanceState()</a></code> (or <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code>), as discussed in the previous section.</p>
+<p>处理活动重启的最佳方法是使用 <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code> 和 <code><a href="../../reference/android/app/Activity.html#onRestoreInstanceState(android.os.Bundle)">onRestoreInstanceState()</a></code> 方法（或 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法）来保存和恢复活动状态，这在前面小节中已经讨论了。</p>
 
-<p>For more information about configuration changes that happen at runtime and how you can handle
-them, read the guide to <a href="../../guide/topics/resources/runtime-changes.html">Handling
-Runtime Changes</a>.</p>
+<p>更多关于运行时配置更改的信息和如何处理这些配置更改的信息，请阅读<a href="../../guide/topics/resources/runtime-changes.html">处理运行时更改</a>指南。</p>
 
 
 
-<h3 id="CoordinatingActivities">Coordinating activities</h3>
+<h3 id="CoordinatingActivities">活动间协调</h3>
 
- <p>When one activity starts another, they both experience lifecycle transitions. The first activity
-pauses and stops (though, it won't stop if it's still visible in the background), while the other
-activity is created. In case these activities share data saved to disc or elsewhere, it's important
-to understand that the first activity is not completely stopped before the second one is created.
-Rather, the process of starting the second one overlaps with the process of stopping the first
-one.</p>
+ <p>当某个活动启动另一个活动，它们都经历生命周期转变过程。第一个活动首先暂停并停止活动（尽管它仍在后台可见，并没有完全停止），而另一个活动被创建。如果这些活动的共享数据保存到磁盘上或其它地方，要明白第二个活动创建前以第一个活动没有完全停止。相反，启动第二个活动组件的过程与停止第一个活动组件的过程相互重叠。</p>
 
-<p>The order of lifecycle callbacks is well defined, particularly when the two activities are in the
-same process and one is starting the other. Here's the order of operations that occur when Activity
-A starts Acivity B:  </p>
+<p>生命周期回调方法的顺序被被良好定义，特别是当两个活动都在同一个进程中而其中一个正启动另一个活动。这里是当活动 A 启动活动 B 时发生的操作的顺序： </p>
 
 <ol>
-<li>Activity A's <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> method executes.</li>
+<li>执行活动 A 的 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法。</li>
 
-<li>Activity B's <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code>, <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code>, and <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code>
-methods execute in sequence. (Activity B now has user focus.)</li>
+<li>顺序执行活动 B 的 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法、<code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> 方法和 <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> 方法。（活动 B 现在获得用户关注焦点。）</li>
 
-<li>Then, if Activity A is no longer visible on screen, its <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> method executes.</li>
+<li>然后，如果活动 A 在屏幕上不可见，那么执行它的 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法。</li>
 </ol>
 
- <p>This predictable sequence of lifecycle callbacks allows you to manage the transition of
-information from one activity to another. For example, if you must write to a database when the
-first activity stops so that the following activity can read it, then you should write to the
-database during <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> instead of during <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code>.</p><!--
+ <p>这个生命周期回调方法的固定顺序让你可以管理活动件间的信息转换。例如，如果你需要在第一个活动停止前将数据写入数据库并让第二个活动可以获取这些信息，你应该在 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法中将数据写入数据库而不是在 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法中。</p><!--
 <h2>Beginner's Path</h2>
 
 <p>For more information about how Android maintains a history of activities and
