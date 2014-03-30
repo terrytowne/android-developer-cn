@@ -1042,7 +1042,7 @@ onkeyup="return search_changed(event, false, '../../')" />
   <li><a href="#Lifecycle">管理活动生命周期</a>
     <ol>
       <li><a href="#ImplementingLifecycleCallbacks">实现生命周期回调</a></li>
-      <li><a href="#SavingActivityState">Saving activity state</a></li>
+      <li><a href="#SavingActivityState">保存活动状态</a></li>
       <li><a href="#ConfigurationChanges">处理配置更改</a></li>
       <li><a href="#CoordinatingActivities">活动间协调</a></li>
     </ol>
@@ -1314,7 +1314,7 @@ public class ExampleActivity extends Activity {
 <colgroup align="center"></colgroup>
 
 <thead>
-<tr><th colspan="3">方法</th> <th>描述</th> <th>能杀死？</th> <th>下一个方法</th></tr>
+<tr><th colspan="3">方法</th> <th>描述</th> <th>可杀死？</th> <th>下一个方法</th></tr>
 </thead>
 
 <tbody>
@@ -1322,7 +1322,7 @@ public class ExampleActivity extends Activity {
   <td colspan="3" align="left"><code><code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code></code></td>
   <td>当活动创建时被调用。在这里你可以进行所有的常规静态设置 — 创建视图、绑定数据到列表上等等。如果状态被捕捉到，方法会传入一个包含活动之前状态的绑定对象（查看<a href="#actstate">保存活动状态</a>小节）。
       <p>永远接着 <code>onStart()</code> 方法。</p></td>
-  <td align="center">不能</td>
+  <td align="center">不可以</td>
       <td align="center"><code>onStart()</code></td>
 </tr>
 
@@ -1331,7 +1331,7 @@ public class ExampleActivity extends Activity {
    <td colspan="2" align="left"><code><code><a href="../../reference/android/app/Activity.html#onRestart()">onRestart()</a></code></code></td>
    <td>当活动停止后再次启动前被调用。
        <p>永远接着 <code>onStart()</code> 方法。</p></td>
-   <td align="center">不能</td>
+   <td align="center">不可以</td>
    <td align="center"><code>onStart()</code></td>
 </tr>
 
@@ -1339,7 +1339,7 @@ public class ExampleActivity extends Activity {
    <td colspan="2" align="left"><code><code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code></code></td>
    <td>在活动可见前被调用。
        <p>如果活动要前台显示，接着 <code>onResume()</code> 方法，如果活动要变得不可见则接着 <code>onStop()</code> 方法。</p></td>
-    <td align="center">不能</td>
+    <td align="center">不可以</td>
     <td align="center"><code>onResume()</code> <br/>或<br/><code>onStop()</code></td>
 </tr>
 
@@ -1348,7 +1348,7 @@ public class ExampleActivity extends Activity {
    <td align="left"><code><code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code></code></td>
    <td>在活动开始和用户交互前被调用。从这里开始活动会在活动堆栈顶端，用户可以在活动中输入信息。
        <p>永远接着 <code>onPause()</code> 方法。</p></td>
-   <td align="center">不能</td>
+   <td align="center">不可以</td>
    <td align="center"><code>onPause()</code></td>
 </tr>
 
@@ -1356,7 +1356,7 @@ public class ExampleActivity extends Activity {
    <td align="left"><code><code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code></code></td>
    <td>当系统要启动其它活动时被调用。这个方法主要用于持久化没有保存的变化数据以及停止动画等一些消费 CPU 资源的事情。它应该尽快完成所有工作，因为下一个活动在它返回后才开始。
        <p>当活动返回前台时接着 <code>onResume()</code> 方法，或当活动不可见后接着 <code>onStop()</code> 方法。</td>
-   <td align="center"><strong style="color:#800000">能</strong></td>
+   <td align="center"><strong style="color:#800000">可以</strong></td>
    <td align="center"><code>onResume()</code> <br/>或<br/><code>onStop()</code></td>
 </tr>
 
@@ -1364,84 +1364,39 @@ public class ExampleActivity extends Activity {
    <td colspan="2" align="left"><code><code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code></code></td>
    <td>当活动对用户不再可见时被调用。这是因为活动可能正在被销毁，或是因为其它活动（已经存在的活动或新活动）正在被启动并覆盖在这个活动上。
        <p>当活动将返回前台时接着 <code>onRestart()</code> 方法，或活动要消失时接着 <code>onDestroy()</code> 方法。</p></td>
-   <td align="center"><strong style="color:#800000">能</strong></td>
+   <td align="center"><strong style="color:#800000">可以</strong></td>
    <td align="center"><code>onRestart()</code> <br/>或<br/><code>onDestroy()</code></td>
 </tr>
 
 <tr>
    <td colspan="3" align="left"><code><code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code></code></td>
    <td>在活动被销毁前被调用。这是活动会收到的最后一个调用。在活动已经完成时（<code><code><a href="../../reference/android/app/Activity.html#finish()">finish()</a></code></code> 被调用），或系统要临时销毁这个活动实例来节省空间时，这个方法会被调用。你可以使用 <code><code><a href="../../reference/android/app/Activity.html#isFinishing()">isFinishing()</a></code></code> 方法来区分这两种情形。</td>
-   <td align="center"><strong style="color:#800000">能</strong></td>
+   <td align="center"><strong style="color:#800000">可以</strong></td>
    <td align="center"><em>无</em></td>
 </tr>
 </tbody>
 </table>
 
-<p>The column labeled "Killable after?" indicates whether or not the system can
-kill the process hosting the activity at any time <em>after the method returns</em>, without
-executing another line of the activity's code.  Three methods are marked "yes": (<code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code>, <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code>, and <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code>). Because <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> is the first
-of the three, once the activity is created, <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> is the
-last method that's guaranteed to be called before the process <em>can</em> be killed—if
-the system must recover memory in an emergency, then <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> and <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code> might
-not be called. Therefore, you should use <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> to write
-crucial persistent data (such as user edits) to storage. However, you should be selective about
-what information must be retained during <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code>, because any
-blocking procedures in this method block the transition to the next activity and slow the user
-experience.</p>
+<p>在“可杀死”的列标签中，说明了系统<em>在方法返回之后</em>的任意时间能否杀死托管活动组件的进程,不用执行任何的活动组件代码。三个方法被标记为“可以”（<code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code>、<code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 和 <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code> 方法）。因为 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法是这三个方法中的第一个，当活动组件被创建之后，<code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法 <em>能</em> 确保在进程被杀死之前最后被调用的一个方法 — 如果系统在紧急情况下必须释放内存，然后 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 和 <code><a href="../../reference/android/app/Activity.html#onDestroy()">onDestroy()</a></code> 可能不会被调用。所以，你应该在 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法中编写重要的持久化数据保存代码（例如用户的编辑）。然而，你应该选择那些必要的信息储存在 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法中，因为在这个方法中一些阻塞的进程对切换到下一个活动组件的操作产生影响，并且让用户体验带来延迟。</p>
 
-<p>  Methods that are marked "No" in the <b>Killable</b> column protect the process hosting the
-activity from being killed from the moment they are called.  Thus, an activity is killable
-from the time <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> returns to the time
-<code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> is called. It will not again be killable until
-<code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> is again called and returns.  </p>
+<p> 在<b>可杀死</b> 列中标记为“不可以”的方法保护了托管在活动中的线程，避免了在这些方法调用的瞬间被杀死。所以，从 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 返回到 <code><a href="../../reference/android/app/Activity.html#onResume()">onResume()</a></code> 被调用时的活动可以被杀死。它不能阻止被杀死直到 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 再次被调用和返回之前。 </p>
 
-<p class="note"><strong>Note:</strong> An activity that's not technically "killable" by this
-definition in table 1 might still be killed by the system—but that would happen only in
-extreme circumstances when there is no other recourse. When an activity might be killed is
-discussed more in the <a
-href="../../guide/components/processes-and-threads.html">Processes and
-Threading</a> document.</p>
+<p class="note"><strong>注意：</strong>在表 1 中标记为不可杀死的活动仍然可能被系统杀死 — 但这仅仅发生在没有其他资源的很糟糕情景。什么时候一个活动可能被杀死将在<a
+href="../../guide/components/processes-and-threads.html">进程和线程</a>文档中讨论。</p>
 
 
-<h3 id="SavingActivityState">Saving activity state</h3>
+<h3 id="SavingActivityState">保存活动状态</h3>
 
-<p>The introduction to <a href="#Lifecycle">Managing the Activity Lifecycle</a> briefly mentions
-that
-when an activity is paused or stopped, the state of the activity is retained. This is true because
-the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> object is still held in memory when it is paused or
-stopped—all information about its members and current state is still alive. Thus, any changes
-the user made within the activity are retained so that when the activity returns to the
-foreground (when it "resumes"), those changes are still there.</p>
+<p><a href="#Lifecycle">管理活动组件的生命周期</a>简单地介绍了活动组件什么时候被暂停和停止，活动组件状态的保存。这是正确的，因为当一个<code><a href="../../reference/android/app/Activity.html">活动</a></code>对象暂停或停止之后仍占有内存 — 关于活动对象所有的成员和当前状态仍保持存活。所以，用户在活动中所做的改变被保存，当这个活动返回到前台（当它”恢复“）之后，这些改变依然在那里。</p>
 
-<p>However, when the system destroys an activity in order to recover memory, the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> object is destroyed, so the system cannot simply resume it with its state
-intact. Instead, the system must recreate the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> object if the user
-navigates back to it. Yet, the user is unaware
-that the system destroyed the activity and recreated it and, thus, probably
-expects the activity to be exactly as it was. In this situation, you can ensure that
-important information about the activity state is preserved by implementing an additional
-callback method that allows you to save information about the state of your activity: <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code>.</p>
+<p>但是，系统为了释放内存而销毁一个活动组件时，<code><a href="../../reference/android/app/Activity.html">活动</a></code>对象被销毁，所以系统不可能对它的状态完好无损地恢复。相反，当用户导航回到被销毁的活动时，系统必须重新创建一个<code><a href="../../reference/android/app/Activity.html">活动</a></code>对象。但是用户并没有意识到系统已经把这个活动组件销毁之后重新创建一个活动，他们仅仅是期望这个活动跟销毁之前一样。在这样的情况下，通过实现另外允许你保存你的活动状态信息的一个回调方法：<code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code>，你应该确保关于活动状态的一些重要信息已经保存了下来。</p>
 
-<p>The system calls <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code>
-before making the activity vulnerable to destruction. The system passes this method
-a <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> in which you can save 
-state information about the activity as name-value pairs, using methods such as <code><a href="../../reference/android/os/Bundle.html#putString(java.lang.String, java.lang.String)">putString()</a></code> and <code><a href="../../reference/android/os/Bundle.html#putInt(java.lang.String, int)">putInt()</a></code>. Then, if the system kills your application
-process and the user navigates back to your activity, the system recreates the activity and passes
-the <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> to both <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> and <code><a href="../../reference/android/app/Activity.html#onRestoreInstanceState(android.os.Bundle)">onRestoreInstanceState()</a></code>. Using either of these
-methods, you can extract your saved state from the <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> and restore the
-activity state. If there is no state information to restore, then the <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> passed to you is null (which is the case when the activity is created for
-the first time).</p>
+<p>在活动组件变得容易被销毁之前，系统调用 <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code> 方法。系统往这个方法中传递一个你可以保存活动信息键值对的 <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> 参数，使用像 <code><a href="../../reference/android/os/Bundle.html#putString(java.lang.String, java.lang.String)">putString()</a></code> 和 <code><a href="../../reference/android/os/Bundle.html#putInt(java.lang.String, int)">putInt()</a></code> 方法。然后，如果系统杀死了你应用程序的进程和用户导航回到你的活动组件，系统重新创建这个活动并把 <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> 参数传递给 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 和 <code><a href="../../reference/android/app/Activity.html#onRestoreInstanceState(android.os.Bundle)">onRestoreInstanceState()</a></code> 方法。使用上述方两个法中任意一个方法，你可以取回保存在 <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> 中的状态以及恢复活动的状态。如果活动没有状态信息恢复，那么 <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> 参数为你传递一个空值（这就是活动第一次被创建时的情景）。</p>
 
 <img src="../../images/fundamentals/restore_instance.png" alt="" />
-<p class="img-caption"><strong>Figure 2.</strong> The two ways in which an activity returns to user
-focus with its state intact: either the activity is destroyed, then recreated and the activity must restore
-the previously saved state, or the activity is stopped, then resumed and the activity state
-remains intact.</p>
+<p class="img-caption"><strong>图 2.</strong> 活动在状态完全没有改变的情况下获取用户的焦点的两种方式：1.活动被销毁之后被重新创建，这时活动先前的状态必须完整地被恢复。2.活动被停止，在恢复之后活动组件的状态保持不变。</p>
 
-<p class="note"><strong>Note:</strong> There's no guarantee that <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code> will be called before your
-activity is destroyed, because there are cases in which it won't be necessary to save the state
-(such as when the user leaves your activity using the <em>Back</em> button, because the user is
-explicitly
-closing the activity). If the system calls <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code>, it does so before <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> and possibly before <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code>.</p>
+<p class="note"><strong>注意：</strong>系统并不能确保你的活动被销毁之前调用 <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code> 方法，因为存在没有必要保存活动状态的我情况（例如当用户点击了<em>返回</em>按钮离开你的活动组件，因为用户的目的是关闭这个活动组件）。系统可能在 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 或者 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 方法前调用 <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code> 方法。</p>
 
 <p>However, even if you do nothing and do not implement <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code>, some of the activity state is
 restored by the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> class's default implementation of <code><a href="../../reference/android/app/Activity.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code>. Specifically, the default
