@@ -1041,7 +1041,7 @@ onkeyup="return search_changed(event, false, '../../')" />
   <li><a href="#ShuttingDown">关闭活动组件</a></li>
   <li><a href="#Lifecycle">管理活动生命周期</a>
     <ol>
-      <li><a href="#ImplementingLifecycleCallbacks">Implementing the lifecycle callbacks</a></li>
+      <li><a href="#ImplementingLifecycleCallbacks">实现生命周期回调</a></li>
       <li><a href="#SavingActivityState">Saving activity state</a></li>
       <li><a href="#ConfigurationChanges">处理配置更改</a></li>
       <li><a href="#CoordinatingActivities">活动间协调</a></li>
@@ -1229,41 +1229,26 @@ href="../../guide/components/intents-filters.html">意图和意图过滤器</a>�
 
 <p>实现回调方法来管理你活动的生命周期是开发一个健壮和灵活应用程序的关键。活动的生命周期受到与之相关联的其他活动直接的影响，它的任务和返回堆栈。</p>
 
-<p>An activity can exist in essentially three states:</p>
+<p>一个活动本质上来说可以以三种状态存在：</p>
 
 <dl>
-  <dt><i>Resumed</i></dt>
-    <dd>The activity is in the foreground of the screen and has user focus. (This state is
-also sometimes referred to as "running".)</dd>
+  <dt><i>恢复状态</i></dt>
+    <dd>当前活动在屏幕的前台同时拥有用户的焦点。（这种状态有时候也被称为“运行状态”。）</dd>
 
-  <dt><i>Paused</i></dt>
-    <dd>Another activity is in the foreground and has focus, but this one is still visible. That is,
-another activity is visible on top of this one and that activity is partially transparent or doesn't
-cover the entire screen. A paused activity is completely alive (the <code><a href="../../reference/android/app/Activity.html">Activity</a></code>
-object is retained in memory, it maintains all state and member information, and remains attached to
-the window manager), but can be killed by the system in extremely low memory situations.</dd>
+  <dt><i>暂停状态</i></dt>
+    <dd>另一个活动在前台同时拥有焦点，但是当前活动还是可见的。也就是说另一个在此之上的活动是可见的，同时这个活动是部分透明的或者没有覆盖整个屏幕。一个暂停了的活动是完整存活着的（<code><a href="../../reference/android/app/Activity.html">活动</a></code>对象还在保持在内存中，它还维持着所有的状态和成员信息，仍然附属于窗口管理器），但是在内存非常低的情况下系统可以杀死它。</dd>
 
-  <dt><i>Stopped</i></dt>
-    <dd>The activity is completely obscured by another activity (the activity is now in the
-"background"). A stopped activity is also still alive (the <code><a href="../../reference/android/app/Activity.html">Activity</a></code>
-object is retained in memory, it maintains all state and member information, but is <em>not</em>
-attached to the window manager). However, it is no longer visible to the user and it
-can be killed by the system when memory is needed elsewhere.</dd>
+  <dt><i>停止状态</i></dt>
+    <dd>当前活动被其他活动完全覆盖（现在当前活动是在“后台”）。一个停止的活动也还存活着（该<code><a href="../../reference/android/app/Activity.html">活动</a></code> 对象还保持在内存中，它还维持着所有的状态和成员信息， 但<em>不</em>依附属于窗口管理器）。但是，对于用户来说它将不再可见同时当其他地方需要内存的时候它可能被系统杀死。</dd>
 </dl>
 
-<p>If an activity is paused or stopped, the system can drop it from memory either by asking it to
-finish (calling its <code><a href="../../reference/android/app/Activity.html#finish()">finish()</a></code> method), or simply killing its
-process.  When the activity is opened again (after being finished or killed), it must be created all
-over.</p>
+<p>如果一个活动被暂停或者停止了，系统可以通过请求它去结束（调用它的 <code><a href="../../reference/android/app/Activity.html#finish()">finish()</a></code> 方法），或简单地杀死他的进程来把它从内存中删除。当活动被再次打开的时候（在被结束或者杀死之后），它必须完全重新创建。</p>
 
 
 
-<h3 id="ImplementingLifecycleCallbacks">Implementing the lifecycle callbacks</h3>
+<h3 id="ImplementingLifecycleCallbacks">实现生命周期回调</h3>
 
-<p>When an activity transitions into and out of the different states described above, it is notified
-through various callback methods. All of the callback methods are hooks that you
-can override to do appropriate work when the state of your activity changes. The following skeleton
-activity includes each of the fundamental lifecycle methods:</p>
+<p>当一个活动在上述不同的状态间转换的时候，它是通过各种回调方法进行通知的。所有的回调方法都是钩子，你可以通过重写它们以便在活动的状态改变时进行适当的运作。接下来的这个活动框架包括了每一个基本的生命周期方法：</p>
 
 
 <pre>
@@ -1301,8 +1286,7 @@ public class ExampleActivity extends Activity {
 }
 </pre>
 
-<p class="note"><strong>Note:</strong> Your implementation of these lifecycle methods must
-always call the superclass implementation before doing any work, as shown in the examples above.</p>
+<p class="note"><strong>注意：</strong>就像上面显示的例子一样，在你的这些生命周期方法的实现中，你必须要在做任何操作前先调用超类的实现。</p>
 
 <p>总的来说，这些方法定义了整个活动组件生命周期。通过实现这些方法，你可以监视活动组件声明周期的三层循环。 </p>
 
