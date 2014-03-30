@@ -1242,83 +1242,41 @@ href="../../guide/components/intents-filters.html">意图和意图过滤器</a>�
 
 <h3 id="DeclaringRequirements">声明应用需求</h3>
 
-<p>There are a variety of devices powered by Android and not all of them provide the
-same features and capabilities. In order to prevent your application from being installed on devices
-that lack features needed by your application, it's important that you clearly define a profile for
-the types of devices your application supports by declaring device and software requirements in your
-manifest file. Most of these declarations are informational only and the system does not read
-them, but external services such as Google Play do read them in order to provide filtering
-for users when they search for applications from their device.</p>
+<p>有各种各样的设备由安卓驱动但并非所有的设备都提供同样的特性和功能。为了预防安装你应用程序的设备不支持你的应用程序所需要的特性，明确地为你的应用程序所支持的各种设备定义一个配置文件是非常重要的，这可以通过在你的的清单文件中声明你要求的设备和软件来实现。这些声明中的大部分只是信息，系统并不会去读取它们，但是当用户在他们的设备上搜索应用程序的时候，外部的服务比如 Google Play 市场为了给用户提供一个过滤将会去读取它。</p>
 
-<p>For example, if your application requires a camera and uses APIs introduced in Android 2.1 (<a
-href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API Level</a> 7), you should declare these as
-requirements in your manifest file. That way, devices that do <em>not</em> have a camera and have an
-Android version <em>lower</em> than 2.1 cannot install your application from Google Play.</p>
+<p>例如，如果你的应用程序需要使用相机并同时要调用 Android 2.1 版本中引入的 API（<a
+href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API Level</a> 7），你应该在清单文件中声明这些需求。通过这种方式，那些<em>没有</em>相机和安卓版本<em>低于</em> 2.1 的设备将不能从 Google Play 市场中安装你的应用程序。</p>
 
-<p>However, you can also declare that your application uses the camera, but does not
-<em>require</em> it. In that case, your application must perform a check at runtime to determine
-if the device has a camera and disable any features that use the camera if one is not available.</p>
+<p>但是，你可以声明你的应用程序使用相机，却又不是<em>必须的</em>。在这种情况下，你的应用程序必须在运行的时候进行检查以决定这个设备是否拥有一个相机，当设备相机不可用的时你要禁用所有相机相关的特性。</p>
 
-<p>Here are some of the important device characteristics that you should consider as you design and
-develop your application:</p>
+<p>这里有一些重要的设备特性，在你进行设计和开发应用程序的时候应当考虑上。</p>
 
 <dl>
-  <dt>Screen size and density</dt>
-  <dd>In order to categorize devices by their screen type, Android defines two characteristics for
-each device: screen size (the physical dimensions of the screen) and screen density (the physical
-density of the pixels on the screen, or dpi—dots per inch). To simplify all the different
-types of screen configurations, the Android system generalizes them into select groups that make
-them easier to target.
+  <dt>屏幕的尺寸和密度</dt>
+  <dd>为了以设备的屏幕类别进行分类，安卓为每种设备定义了两种特性：屏幕尺寸（屏幕的物理尺寸）和屏幕密度（屏幕的像素物理密度，或者每英寸像素点数）。为了简化所有不同屏幕的参数，安卓系统把他们概括成选好的几个组从而使他们更加简单的实现目标。
+<p>屏幕的尺寸包括：小，普通，大和特大。<br/>屏幕的密度包括：低密度，中密度，高密度和特高密度。</p>
 
-<p>The screen sizes are: small, normal, large, and extra large.<br/>
-The screen densities are: low density, medium density, high density, and extra high density.</p>
+<p>一般来说，你的应用程序是兼容所有的屏幕尺寸和密度的，因为安卓系统会适当调整你的界面布局和图像资源。但是，你应当为特定屏幕尺寸创建特定的布局同时为特定的密度提供特定的图像，使用可替代的布局资源，在清单中通过 <a
+href="../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> 元素来正确地声明哪一个屏幕尺寸是你的应用程序所支持的。</p>
+<p>更多相关信息，查看<a
+href="../../guide/practices/screens_support.html">支持多种屏幕</a>文档。</p></dd>
 
-<p>By default, your application is compatible with all screen sizes and densities,
-because the Android system makes the appropriate adjustments to your UI layout and image
-resources. However, you should create specialized layouts for certain screen sizes and provide
-specialized images for certain densities, using alternative layout resources, and by declaring in
-your manifest exactly which screen sizes your application supports with the <a
-href="../../guide/topics/manifest/supports-screens-element.html"><code>&lt;supports-screens&gt;</code></a> element.</p>
-<p>For more information, see the <a
-href="../../guide/practices/screens_support.html">Supporting Multiple Screens</a>
-document.</p></dd>
+  <dt>输入配置</dt>
+  <dd>许多设备提供了不同的用户输入机制，硬件键盘，轨迹球或者五向导航板。如果你的应用程序需要一种特殊的输入硬件，那么你可以通过 <a
+href="../../guide/topics/manifest/uses-configuration-element.html"><code>&lt;uses-configuration&gt;</code></a> 元素在你的清单中声明它。但是，对于一个应用程序来说明确要求一个输入配置是很罕见的。</dd>
 
-  <dt>Input configurations</dt>
-  <dd>Many devices provide a different type of user input mechanism, such as a hardware keyboard, a
-trackball, or a five-way navigation pad. If your application requires a particular kind of input
-hardware, then you should declare it in your manifest with the <a
-href="../../guide/topics/manifest/uses-configuration-element.html"><code>&lt;uses-configuration&gt;</code></a> element. However, it is rare that an application should require
-a certain input configuration.</dd>
+  <dt>设备特性</dt>
+  <dd>在一个给定的安卓设备上可能存在也可能不存在许多硬件或软件特性，比如相机，光敏感器，蓝牙，特定版本的 OpenGL 或者触摸屏的保真度。你永远都不应该假定某个特性在所有的安卓设备上都是可用的（其它标准安卓库功能），所以你应该通过 <a
+href="../../guide/topics/manifest/uses-feature-element.html"><code>&lt;uses-feature&gt;</code></a> 元素声明任何特性。</dd>
 
-  <dt>Device features</dt>
-  <dd>There are many hardware and software features that may or may not exist on a given
-Android-powered device, such as a camera, a light sensor, bluetooth, a certain
-version of OpenGL, or the fidelity of the touchscreen. You should never assume that a certain
-feature is available on all Android-powered devices (other than the availability of the standard
-Android library), so you should declare any features used by your application with the <a
-href="../../guide/topics/manifest/uses-feature-element.html"><code>&lt;uses-feature&gt;</code></a>
-element.</dd>
-
-  <dt>Platform Version</dt>
-  <dd>Different Android-powered devices often run different versions of the Android platform,
-such as Android 1.6 or Android 2.3. Each successive version often includes additional APIs not
-available in the previous version. In order to indicate which set of APIs are available, each
-platform version specifies an <a
-href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API Level</a> (for example, Android 1.0 is API Level
-1 and Android 2.3 is API Level 9). If you use any APIs that were added to the platform after
-version 1.0, you should declare the minimum API Level in which those APIs were introduced using the
-<a href="../../guide/topics/manifest/uses-sdk-element.html"><code>&lt;uses-sdk&gt;</code></a>
-element.</dd>
+  <dt>平台版本</dt>
+  <dd>不同的安卓设备经常运行着不同版本的安卓平台，比如 Android 1.6 或者 Android 2.3 。每一个连续的版本通常包含一些之前版本不支持的额外 API。为了表明哪一组的 API 是可用的，每一个版本的平台都指定了一个 <a
+href="../../guide/topics/manifest/uses-sdk-element.html#ApiLevels">API 等级</a>（例如，Android 1.0 对应 1 级 API，Android 2.3 对应 9 级 API）。如果你所使用的 AP I是在 1.0 版本后的平台加入的，你应当什么通过 <a href="../../guide/topics/manifest/uses-sdk-element.html"><code>&lt;uses-sdk&gt;</code></a> 元素声明引入这些 API 的最小版本。</dd>
 </dl>
 
-<p>It's important that you declare all such requirements for your application, because, when you
-distribute your application on Google Play, the store uses these declarations to filter which
-applications are available on each device. As such, your application should be available only to
-devices that meet all your application requirements.</p>
+<p>为你的应用程序声明所有的基本需求是非常重要的，因为，但你发布你的应用程序到 Google Play 市场上时，商店在每个设备上通过这些声明去筛选哪些应用程序是用的。这样，你的应用程序只有在满足了你应用程序要求的设备上是可用的。</p>
 
-<p>For more information about how Google Play filters applications based on these (and other)
-requirements, see the <a href="../../google/play/filters.html">Filters on Google Play</a>
-document.</p>
+<p>关于 Google Play 市场如何基于这些（和其他）要求过滤应用程序的详细信息，可以查看 <a href="../../google/play/filters.html">Google Play 市场中的过滤器</a>文档。</p>
 
 
 
