@@ -1039,9 +1039,9 @@ onkeyup="return search_changed(event, false, '../../')" />
     </li>
     <li><a href="#Managing">Managing Fragments</a></li>
     <li><a href="#Transactions">Performing Fragment Transactions</a></li>
-    <li><a href="#CommunicatingWithActivity">Communicating with the Activity</a>
+    <li><a href="#CommunicatingWithActivity">与活动组件通信</a>
       <ol>
-        <li><a href="#EventCallbacks">Creating event callbacks to the activity</a></li>
+        <li><a href="#EventCallbacks">给活动组件创建事件回调</a></li>
         <li><a href="#ActionBar">Adding items to the Action Bar</a></li>
       </ol>
     </li>
@@ -1439,46 +1439,34 @@ as the thread is able to do so. If necessary, however, you may call <code><a hre
 transactions submitted by <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code>. Doing so is
 usually not necessary unless the transaction is a dependency for jobs in other threads.</p>
 
-<p class="caution"><strong>Caution:</strong> You can commit a transaction using <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> only prior to the activity <a
-href="../../guide/components/activities.html#SavingActivityState">saving its
-state</a> (when the user leaves the activity). If you attempt to commit after that point, an
-exception will be thrown. This is because the state after the commit can be lost if the activity
-needs to be restored. For situations in which its okay that you lose the commit, use <code><a href="../../reference/android/app/FragmentTransaction.html#commitAllowingStateLoss()">commitAllowingStateLoss()</a></code>.</p>
+<p class="caution"><strong>警告：</strong>你只能在活动组件<a
+href="../../guide/components/activities.html#SavingActivityState">保持它的状态</a>（当用户离开活动）前使用  <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法提交事务。如果你在那个点后尝试提交事务，会抛出一个例外。这是因为如果活动组件需要被还原时，事务提交后的状态会丢失。对于可以丢失的事务提交，使用 <code><a href="../../reference/android/app/FragmentTransaction.html#commitAllowingStateLoss()">commitAllowingStateLoss()</a></code> 方法。</p>
 
 
 
 
-<h2 id="CommunicatingWithActivity">Communicating with the Activity</h2>
+<h2 id="CommunicatingWithActivity">与活动组件通信</h2>
 
-<p>Although a <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> is implemented as an object that's independent from an
-<code><a href="../../reference/android/app/Activity.html">Activity</a></code> and can be used inside multiple activities, a given instance of
-a fragment is directly tied to the activity that contains it.</p>
+<p>尽管<code><a href="../../reference/android/app/Fragment.html">活动碎片</a></code>实现成一个独立于<code><a href="../../reference/android/app/Activity.html">活动</a></code>的对象而且可以在多个活动中使用，一个给定的活动碎片实例被直接绑到包含它的活动组件上。</p>
 
-<p>Specifically, the fragment can access the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> instance with <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> and easily perform tasks such as find a view in the
-activity layout:</p>
+<p>特别地，活动碎片可以使用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法访问<code><a href="../../reference/android/app/Activity.html">活动</a></code>实例，并且能执行像在活动布局中查找视图这种任务：</p>
 
 <pre>
 View listView = <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code>.<code><a href="../../reference/android/app/Activity.html#findViewById(int)">findViewById</a></code>(R.id.list);
 </pre>
 
-<p>Likewise, your activity can call methods in the fragment by acquiring a reference to the <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> from <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code>, using <code><a href="../../reference/android/app/FragmentManager.html#findFragmentById(int)">findFragmentById()</a></code> or <code><a href="../../reference/android/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code>. 例如：</p>
+<p>相似地，你的活动组件可以通过 <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> 类的 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentById(int)">findFragmentById()</a></code> 或 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code> 方法获取<code><a href="../../reference/android/app/Fragment.html">活动碎片</a></code>的引用来调用活动碎片中的方法。例如：</p>
 
 <pre>
 ExampleFragment fragment = (ExampleFragment) getFragmentManager().findFragmentById(R.id.example_fragment);
 </pre>
 
 
-<h3 id="EventCallbacks">Creating event callbacks to the activity</h3>
+<h3 id="EventCallbacks">给活动组件创建事件回调</h3>
 
-<p>In some cases, you might need a fragment to share events with the activity. A good way to do that
-is to define a callback interface inside the fragment and require that the host activity implement
-it. When the activity receives a callback through the interface, it can share the information with
-other fragments in the layout as necessary.</p>
+<p>在一些情况中，你可能需要一个活动碎片同活动组件共享事件。一个不错的方法是在活动碎片中定义回调接口然后在活动宿主中实现它。当活动通过接口收到回调事件，必要时它可以同其它活动碎片共享信息。</p>
 
-<p>For example, if a news application has two fragments in an activity—one to show a list of
-articles (fragment A) and another to display an article (fragment B)—then fragment A must tell
-the activity when a list item is selected so that it can tell fragment B to display the article. In
-this case, the <code>OnArticleSelectedListener</code> interface is declared inside fragment A:</p>
+<p>例如，如果一个新闻英语在一个活动内有两个活动碎片 — 其中一个显示文章列表（活动碎片 A）另一个显示单个文章（活动碎片 B）— 那么当列表项被选择时活动碎片 A 必须告诉活动组件，这样活动组件可以告诉活动碎片 B 来显示这个文章。在这个例子中，<code>OnArticleSelectedListener</code> 接口在活动碎片 A 中声明：</p>
 
 <pre>
 public static class FragmentA extends ListFragment {
@@ -1491,12 +1479,7 @@ public static class FragmentA extends ListFragment {
 }
 </pre>
 
-<p>Then the activity that hosts the fragment implements the <code>OnArticleSelectedListener</code>
-interface and
-overrides <code>onArticleSelected()</code> to notify fragment B of the event from fragment A. To ensure
-that the host activity implements this interface, fragment A's <code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code> callback method (which the system calls when adding
-the fragment to the activity) instantiates an instance of <code>OnArticleSelectedListener</code> by
-casting the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> that is passed into <code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code>:</p>
+<p>然后包含活动碎片的活动组件实现 <code>OnArticleSelectedListener</code> 接口并重载 <code>onArticleSelected()</code> 方法来通知活动碎片 B 来自活动碎片 A 的事件。要确保宿主活动实现这个接口，活动碎片 A 的 <code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code> 回调方法（当活动碎片添加到活动组件时系统调用这个方法）将 <code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code> 参数传入的<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>转换成 <code>OnArticleSelectedListener</code> 实例：</p>
 
 <pre>
 public static class FragmentA extends ListFragment {
@@ -1515,14 +1498,7 @@ public static class FragmentA extends ListFragment {
 }
 </pre>
 
-<p>If the activity has not implemented the interface, then the fragment throws a
-<code><a href="../../reference/java/lang/ClassCastException.html">ClassCastException</a></code>.
-On success, the <code>mListener</code> member holds a reference to activity's implementation of 
-<code>OnArticleSelectedListener</code>, so that fragment A can share events with the activity by calling
-methods defined by the <code>OnArticleSelectedListener</code> interface. For example, if fragment A is an
-extension of <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code>, each time
-the user clicks a list item, the system calls <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> in the fragment, which then calls <code>onArticleSelected()</code> to share
-the event with the activity:</p>
+<p>如果活动组件没有实现接口，那么活动碎片会抛出一个 <code><a href="../../reference/java/lang/ClassCastException.html">ClassCastException</a></code> 例外。如果成功， <code>mListener</code> 字段会保持一个实现了 <code>OnArticleSelectedListener</code> 接口的活动引用，这样活动碎片 A 可以通过调用 <code>OnArticleSelectedListener</code> 接口中定义的方法同活动组件共享事件。例如，如果活动碎片 A 是 <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code> 的扩展，每次用户单击列表项，系统调用活动碎片的 <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> 方法，该方法再调用 <code>onArticleSelected()</code> 来和活动组件共享这个事件。</p>
 
 <pre>
 public static class FragmentA extends ListFragment {
@@ -1539,13 +1515,11 @@ public static class FragmentA extends ListFragment {
 }
 </pre>
 
-<p>The <code>id</code> parameter passed to <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> is the row ID of the clicked item,
-which the activity (or other fragment) uses to fetch the article from the application's <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code>.</p>
+<p>传给 <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> 方法的 <code>id</code> 参数是被点击项目的行 ID，活动组件（或者其他活动碎片）使用这个 ID 从应用的<code><a href="../../reference/android/content/ContentProvider.html">内容提供器</a></code>中提取文章。</p>
 
 <p><!--To see a complete implementation of this kind of callback interface, see the <a
-href="../../resources/samples/NotePad/index.html">NotePad sample</a>. -->More information about
-using a content provider is available in the <a
-href="../../guide/topics/providers/content-providers.html">Content Providers</a> document.</p>
+href="../../resources/samples/NotePad/index.html">NotePad sample</a>. -->更多关于使用内容提供器的信息，查看<a
+href="../../guide/topics/providers/content-providers.html">内容提供器</a>文档。</p>
 
 
 
