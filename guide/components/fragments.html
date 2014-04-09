@@ -1030,7 +1030,7 @@ onkeyup="return search_changed(event, false, '../../')" />
 
   <h2>在本文档中</h2>
   <ol>
-    <li><a href="#Design">Design Philosophy</a></li>
+    <li><a href="#Design">设计理念</a></li>
     <li><a href="#Creating">创建活动片段</a>
       <ol>
         <li><a href="#UI">添加用户界面</a></li>
@@ -1068,69 +1068,26 @@ onkeyup="return search_changed(event, false, '../../')" />
 </div>
 </div>
 
-<p>A <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> represents a behavior or a portion of user interface in an
-<code><a href="../../reference/android/app/Activity.html">Activity</a></code>. You can combine multiple fragments in a single activity to build a
-multi-pane UI and reuse a fragment in multiple activities. You can think of a fragment as a
-modular section of an activity, which has its own lifecycle, receives its own input events, and
-which you can add or remove while the activity is running (sort of like a "sub activity" that
-you can reuse in different activities).</p>
+<p>在<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>中，一个<code><a href="../../reference/android/app/Fragment.html">活动碎片</a></code>代表一个动作或者用户界面的一部分。你可以在单个活动中组织多个活动片段，用以创建一个多面板的用户界面和在多个活动中重用一个活动片段。你可以把一个活动片段当作一个模块化的活动，它有自己的生命周期并接受自身的输入事件，同时这些活动片段在活动运行时还可以进行添加和移除。（有点像一个可以在不同活动中重复使用的“子活动”）。</p>
 
-<p>A fragment must always be embedded in an activity and the fragment's lifecycle is directly
-affected by the host activity's lifecycle. For example, when the activity is paused, so are all
-fragments in it, and when the activity is destroyed, so are all fragments. However, while an
-activity is running (it is in the <em>resumed</em> <a
-href="../../guide/components/activities.html#Lifecycle">lifecycle state</a>), you can
-manipulate each fragment independently, such as add or remove them. When you perform such a
-fragment transaction, you can also add it to a back stack that's managed by the
-activity—each back stack entry in the activity is a record of the fragment transaction that
-occurred. The back stack allows the user to reverse a fragment transaction (navigate backwards),
-by pressing the <em>Back</em> button.</p>
+<p>一个活动片段必须嵌入一个活动中，活动片段的生命周期受到它宿主活动生命周期的直接影响。例如，当一个活动暂停时，它托管的所有活动片段也都没暂停，当宿主活动被销毁时，它里面的所有活动片段都同时被销毁。然而，当一个活动正在运行时（处于<em>恢复状态</em> <a
+href="../../guide/components/activities.html#Lifecycle">生命周期</a>），此时你可以独立每个操作托管的活动片段，例如添加或者移除它们。当执行这样的活动片段事务，你也可以把它添加在宿主活动管理的返回栈中 — 进入宿主活动返回栈是一条已发生的活动片段事务记录。通过点击<em>返回</em>按钮，返回栈允许用户返回到一个活动片段事务（向后导航）。</p>
 
-<p>When you add a fragment as a part of your activity layout, it lives in a <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code> inside the activity's view hierarchy and the fragment defines its own view
-layout.
-You can insert a fragment into your activity layout by declaring the fragment in the activity's
-layout file, as a <code>&lt;fragment&gt;</code> element, or from your application code by adding it to an
-existing <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code>. However, a fragment is not required to be a part of the
-activity layout; you may also use a fragment without its own UI as an invisible worker for the
-activity.</p>
+<p>当你在活动布局中添加一个活动片段，它托管在活动视图层次的<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>中。通过在活动布局文件中声明活动片段，使用 <code>&lt;fragment&gt;</code> 元素，你可以在活动布局中插入一个活动片段，或者在你应用程序的代码中，把活动片段添加到一个已经存在的<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>。然而，活动片段并不是只托管在活动中，你也可以在没有它自己用户界面的情况下使用活动片段，这时活动在活动中不可见。</p>
 
-<p>This document describes how to build your application to use fragments, including
-how fragments can maintain their state when added to the activity's back stack, share
-events with the activity and other fragments in the activity, contribute to the activity's action
-bar, and more.</p>
+<p>本文档介绍了使用活动片段如何创建你的应用程序。包括了添加在活动返回栈中的活动片段如何维护它们的状态、如何与活动和其他托管在相同活动的活动片段共享事件、创建活动的活动指示条等。</p>
 
 
-<h2 id="Design">Design Philosophy</h2>
+<h2 id="Design">设计理念</h2>
 
-<p>Android introduced fragments in Android 3.0 (API level 11), primarily to support more
-dynamic and flexible UI designs on large screens, such as tablets. Because a
-tablet's screen is much larger than that of a handset, there's more room to combine and
-interchange UI components. Fragments allow such designs without the need for you to manage complex
-changes to the view hierarchy. By dividing the layout of an activity into fragments, you become able
-to modify the activity's appearance at runtime and preserve those changes in a back stack
-that's managed by the activity.</p>
+<p>安卓系统在 Android 3.0 (API level 11) 中引进了活动片段，目的是在大屏幕设备中支持更多的动态和灵活的用户界面，例如在平板电脑中。由于平板电脑的屏幕比手持设备大很多，从而组合以及切换组件的空间更大。活动片段允许你简洁的设计，其不需要你管理复杂的视图层次结构改变。通过把一个活动的布局切分为多个活动片段，在活动运行时可以修改它的外形，并且把这些改变保存在宿主活动管理的返回栈中。</p>
 
-<p>For example, a news application can use one fragment to show a list of articles on the
-left and another fragment to display an article on the right—both fragments appear in one
-activity, side by side, and each fragment has its own set of lifecycle callback methods and handle
-their own user input events. Thus, instead of using one activity to select an article and another
-activity to read the article, the user can select an article and read it all within the same
-activity, as illustrated in the tablet layout in figure 1.</p>
+<p>例如，有一个新闻的应用程序。它有在屏幕的左边显示文中的列表的活动片段和在右边显示文章内容的另外一个活动片段，这两个活动片段在同一个活动中显示，而每一个活动片段都有其自身生命周期回调方法的集合并处理它们自身的用户输入事件。所以，用户可以在用一个活动中选择一篇文章并阅读，而不是使用一个活动选择需要阅读的文章题目和另外一个活动阅读文章的内容，就像图一所示的一个平板电脑布局。</p>
 
-<p>You should design each fragment as a modular and reusable activity component. That is, because
-each fragment defines its own layout and its own behavior with its own lifecycle callbacks, you can
-include one fragment in multiple activities, so you should design for reuse and avoid directly
-manipulating one fragment from another fragment. This is especially important because a modular
-fragment allows you to change your fragment combinations for different screen sizes. When designing
-your application to support both tablets and handsets, you can reuse your fragments in different
-layout configurations to optimize the user experience based on the available screen space. For
-example, on a handset, it might be necessary to separate fragments to provide a single-pane UI when
-more than one cannot fit within the same activity.</p>
+<p>你应把每一个活动片段设计为一个组件模块、或者是一个可重复使用的活动组件。这意味着，由于每一个活动片段定义在一个自身独立的布局中并且控制生命周期的控制自身的行为，你可以在多个活动中引用同一个活动片段，所以你可以将活动片段设计为可重用和避免从另外的活动片段中直接操作一个活动片段。这时非常重要的，因为一个活动片段模块允许你为不同大小的屏幕改变你活动片段组合。当要把你的应用程序设计为兼容平板电脑和手持设备时，结合用户的设备屏幕大小，迎合用户的体验，你可以在不同的布局配置文件中重用你的活动片段。例如在一个手持设备中，因为多个活动片段在同一个活动中不能兼容，可能需要提供一个单面板的用户界面而把这些活动片段切分。</p>
 
 <img src="../../images/fundamentals/fragments.png" alt="" />
-<p class="img-caption"><strong>Figure 1.</strong> An example of how two UI modules defined by
-fragments can be combined into one activity for a tablet design, but separated for a
-handset design.</p>
+<p class="img-caption"><strong>图 1.</strong>通过活动片段定义的两个用户界面模块的例子，在平板电脑中组合在一起，但为手持设备设计时将两个活动组件分开。</p>
 
 <p>For example—to continue with the news application example—the application can embed
 two fragments in <em>Activity A</em>, when running on a tablet-sized device. However, on a
