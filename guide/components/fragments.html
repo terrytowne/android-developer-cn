@@ -1022,10 +1022,10 @@ onkeyup="return search_changed(event, false, '../../')" />
 
   <h2>要点</h2>
   <ul>
-    <li>Fragments decompose application functionality and UI into reusable modules</li>
-    <li>Add multiple fragments to a screen to avoid switching activities</li>
-    <li>Fragments have their own lifecycle, state, and back stack</li>
-    <li>Fragments require API Level 11 or greater</li>
+    <li>活动碎片将应用功能和用户界面分解成可复用的模块</li>
+    <li>在屏幕中添加多个活动碎片来避免切换活动组件</li>
+    <li>活动碎片有它们自己的生命周期、状态和返回栈</li>
+    <li>活动碎片需要 API Level 11 或更高级别</li>
   </ul>
 
   <h2>在本文档中</h2>
@@ -1037,23 +1037,23 @@ onkeyup="return search_changed(event, false, '../../')" />
         <li><a href="#Adding">添加活动片段到活动组件</a></li>
       </ol>
     </li>
-    <li><a href="#Managing">Managing Fragments</a></li>
-    <li><a href="#Transactions">Performing Fragment Transactions</a></li>
+    <li><a href="#Managing">管理活动碎片</a></li>
+    <li><a href="#Transactions">执行活动碎片事务</a></li>
     <li><a href="#CommunicatingWithActivity">与活动组件通信</a>
       <ol>
         <li><a href="#EventCallbacks">给活动组件创建事件回调</a></li>
-        <li><a href="#ActionBar">Adding items to the Action Bar</a></li>
+        <li><a href="#ActionBar">在操作栏中添加项目</a></li>
       </ol>
     </li>
-    <li><a href="#Lifecycle">Handling the Fragment Lifecycle</a>
+    <li><a href="#Lifecycle">处理活动碎片生命周期</a>
       <ol>
-        <li><a href="#CoordinatingWithActivity">Coordinating with the activity lifecycle</a></li>
+        <li><a href="#CoordinatingWithActivity">与活动生命周期协调</a></li>
       </ol>
     </li>
     <li><a href="#Example">例子</a></li>
   </ol>
 
-  <h2>Key classes</h2>
+  <h2>关键类</h2>
   <ol>
     <li><code><a href="../../reference/android/app/Fragment.html">Fragment</a></code></li>
     <li><code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code></li>
@@ -1089,17 +1089,10 @@ href="../../guide/components/activities.html#Lifecycle">生命周期</a>），�
 <img src="../../images/fundamentals/fragments.png" alt="" />
 <p class="img-caption"><strong>图 1.</strong>通过活动片段定义的两个用户界面模块的例子，在平板电脑中组合在一起，但为手持设备设计时将两个活动组件分开。</p>
 
-<p>For example—to continue with the news application example—the application can embed
-two fragments in <em>Activity A</em>, when running on a tablet-sized device. However, on a
-handset-sized screen, there's not enough room for both fragments, so <em>Activity A</em> includes
-only the fragment for the list of articles, and when the user selects an article, it starts
-<em>Activity B</em>, which includes the second fragment to read the article. Thus, the application
-supports both tablets and handsets by reusing fragments in different combinations, as illustrated in
-figure 1.</p>
+<p>举例来说 — 在新闻应用的例子中 — 应用可以当运行在平板尺寸的设备上时在<em>活动 A</em>中内嵌两个活动碎片。但是，当在手持尺寸屏幕中，没有足够空间同时显示两个活动碎片，于是<em>活动 A</em>只包含显示文章列表的活动碎片，而当用户选择一个文章时，它启动<em>活动 B</em>，在活动 B 中包括阅读文章内容的第二个活动酥皮。这样，应用通过在不同组合中重用活动碎片来同时支持平板设备和手持设备，如图 1 中所显示。</p>
 
-<p>For more information about designing your application with different fragment combinations for
-different screen configurations, see the guide to <a
-href="../../guide/practices/tablets-and-handsets.html">Supporting Tablets and Handsets</a>.</p>
+<p>更多关于使用不同活动碎片组合来为不同屏幕配置而设计应用的信息，查看<a
+href="../../guide/practices/tablets-and-handsets.html">支持平板设备和手持设备</a>指南。</p>
 
 
 
@@ -1107,59 +1100,36 @@ href="../../guide/practices/tablets-and-handsets.html">Supporting Tablets and Ha
 
 <div class="figure" style="width:327px">
 <img src="../../images/fragment_lifecycle.png" alt="" />
-<p class="img-caption"><strong>Figure 2.</strong> The lifecycle of a fragment (while its
-activity is running).</p>
+<p class="img-caption"><strong>图 2.</strong> 活动碎片生命周期（当活动运行时）。</p>
 </div>
 
-<p>To create a fragment, you must create a subclass of <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> (or an existing
-subclass of it). The <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> class has code that looks a lot like
-an <code><a href="../../reference/android/app/Activity.html">Activity</a></code>. It contains callback methods similar to an activity, such
-as <code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code>, <code><a href="../../reference/android/app/Fragment.html#onStart()">onStart()</a></code>,
-<code><a href="../../reference/android/app/Fragment.html#onPause()">onPause()</a></code>, and <code><a href="../../reference/android/app/Fragment.html#onStop()">onStop()</a></code>. In
-fact, if you're converting an existing Android application to use fragments, you might simply move
-code from your activity's callback methods into the respective callback methods of your
-fragment.</p>
+<p>要创建活动碎片，你必须创建一个 <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 子类（或者它的其它子类）。<code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 类包含和 <code><a href="../../reference/android/app/Activity.html">Activity</a></code> 相似的代码。它包含类似于活动类的回调函数，如 <code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法，<code><a href="../../reference/android/app/Fragment.html#onStart()">onStart()</a></code> 方法，<code><a href="../../reference/android/app/Fragment.html#onPause()">onPause()</a></code> 方法和 <code><a href="../../reference/android/app/Fragment.html#onStop()">onStop()</a></code> 方法。事实上，如果你转换一个现有的安卓应用来使用活动碎片，你可能还需要简单地将活动回调方法中的代码移动到活动碎片中相应的回调函数中。</p>
 
-<p>Usually, you should implement at least the following lifecycle methods:</p>
+<p>通常你需要实现至少这些生命周期方法：</p>
 
 <dl>
   <dt><code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code></dt>
-  <dd>The system calls this when creating the fragment. Within your implementation, you should
-initialize essential components of the fragment that you want to retain when the fragment is
-paused or stopped, then resumed.</dd>
+  <dd>当系统创建活动碎片时调用这个方法。在你的实现中，你应该初始化那些你希望在活动碎片暂停或停止状态及恢复状态中希望保留的关键组件。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code></dt>
-  <dd>The system calls this when it's time for the fragment to draw its user interface for the
-first time. To draw a UI for your fragment, you must return a <code><a href="../../reference/android/view/View.html">View</a></code> from this
-method that is the root of your fragment's layout. You can return null if the fragment does not
-provide a UI.</dd>
+  <dd>当系统初次绘制活动碎片的用户界面时调用这个方法。要绘制活动碎片的用户界面，你必须在这个方法中返回一个 <code><a href="../../reference/android/view/View.html">View</a></code> 类，而它是活动碎片的根布局视图。如果活动碎片不提供用户界面，你可以返回 null。</dd>
   <dt><code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code></dt>
-  <dd>The system calls this method as the first indication that the user is leaving the fragment (though it does not always mean the fragment is being destroyed). 因为用户可能不会返回该活动，在这个回调中你应该提交所有应持久化的改变，让这些改变能在下次用户回话中仍生效。</dd>
+  <dd>系统在用户离开活动碎片时（并不表示活动碎片要被销毁）调用这个方法。因为用户可能不会返回该活动，在这个回调中你应该提交所有应持久化的改变，让这些改变能在下次用户回话中仍生效。</dd>
 </dl>
 
-<p>Most applications should implement at least these three methods for every fragment, but there are
-several other callback methods you should also use to handle various stages of the
-fragment lifecycle. All the lifecycle callback methods are discussed in more detail in the section
-about <a href="#Lifecycle">Handling the Fragment Lifecycle</a>.</p>
+<p>大多数应用应该为每一个活动碎片至少实现这三个方法，但是你可以使用一些其他的回调方法来处理活动碎片生命周期的各种阶段。所有关于生命周期回调方法的细节将会在<a href="#Lifecycle">处理活动碎片周期</a>小节中讨论。</p>
 
 
-<p>There are also a few subclasses that you might want to extend, instead of the base <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> class:</p>
+<p>有一些你可能希望继承的 <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 类的子类：</p>
 
 <dl>
   <dt><code><a href="../../reference/android/app/DialogFragment.html">DialogFragment</a></code></dt>
-  <dd>Displays a floating dialog. Using this class to create a dialog is a good alternative to using
-the dialog helper methods in the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> class, because you can
-incorporate a fragment dialog into the back stack of fragments managed by the activity,
-allowing the user to return to a dismissed fragment.</dd>
+  <dd>显示一个浮动对话框。使用这个类创建对话框是一个好的替代来使用 <code><a href="../../reference/android/app/Activity.html">Activity</a></code> 类的对话框辅助方法，因为你可以将活动碎片对话框结合进由活动管理的活动碎片返回栈，折让用户可以返回到一个取消的活动碎片。</dd>
 
   <dt><code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code></dt>
-  <dd>Displays a list of items that are managed by an adapter (such as a <code><a href="../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code>), similar to <code><a href="../../reference/android/app/ListActivity.html">ListActivity</a></code>. It provides
-several methods for managing a list view, such as the <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> callback to
-handle click events.</dd>
+  <dd>显示一个由适配器管理的项目列表（如 <code><a href="../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code>），类似于 <code><a href="../../reference/android/app/ListActivity.html">ListActivity</a></code>类。它提供一些管理列表视图的方法，如 <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> 回调方法类处理单击事件。</dd>
 
   <dt><code><a href="../../reference/android/preference/PreferenceFragment.html">PreferenceFragment</a></code></dt>
-  <dd>Displays a hierarchy of <code><a href="../../reference/android/preference/Preference.html">Preference</a></code> objects as a list, similar to
-<code><a href="../../reference/android/preference/PreferenceActivity.html">PreferenceActivity</a></code>. This is useful when creating a "settings"
-activity for your application.</dd>
+  <dd>用列表显示一个 <code><a href="../../reference/android/preference/Preference.html">Preference</a></code> 对象的层次结构，类似于 <code><a href="../../reference/android/preference/PreferenceActivity.html">PreferenceActivity</a></code> 类。这在创建一个应用的”设置“活动很有用。</dd>
 </dl>
 
 
@@ -1300,7 +1270,7 @@ href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/Fragment
 
 
 
-<h2 id="Managing">Managing Fragments</h2>
+<h2 id="Managing">管理活动碎片</h2>
 
 <p>To manage the fragments in your activity, you need to use <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code>. To
 get it, call <code><a href="../../reference/android/app/Activity.html#getFragmentManager()">getFragmentManager()</a></code> from your activity.</p>
@@ -1321,7 +1291,7 @@ to open a <code><a href="../../reference/android/app/FragmentTransaction.html">F
 add and remove fragments.</p>
 
 
-<h2 id="Transactions">Performing Fragment Transactions</h2>
+<h2 id="Transactions">执行活动碎片事务</h2>
 
 <p>A great feature about using fragments in your activity is the ability to add, remove, replace,
 and perform other actions with them, in response to user interaction. Each set of changes that you
@@ -1480,7 +1450,7 @@ href="../../guide/topics/providers/content-providers.html">内容提供器</a>�
 
 
 
-<h3 id="ActionBar">Adding items to the Action Bar</h3>
+<h3 id="ActionBar">在操作栏中添加项目</h3>
 
 <p>Your fragments can contribute menu items to the activity's <a
 href="../../guide/topics/ui/menus.html#options-menu">Options Menu</a> (and, consequently, the <a
@@ -1510,7 +1480,7 @@ href="../../guide/topics/ui/actionbar.html">Action Bar</a> developer guides.</p>
 
 
 
-<h2 id="Lifecycle">Handling the Fragment Lifecycle</h2>
+<h2 id="Lifecycle">处理活动碎片生命周期</h2>
 
 <div class="figure" style="width:350px">
 <img src="../../images/activity_fragment_lifecycle.png" alt=""/>
@@ -1566,7 +1536,7 @@ attached to an activity. When the fragment is not yet attached, or was detached 
 its lifecycle, <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> will return null.</p>
 
 
-<h3 id="CoordinatingWithActivity">Coordinating with the activity lifecycle</h3>
+<h3 id="CoordinatingWithActivity">与活动生命周期协调</h3>
 
 <p>The lifecycle of the activity in which the fragment lives directly affects the lifecycle of the
 fragment, such that each lifecycle callback for the activity results in a similar callback for each
