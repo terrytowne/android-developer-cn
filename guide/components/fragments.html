@@ -1207,32 +1207,25 @@ public static class ExampleFragment extends Fragment {
 <p>当系统创建这个活动布局，它实例化每一个布局中指定的活动片段并调用各自的 <code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code> 方法来获得每个活动偏度的布局。系统将活动片段返回的<code><a href="../../reference/android/view/View.html">视图</a></code>直接插入到 <code>&lt;fragment&gt;</code> 元素的位置。</p>
 
 <div class="note">
-  <p><strong>Note:</strong> Each fragment requires a unique identifier that
-the system can use to restore the fragment if the activity is restarted (and which you can use to
-capture the fragment to perform transactions, such as remove it). There are three ways to provide an
-ID for a fragment:</p>
+  <p><strong>注意：</strong>每一个活动片段都需要一个独立的标识符，如果宿主活动被重启时，系统使用标识符恢复活动片段（你也可以通过标识符捕捉到指定的活动片段执行事务）。有三种方法为活动片段提供 ID：</p>
   <ul>
-    <li>Supply the <code>android:id</code> attribute with a unique ID.</li>
-    <li>Supply the <code>android:tag</code> attribute with a unique string.</li>
-    <li>If you provide neither of the previous two, the system uses the ID of the container 
-view.</li>
+    <li>为 <code>android:id</code> 属性提供一个唯一的 ID。</li>
+    <li>为 <code>android:tag</code> 提供一个唯一的字符串。</li>
+    <li>如果你不使用前两种方法的任何一种，系统使用容器视图的 ID。</li>
   </ul>
 </div>
   </li>
 
-  <li><b>Or, programmatically add the fragment to an existing <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code>.</b>
-<p>At any time while your activity is running, you can add fragments to your activity layout. You
-simply need to specify a <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code> in which to place the fragment.</p>
-  <p>To make fragment transactions in your activity (such as add, remove, or replace a
-fragment), you must use APIs from <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code>. You can get an instance
-of <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code> from your <code><a href="../../reference/android/app/Activity.html">Activity</a></code> like this:</p>
+  <li><b>或者，以编程的方式把活动片段添加到一个已存在的<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>中。</b>
+<p>在你活动运行期间的任意时间，你可以在活动布局中添加活动片段。你仅仅需要指定活动片段的宿主<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>即可。</p>
+  <p>要想在你的活动中执行事务（例如添加，移除或者替换一个活动片段），你必须使用 <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code> API。你可以像下面代码一样，从你的<code><a href="../../reference/android/app/Activity.html">活动</a></code>中获取一个<code><a href="../../reference/android/app/FragmentTransaction.html">活动片段事务</a></code>的实例：</p>
 
 <pre>
 FragmentManager fragmentManager = <code><a href="../../reference/android/app/Activity.html#getFragmentManager()">getFragmentManager()</a></code>
 FragmentTransaction fragmentTransaction = fragmentManager.<code><a href="../../reference/android/app/FragmentManager.html#beginTransaction()">beginTransaction()</a></code>;
 </pre>
 
-<p>You can then add a fragment using the <code><a href="../../reference/android/app/FragmentTransaction.html#add(int, android.app.Fragment)">add()</a></code> method, specifying the fragment to add and the view in which to insert it. 例如：</p>
+<p>使用 <code><a href="../../reference/android/app/FragmentTransaction.html#add(int, android.app.Fragment)">add()</a></code> 方法，你可以添加一个活动片段，指定要添加的活动对象和宿主视图。例如：</p>
 
 <pre>
 ExampleFragment fragment = new ExampleFragment();
@@ -1240,51 +1233,38 @@ fragmentTransaction.add(R.id.fragment_container, fragment);
 fragmentTransaction.commit();
 </pre>
 
-  <p>The first argument passed to <code><a href="../../reference/android/app/FragmentTransaction.html#add(int, android.app.Fragment)">add()</a></code>
-is the <code><a href="../../reference/android/view/ViewGroup.html">ViewGroup</a></code> in which the fragment should be placed, specified by
-resource ID, and the second parameter is the fragment to add.</p>
-  <p>Once you've made your changes with
-<code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code>, you must
-call <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> for the changes to take effect.</p>
+  <p>在 <code><a href="../../reference/android/app/FragmentTransaction.html#add(int, android.app.Fragment)">add()</a></code> 方法中，第一个参数是活动片段托管的<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>，这个视图组通过资源 ID 指定，第二个参数是添加指定的活动片段。</p>
+  <p>一旦使用<code><a href="../../reference/android/app/FragmentTransaction.html">活动片段事务</a></code>做出改变之后，你必须调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法让作出的改变生效。</p>
   </li>
 </ul>
 
 
-<h4 id="AddingWithoutUI">Adding a fragment without a UI</h4>
+<h4 id="AddingWithoutUI">添加一个没有用户界面的活动片段</h4>
 
-<p>The examples above show how to add a fragment to your activity in order to provide a UI. However,
-you can also use a fragment to provide a background behavior for the activity without presenting
-additional UI.</p>
+<p>上面所给出的例子都是为了提供一个用户界面，应怎样在你的活动中添加一个活动片段。然而，你也可以为没有呈现额外用户界面的活动添加一个活动片段，这些活动片段在后台中执行动作。</p>
 
-<p>To add a fragment without a UI, add the fragment from the activity using <code><a href="../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add(Fragment, String)</a></code> (supplying a unique string "tag" for the
-fragment, rather than a view ID). This adds the fragment, but, because it's not associated with a
-view in the activity layout, it does not receive a call to <code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code>. So you don't need to implement that method.</p>
+<p>添加一个没有用户界面的活动片段，需使用 <code><a href="../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add(Fragment, String)</a></code>（为活动片段提供一个标签字符串，而不是一个视图ID）从活动中添加活动片段。添加活动片段之后，但是，由于它没有在活动布局中关联一个视图，它不会接收 <code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code> 方法调用。所以你不必实现这个方法。</p>
 
-<p>Supplying a string tag for the fragment isn't strictly for non-UI fragments—you can also
-supply string tags to fragments that do have a UI—but if the fragment does not have a
-UI, then the string tag is the only way to identify it. If you want to get the fragment from the
-activity later, you need to use <code><a href="../../reference/android/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code>.</p>
+<p>为活动片段提供一个字符串标签并不完全应用于没有用户界面的活动片段——你也可以为有用户界面的活动片段提供字符串标签——但如果活动片段没有用户界面，字符串标签是识别该活动片段的唯一途径。稍后如果你想从活动中获取这个活动片段，你需要使用 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code> 方法。</p>
 
-<p>For an example activity that uses a fragment as a background worker, without a UI, see the <a
-href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/FragmentRetainInstance.html"><code>FragmentRetainInstance.java</code></a> sample.</p>
+<p>查看 <a
+href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/FragmentRetainInstance.html"><code>FragmentRetainInstance.java</code></a> 范例，它使用一个没有用户界面的活动片段在后台工作。</p>
 
 
 
 <h2 id="Managing">管理活动碎片</h2>
 
-<p>To manage the fragments in your activity, you need to use <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code>. To
-get it, call <code><a href="../../reference/android/app/Activity.html#getFragmentManager()">getFragmentManager()</a></code> from your activity.</p>
+<p>为了管理你活动中的活动片段，你需要使用 <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> 类。调用活动的 <code><a href="../../reference/android/app/Activity.html#getFragmentManager()">getFragmentManager()</a></code> 方法可以获取活动片段管理器。</p>
 
-<p>Some things that you can do with <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> include:</p>
+<p>在<code><a href="../../reference/android/app/FragmentManager.html">活动片段管理器</a></code>中，你可以有如下几种操作：</p>
 
 <ul>
-  <li>Get fragments that exist in the activity, with <code><a href="../../reference/android/app/FragmentManager.html#findFragmentById(int)">findFragmentById()</a></code> (for fragments that provide a UI in
-the activity layout) or <code><a href="../../reference/android/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code> (for fragments that do or don't provide a UI).</li> 
-  <li>Pop fragments off the back stack, with <code><a href="../../reference/android/app/FragmentManager.html#popBackStack()">popBackStack()</a></code> (simulating a <em>Back</em> command by the user).</li>
-  <li>Register a listener for changes to the back stack, with <code><a href="../../reference/android/app/FragmentManager.html#addOnBackStackChangedListener(android.app.FragmentManager.OnBackStackChangedListener)">addOnBackStackChangedListener()</a></code>.</li>
+  <li>使用 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentById(int)">findFragmentById()</a></code> 方法（对于在活动布局中提供一个用户界面的活动片段）或者 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code> 方法（对于提供或者不提供一个用户界面的活动片段），来在活动中获取已经存在的活动片段。</li> 
+  <li>使用 <code><a href="../../reference/android/app/FragmentManager.html#popBackStack()">popBackStack()</a></code> 方法来让活动片段出栈（模拟用户的<em>返回</em>命令）。</li>
+  <li>使用 <code><a href="../../reference/android/app/FragmentManager.html#addOnBackStackChangedListener(android.app.FragmentManager.OnBackStackChangedListener)">addOnBackStackChangedListener()</a></code> 方法来为返回栈的改变事件注册一个监听器。</li>
 </ul>
 
-<p>For more information about these methods and others, refer to the <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> class documentation.</p>
+<p>更多关于这些方法以及其它相关信息，请查看<code><a href="../../reference/android/app/FragmentManager.html">活动片段管理器</a></code>类的文档。</p>
 
 <p>As demonstrated in the previous section, you can also use <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code>
 to open a <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code>, which allows you to perform transactions, such as
