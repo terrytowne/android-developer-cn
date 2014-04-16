@@ -1266,38 +1266,26 @@ href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/Fragment
 
 <p>更多关于这些方法以及其它相关信息，请查看<code><a href="../../reference/android/app/FragmentManager.html">活动片段管理器</a></code>类的文档。</p>
 
-<p>As demonstrated in the previous section, you can also use <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code>
-to open a <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code>, which allows you to perform transactions, such as
-add and remove fragments.</p>
+<p>正如之前所展示的，你可以使用<code><a href="../../reference/android/app/FragmentManager.html">活动片段管理器</a></code>打开一个<code><a href="../../reference/android/app/FragmentTransaction.html">活动片段事务</a></code>，它让你可以执行事务操作，如添加和删除活动片段。</p>
 
 
 <h2 id="Transactions">执行活动碎片事务</h2>
 
-<p>A great feature about using fragments in your activity is the ability to add, remove, replace,
-and perform other actions with them, in response to user interaction. Each set of changes that you
-commit to the activity is called a transaction and you can perform one using APIs in <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code>. You can also save each transaction to a back stack managed by the
-activity, allowing the user to navigate backward through the fragment changes (similar to navigating
-backward through activities).</p>
+<p>在活动中使用活动碎片的主要功能包括添加、删除、替换活动碎片，以及相应用户交互的其他活动碎片相关操作。向活动提交的每一组变更都称作一个事务，你可以使用 <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code> 中的 API 来执行事务操作。你也可以把每一个事务操作保存到由活动管理的返回栈中，它让用户可以返回到之前的活动碎片变更状态（类似于活动向后导航）。</p>
 
-<p>You can acquire an instance of <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code> from the <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> like this:</p>
+<p>你可以像这样从 <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> 获取 <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code>：</p>
 
 <pre>
 FragmentManager fragmentManager = <code><a href="../../reference/android/app/Activity.html#getFragmentManager()">getFragmentManager()</a></code>;
 FragmentTransaction fragmentTransaction = fragmentManager.<code><a href="../../reference/android/app/FragmentManager.html#beginTransaction()">beginTransaction()</a></code>;
 </pre>
 
-<p>Each transaction is a set of changes that you want to perform at the same time. You can set
-up all the changes you want to perform for a given transaction using methods such as <code><a href="../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add()</a></code>, <code><a href="../../reference/android/app/FragmentTransaction.html#remove(android.app.Fragment)">remove()</a></code>,
-and <code><a href="../../reference/android/app/FragmentTransaction.html#replace(int, android.app.Fragment)">replace()</a></code>. Then, to apply the transaction
-to the activity, you must call <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code>.</p>
+<p>每一个事务操作都是一组你希望同时执行的变更。你可以使用像 <code><a href="../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add()</a></code>、<code><a href="../../reference/android/app/FragmentTransaction.html#remove(android.app.Fragment)">remove()</a></code> 和 <code><a href="../../reference/android/app/FragmentTransaction.html#replace(int, android.app.Fragment)">replace()</a></code> 这些方法来设置你希望在某个事务中执行的所有变化。然后要将这个事务操作应用到活动，你需要调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法。</p>
 </dl>
 
-<p>Before you call <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code>, however, you might want to call <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code>, in order to add the transaction
-to a back stack of fragment transactions. This back stack is managed by the activity and allows
-the user to return to the previous fragment state, by pressing the <em>Back</em> button.</p>
+<p>在你调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法前，你可能会调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法来将事务添加到活动碎片事务的返回栈中。返回栈由活动管理，它让用户当按下<em>返回</em>按钮时可以返回到之前活动碎片状态。</p>
 
-<p>For example, here's how you can replace one fragment with another, and preserve the previous
-state in the back stack:</p>
+<p>例如，下面这段代码说明你如何替换一个活动碎片并将替换前状态保存到返回栈中：</p>
 
 <pre>
 // Create new fragment and transaction
@@ -1313,38 +1301,21 @@ transaction.addToBackStack(null);
 transaction.commit();
 </pre>
 
-<p>In this example, <code>newFragment</code> replaces whatever fragment (if any) is currently in the
-layout container identified by the <code>R.id.fragment_container</code> ID. By calling <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code>, the replace transaction is
-saved to the back stack so the user can reverse the transaction and bring back the
-previous fragment by pressing the <em>Back</em> button.</p>
+<p>在这个例子中，<code>newFragment</code> 方法替换当前布局容器中由 <code>R.id.fragment_container</code> ID 识别的活动碎片。通过调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，替换事务操作被保存到返回栈中，这样用户可以保留这个事务并当按下<em>返回</em>按钮后能回到前一个活动碎片。</p>
 
-<p>If you add multiple changes to the transaction (such as another <code><a href="../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add()</a></code> or <code><a href="../../reference/android/app/FragmentTransaction.html#remove(android.app.Fragment)">remove()</a></code>) and call <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code>, then all changes applied
-before you call <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> are added to the
-back stack as a single transaction and the <em>Back</em> button will reverse them all together.</p>
+<p>如果你添加多个更改到事务中（如另一个 <code><a href="../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add()</a></code> 或 <code><a href="../../reference/android/app/FragmentTransaction.html#remove(android.app.Fragment)">remove()</a></code> 操作）并调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，那么所有 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法调用前应用的更改都会作为一个事务添加到返回栈中，而 <em>返回</em>按钮会将它们同时恢复。</p>
 
-<p>The order in which you add changes to a <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code> doesn't matter,
-except:</p>
+<p>你在<code><a href="../../reference/android/app/FragmentTransaction.html">活动碎片事务</a></code>中添加更改的顺序不重要，除了：</p>
 <ul>
-  <li>You must call <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> last</li>
-  <li>If you're adding multiple fragments to the same container, then the order in which
-you add them determines the order they appear in the view hierarchy</li>
+  <li>你必须最后调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法</li>
+  <li>如果你添加多个活动碎片到同一个容器中，那么它们的添加顺序决定了它们在视图层级中的显示顺序</li>
 </ul>
 
-<p>If you do not call <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> when you perform a transaction that removes a fragment, then that fragment is
-destroyed when the transaction is committed and the user cannot navigate back to it. Whereas, if you
-do call <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> when
-removing a fragment, then the fragment is <em>stopped</em> and will be resumed if the user navigates
-back.</p>
+<p>如果你在执行删除事务操作时不调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，那么被删除的活动碎片会在事务提交后销毁，用户也不能再次访问它。然后，当你在删除一个活动碎片时调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，那么该活动碎片会<em>停止</em>并在用户返回时恢复。</p>
 
-<p class="note"><strong>Tip:</strong> For each fragment transaction, you can apply a transition
-animation, by calling <code><a href="../../reference/android/app/FragmentTransaction.html#setTransition(int)">setTransition()</a></code> before
-you commit.</p>
+<p class="note"><strong>提示：</strong>对每一个活动碎片事务，你可以在提交前调用 <code><a href="../../reference/android/app/FragmentTransaction.html#setTransition(int)">setTransition()</a></code> 方法来设置转换动画。</p>
 
-<p>Calling <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> does not perform the transaction
-immediately. Rather, it schedules it to run on the activity's UI thread (the "main" thread) as soon
-as the thread is able to do so. If necessary, however, you may call <code><a href="../../reference/android/app/FragmentManager.html#executePendingTransactions()">executePendingTransactions()</a></code> from your UI thread to immediately execute
-transactions submitted by <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code>. Doing so is
-usually not necessary unless the transaction is a dependency for jobs in other threads.</p>
+<p>调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法不会直接执行事务操作。它会在活动 UI 线程（“主”线程）可用的时候安排事务操作在该线程上运行。如果需要，你可以在 UI 线程中调用 <code><a href="../../reference/android/app/FragmentManager.html#executePendingTransactions()">executePendingTransactions()</a></code> 来直接执行 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法提交的事务。这样做通常是不必要的，除非事务是其他线程任务的依赖。</p>
 
 <p class="caution"><strong>警告：</strong>你只能在活动组件<a
 href="../../guide/components/activities.html#SavingActivityState">保持它的状态</a>（当用户离开活动）前使用  <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法提交事务。如果你在那个点后尝试提交事务，会抛出一个例外。这是因为如果活动组件需要被还原时，事务提交后的状态会丢失。对于可以丢失的事务提交，使用 <code><a href="../../reference/android/app/FragmentTransaction.html#commitAllowingStateLoss()">commitAllowingStateLoss()</a></code> 方法。</p>
