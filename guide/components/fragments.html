@@ -1403,30 +1403,19 @@ href="../../guide/topics/providers/content-providers.html">内容提供器</a>�
 
 <h3 id="ActionBar">在操作栏中添加项目</h3>
 
-<p>Your fragments can contribute menu items to the activity's <a
-href="../../guide/topics/ui/menus.html#options-menu">Options Menu</a> (and, consequently, the <a
-href="../../guide/topics/ui/actionbar.html">Action Bar</a>) by implementing
-<code><a href="../../reference/android/app/Fragment.html#onCreateOptionsMenu(android.view.Menu, android.view.MenuInflater)">onCreateOptionsMenu()</a></code>. In order
-for this method to receive calls, however, you must call <code><a href="../../reference/android/app/Fragment.html#setHasOptionsMenu(boolean)">setHasOptionsMenu()</a></code> during <code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code>, to indicate that the fragment
-would like to add items to the Options Menu (otherwise, the fragment will not receive a call to
-<code><a href="../../reference/android/app/Fragment.html#onCreateOptionsMenu(android.view.Menu, android.view.MenuInflater)">onCreateOptionsMenu()</a></code>).</p>
+<p>通过实现 <code><a href="../../reference/android/app/Fragment.html#onCreateOptionsMenu(android.view.Menu, android.view.MenuInflater)">onCreateOptionsMenu()</a></code> 方法，你的活动片段可以作为<a
+href="../../guide/topics/ui/menus.html#options-menu">菜单选项</a>的条目（即<a
+href="../../guide/topics/ui/actionbar.html">操作栏</a>）。你必须在 <code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法中调用 <code><a href="../../reference/android/app/Fragment.html#setHasOptionsMenu(boolean)">setHasOptionsMenu()</a></code> 方法，表明活动片段想要在菜单选项中添加条目，（否则，活动片段将不会接收 <code><a href="../../reference/android/app/Fragment.html#onCreateOptionsMenu(android.view.Menu, android.view.MenuInflater)">onCreateOptionsMenu()</a></code> 方法的调用）。</p>
 
-<p>Any items that you then add to the Options Menu from the fragment are appended to the existing
-menu items. The fragment also receives callbacks to <code><a href="../../reference/android/app/Fragment.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> when a menu item
-is selected.</p>
+<p>任何从活动片段添加到菜单选项的条目都是被附加到已经存在的菜单条目中。当一个菜单条目被选中时，活动片段同时接收到 <code><a href="../../reference/android/app/Fragment.html#onOptionsItemSelected(android.view.MenuItem)">onOptionsItemSelected()</a></code> 方法的回调。</p>
 
-<p>You can also register a view in your fragment layout to provide a context menu by calling <code><a href="../../reference/android/app/Fragment.html#registerForContextMenu(android.view.View)">registerForContextMenu()</a></code>. When the user opens
-the context menu, the fragment receives a call to <code><a href="../../reference/android/app/Fragment.html#onCreateContextMenu(android.view.ContextMenu, android.view.View, android.view.ContextMenu.ContextMenuInfo)">onCreateContextMenu()</a></code>. When the user selects an item, the fragment receives a call to <code><a href="../../reference/android/app/Fragment.html#onContextItemSelected(android.view.MenuItem)">onContextItemSelected()</a></code>.</p>
+<p>为了提供一个上下文菜单，同样你可以在活动片段布局中注册一个视图，通过调用 <code><a href="../../reference/android/app/Fragment.html#registerForContextMenu(android.view.View)">registerForContextMenu()</a></code> 方法。当用户打开上下文菜单时，活动片段接收到 <code><a href="../../reference/android/app/Fragment.html#onCreateContextMenu(android.view.ContextMenu, android.view.View, android.view.ContextMenu.ContextMenuInfo)">onCreateContextMenu()</a></code>  方法的调用。当用户选择一个条目时，活动片段接收到 <code><a href="../../reference/android/app/Fragment.html#onContextItemSelected(android.view.MenuItem)">onContextItemSelected()</a></code> 方法的调用。</p>
 
-<p class="note"><strong>Note:</strong> Although your fragment receives an on-item-selected callback
-for each menu item it adds, the activity is first to receive the respective callback when the user
-selects a menu item. If the activity's implementation of the on-item-selected callback does not
-handle the selected item, then the event is passed to the fragment's callback. This is true for
-the Options Menu and context menus.</p>
+<p class="note"><strong>注意：</strong>尽管添加在活动片段的每个菜单条目接收一个正被选中条目的回调，当用户选择了一个菜单条目，活动片段所在的活动时第一次接收相应的回调。如果活动实现的“正被选中条目”的回调不能处理处理用户所选中的条目，然后这个事件被传递到活动片段的回调中。这也适用于菜单选项和上下文菜单的情况。</p>
 
-<p>For more information about menus, see the <a
-href="../../guide/topics/ui/menus.html">Menus</a> and <a
-href="../../guide/topics/ui/actionbar.html">Action Bar</a> developer guides.</p>
+<p>更多关于菜单的信息，查看<a
+href="../../guide/topics/ui/menus.html">菜单</a>和<a
+href="../../guide/topics/ui/actionbar.html">操作栏</a>开发者指南。</p>
 
 
 
@@ -1435,56 +1424,32 @@ href="../../guide/topics/ui/actionbar.html">Action Bar</a> developer guides.</p>
 
 <div class="figure" style="width:350px">
 <img src="../../images/activity_fragment_lifecycle.png" alt=""/>
-<p class="img-caption"><strong>Figure 3.</strong> The effect of the activity lifecycle on the fragment
-lifecycle.</p>
+<p class="img-caption"><strong>图 3.</strong> 活动的生命周期对活动片段生命周期的影响。</p>
 </div>
 
-<p>Managing the lifecycle of a fragment is a lot like managing the lifecycle of an activity. Like
-an activity, a fragment can exist in three states:</p>
+<p>管理活动片段生命周期与管理活动生命周期有点相似。和活动类似，一个活动片段能够在以下三种状态中存在：</p>
 
 <dl>
   <dt><i>恢复状态</i></dt>
-    <dd>The fragment is visible in the running activity.</dd>
+    <dd>活动片段在运行的活动中可见。</dd>
 
   <dt><i>暂停状态</i></dt>
-    <dd>Another activity is in the foreground and has focus, but the activity in which this
-fragment lives is still visible (the foreground activity is partially transparent or doesn't
-cover the entire screen).</dd>
+    <dd>其他活动在前台并获的焦点，但是托管了活动片段的活动仍然可见（前台活动是半透明或者并不完全覆盖整个屏幕）。</dd>
 
   <dt><i>停止状态</i></dt>
-    <dd>The fragment is not visible. Either the host activity has been stopped or the
-fragment has been removed from the activity but added to the back stack. A stopped fragment is
-still alive (all state and member information is retained by the system). However, it is no longer
-visible to the user and will be killed if the activity is killed.</dd>
+    <dd>活动片段不可见。此时要么宿主活动已经停止或活动片段已经从活动中移除并添加到返回栈中。一个被停止的活动片段仍然存活（所有成员的信息和状态依然被系统保留）。然而，它不再可见，如果宿主活动被杀死之后，它也将被杀死。</dd>
 </dl>
 
-<p>Also like an activity, you can retain the state of a fragment using a <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code>, in case the activity's process is killed and you need to restore the
-fragment state when the activity is recreated. You can save the state during the fragment's <code><a href="../../reference/android/app/Fragment.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code> callback and restore it during
-either <code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code>, <code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code>, or <code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code>. For more information about saving
-state, see the <a
-href="../../guide/components/activities.html#SavingActivityState">Activities</a>
-document.</p>
+<p>防止宿主活动的进程被杀死、当一个活动被重新创建时你需要恢复活动片段的状态，与活动一样，你可以使用 <code><a href="../../reference/android/os/Bundle.html">Bundle</a></code> 保留活动片段的状态。你可以在活动片段的 <code><a href="../../reference/android/app/Fragment.html#onSaveInstanceState(android.os.Bundle)">onSaveInstanceState()</a></code> 回调方法中保存状态并在 <code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法、 <code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code> 方法或者 <code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code> 方法中恢复活动片段的状态。更多关于保存状态的信息，查看<a
+href="../../guide/components/activities.html#SavingActivityState">活动</a>文档。</p>
 
-<p>The most significant difference in lifecycle between an activity and a fragment is how one is
-stored in its respective back stack. An activity is placed into a back stack of activities
-that's managed by the system when it's stopped, by default (so that the user can navigate back
-to it with the <em>Back</em> button, as discussed in <a
-href="../../guide/components/tasks-and-back-stack.html">Tasks and Back Stack</a>).
-However, a fragment is placed into a back stack managed by the host activity only when you
-explicitly request that the instance be saved by calling <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> during a transaction that
-removes the fragment.</p>
+<p>在活动和活动片段生命周期之间最大的区别是它们如何存储在各自的返回栈中。当一个活动为停止态时，默认它被放置在系统管理的活动返回栈中（用户点击<em>返回</em>按钮之后能够返回到这个活动，在<a
+href="../../guide/components/tasks-and-back-stack.html">任务和返回堆栈</a>文档中讨论）。然而，在移除活动片段事务期间，通过调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法显式请求保存的实例时，活动片段将被放置在一个由宿主活动管理的返回栈中。</p>
 
-<p>Otherwise, managing the fragment lifecycle is very similar to managing the activity
-lifecycle. So, the same practices for <a
-href="../../guide/components/activities.html#Lifecycle">managing the activity
-lifecycle</a> also apply to fragments. What you also need to understand, though, is how the life
-of the activity affects the life of the fragment.</p>
+<p>其它方面，管理活动片段生命周期与管理活动生命周期非常相似。因此，<a
+href="../../guide/components/activities.html#Lifecycle">管理活动周期</a>的方法也适用于活动碎片。同时你需要明白的是，活动片段的生命周期受到宿主活动怎样的影响。</p>
 
-<p class="caution"><strong>Caution:</strong> If you need a <code><a href="../../reference/android/content/Context.html">Context</a></code> object
-within your <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code>, you can call <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code>.
-However, be careful to call <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> only when the fragment is
-attached to an activity. When the fragment is not yet attached, or was detached during the end of
-its lifecycle, <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> will return null.</p>
+<p class="caution"><strong>注意：</strong>如果你在<code><a href="../../reference/android/app/Fragment.html">活动碎片</a></code>中需要一个<code><a href="../../reference/android/content/Context.html">上下文</a></code>对象，你可以调用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法。但是，要注意只有在活动碎片连接到活动上时调用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法。当活动片段还没连接到一个活动上或者在生命周期结束时脱离宿主活动，<code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法会返回 null。</p>
 
 
 <h3 id="CoordinatingWithActivity">与活动生命周期协调</h3>
