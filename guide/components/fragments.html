@@ -1454,56 +1454,40 @@ href="../../guide/components/activities.html#Lifecycle">管理活动周期</a>�
 
 <h3 id="CoordinatingWithActivity">与活动生命周期协调</h3>
 
-<p>The lifecycle of the activity in which the fragment lives directly affects the lifecycle of the
-fragment, such that each lifecycle callback for the activity results in a similar callback for each
-fragment. For example, when the activity receives <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code>, each
-fragment in the activity receives <code><a href="../../reference/android/app/Fragment.html#onPause()">onPause()</a></code>.</p>
+<p>包含活动碎片活动的生命周期直接影响该活动碎片的生命周期，每一个活动组件的生命周期回调方法都有产生一个类似的相对应的活动碎片回调方法。例如，当活动收到 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 回调，活动组件内的每一个活动碎片都收到 <code><a href="../../reference/android/app/Fragment.html#onPause()">onPause()</a></code> 回调。</p>
 
-<p>Fragments have a few extra lifecycle callbacks, however, that handle unique interaction with the
-activity in order to perform actions such as build and destroy the fragment's UI. These additional
-callback methods are:</p>
+<p>活动碎片有一些额外的生命周期回调方法，这些回调处理与活动组件的交互来执行像构建和销毁活动碎片用户界面这些操作。这些额外的回调方法有：</p>
 
 <dl>
   <dt><code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code></dt>
-    <dd>Called when the fragment has been associated with the activity (the <code><a href="../../reference/android/app/Activity.html">Activity</a></code> is passed in here).</dd>
+    <dd>当活动碎片被关联到活动组件时被调用（<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>在这里传入）。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code></dt>
-    <dd>Called to create the view hierarchy associated with the fragment.</dd>
+    <dd>创建与活动碎片关联的视图层级时调用。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code></dt>
-    <dd>Called when the activity's <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> method has returned.</dd>
+    <dd>当活动的 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法返回时调用。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onDestroyView()">onDestroyView()</a></code></dt>
-    <dd>Called when the view hierarchy associated with the fragment is being removed.</dd>
+    <dd>当与活动碎片关联的视图层级被移除时调用。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onDetach()">onDetach()</a></code></dt>
-    <dd>Called when the fragment is being disassociated from the activity.</dd>
+    <dd>当活动碎片和活动组件去关联时调用。</dd>
 </dl>
 
-<p>The flow of a fragment's lifecycle, as it is affected by its host activity, is illustrated
-by figure 3. In this figure, you can see how each successive state of the activity determines which
-callback methods a fragment may receive. For example, when the activity has received its <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> callback, a fragment in the activity receives no more than
-the <code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code> callback.</p>
+<p>活动碎片生命周期的流程以及他们如何被宿主活动组件影响，在图 3. 中演示。在这个图例中，你可以看到每一个活动组件的后继状态如何决定哪一个活动碎片的回调方法会收到信号。例如，当活动组件收到 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 回调，该活动组件中的活动碎片只会收到 <code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code> 回调。</p>
 
-<p>Once the activity reaches the resumed state, you can freely add and remove fragments to the
-activity. Thus, only while the activity is in the resumed state can the lifecycle of a fragment
-change independently.</p>
+<p>一旦活动组件到达恢复状态，你可以随意添加或移除活动碎片到该活动中。也只有在活动处于恢复状态，活动碎片的生命周期可以独立的改变。</p>
 
-<p>However, when the activity leaves the resumed state, the fragment again is pushed through its
-lifecycle by the activity.</p>
+<p>但是，当活动组件离开恢复状态，活动碎片再次被活动组件推动生命周期变化。</p>
 
 
 
 
 <h2 id="Example">例子</h2>
 
-<p>To bring everything discussed in this document together, here's an example of an activity
-using two fragments to create a two-pane layout. The activity below includes one fragment to
-show a list of Shakespeare play titles and another to show a summary of the play when selected
-from the list. It also demonstrates how to provide different configurations of the fragments,
-based on the screen configuration.</p>
+<p>要将本文档所有讨论的内容结合在一起，下面是一个使用两个活动碎片来创建双面板布局的活动组件的例子。该活动组件包括一个活动碎片来显示一个莎士比亚剧标题的列表和一个当选择列表项目时显示戏剧摘要信息的活动碎片。这个例子同时展示了如何基于屏幕配置提供不同活动碎片配置的方法。</p>
 
-<p class="note"><strong>Note:</strong> The complete source code for this activity is available in
-<a
-href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/FragmentLayout.html"><code>FragmentLayout.java</code></a>.</p>
+<p class="note"><strong>注意：</strong>活动的完整的源代码在 <a
+href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/FragmentLayout.html"><code>FragmentLayout.java</code></a> 文件提供。</p>
 
-<p>The main activity applies a layout in the usual way, during <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code>:</p>
+<p>主活动在 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法中用通常的方法应用一个布局：</p>
 
 <pre>@Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -1512,7 +1496,7 @@ protected void onCreate(Bundle savedInstanceState) {
     setContentView(R.layout.fragment_layout);
 }</pre>
 
-<p>The layout applied is <code>fragment_layout.xml</code>:</p>
+<p>被应用的布局文件为 <code>fragment_layout.xml</code>：</p>
 
 <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
@@ -1528,18 +1512,11 @@ protected void onCreate(Bundle savedInstanceState) {
 
 &lt;/LinearLayout&gt;</pre>
 
-<p>Using this layout, the system instantiates the <code>TitlesFragment</code> (which lists the play
-titles) as soon as the activity loads the layout, while the <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code>
-(where the fragment for showing the play summary will go) consumes space on the right side of the
-screen, but remains empty at first. As you'll see below, it's not until the user selects an item
-from the list that a fragment is placed into the <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code>.</p>
+<p>使用这个布局，系统在活动组件加载布局文件时将 <code>TitlesFragment</code> 实例化（它列表显示剧目标题）而占用屏幕右边空间的 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code>（显示剧目摘要信息的部分）会一开始显示为空白。正如你在下面会看到的，当用户在列表上选择剧目后，活动碎片才会添加到 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> 中。</p>
 
-<p>However, not all screen configurations are wide enough to show both the list of
-plays and the summary, side by side. So, the layout above is used only for the landscape
-screen configuration, by saving it at <code>res/layout-land/fragment_layout.xml</code>.</p>
+<p>但不是所有的屏幕配置都足够宽来并排显示剧目列表和剧目摘要。所以上面的布局只有在横向屏幕配置时使用，它保存在 <code>res/layout-land/fragment_layout.xml</code> 中。</p>
 
-<p>Thus, when the screen is in portrait orientation, the system applies the following layout, which
-is saved at <code>res/layout/fragment_layout.xml</code>:</p>
+<p>所以当屏幕时竖直方向时，系统应用下面的布局文件，它保存为 <code>res/layout/fragment_layout.xml</code>：</p>
 
 <pre>&lt;FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"&gt;
