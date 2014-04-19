@@ -1525,16 +1525,11 @@ protected void onCreate(Bundle savedInstanceState) {
             android:layout_width="match_parent" android:layout_height="match_parent" /&gt;
 &lt;/FrameLayout&gt;</pre>
 
-<p>This layout includes only <code>TitlesFragment</code>. This means that, when the device is in
-portrait orientation, only the list of play titles is visible. So, when the user clicks a list
-item in this configuration, the application will start a new activity to show the summary,
-instead of loading a second fragment.</p>
+<p>这个布局中只包括 <code>TitlesFragment</code>。这意味着当设备处于竖直方向时，只有剧目标题列表时可见的。而当用户在这个配置下点击一个列表项，应用会启动一个新的活动来显示剧目摘要，而不是在第二个活动碎片中加载信息。</p>
 
-<p>Next, you can see how this is accomplished in the fragment classes. First is <code>TitlesFragment</code>, which shows the list of Shakespeare play titles. This fragment extends <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code> and relies on it to handle most of the list view work.</p>
+<p>接下来你可以看到这是如何在活动碎片类中完成的。首先是 <code>TitlesFragment</code>，它显示莎士比亚剧目标题列表。这个活动碎片继承 <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code> 并依赖它来处理大多数列表视图工作。</p>
 
-<p>As you inspect this code, notice that there are two possible behaviors when the user clicks a
-list item: depending on which of the two layouts is active, it can either create and display a new
-fragment to show the details in the same activity (adding the fragment to the <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code>), or start a new activity (where the fragment can be shown).</p>
+<p>在你查看这段代码的时候，注意当用户点击列表项的时候有两种可能的行为：它取决于两个布局中哪一个正可用，既有可能在同一个活动组件中创建和显示一个新的活动碎片（添加活动碎片到 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> 中），或启动新的活动组件（活动碎片可以在这里显示）。</p>
 
 <pre>public static class TitlesFragment extends ListFragment {
     boolean mDualPane;
@@ -1620,8 +1615,7 @@ fragment to show the details in the same activity (adding the fragment to the <c
     }
 }</pre>
 
-<p>The second fragment, <code>DetailsFragment</code> shows the play summary for the item selected from
-the list from <code>TitlesFragment</code>:</p>
+<p>第二个活动碎片 <code>DetailsFragment</code> 在 <code>TitlesFragment</code> 中的列表项选中时显示剧目摘要：</p>
  
 <pre>public static class DetailsFragment extends Fragment {
     /**
@@ -1668,13 +1662,9 @@ the list from <code>TitlesFragment</code>:</p>
     }
 }</pre>
 
-<p>Recall from the <code>TitlesFragment</code> class, that, if the user clicks a list item and the
-current layout does <em>not</em> include the <code>R.id.details</code> view (which is where the
-<code>DetailsFragment</code> belongs), then the application starts the <code>DetailsActivity</code>
-activity to display the content of the item.</p>
+<p>回顾 <code>TitlesFragment</code> 类，如果用户点击列表项而当前布局中<em>不</em>包含 <code>R.id.details</code> 视图（<code>DetailsFragment</code> 的宿主视图），那么应用启动 <code>DetailsActivity</code> 活动来显示项目的内容。</p>
 
-<p>Here is the <code>DetailsActivity</code>, which simply embeds the <code>DetailsFragment</code> to display
-the selected play summary when the screen is in portrait orientation:</p>
+<p>下面是<code>DetailsActivity</code> 代码，它简单地嵌入了 <code>DetailsFragment</code> 来当屏幕时竖直方向时显示选中的剧目摘要信息：</p>
 
 <pre>public static class DetailsActivity extends Activity {
 
@@ -1699,17 +1689,12 @@ the selected play summary when the screen is in portrait orientation:</p>
     }
 }</pre>
  
-<p>Notice that this activity finishes itself if the configuration is landscape, so that the main
-activity can take over and display the <code>DetailsFragment</code> alongside the <code>TitlesFragment</code>.
-This can happen if the user begins the <code>DetailsActivity</code> while in portrait orientation, but
-then rotates to landscape (which restarts the current activity).</p>
+<p>注意活动在配置处于横向时结束自己，所以主活动可以开始并排显示 <code>DetailsFragment</code> 和 <code>TitlesFragment</code>。这种情况会在用户在竖直方向开始 <code>DetailsActivity</code> 发生，但是接下来转动到横向方向（这会重启当前活动组件）。</p>
 
 
-<p>For more samples using fragments (and complete source files for this example),
-see the API Demos sample app available in <a
-href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/index.html#Fragment">
-ApiDemos</a> (available for download from the <a
-href="../../resources/samples/get.html">Samples SDK component</a>).</p>
+<p>更多关于使用活动碎片的例子（和本例子更完整的源文件），请查看 API 演示样例应用 <a
+href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/index.html#Fragment"> ApiDemos</a>（在<a
+href="../../resources/samples/get.html">样例 SDK 组件</a>里可以下载）。</p>
 
 
 
