@@ -1022,10 +1022,10 @@ onkeyup="return search_changed(event, false, '../../')" />
 
   <h2>要点</h2>
   <ul>
-    <li>活动碎片将应用功能和用户界面分解成可复用的模块</li>
-    <li>在屏幕中添加多个活动碎片来避免切换活动组件</li>
-    <li>活动碎片有它们自己的生命周期、状态和返回栈</li>
-    <li>活动碎片需要 API Level 11 或更高级别</li>
+    <li>活动片段将应用功能和用户界面分解成可复用的模块</li>
+    <li>在屏幕中添加多个活动片段来避免切换活动组件</li>
+    <li>活动片段有它们自己的生命周期、状态和返回栈</li>
+    <li>活动片段需要 API Level 11 或更高级别</li>
   </ul>
 
   <h2>在本文档中</h2>
@@ -1037,15 +1037,15 @@ onkeyup="return search_changed(event, false, '../../')" />
         <li><a href="#Adding">添加活动片段到活动组件</a></li>
       </ol>
     </li>
-    <li><a href="#Managing">管理活动碎片</a></li>
-    <li><a href="#Transactions">执行活动碎片事务</a></li>
+    <li><a href="#Managing">管理活动片段</a></li>
+    <li><a href="#Transactions">执行活动片段事务</a></li>
     <li><a href="#CommunicatingWithActivity">与活动组件通信</a>
       <ol>
         <li><a href="#EventCallbacks">给活动组件创建事件回调</a></li>
         <li><a href="#ActionBar">在操作栏中添加项目</a></li>
       </ol>
     </li>
-    <li><a href="#Lifecycle">处理活动碎片生命周期</a>
+    <li><a href="#Lifecycle">处理活动片段生命周期</a>
       <ol>
         <li><a href="#CoordinatingWithActivity">与活动生命周期协调</a></li>
       </ol>
@@ -1068,14 +1068,14 @@ onkeyup="return search_changed(event, false, '../../')" />
 </div>
 </div>
 
-<p>在<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>中，一个<code><a href="../../reference/android/app/Fragment.html">活动碎片</a></code>代表一个动作或者用户界面的一部分。你可以在单个活动中组织多个活动片段，用以创建一个多面板的用户界面和在多个活动中重用一个活动片段。你可以把一个活动片段当作一个模块化的活动，它有自己的生命周期并接受自身的输入事件，同时这些活动片段在活动运行时还可以进行添加和移除。（有点像一个可以在不同活动中重复使用的“子活动”）。</p>
+<p>在<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>中，一个<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>代表一个动作或者用户界面的一部分。你可以在单个活动中组织多个活动片段，来创建一个多面板的用户界面以及在多个活动中重用一个活动片段。你可以把一个活动片段当作一个模块化的活动组件，它有自己的生命周期并接受自身的输入事件，同时这些活动片段在活动组件运行时还可以进行添加和移除。（有点像一个可以在不同活动中重复使用的“子活动”）。</p>
 
-<p>一个活动片段必须嵌入一个活动中，活动片段的生命周期受到它宿主活动生命周期的直接影响。例如，当一个活动暂停时，它托管的所有活动片段也都没暂停，当宿主活动被销毁时，它里面的所有活动片段都同时被销毁。然而，当一个活动正在运行时（处于<em>恢复状态</em> <a
-href="../../guide/components/activities.html#Lifecycle">生命周期</a>），此时你可以独立每个操作托管的活动片段，例如添加或者移除它们。当执行这样的活动片段事务，你也可以把它添加在宿主活动管理的返回栈中 — 进入宿主活动返回栈是一条已发生的活动片段事务记录。通过点击<em>返回</em>按钮，返回栈允许用户返回到一个活动片段事务（向后导航）。</p>
+<p>一个活动片段必须嵌入在活动组件中，并且活动片段的生命周期受它的宿主活动组件生命周期的直接影响。例如，当一个活动暂停时，它托管的所有活动片段也都没暂停，当宿主活动被销毁时，它里面的所有活动片段都同时被销毁。然而，当一个活动正在运行时（处于<em>恢复态</em> <a
+href="../../guide/components/activities.html#Lifecycle">生命周期</a>），此时你可以单独操作每个活动片段，例如添加或者移除它们。当执行这样的活动片段事务时，你也可以把它添加在由宿主活动组件管理的返回栈中 — 活动组件中的每一个返回栈项目都是一个发生的活动片段事务的记录。通过点击<em>返回</em>按钮，返回栈让用户可以撤销一个活动片段事务（向后导航）。</p>
 
-<p>当你在活动布局中添加一个活动片段，它托管在活动视图层次的<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>中。通过在活动布局文件中声明活动片段，使用 <code>&lt;fragment&gt;</code> 元素，你可以在活动布局中插入一个活动片段，或者在你应用程序的代码中，把活动片段添加到一个已经存在的<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>。然而，活动片段并不是只托管在活动中，你也可以在没有它自己用户界面的情况下使用活动片段，这时活动在活动中不可见。</p>
+<p>当你添加一个活动片段作为你的活动布局的一部分，它将存活在活动视图层次结构的一个<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>中，并且活动片段定义了它自己的视图布局。你可以在活动布局文件中使用 <code>&lt;fragment&gt;</code> 元素声明活动片段插入一个活动片段，或者在你应用代码中把活动片段添加到一个已经存在的<code><a href="../../reference/android/view/ViewGroup.html">视图组</a></code>。然而，活动片段不必是活动组件布局的一部分；你也可以使用不带用户界面的活动片段作为一个活动组件的不可见工作器。</p>
 
-<p>本文档介绍了使用活动片段如何创建你的应用程序。包括了添加在活动返回栈中的活动片段如何维护它们的状态、如何与活动和其他托管在相同活动的活动片段共享事件、创建活动的活动指示条等。</p>
+<p>本文档介绍了如何使用活动片段创建你的应用程序，包括活动片段如何在添加到活动返回栈时维护它们的状态，如何与活动和其他托管在相同活动的活动片段共享事件以及如何创建活动的活动指示条等。</p>
 
 
 <h2 id="Design">设计理念</h2>
@@ -1084,14 +1084,14 @@ href="../../guide/components/activities.html#Lifecycle">生命周期</a>），�
 
 <p>例如，有一个新闻的应用程序。它有在屏幕的左边显示文中的列表的活动片段和在右边显示文章内容的另外一个活动片段，这两个活动片段在同一个活动中显示，而每一个活动片段都有其自身生命周期回调方法的集合并处理它们自身的用户输入事件。所以，用户可以在用一个活动中选择一篇文章并阅读，而不是使用一个活动选择需要阅读的文章题目和另外一个活动阅读文章的内容，就像图一所示的一个平板电脑布局。</p>
 
-<p>你应把每一个活动片段设计为一个组件模块、或者是一个可重复使用的活动组件。这意味着，由于每一个活动片段定义在一个自身独立的布局中并且控制生命周期的控制自身的行为，你可以在多个活动中引用同一个活动片段，所以你可以将活动片段设计为可重用和避免从另外的活动片段中直接操作一个活动片段。这时非常重要的，因为一个活动片段模块允许你为不同大小的屏幕改变你活动片段组合。当要把你的应用程序设计为兼容平板电脑和手持设备时，结合用户的设备屏幕大小，迎合用户的体验，你可以在不同的布局配置文件中重用你的活动片段。例如在一个手持设备中，因为多个活动片段在同一个活动中不能兼容，可能需要提供一个单面板的用户界面而把这些活动片段切分。</p>
+<p>你应把每一个活动片段设计为一个组件模块、或者是一个可重复使用的活动组件。这意味着，由于每一个活动片段定义在一个自身独立的布局中并且控制生命周期的控制自身的行为，你可以在多个活动中引用同一个活动片段，所以你可以将活动片段设计为可重用和避免从另外的活动片段中直接操作一个活动片段。这是非常重要的，因为一个活动片段模块允许你为不同大小的屏幕改变你活动片段组合。当要把你的应用程序设计为兼容平板电脑和手持设备时，结合用户的设备屏幕大小，迎合用户的体验，你可以在不同的布局配置文件中复用你的活动片段。例如在一个手持设备中，因为多个活动片段在同一个活动中不能兼容，可能需要提供一个单面板的用户界面而把这些活动片段切分。</p>
 
 <img src="../../images/fundamentals/fragments.png" alt="" />
 <p class="img-caption"><strong>图 1.</strong>通过活动片段定义的两个用户界面模块的例子，在平板电脑中组合在一起，但为手持设备设计时将两个活动组件分开。</p>
 
-<p>举例来说 — 在新闻应用的例子中 — 应用可以当运行在平板尺寸的设备上时在<em>活动 A</em>中内嵌两个活动碎片。但是，当在手持尺寸屏幕中，没有足够空间同时显示两个活动碎片，于是<em>活动 A</em>只包含显示文章列表的活动碎片，而当用户选择一个文章时，它启动<em>活动 B</em>，在活动 B 中包括阅读文章内容的第二个活动酥皮。这样，应用通过在不同组合中重用活动碎片来同时支持平板设备和手持设备，如图 1 中所显示。</p>
+<p>举例来说 — 在新闻应用的例子中 — 应用可以当运行在平板尺寸的设备上时在<em>活动 A</em>中内嵌两个活动片段。但是，当在手持尺寸屏幕中，没有足够空间同时显示两个活动片段，于是<em>活动 A</em>只包含显示文章列表的活动片段，而当用户选择一个文章时，它启动<em>活动 B</em>，在活动 B 中包括阅读文章内容的第二个活动片段。这样，应用通过在不同组合中重用活动片段来同时支持平板设备和手持设备，如图 1 中所显示。</p>
 
-<p>更多关于使用不同活动碎片组合来为不同屏幕配置而设计应用的信息，查看<a
+<p>更多关于使用不同活动片段组合来为不同屏幕配置而设计应用的信息，查看<a
 href="../../guide/practices/tablets-and-handsets.html">支持平板设备和手持设备</a>指南。</p>
 
 
@@ -1100,30 +1100,30 @@ href="../../guide/practices/tablets-and-handsets.html">支持平板设备和手�
 
 <div class="figure" style="width:327px">
 <img src="../../images/fragment_lifecycle.png" alt="" />
-<p class="img-caption"><strong>图 2.</strong> 活动碎片生命周期（当活动运行时）。</p>
+<p class="img-caption"><strong>图 2.</strong> 活动片段生命周期（当活动运行时）。</p>
 </div>
 
-<p>要创建活动碎片，你必须创建一个 <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 子类（或者它的其它子类）。<code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 类包含和 <code><a href="../../reference/android/app/Activity.html">Activity</a></code> 相似的代码。它包含类似于活动类的回调函数，如 <code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法，<code><a href="../../reference/android/app/Fragment.html#onStart()">onStart()</a></code> 方法，<code><a href="../../reference/android/app/Fragment.html#onPause()">onPause()</a></code> 方法和 <code><a href="../../reference/android/app/Fragment.html#onStop()">onStop()</a></code> 方法。事实上，如果你转换一个现有的安卓应用来使用活动碎片，你可能还需要简单地将活动回调方法中的代码移动到活动碎片中相应的回调函数中。</p>
+<p>要创建一个活动片段，你必须创建一个 <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 子类（或者它的其它子类）。<code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 类包含和 <code><a href="../../reference/android/app/Activity.html">Activity</a></code> 相似的代码。它包含类似于活动类的回调函数，如 <code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法，<code><a href="../../reference/android/app/Fragment.html#onStart()">onStart()</a></code> 方法，<code><a href="../../reference/android/app/Fragment.html#onPause()">onPause()</a></code> 方法和 <code><a href="../../reference/android/app/Fragment.html#onStop()">onStop()</a></code> 方法。事实上，如果你转换一个现有的安卓应用来使用活动片段，你可能还需要简单地将活动回调方法中的代码移动到活动片段中相应的回调函数中。</p>
 
 <p>通常你需要实现至少这些生命周期方法：</p>
 
 <dl>
   <dt><code><a href="../../reference/android/app/Fragment.html#onCreate(android.os.Bundle)">onCreate()</a></code></dt>
-  <dd>当系统创建活动碎片时调用这个方法。在你的实现中，你应该初始化那些你希望在活动碎片暂停或停止状态及恢复状态中希望保留的关键组件。</dd>
+  <dd>当系统创建活动片段时调用这个方法。在你的实现中，你应该初始化那些你希望在活动片段暂停或停止状态及恢复状态中希望保留的关键组件。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code></dt>
-  <dd>当系统初次绘制活动碎片的用户界面时调用这个方法。要绘制活动碎片的用户界面，你必须在这个方法中返回一个 <code><a href="../../reference/android/view/View.html">View</a></code> 类，而它是活动碎片的根布局视图。如果活动碎片不提供用户界面，你可以返回 null。</dd>
+  <dd>当系统初次绘制活动片段的用户界面时调用这个方法。要绘制活动片段的用户界面，你必须在这个方法中返回一个 <code><a href="../../reference/android/view/View.html">View</a></code> 类，而它是活动片段的根布局视图。如果活动片段不提供用户界面，你可以返回 null。</dd>
   <dt><code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code></dt>
-  <dd>系统在用户离开活动碎片时（并不表示活动碎片要被销毁）调用这个方法。因为用户可能不会返回该活动，在这个回调中你应该提交所有应持久化的改变，让这些改变能在下次用户回话中仍生效。</dd>
+  <dd>系统在用户离开活动片段时（并不表示活动片段要被销毁）调用这个方法。因为用户可能不会返回该活动，在这个回调中你应该提交所有应持久化的改变，让这些改变能在下次用户回话中仍生效。</dd>
 </dl>
 
-<p>大多数应用应该为每一个活动碎片至少实现这三个方法，但是你可以使用一些其他的回调方法来处理活动碎片生命周期的各种阶段。所有关于生命周期回调方法的细节将会在<a href="#Lifecycle">处理活动碎片周期</a>小节中讨论。</p>
+<p>大多数应用应该为每一个活动片段至少实现这三个方法，但是你可以使用一些其他的回调方法来处理活动片段生命周期的各种阶段。所有关于生命周期回调方法的细节将会在<a href="#Lifecycle">处理活动片段周期</a>小节中讨论。</p>
 
 
 <p>有一些你可能希望继承的 <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 类的子类：</p>
 
 <dl>
   <dt><code><a href="../../reference/android/app/DialogFragment.html">DialogFragment</a></code></dt>
-  <dd>显示一个浮动对话框。使用这个类创建对话框是一个好的替代来使用 <code><a href="../../reference/android/app/Activity.html">Activity</a></code> 类的对话框辅助方法，因为你可以将活动碎片对话框结合进由活动管理的活动碎片返回栈，折让用户可以返回到一个取消的活动碎片。</dd>
+  <dd>显示一个浮动对话框。使用这个类创建对话框是一个好的替代来使用 <code><a href="../../reference/android/app/Activity.html">Activity</a></code> 类的对话框辅助方法，因为你可以将活动片段对话框结合进由活动管理的活动片段返回栈，折让用户可以返回到一个取消的活动片段。</dd>
 
   <dt><code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code></dt>
   <dd>显示一个由适配器管理的项目列表（如 <code><a href="../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code>），类似于 <code><a href="../../reference/android/app/ListActivity.html">ListActivity</a></code>类。它提供一些管理列表视图的方法，如 <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> 回调方法类处理单击事件。</dd>
@@ -1142,7 +1142,7 @@ href="../../guide/practices/tablets-and-handsets.html">支持平板设备和手�
 <p class="note"><strong>注意：</strong> 如果活动片段是 <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code> 的子类，默认实现从 <code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code> 方法返回一个 <code><a href="../../reference/android/widget/ListView.html">ListView</a></code> 类 , 这样你不需要实现它。</p>
 
 <p>要从 <code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code>方法返回一个布局，你可以从用 XML 语言定义的<a
-href="../../guide/topics/resources/layout-resource.html">布局资源</a>来填充它。为了帮助你，<code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code> 方法提供了一个 <code><a href="../../reference/android/view/LayoutInflater.html">LayoutInflater</a></code> 对象。</p>
+href="../../guide/topics/resources/layout-resource.html">布局资源</a>来填充它。为了帮助你使用布局资源，<code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code> 方法提供了一个 <code><a href="../../reference/android/view/LayoutInflater.html">LayoutInflater</a></code> 对象。</p>
 
 <p>例如，这里是一个 <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> 子类，它从 <code>example_fragment.xml</code> 文件中加载一个布局：</p>
 
@@ -1252,7 +1252,7 @@ href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/Fragment
 
 
 
-<h2 id="Managing">管理活动碎片</h2>
+<h2 id="Managing">管理活动片段</h2>
 
 <p>为了管理你活动中的活动片段，你需要使用 <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> 类。调用活动的 <code><a href="../../reference/android/app/Activity.html#getFragmentManager()">getFragmentManager()</a></code> 方法可以获取活动片段管理器。</p>
 
@@ -1269,9 +1269,9 @@ href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/Fragment
 <p>正如之前所展示的，你可以使用<code><a href="../../reference/android/app/FragmentManager.html">活动片段管理器</a></code>打开一个<code><a href="../../reference/android/app/FragmentTransaction.html">活动片段事务</a></code>，它让你可以执行事务操作，如添加和删除活动片段。</p>
 
 
-<h2 id="Transactions">执行活动碎片事务</h2>
+<h2 id="Transactions">执行活动片段事务</h2>
 
-<p>在活动中使用活动碎片的主要功能包括添加、删除、替换活动碎片，以及相应用户交互的其他活动碎片相关操作。向活动提交的每一组变更都称作一个事务，你可以使用 <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code> 中的 API 来执行事务操作。你也可以把每一个事务操作保存到由活动管理的返回栈中，它让用户可以返回到之前的活动碎片变更状态（类似于活动向后导航）。</p>
+<p>在活动中使用活动片段的主要功能包括添加、删除、替换活动片段，以及相应用户交互的其它活动片段相关操作。向活动提交的每一组变更都称作一个事务，你可以使用 <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code> 中的 API 来执行事务操作。你也可以把每一个事务操作保存到由活动管理的返回栈中，它让用户可以返回到之前的活动片段变更状态（类似于活动向后导航）。</p>
 
 <p>你可以像这样从 <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> 获取 <code><a href="../../reference/android/app/FragmentTransaction.html">FragmentTransaction</a></code>：</p>
 
@@ -1283,9 +1283,9 @@ FragmentTransaction fragmentTransaction = fragmentManager.<code><a href="../../r
 <p>每一个事务操作都是一组你希望同时执行的变更。你可以使用像 <code><a href="../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add()</a></code>、<code><a href="../../reference/android/app/FragmentTransaction.html#remove(android.app.Fragment)">remove()</a></code> 和 <code><a href="../../reference/android/app/FragmentTransaction.html#replace(int, android.app.Fragment)">replace()</a></code> 这些方法来设置你希望在某个事务中执行的所有变化。然后要将这个事务操作应用到活动，你需要调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法。</p>
 </dl>
 
-<p>在你调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法前，你可能会调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法来将事务添加到活动碎片事务的返回栈中。返回栈由活动管理，它让用户当按下<em>返回</em>按钮时可以返回到之前活动碎片状态。</p>
+<p>在你调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法前，你可能会调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法来将事务添加到活动片段事务的返回栈中。返回栈由活动管理，它让用户当按下<em>返回</em>按钮时可以返回到之前活动片段状态。</p>
 
-<p>例如，下面这段代码说明你如何替换一个活动碎片并将替换前状态保存到返回栈中：</p>
+<p>例如，下面这段代码说明你如何替换一个活动片段并将替换前状态保存到返回栈中：</p>
 
 <pre>
 // Create new fragment and transaction
@@ -1301,19 +1301,19 @@ transaction.addToBackStack(null);
 transaction.commit();
 </pre>
 
-<p>在这个例子中，<code>newFragment</code> 方法替换当前布局容器中由 <code>R.id.fragment_container</code> ID 识别的活动碎片。通过调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，替换事务操作被保存到返回栈中，这样用户可以保留这个事务并当按下<em>返回</em>按钮后能回到前一个活动碎片。</p>
+<p>在这个例子中，<code>newFragment</code> 方法替换当前布局容器中由 <code>R.id.fragment_container</code> ID 识别的活动片段。通过调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，替换事务操作被保存到返回栈中，这样用户可以保留这个事务并当按下<em>返回</em>按钮后能回到前一个活动片段。</p>
 
 <p>如果你添加多个更改到事务中（如另一个 <code><a href="../../reference/android/app/FragmentTransaction.html#add(android.app.Fragment, java.lang.String)">add()</a></code> 或 <code><a href="../../reference/android/app/FragmentTransaction.html#remove(android.app.Fragment)">remove()</a></code> 操作）并调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，那么所有 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法调用前应用的更改都会作为一个事务添加到返回栈中，而 <em>返回</em>按钮会将它们同时恢复。</p>
 
-<p>你在<code><a href="../../reference/android/app/FragmentTransaction.html">活动碎片事务</a></code>中添加更改的顺序不重要，除了：</p>
+<p>你在<code><a href="../../reference/android/app/FragmentTransaction.html">活动片段事务</a></code>中添加更改的顺序不重要，除了：</p>
 <ul>
   <li>你必须最后调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法</li>
-  <li>如果你添加多个活动碎片到同一个容器中，那么它们的添加顺序决定了它们在视图层级中的显示顺序</li>
+  <li>如果你添加多个活动片段到同一个容器中，那么它们的添加顺序决定了它们在视图层级中的显示顺序</li>
 </ul>
 
-<p>如果你在执行删除事务操作时不调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，那么被删除的活动碎片会在事务提交后销毁，用户也不能再次访问它。然后，当你在删除一个活动碎片时调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，那么该活动碎片会<em>停止</em>并在用户返回时恢复。</p>
+<p>如果你在执行删除事务操作时不调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，那么被删除的活动片段会在事务提交后销毁，用户也不能再次访问它。然后，当你在删除一个活动片段时调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法，那么该活动片段会<em>停止</em>并在用户返回时恢复。</p>
 
-<p class="note"><strong>提示：</strong>对每一个活动碎片事务，你可以在提交前调用 <code><a href="../../reference/android/app/FragmentTransaction.html#setTransition(int)">setTransition()</a></code> 方法来设置转换动画。</p>
+<p class="note"><strong>提示：</strong>对每一个活动片段事务，你可以在提交前调用 <code><a href="../../reference/android/app/FragmentTransaction.html#setTransition(int)">setTransition()</a></code> 方法来设置转换动画。</p>
 
 <p>调用 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法不会直接执行事务操作。它会在活动 UI 线程（“主”线程）可用的时候安排事务操作在该线程上运行。如果需要，你可以在 UI 线程中调用 <code><a href="../../reference/android/app/FragmentManager.html#executePendingTransactions()">executePendingTransactions()</a></code> 来直接执行 <code><a href="../../reference/android/app/FragmentTransaction.html#commit()">commit()</a></code> 方法提交的事务。这样做通常是不必要的，除非事务是其他线程任务的依赖。</p>
 
@@ -1325,15 +1325,15 @@ href="../../guide/components/activities.html#SavingActivityState">保持它的�
 
 <h2 id="CommunicatingWithActivity">与活动组件通信</h2>
 
-<p>尽管<code><a href="../../reference/android/app/Fragment.html">活动碎片</a></code>实现成一个独立于<code><a href="../../reference/android/app/Activity.html">活动</a></code>的对象而且可以在多个活动中使用，一个给定的活动碎片实例被直接绑到包含它的活动组件上。</p>
+<p>尽管<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>实现成一个独立于<code><a href="../../reference/android/app/Activity.html">活动</a></code>的对象而且可以在多个活动中使用，一个给定的活动片段实例被直接绑到包含它的活动组件上。</p>
 
-<p>特别地，活动碎片可以使用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法访问<code><a href="../../reference/android/app/Activity.html">活动</a></code>实例，并且能执行像在活动布局中查找视图这种任务：</p>
+<p>特别地，活动片段可以使用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法访问<code><a href="../../reference/android/app/Activity.html">活动</a></code>实例，并且能执行像在活动布局中查找视图这种任务：</p>
 
 <pre>
 View listView = <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code>.<code><a href="../../reference/android/app/Activity.html#findViewById(int)">findViewById</a></code>(R.id.list);
 </pre>
 
-<p>相似地，你的活动组件可以通过 <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> 类的 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentById(int)">findFragmentById()</a></code> 或 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code> 方法获取<code><a href="../../reference/android/app/Fragment.html">活动碎片</a></code>的引用来调用活动碎片中的方法。例如：</p>
+<p>相似地，你的活动组件可以通过 <code><a href="../../reference/android/app/FragmentManager.html">FragmentManager</a></code> 类的 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentById(int)">findFragmentById()</a></code> 或 <code><a href="../../reference/android/app/FragmentManager.html#findFragmentByTag(java.lang.String)">findFragmentByTag()</a></code> 方法获取<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>的引用来调用活动片段中的方法。例如：</p>
 
 <pre>
 ExampleFragment fragment = (ExampleFragment) getFragmentManager().findFragmentById(R.id.example_fragment);
@@ -1342,9 +1342,9 @@ ExampleFragment fragment = (ExampleFragment) getFragmentManager().findFragmentBy
 
 <h3 id="EventCallbacks">给活动组件创建事件回调</h3>
 
-<p>在一些情况中，你可能需要一个活动碎片同活动组件共享事件。一个不错的方法是在活动碎片中定义回调接口然后在活动宿主中实现它。当活动通过接口收到回调事件，必要时它可以同其它活动碎片共享信息。</p>
+<p>在一些情况中，你可能需要一个活动片段同活动组件共享事件。一个不错的方法是在活动片段中定义回调接口然后在活动宿主中实现它。当活动通过接口收到回调事件，必要时它可以同其它活动片段共享信息。</p>
 
-<p>例如，如果一个新闻英语在一个活动内有两个活动碎片 — 其中一个显示文章列表（活动碎片 A）另一个显示单个文章（活动碎片 B）— 那么当列表项被选择时活动碎片 A 必须告诉活动组件，这样活动组件可以告诉活动碎片 B 来显示这个文章。在这个例子中，<code>OnArticleSelectedListener</code> 接口在活动碎片 A 中声明：</p>
+<p>例如，如果一个新闻英语在一个活动内有两个活动片段 — 其中一个显示文章列表（活动片段 A）另一个显示单个文章（活动片段 B）— 那么当列表项被选择时活动片段 A 必须告诉活动组件，这样活动组件可以告诉活动片段 B 来显示这个文章。在这个例子中，<code>OnArticleSelectedListener</code> 接口在活动片段 A 中声明：</p>
 
 <pre>
 public static class FragmentA extends ListFragment {
@@ -1357,7 +1357,7 @@ public static class FragmentA extends ListFragment {
 }
 </pre>
 
-<p>然后包含活动碎片的活动组件实现 <code>OnArticleSelectedListener</code> 接口并重载 <code>onArticleSelected()</code> 方法来通知活动碎片 B 来自活动碎片 A 的事件。要确保宿主活动实现这个接口，活动碎片 A 的 <code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code> 回调方法（当活动碎片添加到活动组件时系统调用这个方法）将 <code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code> 参数传入的<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>转换成 <code>OnArticleSelectedListener</code> 实例：</p>
+<p>然后包含活动片段的活动组件实现 <code>OnArticleSelectedListener</code> 接口并重载 <code>onArticleSelected()</code> 方法来通知活动片段 B 来自活动片段 A 的事件。要确保宿主活动实现这个接口，活动片段 A 的 <code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code> 回调方法（当活动片段添加到活动组件时系统调用这个方法）将 <code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code> 参数传入的<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>转换成 <code>OnArticleSelectedListener</code> 实例：</p>
 
 <pre>
 public static class FragmentA extends ListFragment {
@@ -1376,7 +1376,7 @@ public static class FragmentA extends ListFragment {
 }
 </pre>
 
-<p>如果活动组件没有实现接口，那么活动碎片会抛出一个 <code><a href="../../reference/java/lang/ClassCastException.html">ClassCastException</a></code> 例外。如果成功， <code>mListener</code> 字段会保持一个实现了 <code>OnArticleSelectedListener</code> 接口的活动引用，这样活动碎片 A 可以通过调用 <code>OnArticleSelectedListener</code> 接口中定义的方法同活动组件共享事件。例如，如果活动碎片 A 是 <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code> 的扩展，每次用户单击列表项，系统调用活动碎片的 <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> 方法，该方法再调用 <code>onArticleSelected()</code> 来和活动组件共享这个事件。</p>
+<p>如果活动组件没有实现接口，那么活动片段会抛出一个 <code><a href="../../reference/java/lang/ClassCastException.html">ClassCastException</a></code> 例外。如果成功， <code>mListener</code> 字段会保持一个实现了 <code>OnArticleSelectedListener</code> 接口的活动引用，这样活动片段 A 可以通过调用 <code>OnArticleSelectedListener</code> 接口中定义的方法同活动组件共享事件。例如，如果活动片段 A 是 <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code> 的扩展，每次用户单击列表项，系统调用活动片段的 <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> 方法，该方法再调用 <code>onArticleSelected()</code> 来和活动组件共享这个事件。</p>
 
 <pre>
 public static class FragmentA extends ListFragment {
@@ -1393,7 +1393,7 @@ public static class FragmentA extends ListFragment {
 }
 </pre>
 
-<p>传给 <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> 方法的 <code>id</code> 参数是被点击项目的行 ID，活动组件（或者其他活动碎片）使用这个 ID 从应用的<code><a href="../../reference/android/content/ContentProvider.html">内容提供器</a></code>中提取文章。</p>
+<p>传给 <code><a href="../../reference/android/app/ListFragment.html#onListItemClick(android.widget.ListView, android.view.View, int, long)">onListItemClick()</a></code> 方法的 <code>id</code> 参数是被点击项目的行 ID，活动组件（或者其他活动片段）使用这个 ID 从应用的<code><a href="../../reference/android/content/ContentProvider.html">内容提供器</a></code>中提取文章。</p>
 
 <p><!--To see a complete implementation of this kind of callback interface, see the <a
 href="../../resources/samples/NotePad/index.html">NotePad sample</a>. -->更多关于使用内容提供器的信息，查看<a
@@ -1411,7 +1411,7 @@ href="../../guide/topics/ui/actionbar.html">操作栏</a>）。你必须在 <cod
 
 <p>为了提供一个上下文菜单，同样你可以在活动片段布局中注册一个视图，通过调用 <code><a href="../../reference/android/app/Fragment.html#registerForContextMenu(android.view.View)">registerForContextMenu()</a></code> 方法。当用户打开上下文菜单时，活动片段接收到 <code><a href="../../reference/android/app/Fragment.html#onCreateContextMenu(android.view.ContextMenu, android.view.View, android.view.ContextMenu.ContextMenuInfo)">onCreateContextMenu()</a></code>  方法的调用。当用户选择一个条目时，活动片段接收到 <code><a href="../../reference/android/app/Fragment.html#onContextItemSelected(android.view.MenuItem)">onContextItemSelected()</a></code> 方法的调用。</p>
 
-<p class="note"><strong>注意：</strong>尽管添加在活动片段的每个菜单条目接收一个正被选中条目的回调，当用户选择了一个菜单条目，活动片段所在的活动时第一次接收相应的回调。如果活动实现的“正被选中条目”的回调不能处理处理用户所选中的条目，然后这个事件被传递到活动片段的回调中。这也适用于菜单选项和上下文菜单的情况。</p>
+<p class="note"><strong>注意：</strong>尽管添加在活动片段的每个菜单条目接收一个当前选中条目的回调，当用户选择了一个菜单条目，活动片段所在的活动时第一次接收相应的回调。如果活动实现的“正被选中条目”的回调不能处理处理用户所选中的条目，然后这个事件被传递到活动片段的回调中。这也适用于菜单选项和上下文菜单的情况。</p>
 
 <p>更多关于菜单的信息，查看<a
 href="../../guide/topics/ui/menus.html">菜单</a>和<a
@@ -1420,7 +1420,7 @@ href="../../guide/topics/ui/actionbar.html">操作栏</a>开发者指南。</p>
 
 
 
-<h2 id="Lifecycle">处理活动碎片生命周期</h2>
+<h2 id="Lifecycle">处理活动片段生命周期</h2>
 
 <div class="figure" style="width:350px">
 <img src="../../images/activity_fragment_lifecycle.png" alt=""/>
@@ -1430,13 +1430,13 @@ href="../../guide/topics/ui/actionbar.html">操作栏</a>开发者指南。</p>
 <p>管理活动片段生命周期与管理活动生命周期有点相似。和活动类似，一个活动片段能够在以下三种状态中存在：</p>
 
 <dl>
-  <dt><i>恢复状态</i></dt>
+  <dt><i>恢复态</i></dt>
     <dd>活动片段在运行的活动中可见。</dd>
 
-  <dt><i>暂停状态</i></dt>
+  <dt><i>暂停态</i></dt>
     <dd>其他活动在前台并获的焦点，但是托管了活动片段的活动仍然可见（前台活动是半透明或者并不完全覆盖整个屏幕）。</dd>
 
-  <dt><i>停止状态</i></dt>
+  <dt><i>停止态</i></dt>
     <dd>活动片段不可见。此时要么宿主活动已经停止或活动片段已经从活动中移除并添加到返回栈中。一个被停止的活动片段仍然存活（所有成员的信息和状态依然被系统保留）。然而，它不再可见，如果宿主活动被杀死之后，它也将被杀死。</dd>
 </dl>
 
@@ -1447,42 +1447,42 @@ href="../../guide/components/activities.html#SavingActivityState">活动</a>文�
 href="../../guide/components/tasks-and-back-stack.html">任务和返回堆栈</a>文档中讨论）。然而，在移除活动片段事务期间，通过调用 <code><a href="../../reference/android/app/FragmentTransaction.html#addToBackStack(java.lang.String)">addToBackStack()</a></code> 方法显式请求保存的实例时，活动片段将被放置在一个由宿主活动管理的返回栈中。</p>
 
 <p>其它方面，管理活动片段生命周期与管理活动生命周期非常相似。因此，<a
-href="../../guide/components/activities.html#Lifecycle">管理活动周期</a>的方法也适用于活动碎片。同时你需要明白的是，活动片段的生命周期受到宿主活动怎样的影响。</p>
+href="../../guide/components/activities.html#Lifecycle">管理活动周期</a>的方法也适用于活动片段。同时你需要明白的是，活动片段的生命周期受到宿主活动怎样的影响。</p>
 
-<p class="caution"><strong>注意：</strong>如果你在<code><a href="../../reference/android/app/Fragment.html">活动碎片</a></code>中需要一个<code><a href="../../reference/android/content/Context.html">上下文</a></code>对象，你可以调用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法。但是，要注意只有在活动碎片连接到活动上时调用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法。当活动片段还没连接到一个活动上或者在生命周期结束时脱离宿主活动，<code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法会返回 null。</p>
+<p class="caution"><strong>注意：</strong>如果你在<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>中需要一个<code><a href="../../reference/android/content/Context.html">上下文</a></code>对象，你可以调用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法。但是，要注意只有在活动片段连接到活动上时调用 <code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法。当活动片段还没连接到一个活动上或者在生命周期结束时脱离宿主活动，<code><a href="../../reference/android/app/Fragment.html#getActivity()">getActivity()</a></code> 方法会返回 null。</p>
 
 
 <h3 id="CoordinatingWithActivity">与活动生命周期协调</h3>
 
-<p>包含活动碎片活动的生命周期直接影响该活动碎片的生命周期，每一个活动组件的生命周期回调方法都有产生一个类似的相对应的活动碎片回调方法。例如，当活动收到 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 回调，活动组件内的每一个活动碎片都收到 <code><a href="../../reference/android/app/Fragment.html#onPause()">onPause()</a></code> 回调。</p>
+<p>包含活动片段活动的生命周期直接影响该活动片段的生命周期，每一个活动组件的生命周期回调方法都有产生一个类似的相对应的活动片段回调方法。例如，当活动收到 <code><a href="../../reference/android/app/Activity.html#onPause()">onPause()</a></code> 回调，活动组件内的每一个活动片段都收到 <code><a href="../../reference/android/app/Fragment.html#onPause()">onPause()</a></code> 回调。</p>
 
-<p>活动碎片有一些额外的生命周期回调方法，这些回调处理与活动组件的交互来执行像构建和销毁活动碎片用户界面这些操作。这些额外的回调方法有：</p>
+<p>活动片段有一些额外的生命周期回调方法，这些回调处理与活动组件的交互来执行像构建和销毁活动片段用户界面这些操作。这些额外的回调方法有：</p>
 
 <dl>
   <dt><code><a href="../../reference/android/app/Fragment.html#onAttach(android.app.Activity)">onAttach()</a></code></dt>
-    <dd>当活动碎片被关联到活动组件时被调用（<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>在这里传入）。</dd>
+    <dd>当活动片段被关联到活动组件时被调用（<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>在这里传入）。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)">onCreateView()</a></code></dt>
-    <dd>创建与活动碎片关联的视图层级时调用。</dd>
+    <dd>创建与活动片段关联的视图层级时调用。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code></dt>
     <dd>当活动的 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法返回时调用。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onDestroyView()">onDestroyView()</a></code></dt>
-    <dd>当与活动碎片关联的视图层级被移除时调用。</dd>
+    <dd>当与活动片段关联的视图层级被移除时调用。</dd>
   <dt><code><a href="../../reference/android/app/Fragment.html#onDetach()">onDetach()</a></code></dt>
-    <dd>当活动碎片和活动组件去关联时调用。</dd>
+    <dd>当活动片段和活动组件去关联时调用。</dd>
 </dl>
 
-<p>活动碎片生命周期的流程以及他们如何被宿主活动组件影响，在图 3. 中演示。在这个图例中，你可以看到每一个活动组件的后继状态如何决定哪一个活动碎片的回调方法会收到信号。例如，当活动组件收到 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 回调，该活动组件中的活动碎片只会收到 <code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code> 回调。</p>
+<p>活动片段生命周期的流程以及他们如何被宿主活动组件影响，在图 3. 中演示。在这个图例中，你可以看到每一个活动组件的后继状态如何决定哪一个活动片段的回调方法会收到信号。例如，当活动组件收到 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 回调，该活动组件中的活动片段只会收到 <code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code> 回调。</p>
 
-<p>一旦活动组件到达恢复状态，你可以随意添加或移除活动碎片到该活动中。也只有在活动处于恢复状态，活动碎片的生命周期可以独立的改变。</p>
+<p>一旦活动组件到达恢复状态，你可以随意添加或移除活动片段到该活动中。也只有在活动处于恢复状态，活动片段的生命周期可以独立的改变。</p>
 
-<p>但是，当活动组件离开恢复状态，活动碎片再次被活动组件推动生命周期变化。</p>
+<p>但是当活动组件离开恢复态时，活动片段再次被活动组件推动生命周期变化。</p>
 
 
 
 
 <h2 id="Example">例子</h2>
 
-<p>要将本文档所有讨论的内容结合在一起，下面是一个使用两个活动碎片来创建双面板布局的活动组件的例子。该活动组件包括一个活动碎片来显示一个莎士比亚剧标题的列表和一个当选择列表项目时显示戏剧摘要信息的活动碎片。这个例子同时展示了如何基于屏幕配置提供不同活动碎片配置的方法。</p>
+<p>要将本文档所有讨论的内容结合在一起，下面是一个使用两个活动片段来创建双面板布局的活动组件的例子。该活动组件包括一个活动片段来显示一个莎士比亚剧标题的列表和一个当选择列表项目时显示戏剧摘要信息的活动片段。这个例子同时展示了如何基于屏幕配置提供不同活动片段配置的方法。</p>
 
 <p class="note"><strong>注意：</strong>活动的完整的源代码在 <a
 href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/FragmentLayout.html"><code>FragmentLayout.java</code></a> 文件提供。</p>
@@ -1512,7 +1512,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 &lt;/LinearLayout&gt;</pre>
 
-<p>使用这个布局，系统在活动组件加载布局文件时将 <code>TitlesFragment</code> 实例化（它列表显示剧目标题）而占用屏幕右边空间的 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code>（显示剧目摘要信息的部分）会一开始显示为空白。正如你在下面会看到的，当用户在列表上选择剧目后，活动碎片才会添加到 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> 中。</p>
+<p>使用这个布局，系统在活动组件加载布局文件时将 <code>TitlesFragment</code> 实例化（它列表显示剧目标题）而占用屏幕右边空间的 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code>（显示剧目摘要信息的部分）会一开始显示为空白。正如你在下面会看到的，当用户在列表上选择剧目后，活动片段才会添加到 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> 中。</p>
 
 <p>但不是所有的屏幕配置都足够宽来并排显示剧目列表和剧目摘要。所以上面的布局只有在横向屏幕配置时使用，它保存在 <code>res/layout-land/fragment_layout.xml</code> 中。</p>
 
@@ -1525,11 +1525,11 @@ protected void onCreate(Bundle savedInstanceState) {
             android:layout_width="match_parent" android:layout_height="match_parent" /&gt;
 &lt;/FrameLayout&gt;</pre>
 
-<p>这个布局中只包括 <code>TitlesFragment</code>。这意味着当设备处于竖直方向时，只有剧目标题列表时可见的。而当用户在这个配置下点击一个列表项，应用会启动一个新的活动来显示剧目摘要，而不是在第二个活动碎片中加载信息。</p>
+<p>这个布局中只包括 <code>TitlesFragment</code>。这意味着当设备处于竖直方向时，只有剧目标题列表时可见的。而当用户在这个配置下点击一个列表项，应用会启动一个新的活动来显示剧目摘要，而不是在第二个活动片段中加载信息。</p>
 
-<p>接下来你可以看到这是如何在活动碎片类中完成的。首先是 <code>TitlesFragment</code>，它显示莎士比亚剧目标题列表。这个活动碎片继承 <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code> 并依赖它来处理大多数列表视图工作。</p>
+<p>接下来你可以看到这是如何在活动片段类中完成的。首先是 <code>TitlesFragment</code>，它显示莎士比亚剧目标题列表。这个活动片段继承 <code><a href="../../reference/android/app/ListFragment.html">ListFragment</a></code> 并依赖它来处理大多数列表视图工作。</p>
 
-<p>在你查看这段代码的时候，注意当用户点击列表项的时候有两种可能的行为：它取决于两个布局中哪一个正可用，既有可能在同一个活动组件中创建和显示一个新的活动碎片（添加活动碎片到 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> 中），或启动新的活动组件（活动碎片可以在这里显示）。</p>
+<p>在你查看这段代码的时候，注意当用户点击列表项的时候有两种可能的行为：它取决于两个布局中哪一个正可用，既有可能在同一个活动组件中创建和显示一个新的活动片段（添加活动片段到 <code><a href="../../reference/android/widget/FrameLayout.html">FrameLayout</a></code> 中），或启动新的活动组件（活动片段可以在这里显示）。</p>
 
 <pre>public static class TitlesFragment extends ListFragment {
     boolean mDualPane;
@@ -1615,7 +1615,7 @@ protected void onCreate(Bundle savedInstanceState) {
     }
 }</pre>
 
-<p>第二个活动碎片 <code>DetailsFragment</code> 在 <code>TitlesFragment</code> 中的列表项选中时显示剧目摘要：</p>
+<p>第二个活动片段 <code>DetailsFragment</code> 在 <code>TitlesFragment</code> 中的列表项选中时显示剧目摘要：</p>
  
 <pre>public static class DetailsFragment extends Fragment {
     /**
@@ -1692,7 +1692,7 @@ protected void onCreate(Bundle savedInstanceState) {
 <p>注意活动在配置处于横向时结束自己，所以主活动可以开始并排显示 <code>DetailsFragment</code> 和 <code>TitlesFragment</code>。这种情况会在用户在竖直方向开始 <code>DetailsActivity</code> 发生，但是接下来转动到横向方向（这会重启当前活动组件）。</p>
 
 
-<p>更多关于使用活动碎片的例子（和本例子更完整的源文件），请查看 API 演示样例应用 <a
+<p>更多关于使用活动片段的例子（和本例子更完整的源文件），请查看 API 演示样例应用 <a
 href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/index.html#Fragment"> ApiDemos</a>（在<a
 href="../../resources/samples/get.html">样例 SDK 组件</a>里可以下载）。</p>
 
