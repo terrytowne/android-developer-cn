@@ -1021,18 +1021,18 @@ onkeyup="return search_changed(event, false, '../../')" />
 <div id="qv">
     <h2>在本文档中</h2>
     <ol>
-    <li><a href="#summary">Loader API Summary</a></li>
-    <li><a href="#app">Using Loaders in an Application</a>
+    <li><a href="#summary">加载器 API 摘要</a></li>
+    <li><a href="#app">在应用中使用加载器</a>
       <ol>
         <li><a href="#requirements"></a></li>
-        <li><a href="#starting">Starting a Loader</a></li>
+        <li><a href="#starting">启动加载器</a></li>
         <li><a href="#restarting">重启动加载器</a></li>
         <li><a href="#callback">使用加载管理器回调方法</a></li>
       </ol>
     </li>
     <li><a href="#example">例子</a>
        <ol>
-         <li><a href="#more_examples">More Examples</a></li>
+         <li><a href="#more_examples">更多例子</a></li>
         </ol>
     </li>
   </ol>
@@ -1044,7 +1044,7 @@ onkeyup="return search_changed(event, false, '../../')" />
 
     </ol>   
     
-    <h2>Related samples</h2>
+    <h2>相关示例</h2>
    <ol>
      <li> <a
 href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/LoaderCursor.html">
@@ -1058,99 +1058,62 @@ LoaderThrottle</a></li>
   </div>
 </div>
 
-<p>Introduced in Android 3.0, loaders make it easy to asynchronously load data
-in an activity or fragment. Loaders have these characteristics:</p>
+<p>自 Android 3.0 中引入，加载器让活动组件及活动片段中异步加载数据变得容易。加载器有以下特征：</p>
   <ul>
-    <li>They are available to every <code><a href="../../reference/android/app/Activity.html">Activity</a></code> and <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code>.</li>
-    <li>They provide asynchronous loading of data.</li>
-    <li>They monitor the source of their data and deliver new results when the
-content changes.</li>
-    <li>They automatically reconnect to the last loader's cursor when being
-recreated after a configuration change. Thus, they don't need to re-query their
-data.</li>
+    <li>可以在每个<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>和<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>中访问。</li>
+    <li>提供异步数据加载能力。</li>
+    <li>监视数据源并在内容改变时传递新的结果。</li>
+    <li>当配置改变后重新创建时自动重连接上一个加载器的游标。也就是它不需要重新查询数据。</li>
   </ul>
  
-<h2 id="summary">Loader API Summary</h2>
+<h2 id="summary">加载器 API 摘要</h2>
 
-<p>There are multiple classes and interfaces that may be involved in using
-loaders in an application. They are summarized in this table:</p>
+<p>在应用中使用加载器涉及多个类和接口。它们总结在下面的表格中：</p>
 
 <table>
   <tr>
-    <th>Class/Interface</th>
+    <th>类/接口</th>
     <th>描述</th>
   </tr>
   <tr>
     <td><code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code></td>
-    <td>An abstract class associated with an <code><a href="../../reference/android/app/Activity.html">Activity</a></code> or
-<code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> for managing one or more <code><a href="../../reference/android/content/Loader.html">Loader</a></code> instances.&nbsp;This helps an application manage
-longer-running operations in conjunction with the <code><a href="../../reference/android/app/Activity.html">Activity</a></code>
-or <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> lifecycle; the most common use of this is with a
-<code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>, however applications are free to write
-their own loaders for loading other types of data.
-    <br />
-    <br />
-    There is only one <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code> per activity or fragment. But a <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code> can have
-multiple loaders.</td>
+    <td>一个抽象类，它同<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>或者<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>关联来管理一个或多个<code><a href="../../reference/android/content/Loader.html">加载器</a></code>实例。它帮助应用管理长运行操作来同<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>或<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>生命周期结合；它最常与<code><a href="../../reference/android/content/CursorLoader.html">游标加载器</a></code>一起使用，但是应用可以编写自己的加载器来管理其它类型的数据。<br /><br />每个活动组件或活动片段只能有一个<code><a href="../../reference/android/app/LoaderManager.html">加载管理器</a></code>。但是一个<code><a href="../../reference/android/app/LoaderManager.html">加载管理器</a></code>可以有多个加载器。</td>
   </tr>
   <tr>
     <td><code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code></td>
-    <td>A callback interface for a client to interact with the <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code>. For example, you use the <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html#onCreateLoader(int, android.os.Bundle)">onCreateLoader()</a></code>
-callback method to create a new loader.</td>
+    <td>一个回调接口用于客户端同<code><a href="../../reference/android/app/LoaderManager.html">加载管理器</a></code>交互。例如，你使用 <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html#onCreateLoader(int, android.os.Bundle)">onCreateLoader()</a></code> 回调方法来创建一个新的加载器。</td>
   </tr>
   <tr>
     <td><code><a href="../../reference/android/content/Loader.html">Loader</a></code></td>
-    <td>An abstract class that performs asynchronous loading of data. This is
-the base class for a loader. You would typically use <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>, but you can implement your own subclass. While
-loaders are active they should monitor the source of their data and deliver new
-results when the contents change.  </td>
+    <td>一个抽象类来执行数据异步加载。他是加载器的基类。你一般会使用<code><a href="../../reference/android/content/CursorLoader.html">游标加载器</a></code>，但你可以实现自己的子类。当加载器可用，它们会监视数据源并当内容改变时传递新的结果。 </td>
   </tr>
   <tr>
     <td><code><a href="../../reference/android/content/AsyncTaskLoader.html">AsyncTaskLoader</a></code></td>
-    <td>Abstract loader that provides an <code><a href="../../reference/android/os/AsyncTask.html">AsyncTask</a></code> to do the work.</td>
+    <td>抽象加载器，它提供一个<code><a href="../../reference/android/os/AsyncTask.html">异步任务</a></code>来完成工作。</td>
   </tr>
   <tr>
     <td><code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code></td>
-    <td>A subclass of <code><a href="../../reference/android/content/AsyncTaskLoader.html">AsyncTaskLoader</a></code> that queries the
-<code><a href="../../reference/android/content/ContentResolver.html">ContentResolver</a></code> and returns a <code><a href="../../reference/android/database/Cursor.html">Cursor</a></code>. This class implements the <code><a href="../../reference/android/content/Loader.html">Loader</a></code> protocol in a standard way for querying cursors,
-building on <code><a href="../../reference/android/content/AsyncTaskLoader.html">AsyncTaskLoader</a></code> to perform the cursor query
-on a background thread so that it does not block the application's UI. Using
-this loader is the best way to asynchronously load data from a <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code>, instead of performing a managed query through
-the fragment or activity's APIs.</td>
+    <td>一个<code><a href="../../reference/android/content/AsyncTaskLoader.html">异步任务加载器</a></code>子类，它查询<code><a href="../../reference/android/content/ContentResolver.html">内容解析器</a></code>并传回<code><a href="../../reference/android/database/Cursor.html">游标</a></code>。这个类实现<code><a href="../../reference/android/content/Loader.html">加载器</a></code>协议来查询游标，构建于<code><a href="../../reference/android/content/AsyncTaskLoader.html">异步任务加载器</a></code>来在后台线程执行游标查询，这样它不会阻塞应用的用户界面。相比于在活动片段或活动组件 API 中执行托管的查询操作， 使用加载器从<code><a href="../../reference/android/content/ContentProvider.html">内容提供器</a></code>中异步加载数据是最佳方法。</td>
   </tr>
 </table>
 
-<p>The classes and interfaces in the above table are the essential components
-you'll use to implement a loader in your application. You won't need all of them
-for each loader you create, but you'll always need a reference to the <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code> in order to initialize a loader and an implementation
-of a <code><a href="../../reference/android/content/Loader.html">Loader</a></code> class such as <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>. The following sections show you how to use these
-classes and interfaces in an application.</p>
+<p>上面表格中的类和接口都是你在应用中用来实现加载器的关键组件。你不需要你创建的每一个加载器全部功能，但你总需要一个<code><a href="../../reference/android/app/LoaderManager.html">加载管理器</a></code>的引用来初始化加载器及 <code><a href="../../reference/android/content/Loader.html">Loader</a></code> 类的实现，如 <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code> 类。下面的小节显示你如何在应用中使用这些类和接口。</p>
 
-<h2 id ="app">Using Loaders in an Application</h2>
-<p>This section describes how to use loaders in an Android application. An
-application that uses loaders typically includes the following:</p>
+<h2 id ="app">在应用中使用加载器</h2>
+<p>本节描述如何在安卓应用中使用加载器。使用加载器的应用通常包括这些部分：</p>
 <ul>
-  <li>An <code><a href="../../reference/android/app/Activity.html">Activity</a></code> or <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code>.</li>
-  <li>An instance of the <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code>.</li>
-  <li>A <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code> to load data backed by a <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code>. Alternatively, you can implement your own subclass
-of <code><a href="../../reference/android/content/Loader.html">Loader</a></code> or <code><a href="../../reference/android/content/AsyncTaskLoader.html">AsyncTaskLoader</a></code> to
-load data from some other source.</li>
-  <li>An implementation for <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code>.
-This is where you create new loaders and manage your references to existing
-loaders.</li> 
-<li>A way of displaying the loader's data, such as a <code><a href="../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code>.</li>
-  <li>A data source, such as a <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code>, when using a 
-<code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>.</li>
+  <li><code><a href="../../reference/android/app/Activity.html">活动组件</a></code>或是<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>。</li>
+  <li><code><a href="../../reference/android/app/LoaderManager.html">加载管理器</a></code>的实例。</li>
+  <li><code><a href="../../reference/android/content/CursorLoader.html">游标加载器</a></code>来加载由<code><a href="../../reference/android/content/ContentProvider.html">内容提供器</a></code>后台提供的数据。有时你可以实现你自己的 <code><a href="../../reference/android/content/Loader.html">Loader</a></code> 子类或 <code><a href="../../reference/android/content/AsyncTaskLoader.html">AsyncTaskLoader</a></code> 来从其他数据源加载数据。</li>
+  <li><code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code> 接口的实现。在这里你创建新的加载器以及管理现存的加载器引用。</li> 
+<li>显示加载器数据的方法，如 <code><a href="../../reference/android/widget/SimpleCursorAdapter.html">SimpleCursorAdapter</a></code>。</li>
+  <li>数据源，如当使用<code><a href="../../reference/android/content/CursorLoader.html">游标加载器</a></code>时使用的<code><a href="../../reference/android/content/ContentProvider.html">内容提供器</a></code>。</li>
 </ul>
-<h3 id="starting">Starting a Loader</h3>
+<h3 id="starting">启动加载器</h3>
 
-<p>The <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code> manages one or more <code><a href="../../reference/android/content/Loader.html">Loader</a></code> instances within an <code><a href="../../reference/android/app/Activity.html">Activity</a></code> or
-<code><a href="../../reference/android/app/Fragment.html">Fragment</a></code>. There is only one <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code> per activity or fragment.</p> 
+<p><code><a href="../../reference/android/app/LoaderManager.html">加载管理器</a></code>在<code><a href="../../reference/android/app/Activity.html">活动组件</a></code>或<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>中管理一个或多个<code><a href="../../reference/android/content/Loader.html">加载器</a></code>实例。每个活动组件或活动片段中只有一个<code><a href="../../reference/android/app/LoaderManager.html">加载管理器</a></code>。</p> 
 
-<p>You typically
-initialize a <code><a href="../../reference/android/content/Loader.html">Loader</a></code> within the activity's <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> method, or within the fragment's
-<code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code> method. You
-do this as follows:</p>
+<p>一般在活动组件的 <code><a href="../../reference/android/app/Activity.html#onCreate(android.os.Bundle)">onCreate()</a></code> 方法中或在活动片段的 <code><a href="../../reference/android/app/Fragment.html#onActivityCreated(android.os.Bundle)">onActivityCreated()</a></code> 方法中初始化一个<code><a href="../../reference/android/content/Loader.html">加载器</a></code>。你像这样初始化加载器：</p>
 
 <pre>// Prepare the loader.  Either re-connect with an existing one,
 // or start a new one.
@@ -1194,7 +1157,7 @@ public boolean onQueryTextChanged(String newText) {
 
 <p><code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code> is a callback interface
 that lets a client  interact with the <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code>.  </p>
-<p>加载器，特别是 <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>，希望在停止后保留它们的数据。这让应用能在活动组件或者活动碎片的 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法和 <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> 方法间能够保持他们的数据，这样当用户返回应用时，他们不需要等待数据重新加载。你在需要创建新加载器以及引用停止使用加载器数据时使用 <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code>接口的方法。</p>
+<p>加载器，特别是 <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>，希望在停止后保留它们的数据。这让应用能在活动组件或者活动片段的 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法和 <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> 方法间能够保持他们的数据，这样当用户返回应用时，他们不需要等待数据重新加载。你在需要创建新加载器以及引用停止使用加载器数据时使用 <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code>接口的方法。</p>
 
 <p><code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code> 包括下面这些方法：</p>
 <ul>
@@ -1211,27 +1174,15 @@ that lets a client  interact with the <code><a href="../../reference/android/app
 
 <h4 id ="onCreateLoader">onCreateLoader</h4>
 
-<p>When you attempt to access a loader (for example, through <code><a href="../../reference/android/app/LoaderManager.html#initLoader(int, android.os.Bundle, android.app.LoaderManager.LoaderCallbacks<D>)">initLoader()</a></code>), it checks to see whether
-the loader specified by the ID exists. If it doesn't, it triggers the <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code> method <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html#onCreateLoader(int, android.os.Bundle)">onCreateLoader()</a></code>. This
-is where you  create a new loader. Typically this will be a <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>, but you can implement your own <code><a href="../../reference/android/content/Loader.html">Loader</a></code> subclass.  </p>
+<p>当你尝试访问一个加载器（例如通过 <code><a href="../../reference/android/app/LoaderManager.html#initLoader(int, android.os.Bundle, android.app.LoaderManager.LoaderCallbacks<D>)">initLoader()</a></code> 方法），它手下你检查指定 ID 的加载器是否存在。如果不存在，它会触发 <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code> 接口的 <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html#onCreateLoader(int, android.os.Bundle)">onCreateLoader()</a></code> 方法。在这个方法中，你可以创建一个新的加载器。通常这是一个 <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code> ，但是你可以实现自己的 <code><a href="../../reference/android/content/Loader.html">Loader</a></code> 子类。 </p>
 
-<p>In this example, the <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html#onCreateLoader(int, android.os.Bundle)">onCreateLoader()</a></code>
-callback method creates a <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>. You must build
-the <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code> using its constructor method, which
-requires the complete set of information needed to perform a query to the <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code>. Specifically, it needs:</p>
+<p>在本例中，<code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html#onCreateLoader(int, android.os.Bundle)">onCreateLoader()</a></code> 回调方法创建一个 <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>。你必须是用构造函数来构建 <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>，它需要完整的信息来执行对 <code><a href="../../reference/android/content/ContentProvider.html">ContentProvider</a></code> 的查询。具体来说，它需要：</p>
 <ul>
-  <li><em>uri</em> — The URI for the content to retrieve.  </li>
-  <li><em>projection</em> — A list of which columns to return. Passing
-<code>null</code> will return all columns, which is inefficient.  </li>
-  <li><em>selection</em> — A filter declaring which rows to return,
-formatted as an SQL WHERE clause (excluding the WHERE itself). Passing
-<code>null</code> will return all rows for the given URI.  </li>
-  <li><em>selectionArgs</em> — You may include ?s in the selection, which will
-be replaced by the values from <em>selectionArgs</em>, in the order that they appear in
-the selection. The values will be bound as Strings.  </li>
-  <li><em>sortOrder</em> — How to order the rows, formatted as an SQL
-ORDER BY clause (excluding the ORDER BY itself). Passing <code>null</code> will
-use the default sort order, which may be unordered.</li>
+  <li><em>uri</em> — 获取内容的 URI。 </li>
+  <li><em>projection</em> — 返回的字段列表。如果要返回所有字段，传入 <code>null</code>，但比较低效率。 </li>
+  <li><em>selection</em> — 声明哪些行返回的过滤器，格式化成 SQL WHERE 子句（不包含 WHERE 关键字）。如果要返回指定 URI 的所有行，传入 <code>null</code>。 </li>
+  <li><em>selectionArgs</em> — 你可以在 selection 参数中包括 ？ 字符，它会按照 ？ 字符出现的顺序依次替换成 <em>selectionArgs</em> 参数中的值。这些值会被作为字符串绑定。 </li>
+  <li><em>sortOrder</em> — 返回的行如何排序，格式化为 SQL ORDER BY 子句（不包括 ORDER BY 关键字）。如果要使用默认排序，传入 <code>null</code> 值，结果可能是无序的。</li>
 </ul>
 <p>例如：</p>
 <pre>
@@ -1262,11 +1213,7 @@ public Loader&lt;Cursor&gt; onCreateLoader(int id, Bundle args) {
 }</pre>
 <h4 id="onLoadFinished">onLoadFinished</h4>
 
-<p>This method is called when a previously created loader has finished its load.
-This method is guaranteed to be called prior to the release of  the last data
-that was supplied for this loader.  At this point  you should remove all use of
-the old data (since it will be released  soon), but should not do your own
-release of the data since its loader  owns it and will take care of that.</p>
+<p>当之前创建的加载器加载完成时这个方法被调用。This method is guaranteed to be called prior to the release of the last data that was supplied for this loader. At this point you should remove all use of the old data (since it will be released soon), but should not do your own release of the data since its loader owns it and will take care of that.</p>
 
 
 <p>The loader will release the data once it knows the application is no longer using it. For example, if the data is a cursor from a <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>, you should not call <code><a href="../../reference/android/database/Cursor.html#close()">close()</a></code> on it yourself. If the cursor is being placed in a <code><a href="../../reference/android/widget/CursorAdapter.html">CursorAdapter</a></code>, you should use the <code><a href="../../reference/android/widget/SimpleCursorAdapter.html#swapCursor(android.database.Cursor)">swapCursor()</a></code> method so that the old <code><a href="../../reference/android/database/Cursor.html">Cursor</a></code> is not closed. 例如：</p>
@@ -1419,7 +1366,7 @@ public static class CursorLoaderListFragment extends ListFragment
 &nbsp; &nbsp; &nbsp; &nbsp; mAdapter.swapCursor(null);
 &nbsp; &nbsp; }
 }</pre>
-<h3 id="more_examples">More Examples</h3>
+<h3 id="more_examples">更多例子</h3>
 
 <p>There are a few different samples in <strong>ApiDemos</strong> that
 illustrate how to use loaders:</p>
