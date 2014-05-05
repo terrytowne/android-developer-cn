@@ -1155,8 +1155,7 @@ public boolean onQueryTextChanged(String newText) {
 
 <h3 id="callback">使用加载管理器回调方法</h3>
 
-<p><code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code> is a callback interface
-that lets a client  interact with the <code><a href="../../reference/android/app/LoaderManager.html">LoaderManager</a></code>.  </p>
+<p><code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code> 是让一个客户端同<code><a href="../../reference/android/app/LoaderManager.html">加载管理器</a></code>交互的回调接口。 </p>
 <p>加载器，特别是 <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>，希望在停止后保留它们的数据。这让应用能在活动组件或者活动片段的 <code><a href="../../reference/android/app/Activity.html#onStop()">onStop()</a></code> 方法和 <code><a href="../../reference/android/app/Activity.html#onStart()">onStart()</a></code> 方法间能够保持他们的数据，这样当用户返回应用时，他们不需要等待数据重新加载。你在需要创建新加载器以及引用停止使用加载器数据时使用 <code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code>接口的方法。</p>
 
 <p><code><a href="../../reference/android/app/LoaderManager.LoaderCallbacks.html">LoaderManager.LoaderCallbacks</a></code> 包括下面这些方法：</p>
@@ -1213,10 +1212,10 @@ public Loader&lt;Cursor&gt; onCreateLoader(int id, Bundle args) {
 }</pre>
 <h4 id="onLoadFinished">onLoadFinished</h4>
 
-<p>当之前创建的加载器加载完成时这个方法被调用。This method is guaranteed to be called prior to the release of the last data that was supplied for this loader. At this point you should remove all use of the old data (since it will be released soon), but should not do your own release of the data since its loader owns it and will take care of that.</p>
+<p>当之前创建的加载器加载完成时这个方法被调用。这个方法保证在提供给当前加载器的最后一个数据发布前被调用。这时你应该移除所有旧数据的使用（因为这些数据会被释放），但是不要自己释放这些数据，因为加载器会管理它们。</p>
 
 
-<p>The loader will release the data once it knows the application is no longer using it. For example, if the data is a cursor from a <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code>, you should not call <code><a href="../../reference/android/database/Cursor.html#close()">close()</a></code> on it yourself. If the cursor is being placed in a <code><a href="../../reference/android/widget/CursorAdapter.html">CursorAdapter</a></code>, you should use the <code><a href="../../reference/android/widget/SimpleCursorAdapter.html#swapCursor(android.database.Cursor)">swapCursor()</a></code> method so that the old <code><a href="../../reference/android/database/Cursor.html">Cursor</a></code> is not closed. 例如：</p>
+<p>一旦加载器知道应用不再需要这些数据，加载器会释放它们。例如，如果数据是从 <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code> 加载的游标，你不需要自己调用游标的 <code><a href="../../reference/android/database/Cursor.html#close()">close()</a></code> 方法。如果游标被放置于 <code><a href="../../reference/android/widget/CursorAdapter.html">CursorAdapter</a></code> 中，你需要使用 <code><a href="../../reference/android/widget/SimpleCursorAdapter.html#swapCursor(android.database.Cursor)">swapCursor()</a></code> 方法这样旧的<code><a href="../../reference/android/database/Cursor.html">游标</a></code>没有被关闭。例如：</p>
 
 <pre>
 // This is the Adapter being used to display the list's data.<br
@@ -1253,12 +1252,9 @@ public void onLoaderReset(Loader&lt;Cursor&gt; loader) {
 
 <h2 id="example">例子</h2>
 
-<p>As an example, here is the full implementation of a <code><a href="../../reference/android/app/Fragment.html">Fragment</a></code> that displays a <code><a href="../../reference/android/widget/ListView.html">ListView</a></code> containing
-the results of a query against the contacts content provider. It uses a <code><a href="../../reference/android/content/CursorLoader.html">CursorLoader</a></code> to manage the query on the provider.</p>
+<p>作为一个例子，这里是完整的一个<code><a href="../../reference/android/app/Fragment.html">活动片段</a></code>的实现，它显示一个包含查询联系人内容提供器结果的<code><a href="../../reference/android/widget/ListView.html">列表视图</a></code>。它使用<code><a href="../../reference/android/content/CursorLoader.html">游标加载器</a></code>来管理对内容提供器的查询。</p>
  
-<p>For an application to access a user's contacts, as shown in this example, its
-manifest must include the permission
-<code><a href="../../reference/android/Manifest.permission.html#READ_CONTACTS">READ_CONTACTS</a></code>.</p>
+<p>对于像这个例子一样需要访问用户联系人的应用，项目清单中需要包括 <code><a href="../../reference/android/Manifest.permission.html#READ_CONTACTS">READ_CONTACTS</a></code> 权限。</p>
 
 <pre>
 public static class CursorLoaderListFragment extends ListFragment
@@ -1368,20 +1364,15 @@ public static class CursorLoaderListFragment extends ListFragment
 }</pre>
 <h3 id="more_examples">更多例子</h3>
 
-<p>There are a few different samples in <strong>ApiDemos</strong> that
-illustrate how to use loaders:</p>
+<p>在 <strong>ApiDemos</strong> 有一些显示如何使用加载器的其它例子。</p>
 <ul>
   <li><a
-href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/LoaderCursor.html">
-LoaderCursor</a> — A complete version of the
-snippet shown above.</li>
-  <li><a href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/LoaderThrottle.html"> LoaderThrottle</a> — An example of how to use throttling to
-reduce the number of queries a content provider does when its data changes.</li>
+href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/LoaderCursor.html"> LoaderCursor</a> — 上面片段的完整版本。</li>
+  <li><a href="../../resources/samples/ApiDemos/src/com/example/android/apis/app/LoaderThrottle.html"> LoaderThrottle</a> — 一个当数据改变时，如何使用限制来减少内容提供器查询数目的例子。</li>
 </ul>
 
-<p>For information on downloading and installing the SDK samples, see <a
-href="http://developer.android.com/resources/samples/get.html"> Getting the
-Samples</a>.  </p>
+<p>更多关于下载和安装 SDK 示例的信息，查看<a
+href="http://developer.android.com/resources/samples/get.html">获得代码示例</a>。 </p>
 
 
     </div>
