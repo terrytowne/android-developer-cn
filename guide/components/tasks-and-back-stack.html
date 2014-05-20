@@ -1079,26 +1079,12 @@ C.</p>
 
 
 
-<p>设备的主屏幕时大多数任务的起点。当用户在应用启动器中（或者主屏幕的快捷键）触摸一个图标，应用的任务出现在前台。If no task exists for the application (the application has not been used recently), then a new task is created and the "main" activity for that application opens as the root activity in the stack.</p>
+<p>设备的主屏幕时大多数任务的起点。当用户在应用启动器中（或者主屏幕的快捷键）触摸一个图标，应用的任务出现在前台。如果没有相关某应用的任务存在（该应用最近没有被使用），那么一个新任务被创建而应用“主活动”作为活动堆栈的根活动打开。</p>
 
-<p>When the current activity starts another, the new activity is pushed on the top of the stack and
-takes focus. The previous activity remains in the stack, but is stopped. When an activity
-stops, the system retains the current state of its user interface. When the user presses the
-<em>Back</em>
-button, the current activity is popped from the top of the stack (the activity is destroyed) and the
-previous activity resumes (the previous state of its UI is restored). Activities in the stack are
-never rearranged, only pushed and popped from the stack—pushed onto the stack when started by
-the current activity and popped off when the user leaves it using the <em>Back</em> button. As such,
-the back
-stack operates as a "last in, first out" object structure. Figure 1 visualizes
-this behavior with a timeline showing the progress between activities along with the current back
-stack at each point in time.</p>
+<p>若当前活动启动另一个活动，新活动被推至活动堆栈的顶部并获得焦点。之前的活动保留在堆栈内，但是被停止了。当一个活动组件停止时，系统保留它的用户界面的当前状态。当用户按下<em>返回</em>按钮后，当前活动从活动堆栈的顶端出栈（该活动被销毁）而之前的活动组件恢复（之前的 UI 状态被恢复）。活动组件在活动堆栈内不会被重新排列，只会在堆栈中入栈和出栈 — 当被当前活动组件启动后入而当用户使用<em>返回</em>按钮离开时出栈。如此，活动返回堆栈作为一个“后进先出”对象结构操作。图像 1 使用时间线显示活动组件间的操作过程，每一个时间点都显示当前活动返回堆栈的状态。</p>
 
 <img src="../../images/fundamentals/diagram_backstack.png" alt="" />
-<p class="img-caption"><strong>Figure 1.</strong> A representation of how each new activity in a
-task adds an item to the back stack. When the user presses the <em>Back</em> button, the current
-activity is
-destroyed and the previous activity resumes.</p>
+<p class="img-caption"><strong>图像 1.</strong> 表示每一个任务中新活动添加一个单项到活动返回堆栈中。当用户按下<em>返回</em>按钮，当前活动组件被销毁而上一个活动恢复。</p>
 
 
 <p>If the user continues to press <em>Back</em>, then each activity in the stack is popped off to
